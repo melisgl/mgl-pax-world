@@ -327,7 +327,7 @@ updated. See <a href="#x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-2A-20GENERIC-FUNCTION-2
 <p>Many of the generic functions in this section take <a href="#x-28MGL-CUBE-3AFACET-20CLASS-29" title="(MGL-CUBE:FACET CLASS)"><code>FACET</code></a> arguments.
 <a href="#x-28MGL-CUBE-3AFACET-20CLASS-29" title="(MGL-CUBE:FACET CLASS)"><code>FACET</code></a> is a structure and is not intended to be subclassed. To be
 able to add specialized methods, the name of the
-facet ([FACET-NAME]) is also passed as the
+facet (<a href="#x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-29-29" title="(MGL-CUBE:FACET-NAME (MGL-PAX:STRUCTURE-ACCESSOR))"><code>FACET-NAME</code></a>) is also passed as the
 argument right in front of the corresponding facet argument.</p>
 
 <p>In summary, define <code>EQL</code> specializers on facet name arguments, and use
@@ -421,7 +421,7 @@ but you really should (see <a href="mgl-pax-manual.html#x-28MGL-PAX-3A-40MGL-PAX
 <ul>
 <li><p><span class="locative-type">[locative]</span> <span class="reference-object"><a href="#x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ALOCATIVE-29-29" >FACET-NAME</a></span></p>
 
-<p>The <code>FACET-NAME</code> [locative] is the to refer to stuff
+<p>The <code>FACET-NAME</code> <a href="mgl-pax-manual.html#x-28MGL-PAX-3ALOCATIVE-20-28MGL-PAX-3ALOCATIVE-29-29" title="(MGL-PAX:LOCATIVE (MGL-PAX:LOCATIVE))"><code>locative</code></a> is the to refer to stuff
 defined with <a href="#x-28MGL-CUBE-3ADEFINE-FACET-NAME-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-CUBE:DEFINE-FACET-NAME (MGL-PAX:MACRO))"><code>DEFINE-FACET-NAME</code></a>.</p></li>
 </ul>
 
@@ -431,7 +431,7 @@ defined with <a href="#x-28MGL-CUBE-3ADEFINE-FACET-NAME-20-28MGL-PAX-3AMACRO-29-
 <li><p><span class="locative-type">[macro]</span> <span class="reference-object"><a href="#x-28MGL-CUBE-3ADEFINE-FACET-NAME-20-28MGL-PAX-3AMACRO-29-29" >DEFINE-FACET-NAME</a></span> <span class="locative-args">SYMBOL LAMBDA-LIST &amp;BODY DOCSTRING</span></p>
 
 <p>Just a macro to document that <code>SYMBOL</code> refers to a facet name (as in
-the [FACET-NAME]). This is totally confusing, so here is
+the <a href="#x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ALOCATIVE-29-29" title="(MGL-CUBE:FACET-NAME (MGL-PAX:LOCATIVE))"><code>FACET-NAME</code></a>). This is totally confusing, so here is
 an example of how MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-MAT:@MAT-MANUAL MGL-PAX:SECTION)">MAT Manual</a>) documents the
 <a href="mat-manual.html#x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:BACKING-ARRAY (MGL-CUBE:FACET-NAME))"><code>MGL-MAT:BACKING-ARRAY</code></a> facet:</p>
 
