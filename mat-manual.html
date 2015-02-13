@@ -609,6 +609,24 @@ cached object is updated with the binding of <code>VAR</code> which <code>BODY</
 change.</p></li>
 </ul>
 
+<p><a name='x-28MGL-MAT-3AWITH-THREAD-CACHED-MATS-20-28MGL-PAX-3AMACRO-29-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[macro]</span> <span class="reference-object"><a href="#x-28MGL-MAT-3AWITH-THREAD-CACHED-MATS-20-28MGL-PAX-3AMACRO-29-29" >WITH-THREAD-CACHED-MATS</a></span> <span class="locative-args">SPECS &amp;BODY BODY</span></p>
+
+<p>A shorthand for writing nested <a href="#x-28MGL-MAT-3AWITH-THREAD-CACHED-MAT-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-MAT:WITH-THREAD-CACHED-MAT (MGL-PAX:MACRO))"><code>WITH-THREAD-CACHED-MAT</code></a> calls.</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-thread-cached-mat</span></i> <span class="paren2">(<span class="code">a ...</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-thread-cached-mat</span></i> <span class="paren3">(<span class="code">b ...</span>)</span>
+    ...</span>)</span></span>)</span></span></code></pre>
+
+<p>is equivalent to:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-thread-cached-mat</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">a ...</span>)</span>
+                         <span class="paren3">(<span class="code">b ...</span>)</span></span>)</span>
+  ...</span>)</span></span></code></pre></li>
+</ul>
+
 <p><a name='x-28MGL-MAT-3AWITH-ONES-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
@@ -755,6 +773,22 @@ M --A--+  -C++
 <p>Apply <code>EXP</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
+<p><a name='x-28MGL-MAT-3A-2EEXPT-21-20FUNCTION-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2EEXPT-21-20FUNCTION-29" >.EXPT!</a></span> <span class="locative-args">X POWER</span></p>
+
+<p>Raise matrix <code>X</code> to <code>POWER</code> in an elementwise manner. Return <code>X</code>.</p></li>
+</ul>
+
+<p><a name='x-28MGL-MAT-3A-2EINV-21-20FUNCTION-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2EINV-21-20FUNCTION-29" >.INV!</a></span> <span class="locative-args">X &amp;KEY (N (MAT-SIZE X))</span></p>
+
+<p>Set <code>X</code> to its elementwise inverse <code>(/ 1 X)</code>. Return <code>X</code>.</p></li>
+</ul>
+
 <p><a name='x-28MGL-MAT-3A-2ELOGISTIC-21-20FUNCTION-29'></a></p>
 
 <ul>
@@ -858,7 +892,19 @@ is 1 then rows are summed.</p></li>
 <p><a name='x-28MGL-MAT-3ASCALE-ROWS-21-20FUNCTION-29'></a></p>
 
 <ul>
-<li><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-MAT-3ASCALE-ROWS-21-20FUNCTION-29" >SCALE-ROWS!</a></span> <span class="locative-args">SCALES A B</span></li>
+<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-MAT-3ASCALE-ROWS-21-20FUNCTION-29" >SCALE-ROWS!</a></span> <span class="locative-args">SCALES A &amp;KEY (RESULT A)</span></p>
+
+<p>Set <code>RESULT</code> to <code>DIAG(SCALES)*A</code> and return it. <code>A</code> is an <code>MxN</code>
+matrix, <code>SCALES</code> is treated as a length <code>M</code> vector.</p></li>
+</ul>
+
+<p><a name='x-28MGL-MAT-3ASCALE-COLUMNS-21-20FUNCTION-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-MAT-3ASCALE-COLUMNS-21-20FUNCTION-29" >SCALE-COLUMNS!</a></span> <span class="locative-args">SCALES A &amp;KEY (RESULT A)</span></p>
+
+<p>Set <code>RESULT</code> to <code>A*DIAG(SCALES)</code> and return it. <code>A</code> is an <code>MxN</code>
+matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></li>
 </ul>
 
 <p>Finally, some neural network operations.</p>
@@ -1206,6 +1252,12 @@ will not see the changes made by <a href="#x-28MGL-MAT-3AAXPY-21-20FUNCTION-29" 
 any changes made to the <a href="#x-28ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(ARRAY (MGL-CUBE:FACET-NAME))"><code>ARRAY</code></a> facet since the last update of the
 <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:CUDA-ARRAY (MGL-CUBE:FACET-NAME))"><code>CUDA-ARRAY</code></a> facet will not be copied and from the wrong input <a href="#x-28MGL-MAT-3ASCAL-21-20FUNCTION-29" title="(MGL-MAT:SCAL! FUNCTION)"><code>SCAL!</code></a>
 will compute the wrong result.</p>
+
+<p>Using the SLIME inspector or trying to access the
+<a href="#x-28MGL-MAT-3ACUDA-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:CUDA-ARRAY (MGL-CUBE:FACET-NAME))"><code>CUDA-ARRAY</code></a> facet from threads other than the one in
+which the corresponding CUDA context was initialized will fail. For
+now, the easy way out is to debug the code with CUDA disabled (see
+<a href="#x-28MGL-MAT-3A-2ACUDA-ENABLED-2A-20-28VARIABLE-29-29" title="(MGL-MAT:*CUDA-ENABLED* (VARIABLE))"><code>*CUDA-ENABLED*</code></a>).</p>
 
 <p>Another thing that tends to come up is figuring out where memory is
 used.</p>
