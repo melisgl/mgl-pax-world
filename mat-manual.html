@@ -606,7 +606,13 @@ particularly efficient but at least it's safe.</p>
 <p>Bind <code>VAR</code> to a matrix of <code>DIMENSIONS</code>, <code>CTYPE</code>, etc. Cache this matrix,
 and possibly reuse it later by reshaping it. When <code>BODY</code> exits the
 cached object is updated with the binding of <code>VAR</code> which <code>BODY</code> may
-change.</p></li>
+change.</p>
+
+<p>There is a separate cache for each thread and each <code>PLACE</code> (under
+EQ). Since every cache holds exactly one <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> per <code>CTYPE</code>, nested
+<a href="#x-28MGL-MAT-3AWITH-THREAD-CACHED-MAT-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-MAT:WITH-THREAD-CACHED-MAT (MGL-PAX:MACRO))"><code>WITH-THREAD-CACHED-MAT</code></a> often want to use different <code>PLACE</code>s. By
+convention, these places are called <code>:SCRATCH-1</code>, <code>:SCRATCH-2</code>,
+etc.</p></li>
 </ul>
 
 <p><a name='x-28MGL-MAT-3AWITH-THREAD-CACHED-MATS-20-28MGL-PAX-3AMACRO-29-29'></a></p>

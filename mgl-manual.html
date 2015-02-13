@@ -130,7 +130,7 @@
 <li><a href="#x-28MGL-BP-3A-40MGL-BP-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMP MGL-PAX:SECTION)">10.4.1 Lump Base Class</a></li>
 <li><a href="#x-28MGL-BP-3A-40MGL-BP-INPUTS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-INPUTS MGL-PAX:SECTION)">10.4.2 Inputs</a></li>
 <li><a href="#x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-WEIGHT-LUMP MGL-PAX:SECTION)">10.4.3 Weight Lump</a></li>
-<li><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">10.4.4 Activation Subnet</a></li>
+<li><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATIONS MGL-PAX:SECTION)">10.4.4 Activations</a></li>
 <li><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS MGL-PAX:SECTION)">10.4.5 Activation Functions</a></li>
 <li><a href="#x-28MGL-BP-3A-40MGL-BP-LOSSES-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LOSSES MGL-PAX:SECTION)">10.4.6 Losses</a></li>
 <li><a href="#x-28MGL-BP-3A-40MGL-BP-STOCHASTICITY-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-STOCHASTICITY MGL-PAX:SECTION)">10.4.7 Stochasticity</a></li>
@@ -3567,42 +3567,44 @@ read up on <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" ti
 <span class="comment">#|
 
 ;;; Transcript follows:
-(train-digit-fnn)
-.. 2015-01-25 21:47:57: training at n-instances: 0
-.. 2015-01-25 21:47:57: train cost: 0.000e+0 (0)
-.. #&lt;SEGMENTED-GD-OPTIMIZER {101AF31013}&gt;
+(repeatably ()
+  (let ((*log-time* nil))
+    (train-digit-fnn)))
+.. training at n-instances: 0
+.. train cost: 0.000e+0 (0)
+.. #&lt;SEGMENTED-GD-OPTIMIZER {10094BA193}&gt;
 ..  SEGMENTED-GD-OPTIMIZER description:
 ..    N-INSTANCES = 0
 ..    OPTIMIZERS = (#&lt;BATCH-GD-OPTIMIZER
 ..                    #&lt;SEGMENT-SET
-..                      (#&lt;-&gt;WEIGHT # :SIZE 15 1/1 :norm 0.04560&gt;
-..                       #&lt;-&gt;WEIGHT # :SIZE 3 1/1 :norm 0.00943&gt;
-..                       #&lt;-&gt;WEIGHT # :SIZE 50 1/1 :norm 0.07021&gt;
-..                       #&lt;-&gt;WEIGHT # :SIZE 5 1/1 :norm 0.01594&gt;)
-..                      {101B2178D3}&gt;
-..                    {101AE7B063}&gt;)
+..                      (#&lt;-&gt;WEIGHT # :SIZE 15 1/1 :NORM 0.04473&gt;
+..                       #&lt;-&gt;WEIGHT # :SIZE 3 1/1 :NORM 0.01850&gt;
+..                       #&lt;-&gt;WEIGHT # :SIZE 50 1/1 :NORM 0.07159&gt;
+..                       #&lt;-&gt;WEIGHT # :SIZE 5 1/1 :NORM 0.03056&gt;)
+..                      {100966C8A3}&gt;
+..                    {100940DED3}&gt;)
 ..    SEGMENTS = (#&lt;-&gt;WEIGHT (HIDDEN OUTPUT-ACTIVATION) :SIZE
-..                  15 1/1 :norm 0.04560&gt;
+..                  15 1/1 :NORM 0.04473&gt;
 ..                #&lt;-&gt;WEIGHT (:BIAS OUTPUT-ACTIVATION) :SIZE
-..                  3 1/1 :norm 0.00943&gt;
+..                  3 1/1 :NORM 0.01850&gt;
 ..                #&lt;-&gt;WEIGHT (INPUT HIDDEN-ACTIVATION) :SIZE
-..                  50 1/1 :norm 0.07021&gt;
+..                  50 1/1 :NORM 0.07159&gt;
 ..                #&lt;-&gt;WEIGHT (:BIAS HIDDEN-ACTIVATION) :SIZE
-..                  5 1/1 :norm 0.01594&gt;)
+..                  5 1/1 :NORM 0.03056&gt;)
 ..  
-.. #&lt;BATCH-GD-OPTIMIZER {101AE7B063}&gt;
+.. #&lt;BATCH-GD-OPTIMIZER {100940DED3}&gt;
 ..  GD-OPTIMIZER description:
 ..    N-INSTANCES = 0
 ..    SEGMENT-SET = #&lt;SEGMENT-SET
 ..                    (#&lt;-&gt;WEIGHT (HIDDEN OUTPUT-ACTIVATION) :SIZE
-..                       15 1/1 :norm 0.04560&gt;
+..                       15 1/1 :NORM 0.04473&gt;
 ..                     #&lt;-&gt;WEIGHT (:BIAS OUTPUT-ACTIVATION) :SIZE
-..                       3 1/1 :norm 0.00943&gt;
+..                       3 1/1 :NORM 0.01850&gt;
 ..                     #&lt;-&gt;WEIGHT (INPUT HIDDEN-ACTIVATION) :SIZE
-..                       50 1/1 :norm 0.07021&gt;
+..                       50 1/1 :NORM 0.07159&gt;
 ..                     #&lt;-&gt;WEIGHT (:BIAS HIDDEN-ACTIVATION) :SIZE
-..                       5 1/1 :norm 0.01594&gt;)
-..                    {101B2178D3}&gt;
+..                       5 1/1 :NORM 0.03056&gt;)
+..                    {100966C8A3}&gt;
 ..    LEARNING-RATE = 1.00000e+0
 ..    MOMENTUM = 9.00000e-1
 ..    MOMENTUM-TYPE = :NORMAL
@@ -3613,46 +3615,46 @@ read up on <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" ti
 ..  
 ..  BATCH-GD-OPTIMIZER description:
 ..    N-BEFORE-UPATE-HOOK = 0
-..  #&lt;DIGIT-FNN {101AF33DC3}&gt;
+..  #&lt;DIGIT-FNN {10094BA5D3}&gt;
 ..   BPN description:
-..     CLUMPS = #(#&lt;-&gt;INPUT INPUT :SIZE 10 1/50 :norm 0.00000&gt;
+..     CLUMPS = #(#&lt;-&gt;INPUT INPUT :SIZE 10 1/50 :NORM 0.00000&gt;
 ..                #&lt;-&gt;ACTIVATION
 ..                  (HIDDEN-ACTIVATION :ACTIVATION) :STRIPES 1/50
 ..                  :CLUMPS 4&gt;
-..                #&lt;-&gt;RELU HIDDEN :SIZE 5 1/50 :norm 0.00000&gt;
+..                #&lt;-&gt;RELU HIDDEN :SIZE 5 1/50 :NORM 0.00000&gt;
 ..                #&lt;-&gt;ACTIVATION
 ..                  (OUTPUT-ACTIVATION :ACTIVATION) :STRIPES 1/50
 ..                  :CLUMPS 4&gt;
-..                #&lt;-&gt;SOFTMAX-XE-LOSS OUTPUT :SIZE 3 1/50 :norm 0.00000&gt;)
+..                #&lt;-&gt;SOFTMAX-XE-LOSS OUTPUT :SIZE 3 1/50 :NORM 0.00000&gt;)
 ..     N-STRIPES = 1
 ..     MAX-N-STRIPES = 50
-..   2015-01-25 21:47:57: pred. cost: 1.098d+0 (1000.00)
-.. 2015-01-25 21:47:57: training at n-instances: 1000
-.. 2015-01-25 21:47:57: train cost: 1.093d+0 (1000.00)
-.. 2015-01-25 21:47:57: training at n-instances: 2000
-.. 2015-01-25 21:47:57: train cost: 5.491d-1 (1000.00)
-.. 2015-01-25 21:47:57: training at n-instances: 3000
-.. 2015-01-25 21:47:57: train cost: 4.281d-3 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 4000
-.. 2015-01-25 21:47:58: train cost: 2.767d-4 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 5000
-.. 2015-01-25 21:47:58: train cost: 1.029d-4 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 6000
-.. 2015-01-25 21:47:58: train cost: 5.664d-5 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 7000
-.. 2015-01-25 21:47:58: train cost: 4.567d-5 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 8000
-.. 2015-01-25 21:47:58: train cost: 3.989d-5 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 9000
-.. 2015-01-25 21:47:58: train cost: 3.374d-5 (1000.00)
-.. 2015-01-25 21:47:58: training at n-instances: 10000
-.. 2015-01-25 21:47:58: train cost: 3.220d-5 (1000.00)
-.. 2015-01-25 21:47:58: pred. cost: 3.382d-5 (1000.00)
+..   pred. cost: 1.100d+0 (1000.00)
+.. training at n-instances: 1000
+.. train cost: 1.093d+0 (1000.00)
+.. training at n-instances: 2000
+.. train cost: 5.886d-1 (1000.00)
+.. training at n-instances: 3000
+.. train cost: 3.574d-3 (1000.00)
+.. training at n-instances: 4000
+.. train cost: 1.601d-7 (1000.00)
+.. training at n-instances: 5000
+.. train cost: 1.973d-9 (1000.00)
+.. training at n-instances: 6000
+.. train cost: 4.882d-10 (1000.00)
+.. training at n-instances: 7000
+.. train cost: 2.771d-10 (1000.00)
+.. training at n-instances: 8000
+.. train cost: 2.283d-10 (1000.00)
+.. training at n-instances: 9000
+.. train cost: 2.123d-10 (1000.00)
+.. training at n-instances: 10000
+.. train cost: 2.263d-10 (1000.00)
+.. pred. cost: 2.210d-10 (1000.00)
 ..
-==&gt; (#&lt;-&gt;WEIGHT (:BIAS HIDDEN-ACTIVATION) :SIZE 5 1/1 :norm 2.56299&gt;
---&gt;  #&lt;-&gt;WEIGHT (INPUT HIDDEN-ACTIVATION) :SIZE 50 1/1 :norm 11.03941&gt;
---&gt;  #&lt;-&gt;WEIGHT (:BIAS OUTPUT-ACTIVATION) :SIZE 3 1/1 :norm 8.04568&gt;
---&gt;  #&lt;-&gt;WEIGHT (HIDDEN OUTPUT-ACTIVATION) :SIZE 15 1/1 :norm 10.49271&gt;)
+==&gt; (#&lt;-&gt;WEIGHT (:BIAS HIDDEN-ACTIVATION) :SIZE 5 1/1 :NORM 2.94294&gt;
+--&gt;  #&lt;-&gt;WEIGHT (INPUT HIDDEN-ACTIVATION) :SIZE 50 1/1 :NORM 11.48995&gt;
+--&gt;  #&lt;-&gt;WEIGHT (:BIAS OUTPUT-ACTIVATION) :SIZE 3 1/1 :NORM 3.39103&gt;
+--&gt;  #&lt;-&gt;WEIGHT (HIDDEN OUTPUT-ACTIVATION) :SIZE 15 1/1 :NORM 11.39339&gt;)
 
 |#</span></span></code></pre>
 
@@ -3808,41 +3810,42 @@ the concepts involved. Make sure you are comfortable with
       ;; Enable moving data in and out of GPU memory so that the RNN
       ;; can work with sequences so long that the unfolded network
       ;; wouldn't otherwise fit in the GPU.
-      (*cuda-window-start-time* 1))
+      (*cuda-window-start-time* 1)
+      (*log-time* nil))
   ;; Seed the random number generators.
   (repeatably ()
     ;; Enable CUDA if available.
     (with-cuda* ()
       (train-sum-sign-rnn))))
-.. 2015-02-09 23:48:45: training at n-instances: 0
-.. 2015-02-09 23:48:45: cost: 0.000e+0 (0)
-.. #&lt;ADAM-OPTIMIZER {101FE5FBE3}&gt;
+.. training at n-instances: 0
+.. cost: 0.000e+0 (0)
+.. #&lt;ADAM-OPTIMIZER {1006CD5663}&gt;
 ..  GD-OPTIMIZER description:
 ..    N-INSTANCES = 0
 ..    SEGMENT-SET = #&lt;SEGMENT-SET
-..                    (#&lt;-&gt;WEIGHT (H #) :SIZE 1 1/1 :norm 1.73685&gt;
-..                     #&lt;-&gt;WEIGHT (H #) :SIZE 1 1/1 :norm 0.31893&gt;
+..                    (#&lt;-&gt;WEIGHT (H #) :SIZE 1 1/1 :NORM 1.73685&gt;
+..                     #&lt;-&gt;WEIGHT (H #) :SIZE 1 1/1 :NORM 0.31893&gt;
 ..                     #&lt;-&gt;WEIGHT (#1=# #2=# :PEEPHOLE) :SIZE
-..                       1 1/1 :norm 1.81610&gt;
-..                     #&lt;-&gt;WEIGHT (H #2#) :SIZE 1 1/1 :norm 0.21965&gt;
+..                       1 1/1 :NORM 1.81610&gt;
+..                     #&lt;-&gt;WEIGHT (H #2#) :SIZE 1 1/1 :NORM 0.21965&gt;
 ..                     #&lt;-&gt;WEIGHT (#1# #3=# :PEEPHOLE) :SIZE
-..                       1 1/1 :norm 1.74939&gt;
-..                     #&lt;-&gt;WEIGHT (H #3#) :SIZE 1 1/1 :norm 0.40377&gt;
+..                       1 1/1 :NORM 1.74939&gt;
+..                     #&lt;-&gt;WEIGHT (H #3#) :SIZE 1 1/1 :NORM 0.40377&gt;
 ..                     #&lt;-&gt;WEIGHT (H PREDICTION) :SIZE
-..                       3 1/1 :norm 2.15898&gt;
+..                       3 1/1 :NORM 2.15898&gt;
 ..                     #&lt;-&gt;WEIGHT (:BIAS PREDICTION) :SIZE
-..                       3 1/1 :norm 2.94470&gt;
+..                       3 1/1 :NORM 2.94470&gt;
 ..                     #&lt;-&gt;WEIGHT (#1# #4=# :PEEPHOLE) :SIZE
-..                       1 1/1 :norm 0.97601&gt;
-..                     #&lt;-&gt;WEIGHT (INPUT #4#) :SIZE 1 1/1 :norm 0.65261&gt;
-..                     #&lt;-&gt;WEIGHT (:BIAS #4#) :SIZE 1 1/1 :norm 0.37653&gt;
-..                     #&lt;-&gt;WEIGHT (INPUT #1#) :SIZE 1 1/1 :norm 0.92334&gt;
-..                     #&lt;-&gt;WEIGHT (:BIAS #1#) :SIZE 1 1/1 :norm 0.01609&gt;
-..                     #&lt;-&gt;WEIGHT (INPUT #5=#) :SIZE 1 1/1 :norm 1.09995&gt;
-..                     #&lt;-&gt;WEIGHT (:BIAS #5#) :SIZE 1 1/1 :norm 1.41244&gt;
-..                     #&lt;-&gt;WEIGHT (INPUT #6=#) :SIZE 1 1/1 :norm 0.40475&gt;
-..                     #&lt;-&gt;WEIGHT (:BIAS #6#) :SIZE 1 1/1 :norm 1.75358&gt;)
-..                    {10206976F3}&gt;
+..                       1 1/1 :NORM 0.97601&gt;
+..                     #&lt;-&gt;WEIGHT (INPUT #4#) :SIZE 1 1/1 :NORM 0.65261&gt;
+..                     #&lt;-&gt;WEIGHT (:BIAS #4#) :SIZE 1 1/1 :NORM 0.37653&gt;
+..                     #&lt;-&gt;WEIGHT (INPUT #1#) :SIZE 1 1/1 :NORM 0.92334&gt;
+..                     #&lt;-&gt;WEIGHT (:BIAS #1#) :SIZE 1 1/1 :NORM 0.01609&gt;
+..                     #&lt;-&gt;WEIGHT (INPUT #5=#) :SIZE 1 1/1 :NORM 1.09995&gt;
+..                     #&lt;-&gt;WEIGHT (:BIAS #5#) :SIZE 1 1/1 :NORM 1.41244&gt;
+..                     #&lt;-&gt;WEIGHT (INPUT #6=#) :SIZE 1 1/1 :NORM 0.40475&gt;
+..                     #&lt;-&gt;WEIGHT (:BIAS #6#) :SIZE 1 1/1 :NORM 1.75358&gt;)
+..                    {1006CD8753}&gt;
 ..    LEARNING-RATE = 2.00000e-1
 ..    MOMENTUM = NONE
 ..    MOMENTUM-TYPE = :NONE
@@ -3855,10 +3858,11 @@ the concepts involved. Make sure you are comfortable with
 ..    N-BEFORE-UPATE-HOOK = 0
 ..  
 ..  ADAM-OPTIMIZER description:
-..    MEAN-UPDATE-RATE = 1.00000e+0
-..    VARIANCE-UPDATE-RATE = 1.00000e-1
-..    VARIANCE-ADJUSTMENT = 1.00000e-8
-..  #&lt;RNN {101D20D1C3}&gt;
+..    MEAN-DECAY-RATE = 1.00000e-1
+..    MEAN-DECAY-RATE-DECAY = 9.00000e-1
+..    VARIANCE-DECAY-RATE = 1.00000e-1
+..    VARIANCE-ADJUSTMENT = 1.00000d-7
+..  #&lt;RNN {10047C77E3}&gt;
 ..   BPN description:
 ..     CLUMPS = #(#&lt;SUM-SIGN-FNN :STRIPES 1/50 :CLUMPS 4&gt;
 ..                #&lt;SUM-SIGN-FNN :STRIPES 1/50 :CLUMPS 4&gt;)
@@ -3867,60 +3871,60 @@ the concepts involved. Make sure you are comfortable with
 ..   
 ..   RNN description:
 ..     MAX-LAG = 1
-..   2015-02-09 23:48:45: pred.        cost: 1.223e+0 (4455.00)
-.. 2015-02-09 23:48:45: warped pred. cost: 1.228e+0 (9476.00)
-.. 2015-02-09 23:48:45: Foreign memory usage:
+..   pred.        cost: 1.223e+0 (4455.00)
+.. warped pred. cost: 1.228e+0 (9476.00)
+.. Foreign memory usage:
 .. foreign arrays: 162 (used bytes: 39,600)
 .. CUDA memory usage:
 .. device arrays: 114 (used bytes: 220,892, pooled bytes: 19,200)
 .. host arrays: 162 (used bytes: 39,600)
 .. host-&gt;device copies: 6,164, device-&gt;host copies: 4,490
-.. 2015-02-09 23:48:47: training at n-instances: 3000
-.. 2015-02-09 23:48:47: cost: 4.407e-1 (13726.00)
-.. 2015-02-09 23:48:49: training at n-instances: 6000
-.. 2015-02-09 23:48:49: cost: 6.981e-2 (13890.00)
-.. 2015-02-09 23:48:51: training at n-instances: 9000
-.. 2015-02-09 23:48:51: cost: 1.756e-2 (13872.00)
-.. 2015-02-09 23:48:53: training at n-instances: 12000
-.. 2015-02-09 23:48:53: cost: 5.181e-3 (13953.00)
-.. 2015-02-09 23:48:55: training at n-instances: 15000
-.. 2015-02-09 23:48:55: cost: 1.586e-3 (13948.00)
-.. 2015-02-09 23:48:57: training at n-instances: 18000
-.. 2015-02-09 23:48:57: cost: 4.898e-4 (13849.00)
-.. 2015-02-09 23:48:59: training at n-instances: 21000
-.. 2015-02-09 23:48:59: cost: 1.523e-4 (13758.00)
-.. 2015-02-09 23:49:01: training at n-instances: 24000
-.. 2015-02-09 23:49:01: cost: 4.728e-5 (13908.00)
-.. 2015-02-09 23:49:03: training at n-instances: 27000
-.. 2015-02-09 23:49:03: cost: 1.450e-5 (13570.00)
-.. 2015-02-09 23:49:05: training at n-instances: 30000
-.. 2015-02-09 23:49:05: cost: 4.574e-6 (13721.00)
-.. 2015-02-09 23:49:06: pred.        cost: 2.421e-6 (4593.00)
-.. 2015-02-09 23:49:06: warped pred. cost: 2.396e-6 (9717.00)
-.. 2015-02-09 23:49:06: Foreign memory usage:
+.. training at n-instances: 3000
+.. cost: 3.323e-1 (13726.00)
+.. training at n-instances: 6000
+.. cost: 3.735e-2 (13890.00)
+.. training at n-instances: 9000
+.. cost: 1.012e-2 (13872.00)
+.. training at n-instances: 12000
+.. cost: 3.026e-3 (13953.00)
+.. training at n-instances: 15000
+.. cost: 9.267e-4 (13948.00)
+.. training at n-instances: 18000
+.. cost: 2.865e-4 (13849.00)
+.. training at n-instances: 21000
+.. cost: 8.893e-5 (13758.00)
+.. training at n-instances: 24000
+.. cost: 2.770e-5 (13908.00)
+.. training at n-instances: 27000
+.. cost: 8.514e-6 (13570.00)
+.. training at n-instances: 30000
+.. cost: 2.705e-6 (13721.00)
+.. pred.        cost: 1.426e-6 (4593.00)
+.. warped pred. cost: 1.406e-6 (9717.00)
+.. Foreign memory usage:
 .. foreign arrays: 216 (used bytes: 52,800)
 .. CUDA memory usage:
-.. device arrays: 147 (used bytes: 224,344, pooled bytes: 19,200)
+.. device arrays: 148 (used bytes: 224,428, pooled bytes: 19,200)
 .. host arrays: 216 (used bytes: 52,800)
 .. host-&gt;device copies: 465,818, device-&gt;host copies: 371,990
 ..
-==&gt; (#&lt;-&gt;WEIGHT (H (H :OUTPUT)) :SIZE 1 1/1 :norm 0.09300&gt;
---&gt;  #&lt;-&gt;WEIGHT (H (H :CELL)) :SIZE 1 1/1 :norm 0.82579&gt;
---&gt;  #&lt;-&gt;WEIGHT ((H :CELL) (H :FORGET) :PEEPHOLE) :SIZE 1 1/1 :norm 0.41850&gt;
---&gt;  #&lt;-&gt;WEIGHT (H (H :FORGET)) :SIZE 1 1/1 :norm 0.89080&gt;
---&gt;  #&lt;-&gt;WEIGHT ((H :CELL) (H :INPUT) :PEEPHOLE) :SIZE 1 1/1 :norm 1.19945&gt;
---&gt;  #&lt;-&gt;WEIGHT (H (H :INPUT)) :SIZE 1 1/1 :norm 0.97036&gt;
---&gt;  #&lt;-&gt;WEIGHT (H PREDICTION) :SIZE 3 1/1 :norm 48.09914&gt;
---&gt;  #&lt;-&gt;WEIGHT (:BIAS PREDICTION) :SIZE 3 1/1 :norm 10.64913&gt;
---&gt;  #&lt;-&gt;WEIGHT ((H :CELL) (H :OUTPUT) :PEEPHOLE) :SIZE 1 1/1 :norm 1.09559&gt;
---&gt;  #&lt;-&gt;WEIGHT (INPUT (H :OUTPUT)) :SIZE 1 1/1 :norm 1.07507&gt;
---&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :OUTPUT)) :SIZE 1 1/1 :norm 10.57380&gt;
---&gt;  #&lt;-&gt;WEIGHT (INPUT (H :CELL)) :SIZE 1 1/1 :norm 6.49820&gt;
---&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :CELL)) :SIZE 1 1/1 :norm 0.10683&gt;
---&gt;  #&lt;-&gt;WEIGHT (INPUT (H :FORGET)) :SIZE 1 1/1 :norm 4.59939&gt;
---&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :FORGET)) :SIZE 1 1/1 :norm 1.53984&gt;
---&gt;  #&lt;-&gt;WEIGHT (INPUT (H :INPUT)) :SIZE 1 1/1 :norm 0.36710&gt;
---&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :INPUT)) :SIZE 1 1/1 :norm 8.68094&gt;)
+==&gt; (#&lt;-&gt;WEIGHT (H (H :OUTPUT)) :SIZE 1 1/1 :NORM 0.10624&gt;
+--&gt;  #&lt;-&gt;WEIGHT (H (H :CELL)) :SIZE 1 1/1 :NORM 0.94460&gt;
+--&gt;  #&lt;-&gt;WEIGHT ((H :CELL) (H :FORGET) :PEEPHOLE) :SIZE 1 1/1 :NORM 0.61312&gt;
+--&gt;  #&lt;-&gt;WEIGHT (H (H :FORGET)) :SIZE 1 1/1 :NORM 0.38093&gt;
+--&gt;  #&lt;-&gt;WEIGHT ((H :CELL) (H :INPUT) :PEEPHOLE) :SIZE 1 1/1 :NORM 1.17956&gt;
+--&gt;  #&lt;-&gt;WEIGHT (H (H :INPUT)) :SIZE 1 1/1 :NORM 0.88011&gt;
+--&gt;  #&lt;-&gt;WEIGHT (H PREDICTION) :SIZE 3 1/1 :NORM 49.93808&gt;
+--&gt;  #&lt;-&gt;WEIGHT (:BIAS PREDICTION) :SIZE 3 1/1 :NORM 10.98112&gt;
+--&gt;  #&lt;-&gt;WEIGHT ((H :CELL) (H :OUTPUT) :PEEPHOLE) :SIZE 1 1/1 :NORM 0.67996&gt;
+--&gt;  #&lt;-&gt;WEIGHT (INPUT (H :OUTPUT)) :SIZE 1 1/1 :NORM 0.65251&gt;
+--&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :OUTPUT)) :SIZE 1 1/1 :NORM 10.23003&gt;
+--&gt;  #&lt;-&gt;WEIGHT (INPUT (H :CELL)) :SIZE 1 1/1 :NORM 5.98116&gt;
+--&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :CELL)) :SIZE 1 1/1 :NORM 0.10681&gt;
+--&gt;  #&lt;-&gt;WEIGHT (INPUT (H :FORGET)) :SIZE 1 1/1 :NORM 4.46301&gt;
+--&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :FORGET)) :SIZE 1 1/1 :NORM 1.57195&gt;
+--&gt;  #&lt;-&gt;WEIGHT (INPUT (H :INPUT)) :SIZE 1 1/1 :NORM 0.36401&gt;
+--&gt;  #&lt;-&gt;WEIGHT (:BIAS (H :INPUT)) :SIZE 1 1/1 :NORM 8.63833&gt;)
 
 |#</span></span></code></pre>
 
@@ -4305,7 +4309,7 @@ inputs on <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-CO
 defaults to no dropout.</p>
 
 <pre><code>(->input :size 10 :name 'some-input)
-==> #<->INPUT SOME-INPUT :SIZE 10 1/1 :norm 0.00000>
+==> #<->INPUT SOME-INPUT :SIZE 10 1/1 :NORM 0.00000>
 </code></pre></li>
 </ul>
 
@@ -4343,7 +4347,7 @@ determined automatically.</p>
 <pre><code>(->embedding :weights (->weight :name 'embedding-weights
                                 :dimensions '(3 5))
              :name 'embeddings)
-==> #<->EMBEDDING EMBEDDINGS :SIZE 5 1/1 :norm 0.00000>
+==> #<->EMBEDDING EMBEDDINGS :SIZE 5 1/1 :NORM 0.00000>
 </code></pre></li>
 </ul>
 
@@ -4367,7 +4371,7 @@ be set in <a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" title="(MGL-
 
 <p><a name='x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-EMBEDDING-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-EMBEDDING-LUMP MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-LUMPS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMPS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-WEIGHT-LUMP MGL-PAX:SECTION)">&#8634;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-EMBEDDING-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-EMBEDDING-LUMP MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-LUMPS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMPS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATIONS MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-WEIGHT-LUMP MGL-PAX:SECTION)">&#8634;</a></span></span></p>
 
 <h4><a href="#x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29">10.4.3 Weight Lump</a></h4>
 
@@ -4409,11 +4413,17 @@ name exists in <code>FROM-BPN</code> and return that, or else create a weight
 lump normally. If <code>FROM-BPN</code> is <code>NIL</code>, then no weights are copied.</p></li>
 </ul>
 
+<p><a name='x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29'></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-WEIGHT-LUMP MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-LUMPS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMPS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATIONS MGL-PAX:SECTION)">&#8634;</a></span></span></p>
+
+<h4><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29">10.4.4 Activations</a></h4>
+
 <p><a name='x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-WEIGHT-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-WEIGHT-LUMP MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-LUMPS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMPS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">&#8634;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATIONS MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATIONS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-BATCH-NORMALIZED-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-BATCH-NORMALIZED-LUMP MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">&#8634;</a></span></span></p>
 
-<h4><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29">10.4.4 Activation Subnet</a></h4>
+<h5><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29">Activation Subnet</a></h5>
 
 <p>So we have some inputs. Usually the next step is to multiply the
 input vector with a weight matrix and add biases. This can be done
@@ -4463,9 +4473,81 @@ INPUT) ,NAME :PEEPHOLE)</code>. This is useful to know if, for example,
 they are to be initialized differently.</p></li>
 </ul>
 
+<p><a name='x-28MGL-BP-3A-40MGL-BP-BATCH-NORMALIZED-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATIONS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-BATCH-NORMALIZED-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-BATCH-NORMALIZED-LUMP MGL-PAX:SECTION)">&#8634;</a></span></span></p>
+
+<h5><a href="#x-28MGL-BP-3A-40MGL-BP-BATCH-NORMALIZED-LUMP-20MGL-PAX-3ASECTION-29">Batch-Normalized Lump</a></h5>
+
+<p><a name='x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[class]</span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29" >-&gt;BATCH-NORMALIZED</a></span> <span class="locative-args">LUMP</span></p>
+
+<p>This is an implementation of v1 of the <a href="http://arxiv.org/abs/1502.03167" >Batch
+Normalization paper</a>. The output of
+<code>-&gt;BATCH-NORMALIZED</code> is its input normalized so that for all elements
+the mean across stripes is zero and the variance is 1. That is, the
+mean of the batch is subtracted from the inputs and they are
+rescaled by their sample stddev. Actually, after the normalization
+step the values are rescaled and shifted (but this time with learnt
+parameters) in order to keep the representational power of the model
+the same. The primary purpose of this lump is to speed up learning,
+but it also acts as a regularizer. See the paper for the details.</p>
+
+<p>In addition to what is to be normalized, <code>-&gt;BATCH-NORMALIZED</code> takes
+weight lumps of the same size as the primary input. These represent
+the learnt scaling and shift factors (they are <em>gamma</em> and <em>beta</em> in
+the paper).</p>
+
+<p>The primary input of <code>-&gt;BATCH-NORMALIZED</code> is often an <code>-&gt;ACTIVATION</code>(<a href="#x-28MGL-BP-3A--3EACTIVATION-20FUNCTION-29" title="(MGL-BP:-&gt;ACTIVATION FUNCTION)"><code>0</code></a> <a href="#x-28MGL-BP-3A--3EACTIVATION-20CLASS-29" title="(MGL-BP:-&gt;ACTIVATION CLASS)"><code>1</code></a>) and
+its output is fed into an activation function (see
+<a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS MGL-PAX:SECTION)">Activation Functions</a>).</p></li>
+</ul>
+
+<p><a name='x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EBATCH-NORMALIZED-29-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[accessor]</span> <span class="reference-object"><a href="#x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EBATCH-NORMALIZED-29-29" >VARIANCE-ADJUSTMENT</a></span> <span class="locative-args">-&gt;BATCH-NORMALIZED</span> <span class="locative-args">(= 1.e-8)</span></p>
+
+<p>A small positive real number that's added to the
+sample stddev. It's <em>epsilon</em> in the paper.</p></li>
+</ul>
+
+<p><a name='x-28MGL-BP-3APOPULATION-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EBATCH-NORMALIZED-29-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[accessor]</span> <span class="reference-object"><a href="#x-28MGL-BP-3APOPULATION-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EBATCH-NORMALIZED-29-29" >POPULATION-DECAY</a></span> <span class="locative-args">-&gt;BATCH-NORMALIZED</span> <span class="locative-args">(:POPULATION-DECAY = 0.99)</span></p>
+
+<p>While training, an exponential moving average of
+batch means and standard deviances (termed <em>population
+statistics</em>) is updated. When making predictions, normalization is
+performed using these statistics. These population statistics are
+persisted by <a href="#x-28MGL-CORE-3ASAVE-WEIGHTS-20FUNCTION-29" title="(MGL-CORE:SAVE-WEIGHTS FUNCTION)"><code>SAVE-WEIGHTS</code></a>.</p></li>
+</ul>
+
+<p><a name='x-28MGL-BP-3A--3EBATCH-NORMALIZED-ACTIVATION-20FUNCTION-29'></a></p>
+
+<ul>
+<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-ACTIVATION-20FUNCTION-29" >-&gt;BATCH-NORMALIZED-ACTIVATION</a></span> <span class="locative-args">INPUTS &amp;KEY (NAME (GENSYM)) SIZE PEEPHOLES BATCH-SIZE</span></p>
+
+<p>Wraps an <code>-&gt;ACTIVATION</code>(<a href="#x-28MGL-BP-3A--3EACTIVATION-20FUNCTION-29" title="(MGL-BP:-&gt;ACTIVATION FUNCTION)"><code>0</code></a> <a href="#x-28MGL-BP-3A--3EACTIVATION-20CLASS-29" title="(MGL-BP:-&gt;ACTIVATION CLASS)"><code>1</code></a>) in <a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29" title="(MGL-BP:-&gt;BATCH-NORMALIZED CLASS)"><code>-&gt;BATCH-NORMALIZED</code></a> and creates the two
+weight lumps for the scale and shift
+parameters. <code>(-&gt;BATCH-NORMALIZED-ACTIVATION INPUTS :NAME 'H1 :SIZE
+10)</code> is equivalent to:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;batch-normalized <span class="paren2">(<span class="code">-&gt;activation inputs <span class="keyword">:name</span> 'h1 <span class="keyword">:size</span> 10 <span class="keyword">:add-bias-p</span> nil</span>)</span>
+                    <span class="paren2">(<span class="code">-&gt;weight <span class="keyword">:name</span> '<span class="paren3">(<span class="code">h1 <span class="keyword">:scale</span></span>)</span> <span class="keyword">:size</span> 10</span>)</span>
+                    <span class="paren2">(<span class="code">-&gt;weight <span class="keyword">:name</span> '<span class="paren3">(<span class="code">h1 <span class="keyword">:shift</span></span>)</span> <span class="keyword">:size</span> 10</span>)</span>
+                    <span class="keyword">:name</span> '<span class="paren2">(<span class="code">h1 <span class="keyword">:batch-normalized-activation</span></span>)</span></span>)</span></span></code></pre>
+
+<p>Note how biases are turned off since normalization will cancel them
+anyway (but a shift is added which amounts to the same effect).</p></li>
+</ul>
+
 <p><a name='x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-SUBNET-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-SUBNET MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-LUMPS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMPS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-SIGMOID-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-SIGMOID-LUMP MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS MGL-PAX:SECTION)">&#8634;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-BP-3A-40MGL-BP-BATCH-NORMALIZED-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-BATCH-NORMALIZED-LUMP MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-LUMPS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-LUMPS MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-SIGMOID-LUMP-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-SIGMOID-LUMP MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29" title="(MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS MGL-PAX:SECTION)">&#8634;</a></span></span></p>
 
 <h4><a href="#x-28MGL-BP-3A-40MGL-BP-ACTIVATION-FUNCTIONS-20MGL-PAX-3ASECTION-29">10.4.5 Activation Functions</a></h4>
 
@@ -4491,7 +4573,7 @@ networks.</p>
 defaults to no dropout.</p>
 
 <pre><code>(->sigmoid (->activation (->input :size 10) :size 5) :name 'this)
-==> #<->SIGMOID THIS :SIZE 5 1/1 :norm 0.00000>
+==> #<->SIGMOID THIS :SIZE 5 1/1 :NORM 0.00000>
 </code></pre>
 
 <p>The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is the size of its input which is determined
@@ -4581,7 +4663,7 @@ The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MG
 of the input divided by <a href="#x-28MGL-COMMON-3AGROUP-SIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EMAX-29-29" title="(MGL-COMMON:GROUP-SIZE (MGL-PAX:READER MGL-BP:-&gt;MAX))"><code>GROUP-SIZE</code></a>.</p>
 
 <pre><code>(->max (->input :size 120) :group-size 3 :name 'my-max)
-==> #<->MAX MY-MAX :SIZE 40 1/1 :norm 0.00000>
+==> #<->MAX MY-MAX :SIZE 40 1/1 :NORM 0.00000 :GROUP-SIZE 3>
 </code></pre>
 
 <p>The advantage of <code>-&gt;MAX</code> over <a href="#x-28MGL-BP-3A--3ERELU-20CLASS-29" title="(MGL-BP:-&gt;RELU CLASS)"><code>-&gt;RELU</code></a> is that flow gradient is never
@@ -4718,7 +4800,7 @@ differences and makes it part of the function to be minimized.</p>
                                             :size 10)
                               (->input :name 'target :size 10))
         :name 'squared-error)
-==> #<->LOSS SQUARED-ERROR :SIZE 1 1/1 :norm 0.00000>
+==> #<->LOSS SQUARED-ERROR :SIZE 1 1/1 :NORM 0.00000>
 </code></pre>
 
 <p>Currently this lump is not CUDAized, but it will copy data from the
@@ -4858,8 +4940,8 @@ automatically.</p></li>
 <ul>
 <li><p><span class="locative-type">[accessor]</span> <span class="reference-object"><a href="#x-28MGL-BP-3ADROPOUT-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EDROPOUT-29-29" >DROPOUT</a></span> <span class="locative-args">-&gt;DROPOUT</span> <span class="locative-args">(:DROPOUT = 0.5)</span></p>
 
-<p>If non-NIL, then in the forward pass zeroes out
-each node in this chunk with <code>DROPOUT</code> probability.</p></li>
+<p>If non-NIL, then in the forward pass zero out each
+node in this chunk with <code>DROPOUT</code> probability.</p></li>
 </ul>
 
 <p><a name='x-28MGL-BP-3A-40MGL-BP-GAUSSIAN-RANDOM-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
@@ -4879,7 +4961,7 @@ distributed independent random numbers with <a href="#x-28MGL-BP-3AMEAN-20-28MGL
 based regularization methods.</p>
 
 <pre><code>(->gaussian-random :size 10 :name 'normal :mean 1 :variance 2)
-==> #<->GAUSSIAN-RANDOM NORMAL :SIZE 10 1/1 :norm 0.00000>
+==> #<->GAUSSIAN-RANDOM NORMAL :SIZE 10 1/1 :NORM 0.00000>
 </code></pre></li>
 </ul>
 
@@ -4925,7 +5007,7 @@ sample independent binomials. Turn true into 1 and false into 0. The
 input.</p>
 
 <pre><code>(->sample-binary (->input :size 10) :name 'binarized-input)
-==> #<->SAMPLE-BINARY BINARIZED-INPUT :SIZE 10 1/1 :norm 0.00000>
+==> #<->SAMPLE-BINARY BINARIZED-INPUT :SIZE 10 1/1 :NORM 0.00000>
 </code></pre></li>
 </ul>
 
@@ -5003,7 +5085,7 @@ its inputs if there is at least one. If one of the inputs is a
 
 <pre><code>(->+ (list (->input :size 10) (->weight :size 10 :name 'bias))
      :name 'plus)
-==> #<->+ PLUS :SIZE 10 1/1 :norm 0.00000>
+==> #<->+ PLUS :SIZE 10 1/1 :NORM 0.00000>
 </code></pre></li>
 </ul>
 
@@ -5024,7 +5106,7 @@ the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-
 
 <pre><code>(->* (->input :size 10) (->weight :size 10 :name 'scale)
      :name 'mult)
-==> #<->* MULT :SIZE 10 1/1 :norm 0.00000>
+==> #<->* MULT :SIZE 10 1/1 :NORM 0.00000>
 </code></pre></li>
 </ul>
 
@@ -5089,7 +5171,7 @@ lumps are packaged into a subnetwork to reduce clutter.</p></li>
 <p><a name='x-28MGL-BP-3A--3ELSTM-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELSTM-20FUNCTION-29" >-&gt;LSTM</a></span> <span class="locative-args">INPUTS &amp;KEY NAME CELL-INIT OUTPUT-INIT SIZE (GATE-FN '-&gt;SIGMOID) (INPUT-FN '-&gt;TANH) (OUTPUT-FN '-&gt;TANH) (PEEPHOLES T)</span></p>
+<li><p><span class="locative-type">[function]</span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELSTM-20FUNCTION-29" >-&gt;LSTM</a></span> <span class="locative-args">INPUTS &amp;KEY NAME CELL-INIT OUTPUT-INIT SIZE (ACTIVATION-FN '-&gt;ACTIVATION) (GATE-FN '-&gt;SIGMOID) (INPUT-FN '-&gt;TANH) (OUTPUT-FN '-&gt;TANH) (PEEPHOLES T)</span></p>
 
 <p>Create an LSTM layer consisting of input, forget, output gates with
 which input, cell state and output are scaled. Lots of lumps are
@@ -5126,7 +5208,12 @@ really <code>sum_j W_ijx * inputs_j</code>.</p>
 
 <p>If <code>CELL-INIT</code> is non-NIL, then it must be a <a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)"><code>CLUMP</code></a> of <code>SIZE</code> form which
 stands for the initial state of the value cell (<code>c_{-1}</code>). <code>CELL-INIT</code>
-being <code>NIL</code> is equivalent to the state of all zeros.</p></li>
+being <code>NIL</code> is equivalent to the state of all zeros.</p>
+
+<p><code>ACTIVATION-FN</code> defaults to <code>-&gt;ACTIVATION</code>(<a href="#x-28MGL-BP-3A--3EACTIVATION-20FUNCTION-29" title="(MGL-BP:-&gt;ACTIVATION FUNCTION)"><code>0</code></a> <a href="#x-28MGL-BP-3A--3EACTIVATION-20CLASS-29" title="(MGL-BP:-&gt;ACTIVATION CLASS)"><code>1</code></a>), but it can be for example
+<a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-ACTIVATION-20FUNCTION-29" title="(MGL-BP:-&gt;BATCH-NORMALIZED-ACTIVATION FUNCTION)"><code>-&gt;BATCH-NORMALIZED-ACTIVATION</code></a>. In general, functions like the
+aforementioned two with signature like (<code>INPUTS</code> <code>&amp;KEY</code> <code>NAME</code> <code>SIZE</code>
+<code>PEEPHOLES</code>) can be passed as <code>ACTIVATION-FN</code>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-BP-3A-40MGL-BP-SEQ-BARRIER-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
