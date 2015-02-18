@@ -12,6 +12,7 @@
 (defparameter *pax-world-sections*
   (list mgl-pax:@mgl-pax-manual
         @mgl-pax-world-manual
+        micmac:@micmac-manual
         mgl-gpr:@gpr-manual
         mgl-cube:@cube-manual
         mgl-mat:@mat-manual

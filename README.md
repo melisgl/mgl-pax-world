@@ -29,8 +29,8 @@ Not that there is room here to be non-basic in any way.
 <a name='x-28MGL-PAX-WORLD-3A-2APAX-WORLD-SECTIONS-2A-20-28VARIABLE-29-29'></a>
 
 - [variable] **\*PAX-WORLD-SECTIONS\*** *(#\<SECTION @MGL-PAX-MANUAL\> #\<SECTION @MGL-PAX-WORLD-MANUAL\>
- #\<SECTION @GPR-MANUAL\> #\<SECTION @CUBE-MANUAL\> #\<SECTION @MAT-MANUAL\>
- #\<SECTION @MGL-MANUAL\>)*
+ #\<SECTION @MICMAC-MANUAL\> #\<SECTION @GPR-MANUAL\> #\<SECTION @CUBE-MANUAL\>
+ #\<SECTION @MAT-MANUAL\> #\<SECTION @MGL-MANUAL\>)*
 
     The default list of sections for which [`UPDATE-PAX-WORLD`][9e20] generates
     documentation.

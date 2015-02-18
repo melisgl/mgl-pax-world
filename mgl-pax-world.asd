@@ -9,7 +9,7 @@
   :homepage "http://quotenil.com"
   :description "Cross-linked HTML documentation for systems known to
   use MGL-PAX."
-  :depends-on (:cl-fad :mgl-pax :mgl-gpr :mgl-mat :mgl)
+  :depends-on (:cl-fad :mgl-pax :micmac :mgl-gpr :mgl-mat :mgl)
   :components ((:module "src"
                 :serial t
                 :components ((:file "package")

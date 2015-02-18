@@ -16,8 +16,8 @@
 Not that there is room here to be non-basic in any way.
 
 - [variable] *PAX-WORLD-SECTIONS* (#<SECTION @MGL-PAX-MANUAL> #<SECTION @MGL-PAX-WORLD-MANUAL>
- #<SECTION @GPR-MANUAL> #<SECTION @CUBE-MANUAL> #<SECTION @MAT-MANUAL>
- #<SECTION @MGL-MANUAL>)
+ #<SECTION @MICMAC-MANUAL> #<SECTION @GPR-MANUAL>
+ #<SECTION @CUBE-MANUAL> #<SECTION @MAT-MANUAL> #<SECTION @MGL-MANUAL>)
 
     The default list of sections for which UPDATE-PAX-WORLD generates
     documentation.
