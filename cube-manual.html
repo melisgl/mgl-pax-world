@@ -18,23 +18,23 @@
 <div id="content">
 <p><a name='x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-INTRODUCTION MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L3">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="Introduction">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L3">&#955;</a></span></span></p>
 
 <h1><a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29">Cube Manual</a></h1>
 
 <h2>Table of Contents</h2>
 
 <ul>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-INTRODUCTION MGL-PAX:SECTION)">1 Introduction</a></li>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-BASICS MGL-PAX:SECTION)">2 Basics</a></li>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-SYNCHRONIZATION MGL-PAX:SECTION)">3 Synchronization</a></li>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACETS MGL-PAX:SECTION)">4 Facets</a></li>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">5 Facet Extension API</a></li>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">6 The Default Implementation of CALL-WITH-FACET*</a></li>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">7 Lifetime</a>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="Introduction">1 Introduction</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="Basics">2 Basics</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="Synchronization">3 Synchronization</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">4 Facets</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">5 Facet Extension API</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">6 The Default Implementation of CALL-WITH-FACET*</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">7 Lifetime</a>
 
 <ul>
-<li><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-BARRIER MGL-PAX:SECTION)">7.1 Facet Barriers</a></li>
+<li><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="Facet Barriers">7.1 Facet Barriers</a></li>
 </ul></li>
 </ul>
 
@@ -42,11 +42,11 @@
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-BASICS MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-INTRODUCTION MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L12">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="Basics">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L12">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29">1 Introduction</a></h2>
 
-<p>This is the library on which MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-MAT:@MAT-MANUAL MGL-PAX:SECTION)">MAT Manual</a>) is
+<p>This is the library on which MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">MAT Manual</a>) is
 built. The idea of automatically translating between various
 representations may be useful for other applications, so this got
 its own package and all ties to MGL-MAT has been severed.</p>
@@ -54,17 +54,17 @@ its own package and all ties to MGL-MAT has been severed.</p>
 <p>This package defines <a href="#x-28MGL-CUBE-3ACUBE-20CLASS-29" title="(MGL-CUBE:CUBE CLASS)"><code>CUBE</code></a>, an abstract base class that provides a
 framework for automatic conversion between various representations
 of the same data. To define a cube, <a href="#x-28MGL-CUBE-3ACUBE-20CLASS-29" title="(MGL-CUBE:CUBE CLASS)"><code>CUBE</code></a> needs to be subclassed and
-the <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">Facet Extension API</a> be implemented.</p>
+the <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">Facet Extension API</a> be implemented.</p>
 
 <p>If you are only interested in how to use cubes in general, read
-<a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-BASICS MGL-PAX:SECTION)">Basics</a>, <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">Lifetime</a> and <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-BARRIER MGL-PAX:SECTION)">Facet Barriers</a>.</p>
+<a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="Basics">Basics</a>, <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">Lifetime</a> and <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="Facet Barriers">Facet Barriers</a>.</p>
 
-<p>If you want to implement a new cube datatype, then see <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACETS MGL-PAX:SECTION)">Facets</a>,
-<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">Facet Extension API</a>, and <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">The Default Implementation of CALL-WITH-FACET*</a>.</p>
+<p>If you want to implement a new cube datatype, then see <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">Facets</a>,
+<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">Facet Extension API</a>, and <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">The Default Implementation of CALL-WITH-FACET*</a>.</p>
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-INTRODUCTION MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-SYNCHRONIZATION MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-BASICS MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L63">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-INTRODUCTION-20MGL-PAX-3ASECTION-29" title="Introduction">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="Synchronization">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="Basics">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L63">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29">2 Basics</a></h2>
 
@@ -85,9 +85,9 @@ copies data between them as necessary.</p>
 
 <p>The cube is an abstract class, it does not provide useful behavior
 in itself. One must subclass it and implement the
-<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">Facet Extension API</a>.</p>
+<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">Facet Extension API</a>.</p>
 
-<p>Also see <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">Lifetime</a> and <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-BARRIER MGL-PAX:SECTION)">Facet Barriers</a>.</p></li>
+<p>Also see <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">Lifetime</a> and <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="Facet Barriers">Facet Barriers</a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29'></a></p>
@@ -137,7 +137,7 @@ is that an inner <a href="#x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29"
 for another facet or for the same facet from another thread do).</p>
 
 <p>See <a href="#x-28MGL-CUBE-3ACHECK-NO-WRITERS-20FUNCTION-29" title="(MGL-CUBE:CHECK-NO-WRITERS FUNCTION)"><code>CHECK-NO-WRITERS</code></a> and <a href="#x-28MGL-CUBE-3ACHECK-NO-WATCHERS-20FUNCTION-29" title="(MGL-CUBE:CHECK-NO-WATCHERS FUNCTION)"><code>CHECK-NO-WATCHERS</code></a> called by
-<a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">The Default Implementation of CALL-WITH-FACET*</a>.</p></li>
+<a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">The Default Implementation of CALL-WITH-FACET*</a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CUBE-3AWITH-FACETS-20-28MGL-PAX-3AMACRO-29-29'></a></p>
@@ -160,7 +160,7 @@ for another facet or for the same facet from another thread do).</p>
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-BASICS MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACETS MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-SYNCHRONIZATION MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L71">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="Basics">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="Synchronization">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L71">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29">3 Synchronization</a></h2>
 
@@ -218,7 +218,7 @@ cubes with <a href="#x-28MGL-CUBE-3ASYNCHRONIZATION-20-28MGL-PAX-3AACCESSOR-20MG
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-SYNCHRONIZATION MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACETS MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L225">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="Synchronization">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L225">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29">4 Facets</a></h2>
 
@@ -248,13 +248,13 @@ such facet exists.</p></li>
 <ul>
 <li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L249">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3AFACET-20CLASS-29" >FACET</a></span> <span class="locative-args">STRUCTURE-OBJECT</span></p>
 
-<p>A cube has facets, as we discussed in <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-BASICS MGL-PAX:SECTION)">Basics</a>. Facets holds
+<p>A cube has facets, as we discussed in <a href="#x-28MGL-CUBE-3A-40CUBE-BASICS-20MGL-PAX-3ASECTION-29" title="Basics">Basics</a>. Facets holds
 the data in a particular representation, this is called the <em>value</em>
 of the facet. A facet holds one such value and some metadata
 pertaining to it: its <code>FACET-NAME</code>(<a href="#x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ALOCATIVE-29-29" title="(MGL-CUBE:FACET-NAME (MGL-PAX:LOCATIVE))"><code>0</code></a> <a href="#x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-29-29" title="(MGL-CUBE:FACET-NAME (MGL-PAX:STRUCTURE-ACCESSOR))"><code>1</code></a>), whether it's
 up-to-date (<a href="#x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-29-29" title="(MGL-CUBE:FACET-UP-TO-DATE-P (MGL-PAX:STRUCTURE-ACCESSOR))"><code>FACET-UP-TO-DATE-P</code></a>), etc. <code>FACET</code> objects are never seen
 when simply using a cube, they are for implementing the
-<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">Facet Extension API</a>.</p></li>
+<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">Facet Extension API</a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-29-29'></a></p>
@@ -320,7 +320,7 @@ updated. See <a href="#x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-2A-20GENERIC-FUNCTION-2
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACETS MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L300">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L300">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29">5 Facet Extension API</a></h2>
 
@@ -377,7 +377,7 @@ is what <a href="#x-28MGL-CUBE-3ASELECT-COPY-SOURCE-FOR-FACET-2A-20GENERIC-FUNCT
 
 <p>Call <code>FN</code> with an up-to-date <a href="#x-28MGL-CUBE-3AFACET-VALUE-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-29-29" title="(MGL-CUBE:FACET-VALUE (MGL-PAX:STRUCTURE-ACCESSOR))"><code>FACET-VALUE</code></a> that belongs
 to <code>FACET-NAME</code> of <code>CUBE</code>. <a href="#x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-CUBE:WITH-FACET (MGL-PAX:MACRO))"><code>WITH-FACET</code></a> is directly implemented in terms
-of this function. See <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">The Default Implementation of CALL-WITH-FACET*</a> for the gory
+of this function. See <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">The Default Implementation of CALL-WITH-FACET*</a> for the gory
 details.</p>
 
 <p>Specializations will most likely want to call the default
@@ -414,7 +414,7 @@ method simply returns the first up-to-date facet.</p></li>
 </ul>
 
 <p>PAX integration follows, don't worry about it if you don't use PAX,
-but you really should (see <a href="mgl-pax-manual.html#x-28MGL-PAX-3A-40MGL-PAX-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-PAX:@MGL-PAX-MANUAL MGL-PAX:SECTION)">PAX Manual</a>).</p>
+but you really should (see <a href="mgl-pax-manual.html#x-28MGL-PAX-3A-40MGL-PAX-MANUAL-20MGL-PAX-3ASECTION-29" title="PAX Manual">PAX Manual</a>).</p>
 
 <p><a name='x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ALOCATIVE-29-29'></a></p>
 
@@ -432,7 +432,7 @@ defined with <a href="#x-28MGL-CUBE-3ADEFINE-FACET-NAME-20-28MGL-PAX-3AMACRO-29-
 
 <p>Just a macro to document that <code>SYMBOL</code> refers to a facet name (as in
 the <a href="#x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ALOCATIVE-29-29" title="(MGL-CUBE:FACET-NAME (MGL-PAX:LOCATIVE))"><code>FACET-NAME</code></a>). This is totally confusing, so here is
-an example of how MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-MAT:@MAT-MANUAL MGL-PAX:SECTION)">MAT Manual</a>) documents the
+an example of how MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">MAT Manual</a>) documents the
 <a href="mat-manual.html#x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:BACKING-ARRAY (MGL-CUBE:FACET-NAME))"><code>MGL-MAT:BACKING-ARRAY</code></a> facet:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">define-facet-name</span></i> backing-array <span class="paren2">(<span class="code"></span>)</span>
@@ -440,14 +440,14 @@ an example of how MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MAN
 
 <p>Which makes it possible to refer to this definition (refer as in
 link and <code>M-.</code> to) <a href="mat-manual.html#x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:BACKING-ARRAY (MGL-CUBE:FACET-NAME))"><code>MGL-MAT:BACKING-ARRAY</code></a> facet-name. See
-<a href="mgl-pax-manual.html#x-28MGL-PAX-3A-40MGL-PAX-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-PAX:@MGL-PAX-MANUAL MGL-PAX:SECTION)">PAX Manual</a> for more.</p></li>
+<a href="mgl-pax-manual.html#x-28MGL-PAX-3A-40MGL-PAX-MANUAL-20MGL-PAX-3ASECTION-29" title="PAX Manual">PAX Manual</a> for more.</p></li>
 </ul>
 
-<p>Also see <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">The Default Implementation of CALL-WITH-FACET*</a>.</p>
+<p>Also see <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">The Default Implementation of CALL-WITH-FACET*</a>.</p>
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L398">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L398">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29">6 The Default Implementation of CALL-WITH-FACET*</a></h2>
 
@@ -458,7 +458,7 @@ link and <code>M-.</code> to) <a href="mat-manual.html#x-28MGL-MAT-3ABACKING-ARR
 
 <p>The default implementation of <a href="#x-28MGL-CUBE-3ACALL-WITH-FACET-2A-20GENERIC-FUNCTION-29" title="(MGL-CUBE:CALL-WITH-FACET* GENERIC-FUNCTION)"><code>CALL-WITH-FACET*</code></a> is defined in terms
 of the <a href="#x-28MGL-CUBE-3AWATCH-FACET-20GENERIC-FUNCTION-29" title="(MGL-CUBE:WATCH-FACET GENERIC-FUNCTION)"><code>WATCH-FACET</code></a> and the <a href="#x-28MGL-CUBE-3AUNWATCH-FACET-20GENERIC-FUNCTION-29" title="(MGL-CUBE:UNWATCH-FACET GENERIC-FUNCTION)"><code>UNWATCH-FACET</code></a> generic functions. These
-can be considered part of the <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-EXTENSION-API MGL-PAX:SECTION)">Facet Extension API</a>.</p></li>
+can be considered part of the <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">Facet Extension API</a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CUBE-3AWATCH-FACET-20GENERIC-FUNCTION-29'></a></p>
@@ -536,7 +536,7 @@ debugging purposes.</p></li>
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET* MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-MANUAL MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-BARRIER MGL-PAX:SECTION)">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L529">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-DEFAULT-CALL-WITH-FACET-2A-20MGL-PAX-3ASECTION-29" title="The Default Implementation of CALL-WITH-FACET\\*">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-MANUAL-20MGL-PAX-3ASECTION-29" title="Cube Manual">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="Facet Barriers">&#8594;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L529">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29">7 Lifetime</a></h2>
 
@@ -544,7 +544,7 @@ debugging purposes.</p></li>
 cubes are freed automatically by a finalizer, see <a href="#x-28MGL-CUBE-3AMAKE-FACET-2A-20GENERIC-FUNCTION-29" title="(MGL-CUBE:MAKE-FACET* GENERIC-FUNCTION)"><code>MAKE-FACET*</code></a>). One
 may destroy a single facet or all facets of a cube with
 <a href="#x-28MGL-CUBE-3ADESTROY-FACET-20FUNCTION-29" title="(MGL-CUBE:DESTROY-FACET FUNCTION)"><code>DESTROY-FACET</code></a> and <a href="#x-28MGL-CUBE-3ADESTROY-CUBE-20FUNCTION-29" title="(MGL-CUBE:DESTROY-CUBE FUNCTION)"><code>DESTROY-CUBE</code></a>, respectively. Also see
-<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-BARRIER MGL-PAX:SECTION)">Facet Barriers</a>.</p>
+<a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="Facet Barriers">Facet Barriers</a>.</p>
 
 <p><a name='x-28MGL-CUBE-3ADESTROY-FACET-20FUNCTION-29'></a></p>
 
@@ -606,12 +606,12 @@ keep the whole <a href="#x-28MGL-CUBE-3ACUBE-20CLASS-29" title="(MGL-CUBE:CUBE C
 
 <p><a name='x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-FACET-BARRIER MGL-PAX:SECTION)">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L611">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">&#8592;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">&#8593;</a> <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29" title="Facet Barriers">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L611">&#955;</a></span></span></p>
 
 <h3><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-BARRIER-20MGL-PAX-3ASECTION-29">7.1 Facet Barriers</a></h3>
 
 <p>A facility to control lifetime of facets tied to a dynamic extent.
-Also see <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="(MGL-CUBE:@CUBE-LIFETIME MGL-PAX:SECTION)">Lifetime</a>.</p>
+Also see <a href="#x-28MGL-CUBE-3A-40CUBE-LIFETIME-20MGL-PAX-3ASECTION-29" title="Lifetime">Lifetime</a>.</p>
 
 <p><a name='x-28MGL-CUBE-3AWITH-FACET-BARRIER-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
