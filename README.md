@@ -26,22 +26,27 @@
 
 Not that there is room here to be non-basic in any way.
 
-<a name='x-28MGL-PAX-WORLD-3A-2APAX-WORLD-SECTIONS-2A-20-28VARIABLE-29-29'></a>
-
-- [variable] **\*PAX-WORLD-SECTIONS\*** *(#\<SECTION @MGL-PAX-MANUAL\> #\<SECTION @MGL-PAX-WORLD-MANUAL\>
- #\<SECTION @NAMED-READTABLES-MANUAL\> #\<SECTION @MICMAC-MANUAL\>
- #\<SECTION @GPR-MANUAL\> #\<SECTION @CUBE-MANUAL\> #\<SECTION @MAT-MANUAL\>
- #\<SECTION @MGL-MANUAL\>)*
-
-    The default list of sections for which [`UPDATE-PAX-WORLD`][9e20] generates
-    documentation.
-
 <a name='x-28MGL-PAX-WORLD-3AUPDATE-PAX-WORLD-20FUNCTION-29'></a>
 
-- [function] **UPDATE-PAX-WORLD** *&KEY (SECTIONS \*PAX-WORLD-SECTIONS\*)*
+- [function] **UPDATE-PAX-WORLD** *&KEY (SECTIONS (DEFAULT-SECTIONS)) (PAGE-SPECS (DEFAULT-PAGE-SPECS))*
 
     Delete all HTML files from the root of the [`MGL-PAX-WORLD`][2272] asdf
     system and generate documentation for all `SECTIONS`.
+
+<a name='x-28MGL-PAX-WORLD-3ADEFAULT-SECTIONS-20FUNCTION-29'></a>
+
+- [function] **DEFAULT-SECTIONS** 
+
+    Returns the default list of sections for which [`UPDATE-PAX-WORLD`][9e20]
+    generates documentation.
+
+<a name='x-28MGL-PAX-WORLD-3ADEFAULT-PAGE-SPECS-20FUNCTION-29'></a>
+
+- [function] **DEFAULT-PAGE-SPECS** 
+
+    Returns the default list of page specification for
+    [`UPDATE-PAX-WORLD`][9e20]. This must be suitable as the PAGES argument for
+    `DOCUMENT`.
 
   [2272]: #x-28-22mgl-pax-world-22-20ASDF-2FSYSTEM-3ASYSTEM-29 "(\"mgl-pax-world\" ASDF/SYSTEM:SYSTEM)"
   [861c]: #x-28MGL-PAX-WORLD-3A-40MGL-PAX-WORLD-BASICS-20MGL-PAX-3ASECTION-29 "(MGL-PAX-WORLD:@MGL-PAX-WORLD-BASICS MGL-PAX:SECTION)"
