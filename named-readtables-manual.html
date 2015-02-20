@@ -290,14 +290,15 @@ defined as per <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-
 
 <p>If no <code>:MERGE</code> clause is given, an empty readtable is used. See
 <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29" title="(EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE FUNCTION)"><code>MAKE-READTABLE</code></a>.</p></li>
-<li><p><code>(:FUZE READTABLE-DESIGNATORS+)</code></p>
+<li><p><code>(:FUSE READTABLE-DESIGNATORS+)</code></p>
 
 <p>Like <code>:MERGE</code> except:</p>
 
 <p>Error conditions of type <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29" title="(EDITOR-HINTS.NAMED-READTABLES:READER-MACRO-CONFLICT CONDITION)"><code>READER-MACRO-CONFLICT</code></a> that are signaled
 during the merge operation will be silently <em>continued</em>. It
 follows that reader macros in earlier entries will be
-overwritten by later ones.</p></li>
+overwritten by later ones. For backward compatibility, <code>:FUZE</code> is
+accepted as an alias of <code>:FUSE</code>.</p></li>
 <li><p><code>(:DISPATCH-MACRO-CHAR MACRO-CHAR SUB-CHAR FUNCTION)</code></p>
 
 <p>Define a new sub character <code>SUB-CHAR</code> for the dispatching macro
@@ -323,7 +324,7 @@ defined to the same syntax as <code>FROM-CHAR</code> as per
 <p>Any number of option clauses may appear. The options are grouped by
 their type, but in each group the order the options appeared
 textually is preserved. The following groups exist and are executed
-in the following order: <code>:MERGE</code> and <code>:FUZE</code> (one
+in the following order: <code>:MERGE</code> and <code>:FUSE</code> (one
 group), <code>:CASE</code>, <code>:MACRO-CHAR</code> and <code>:DISPATCH-MACRO-CHAR</code> (one group),
 finally <code>:SYNTAX-FROM</code>.</p>
 
@@ -344,7 +345,7 @@ preregistered readtable names.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L154">[macro]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20-28MGL-PAX-3AMACRO-29-29" >IN-READTABLE</a></span> <span class="locative-args">NAME</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L160">[macro]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20-28MGL-PAX-3AMACRO-29-29" >IN-READTABLE</a></span> <span class="locative-args">NAME</span></p>
 
 <p>Set <code>*READTABLE*</code> to the readtable referred to by the symbol <code>NAME</code>.</p></li>
 </ul>
@@ -352,7 +353,7 @@ preregistered readtable names.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L232">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29" >MAKE-READTABLE</a></span> <span class="locative-args">&amp;OPTIONAL (NAME NIL NAME-SUPPLIED-P) &amp;KEY MERGE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L238">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29" >MAKE-READTABLE</a></span> <span class="locative-args">&amp;OPTIONAL (NAME NIL NAME-SUPPLIED-P) &amp;KEY MERGE</span></p>
 
 <p>Creates and returns a new readtable under the specified
 <code>NAME</code>.</p>
@@ -376,10 +377,10 @@ whitespace, everything else is constituent.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-INTO-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L298">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-INTO-20FUNCTION-29" >MERGE-READTABLES-INTO</a></span> <span class="locative-args">RESULT-READTABLE &amp;REST NAMED-READTABLES</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L304">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-INTO-20FUNCTION-29" >MERGE-READTABLES-INTO</a></span> <span class="locative-args">RESULT-READTABLE &amp;REST NAMED-READTABLES</span></p>
 
 <p>Copy the contents of each readtable in <code>NAMED-READTABLES</code>([<code>0</code>][] <a href="#x-28-22named-readtables-22-20ASDF-2FSYSTEM-3ASYSTEM-29" title="(\&quot;named-readtables\&quot; ASDF/SYSTEM:SYSTEM)"><code>1</code></a>) into
-<code>RESULT-TABLE</code>.</p>
+<code>RESULT-READTABLE</code>.</p>
 
 <p>If a macro character appears in more than one of the readtables,
 i.e. if a conflict is discovered during the merge, an error of type
@@ -389,7 +390,7 @@ i.e. if a conflict is discovered during the merge, an error of type
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AFIND-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L467">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AFIND-READTABLE-20FUNCTION-29" >FIND-READTABLE</a></span> <span class="locative-args">NAME</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L473">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AFIND-READTABLE-20FUNCTION-29" >FIND-READTABLE</a></span> <span class="locative-args">NAME</span></p>
 
 <p>Looks for the readtable specified by <code>NAME</code> and returns it if it is
 found. Returns <code>NIL</code> otherwise.</p></li>
@@ -398,7 +399,7 @@ found. Returns <code>NIL</code> otherwise.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AENSURE-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L482">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AENSURE-READTABLE-20FUNCTION-29" >ENSURE-READTABLE</a></span> <span class="locative-args">NAME &amp;OPTIONAL (DEFAULT NIL DEFAULT-P)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L488">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AENSURE-READTABLE-20FUNCTION-29" >ENSURE-READTABLE</a></span> <span class="locative-args">NAME &amp;OPTIONAL (DEFAULT NIL DEFAULT-P)</span></p>
 
 <p>Looks up the readtable specified by <code>NAME</code> and returns it if it's found.
 If it is not found, it registers the readtable designated by <code>DEFAULT</code>
@@ -410,7 +411,7 @@ instead.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3ARENAME-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L278">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ARENAME-READTABLE-20FUNCTION-29" >RENAME-READTABLE</a></span> <span class="locative-args">OLD-NAME NEW-NAME</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L284">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ARENAME-READTABLE-20FUNCTION-29" >RENAME-READTABLE</a></span> <span class="locative-args">OLD-NAME NEW-NAME</span></p>
 
 <p>Replaces the associated name of the readtable designated by
 <code>OLD-NAME</code> with <code>NEW-NAME</code>. If a readtable is already registered under
@@ -421,7 +422,7 @@ signaled.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-NAME-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L521">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-NAME-20FUNCTION-29" >READTABLE-NAME</a></span> <span class="locative-args">NAMED-READTABLE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L527">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-NAME-20FUNCTION-29" >READTABLE-NAME</a></span> <span class="locative-args">NAMED-READTABLE</span></p>
 
 <p>Returns the name of the readtable designated by <code>NAMED-READTABLE</code>,
 or <code>NIL</code>.</p></li>
@@ -430,7 +431,7 @@ or <code>NIL</code>.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREGISTER-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L497">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREGISTER-READTABLE-20FUNCTION-29" >REGISTER-READTABLE</a></span> <span class="locative-args">NAME READTABLE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L503">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREGISTER-READTABLE-20FUNCTION-29" >REGISTER-READTABLE</a></span> <span class="locative-args">NAME READTABLE</span></p>
 
 <p>Associate <code>READTABLE</code> with <code>NAME</code>. Returns the readtable.</p></li>
 </ul>
@@ -438,7 +439,7 @@ or <code>NIL</code>.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AUNREGISTER-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L506">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AUNREGISTER-READTABLE-20FUNCTION-29" >UNREGISTER-READTABLE</a></span> <span class="locative-args">NAMED-READTABLE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L512">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AUNREGISTER-READTABLE-20FUNCTION-29" >UNREGISTER-READTABLE</a></span> <span class="locative-args">NAMED-READTABLE</span></p>
 
 <p>Remove the association of <code>NAMED-READTABLE</code>. Returns <code>T</code> if successfull,
 <code>NIL</code> otherwise.</p></li>
@@ -447,7 +448,7 @@ or <code>NIL</code>.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3ACOPY-NAMED-READTABLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L330">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ACOPY-NAMED-READTABLE-20FUNCTION-29" >COPY-NAMED-READTABLE</a></span> <span class="locative-args">NAMED-READTABLE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L336">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ACOPY-NAMED-READTABLE-20FUNCTION-29" >COPY-NAMED-READTABLE</a></span> <span class="locative-args">NAMED-READTABLE</span></p>
 
 <p>Like <code>COPY-READTABLE</code> but takes a <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20-28TYPE-29-29" title="(EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR (TYPE))"><code>NAMED-READTABLE-DESIGNATOR</code></a> as argument.</p></li>
 </ul>
@@ -455,7 +456,7 @@ or <code>NIL</code>.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L336">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29" >LIST-ALL-NAMED-READTABLES</a></span> <span class="locative-args"></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L342">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29" >LIST-ALL-NAMED-READTABLES</a></span> <span class="locative-args"></span></p>
 
 <p>Returns a list of all registered readtables. The returned list is
 guaranteed to be fresh, but may contain duplicates.</p></li>
@@ -464,7 +465,7 @@ guaranteed to be fresh, but may contain duplicates.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20-28TYPE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L184">[type]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20-28TYPE-29-29" >NAMED-READTABLE-DESIGNATOR</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L190">[type]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20-28TYPE-29-29" >NAMED-READTABLE-DESIGNATOR</a></span></p>
 
 <p>Either a symbol or a readtable itself.</p></li>
 </ul>
@@ -472,7 +473,7 @@ guaranteed to be fresh, but may contain duplicates.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L363">[condition]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29" >READER-MACRO-CONFLICT</a></span> <span class="locative-args">READTABLE-ERROR</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L369">[condition]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29" >READER-MACRO-CONFLICT</a></span> <span class="locative-args">READTABLE-ERROR</span></p>
 
 <p>Continuable.</p>
 
@@ -485,7 +486,7 @@ readtable and the two respective reader macro functions differ.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-ALREADY-EXIST-20CONDITION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L353">[condition]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-ALREADY-EXIST-20CONDITION-29" >READTABLE-DOES-ALREADY-EXIST</a></span> <span class="locative-args">READTABLE-ERROR</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L359">[condition]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-ALREADY-EXIST-20CONDITION-29" >READTABLE-DOES-ALREADY-EXIST</a></span> <span class="locative-args">READTABLE-ERROR</span></p>
 
 <p>Continuable.</p></li>
 </ul>
@@ -493,7 +494,7 @@ readtable and the two respective reader macro functions differ.</p></li>
 <p><a name='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-NOT-EXIST-20CONDITION-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L344">[condition]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-NOT-EXIST-20CONDITION-29" >READTABLE-DOES-NOT-EXIST</a></span> <span class="locative-args">READTABLE-ERROR</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/master/src/named-readtables.lisp#L350">[condition]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-NOT-EXIST-20CONDITION-29" >READTABLE-DOES-NOT-EXIST</a></span> <span class="locative-args">READTABLE-ERROR</span></li>
 </ul>
   </div>
 </div>
