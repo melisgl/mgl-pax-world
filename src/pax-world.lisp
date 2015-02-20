@@ -94,8 +94,8 @@
   "This is a list of documents generated with MGL-PAX in the default
   style. The documents are cross-linked: links to other documents are
   added automatically when a reference is found. Note that clicking on
-  the locative (e.g. `[function]`) will take you to the sources on
-  github if possible.")
+  the locative type (e.g. `[function]`) will take you to the sources
+  on github if possible.")
 
 (defparameter *output-options*
   '(:if-does-not-exist :create
