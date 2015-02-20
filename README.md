@@ -30,8 +30,20 @@ Not that there is room here to be non-basic in any way.
 
 - [function] **UPDATE-PAX-WORLD** *&KEY (SECTIONS (DEFAULT-SECTIONS)) (PAGE-SPECS (DEFAULT-PAGE-SPECS))*
 
-    Delete all HTML files from the root of the [`MGL-PAX-WORLD`][2272] asdf
-    system and generate documentation for all `SECTIONS`.
+    Generate HTML documentation for all `SECTIONS`. By default, files are
+    created in [`*PAX-WORLD-DIR*`][1103]. For projects with repositories on
+    github, links to sources on github are added via the `:SOURCE-URI-FN`
+    mechanism of `DOCUMENT`.
+    
+    In the absence of `:HEADER-FN` `:FOOTER-FN`, `:OUTPUT` every spec in
+    `PAGE-SPECS` is augmented with HTML headers, footers and output
+    location specifications (based on the name of the section).
+    
+    If necessary a default page spec is created for every section.
+
+<a name='x-28MGL-PAX-WORLD-3A-2APAX-WORLD-DIR-2A-20-28VARIABLE-20-22--20the-20root-20of-20the-20MGL-PAX-WORLD-20ASDF-20system-20--22-29-29'></a>
+
+- [variable] **\*PAX-WORLD-DIR\*** *"- the root of the MGL-PAX-WORLD ASDF system -"*
 
 <a name='x-28MGL-PAX-WORLD-3ADEFAULT-SECTIONS-20FUNCTION-29'></a>
 
@@ -44,10 +56,11 @@ Not that there is room here to be non-basic in any way.
 
 - [function] **DEFAULT-PAGE-SPECS** 
 
-    Returns the default list of page specification for
+    Returns the default list of page specifications for
     [`UPDATE-PAX-WORLD`][9e20]. This must be suitable as the PAGES argument for
     `DOCUMENT`.
 
+  [1103]: #x-28MGL-PAX-WORLD-3A-2APAX-WORLD-DIR-2A-20-28VARIABLE-20-22--20the-20root-20of-20the-20MGL-PAX-WORLD-20ASDF-20system-20--22-29-29 "(MGL-PAX-WORLD:*PAX-WORLD-DIR* (VARIABLE \"- the root of the MGL-PAX-WORLD ASDF system -\"))"
   [2272]: #x-28-22mgl-pax-world-22-20ASDF-2FSYSTEM-3ASYSTEM-29 "(\"mgl-pax-world\" ASDF/SYSTEM:SYSTEM)"
   [861c]: #x-28MGL-PAX-WORLD-3A-40MGL-PAX-WORLD-BASICS-20MGL-PAX-3ASECTION-29 "(MGL-PAX-WORLD:@MGL-PAX-WORLD-BASICS MGL-PAX:SECTION)"
   [9e20]: #x-28MGL-PAX-WORLD-3AUPDATE-PAX-WORLD-20FUNCTION-29 "(MGL-PAX-WORLD:UPDATE-PAX-WORLD FUNCTION)"

@@ -7,7 +7,7 @@
 (defsection @mgl-pax-world-basics (:title "Basics")
   "Not that there is room here to be non-basic in any way."
   (update-pax-world function)
-  (*pax-world-dir* variable)
+  (*pax-world-dir* (variable "- the root of the MGL-PAX-WORLD ASDF system -"))
   (default-sections function)
   (default-page-specs function))
 
@@ -246,6 +246,7 @@
 
 #|
 
+(update-readmes)
 (update-pax-world)
 
 |#
