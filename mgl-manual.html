@@ -6,7 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <script src="jquery.min.js"></script>
 <script src="toc.min.js"></script>
-</head>
+<script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         inlineMath: [['$','$']],
+         processEscapes: true
+       }
+     });
+   </script>
+   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+   </script>
+   </head>
 <body>
 <div id="content-container">
 <div id="toc">
@@ -2261,7 +2271,7 @@ arguments. Specialize this to add to support for new model types.</p></li>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-OPT-3A-40MGL-OPT-COST-20MGL-PAX-3ASECTION-29" title="Cost Function">&#8592;</a> <a href="#x-28MGL-OPT-3A-40MGL-OPT-20MGL-PAX-3ASECTION-29" title="Gradient Based Optimization">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L3">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-OPT-3A-40MGL-OPT-COST-20MGL-PAX-3ASECTION-29" title="Cost Function">&#8592;</a> <a href="#x-28MGL-OPT-3A-40MGL-OPT-20MGL-PAX-3ASECTION-29" title="Gradient Based Optimization">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L5">&#955;</a></span></span></p>
 
 <h3><a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29">9.3 Gradient Descent</a></h3>
 
@@ -2338,7 +2348,7 @@ mini-batch basis:</p>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="SGD Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L67">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="SGD Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L69">&#955;</a></span></span></p>
 
 <h4><a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29">9.3.1 Batch Based Optimizers</a></h4>
 
@@ -2351,7 +2361,7 @@ too.</p>
 <p><a name='x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L209">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" >BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L211">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" >BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">GD-OPTIMIZER</span></p>
 
 <p>Another abstract base class for gradient based
 optimizers tath updates all weights simultaneously after chewing
@@ -2365,7 +2375,7 @@ weights can go unused for instance due to missing input values.</p></li>
 <p><a name='x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >BATCH-SIZE</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:BATCH-SIZE = 1)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >BATCH-SIZE</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:BATCH-SIZE = 1)</span></p>
 
 <p>After having gone through <code>BATCH-SIZE</code> number of
 inputs, weights are updated. With <code>BATCH-SIZE</code> 1, one gets
@@ -2378,7 +2388,7 @@ most practical 'mini-batch' compromise.</p></li>
 <p><a name='x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >LEARNING-RATE</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:LEARNING-RATE = 0.1)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >LEARNING-RATE</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:LEARNING-RATE = 0.1)</span></p>
 
 <p>This is the step size along the gradient. Decrease
 it if optimization diverges, increase it if it doesn't make
@@ -2388,7 +2398,7 @@ progress.</p></li>
 <p><a name='x-28MGL-GD-3AMOMENTUM-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMOMENTUM-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >MOMENTUM</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:MOMENTUM = 0)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMOMENTUM-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >MOMENTUM</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:MOMENTUM = 0)</span></p>
 
 <p>A value in the [0, 1) interval. <code>MOMENTUM</code> times the
 previous weight change is added to the gradient. 0 means no
@@ -2398,7 +2408,7 @@ momentum.</p></li>
 <p><a name='x-28MGL-GD-3AMOMENTUM-TYPE-20-28MGL-PAX-3AREADER-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMOMENTUM-TYPE-20-28MGL-PAX-3AREADER-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >MOMENTUM-TYPE</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:MOMENTUM-TYPE = :NORMAL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMOMENTUM-TYPE-20-28MGL-PAX-3AREADER-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >MOMENTUM-TYPE</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:MOMENTUM-TYPE = :NORMAL)</span></p>
 
 <p>One of <code>:NORMAL</code>, <code>:NESTEROV</code> or <code>:NONE</code>. For pure
 optimization Nesterov's momentum may be better, but it may also
@@ -2410,7 +2420,7 @@ momentum, but it also uses less memory. Note that with <code>:NONE</code>,
 <p><a name='x-28MGL-GD-3AWEIGHT-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AWEIGHT-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >WEIGHT-DECAY</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:WEIGHT-DECAY = 0)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AWEIGHT-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >WEIGHT-DECAY</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:WEIGHT-DECAY = 0)</span></p>
 
 <p>An L2 penalty. It discourages large weights, much
 like a zero mean gaussian prior. <code>WEIGHT-DECAY</code> * WEIGHT is added to
@@ -2422,7 +2432,7 @@ added to it.</p></li>
 <p><a name='x-28MGL-GD-3AWEIGHT-PENALTY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AWEIGHT-PENALTY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >WEIGHT-PENALTY</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:WEIGHT-PENALTY = 0)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AWEIGHT-PENALTY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >WEIGHT-PENALTY</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:WEIGHT-PENALTY = 0)</span></p>
 
 <p>An L1 penalty. It encourages sparsity.
 <code>SIGN</code>(WEIGHT) * <code>WEIGHT-PENALTY</code> is added to the gradient pushing the
@@ -2435,7 +2445,7 @@ on the features.</p></li>
 <p><a name='x-28MGL-GD-3AUSE-SEGMENT-DERIVATIVES-P-20-28MGL-PAX-3AREADER-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AUSE-SEGMENT-DERIVATIVES-P-20-28MGL-PAX-3AREADER-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >USE-SEGMENT-DERIVATIVES-P</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:USE-SEGMENT-DERIVATIVES-P = NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AUSE-SEGMENT-DERIVATIVES-P-20-28MGL-PAX-3AREADER-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >USE-SEGMENT-DERIVATIVES-P</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:USE-SEGMENT-DERIVATIVES-P = NIL)</span></p>
 
 <p>Save memory if both the gradient source (the model
 being optimized) and the optimizer support this feature. It works
@@ -2448,7 +2458,7 @@ accumulator matrix into which the derivatives are summed.</p></li>
 <p><a name='x-28MGL-GD-3AAFTER-UPDATE-HOOK-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L89">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AAFTER-UPDATE-HOOK-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >AFTER-UPDATE-HOOK</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:AFTER-UPDATE-HOOK = NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L91">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AAFTER-UPDATE-HOOK-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" >AFTER-UPDATE-HOOK</a></span> <span class="locative-args">GD-OPTIMIZER</span> <span class="locative-args">(:AFTER-UPDATE-HOOK = NIL)</span></p>
 
 <p>A list of functions with no arguments called after
 each weight update.</p></li>
@@ -2457,7 +2467,7 @@ each weight update.</p></li>
 <p><a name='x-28MGL-GD-3ABEFORE-UPDATE-HOOK-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3ABATCH-GD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L209">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ABEFORE-UPDATE-HOOK-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3ABATCH-GD-OPTIMIZER-29-29" >BEFORE-UPDATE-HOOK</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span> <span class="locative-args">(:BEFORE-UPDATE-HOOK = NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L211">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ABEFORE-UPDATE-HOOK-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3ABATCH-GD-OPTIMIZER-29-29" >BEFORE-UPDATE-HOOK</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span> <span class="locative-args">(:BEFORE-UPDATE-HOOK = NIL)</span></p>
 
 <p>A list of functions of no parameters. Each
 function is called just before a weight update takes place (after
@@ -2468,14 +2478,14 @@ on.</p></li>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Adam Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="SGD Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L237">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Adam Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="SGD Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L239">&#955;</a></span></span></p>
 
 <h5><a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29">SGD Optimizer</a></h5>
 
 <p><a name='x-28MGL-GD-3ASGD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L240">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASGD-OPTIMIZER-20CLASS-29" >SGD-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L242">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASGD-OPTIMIZER-20CLASS-29" >SGD-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
 
 <p>With <code>BATCH-SIZE</code>(<a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-GD::GD-OPTIMIZER))"><code>1</code></a>) 1 this is Stochastic Gradient
 Descent. With higher batch sizes, one gets mini-batch and Batch
@@ -2484,19 +2494,19 @@ Gradient Descent.</p>
 <p>Assuming that <code>ACCUMULATOR</code> has the sum of gradients for a mini-batch,
 the weight update looks like this:</p>
 
-<pre><code>delta_w' += momentum * delta_w +
-            accumulator / batch_size + l2 * w + l1 * sign(w)
+<p>$$\Delta_w^{t+1} = momentum \Delta_w^t
+  + \frac{accumulator}{batchsize}
+  + l_2 w + l_1 sign(w)$$</p>
 
-w' -= learning_rate * delta_w'
-</code></pre>
+<p>$$w^{t+1} = w^{t} - learningrate \Delta_w$$</p>
 
 <p>which is the same as the more traditional formulation:</p>
 
-<pre><code>delta_w' += momentum * delta_w +
-            learning_rate * (df/dw / batch_size + l2 * w + l1 * sign(w))
+<p>$$\Delta_w^{t+1} = momentum * \Delta_w^{t}
+  + learningrate \left(\frac{\frac{df}{dw}}{batchsize}
+                       + l_2 w + l_1 sign(w)\right)$$</p>
 
-w' -= delta_w'
-</code></pre>
+<p>$$w^{t+1} = w^{t} - \Delta_w$$</p>
 
 <p>but the former works better when batch size, momentum or learning
 rate change during the course of optimization. The above is with
@@ -2509,14 +2519,14 @@ options common to all batch based optimizers.</p></li>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="SGD Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Normalized Batch Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Adam Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L391">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-SGD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="SGD Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Normalized Batch Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Adam Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L395">&#955;</a></span></span></p>
 
 <h5><a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29">Adam Optimizer</a></h5>
 
 <p><a name='x-28MGL-GD-3AADAM-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L401">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AADAM-OPTIMIZER-20CLASS-29" >ADAM-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L405">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AADAM-OPTIMIZER-20CLASS-29" >ADAM-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
 
 <p>Adam is a first-order stochasistic gradient descent
 optimizer. It maintains an internal estimation for the mean and raw
@@ -2536,7 +2546,7 @@ options common to all batch based optimizers.</p></li>
 <p><a name='x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L401">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >LEARNING-RATE</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(= 2.e-4)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L405">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >LEARNING-RATE</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(= 2.e-4)</span></p>
 
 <p>Same thing as <a href="#x-28MGL-GD-3ALEARNING-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" title="(MGL-GD:LEARNING-RATE (MGL-PAX:ACCESSOR MGL-GD::GD-OPTIMIZER))"><code>LEARNING-RATE</code></a> but with the default suggested by the Adam paper.</p></li>
 </ul>
@@ -2544,7 +2554,7 @@ options common to all batch based optimizers.</p></li>
 <p><a name='x-28MGL-GD-3AMEAN-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L401">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMEAN-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >MEAN-DECAY-RATE</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:MEAN-DECAY-RATE = 0.1)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L405">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMEAN-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >MEAN-DECAY-RATE</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:MEAN-DECAY-RATE = 0.1)</span></p>
 
 <p>A number between 0 and 1 that determines how fast
 the estimated mean of derivatives is updated. 1 basically gives
@@ -2556,7 +2566,7 @@ rate is annealed. This is <code>B_1</code> in the paper.</p></li>
 <p><a name='x-28MGL-GD-3AMEAN-DECAY-RATE-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L401">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMEAN-DECAY-RATE-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >MEAN-DECAY-RATE-DECAY</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:MEAN-DECAY-RATE-DECAY = (- 1 1.d-7))</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L405">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AMEAN-DECAY-RATE-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >MEAN-DECAY-RATE-DECAY</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:MEAN-DECAY-RATE-DECAY = (- 1 1.d-7))</span></p>
 
 <p>A value that should be close to 1. The gap between
 1 and <a href="#x-28MGL-GD-3AMEAN-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" title="(MGL-GD:MEAN-DECAY-RATE (MGL-PAX:ACCESSOR MGL-GD:ADAM-OPTIMIZER))"><code>MEAN-DECAY-RATE</code></a> is multiplied by this value after each
@@ -2566,7 +2576,7 @@ update. This is <code>lambda</code> in the paper.</p></li>
 <p><a name='x-28MGL-GD-3AVARIANCE-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L401">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AVARIANCE-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >VARIANCE-DECAY-RATE</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:VARIANCE-DECAY-RATE = 0.001)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L405">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AVARIANCE-DECAY-RATE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >VARIANCE-DECAY-RATE</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:VARIANCE-DECAY-RATE = 0.001)</span></p>
 
 <p>A number between 0 and 1 that determines how fast
 the estimated variance of derivatives is updated. This is <code>B_2</code> in
@@ -2576,7 +2586,7 @@ the paper.</p></li>
 <p><a name='x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L401">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >VARIANCE-ADJUSTMENT</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:VARIANCE-ADJUSTMENT = 1.d-7)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L405">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" >VARIANCE-ADJUSTMENT</a></span> <span class="locative-args">ADAM-OPTIMIZER</span> <span class="locative-args">(:VARIANCE-ADJUSTMENT = 1.d-7)</span></p>
 
 <p>Within the bowels of adam, the estimated mean is
 divided by the square root of the estimated variance (per weight)
@@ -2588,14 +2598,14 @@ the paper.</p></li>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Adam Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Segmented GD Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Normalized Batch Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L578">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-ADAM-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Adam Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Segmented GD Optimizer">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Normalized Batch Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L582">&#955;</a></span></span></p>
 
 <h5><a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29">Normalized Batch Optimizer</a></h5>
 
 <p><a name='x-28MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L583">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-20CLASS-29" >NORMALIZED-BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L587">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-20CLASS-29" >NORMALIZED-BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
 
 <p>Like <a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" title="(MGL-GD:BATCH-GD-OPTIMIZER CLASS)"><code>BATCH-GD-OPTIMIZER</code></a> but keeps count of how many
 times each weight was used in the batch and divides the accumulated
@@ -2609,21 +2619,21 @@ same time for all weights.</p></li>
 <p><a name='x-28MGL-GD-3AN-WEIGHT-USES-IN-BATCH-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L583">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AN-WEIGHT-USES-IN-BATCH-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-29-29" >N-WEIGHT-USES-IN-BATCH</a></span> <span class="locative-args">NORMALIZED-BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L587">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AN-WEIGHT-USES-IN-BATCH-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-29-29" >N-WEIGHT-USES-IN-BATCH</a></span> <span class="locative-args">NORMALIZED-BATCH-GD-OPTIMIZER</span></p>
 
 <p>Number of uses of the weight in its current batch.</p></li>
 </ul>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Normalized Batch Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29" title="Per-weight Optimization">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Segmented GD Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L747">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-NORMALIZED-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Normalized Batch Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29" title="Per-weight Optimization">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Segmented GD Optimizer">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L751">&#955;</a></span></span></p>
 
 <h4><a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29">9.3.2 Segmented GD Optimizer</a></h4>
 
 <p><a name='x-28MGL-GD-3ASEGMENTED-GD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L754">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASEGMENTED-GD-OPTIMIZER-20CLASS-29" >SEGMENTED-GD-OPTIMIZER</a></span> <span class="locative-args">BASE-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L758">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASEGMENTED-GD-OPTIMIZER-20CLASS-29" >SEGMENTED-GD-OPTIMIZER</a></span> <span class="locative-args">BASE-GD-OPTIMIZER</span></p>
 
 <p>An optimizer that delegates training of segments to
 other optimizers. Useful to delegate training of different segments
@@ -2634,7 +2644,7 @@ simply to not train all segments.</p></li>
 <p><a name='x-28MGL-GD-3ASEGMENTER-20-28MGL-PAX-3AREADER-20MGL-GD-3ASEGMENTED-GD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L754">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASEGMENTER-20-28MGL-PAX-3AREADER-20MGL-GD-3ASEGMENTED-GD-OPTIMIZER-29-29" >SEGMENTER</a></span> <span class="locative-args">SEGMENTED-GD-OPTIMIZER</span> <span class="locative-args">(:SEGMENTER)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L758">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASEGMENTER-20-28MGL-PAX-3AREADER-20MGL-GD-3ASEGMENTED-GD-OPTIMIZER-29-29" >SEGMENTER</a></span> <span class="locative-args">SEGMENTED-GD-OPTIMIZER</span> <span class="locative-args">(:SEGMENTER)</span></p>
 
 <p>When this optimizer is initialized it loops over
 the segment of the learner with <a href="#x-28MGL-OPT-3AMAP-SEGMENTS-20GENERIC-FUNCTION-29" title="(MGL-OPT:MAP-SEGMENTS GENERIC-FUNCTION)"><code>MAP-SEGMENTS</code></a>. <code>SEGMENTER</code> is a
@@ -2648,7 +2658,7 @@ segments mapped to it.</p></li>
 <p><a name='x-28MGL-OPT-3ASEGMENTS-20-28MGL-PAX-3AREADER-20MGL-GD-3ASEGMENTED-GD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L754">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-OPT-3ASEGMENTS-20-28MGL-PAX-3AREADER-20MGL-GD-3ASEGMENTED-GD-OPTIMIZER-29-29" >SEGMENTS</a></span> <span class="locative-args">SEGMENTED-GD-OPTIMIZER</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L758">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-OPT-3ASEGMENTS-20-28MGL-PAX-3AREADER-20MGL-GD-3ASEGMENTED-GD-OPTIMIZER-29-29" >SEGMENTS</a></span> <span class="locative-args">SEGMENTED-GD-OPTIMIZER</span></li>
 </ul>
 
 <p><a href="#x-28MGL-GD-3ASEGMENTED-GD-OPTIMIZER-20CLASS-29" title="(MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS)"><code>SEGMENTED-GD-OPTIMIZER</code></a> inherits from <a href="#x-28MGL-OPT-3AITERATIVE-OPTIMIZER-20CLASS-29" title="(MGL-OPT:ITERATIVE-OPTIMIZER CLASS)"><code>ITERATIVE-OPTIMIZER</code></a>, so see
@@ -2656,14 +2666,14 @@ segments mapped to it.</p></li>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Segmented GD Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-UTILITIES-20MGL-PAX-3ASECTION-29" title="Utilities">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29" title="Per-weight Optimization">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L671">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-SEGMENTED-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Segmented GD Optimizer">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-UTILITIES-20MGL-PAX-3ASECTION-29" title="Utilities">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29" title="Per-weight Optimization">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L675">&#955;</a></span></span></p>
 
 <h4><a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29">9.3.3 Per-weight Optimization</a></h4>
 
 <p><a name='x-28MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L675">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-20CLASS-29" >PER-WEIGHT-BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L679">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-20CLASS-29" >PER-WEIGHT-BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">GD-OPTIMIZER</span></p>
 
 <p>This is much like <a href="#x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29" title="Batch Based Optimizers">Batch Based Optimizers</a> but it
 is more clever about when to update weights. Basically every weight
@@ -2681,27 +2691,27 @@ this optimizer.</p></li>
 <p><a name='x-28MGL-GD-3AN-WEIGHT-USES-IN-BATCH-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L675">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AN-WEIGHT-USES-IN-BATCH-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-29-29" >N-WEIGHT-USES-IN-BATCH</a></span> <span class="locative-args">PER-WEIGHT-BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L679">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AN-WEIGHT-USES-IN-BATCH-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-29-29" >N-WEIGHT-USES-IN-BATCH</a></span> <span class="locative-args">PER-WEIGHT-BATCH-GD-OPTIMIZER</span></p>
 
 <p>Number of uses of the weight in its current batch.</p></li>
 </ul>
 
 <p><a name='x-28MGL-GD-3A-40MGL-GD-UTILITIES-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29" title="Per-weight Optimization">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-CG-3A-40MGL-CG-20MGL-PAX-3ASECTION-29" title="Conjugate Gradient">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-UTILITIES-20MGL-PAX-3ASECTION-29" title="Utilities">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L824">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-GD-3A-40MGL-GD-PER-WEIGHT-OPTIMIZATION-20MGL-PAX-3ASECTION-29" title="Per-weight Optimization">&#8592;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-20MGL-PAX-3ASECTION-29" title="Gradient Descent">&#8593;</a> <a href="#x-28MGL-CG-3A-40MGL-CG-20MGL-PAX-3ASECTION-29" title="Conjugate Gradient">&#8594;</a> <a href="#x-28MGL-GD-3A-40MGL-GD-UTILITIES-20MGL-PAX-3ASECTION-29" title="Utilities">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L828">&#955;</a></span></span></p>
 
 <h4><a href="#x-28MGL-GD-3A-40MGL-GD-UTILITIES-20MGL-PAX-3ASECTION-29">9.3.4 Utilities</a></h4>
 
 <p><a name='x-28MGL-GD-3ACLIP-GRADIENTS-20FUNCTION-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L829">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ACLIP-GRADIENTS-20FUNCTION-29" >CLIP-GRADIENTS</a></span> <span class="locative-args">MATS L2-UPPER-BOUND &amp;KEY CALLBACK</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L833">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ACLIP-GRADIENTS-20FUNCTION-29" >CLIP-GRADIENTS</a></span> <span class="locative-args">MATS L2-UPPER-BOUND &amp;KEY CALLBACK</span></li>
 </ul>
 
 <p><a name='x-28MGL-GD-3AARRANGE-FOR-CLIPPING-GRADIENTS-20FUNCTION-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L845">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AARRANGE-FOR-CLIPPING-GRADIENTS-20FUNCTION-29" >ARRANGE-FOR-CLIPPING-GRADIENTS</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER L2-UPPER-BOUND &amp;KEY CALLBACK</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L849">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AARRANGE-FOR-CLIPPING-GRADIENTS-20FUNCTION-29" >ARRANGE-FOR-CLIPPING-GRADIENTS</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER L2-UPPER-BOUND &amp;KEY CALLBACK</span></li>
 </ul>
 
 <p><a name='x-28MGL-CG-3A-40MGL-CG-20MGL-PAX-3ASECTION-29'></a></p>
