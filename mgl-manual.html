@@ -797,42 +797,42 @@ sequence in <code>SEQS</code>.</p>
 <ul>
 <li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L17">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ALOAD-STATE-20FUNCTION-29" >LOAD-STATE</a></span> <span class="locative-args">FILENAME OBJECT</span></p>
 
-<p>Load weights of <code>OBJECT</code> from <code>FILENAME</code>.</p></li>
+<p>Load weights of <code>OBJECT</code> from <code>FILENAME</code>. Return <code>OBJECT</code>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CORE-3ASAVE-STATE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L25">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASAVE-STATE-20FUNCTION-29" >SAVE-STATE</a></span> <span class="locative-args">FILENAME OBJECT &amp;KEY (IF-EXISTS :ERROR) (ENSURE T)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L27">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASAVE-STATE-20FUNCTION-29" >SAVE-STATE</a></span> <span class="locative-args">FILENAME OBJECT &amp;KEY (IF-EXISTS :ERROR) (ENSURE T)</span></p>
 
 <p>Save weights of <code>OBJECT</code> to <code>FILENAME</code>. If <code>ENSURE</code>, then
 <code>ENSURE-DIRECTORIES-EXIST</code> is called on <code>FILENAME</code>. <code>IF-EXISTS</code> is passed
-on to <code>OPEN</code>.</p></li>
+on to <code>OPEN</code>. Return <code>OBJECT</code>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CORE-3AREAD-STATE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L38">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AREAD-STATE-20FUNCTION-29" >READ-STATE</a></span> <span class="locative-args">OBJECT STREAM</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L40">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AREAD-STATE-20FUNCTION-29" >READ-STATE</a></span> <span class="locative-args">OBJECT STREAM</span></p>
 
 <p>Read the weights of <code>OBJECT</code> from the bivalent <code>STREAM</code> where weights
 mean the learnt parameters. There is currently no sanity checking of
 data which will most certainly change in the future together with
-the serialization format.</p></li>
+the serialization format. Return <code>OBJECT</code>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CORE-3AWRITE-STATE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L45">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWRITE-STATE-20FUNCTION-29" >WRITE-STATE</a></span> <span class="locative-args">OBJECT STREAM</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L48">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWRITE-STATE-20FUNCTION-29" >WRITE-STATE</a></span> <span class="locative-args">OBJECT STREAM</span></p>
 
-<p>Write weight of <code>OBJECT</code> to the bivalent <code>STREAM</code>.</p></li>
+<p>Write weight of <code>OBJECT</code> to the bivalent <code>STREAM</code>. Return <code>OBJECT</code>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L49">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29" >READ-STATE*</a></span> <span class="locative-args">OBJECT STREAM CONTEXT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L53">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29" >READ-STATE*</a></span> <span class="locative-args">OBJECT STREAM CONTEXT</span></p>
 
 <p>This is the extension point for <a href="#x-28MGL-CORE-3AREAD-STATE-20FUNCTION-29" title="(MGL-CORE:READ-STATE FUNCTION)"><code>READ-STATE</code></a>. It is
 guaranteed that primary <a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29" title="(MGL-CORE:READ-STATE* GENERIC-FUNCTION)"><code>READ-STATE*</code></a> methods will be called only once
@@ -843,7 +843,7 @@ passed on to any recursive <a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNC
 <p><a name='x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L59">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29" >WRITE-STATE*</a></span> <span class="locative-args">OBJECT STREAM CONTEXT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L63">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29" >WRITE-STATE*</a></span> <span class="locative-args">OBJECT STREAM CONTEXT</span></p>
 
 <p>This is the extension point for <a href="#x-28MGL-CORE-3AWRITE-STATE-20FUNCTION-29" title="(MGL-CORE:WRITE-STATE FUNCTION)"><code>WRITE-STATE</code></a>. It is
 guaranteed that primary <a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29" title="(MGL-CORE:WRITE-STATE* GENERIC-FUNCTION)"><code>WRITE-STATE*</code></a> methods will be called only
@@ -853,7 +853,7 @@ be passed on to any recursive <a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-
 
 <p><a name='x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CORE-3A-40MGL-PERSISTENCE-20MGL-PAX-3ASECTION-29" title="Persistence">&#8592;</a> <a href="#x-28MGL-CORE-3A-40MGL-CORE-20MGL-PAX-3ASECTION-29" title="Core">&#8593;</a> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8594;</a> <a href="#x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29" title="Batch Processing">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L70">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CORE-3A-40MGL-PERSISTENCE-20MGL-PAX-3ASECTION-29" title="Persistence">&#8592;</a> <a href="#x-28MGL-CORE-3A-40MGL-CORE-20MGL-PAX-3ASECTION-29" title="Core">&#8593;</a> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8594;</a> <a href="#x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29" title="Batch Processing">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L74">&#955;</a></span></span></p>
 
 <h3><a href="#x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29">5.2 Batch Processing</a></h3>
 
@@ -880,7 +880,7 @@ an internal inconsistency in the model.</p>
 <p><a name='x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L101">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" >MAX-N-STRIPES</a></span> <span class="locative-args">OBJECT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L105">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" >MAX-N-STRIPES</a></span> <span class="locative-args">OBJECT</span></p>
 
 <p>The number of stripes with which the <code>OBJECT</code> is
 capable of dealing simultaneously. </p></li>
@@ -889,7 +889,7 @@ capable of dealing simultaneously. </p></li>
 <p><a name='x-28MGL-CORE-3ASET-MAX-N-STRIPES-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L105">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASET-MAX-N-STRIPES-20GENERIC-FUNCTION-29" >SET-MAX-N-STRIPES</a></span> <span class="locative-args">MAX-N-STRIPES OBJECT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L109">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASET-MAX-N-STRIPES-20GENERIC-FUNCTION-29" >SET-MAX-N-STRIPES</a></span> <span class="locative-args">MAX-N-STRIPES OBJECT</span></p>
 
 <p>Allocate the necessary stuff to allow for
 <code>MAX-N-STRIPES</code> number of stripes to be worked with simultaneously in
@@ -899,7 +899,7 @@ capable of dealing simultaneously. </p></li>
 <p><a name='x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L113">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29" >N-STRIPES</a></span> <span class="locative-args">OBJECT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L117">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29" >N-STRIPES</a></span> <span class="locative-args">OBJECT</span></p>
 
 <p>The number of stripes currently present in <code>OBJECT</code>.
 This is at most <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a>.</p></li>
@@ -908,7 +908,7 @@ This is at most <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" ti
 <p><a name='x-28MGL-CORE-3ASET-N-STRIPES-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L117">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASET-N-STRIPES-20GENERIC-FUNCTION-29" >SET-N-STRIPES</a></span> <span class="locative-args">N-STRIPES OBJECT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L121">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASET-N-STRIPES-20GENERIC-FUNCTION-29" >SET-N-STRIPES</a></span> <span class="locative-args">N-STRIPES OBJECT</span></p>
 
 <p>Set the number of stripes (out of <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a>)
 that are in use in <code>OBJECT</code>. This is called when <code>N-STRIPES</code> is
@@ -918,7 +918,7 @@ that are in use in <code>OBJECT</code>. This is called when <code>N-STRIPES</cod
 <p><a name='x-28MGL-CORE-3AWITH-STRIPES-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L125">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWITH-STRIPES-20-28MGL-PAX-3AMACRO-29-29" >WITH-STRIPES</a></span> <span class="locative-args">SPECS &amp;BODY BODY</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L129">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWITH-STRIPES-20-28MGL-PAX-3AMACRO-29-29" >WITH-STRIPES</a></span> <span class="locative-args">SPECS &amp;BODY BODY</span></p>
 
 <p>Bind start and optionally end indices belonging to stripes in
 striped objects.</p>
@@ -945,7 +945,7 @@ the same stripe indices work with <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUN
 <p><a name='x-28MGL-CORE-3ASTRIPE-START-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L156">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASTRIPE-START-20GENERIC-FUNCTION-29" >STRIPE-START</a></span> <span class="locative-args">STRIPE OBJECT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L160">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASTRIPE-START-20GENERIC-FUNCTION-29" >STRIPE-START</a></span> <span class="locative-args">STRIPE OBJECT</span></p>
 
 <p>Return the start index of <code>STRIPE</code> in some array or
 matrix of <code>OBJECT</code>.</p></li>
@@ -954,7 +954,7 @@ matrix of <code>OBJECT</code>.</p></li>
 <p><a name='x-28MGL-CORE-3ASTRIPE-END-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L160">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASTRIPE-END-20GENERIC-FUNCTION-29" >STRIPE-END</a></span> <span class="locative-args">STRIPE OBJECT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L164">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASTRIPE-END-20GENERIC-FUNCTION-29" >STRIPE-END</a></span> <span class="locative-args">STRIPE OBJECT</span></p>
 
 <p>Return the end index (exclusive) of <code>STRIPE</code> in some
 array or matrix of <code>OBJECT</code>.</p></li>
@@ -963,7 +963,7 @@ array or matrix of <code>OBJECT</code>.</p></li>
 <p><a name='x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L164">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" >SET-INPUT</a></span> <span class="locative-args">INSTANCES MODEL</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L168">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" >SET-INPUT</a></span> <span class="locative-args">INSTANCES MODEL</span></p>
 
 <p>Set <code>INSTANCES</code> as inputs in <code>MODEL</code>. SAMPLES is always
 a <code>SEQUENCE</code> of instances even for models not capable of batch
@@ -974,7 +974,7 @@ method.</p></li>
 <p><a name='x-28MGL-CORE-3AMAP-BATCHES-FOR-MODEL-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L170">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAP-BATCHES-FOR-MODEL-20FUNCTION-29" >MAP-BATCHES-FOR-MODEL</a></span> <span class="locative-args">FN DATASET MODEL</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L174">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAP-BATCHES-FOR-MODEL-20FUNCTION-29" >MAP-BATCHES-FOR-MODEL</a></span> <span class="locative-args">FN DATASET MODEL</span></p>
 
 <p>Call <code>FN</code> with batches of instances from <code>DATASET</code> suitable for <code>MODEL</code>.
 The number of instances in a batch is <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a> of <code>MODEL</code> or less
@@ -984,21 +984,21 @@ if there are no more instances left.</p></li>
 <p><a name='x-28MGL-CORE-3ADO-BATCHES-FOR-MODEL-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L181">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ADO-BATCHES-FOR-MODEL-20-28MGL-PAX-3AMACRO-29-29" >DO-BATCHES-FOR-MODEL</a></span> <span class="locative-args">(BATCH (DATASET MODEL)) &amp;BODY BODY</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L185">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ADO-BATCHES-FOR-MODEL-20-28MGL-PAX-3AMACRO-29-29" >DO-BATCHES-FOR-MODEL</a></span> <span class="locative-args">(BATCH (DATASET MODEL)) &amp;BODY BODY</span></p>
 
 <p>Convenience macro over <a href="#x-28MGL-CORE-3AMAP-BATCHES-FOR-MODEL-20FUNCTION-29" title="(MGL-CORE:MAP-BATCHES-FOR-MODEL FUNCTION)"><code>MAP-BATCHES-FOR-MODEL</code></a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29" title="Batch Processing">&#8592;</a> <a href="#x-28MGL-CORE-3A-40MGL-CORE-20MGL-PAX-3ASECTION-29" title="Core">&#8593;</a> <a href="#x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20MGL-PAX-3ASECTION-29" title="Parameterized Executor Cache">&#8594;</a> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L186">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29" title="Batch Processing">&#8592;</a> <a href="#x-28MGL-CORE-3A-40MGL-CORE-20MGL-PAX-3ASECTION-29" title="Core">&#8593;</a> <a href="#x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20MGL-PAX-3ASECTION-29" title="Parameterized Executor Cache">&#8594;</a> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L190">&#955;</a></span></span></p>
 
 <h3><a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29">5.3 Executors</a></h3>
 
 <p><a name='x-28MGL-CORE-3AMAP-OVER-EXECUTORS-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L191">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAP-OVER-EXECUTORS-20GENERIC-FUNCTION-29" >MAP-OVER-EXECUTORS</a></span> <span class="locative-args">FN INSTANCES PROTOTYPE-EXECUTOR</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L195">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAP-OVER-EXECUTORS-20GENERIC-FUNCTION-29" >MAP-OVER-EXECUTORS</a></span> <span class="locative-args">FN INSTANCES PROTOTYPE-EXECUTOR</span></p>
 
 <p>Divide <code>INSTANCES</code> between executors that perform the
 same function as <code>PROTOTYPE-EXECUTOR</code> and call <code>FN</code> with the instances
@@ -1029,21 +1029,21 @@ yet.</p>
 <p><a name='x-28MGL-CORE-3ADO-EXECUTORS-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L219">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ADO-EXECUTORS-20-28MGL-PAX-3AMACRO-29-29" >DO-EXECUTORS</a></span> <span class="locative-args">(INSTANCES OBJECT) &amp;BODY BODY</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L223">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ADO-EXECUTORS-20-28MGL-PAX-3AMACRO-29-29" >DO-EXECUTORS</a></span> <span class="locative-args">(INSTANCES OBJECT) &amp;BODY BODY</span></p>
 
 <p>Convenience macro on top of <a href="#x-28MGL-CORE-3AMAP-OVER-EXECUTORS-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAP-OVER-EXECUTORS GENERIC-FUNCTION)"><code>MAP-OVER-EXECUTORS</code></a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8592;</a> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8593;</a> <a href="#x-28MGL-CORE-3A-40MGL-MONITORING-20MGL-PAX-3ASECTION-29" title="Monitoring">&#8594;</a> <a href="#x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20MGL-PAX-3ASECTION-29" title="Parameterized Executor Cache">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L226">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8592;</a> <a href="#x-28MGL-CORE-3A-40MGL-EXECUTORS-20MGL-PAX-3ASECTION-29" title="Executors">&#8593;</a> <a href="#x-28MGL-CORE-3A-40MGL-MONITORING-20MGL-PAX-3ASECTION-29" title="Monitoring">&#8594;</a> <a href="#x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20MGL-PAX-3ASECTION-29" title="Parameterized Executor Cache">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L230">&#955;</a></span></span></p>
 
 <h4><a href="#x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20MGL-PAX-3ASECTION-29">5.3.1 Parameterized Executor Cache</a></h4>
 
 <p><a name='x-28MGL-CORE-3APARAMETERIZED-EXECUTOR-CACHE-MIXIN-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L232">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3APARAMETERIZED-EXECUTOR-CACHE-MIXIN-20CLASS-29" >PARAMETERIZED-EXECUTOR-CACHE-MIXIN</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L236">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3APARAMETERIZED-EXECUTOR-CACHE-MIXIN-20CLASS-29" >PARAMETERIZED-EXECUTOR-CACHE-MIXIN</a></span></p>
 
 <p>Mix this into a model, implement
 <a href="#x-28MGL-CORE-3AINSTANCE-TO-EXECUTOR-PARAMETERS-20GENERIC-FUNCTION-29" title="(MGL-CORE:INSTANCE-TO-EXECUTOR-PARAMETERS GENERIC-FUNCTION)"><code>INSTANCE-TO-EXECUTOR-PARAMETERS</code></a> and <a href="#x-28MGL-CORE-3AMAKE-EXECUTOR-WITH-PARAMETERS-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAKE-EXECUTOR-WITH-PARAMETERS GENERIC-FUNCTION)"><code>MAKE-EXECUTOR-WITH-PARAMETERS</code></a>
@@ -1058,7 +1058,7 @@ input dimension (the parameters).</p></li>
 <p><a name='x-28MGL-CORE-3AMAKE-EXECUTOR-WITH-PARAMETERS-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L245">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAKE-EXECUTOR-WITH-PARAMETERS-20GENERIC-FUNCTION-29" >MAKE-EXECUTOR-WITH-PARAMETERS</a></span> <span class="locative-args">PARAMETERS CACHE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L249">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAKE-EXECUTOR-WITH-PARAMETERS-20GENERIC-FUNCTION-29" >MAKE-EXECUTOR-WITH-PARAMETERS</a></span> <span class="locative-args">PARAMETERS CACHE</span></p>
 
 <p>Create a new executor for <code>PARAMETERS</code>. <code>CACHE</code> is a
 <a href="#x-28MGL-CORE-3APARAMETERIZED-EXECUTOR-CACHE-MIXIN-20CLASS-29" title="(MGL-CORE:PARAMETERIZED-EXECUTOR-CACHE-MIXIN CLASS)"><code>PARAMETERIZED-EXECUTOR-CACHE-MIXIN</code></a>. In the BPN gaussian process
@@ -1068,7 +1068,7 @@ example, <code>PARAMETERS</code> would be a list of input dimensions.</p></li>
 <p><a name='x-28MGL-CORE-3AINSTANCE-TO-EXECUTOR-PARAMETERS-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L250">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AINSTANCE-TO-EXECUTOR-PARAMETERS-20GENERIC-FUNCTION-29" >INSTANCE-TO-EXECUTOR-PARAMETERS</a></span> <span class="locative-args">INSTANCE CACHE</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/core.lisp#L254">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AINSTANCE-TO-EXECUTOR-PARAMETERS-20GENERIC-FUNCTION-29" >INSTANCE-TO-EXECUTOR-PARAMETERS</a></span> <span class="locative-args">INSTANCE CACHE</span></p>
 
 <p>Return the parameters for an executor able to
 handle <code>INSTANCE</code>. Called by <a href="#x-28MGL-CORE-3AMAP-OVER-EXECUTORS-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAP-OVER-EXECUTORS GENERIC-FUNCTION)"><code>MAP-OVER-EXECUTORS</code></a> on <code>CACHE</code> (that's a
@@ -2042,12 +2042,12 @@ read/write consitency.</p>
 <p><a name='x-28MGL-CORE-3AMAKE-INDEXER-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/feature.lisp#L278">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAKE-INDEXER-20FUNCTION-29" >MAKE-INDEXER</a></span> <span class="locative-args">SCORED-FEATURES N &amp;KEY (START 0)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/feature.lisp#L278">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AMAKE-INDEXER-20FUNCTION-29" >MAKE-INDEXER</a></span> <span class="locative-args">SCORED-FEATURES N &amp;KEY (START 0) (CLASS 'ENCODER/DECODER)</span></p>
 
 <p>Take the top <code>N</code> features from <code>SCORED-FEATURES</code> (see
 <a href="#x-28MGL-CORE-3A-40MGL-FEATURE-SELECTION-20MGL-PAX-3ASECTION-29" title="Feature Selection">Feature Selection</a>), assign indices to them starting from <code>START</code>.
-Return an <a href="#x-28MGL-CORE-3AENCODER-2FDECODER-20CLASS-29" title="(MGL-CORE:ENCODER/DECODER CLASS)"><code>ENCODER/DECODER</code></a> that converts between objects and
-indices.</p></li>
+Return an <a href="#x-28MGL-CORE-3AENCODER-2FDECODER-20CLASS-29" title="(MGL-CORE:ENCODER/DECODER CLASS)"><code>ENCODER/DECODER</code></a> (or another <code>CLASS</code>) that converts between
+objects and indices.</p></li>
 </ul>
 
 <p>Also see <a href="#x-28MGL-NLP-3A-40MGL-NLP-BAG-OF-WORDS-20MGL-PAX-3ASECTION-29" title="Bag of Words">Bag of Words</a>.</p>
