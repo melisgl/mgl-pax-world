@@ -1421,7 +1421,7 @@ the output being as table-like as possible.</p></li>
 <p><a name='x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/counter.lisp#L177">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" >BASIC-COUNTER</a></span> <span class="locative-args">ATTRIBUTED</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/counter.lisp#L177">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" >BASIC-COUNTER</a></span> <span class="locative-args"><a href="#x-28MGL-CORE-3AATTRIBUTED-20CLASS-29" title="(MGL-CORE:ATTRIBUTED CLASS)">ATTRIBUTED</a></span></p>
 
 <p>A simple counter whose <a href="#x-28MGL-CORE-3AADD-TO-COUNTER-20GENERIC-FUNCTION-29" title="(MGL-CORE:ADD-TO-COUNTER GENERIC-FUNCTION)"><code>ADD-TO-COUNTER</code></a> takes two
 additional parameters: an increment to the internal sums of called
@@ -1447,7 +1447,7 @@ batches:</p>
 <p><a name='x-28MGL-CORE-3ARMSE-COUNTER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/counter.lisp#L231">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ARMSE-COUNTER-20CLASS-29" >RMSE-COUNTER</a></span> <span class="locative-args">BASIC-COUNTER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/counter.lisp#L231">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ARMSE-COUNTER-20CLASS-29" >RMSE-COUNTER</a></span> <span class="locative-args"><a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)">BASIC-COUNTER</a></span></p>
 
 <p>A <a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)"><code>BASIC-COUNTER</code></a> with whose nominator accumulates
 the square of some statistics. It has the attribute <code>:TYPE</code> &quot;rmse&quot;.
@@ -1464,7 +1464,7 @@ the square of some statistics. It has the attribute <code>:TYPE</code> &quot;rms
 <p><a name='x-28MGL-CORE-3ACONCAT-COUNTER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/counter.lisp#L248">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ACONCAT-COUNTER-20CLASS-29" >CONCAT-COUNTER</a></span> <span class="locative-args">ATTRIBUTED</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/counter.lisp#L248">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ACONCAT-COUNTER-20CLASS-29" >CONCAT-COUNTER</a></span> <span class="locative-args"><a href="#x-28MGL-CORE-3AATTRIBUTED-20CLASS-29" title="(MGL-CORE:ATTRIBUTED CLASS)">ATTRIBUTED</a></span></p>
 
 <p>A counter that simply concatenates
 sequences.</p>
@@ -1764,7 +1764,7 @@ weight to both counts (returned as the first and second values).</p>
 <p><a name='x-28MGL-CORE-3ACLASSIFICATION-ACCURACY-COUNTER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/classification.lisp#L353">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ACLASSIFICATION-ACCURACY-COUNTER-20CLASS-29" >CLASSIFICATION-ACCURACY-COUNTER</a></span> <span class="locative-args">BASIC-COUNTER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/classification.lisp#L353">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ACLASSIFICATION-ACCURACY-COUNTER-20CLASS-29" >CLASSIFICATION-ACCURACY-COUNTER</a></span> <span class="locative-args"><a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)">BASIC-COUNTER</a></span></p>
 
 <p>A <a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)"><code>BASIC-COUNTER</code></a> with &quot;acc.&quot; as its <code>:TYPE</code>
 attribute and a <code>PRINT-OBJECT</code> method that prints percentages.</p></li>
@@ -1773,7 +1773,7 @@ attribute and a <code>PRINT-OBJECT</code> method that prints percentages.</p></l
 <p><a name='x-28MGL-CORE-3ACROSS-ENTROPY-COUNTER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/classification.lisp#L367">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ACROSS-ENTROPY-COUNTER-20CLASS-29" >CROSS-ENTROPY-COUNTER</a></span> <span class="locative-args">BASIC-COUNTER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/classification.lisp#L367">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3ACROSS-ENTROPY-COUNTER-20CLASS-29" >CROSS-ENTROPY-COUNTER</a></span> <span class="locative-args"><a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)">BASIC-COUNTER</a></span></p>
 
 <p>A <a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)"><code>BASIC-COUNTER</code></a> with &quot;xent&quot; as its <code>:TYPE</code>
 attribute.</p></li>
@@ -2485,7 +2485,7 @@ on.</p></li>
 <p><a name='x-28MGL-GD-3ASGD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L242">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASGD-OPTIMIZER-20CLASS-29" >SGD-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L242">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ASGD-OPTIMIZER-20CLASS-29" >SGD-OPTIMIZER</a></span> <span class="locative-args"><a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" title="(MGL-GD:BATCH-GD-OPTIMIZER CLASS)">BATCH-GD-OPTIMIZER</a></span></p>
 
 <p>With <code>BATCH-SIZE</code>(<a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-GD::GD-OPTIMIZER))"><code>1</code></a>) 1 this is Stochastic Gradient
 Descent. With higher batch sizes, one gets mini-batch and Batch
@@ -2526,7 +2526,7 @@ options common to all batch based optimizers.</p></li>
 <p><a name='x-28MGL-GD-3AADAM-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L411">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AADAM-OPTIMIZER-20CLASS-29" >ADAM-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L411">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3AADAM-OPTIMIZER-20CLASS-29" >ADAM-OPTIMIZER</a></span> <span class="locative-args"><a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" title="(MGL-GD:BATCH-GD-OPTIMIZER CLASS)">BATCH-GD-OPTIMIZER</a></span></p>
 
 <p>Adam is a first-order stochasistic gradient descent
 optimizer. It maintains an internal estimation for the mean and raw
@@ -2605,7 +2605,7 @@ the paper.</p></li>
 <p><a name='x-28MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L669">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-20CLASS-29" >NORMALIZED-BATCH-GD-OPTIMIZER</a></span> <span class="locative-args">BATCH-GD-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/gradient-descent.lisp#L669">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GD-3ANORMALIZED-BATCH-GD-OPTIMIZER-20CLASS-29" >NORMALIZED-BATCH-GD-OPTIMIZER</a></span> <span class="locative-args"><a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" title="(MGL-GD:BATCH-GD-OPTIMIZER CLASS)">BATCH-GD-OPTIMIZER</a></span></p>
 
 <p>Like <a href="#x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29" title="(MGL-GD:BATCH-GD-OPTIMIZER CLASS)"><code>BATCH-GD-OPTIMIZER</code></a> but keeps count of how many
 times each weight was used in the batch and divides the accumulated
@@ -2906,7 +2906,7 @@ at the initial point in the linesearch). Constants must satisfy 0 &lt;
 <p><a name='x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29" >CG-OPTIMIZER</a></span> <span class="locative-args">ITERATIVE-OPTIMIZER</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29" >CG-OPTIMIZER</a></span> <span class="locative-args"><a href="#x-28MGL-OPT-3AITERATIVE-OPTIMIZER-20CLASS-29" title="(MGL-OPT:ITERATIVE-OPTIMIZER CLASS)">ITERATIVE-OPTIMIZER</a></span></p>
 
 <p>Updates all weights simultaneously after chewing
 through <code>BATCH-SIZE</code>(<a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-GD::GD-OPTIMIZER))"><code>1</code></a>) inputs.</p></li>
@@ -3471,7 +3471,7 @@ a <a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)"><code>LUMP
 <p><a name='x-28MGL-BP-3ABPN-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/backprop.lisp#L167">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" >BPN</a></span> <span class="locative-args">CLUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/backprop.lisp#L167">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" >BPN</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)">CLUMP</a></span></p>
 
 <p>Abstract base class for <a href="#x-28MGL-BP-3AFNN-20CLASS-29" title="(MGL-BP:FNN CLASS)"><code>FNN</code></a> and <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>.</p></li>
 </ul>
@@ -3635,7 +3635,7 @@ get them out of they way before we study a full example.</p>
 <p><a name='x-28MGL-BP-3AFNN-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/backprop.lisp#L352">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3AFNN-20CLASS-29" >FNN</a></span> <span class="locative-args">BPN</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/backprop.lisp#L352">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3AFNN-20CLASS-29" >FNN</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)">BPN</a></span></p>
 
 <p>A feed-forward neural net (as opposed to a
 recurrent one, see <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>).</p></li>
@@ -4150,7 +4150,7 @@ the concepts involved. Make sure you are comfortable with
 <p><a name='x-28MGL-BP-3ARNN-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/backprop.lisp#L441">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ARNN-20CLASS-29" >RNN</a></span> <span class="locative-args">BPN</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/backprop.lisp#L441">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ARNN-20CLASS-29" >RNN</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)">BPN</a></span></p>
 
 <p>A recurrent neural net (as opposed to a
 feed-forward one. It is typically built with <a href="#x-28MGL-BP-3ABUILD-RNN-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-BP:BUILD-RNN (MGL-PAX:MACRO))"><code>BUILD-RNN</code></a> that's no
@@ -4420,7 +4420,7 @@ arguments and it's a designator for its return value.</p></li>
 <p><a name='x-28MGL-BP-3ALUMP-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L38">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" >LUMP</a></span> <span class="locative-args">CLUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L38">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" >LUMP</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)">CLUMP</a></span></p>
 
 <p>A <code>LUMP</code> is a simple, layerlike component of a neural
 network. There are many kinds of lumps, each of which performs a
@@ -4518,7 +4518,7 @@ in shape and size.</p></li>
 <p><a name='x-28MGL-BP-3A--3EINPUT-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L452">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EINPUT-20CLASS-29" >-&gt;INPUT</a></span> <span class="locative-args">-&gt;DROPOUT</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L452">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EINPUT-20CLASS-29" >-&gt;INPUT</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3A--3EDROPOUT-20CLASS-29" title="(MGL-BP:-&gt;DROPOUT CLASS)">-\&gt;DROPOUT</a></span></p>
 
 <p>A lump that has no input lumps, does not change its
 values in the forward pass (except when <a href="#x-28MGL-BP-3ADROPOUT-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EINPUT-29-29" title="(MGL-BP:DROPOUT (MGL-PAX:ACCESSOR MGL-BP:-&gt;INPUT))"><code>DROPOUT</code></a> is non-zero), and does not compute derivatives. <em>Clamp</em>
@@ -4552,7 +4552,7 @@ in the name of efficiency.</p>
 <p><a name='x-28MGL-BP-3A--3EEMBEDDING-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L881">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EEMBEDDING-20CLASS-29" >-&gt;EMBEDDING</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L881">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EEMBEDDING-20CLASS-29" >-&gt;EMBEDDING</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Select rows of <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>1</code></a>), one row for each index in
 <a href="#x-28MGL-BP-3AINPUT-ROW-INDICES-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-BP:INPUT-ROW-INDICES (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>INPUT-ROW-INDICES</code></a>. This lump is equivalent to adding an <a href="#x-28MGL-BP-3A--3EINPUT-20CLASS-29" title="(MGL-BP:-&gt;INPUT CLASS)"><code>-&gt;INPUT</code></a> lump
@@ -4597,7 +4597,7 @@ be set in <a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" title="(MGL-
 <p><a name='x-28MGL-BP-3A--3EWEIGHT-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L205">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" >-&gt;WEIGHT</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L205">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" >-&gt;WEIGHT</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>A set of optimizable parameters of some kind. When
 a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> is is trained (see <a href="#x-28MGL-BP-3A-40MGL-BP-TRAINING-20MGL-PAX-3ASECTION-29" title="Training">Training</a>) the <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> of weight lumps
@@ -4652,7 +4652,7 @@ use activation subnets to reduce the clutter.</p>
 <p><a name='x-28MGL-BP-3A--3EACTIVATION-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L495">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EACTIVATION-20CLASS-29" >-&gt;ACTIVATION</a></span> <span class="locative-args">BPN</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L495">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EACTIVATION-20CLASS-29" >-&gt;ACTIVATION</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)">BPN</a></span></p>
 
 <p>Activation subnetworks are built by the function
 <code>-&gt;ACTIVATION</code> and they have a number of lumps hidden inside them.
@@ -4701,7 +4701,7 @@ they are to be initialized differently.</p></li>
 <p><a name='x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L568">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29" >-&gt;BATCH-NORMALIZED</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L568">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29" >-&gt;BATCH-NORMALIZED</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>This is an implementation of v1 of the <a href="http://arxiv.org/abs/1502.03167" >Batch
 Normalization paper</a>. The output of
@@ -4782,7 +4782,7 @@ activations are fed.</p>
 <p><a name='x-28MGL-BP-3A--3ESIGMOID-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L962">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESIGMOID-20CLASS-29" >-&gt;SIGMOID</a></span> <span class="locative-args">-&gt;DROPOUT LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L962">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESIGMOID-20CLASS-29" >-&gt;SIGMOID</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3A--3EDROPOUT-20CLASS-29" title="(MGL-BP:-&gt;DROPOUT CLASS)">-\&gt;DROPOUT</a> <a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Applies the <code>1/(1 + e^{-x})</code> function elementwise
 to its inputs. This is one of the classic non-linearities for neural
@@ -4816,7 +4816,7 @@ automatically.</p></li>
 <p><a name='x-28MGL-BP-3A--3ETANH-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1065">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ETANH-20CLASS-29" >-&gt;TANH</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1065">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ETANH-20CLASS-29" >-&gt;TANH</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Applies the <code>TANH</code> function to its input in an
 elementwise manner. The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is the size of its input
@@ -4832,7 +4832,7 @@ which is determined automatically.</p></li>
 <p><a name='x-28MGL-BP-3A--3ESCALED-TANH-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1156">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESCALED-TANH-20CLASS-29" >-&gt;SCALED-TANH</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1156">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESCALED-TANH-20CLASS-29" >-&gt;SCALED-TANH</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Pretty much like <code>TANH</code> but its input and output is
 scaled in such a way that the variance of its output is close to 1
@@ -4853,7 +4853,7 @@ is determined automatically.</p></li>
 <p><a name='x-28MGL-BP-3A--3ERELU-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1253">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ERELU-20CLASS-29" >-&gt;RELU</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1253">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ERELU-20CLASS-29" >-&gt;RELU</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p><code>max(0,x)</code> activation function. Be careful, relu
 units can get stuck in the off state: if they move to far to
@@ -4873,7 +4873,7 @@ automatically.</p></li>
 <p><a name='x-28MGL-BP-3A--3EMAX-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1342">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EMAX-20CLASS-29" >-&gt;MAX</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1342">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EMAX-20CLASS-29" >-&gt;MAX</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>This is basically maxout without dropout (see
 http://arxiv.org/abs/1302.4389). It groups its inputs by
@@ -4907,7 +4907,7 @@ state.</p></li>
 <p><a name='x-28MGL-BP-3A--3EMIN-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1459">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EMIN-20CLASS-29" >-&gt;MIN</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1459">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EMIN-20CLASS-29" >-&gt;MIN</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Same as <a href="#x-28MGL-BP-3A--3EMAX-20CLASS-29" title="(MGL-BP:-&gt;MAX CLASS)"><code>-&gt;MAX</code></a>, but it computes the <code>MIN</code> of groups.
 Rarely useful.</p></li>
@@ -4930,7 +4930,7 @@ Rarely useful.</p></li>
 <p><a name='x-28MGL-BP-3A--3EMAX-CHANNEL-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1564">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EMAX-CHANNEL-20CLASS-29" >-&gt;MAX-CHANNEL</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1564">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EMAX-CHANNEL-20CLASS-29" >-&gt;MAX-CHANNEL</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Called LWTA (Local Winner Take All) or
 Channel-Out (see http://arxiv.org/abs/1312.1909) in the literature
@@ -4969,7 +4969,7 @@ part of the network.</p>
 <p><a name='x-28MGL-BP-3A--3ELOSS-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1744">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELOSS-20CLASS-29" >-&gt;LOSS</a></span> <span class="locative-args">-&gt;SUM</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1744">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELOSS-20CLASS-29" >-&gt;LOSS</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3A--3ESUM-20CLASS-29" title="(MGL-BP:-&gt;SUM CLASS)">-\&gt;SUM</a></span></p>
 
 <p>Calculate the loss for the instances in the batch.
 The main purpose of this lump is to provide a training signal.</p>
@@ -5007,7 +5007,7 @@ a <a href="#x-28MGL-BP-3A--3ELOSS-20CLASS-29" title="(MGL-BP:-&gt;LOSS CLASS)"><
 <p><a name='x-28MGL-BP-3A--3ESQUARED-DIFFERENCE-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1797">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESQUARED-DIFFERENCE-20CLASS-29" >-&gt;SQUARED-DIFFERENCE</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1797">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESQUARED-DIFFERENCE-20CLASS-29" >-&gt;SQUARED-DIFFERENCE</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>This lump takes two input lumps and calculates
 their squared difference <code>(x - y)^2</code> in an elementwise manner. The
@@ -5035,7 +5035,7 @@ GPU if it needs to.</p></li>
 <p><a name='x-28MGL-BP-3A--3ESOFTMAX-XE-LOSS-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1880">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESOFTMAX-XE-LOSS-20CLASS-29" >-&gt;SOFTMAX-XE-LOSS</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1880">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESOFTMAX-XE-LOSS-20CLASS-29" >-&gt;SOFTMAX-XE-LOSS</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>A specialized lump that computes the softmax of its
 input in the forward pass and backpropagates a cross-entropy loss.
@@ -5142,7 +5142,7 @@ target values for <code>N</code> stripes.</p></li>
 <p><a name='x-28MGL-BP-3A--3EDROPOUT-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L338">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EDROPOUT-20CLASS-29" >-&gt;DROPOUT</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L338">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EDROPOUT-20CLASS-29" >-&gt;DROPOUT</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>The output of this lump is identical to its input,
 except it randomly zeroes out some of them during training which act
@@ -5172,7 +5172,7 @@ node in this chunk with <code>DROPOUT</code> probability.</p></li>
 <p><a name='x-28MGL-BP-3A--3EGAUSSIAN-RANDOM-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2235">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EGAUSSIAN-RANDOM-20CLASS-29" >-&gt;GAUSSIAN-RANDOM</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2235">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EGAUSSIAN-RANDOM-20CLASS-29" >-&gt;GAUSSIAN-RANDOM</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>This lump has no input, it produces normally
 distributed independent random numbers with <a href="#x-28MGL-BP-3AMEAN-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EGAUSSIAN-RANDOM-29-29" title="(MGL-BP:MEAN (MGL-PAX:ACCESSOR MGL-BP:-&gt;GAUSSIAN-RANDOM))"><code>MEAN</code></a> and <a href="#x-28MGL-BP-3AVARIANCE-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EGAUSSIAN-RANDOM-29-29" title="(MGL-BP:VARIANCE (MGL-PAX:ACCESSOR MGL-BP:-&gt;GAUSSIAN-RANDOM))"><code>VARIANCE</code></a> (or
@@ -5218,7 +5218,7 @@ when not in training (i.e. when making predictions).</p></li>
 <p><a name='x-28MGL-BP-3A--3ESAMPLE-BINARY-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2271">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESAMPLE-BINARY-20CLASS-29" >-&gt;SAMPLE-BINARY</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2271">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESAMPLE-BINARY-20CLASS-29" >-&gt;SAMPLE-BINARY</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Treating values of its input as probabilities,
 sample independent binomials. Turn true into 1 and false into 0. The
@@ -5245,7 +5245,7 @@ input.</p>
 <p><a name='x-28MGL-BP-3A--3ESUM-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1718">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESUM-20CLASS-29" >-&gt;SUM</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L1718">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESUM-20CLASS-29" >-&gt;SUM</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Computes the sum of all nodes of its input per
 stripe. This <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is always 1.</p></li>
@@ -5260,7 +5260,7 @@ stripe. This <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3ARE
 <p><a name='x-28MGL-BP-3A--3EV-2AM-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2331">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EV-2AM-20CLASS-29" >-&gt;V*M</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2331">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EV-2AM-20CLASS-29" >-&gt;V*M</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Perform <code>X * WEIGHTS</code> where <code>X</code> (the input) is of
 size <code>M</code> and <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>1</code></a>) is a <a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" title="(MGL-BP:-&gt;WEIGHT CLASS)"><code>-&gt;WEIGHT</code></a> whose single stripe is taken to
@@ -5295,7 +5295,7 @@ of this lump. If <a href="#x-28MGL-BP-3ATRANSPOSE-WEIGHTS-P-20-28MGL-PAX-3AREADE
 <p><a name='x-28MGL-BP-3A--3E-2B-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2426">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3E-2B-20CLASS-29" >-&gt;+</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2426">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3E-2B-20CLASS-29" >-&gt;+</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Performs elementwise addition on its input lumps.
 The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is automatically determined from the size of
@@ -5317,7 +5317,7 @@ its inputs if there is at least one. If one of the inputs is a
 <p><a name='x-28MGL-BP-3A--3E-2A-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2482">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3E-2A-20CLASS-29" >-&gt;*</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2482">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3E-2A-20CLASS-29" >-&gt;*</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>Performs elementwise multiplication on its two
 input lumps. The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is automatically determined from
@@ -5338,7 +5338,7 @@ the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-
 <p><a name='x-28MGL-BP-3A--3EABS-20CLASS-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2574">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EABS-20CLASS-29" >-&gt;ABS</a></span> <span class="locative-args">LUMP</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2574">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EABS-20CLASS-29" >-&gt;ABS</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></li>
 </ul>
 
 <p><a name='x-28MGL-BP-3A-40MGL-BP-EXP-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5350,7 +5350,7 @@ the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-
 <p><a name='x-28MGL-BP-3A--3EEXP-20CLASS-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2710">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EEXP-20CLASS-29" >-&gt;EXP</a></span> <span class="locative-args">LUMP</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2710">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EEXP-20CLASS-29" >-&gt;EXP</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></li>
 </ul>
 
 <p><a name='x-28MGL-BP-3A-40MGL-BP-NORMALIZED-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5362,7 +5362,7 @@ the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-
 <p><a name='x-28MGL-BP-3A--3ENORMALIZED-20CLASS-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2751">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ENORMALIZED-20CLASS-29" >-&gt;NORMALIZED</a></span> <span class="locative-args">LUMP</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2751">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ENORMALIZED-20CLASS-29" >-&gt;NORMALIZED</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></li>
 </ul>
 
 <p><a name='x-28MGL-BP-3A-40MGL-BP-RNN-OPERATIONS-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5380,7 +5380,7 @@ the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-
 <p><a name='x-28MGL-BP-3A--3ELSTM-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2851">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELSTM-20CLASS-29" >-&gt;LSTM</a></span> <span class="locative-args">BPN</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2851">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELSTM-20CLASS-29" >-&gt;LSTM</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)">BPN</a></span></p>
 
 <p>Long-Short Term Memory subnetworks are built by the
 function <code>-&gt;LSTM</code> and they have many lumps hidden inside them. These
@@ -5444,7 +5444,7 @@ aforementioned two with signature like (<code>INPUTS</code> <code>&amp;KEY</code
 <p><a name='x-28MGL-BP-3A--3ESEQ-BARRIER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2964">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESEQ-BARRIER-20CLASS-29" >-&gt;SEQ-BARRIER</a></span> <span class="locative-args">LUMP</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/lumps.lisp#L2964">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ESEQ-BARRIER-20CLASS-29" >-&gt;SEQ-BARRIER</a></span> <span class="locative-args"><a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)">LUMP</a></span></p>
 
 <p>In an <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>, processing of stripes (instances in the
 batch) may require different number of time step so the final state
