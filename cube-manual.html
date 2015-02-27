@@ -103,7 +103,7 @@ in itself. One must subclass it and implement the
 <p><a name='x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L156">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29" >WITH-FACET</a></span> <span class="locative-args">(VAR (CUBE FACET-NAME &amp;KEY (DIRECTION :IO) TYPE)) &amp;BODY BODY</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L156">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29" >WITH-FACET</a></span> <span class="locative-args">(VAR (CUBE FACET-NAME &amp;KEY (DIRECTION <code>:IO</code>) TYPE)) &amp;BODY BODY</span></p>
 
 <p>Find or create the facet with <code>FACET-NAME</code> in <code>CUBE</code> and bind <code>VAR</code> to
 the representation of <code>CUBE</code>'s data provided by that facet. This
@@ -189,7 +189,7 @@ signal safe.</p>
 <p><a name='x-28MGL-CUBE-3ASYNCHRONIZATION-20-28MGL-PAX-3AACCESSOR-20MGL-CUBE-3ACUBE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L96">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3ASYNCHRONIZATION-20-28MGL-PAX-3AACCESSOR-20MGL-CUBE-3ACUBE-29-29" >SYNCHRONIZATION</a></span> <span class="locative-args">CUBE</span> <span class="locative-args">(:SYNCHRONIZATION = *DEFAULT-SYNCHRONIZATION*)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L96">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3ASYNCHRONIZATION-20-28MGL-PAX-3AACCESSOR-20MGL-CUBE-3ACUBE-29-29" >SYNCHRONIZATION</a></span> <span class="locative-args">CUBE</span> <span class="locative-args">(:SYNCHRONIZATION = <a href="#x-28MGL-CUBE-3A-2ADEFAULT-SYNCHRONIZATION-2A-20-28VARIABLE-29-29" title="(MGL-CUBE:*DEFAULT-SYNCHRONIZATION* (VARIABLE))"><code>*DEFAULT-SYNCHRONIZATION*</code></a>)</span></p>
 
 <p>By default, setup and teardown of facets by
 <a href="#x-28MGL-CUBE-3AWITH-FACET-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-CUBE:WITH-FACET (MGL-PAX:MACRO))"><code>WITH-FACET</code></a> is performed in a thread safe way. Corrupting internal
@@ -651,7 +651,7 @@ the thread in which they were created) are destroyed.</p></li>
 <p><a name='x-28MGL-CUBE-3ACOUNT-BARRED-FACETS-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L711">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3ACOUNT-BARRED-FACETS-20FUNCTION-29" >COUNT-BARRED-FACETS</a></span> <span class="locative-args">FACET-NAME &amp;KEY (TYPE 'CUBE)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/cube.lisp#L711">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CUBE-3ACOUNT-BARRED-FACETS-20FUNCTION-29" >COUNT-BARRED-FACETS</a></span> <span class="locative-args">FACET-NAME &amp;KEY (TYPE '<a href="#x-28MGL-CUBE-3ACUBE-20CLASS-29" title="(MGL-CUBE:CUBE CLASS)"><code>CUBE</code></a>)</span></p>
 
 <p>Count facets with <code>FACET-NAME</code> of cubes of <code>TYPE</code> which will be
 destroyed by a facet barrier.</p></li>

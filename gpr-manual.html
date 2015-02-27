@@ -153,7 +153,7 @@ slow.</p></li>
 <p><a name='x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >POPULATION</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(= (MAKE-ARRAY 0 :ADJUSTABLE 0 :FILL-POINTER T))</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >POPULATION</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(= (<code>MAKE-ARRAY</code> 0 <code>:ADJUSTABLE</code> 0 <code>:FILL-POINTER</code> <code>T</code>))</span></p>
 
 <p>An adjustable array with a fill-pointer that holds
 the individuals that make up the population.</p></li>
@@ -206,7 +206,7 @@ fitness function may include an L1 or L2 penalty term.</p>
 <p><a name='x-28MGL-GPR-3AMASS-EVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AMASS-EVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >MASS-EVALUATOR</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:MASS-EVALUATOR = NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AMASS-EVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >MASS-EVALUATOR</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:MASS-EVALUATOR = <code>NIL</code>)</span></p>
 
 <p><code>NIL</code> or a function of three arguments: the
 <a href="#x-28MGL-GPR-3AEVOLUTIONARY-ALGORITHM-20CLASS-29" title="(MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS)"><code>EVOLUTIONARY-ALGORITHM</code></a> object, the population vector and the
@@ -220,7 +220,7 @@ over <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTI
 <p><a name='x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITNESS-KEY</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:FITNESS-KEY = #'IDENTITY)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITNESS-KEY</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:FITNESS-KEY = #'<code>IDENTITY</code>)</span></p>
 
 <p>A function that returns a real number for an
 object returned by <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>EVALUATOR</code></a>. It is called when two fitness are to
@@ -256,7 +256,7 @@ generations or until the <a href="#x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-2
 <p><a name='x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITTEST</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(= NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITTEST</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(= <code>NIL</code>)</span></p>
 
 <p>The fittest individual ever to be seen and its
 fittness as a cons cell.</p></li>
@@ -265,7 +265,7 @@ fittness as a cons cell.</p></li>
 <p><a name='x-28MGL-GPR-3AFITTEST-CHANGED-FN-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITTEST-CHANGED-FN-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITTEST-CHANGED-FN</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:FITTEST-CHANGED-FN = NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/evolutionary-algorithm.lisp#L77">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITTEST-CHANGED-FN-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITTEST-CHANGED-FN</a></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:FITTEST-CHANGED-FN = <code>NIL</code>)</span></p>
 
 <p>If non-NIL, a function that's called when <a href="#x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>FITTEST</code></a>
 is updated with three arguments: the <a href="#x-28MGL-GPR-3AEVOLUTIONARY-ALGORITHM-20CLASS-29" title="(MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS)"><code>EVOLUTIONARY-ALGORITHM</code></a>
@@ -613,7 +613,7 @@ themselves.</p></li>
 <p><a name='x-28MGL-GPR-3ARANDOM-GP-EXPRESSION-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/genetic-programming.lisp#L368">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ARANDOM-GP-EXPRESSION-20FUNCTION-29" >RANDOM-GP-EXPRESSION</a></span> <span class="locative-args">GP TERMINATE-FN &amp;KEY (TYPE (TOPLEVEL-TYPE GP))</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/genetic-programming.lisp#L368">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ARANDOM-GP-EXPRESSION-20FUNCTION-29" >RANDOM-GP-EXPRESSION</a></span> <span class="locative-args">GP TERMINATE-FN &amp;KEY (TYPE (<a href="#x-28MGL-GPR-3ATOPLEVEL-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29" title="(MGL-GPR:TOPLEVEL-TYPE (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING))"><code>TOPLEVEL-TYPE</code></a> GP))</span></p>
 
 <p>Creating the initial population by hand is tedious. This
 convenience function calls <a href="#x-28MGL-GPR-3ARANDOM-EXPRESSION-20FUNCTION-29" title="(MGL-GPR:RANDOM-EXPRESSION FUNCTION)"><code>RANDOM-EXPRESSION</code></a> to create a random
@@ -653,7 +653,7 @@ with <a href="#x-28MGL-GPR-3AOPERATOR-20CLASS-29" title="(MGL-GPR:OPERATOR CLASS
 <p><a name='x-28MGL-GPR-3ATOPLEVEL-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/genetic-programming.lisp#L307">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ATOPLEVEL-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29" >TOPLEVEL-TYPE</a></span> <span class="locative-args">GENETIC-PROGRAMMING</span> <span class="locative-args">(:TOPLEVEL-TYPE = T)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/genetic-programming.lisp#L307">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ATOPLEVEL-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29" >TOPLEVEL-TYPE</a></span> <span class="locative-args">GENETIC-PROGRAMMING</span> <span class="locative-args">(:TOPLEVEL-TYPE = <code>T</code>)</span></p>
 
 <p>The type of the results produced by individuals.
 If the problem is to find the minimum a 1d real function then this
@@ -756,7 +756,7 @@ take place.</p>
 <p><a name='x-28MGL-GPR-3AKEEP-FITTEST-P-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/genetic-programming.lisp#L307">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AKEEP-FITTEST-P-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29" >KEEP-FITTEST-P</a></span> <span class="locative-args">GENETIC-PROGRAMMING</span> <span class="locative-args">(:KEEP-FITTEST-P = T)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/genetic-programming.lisp#L307">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AKEEP-FITTEST-P-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29" >KEEP-FITTEST-P</a></span> <span class="locative-args">GENETIC-PROGRAMMING</span> <span class="locative-args">(:KEEP-FITTEST-P = <code>T</code>)</span></p>
 
 <p>If true, then the fittest individual is always
 copied without mutation to the next generation. Of course, it may
@@ -787,7 +787,7 @@ individuals.</p></li>
 <p><a name='x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/differential-evolution.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29" >MAP-WEIGHTS-INTO-FN</a></span> <span class="locative-args">DIFFERENTIAL-EVOLUTION</span> <span class="locative-args">(:MAP-WEIGHTS-INTO-FN = #'MAP-INTO)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/differential-evolution.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29" >MAP-WEIGHTS-INTO-FN</a></span> <span class="locative-args">DIFFERENTIAL-EVOLUTION</span> <span class="locative-args">(:MAP-WEIGHTS-INTO-FN = #'<code>MAP-INTO</code>)</span></p>
 
 <p>The vector of numbers (the 'weights') are most
 often stored in some kind of array. All individuals must have the
@@ -818,7 +818,7 @@ Typically this just calls <code>MAKE-ARRAY</code>.</p></li>
 <p><a name='x-28MGL-GPR-3ACROSSOVER-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/differential-evolution.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ACROSSOVER-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29" >CROSSOVER-FN</a></span> <span class="locative-args">DIFFERENTIAL-EVOLUTION</span> <span class="locative-args">(:CROSSOVER-FN = #'CROSSOVER/BINARY)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/master/src/differential-evolution.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ACROSSOVER-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29" >CROSSOVER-FN</a></span> <span class="locative-args">DIFFERENTIAL-EVOLUTION</span> <span class="locative-args">(:CROSSOVER-FN = #'<a href="#x-28MGL-GPR-3ACROSSOVER-2FBINARY-20FUNCTION-29" title="(MGL-GPR:CROSSOVER/BINARY FUNCTION)"><code>CROSSOVER/BINARY</code></a>)</span></p>
 
 <p>A function of three arguments, the DE and two
 individuals, that destructively modifies the second individual by

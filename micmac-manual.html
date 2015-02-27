@@ -152,7 +152,7 @@ be boxed.</p>
 <p><a name='x-28MICMAC-3ABEAM-SEARCH-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/graph-search.lisp#L87">[function]</a></span> <span class="reference-object"><a href="#x-28MICMAC-3ABEAM-SEARCH-20FUNCTION-29" >BEAM-SEARCH</a></span> <span class="locative-args">START-NODES &amp;KEY MAX-DEPTH (N-SOLUTIONS 1) (BEAM-WIDTH (LENGTH START-NODES)) EXPAND-NODE-FN EXPAND-BEAM-FN SCORE-FN UPPER-BOUND-FN SOLUTIONP-FN (FINISHEDP-FN SOLUTIONP-FN)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/graph-search.lisp#L87">[function]</a></span> <span class="reference-object"><a href="#x-28MICMAC-3ABEAM-SEARCH-20FUNCTION-29" >BEAM-SEARCH</a></span> <span class="locative-args">START-NODES &amp;KEY MAX-DEPTH (N-SOLUTIONS 1) (BEAM-WIDTH (<code>LENGTH</code> <code>START-NODES</code>)) EXPAND-NODE-FN EXPAND-BEAM-FN SCORE-FN UPPER-BOUND-FN SOLUTIONP-FN (FINISHEDP-FN <code>SOLUTIONP-FN</code>)</span></p>
 
 <p>In a graph, search for nodes that with the best scores with <a href="http://en.wikipedia.org/wiki/Beam_search" >beam
 search</a>. That is, starting
@@ -187,7 +187,7 @@ provide either <code>EXPAND-NODE-FN</code> or <code>EXPAND-BEAM-FN</code>. The p
 <p><a name='x-28MICMAC-3APARALLEL-BEAM-SEARCH-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/graph-search.lisp#L154">[function]</a></span> <span class="reference-object"><a href="#x-28MICMAC-3APARALLEL-BEAM-SEARCH-20FUNCTION-29" >PARALLEL-BEAM-SEARCH</a></span> <span class="locative-args">START-NODE-SEQS &amp;KEY MAX-DEPTH (N-SOLUTIONS 1) BEAM-WIDTH EXPAND-NODE-FN EXPAND-BEAMS-FN SCORE-FN UPPER-BOUND-FN SOLUTIONP-FN (FINISHEDP-FN SOLUTIONP-FN)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/graph-search.lisp#L154">[function]</a></span> <span class="reference-object"><a href="#x-28MICMAC-3APARALLEL-BEAM-SEARCH-20FUNCTION-29" >PARALLEL-BEAM-SEARCH</a></span> <span class="locative-args">START-NODE-SEQS &amp;KEY MAX-DEPTH (N-SOLUTIONS 1) BEAM-WIDTH EXPAND-NODE-FN EXPAND-BEAMS-FN SCORE-FN UPPER-BOUND-FN SOLUTIONP-FN (FINISHEDP-FN <code>SOLUTIONP-FN</code>)</span></p>
 
 <p>This is very much like <a href="#x-28MICMAC-3ABEAM-SEARCH-20FUNCTION-29" title="(MICMAC:BEAM-SEARCH FUNCTION)"><code>BEAM-SEARCH</code></a> except it solves a number of
 instances of the same search problem starting from different sets of
@@ -286,7 +286,7 @@ specialize <a href="#x-28MICMAC-2EUCT-3AAVERAGE-REWARD-20-28MGL-PAX-3AACCESSOR-2
 <p><a name='x-28MICMAC-2EUCT-3ATO-NODE-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-EDGE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/uct.lisp#L55">[accessor]</a></span> <span class="reference-object"><a href="#x-28MICMAC-2EUCT-3ATO-NODE-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-EDGE-29-29" >TO-NODE</a></span> <span class="locative-args">UCT-EDGE</span> <span class="locative-args">(= NIL)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/uct.lisp#L55">[accessor]</a></span> <span class="reference-object"><a href="#x-28MICMAC-2EUCT-3ATO-NODE-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-EDGE-29-29" >TO-NODE</a></span> <span class="locative-args">UCT-EDGE</span> <span class="locative-args">(= <code>NIL</code>)</span></p>
 
 <p>The node this edge points to if the edge has been
 visited or <code>NIL</code>.</p></li>
@@ -464,7 +464,7 @@ probability. This effectively flattens the peaks if <code>TEMPERATURE</code> &gt
 <p><a name='x-28MICMAC-2EMETROPOLIS-HASTINGS-3AJUMP-TO-SAMPLE-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/metropolis-hastings.lisp#L67">[function]</a></span> <span class="reference-object"><a href="#x-28MICMAC-2EMETROPOLIS-HASTINGS-3AJUMP-TO-SAMPLE-20FUNCTION-29" >JUMP-TO-SAMPLE</a></span> <span class="locative-args">CHAIN JUMP &amp;KEY (RESULT-SAMPLE (STATE CHAIN))</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/master/src/metropolis-hastings.lisp#L67">[function]</a></span> <span class="reference-object"><a href="#x-28MICMAC-2EMETROPOLIS-HASTINGS-3AJUMP-TO-SAMPLE-20FUNCTION-29" >JUMP-TO-SAMPLE</a></span> <span class="locative-args">CHAIN JUMP &amp;KEY (RESULT-SAMPLE (<a href="#x-28MICMAC-2EMETROPOLIS-HASTINGS-3ASTATE-20-28MGL-PAX-3AREADER-20MICMAC-2EMETROPOLIS-HASTINGS-3AMC-CHAIN-29-29" title="(MICMAC.METROPOLIS-HASTINGS:STATE (MGL-PAX:READER MICMAC.METROPOLIS-HASTINGS:MC-CHAIN))"><code>STATE</code></a> <code>CHAIN</code>))</span></p>
 
 <p>From the current state of <code>CHAIN</code> make <code>JUMP</code> (from the current
 distribution of <code>CHAIN</code>) and return the sample where we landed. Reuse
