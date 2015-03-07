@@ -1365,7 +1365,7 @@ is the identity matrix (or something close if <code>M</code> is wide). Return <c
 <ul>
 <li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L1913">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2AMAT-HEADERS-2A-20-28VARIABLE-29-29" >*MAT-HEADERS*</a></span> <span class="locative-args">T</span></p>
 
-<p>If enabled, a header with <a href="#x-28MGL-MAT-3AMAT-CTYPE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-CTYPE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-CTYPE</code></a> and <a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> is written by
+<p>If true, a header with <a href="#x-28MGL-MAT-3AMAT-CTYPE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-CTYPE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-CTYPE</code></a> and <a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> is written by
 <a href="#x-28MGL-MAT-3AWRITE-MAT-20GENERIC-FUNCTION-29" title="(MGL-MAT:WRITE-MAT GENERIC-FUNCTION)"><code>WRITE-MAT</code></a> before the contents and <a href="#x-28MGL-MAT-3AREAD-MAT-20GENERIC-FUNCTION-29" title="(MGL-MAT:READ-MAT GENERIC-FUNCTION)"><code>READ-MAT</code></a> checks that these match
 the matrix into which it is reading.</p></li>
 </ul>
@@ -1387,14 +1387,13 @@ only visible elements are written. Also see <a href="#x-28MGL-MAT-3A-2AMAT-HEADE
 
 <p>Destructively modify the visible portion (with
 regards to displacement and shape) of <code>MAT</code> by reading <a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> number
-of elements from binary <code>STREAM</code>. Return <code>MAT</code>. No sanity checks are
-performed, <a href="#x-28MGL-MAT-3AREAD-MAT-20GENERIC-FUNCTION-29" title="(MGL-MAT:READ-MAT GENERIC-FUNCTION)"><code>READ-MAT</code></a> may return without error even if <code>STREAM</code> contains
-garbage. Also see <a href="#x-28MGL-MAT-3A-2AMAT-HEADERS-2A-20-28VARIABLE-29-29" title="(MGL-MAT:*MAT-HEADERS* (VARIABLE))"><code>*MAT-HEADERS*</code></a>.</p></li>
+of elements from binary <code>STREAM</code>. Return <code>MAT</code>. Also see
+<a href="#x-28MGL-MAT-3A-2AMAT-HEADERS-2A-20-28VARIABLE-29-29" title="(MGL-MAT:*MAT-HEADERS* (VARIABLE))"><code>*MAT-HEADERS*</code></a>.</p></li>
 </ul>
 
 <p><a name='x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-IO-20MGL-PAX-3ASECTION-29" title="I/O">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29" title="Debugging">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L1986">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-IO-20MGL-PAX-3ASECTION-29" title="I/O">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29" title="Debugging">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L1985">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29">16 Debugging</a></h2>
 
@@ -1420,7 +1419,7 @@ used.</p>
 <p><a name='x-28MGL-MAT-3AMAT-ROOM-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2008">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-ROOM-20FUNCTION-29" >MAT-ROOM</a></span> <span class="locative-args">&amp;KEY (STREAM <code>*STANDARD-OUTPUT*</code>) (VERBOSE <code>T</code>)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2007">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-ROOM-20FUNCTION-29" >MAT-ROOM</a></span> <span class="locative-args">&amp;KEY (STREAM <code>*STANDARD-OUTPUT*</code>) (VERBOSE <code>T</code>)</span></p>
 
 <p>Calls <a href="#x-28MGL-MAT-3AFOREIGN-ROOM-20FUNCTION-29" title="(MGL-MAT:FOREIGN-ROOM FUNCTION)"><code>FOREIGN-ROOM</code></a> and <a href="#x-28MGL-MAT-3ACUDA-ROOM-20FUNCTION-29" title="(MGL-MAT:CUDA-ROOM FUNCTION)"><code>CUDA-ROOM</code></a>.</p></li>
 </ul>
@@ -1428,7 +1427,7 @@ used.</p>
 <p><a name='x-28MGL-MAT-3AWITH-MAT-COUNTERS-20-28MGL-PAX-3AMACRO-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2015">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AWITH-MAT-COUNTERS-20-28MGL-PAX-3AMACRO-29-29" >WITH-MAT-COUNTERS</a></span> <span class="locative-args">(&amp;KEY COUNT N-BYTES) &amp;BODY BODY</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2014">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AWITH-MAT-COUNTERS-20-28MGL-PAX-3AMACRO-29-29" >WITH-MAT-COUNTERS</a></span> <span class="locative-args">(&amp;KEY COUNT N-BYTES) &amp;BODY BODY</span></p>
 
 <p>Count all <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> allocations and also the number of bytes they may
 require. <em>May require</em> here really means an upper bound,
@@ -1456,13 +1455,13 @@ production.</p>
 
 <p><a name='x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29" title="Debugging">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2054">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29" title="Debugging">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2053">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29">17 Facet API</a></h2>
 
 <p><a name='x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-FOREIGN-20MGL-PAX-3ASECTION-29" title="Foreign arrays">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2060">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29" title="Facet API">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-FOREIGN-20MGL-PAX-3ASECTION-29" title="Foreign arrays">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29" title="Facets">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2059">&#955;</a></span></span></p>
 
 <h3><a href="#x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29">17.1 Facets</a></h3>
 
@@ -1474,7 +1473,7 @@ locatives:</p>
 <p><a name='x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2131">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >BACKING-ARRAY</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2130">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >BACKING-ARRAY</a></span></p>
 
 <p>The corresponding facet's value is a one dimensional lisp array or
 a static vector that also looks exactly like a lisp array but is
@@ -1484,7 +1483,7 @@ allocated in foreign memory. See <a href="#x-28MGL-MAT-3A-2AFOREIGN-ARRAY-STRATE
 <p><a name='x-28ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2136">[facet-name]</a></span> <span class="reference-object"><a href="#x-28ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >ARRAY</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2135">[facet-name]</a></span> <span class="reference-object"><a href="#x-28ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >ARRAY</a></span></p>
 
 <p>Same as <a href="#x-28MGL-MAT-3ABACKING-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:BACKING-ARRAY (MGL-CUBE:FACET-NAME))"><code>BACKING-ARRAY</code></a> if the matrix is one-dimensional, all
 elements are visible (see <a href="#x-28MGL-MAT-3A-40MAT-SHAPING-20MGL-PAX-3ASECTION-29" title="Shaping">Shaping</a>), else it's a lisp array
@@ -1494,7 +1493,7 @@ displaced to the backing array.</p></li>
 <p><a name='x-28MGL-MAT-3AFOREIGN-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2141">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AFOREIGN-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >FOREIGN-ARRAY</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2140">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AFOREIGN-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >FOREIGN-ARRAY</a></span></p>
 
 <p>The facet's value is a <a href="#x-28MGL-MAT-3AFOREIGN-ARRAY-20CLASS-29" title="(MGL-MAT:FOREIGN-ARRAY CLASS)"><code>FOREIGN-ARRAY</code></a> which is an
 <code>OFFSET-POINTER</code> wrapping a <code>CFFI</code> pointer. See
@@ -1504,7 +1503,7 @@ displaced to the backing array.</p></li>
 <p><a name='x-28MGL-MAT-3ACUDA-HOST-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2146">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-HOST-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >CUDA-HOST-ARRAY</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2145">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-HOST-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >CUDA-HOST-ARRAY</a></span></p>
 
 <p>This facet's value is a basically the same as that of
 <a href="#x-28MGL-MAT-3AFOREIGN-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:FOREIGN-ARRAY (MGL-CUBE:FACET-NAME))"><code>FOREIGN-ARRAY</code></a>. In fact, they share storage. The
@@ -1520,7 +1519,7 @@ overlapping copying with computation. See
 <p><a name='x-28MGL-MAT-3ACUDA-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2157">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >CUDA-ARRAY</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2156">[facet-name]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" >CUDA-ARRAY</a></span></p>
 
 <p>The facet's value is a <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20-28MGL-CUBE-3AFACET-NAME-29-29" title="(MGL-MAT:CUDA-ARRAY (MGL-CUBE:FACET-NAME))"><code>CUDA-ARRAY</code></a> which is an <code>OFFSET-POINTER</code>
 wrapping a <code>CL-CUDA.DRIVER-API:CU-DEVICE-PTR</code>, allocated with
@@ -1731,7 +1730,7 @@ turns off cuda initialization entirely.</p></li>
 <p><a name='x-28MGL-MAT-3ACUDA-ENABLED-20-28MGL-PAX-3AACCESSOR-20MGL-MAT-3AMAT-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L189">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-ENABLED-20-28MGL-PAX-3AACCESSOR-20MGL-MAT-3AMAT-29-29" >CUDA-ENABLED</a></span> <span class="locative-args">MAT</span> <span class="locative-args">(CUDA-ENABLED = <a href="#x-28MGL-MAT-3A-2ADEFAULT-MAT-CUDA-ENABLED-2A-20-28VARIABLE-29-29" title="(MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* (VARIABLE))"><code>*DEFAULT-MAT-CUDA-ENABLED*</code></a>)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L189">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-ENABLED-20-28MGL-PAX-3AACCESSOR-20MGL-MAT-3AMAT-29-29" >CUDA-ENABLED</a></span> <span class="locative-args">MAT</span> <span class="locative-args">(:CUDA-ENABLED = <a href="#x-28MGL-MAT-3A-2ADEFAULT-MAT-CUDA-ENABLED-2A-20-28VARIABLE-29-29" title="(MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* (VARIABLE))"><code>*DEFAULT-MAT-CUDA-ENABLED*</code></a>)</span></p>
 
 <p>The control provided by <a href="#x-28MGL-MAT-3A-2ACUDA-ENABLED-2A-20-28VARIABLE-29-29" title="(MGL-MAT:*CUDA-ENABLED* (VARIABLE))"><code>*CUDA-ENABLED*</code></a> can be too
 coarse. This flag provides a per-object mechanism to turn cuda
@@ -1894,7 +1893,7 @@ matrices.</p>
 
 <p><a name='x-28MGL-MAT-3A-40MAT-EXTENSIONS-20MGL-PAX-3ASECTION-29'></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-CUDA-MEMORY-MANAGEMENT-20MGL-PAX-3ASECTION-29" title="CUDA Memory Management">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-LISP-EXTENSIONS-20MGL-PAX-3ASECTION-29" title="Lisp Extensions">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-EXTENSIONS-20MGL-PAX-3ASECTION-29" title="Writing Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2405">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#x-28MGL-MAT-3A-40MAT-CUDA-MEMORY-MANAGEMENT-20MGL-PAX-3ASECTION-29" title="CUDA Memory Management">&#8592;</a> <a href="#x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29" title="MAT Manual">&#8593;</a> <a href="#x-28MGL-MAT-3A-40MAT-LISP-EXTENSIONS-20MGL-PAX-3ASECTION-29" title="Lisp Extensions">&#8594;</a> <a href="#x-28MGL-MAT-3A-40MAT-EXTENSIONS-20MGL-PAX-3ASECTION-29" title="Writing Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/master/src/mat.lisp#L2404">&#955;</a></span></span></p>
 
 <h2><a href="#x-28MGL-MAT-3A-40MAT-EXTENSIONS-20MGL-PAX-3ASECTION-29">18 Writing Extensions</a></h2>
 
