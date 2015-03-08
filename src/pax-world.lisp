@@ -214,16 +214,26 @@
        </div>~%~
      </div>~%~
      <div id="content">~%"""
-   title stylesheet charset link-to-pax-world-p))
+     title stylesheet charset link-to-pax-world-p))
 
-(defun html-footer (stream)
+(defvar *google-analytics-id* nil)
+
+(defun html-footer (stream &key (google-analytics-id *google-analytics-id*))
   (format
    stream
    "  </div>~%~
    </div>~%~
-   <script>$('#page-toc').toc(~A);</script>~
-   </body>~%</html>~%"
-   (toc-options)))
+   <script>$('#page-toc').toc(~A);</script>~%~
+   ~:[~;<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', '~A', 'auto');
+ga('send', 'pageview');
+</script>~%~]</body>~%</html>~%"
+   (toc-options)
+   google-analytics-id google-analytics-id))
 
 (defun toc-options ()
   (format nil "{'selectors': '~{~A~^,~}'}"
@@ -261,5 +271,8 @@
 
 (update-readmes)
 (update-pax-world)
+
+(let ((*google-analytics-id* "UA-60516410-1"))
+  (update-pax-world))
 
 |#
