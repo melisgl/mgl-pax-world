@@ -2777,7 +2777,7 @@ respect to some of its parameters.</p>
 <p><a id='x-28MGL-CG-3ACG-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L135">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-20FUNCTION-29" >CG</a></span> <span class="locative-args">FN W &amp;KEY (MAX-N-LINE-SEARCHES <a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-LINE-SEARCHES-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES* (VARIABLE))"><code>*DEFAULT-MAX-N-LINE-SEARCHES*</code></a>) (MAX-N-EVALUATIONS-PER-LINE-SEARCH <a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH* (VARIABLE))"><code>*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*</code></a>) (MAX-N-EVALUATIONS <a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-MAX-N-EVALUATIONS* (VARIABLE))"><code>*DEFAULT-MAX-N-EVALUATIONS*</code></a>) (SIG <a href="#x-28MGL-CG-3A-2ADEFAULT-SIG-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-SIG* (VARIABLE))"><code>*DEFAULT-SIG*</code></a>) (RHO <a href="#x-28MGL-CG-3A-2ADEFAULT-RHO-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-RHO* (VARIABLE))"><code>*DEFAULT-RHO*</code></a>) (INT <a href="#x-28MGL-CG-3A-2ADEFAULT-INT-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-INT* (VARIABLE))"><code>*DEFAULT-INT*</code></a>) (EXT <a href="#x-28MGL-CG-3A-2ADEFAULT-EXT-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-EXT* (VARIABLE))"><code>*DEFAULT-EXT*</code></a>) (RATIO <a href="#x-28MGL-CG-3A-2ADEFAULT-RATIO-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-RATIO* (VARIABLE))"><code>*DEFAULT-RATIO*</code></a>) SPARE-VECTORS</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L133">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-20FUNCTION-29" >CG</a></span> <span class="locative-args">FN W &amp;KEY (MAX-N-LINE-SEARCHES <a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-LINE-SEARCHES-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES* (VARIABLE))"><code>*DEFAULT-MAX-N-LINE-SEARCHES*</code></a>) (MAX-N-EVALUATIONS-PER-LINE-SEARCH <a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH* (VARIABLE))"><code>*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*</code></a>) (MAX-N-EVALUATIONS <a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-MAX-N-EVALUATIONS* (VARIABLE))"><code>*DEFAULT-MAX-N-EVALUATIONS*</code></a>) (SIG <a href="#x-28MGL-CG-3A-2ADEFAULT-SIG-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-SIG* (VARIABLE))"><code>*DEFAULT-SIG*</code></a>) (RHO <a href="#x-28MGL-CG-3A-2ADEFAULT-RHO-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-RHO* (VARIABLE))"><code>*DEFAULT-RHO*</code></a>) (INT <a href="#x-28MGL-CG-3A-2ADEFAULT-INT-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-INT* (VARIABLE))"><code>*DEFAULT-INT*</code></a>) (EXT <a href="#x-28MGL-CG-3A-2ADEFAULT-EXT-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-EXT* (VARIABLE))"><code>*DEFAULT-EXT*</code></a>) (RATIO <a href="#x-28MGL-CG-3A-2ADEFAULT-RATIO-2A-20-28VARIABLE-29-29" title="(MGL-CG:*DEFAULT-RATIO* (VARIABLE))"><code>*DEFAULT-RATIO*</code></a>) SPARE-VECTORS</span></p>
 
 <p><a href="#x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29" title="(MGL-CG:CG-OPTIMIZER CLASS)"><code>CG-OPTIMIZER</code></a> passes each batch of data to this function with its
 <a href="#x-28MGL-CG-3ACG-ARGS-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" title="(MGL-CG:CG-ARGS (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER))"><code>CG-ARGS</code></a> passed on.</p>
@@ -2840,7 +2840,7 @@ minimization; it is probably not worth playing much with <code>RHO</code>.</p></
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-INT-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L84">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-INT-2A-20-28VARIABLE-29-29" >*DEFAULT-INT*</a></span> <span class="locative-args">0.1</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L82">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-INT-2A-20-28VARIABLE-29-29" >*DEFAULT-INT*</a></span> <span class="locative-args">0.1</span></p>
 
 <p>Don't reevaluate within <code>INT</code> of the limit of the current bracket.</p></li>
 </ul>
@@ -2848,7 +2848,7 @@ minimization; it is probably not worth playing much with <code>RHO</code>.</p></
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-EXT-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L86">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-EXT-2A-20-28VARIABLE-29-29" >*DEFAULT-EXT*</a></span> <span class="locative-args">3</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L84">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-EXT-2A-20-28VARIABLE-29-29" >*DEFAULT-EXT*</a></span> <span class="locative-args">3</span></p>
 
 <p>Extrapolate maximum <code>EXT</code> times the current step-size.</p></li>
 </ul>
@@ -2856,7 +2856,7 @@ minimization; it is probably not worth playing much with <code>RHO</code>.</p></
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-SIG-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L88">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-SIG-2A-20-28VARIABLE-29-29" >*DEFAULT-SIG*</a></span> <span class="locative-args">0.1</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L86">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-SIG-2A-20-28VARIABLE-29-29" >*DEFAULT-SIG*</a></span> <span class="locative-args">0.1</span></p>
 
 <p><code>SIG</code> and <code>RHO</code> are the constants controlling the Wolfe-Powell
 conditions. <code>SIG</code> is the maximum allowed absolute ratio between
@@ -2868,7 +2868,7 @@ line-searches.</p></li>
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-RHO-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L94">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-RHO-2A-20-28VARIABLE-29-29" >*DEFAULT-RHO*</a></span> <span class="locative-args">0.05</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L92">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-RHO-2A-20-28VARIABLE-29-29" >*DEFAULT-RHO*</a></span> <span class="locative-args">0.05</span></p>
 
 <p><code>RHO</code> is the minimum allowed fraction of the expected (from the slope
 at the initial point in the linesearch). Constants must satisfy 0 &lt;
@@ -2878,7 +2878,7 @@ at the initial point in the linesearch). Constants must satisfy 0 &lt;
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-RATIO-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L98">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-RATIO-2A-20-28VARIABLE-29-29" >*DEFAULT-RATIO*</a></span> <span class="locative-args">10</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L96">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-RATIO-2A-20-28VARIABLE-29-29" >*DEFAULT-RATIO*</a></span> <span class="locative-args">10</span></p>
 
 <p>Maximum allowed slope ratio.</p></li>
 </ul>
@@ -2886,56 +2886,34 @@ at the initial point in the linesearch). Constants must satisfy 0 &lt;
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-MAX-N-LINE-SEARCHES-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L100">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-LINE-SEARCHES-2A-20-28VARIABLE-29-29" >*DEFAULT-MAX-N-LINE-SEARCHES*</a></span> <span class="locative-args">NIL</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L98">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-LINE-SEARCHES-2A-20-28VARIABLE-29-29" >*DEFAULT-MAX-N-LINE-SEARCHES*</a></span> <span class="locative-args">NIL</span></li>
 </ul>
 
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L101">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH-2A-20-28VARIABLE-29-29" >*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*</a></span> <span class="locative-args">20</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L99">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH-2A-20-28VARIABLE-29-29" >*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*</a></span> <span class="locative-args">20</span></li>
 </ul>
 
 <p><a id='x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-2A-20-28VARIABLE-29-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L102">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-2A-20-28VARIABLE-29-29" >*DEFAULT-MAX-N-EVALUATIONS*</a></span> <span class="locative-args">NIL</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L100">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3A-2ADEFAULT-MAX-N-EVALUATIONS-2A-20-28VARIABLE-29-29" >*DEFAULT-MAX-N-EVALUATIONS*</a></span> <span class="locative-args">NIL</span></li>
 </ul>
 
 <p><a id='x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29" >CG-OPTIMIZER</a></span> <span class="locative-args"><a href="#x-28MGL-OPT-3AITERATIVE-OPTIMIZER-20CLASS-29" title="(MGL-OPT:ITERATIVE-OPTIMIZER CLASS)">ITERATIVE-OPTIMIZER</a></span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L366">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-OPTIMIZER-20CLASS-29" >CG-OPTIMIZER</a></span> <span class="locative-args"><a href="#x-28MGL-OPT-3AITERATIVE-OPTIMIZER-20CLASS-29" title="(MGL-OPT:ITERATIVE-OPTIMIZER CLASS)">ITERATIVE-OPTIMIZER</a></span></p>
 
 <p>Updates all weights simultaneously after chewing
 through <code>BATCH-SIZE</code>(<a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER))"><code>1</code></a> <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3A-3AGD-OPTIMIZER-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:ACCESSOR MGL-GD::GD-OPTIMIZER))"><code>2</code></a>) inputs.</p></li>
 </ul>
 
-<p><a id='x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29'></a></p>
-
-<ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/optimize.lisp#L75">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" >N-INSTANCES</a></span> <span class="locative-args">ITERATIVE-OPTIMIZER</span> <span class="locative-args">(:N-INSTANCES = 0)</span></p>
-
-<p>The number of instances this optimizer has seen so
-far. Incremented automatically during optimization.</p></li>
-</ul>
-
-<p><a id='x-28MGL-OPT-3ATERMINATION-20-28MGL-PAX-3AACCESSOR-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29'></a></p>
-
-<ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/optimize.lisp#L75">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-OPT-3ATERMINATION-20-28MGL-PAX-3AACCESSOR-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" >TERMINATION</a></span> <span class="locative-args">ITERATIVE-OPTIMIZER</span> <span class="locative-args">(:TERMINATION = <code>NIL</code>)</span></p>
-
-<p>If a number, it's the number of instances to train
-on in the sense of <a href="#x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" title="(MGL-OPT:N-INSTANCES (MGL-PAX:READER MGL-OPT:ITERATIVE-OPTIMIZER))"><code>N-INSTANCES</code></a>. If <a href="#x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" title="(MGL-OPT:N-INSTANCES (MGL-PAX:READER MGL-OPT:ITERATIVE-OPTIMIZER))"><code>N-INSTANCES</code></a> is equal or greater
-than this value optimization stops. If <code>TERMINATION</code> is <code>NIL</code>, then
-optimization will continue. If it is <code>T</code>, then optimization will
-stop. If it is a function of no arguments, then its return value
-is processed as if it was returned by <code>TERMINATION</code>.</p></li>
-</ul>
-
 <p><a id='x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" >BATCH-SIZE</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:BATCH-SIZE)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L366">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" >BATCH-SIZE</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:BATCH-SIZE)</span></p>
 
 <p>After having gone through <code>BATCH-SIZE</code> number of
 instances, weights are updated. Normally, <a href="#x-28MGL-CG-3ACG-20FUNCTION-29" title="(MGL-CG:CG FUNCTION)"><code>CG</code></a> operates on all
@@ -2948,13 +2926,13 @@ the dataset at the start of optimization.</p></li>
 <p><a id='x-28MGL-CG-3ACG-ARGS-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-ARGS-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" >CG-ARGS</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:CG-ARGS = '<code>NIL</code>)</span></li>
+<li><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L366">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ACG-ARGS-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" >CG-ARGS</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:CG-ARGS = '<code>NIL</code>)</span></li>
 </ul>
 
 <p><a id='x-28MGL-CG-3AON-CG-BATCH-DONE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3AON-CG-BATCH-DONE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" >ON-CG-BATCH-DONE</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:ON-CG-BATCH-DONE = <code>NIL</code>)</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L366">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3AON-CG-BATCH-DONE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" >ON-CG-BATCH-DONE</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:ON-CG-BATCH-DONE = <code>NIL</code>)</span></p>
 
 <p>An event hook called when processing a conjugate
 gradient batch is done. The handlers on the hook are called with 8
@@ -2971,7 +2949,7 @@ arguments:</p>
 <p><a id='x-28MGL-CG-3ALOG-CG-BATCH-DONE-20GENERIC-FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L420">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ALOG-CG-BATCH-DONE-20GENERIC-FUNCTION-29" >LOG-CG-BATCH-DONE</a></span> <span class="locative-args">OPTIMIZER GRADIENT-SOURCE INSTANCES BEST-W BEST-F N-LINE-SEARCHES N-SUCCESFUL-LINE-SEARCHES N-EVALUATIONS</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L418">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ALOG-CG-BATCH-DONE-20GENERIC-FUNCTION-29" >LOG-CG-BATCH-DONE</a></span> <span class="locative-args">OPTIMIZER GRADIENT-SOURCE INSTANCES BEST-W BEST-F N-LINE-SEARCHES N-SUCCESFUL-LINE-SEARCHES N-EVALUATIONS</span></p>
 
 <p>This is a function can be added to
 <a href="#x-28MGL-CG-3AON-CG-BATCH-DONE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29" title="(MGL-CG:ON-CG-BATCH-DONE (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER))"><code>ON-CG-BATCH-DONE</code></a>. The default implementation simply logs the event
@@ -2981,7 +2959,7 @@ arguments.</p></li>
 <p><a id='x-28MGL-CG-3ASEGMENT-FILTER-20-28MGL-PAX-3AREADER-20MGL-CG-3ACG-OPTIMIZER-29-29'></a></p>
 
 <ul>
-<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L368">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ASEGMENT-FILTER-20-28MGL-PAX-3AREADER-20MGL-CG-3ACG-OPTIMIZER-29-29" >SEGMENT-FILTER</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:SEGMENT-FILTER = (<code>CONSTANTLY</code> <code>T</code>))</span></p>
+<li><p><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/master/src/conjugate-gradient.lisp#L366">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-CG-3ASEGMENT-FILTER-20-28MGL-PAX-3AREADER-20MGL-CG-3ACG-OPTIMIZER-29-29" >SEGMENT-FILTER</a></span> <span class="locative-args">CG-OPTIMIZER</span> <span class="locative-args">(:SEGMENT-FILTER = (<code>CONSTANTLY</code> <code>T</code>))</span></p>
 
 <p>A predicate function on segments that filters out
 uninteresting segments. Called from <a href="#x-28MGL-OPT-3AINITIALIZE-OPTIMIZER-2A-20GENERIC-FUNCTION-29" title="(MGL-OPT:INITIALIZE-OPTIMIZER* GENERIC-FUNCTION)"><code>INITIALIZE-OPTIMIZER*</code></a>.</p></li>
