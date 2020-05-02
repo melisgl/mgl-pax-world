@@ -11,7 +11,7 @@
   use MGL-PAX."
   :depends-on (:cl-fad :mgl-pax :micmac
                        :mgl-gpr :mgl-mat :mgl
-                       :named-readtables-doc
+                       :named-readtables/doc
                        :pythonic-string-reader)
   :components ((:module "src"
                 :serial t
