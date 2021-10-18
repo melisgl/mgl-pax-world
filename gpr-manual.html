@@ -496,7 +496,7 @@ types. The following defines <code>+</code> as an operator that adds two
                :argument-types '(float float))
 </code></pre>
 
-<p>See the macro <a href="#x-28MGL-GPR-3AOPERATOR-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-GPR:OPERATOR (MGL-PAX:MACRO))"><code>OPERATOR</code></a> for a shorthand for the above.</p>
+<p>See the macro <a href="#x-28MGL-GPR-3AOPERATOR-20MGL-PAX-3AMACRO-29" title="(MGL-GPR:OPERATOR MGL-PAX:MACRO)"><code>OPERATOR</code></a> for a shorthand for the above.</p>
 
 <p>Currently no lambda list keywords are supported and there is no way
 to define how an expression with a particular operator is to be
@@ -520,10 +520,10 @@ built. See <a href="#x-28MGL-GPR-3ARANDOM-EXPRESSION-20FUNCTION-29" title="(MGL-
 this operator.</p></li>
 </ul>
 
-<p><a id='x-28MGL-GPR-3AOPERATOR-20-28MGL-PAX-3AMACRO-29-29'></a></p>
+<p><a id='x-28MGL-GPR-3AOPERATOR-20MGL-PAX-3AMACRO-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/c606f860a5993d4ec15b753fc0e238df1e133e3f/src/genetic-programming.lisp#L209">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AOPERATOR-20-28MGL-PAX-3AMACRO-29-29" >OPERATOR</a></span></span> <span class="locative-args">(NAME &amp;REST ARG-TYPES) RESULT-TYPE &amp;KEY (WEIGHT 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/c606f860a5993d4ec15b753fc0e238df1e133e3f/src/genetic-programming.lisp#L209">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AOPERATOR-20MGL-PAX-3AMACRO-29" >OPERATOR</a></span></span> <span class="locative-args">(NAME &amp;REST ARG-TYPES) RESULT-TYPE &amp;KEY (WEIGHT 1)</span></span></p>
 
 <p>Syntactic sugar for instantiating operators. The example given for
 <a href="#x-28MGL-GPR-3AOPERATOR-20CLASS-29" title="(MGL-GPR:OPERATOR CLASS)"><code>OPERATOR</code></a> could be written as:</p>
@@ -549,7 +549,7 @@ literal builds bytes:</p>
                :builder (lambda () (random 256)))
 </code></pre>
 
-<p>In practice, one rarely writes it out like that, because the <a href="#x-28MGL-GPR-3ALITERAL-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-GPR:LITERAL (MGL-PAX:MACRO))"><code>LITERAL</code></a>
+<p>In practice, one rarely writes it out like that, because the <a href="#x-28MGL-GPR-3ALITERAL-20MGL-PAX-3AMACRO-29" title="(MGL-GPR:LITERAL MGL-PAX:MACRO)"><code>LITERAL</code></a>
 macro provides a more convenient shorthand.</p></li>
 </ul>
 
@@ -562,10 +562,10 @@ macro provides a more convenient shorthand.</p></li>
 literal that belongs to its literal class.</p></li>
 </ul>
 
-<p><a id='x-28MGL-GPR-3ALITERAL-20-28MGL-PAX-3AMACRO-29-29'></a></p>
+<p><a id='x-28MGL-GPR-3ALITERAL-20MGL-PAX-3AMACRO-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/c606f860a5993d4ec15b753fc0e238df1e133e3f/src/genetic-programming.lisp#L242">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ALITERAL-20-28MGL-PAX-3AMACRO-29-29" >LITERAL</a></span></span> <span class="locative-args">(RESULT-TYPE &amp;KEY (WEIGHT 1)) &amp;BODY BODY</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/c606f860a5993d4ec15b753fc0e238df1e133e3f/src/genetic-programming.lisp#L242">[macro]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ALITERAL-20MGL-PAX-3AMACRO-29" >LITERAL</a></span></span> <span class="locative-args">(RESULT-TYPE &amp;KEY (WEIGHT 1)) &amp;BODY BODY</span></span></p>
 
 <p>Syntactic sugar for defining literal classes. The example given for
 <a href="#x-28MGL-GPR-3ALITERAL-20CLASS-29" title="(MGL-GPR:LITERAL CLASS)"><code>LITERAL</code></a> could be written as:</p>
