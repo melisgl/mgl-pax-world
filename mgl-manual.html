@@ -347,10 +347,10 @@ providing two functions: <a href="#x-28MGL-DATASET-3ASAMPLE-20GENERIC-FUNCTION-2
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/e697791a9bcad3b6e7b3845246a2aa55238cfef7/src/dataset.lisp#L81">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-DATASET-3ASAMPLE-20GENERIC-FUNCTION-29" >SAMPLE</a></span></span> <span class="locative-args">SAMPLER</span></span></p>
 
 <p>If <code>SAMPLER</code> has not run out of data (see <a href="#x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29" title="(MGL-DATASET:FINISHEDP GENERIC-FUNCTION)"><code>FINISHEDP</code></a>)
-<a href="#x-28MGL-DATASET-3ASAMPLE-20GENERIC-FUNCTION-29" title="(MGL-DATASET:SAMPLE GENERIC-FUNCTION)"><code>SAMPLE</code></a> returns an object that represents a sample from the world to
+<code>SAMPLE</code> returns an object that represents a sample from the world to
 be experienced or, in other words, simply something the can be used
 as input for training or prediction. It is not allowed to call
-<a href="#x-28MGL-DATASET-3ASAMPLE-20GENERIC-FUNCTION-29" title="(MGL-DATASET:SAMPLE GENERIC-FUNCTION)"><code>SAMPLE</code></a> if <code>SAMPLER</code> is <a href="#x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29" title="(MGL-DATASET:FINISHEDP GENERIC-FUNCTION)"><code>FINISHEDP</code></a>.</p></li>
+<code>SAMPLE</code> if <code>SAMPLER</code> is <a href="#x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29" title="(MGL-DATASET:FINISHEDP GENERIC-FUNCTION)"><code>FINISHEDP</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29'></a></p>
@@ -837,9 +837,9 @@ the serialization format. Return <code>OBJECT</code>.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/e697791a9bcad3b6e7b3845246a2aa55238cfef7/src/core.lisp#L53">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29" >READ-STATE*</a></span></span> <span class="locative-args">OBJECT STREAM CONTEXT</span></span></p>
 
 <p>This is the extension point for <a href="#x-28MGL-CORE-3AREAD-STATE-20FUNCTION-29" title="(MGL-CORE:READ-STATE FUNCTION)"><code>READ-STATE</code></a>. It is
-guaranteed that primary <a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29" title="(MGL-CORE:READ-STATE* GENERIC-FUNCTION)"><code>READ-STATE*</code></a> methods will be called only once
+guaranteed that primary <code>READ-STATE*</code> methods will be called only once
 for each <code>OBJECT</code> (under EQ). <code>CONTEXT</code> is an opaque object and must be
-passed on to any recursive <a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNCTION-29" title="(MGL-CORE:READ-STATE* GENERIC-FUNCTION)"><code>READ-STATE*</code></a> calls.</p></li>
+passed on to any recursive <code>READ-STATE*</code> calls.</p></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29'></a></p>
@@ -848,9 +848,9 @@ passed on to any recursive <a href="#x-28MGL-CORE-3AREAD-STATE-2A-20GENERIC-FUNC
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/e697791a9bcad3b6e7b3845246a2aa55238cfef7/src/core.lisp#L63">[generic-function]</a></span> <span class="reference-object"><a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29" >WRITE-STATE*</a></span></span> <span class="locative-args">OBJECT STREAM CONTEXT</span></span></p>
 
 <p>This is the extension point for <a href="#x-28MGL-CORE-3AWRITE-STATE-20FUNCTION-29" title="(MGL-CORE:WRITE-STATE FUNCTION)"><code>WRITE-STATE</code></a>. It is
-guaranteed that primary <a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29" title="(MGL-CORE:WRITE-STATE* GENERIC-FUNCTION)"><code>WRITE-STATE*</code></a> methods will be called only
+guaranteed that primary <code>WRITE-STATE*</code> methods will be called only
 once for each <code>OBJECT</code> (under EQ). <code>CONTEXT</code> is an opaque object and must
-be passed on to any recursive <a href="#x-28MGL-CORE-3AWRITE-STATE-2A-20GENERIC-FUNCTION-29" title="(MGL-CORE:WRITE-STATE* GENERIC-FUNCTION)"><code>WRITE-STATE*</code></a> calls.</p></li>
+be passed on to any recursive <code>WRITE-STATE*</code> calls.</p></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3A-40MGL-MODEL-STRIPE-20MGL-PAX-3ASECTION-29'></a></p>
@@ -940,7 +940,7 @@ the Nth input in an input lump of a bpn:</p>
 </code></pre>
 
 <p>Note how the input lump is striped, but the matrix into which we are
-indexing (<a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a>) is not known to <a href="#x-28MGL-CORE-3AWITH-STRIPES-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-CORE:WITH-STRIPES (MGL-PAX:MACRO))"><code>WITH-STRIPES</code></a>. In fact, for lumps
+indexing (<a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a>) is not known to <code>WITH-STRIPES</code>. In fact, for lumps
 the same stripe indices work with <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> and <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>MGL-BP:DERIVATIVES</code></a>.</p></li>
 </ul>
 
@@ -1021,7 +1021,7 @@ same though. In <a href="#x-28MGL-CORE-3A-40MGL-PARAMETERIZED-EXECUTOR-CACHE-20M
 <a href="#x-28MGL-CORE-3AMAKE-EXECUTOR-WITH-PARAMETERS-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAKE-EXECUTOR-WITH-PARAMETERS GENERIC-FUNCTION)"><code>MAKE-EXECUTOR-WITH-PARAMETERS</code></a> is this factory.</p>
 
 <p>Parallelization of execution is another possibility
-<a href="#x-28MGL-CORE-3AMAP-OVER-EXECUTORS-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAP-OVER-EXECUTORS GENERIC-FUNCTION)"><code>MAP-OVER-EXECUTORS</code></a> allows, but there is no prebuilt solution for it,
+<code>MAP-OVER-EXECUTORS</code> allows, but there is no prebuilt solution for it,
 yet.</p>
 
 <p>The default implementation simply calls <code>FN</code> with <code>INSTANCES</code> and
@@ -2819,12 +2819,12 @@ is a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT 
 place the partial derivatives. <code>FN</code> returns the value of the function
 that is being minimized.</p>
 
-<p><a href="#x-28MGL-CG-3ACG-20FUNCTION-29" title="(MGL-CG:CG FUNCTION)"><code>CG</code></a> performs a number of line searches and invokes <code>FN</code> at each step. A
+<p><code>CG</code> performs a number of line searches and invokes <code>FN</code> at each step. A
 line search invokes <code>FN</code> at most <code>MAX-N-EVALUATIONS-PER-LINE-SEARCH</code>
 number of times and can succeed in improving the minimum by the
 sufficient margin or it can fail. Note, the even a failed line
 search may improve further and hence change the weights it's just
-that the improvement was deemed too small. <a href="#x-28MGL-CG-3ACG-20FUNCTION-29" title="(MGL-CG:CG FUNCTION)"><code>CG</code></a> stops when either:</p>
+that the improvement was deemed too small. <code>CG</code> stops when either:</p>
 
 <ul>
 <li><p>two line searches fail in a row</p></li>
@@ -2832,7 +2832,7 @@ that the improvement was deemed too small. <a href="#x-28MGL-CG-3ACG-20FUNCTION-
 <li><p><code>MAX-N-EVALUATIONS</code> is reached</p></li>
 </ul>
 
-<p><a href="#x-28MGL-CG-3ACG-20FUNCTION-29" title="(MGL-CG:CG FUNCTION)"><code>CG</code></a> returns a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> that contains the best weights, the minimum, the
+<p><code>CG</code> returns a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> that contains the best weights, the minimum, the
 number of line searches performed, the number of succesful line
 searches and the number of evaluations.</p>
 
@@ -3377,7 +3377,7 @@ their stuff in batch mode: passing a number of instances through the
 network in batches. Thus clumps must be able to store values of and
 gradients for each of these instances. However, some clumps produce
 the same result for each instance in a batch. These clumps are the
-weights, the parameters of the network. <a href="#x-28MGL-BP-3ASTRIPEDP-20GENERIC-FUNCTION-29" title="(MGL-BP:STRIPEDP GENERIC-FUNCTION)"><code>STRIPEDP</code></a> returns true iff
+weights, the parameters of the network. <code>STRIPEDP</code> returns true iff
 <code>CLUMP</code> does not represent weights (i.e. it's not a <a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" title="(MGL-BP:-&gt;WEIGHT CLASS)"><code>-&gt;WEIGHT</code></a>).</p>
 
 <p>For striped clumps, their <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> and <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> are <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects with
@@ -3441,7 +3441,7 @@ where <code>X</code> is its only argument clump.</p>
 <pre><code>f(x) = 1/(1+exp(-x))
 </code></pre>
 
-<p>When <a href="#x-28MGL-BP-3ABACKWARD-20GENERIC-FUNCTION-29" title="(MGL-BP:BACKWARD GENERIC-FUNCTION)"><code>BACKWARD</code></a> is called on the sigmoid lump, its <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> is a
+<p>When <code>BACKWARD</code> is called on the sigmoid lump, its <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> is a
 2x1 <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> object that contains the partial derivatives of the loss
 function:</p>
 
@@ -3449,7 +3449,7 @@ function:</p>
 dL(x2)/df
 </code></pre>
 
-<p>Now the <a href="#x-28MGL-BP-3ABACKWARD-20GENERIC-FUNCTION-29" title="(MGL-BP:BACKWARD GENERIC-FUNCTION)"><code>BACKWARD</code></a> method of the sigmoid needs to add <code>dL(x1)/dx1</code> and
+<p>Now the <code>BACKWARD</code> method of the sigmoid needs to add <code>dL(x1)/dx1</code> and
 <code>dL(x2)/dx2</code> to <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> of <code>X</code>. Now, <code>dL(x1)/dx1 = dL(x1)/df *
 df(x1)/dx1</code> and the first term is what we have in <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> of the
 sigmoid so it only needs to calculate the second term.</p></li>
@@ -4653,7 +4653,7 @@ use activation subnets to reduce the clutter.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/e697791a9bcad3b6e7b3845246a2aa55238cfef7/src/lumps.lisp#L496">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3EACTIVATION-20CLASS-29" >-&gt;ACTIVATION</a></span></span> <span class="locative-args"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)">BPN</a></span></span></p>
 
 <p>Activation subnetworks are built by the function
-<code>-&gt;ACTIVATION</code> and they have a number of lumps hidden inside them.
+<a href="#x-28MGL-BP-3A--3EACTIVATION-20FUNCTION-29" title="(MGL-BP:-&gt;ACTIVATION FUNCTION)"><code>-&gt;ACTIVATION</code></a> and they have a number of lumps hidden inside them.
 Ultimately, this subnetwork computes a sum like <code>sum_i x_i * W_i +
 sum_j y_j .* V_j + biases</code> where <code>x_i</code> are input lumps, <code>W_i</code> are
 dense matrices representing connections, while <code>V_j</code> are peephole
@@ -5485,7 +5485,7 @@ the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/e697791a9bcad3b6e7b3845246a2aa55238cfef7/src/lumps.lisp#L2982">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3A--3ELSTM-20CLASS-29" >-&gt;LSTM</a></span></span> <span class="locative-args"><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)">BPN</a></span></span></p>
 
 <p>Long-Short Term Memory subnetworks are built by the
-function <code>-&gt;LSTM</code> and they have many lumps hidden inside them. These
+function <a href="#x-28MGL-BP-3A--3ELSTM-20FUNCTION-29" title="(MGL-BP:-&gt;LSTM FUNCTION)"><code>-&gt;LSTM</code></a> and they have many lumps hidden inside them. These
 lumps are packaged into a subnetwork to reduce clutter.</p></li>
 </ul>
 
@@ -5682,7 +5682,7 @@ function argument to a mapper function. It calls <code>FUNCTION</code> with ever
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/e697791a9bcad3b6e7b3845246a2aa55238cfef7/src/nlp.lisp#L32">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-NLP-3ABLEU-20FUNCTION-29" >BLEU</a></span></span> <span class="locative-args">CANDIDATES REFERENCES &amp;KEY CANDIDATE-KEY REFERENCE-KEY (N 4)</span></span></p>
 
 <p>Compute the <a href="http://en.wikipedia.org/wiki/BLEU" >BLEU score</a> for
-bilingual CORPUS. <a href="#x-28MGL-NLP-3ABLEU-20FUNCTION-29" title="(MGL-NLP:BLEU FUNCTION)"><code>BLEU</code></a> measures how good a translation is compared
+bilingual CORPUS. <code>BLEU</code> measures how good a translation is compared
 to human reference translations.</p>
 
 <p><code>CANDIDATES</code> (keyed by <code>CANDIDATE-KEY</code>) and <code>REFERENCES</code> (keyed by
@@ -5693,7 +5693,7 @@ object (not necessarily strings).</p>
 <p>Currently there is no support for multiple reference translations. <code>N</code>
 determines the largest n-grams to consider.</p>
 
-<p>The first return value is the <a href="#x-28MGL-NLP-3ABLEU-20FUNCTION-29" title="(MGL-NLP:BLEU FUNCTION)"><code>BLEU</code></a> score (between 0 and 1, not as a
+<p>The first return value is the <code>BLEU</code> score (between 0 and 1, not as a
 percentage). The second value is the sum of the lengths of
 <code>CANDIDATES</code> divided by the sum of the lengths of <code>REFERENCES</code> (or <code>NIL</code>,
 if the denominator is 0). The third is a list of n-gram

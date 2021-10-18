@@ -122,7 +122,7 @@ state corresponding to <code>DEPTH</code> and calls FN with that state. It may
 destructively modify <code>STATE</code> provided it undoes the damage after FN
 returns. <code>CALL-WITH-ACTION</code> is called with <code>NIL</code> as <code>ACTION</code> for the root
 of the tree, in this case <code>STATE</code> need not be changed. FN returns the
-same kinds of values as <a href="#x-28MICMAC-3AALPHA-BETA-20FUNCTION-29" title="(MICMAC:ALPHA-BETA FUNCTION)"><code>ALPHA-BETA</code></a>. They may be useful for logging.</p>
+same kinds of values as <code>ALPHA-BETA</code>. They may be useful for logging.</p>
 
 <p><code>MAYBE-EVALUATE-STATE</code> is a function of (<code>STATE</code> <code>DEPTH</code>). If <code>STATE</code> at
 <code>DEPTH</code> is a terminal node then it returns the score from the point of
@@ -193,7 +193,7 @@ provide either <code>EXPAND-NODE-FN</code> or <code>EXPAND-BEAM-FN</code>. The p
 
 <p>This is very much like <a href="#x-28MICMAC-3ABEAM-SEARCH-20FUNCTION-29" title="(MICMAC:BEAM-SEARCH FUNCTION)"><code>BEAM-SEARCH</code></a> except it solves a number of
 instances of the same search problem starting from different sets of
-nodes. The sole purpose of <a href="#x-28MICMAC-3APARALLEL-BEAM-SEARCH-20FUNCTION-29" title="(MICMAC:PARALLEL-BEAM-SEARCH FUNCTION)"><code>PARALLEL-BEAM-SEARCH</code></a> is to amortize the
+nodes. The sole purpose of <code>PARALLEL-BEAM-SEARCH</code> is to amortize the
 cost <code>EXPAND-BEAM-FN</code> if possible.</p>
 
 <p><code>EXPAND-BEAMS-FN</code> is called with sequence of beams (i.e. it's a
@@ -202,7 +202,7 @@ of sequences of nodes. Each element of the returned sequence is the
 reachable nodes of the nodes in the corresponding element of its
 argument sequence.</p>
 
-<p><a href="#x-28MICMAC-3APARALLEL-BEAM-SEARCH-20FUNCTION-29" title="(MICMAC:PARALLEL-BEAM-SEARCH FUNCTION)"><code>PARALLEL-BEAM-SEARCH</code></a> returns a sequence of solutions sequences, and
+<p><code>PARALLEL-BEAM-SEARCH</code> returns a sequence of solutions sequences, and
 a sequence of active node sequences.</p>
 
 <p>See <code>test/test-beam-search.lisp</code> for an example.</p></li>

@@ -348,7 +348,7 @@ finally <code>:SYNTAX-FROM</code>.</p>
 
 <p>The readtable is defined at load-time. If you want to have it
 available at compilation time -- say to use its reader-macros in the
-same file as its definition -- you have to wrap the <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20-28MGL-PAX-3AMACRO-29-29" title="(EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE (MGL-PAX:MACRO))"><code>DEFREADTABLE</code></a>
+same file as its definition -- you have to wrap the <code>DEFREADTABLE</code>
 form in an explicit <code>EVAL-WHEN</code>.</p>
 
 <p>On redefinition, the target readtable is made empty first before
@@ -397,7 +397,7 @@ whitespace, everything else is constituent.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/c7f57afbff77a4a55efbfdb3a7c868bb4a091771/src/named-readtables.lisp#L309">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-INTO-20FUNCTION-29" >MERGE-READTABLES-INTO</a></span></span> <span class="locative-args">RESULT-READTABLE &amp;REST NAMED-READTABLES</span></span></p>
 
 <p>Copy macro character definitions of each readtable in
-<code>NAMED-READTABLES</code> into <code>RESULT-READTABLE</code>.</p>
+<a href="#x-28-22named-readtables-22-20ASDF-2FSYSTEM-3ASYSTEM-29" title="(\&quot;named-readtables\&quot; ASDF/SYSTEM:SYSTEM)"><code>NAMED-READTABLES</code></a> into <code>RESULT-READTABLE</code>.</p>
 
 <p>If a macro character appears in more than one of the readtables,
 i.e. if a conflict is discovered during the merge, an error of type

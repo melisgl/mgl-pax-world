@@ -540,7 +540,7 @@ this operator.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/c606f860a5993d4ec15b753fc0e238df1e133e3f/src/genetic-programming.lisp#L220">[class]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3ALITERAL-20CLASS-29" >LITERAL</a></span></span> <span class="locative-args"><a href="#x-28MGL-GPR-3AEXPRESSION-CLASS-20CLASS-29" title="(MGL-GPR:EXPRESSION-CLASS CLASS)">EXPRESSION-CLASS</a></span></span></p>
 
 <p>This is slightly misnamed. An object belonging to
-the <code>LITERAL</code> class is not a literal itself, it's a factory for
+the <a href="#x-28MGL-GPR-3ALITERAL-20CLASS-29" title="(MGL-GPR:LITERAL CLASS)"><code>LITERAL</code></a> class is not a literal itself, it's a factory for
 literals via its <a href="#x-28MGL-GPR-3ABUILDER-20-28MGL-PAX-3AREADER-20MGL-GPR-3ALITERAL-29-29" title="(MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL))"><code>BUILDER</code></a> function. For example, the following
 literal builds bytes:</p>
 
@@ -549,7 +549,7 @@ literal builds bytes:</p>
                :builder (lambda () (random 256)))
 </code></pre>
 
-<p>In practice, one rarely writes it out like that, because the <code>LITERAL</code>
+<p>In practice, one rarely writes it out like that, because the <a href="#x-28MGL-GPR-3ALITERAL-20-28MGL-PAX-3AMACRO-29-29" title="(MGL-GPR:LITERAL (MGL-PAX:MACRO))"><code>LITERAL</code></a>
 macro provides a more convenient shorthand.</p></li>
 </ul>
 
