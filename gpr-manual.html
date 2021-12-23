@@ -228,7 +228,7 @@ fitness vector into which the fitnesses of the individuals in the
 population vector shall be written. By specifying <code>MASS-EVALUATOR</code>
 instead of an <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>EVALUATOR</code></a>, one can, for example, distribute costly
 evaluations over multiple threads. <code>MASS-EVALUATOR</code> has precedence
-over <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>EVALUATOR</code></a>.</p></li>
+over <code>EVALUATOR</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
@@ -239,7 +239,7 @@ over <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTI
 <p>A function that returns a real number for an
 object returned by <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>EVALUATOR</code></a>. It is called when two fitness are to
 be compared. The default value is #'<code>IDENTITY</code> which is sufficient
-when <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>EVALUATOR</code></a> returns real numbers. However, sometimes the
+when <code>EVALUATOR</code> returns real numbers. However, sometimes the
 evaluator returns more information about the solution (such as
 fitness in various situations) and <code>FITNESS-KEY</code> key be used to
 select the fitness value.</p></li>

@@ -350,7 +350,7 @@ providing two functions: <a href="#x-28MGL-DATASET-3ASAMPLE-20GENERIC-FUNCTION-2
 <code>SAMPLE</code> returns an object that represents a sample from the world to
 be experienced or, in other words, simply something the can be used
 as input for training or prediction. It is not allowed to call
-<code>SAMPLE</code> if <code>SAMPLER</code> is <a href="#x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29" title="(MGL-DATASET:FINISHEDP GENERIC-FUNCTION)"><code>FINISHEDP</code></a>.</p></li>
+<code>SAMPLE</code> if <code>SAMPLER</code> is <code>FINISHEDP</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29'></a></p>
@@ -414,7 +414,7 @@ stream of <code>NIL</code>s.</p></li>
 
 <p>A sampler with a function in its <a href="#x-28MGL-DATASET-3AGENERATOR-20-28MGL-PAX-3AREADER-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29" title="(MGL-DATASET:GENERATOR (MGL-PAX:READER MGL-DATASET:FUNCTION-SAMPLER))"><code>GENERATOR</code></a> that
 produces a stream of samples which may or may not be finite
-depending on <a href="#x-28MGL-DATASET-3AMAX-N-SAMPLES-20-28MGL-PAX-3AACCESSOR-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29" title="(MGL-DATASET:MAX-N-SAMPLES (MGL-PAX:ACCESSOR MGL-DATASET:FUNCTION-SAMPLER))"><code>MAX-N-SAMPLES</code></a>. <a href="#x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29" title="(MGL-DATASET:FINISHEDP GENERIC-FUNCTION)"><code>FINISHEDP</code></a> returns <code>T</code> iff <a href="#x-28MGL-DATASET-3AMAX-N-SAMPLES-20-28MGL-PAX-3AACCESSOR-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29" title="(MGL-DATASET:MAX-N-SAMPLES (MGL-PAX:ACCESSOR MGL-DATASET:FUNCTION-SAMPLER))"><code>MAX-N-SAMPLES</code></a> is
+depending on <a href="#x-28MGL-DATASET-3AMAX-N-SAMPLES-20-28MGL-PAX-3AACCESSOR-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29" title="(MGL-DATASET:MAX-N-SAMPLES (MGL-PAX:ACCESSOR MGL-DATASET:FUNCTION-SAMPLER))"><code>MAX-N-SAMPLES</code></a>. <a href="#x-28MGL-DATASET-3AFINISHEDP-20GENERIC-FUNCTION-29" title="(MGL-DATASET:FINISHEDP GENERIC-FUNCTION)"><code>FINISHEDP</code></a> returns <code>T</code> iff <code>MAX-N-SAMPLES</code> is
 non-nil, and it's not greater than the number of samples
 generated (<a href="#x-28MGL-DATASET-3AN-SAMPLES-20-28MGL-PAX-3AREADER-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29" title="(MGL-DATASET:N-SAMPLES (MGL-PAX:READER MGL-DATASET:FUNCTION-SAMPLER))"><code>N-SAMPLES</code></a>).</p>
 
@@ -587,7 +587,7 @@ want to do only some of the folds and remember which ones they were:</p>
 
 <p>Finally, the way the data is split can be customized. By default
 <a href="#x-28MGL-RESAMPLE-3ASPLIT-FOLD-2FMOD-20FUNCTION-29" title="(MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION)"><code>SPLIT-FOLD/MOD</code></a> is called with the arguments <code>DATA</code>, the fold (from
-among <code>FOLDS</code>) and <code>N-FOLDS</code>. <a href="#x-28MGL-RESAMPLE-3ASPLIT-FOLD-2FMOD-20FUNCTION-29" title="(MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION)"><code>SPLIT-FOLD/MOD</code></a> returns two values which
+among <code>FOLDS</code>) and <code>N-FOLDS</code>. <code>SPLIT-FOLD/MOD</code> returns two values which
 are then passed on to <code>FN</code>. One can use <a href="#x-28MGL-RESAMPLE-3ASPLIT-FOLD-2FCONT-20FUNCTION-29" title="(MGL-RESAMPLE:SPLIT-FOLD/CONT FUNCTION)"><code>SPLIT-FOLD/CONT</code></a> or
 <a href="#x-28MGL-RESAMPLE-3ASPLIT-STRATIFIED-20FUNCTION-29" title="(MGL-RESAMPLE:SPLIT-STRATIFIED FUNCTION)"><code>SPLIT-STRATIFIED</code></a> or any other function that works with these
 arguments. The only real constraint is that <code>FN</code> has to take as many
@@ -647,7 +647,7 @@ as a closure with <code>KEY</code>, <code>TEST</code>, <code>WEIGHT</code> bound
 the sample. If <code>N</code> is <code>NIL</code> then keep repeating this until <code>FN</code> performs a
 non-local exit. Else <code>N</code> must be a non-negative integer, <code>N</code> iterations
 will be performed, the primary values returned by <code>FN</code> collected into
-a list and returned. See <a href="#x-28MGL-RESAMPLE-3ASAMPLE-FROM-20FUNCTION-29" title="(MGL-RESAMPLE:SAMPLE-FROM FUNCTION)"><code>SAMPLE-FROM</code></a> and <a href="#x-28MGL-RESAMPLE-3ASAMPLE-STRATIFIED-20FUNCTION-29" title="(MGL-RESAMPLE:SAMPLE-STRATIFIED FUNCTION)"><code>SAMPLE-STRATIFIED</code></a> for
+a list and returned. See <code>SAMPLE-FROM</code> and <code>SAMPLE-STRATIFIED</code> for
 examples.</p></li>
 </ul>
 
@@ -866,11 +866,11 @@ efficiency are said to be <em>striped</em>.</p>
 <p>Typically, during or after creating a model, one sets <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a>
 on it a positive integer. When a batch of instances is to be fed to
 the model it is first broken into subbatches of length that's at
-most <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a>. For each subbatch, <a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" title="(MGL-CORE:SET-INPUT GENERIC-FUNCTION)"><code>SET-INPUT</code></a> (FIXDOC) is called
+most <code>MAX-N-STRIPES</code>. For each subbatch, <a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" title="(MGL-CORE:SET-INPUT GENERIC-FUNCTION)"><code>SET-INPUT</code></a> (FIXDOC) is called
 and a before method takes care of setting <a href="#x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:N-STRIPES GENERIC-FUNCTION)"><code>N-STRIPES</code></a> to the actual
-number of instances in the subbatch. When <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a> is set
+number of instances in the subbatch. When <code>MAX-N-STRIPES</code> is set
 internal data structures may be resized which is an expensive
-operation. Setting <a href="#x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:N-STRIPES GENERIC-FUNCTION)"><code>N-STRIPES</code></a> is a comparatively cheap operation,
+operation. Setting <code>N-STRIPES</code> is a comparatively cheap operation,
 often implemented as matrix reshaping.</p>
 
 <p>Note that for models made of different parts (for example,
@@ -941,7 +941,7 @@ the Nth input in an input lump of a bpn:</p>
 
 <p>Note how the input lump is striped, but the matrix into which we are
 indexing (<a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a>) is not known to <code>WITH-STRIPES</code>. In fact, for lumps
-the same stripe indices work with <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> and <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>MGL-BP:DERIVATIVES</code></a>.</p></li>
+the same stripe indices work with <code>NODES</code> and <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>MGL-BP:DERIVATIVES</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3ASTRIPE-START-20GENERIC-FUNCTION-29'></a></p>
@@ -1229,7 +1229,7 @@ that.</p>
 repeatedly over a period and its results must be aggregated such as
 when training statistics are being tracked or when predictions are
 begin made. Note that the monitor must be compatible with the event
-it handles. That is, the embedded <a href="#x-28MGL-CORE-3AMEASURER-20-28MGL-PAX-3AREADER-20MGL-CORE-3AMONITOR-29-29" title="(MGL-CORE:MEASURER (MGL-PAX:READER MGL-CORE:MONITOR))"><code>MEASURER</code></a> must be prepared to take
+it handles. That is, the embedded <code>MEASURER</code> must be prepared to take
 the arguments that are documented to come with the event.</p></li>
 </ul>
 
@@ -1269,7 +1269,7 @@ specific extractor with a generic measurer function.</p>
 <p>All generic measurer functions return their results as multiple
 values matching the arguments of <a href="#x-28MGL-CORE-3AADD-TO-COUNTER-20GENERIC-FUNCTION-29" title="(MGL-CORE:ADD-TO-COUNTER GENERIC-FUNCTION)"><code>ADD-TO-COUNTER</code></a> for a counter of a
 certain type (see <a href="#x-28MGL-CORE-3A-40MGL-COUNTER-20MGL-PAX-3ASECTION-29" title="Counters">Counters</a>) so as to make them easily used in a
-<a href="#x-28MGL-CORE-3AMONITOR-20CLASS-29" title="(MGL-CORE:MONITOR CLASS)"><code>MONITOR</code></a>:</p>
+<code>MONITOR</code>:</p>
 
 <pre><code>(multiple-value-call #'add-to-counter &lt;some-counter&gt;
                      &lt;call-to-some-measurer&gt;)
@@ -1453,8 +1453,8 @@ batches:</p>
 
 <p>A <a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)"><code>BASIC-COUNTER</code></a> with whose nominator accumulates
 the square of some statistics. It has the attribute <code>:TYPE</code> &quot;rmse&quot;.
-<a href="#x-28MGL-CORE-3ACOUNTER-VALUES-20GENERIC-FUNCTION-29" title="(MGL-CORE:COUNTER-VALUES GENERIC-FUNCTION)"><code>COUNTER-VALUES</code></a> returns the square root of what <a href="#x-28MGL-CORE-3ABASIC-COUNTER-20CLASS-29" title="(MGL-CORE:BASIC-COUNTER CLASS)"><code>BASIC-COUNTER</code></a>'s
-<a href="#x-28MGL-CORE-3ACOUNTER-VALUES-20GENERIC-FUNCTION-29" title="(MGL-CORE:COUNTER-VALUES GENERIC-FUNCTION)"><code>COUNTER-VALUES</code></a> would return.</p>
+<a href="#x-28MGL-CORE-3ACOUNTER-VALUES-20GENERIC-FUNCTION-29" title="(MGL-CORE:COUNTER-VALUES GENERIC-FUNCTION)"><code>COUNTER-VALUES</code></a> returns the square root of what <code>BASIC-COUNTER</code>'s
+<code>COUNTER-VALUES</code> would return.</p>
 
 <pre><code>(let ((counter (make-instance 'rmse-counter)))
   (add-to-counter counter (+ (* 3 3) (* 4 4)) 2)
@@ -2083,7 +2083,7 @@ gradients) but more can be added with the <a href="#x-28MGL-OPT-3A-40MGL-OPT-EXT
 
 <p>Minimize the value of the real valued function represented by
 <code>GRADIENT-SOURCE</code> by updating some of its parameters in <code>WEIGHTS</code> (a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a>
-or a sequence of <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a>s). Return <code>WEIGHTS</code>. <code>DATASET</code> (see
+or a sequence of <code>MAT</code>s). Return <code>WEIGHTS</code>. <code>DATASET</code> (see
 <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" title="Datasets">Datasets</a>) is a set of unoptimized parameters of the same
 function. For example, <code>WEIGHTS</code> may be the weights of a neural
 network while <code>DATASET</code> is the training set consisting of inputs
@@ -2131,7 +2131,7 @@ far. Incremented automatically during optimization.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/1bd0b43cbc1d152cf69a1d854112026d56c9b0b2/src/optimize.lisp#L80">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-OPT-3ATERMINATION-20-28MGL-PAX-3AACCESSOR-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" >TERMINATION</a></span></span> <span class="locative-args">ITERATIVE-OPTIMIZER</span> <span class="locative-args">(:TERMINATION = <code>NIL</code>)</span></span></p>
 
 <p>If a number, it's the number of instances to train
-on in the sense of <a href="#x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" title="(MGL-OPT:N-INSTANCES (MGL-PAX:READER MGL-OPT:ITERATIVE-OPTIMIZER))"><code>N-INSTANCES</code></a>. If <a href="#x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" title="(MGL-OPT:N-INSTANCES (MGL-PAX:READER MGL-OPT:ITERATIVE-OPTIMIZER))"><code>N-INSTANCES</code></a> is equal or greater
+on in the sense of <a href="#x-28MGL-OPT-3AN-INSTANCES-20-28MGL-PAX-3AREADER-20MGL-OPT-3AITERATIVE-OPTIMIZER-29-29" title="(MGL-OPT:N-INSTANCES (MGL-PAX:READER MGL-OPT:ITERATIVE-OPTIMIZER))"><code>N-INSTANCES</code></a>. If <code>N-INSTANCES</code> is equal or greater
 than this value optimization stops. If <code>TERMINATION</code> is <code>NIL</code>, then
 optimization will continue. If it is <code>T</code>, then optimization will
 stop. If it is a function of no arguments, then its return value
@@ -2568,7 +2568,7 @@ options common to all batch based optimizers.</p></li>
 <p>A number between 0 and 1 that determines how fast
 the estimated mean of derivatives is updated. 0 basically gives
 you <code>RMSPROP</code> (if <a href="#x-28MGL-GD-3AVARIANCE-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" title="(MGL-GD:VARIANCE-DECAY (MGL-PAX:ACCESSOR MGL-GD:ADAM-OPTIMIZER))"><code>VARIANCE-DECAY</code></a> is not too large) or AdaGrad (if
-<a href="#x-28MGL-GD-3AVARIANCE-DECAY-20-28MGL-PAX-3AACCESSOR-20MGL-GD-3AADAM-OPTIMIZER-29-29" title="(MGL-GD:VARIANCE-DECAY (MGL-PAX:ACCESSOR MGL-GD:ADAM-OPTIMIZER))"><code>VARIANCE-DECAY</code></a> is close to 1 and the learning rate is annealed.
+<code>VARIANCE-DECAY</code> is close to 1 and the learning rate is annealed.
 This is $\beta_1$ in the paper.</p></li>
 </ul>
 
@@ -2813,9 +2813,9 @@ initial step sizes. Additionally a bunch of checks are made to make
 sure that exploration is taking place and that extrapolation will
 not be unboundedly large.</p>
 
-<p><code>FN</code> is a function of two parameters: <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>1</code></a>) and <code>DERIVATIVES</code>. <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>1</code></a>)
+<p><code>FN</code> is a function of two parameters: <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>1</code></a>) and <code>DERIVATIVES</code>. <code>WEIGHTS</code>
 is a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> of the same size as <code>W</code> that is where the search start from.
-<code>DERIVATIVES</code> is also a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> of that size and it is where <code>FN</code> shall
+<code>DERIVATIVES</code> is also a <code>MAT</code> of that size and it is where <code>FN</code> shall
 place the partial derivatives. <code>FN</code> returns the value of the function
 that is being minimized.</p>
 
@@ -2832,14 +2832,14 @@ that the improvement was deemed too small. <code>CG</code> stops when either:</p
 <li><p><code>MAX-N-EVALUATIONS</code> is reached</p></li>
 </ul>
 
-<p><code>CG</code> returns a <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> that contains the best weights, the minimum, the
+<p><code>CG</code> returns a <code>MAT</code> that contains the best weights, the minimum, the
 number of line searches performed, the number of succesful line
 searches and the number of evaluations.</p>
 
 <p>When using <code>MAX-N-EVALUATIONS</code> remember that there is an extra
 evaluation of <code>FN</code> before the first line search.</p>
 
-<p><code>SPARE-VECTORS</code> is a list of preallocated <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a>s of the same size as <code>W</code>.
+<p><code>SPARE-VECTORS</code> is a list of preallocated <code>MAT</code>s of the same size as <code>W</code>.
 Passing 6 of them covers the current need of the algorithm and it
 will not cons up vectors of size <code>W</code> at all.</p>
 
@@ -3044,7 +3044,7 @@ optimizers.</p>
 <p>Utility function for subclasses of <a href="#x-28MGL-OPT-3AITERATIVE-OPTIMIZER-20CLASS-29" title="(MGL-OPT:ITERATIVE-OPTIMIZER CLASS)"><code>ITERATIVE-OPTIMIZER</code></a>. It returns
 whether optimization is to be terminated based on <code>N-INSTANCES</code> and
 <code>TERMINATION</code> that are values of the respective accessors of
-<a href="#x-28MGL-OPT-3AITERATIVE-OPTIMIZER-20CLASS-29" title="(MGL-OPT:ITERATIVE-OPTIMIZER CLASS)"><code>ITERATIVE-OPTIMIZER</code></a>.</p></li>
+<code>ITERATIVE-OPTIMIZER</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-OPT-3ASET-N-INSTANCES-20FUNCTION-29'></a></p>
@@ -3220,7 +3220,7 @@ gradient sink.</p>
 <p>Note the number of instances in <code>BATCH</code> may be larger than what
 <code>GRADIENT-SOURCE</code> process in one go (in the sense of say,
 <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a>), so <a href="#x-28MGL-CORE-3ADO-BATCHES-FOR-MODEL-20MGL-PAX-3AMACRO-29" title="(MGL-CORE:DO-BATCHES-FOR-MODEL MGL-PAX:MACRO)"><code>DO-BATCHES-FOR-MODEL</code></a> or something like (<code>GROUP</code>
-<code>BATCH</code> <a href="#x-28MGL-CORE-3AMAX-N-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION)"><code>MAX-N-STRIPES</code></a>) can be handy.</p></li>
+<code>BATCH</code> <code>MAX-N-STRIPES</code>) can be handy.</p></li>
 </ul>
 
 <p><a id='x-28MGL-OPT-3A-40MGL-OPT-GRADIENT-SINK-20MGL-PAX-3ASECTION-29'></a></p>
@@ -3230,7 +3230,7 @@ gradient sink.</p>
 <h4><a href="#x-28MGL-OPT-3A-40MGL-OPT-GRADIENT-SINK-20MGL-PAX-3ASECTION-29">9.5.3 Implementing Gradient Sinks</a></h4>
 
 <p>Optimizers call <a href="#x-28MGL-OPT-3AACCUMULATE-GRADIENTS-2A-20GENERIC-FUNCTION-29" title="(MGL-OPT:ACCUMULATE-GRADIENTS* GENERIC-FUNCTION)"><code>ACCUMULATE-GRADIENTS*</code></a> on gradient sources. One
-parameter of <a href="#x-28MGL-OPT-3AACCUMULATE-GRADIENTS-2A-20GENERIC-FUNCTION-29" title="(MGL-OPT:ACCUMULATE-GRADIENTS* GENERIC-FUNCTION)"><code>ACCUMULATE-GRADIENTS*</code></a> is the <code>SINK</code>. A gradient sink
+parameter of <code>ACCUMULATE-GRADIENTS*</code> is the <code>SINK</code>. A gradient sink
 knows what accumulator matrix (if any) belongs to a segment. Sinks
 are defined entirely by <a href="#x-28MGL-OPT-3AMAP-GRADIENT-SINK-20GENERIC-FUNCTION-29" title="(MGL-OPT:MAP-GRADIENT-SINK GENERIC-FUNCTION)"><code>MAP-GRADIENT-SINK</code></a>.</p>
 
@@ -3323,7 +3323,7 @@ value the network computes.</p>
 <p>In this implementation, a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> is assembled from several
 <a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)"><code>LUMP</code></a>s (roughly corresponding to layers). Both feed-forward and
 recurrent neural nets are supported (<a href="#x-28MGL-BP-3AFNN-20CLASS-29" title="(MGL-BP:FNN CLASS)"><code>FNN</code></a> and <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>, respectively).
-<a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>s can contain not only <a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)"><code>LUMP</code></a>s but other <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>s, too. As we
+<a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>s can contain not only <code>LUMP</code>s but other <code>BPN</code>s, too. As we
 see, networks are composite objects and the abstract base class for
 composite and simple parts is called <a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)"><code>CLUMP</code></a>.</p>
 
@@ -3349,8 +3349,8 @@ actual computation has taken place, yet.</p>
 <p>This wiring of <code>CLUMP</code>s is how one builds feed-forward nets (<a href="#x-28MGL-BP-3AFNN-20CLASS-29" title="(MGL-BP:FNN CLASS)"><code>FNN</code></a>) or
 recurrent neural networks (<a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>) that are <code>CLUMP</code>s themselves so one
 can build nets in a hiearchical style if desired. Non-composite
-<code>CLUMP</code>s are called <a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)"><code>LUMP</code></a> (note the loss of <code>C</code> that stands for
-composite). The various <a href="#x-28MGL-BP-3ALUMP-20CLASS-29" title="(MGL-BP:LUMP CLASS)"><code>LUMP</code></a> subtypes correspond to different layer
+<code>CLUMP</code>s are called <code>LUMP</code> (note the loss of <code>C</code> that stands for
+composite). The various <code>LUMP</code> subtypes correspond to different layer
 types (<a href="#x-28MGL-BP-3A--3ESIGMOID-20CLASS-29" title="(MGL-BP:-&gt;SIGMOID CLASS)"><code>-&gt;SIGMOID</code></a>, <a href="#x-28MGL-BP-3A--3EDROPOUT-20CLASS-29" title="(MGL-BP:-&gt;DROPOUT CLASS)"><code>-&gt;DROPOUT</code></a>, <a href="#x-28MGL-BP-3A--3ERELU-20CLASS-29" title="(MGL-BP:-&gt;RELU CLASS)"><code>-&gt;RELU</code></a>, <a href="#x-28MGL-BP-3A--3ETANH-20CLASS-29" title="(MGL-BP:-&gt;TANH CLASS)"><code>-&gt;TANH</code></a>, etc).</p></li>
 </ul>
 
@@ -3429,7 +3429,7 @@ derivatives were accumulated by previous <a href="#x-28MGL-BP-3ABACKWARD-20GENER
 
 <p>Compute the partial derivatives of the function
 represented by <code>CLUMP</code> and add them to <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> of the
-corresponding argument clumps. The <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> of <code>CLUMP</code> contains the
+corresponding argument clumps. The <code>DERIVATIVES</code> of <code>CLUMP</code> contains the
 sum of partial derivatives of all clumps by the corresponding
 output. This function is intended to be called after a <a href="#x-28MGL-BP-3AFORWARD-20GENERIC-FUNCTION-29" title="(MGL-BP:FORWARD GENERIC-FUNCTION)"><code>FORWARD</code></a> pass.</p>
 
@@ -3441,7 +3441,7 @@ where <code>X</code> is its only argument clump.</p>
 <pre><code>f(x) = 1/(1+exp(-x))
 </code></pre>
 
-<p>When <code>BACKWARD</code> is called on the sigmoid lump, its <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> is a
+<p>When <code>BACKWARD</code> is called on the sigmoid lump, its <code>DERIVATIVES</code> is a
 2x1 <a href="mat-manual.html#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> object that contains the partial derivatives of the loss
 function:</p>
 
@@ -3450,8 +3450,8 @@ dL(x2)/df
 </code></pre>
 
 <p>Now the <code>BACKWARD</code> method of the sigmoid needs to add <code>dL(x1)/dx1</code> and
-<code>dL(x2)/dx2</code> to <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> of <code>X</code>. Now, <code>dL(x1)/dx1 = dL(x1)/df *
-df(x1)/dx1</code> and the first term is what we have in <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> of the
+<code>dL(x2)/dx2</code> to <code>DERIVATIVES</code> of <code>X</code>. Now, <code>dL(x1)/dx1 = dL(x1)/df *
+df(x1)/dx1</code> and the first term is what we have in <code>DERIVATIVES</code> of the
 sigmoid so it only needs to calculate the second term.</p></li>
 </ul>
 
@@ -3536,8 +3536,8 @@ It is an error to add a clump with a name already used by one of the
 <h4><a href="#x-28MGL-BP-3A-40MGL-BP-TRAINING-20MGL-PAX-3ASECTION-29">11.3.1 Training</a></h4>
 
 <p><a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>s are trained to minimize the loss function they compute.
-Before a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> is passed to <a href="#x-28MGL-OPT-3AMINIMIZE-20FUNCTION-29" title="(MGL-OPT:MINIMIZE FUNCTION)"><code>MINIMIZE</code></a> (as its <code>GRADIENT-SOURCE</code>
-argument), it must be wrapped in a <a href="#x-28MGL-BP-3ABP-LEARNER-20CLASS-29" title="(MGL-BP:BP-LEARNER CLASS)"><code>BP-LEARNER</code></a> object. <a href="#x-28MGL-BP-3ABP-LEARNER-20CLASS-29" title="(MGL-BP:BP-LEARNER CLASS)"><code>BP-LEARNER</code></a> has
+Before a <code>BPN</code> is passed to <a href="#x-28MGL-OPT-3AMINIMIZE-20FUNCTION-29" title="(MGL-OPT:MINIMIZE FUNCTION)"><code>MINIMIZE</code></a> (as its <code>GRADIENT-SOURCE</code>
+argument), it must be wrapped in a <a href="#x-28MGL-BP-3ABP-LEARNER-20CLASS-29" title="(MGL-BP:BP-LEARNER CLASS)"><code>BP-LEARNER</code></a> object. <code>BP-LEARNER</code> has
 [MONITORS] slot which is used for example by
 <a href="#x-28MGL-OPT-3ARESET-OPTIMIZATION-MONITORS-20-28METHOD-20NIL-20-28MGL-OPT-3AITERATIVE-OPTIMIZER-20T-29-29-29" title="(MGL-OPT:RESET-OPTIMIZATION-MONITORS (METHOD NIL (MGL-OPT:ITERATIVE-OPTIMIZER T)))"><code>RESET-OPTIMIZATION-MONITORS</code></a>.</p>
 
@@ -3627,7 +3627,7 @@ default implementation creates a copy of <code>STEP-COUNTER</code>.</p></li>
 <h4><a href="#x-28MGL-BP-3A-40MGL-FNN-20MGL-PAX-3ASECTION-29">11.3.3 Feed-Forward Nets</a></h4>
 
 <p><a href="#x-28MGL-BP-3AFNN-20CLASS-29" title="(MGL-BP:FNN CLASS)"><code>FNN</code></a> and <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a> have a lot in common (see their common superclass, <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>).
-There is very limited functionality that's specific to <a href="#x-28MGL-BP-3AFNN-20CLASS-29" title="(MGL-BP:FNN CLASS)"><code>FNN</code></a>s so let's
+There is very limited functionality that's specific to <code>FNN</code>s so let's
 get them out of they way before we study a full example.</p>
 
 <p><a id='x-28MGL-BP-3AFNN-20CLASS-29'></a></p>
@@ -4176,10 +4176,10 @@ that all weights are present and one can start training it.</p></li>
 <p>The <code>UNFOLDER</code> of an <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a> is function of no arguments
 that builds and returns a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>. The unfolder is allowed to create
 networks with arbitrary topology even different ones for different
-<a href="#x-28MGL-BP-3ATIME-STEP-20FUNCTION-29" title="(MGL-BP:TIME-STEP FUNCTION)"><code>TIME-STEP</code></a>s with the help of <a href="#x-28MGL-BP-3ALAG-20FUNCTION-29" title="(MGL-BP:LAG FUNCTION)"><code>LAG</code></a>, or nested <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>s. Weights of
+<a href="#x-28MGL-BP-3ATIME-STEP-20FUNCTION-29" title="(MGL-BP:TIME-STEP FUNCTION)"><code>TIME-STEP</code></a>s with the help of <a href="#x-28MGL-BP-3ALAG-20FUNCTION-29" title="(MGL-BP:LAG FUNCTION)"><code>LAG</code></a>, or nested <code>RNN</code>s. Weights of
 the same name are shared between the folds. That is, if a <a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" title="(MGL-BP:-&gt;WEIGHT CLASS)"><code>-&gt;WEIGHT</code></a>
 lump were to be created and a weight lump of the same name already
-exists, then the existing lump will be added to the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> created by
+exists, then the existing lump will be added to the <code>BPN</code> created by
 <code>UNFOLDER</code>.</p></li>
 </ul>
 
@@ -4250,12 +4250,12 @@ wrapped in a lambda. Bind symbol given as the <code>RNN</code> argument to the
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/1bd0b43cbc1d152cf69a1d854112026d56c9b0b2/src/backprop.lisp#L707">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3ALAG-20FUNCTION-29" >LAG</a></span></span> <span class="locative-args">NAME &amp;KEY (LAG 1) RNN PATH</span></span></p>
 
 <p>In <code>RNN</code> or if it's <code>NIL</code> the <code>RNN</code> being extended with another
-<a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> (called <em>unfolding</em>), look up the <a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)"><code>CLUMP</code></a> with <code>NAME</code> in the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>
-that's <code>LAG</code> number of time steps before the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> being added. If this
+<a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> (called <em>unfolding</em>), look up the <a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)"><code>CLUMP</code></a> with <code>NAME</code> in the <code>BPN</code>
+that's <code>LAG</code> number of time steps before the <code>BPN</code> being added. If this
 function is called from <a href="#x-28MGL-BP-3AUNFOLDER-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN))"><code>UNFOLDER</code></a> of an <code>RNN</code> (which is what happens
 behind the scene in the body of <a href="#x-28MGL-BP-3ABUILD-RNN-20MGL-PAX-3AMACRO-29" title="(MGL-BP:BUILD-RNN MGL-PAX:MACRO)"><code>BUILD-RNN</code></a>), then it returns an
 opaque object representing a lagged connection to a clump, else it
-returns the <a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)"><code>CLUMP</code></a> itself.</p>
+returns the <code>CLUMP</code> itself.</p>
 
 <p>FIXDOC: <code>PATH</code></p></li>
 </ul>
@@ -4282,8 +4282,8 @@ clamped onto the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS
 
 <p>When the input sequences in the batch are not of the same length,
 already exhausted sequences will produce <code>NIL</code> (due to <code>:IMPUTE</code> <code>NIL</code>)
-above. When such a <code>NIL</code> is clamped with <a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" title="(MGL-CORE:SET-INPUT GENERIC-FUNCTION)"><code>SET-INPUT</code></a> on a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> of the
-<code>RNN</code>, <a href="#x-28MGL-CORE-3ASET-INPUT-20GENERIC-FUNCTION-29" title="(MGL-CORE:SET-INPUT GENERIC-FUNCTION)"><code>SET-INPUT</code></a> must set the <a href="#x-28MGL-BP-3AIMPORTANCE-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3ELOSS-29-29" title="(MGL-BP:IMPORTANCE (MGL-PAX:ACCESSOR MGL-BP:-&gt;LOSS))"><code>IMPORTANCE</code></a> of the -&gt;ERROR lumps to 0
+above. When such a <code>NIL</code> is clamped with <code>SET-INPUT</code> on a <code>BPN</code> of the
+<code>RNN</code>, <code>SET-INPUT</code> must set the <a href="#x-28MGL-BP-3AIMPORTANCE-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3ELOSS-29-29" title="(MGL-BP:IMPORTANCE (MGL-PAX:ACCESSOR MGL-BP:-&gt;LOSS))"><code>IMPORTANCE</code></a> of the -&gt;ERROR lumps to 0
 else training would operate on the noise left there by previous
 invocations.</p></li>
 </ul>
@@ -4320,17 +4320,17 @@ enable it for training, as it would make backprop impossible.</p></li>
 
 <p>Return the index of the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> in <a href="#x-28MGL-BP-3ACLUMPS-20-28MGL-PAX-3AREADER-20MGL-BP-3ABPN-29-29" title="(MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN))"><code>CLUMPS</code></a> of <code>RNN</code> whose task it is to
 execute computation at <code>(- (TIME-STEP RNN) LAG)</code>. This is normally
-the same as <a href="#x-28MGL-BP-3ATIME-STEP-20FUNCTION-29" title="(MGL-BP:TIME-STEP FUNCTION)"><code>TIME-STEP</code></a> (disregarding <code>LAG</code>). That is, <a href="#x-28MGL-BP-3ACLUMPS-20-28MGL-PAX-3AREADER-20MGL-BP-3ABPN-29-29" title="(MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN))"><code>CLUMPS</code></a> can be
-indexed by <a href="#x-28MGL-BP-3ATIME-STEP-20FUNCTION-29" title="(MGL-BP:TIME-STEP FUNCTION)"><code>TIME-STEP</code></a> to get the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>. However, when <a href="#x-28MGL-BP-3A-2AWARP-TIME-2A-20VARIABLE-29" title="(MGL-BP:*WARP-TIME* VARIABLE)"><code>*WARP-TIME*</code></a> is
+the same as <a href="#x-28MGL-BP-3ATIME-STEP-20FUNCTION-29" title="(MGL-BP:TIME-STEP FUNCTION)"><code>TIME-STEP</code></a> (disregarding <code>LAG</code>). That is, <code>CLUMPS</code> can be
+indexed by <code>TIME-STEP</code> to get the <code>BPN</code>. However, when <a href="#x-28MGL-BP-3A-2AWARP-TIME-2A-20VARIABLE-29" title="(MGL-BP:*WARP-TIME* VARIABLE)"><code>*WARP-TIME*</code></a> is
 true, execution proceeds in a cycle as the structure of the network
 allows.</p>
 
 <p>Suppose we have a typical <code>RNN</code> that only ever references the previous
-time step so its <a href="#x-28MGL-BP-3AMAX-LAG-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:MAX-LAG (MGL-PAX:READER MGL-BP:RNN))"><code>MAX-LAG</code></a> is 1. Its <a href="#x-28MGL-BP-3AUNFOLDER-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN))"><code>UNFOLDER</code></a> returns <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>s of
+time step so its <a href="#x-28MGL-BP-3AMAX-LAG-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:MAX-LAG (MGL-PAX:READER MGL-BP:RNN))"><code>MAX-LAG</code></a> is 1. Its <a href="#x-28MGL-BP-3AUNFOLDER-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN))"><code>UNFOLDER</code></a> returns <code>BPN</code>s of
 identical structure bar a shift in their time lagged connections
 except for the very first, so <a href="#x-28MGL-BP-3AWARP-START-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:WARP-START (MGL-PAX:READER MGL-BP:RNN))"><code>WARP-START</code></a> and <a href="#x-28MGL-BP-3AWARP-LENGTH-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:WARP-LENGTH (MGL-PAX:READER MGL-BP:RNN))"><code>WARP-LENGTH</code></a> are both 1.
-If <a href="#x-28MGL-BP-3A-2AWARP-TIME-2A-20VARIABLE-29" title="(MGL-BP:*WARP-TIME* VARIABLE)"><code>*WARP-TIME*</code></a> is <code>NIL</code>, then the mapping from <a href="#x-28MGL-BP-3ATIME-STEP-20FUNCTION-29" title="(MGL-BP:TIME-STEP FUNCTION)"><code>TIME-STEP</code></a> to the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> in
-<a href="#x-28MGL-BP-3ACLUMPS-20-28MGL-PAX-3AREADER-20MGL-BP-3ABPN-29-29" title="(MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN))"><code>CLUMPS</code></a> is straightforward:</p>
+If <code>*WARP-TIME*</code> is <code>NIL</code>, then the mapping from <code>TIME-STEP</code> to the <code>BPN</code> in
+<code>CLUMPS</code> is straightforward:</p>
 
 <pre><code>time:   |  0 |  1 |  2 |  3 |  4 |  5
 --------+----+----+----+----+----+----
@@ -4339,7 +4339,7 @@ warped: |  0 |  1 |  2 |  3 |  4 |  5
 bpn:    | b0 | b1 | b2 | b3 | b4 | b5
 </code></pre>
 
-<p>When <a href="#x-28MGL-BP-3A-2AWARP-TIME-2A-20VARIABLE-29" title="(MGL-BP:*WARP-TIME* VARIABLE)"><code>*WARP-TIME*</code></a> is true, we reuse the <code>B1</code> - <code>B2</code> bpns in a loop:</p>
+<p>When <code>*WARP-TIME*</code> is true, we reuse the <code>B1</code> - <code>B2</code> bpns in a loop:</p>
 
 <pre><code>time:   |  0 |  1 |  2 |  3 |  4 |  5
 --------+----+----+----+----+----+----
@@ -4348,14 +4348,14 @@ warped: |  0 |  1 |  2 |  1 |  2 |  1
 bpn:    | b0 | b1 | b2 | b1*| b2 | b1*
 </code></pre>
 
-<p><code>B1*</code> is the same <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> as <code>B1</code>, but its connections created by <code>LAG</code> go
+<p><code>B1*</code> is the same <code>BPN</code> as <code>B1</code>, but its connections created by <code>LAG</code> go
 through warped time and end up referencing <code>B2</code>. This way, memory
 consumption is independent of the number time steps needed to
 process a sequence or make predictions.</p>
 
-<p>To be able to pull this trick off <a href="#x-28MGL-BP-3AWARP-START-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:WARP-START (MGL-PAX:READER MGL-BP:RNN))"><code>WARP-START</code></a> and <a href="#x-28MGL-BP-3AWARP-LENGTH-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:WARP-LENGTH (MGL-PAX:READER MGL-BP:RNN))"><code>WARP-LENGTH</code></a> must be
+<p>To be able to pull this trick off <code>WARP-START</code> and <code>WARP-LENGTH</code> must be
 specified when the <code>RNN</code> is instantiated. In general, with
-<a href="#x-28MGL-BP-3A-2AWARP-TIME-2A-20VARIABLE-29" title="(MGL-BP:*WARP-TIME* VARIABLE)"><code>*WARP-TIME*</code></a> <code>(+ WARP-START (MAX 2 WARP-LENGTH))</code> bpns are needed.
+<code>*WARP-TIME*</code> <code>(+ WARP-START (MAX 2 WARP-LENGTH))</code> bpns are needed.
 The 2 comes from the fact that with cycle length 1 a bpn would need
 to takes its input from itself which is problematic because it has
 <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> for only one set of values.</p></li>
@@ -4376,7 +4376,7 @@ to takes its input from itself which is problematic because it has
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/1bd0b43cbc1d152cf69a1d854112026d56c9b0b2/src/backprop.lisp#L473">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-BP-3AWARP-LENGTH-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" >WARP-LENGTH</a></span></span> <span class="locative-args">RNN</span> <span class="locative-args">(:WARP-LENGTH = 1)</span></span></p>
 
 <p>An integer such that the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> <a href="#x-28MGL-BP-3AUNFOLDER-20-28MGL-PAX-3AREADER-20MGL-BP-3ARNN-29-29" title="(MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN))"><code>UNFOLDER</code></a> creates at
-time step <code>I</code> (where <code>(&lt;= WARP-START I)</code>) is identical to the <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>
+time step <code>I</code> (where <code>(&lt;= WARP-START I)</code>) is identical to the <code>BPN</code>
 created at time step <code>(+ WARP-START (MOD (- I WARP-START)
 WARP-LENGTH))</code> except for a shift in its time lagged
 connections.</p></li>
@@ -4395,7 +4395,7 @@ previous states are discarded so it's not possible to gather
 statistics after <a href="#x-28MGL-BP-3AFORWARD-20GENERIC-FUNCTION-29" title="(MGL-BP:FORWARD GENERIC-FUNCTION)"><code>FORWARD</code></a> finished.</p>
 
 <p>Add monitor objects to this slot and they will be automatically
-applied to the <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a> after each step when <a href="#x-28MGL-BP-3AFORWARD-20GENERIC-FUNCTION-29" title="(MGL-BP:FORWARD GENERIC-FUNCTION)"><code>FORWARD</code></a>ing the <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>
+applied to the <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a> after each step when <code>FORWARD</code>ing the <code>RNN</code>
 during training or prediction. To be able to easily switch between
 sets of monitors, in addition to a list of monitors this can be a
 symbol or a function, too. If it's a symbol, then its a designator
@@ -4443,7 +4443,7 @@ automatically added to the network being built.</p>
 
 <p>A lump has its own <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> and <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a> matrices allocated for it
 in which the results of the forward and backward passes are stored.
-This is in contrast to a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> whose <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a> and <a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a>
+This is in contrast to a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a> whose <code>NODES</code> and <code>DERIVATIVES</code>
 are those of its last constituent <a href="#x-28MGL-BP-3ACLUMP-20CLASS-29" title="(MGL-BP:CLUMP CLASS)"><code>CLUMP</code></a>.</p>
 
 <p>Since lumps almost always live within a <a href="#x-28MGL-BP-3ABPN-20CLASS-29" title="(MGL-BP:BPN CLASS)"><code>BPN</code></a>, their
@@ -4558,7 +4558,7 @@ with a one hot encoding scheme and a <a href="#x-28MGL-BP-3A--3EV-2AM-20CLASS-29
 is more efficient in execution and in memory usage, because it works
 with a sparse representation of the input.</p>
 
-<p>The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is the number of columns of <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>1</code></a>) which is
+<p>The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is the number of columns of <code>WEIGHTS</code> which is
 determined automatically.</p>
 
 <pre><code>(-&gt;embedding :weights (-&gt;weight :name 'embedding-weights
@@ -4752,12 +4752,12 @@ shared between multiple <a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZED-20CLASS-29" 
 <p>Batch normalization is special in that it has state apart from the
 computed results (<a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-COMMON:NODES GENERIC-FUNCTION)"><code>NODES</code></a>) and its derivatives (<a href="#x-28MGL-BP-3ADERIVATIVES-20GENERIC-FUNCTION-29" title="(MGL-BP:DERIVATIVES GENERIC-FUNCTION)"><code>DERIVATIVES</code></a>). This
 state is the estimated mean and variance of its inputs and they
-are encapsulated by <a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZATION-20CLASS-29" title="(MGL-BP:-&gt;BATCH-NORMALIZATION CLASS)"><code>-&gt;BATCH-NORMALIZATION</code></a>.</p>
+are encapsulated by <code>-&gt;BATCH-NORMALIZATION</code>.</p>
 
 <p>If <code>NORMALIZATION</code> is not given at instantiation, then a new
-<a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZATION-20CLASS-29" title="(MGL-BP:-&gt;BATCH-NORMALIZATION CLASS)"><code>-&gt;BATCH-NORMALIZATION</code></a> object will be created automatically,
+<code>-&gt;BATCH-NORMALIZATION</code> object will be created automatically,
 passing <code>:BATCH-SIZE</code>, <code>:VARIANCE-ADJUSTMENT</code>, and <code>:POPULATION-DECAY</code>
-arguments on to <a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZATION-20CLASS-29" title="(MGL-BP:-&gt;BATCH-NORMALIZATION CLASS)"><code>-&gt;BATCH-NORMALIZATION</code></a>. See <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>BATCH-SIZE</code></a>, <a href="#x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-GD:VARIANCE-ADJUSTMENT (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>VARIANCE-ADJUSTMENT</code></a> and <a href="#x-28MGL-BP-3APOPULATION-DECAY-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-BP:POPULATION-DECAY (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>POPULATION-DECAY</code></a>. New scale and shift weight lumps will be
+arguments on to <code>-&gt;BATCH-NORMALIZATION</code>. See <a href="#x-28MGL-COMMON-3ABATCH-SIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-COMMON:BATCH-SIZE (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>BATCH-SIZE</code></a>, <a href="#x-28MGL-GD-3AVARIANCE-ADJUSTMENT-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-GD:VARIANCE-ADJUSTMENT (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>VARIANCE-ADJUSTMENT</code></a> and <a href="#x-28MGL-BP-3APOPULATION-DECAY-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EBATCH-NORMALIZATION-29-29" title="(MGL-BP:POPULATION-DECAY (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION))"><code>POPULATION-DECAY</code></a>. New scale and shift weight lumps will be
 created with names:</p>
 
 <pre><code>`(,name :scale)
@@ -4767,7 +4767,7 @@ created with names:</p>
 <p>where <code>NAME</code> is the <code>NAME</code>(<a href="#x-28MGL-COMMON-3ANAME-20-28METHOD-20NIL-20-28MGL-CORE-3AATTRIBUTED-29-29-29" title="(MGL-COMMON:NAME (METHOD NIL (MGL-CORE:ATTRIBUTED)))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ANAME-20-28MGL-PAX-3AREADER-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29" title="(MGL-COMMON:NAME (MGL-PAX:READER MGL-DATASET:FUNCTION-SAMPLER))"><code>1</code></a>) of this lump.</p>
 
 <p>This default behavior covers the use-case where the statistics
-kept by <a href="#x-28MGL-BP-3A--3EBATCH-NORMALIZATION-20CLASS-29" title="(MGL-BP:-&gt;BATCH-NORMALIZATION CLASS)"><code>-&gt;BATCH-NORMALIZATION</code></a> are to be shared only between time
+kept by <code>-&gt;BATCH-NORMALIZATION</code> are to be shared only between time
 steps of an <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a>.</p></li>
 </ul>
 
@@ -4815,7 +4815,7 @@ Lowering the number of stripes may increase the regularization
 effect, but it also makes the computation less efficient. By
 setting <code>BATCH-SIZE</code> to a divisor of <a href="#x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:N-STRIPES GENERIC-FUNCTION)"><code>N-STRIPES</code></a> one can decouple the
 concern of efficiency from that of regularization. The default
-value, <code>NIL</code>, is equivalent to <a href="#x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29" title="(MGL-CORE:N-STRIPES GENERIC-FUNCTION)"><code>N-STRIPES</code></a>. <code>BATCH-SIZE</code> only affects
+value, <code>NIL</code>, is equivalent to <code>N-STRIPES</code>. <code>BATCH-SIZE</code> only affects
 training.</p>
 
 <p>With the special value <code>:USE-POPULATION</code>, instead of the mean and
@@ -5180,7 +5180,7 @@ it is nearly ubiquitous. See the <a href="#x-28MGL-BP-3A-40MGL-FNN-TUTORIAL-20MG
 <p>The number of elements in a softmax group. This is
 the number of classes for classification. Often <code>GROUP-SIZE</code> is
 equal to <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) (it is the default), but in general the only
-constraint is that <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) is a multiple of <code>GROUP-SIZE</code>.</p></li>
+constraint is that <code>SIZE</code> is a multiple of <code>GROUP-SIZE</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-COMMON-3ATARGET-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3ESOFTMAX-XE-LOSS-29-29'></a></p>
@@ -5367,7 +5367,7 @@ stripe. This <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3ARE
 <p>Perform <code>X * WEIGHTS</code> where <code>X</code> (the input) is of
 size <code>M</code> and <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>1</code></a>) is a <a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" title="(MGL-BP:-&gt;WEIGHT CLASS)"><code>-&gt;WEIGHT</code></a> whose single stripe is taken to
 be of dimensions <code>M x N</code> stored in row major order. <code>N</code> is the size
-of this lump. If <a href="#x-28MGL-BP-3ATRANSPOSE-WEIGHTS-P-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-BP:TRANSPOSE-WEIGHTS-P (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>TRANSPOSE-WEIGHTS-P</code></a> then <code>WEIGHTS</code>(<a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;EMBEDDING))"><code>0</code></a> <a href="#x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>1</code></a>) is <code>N x M</code> and <code>X
+of this lump. If <a href="#x-28MGL-BP-3ATRANSPOSE-WEIGHTS-P-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EV-2AM-29-29" title="(MGL-BP:TRANSPOSE-WEIGHTS-P (MGL-PAX:READER MGL-BP:-&gt;V*M))"><code>TRANSPOSE-WEIGHTS-P</code></a> then <code>WEIGHTS</code> is <code>N x M</code> and <code>X
 * WEIGHTS'</code> is computed.</p></li>
 </ul>
 
@@ -5572,7 +5572,7 @@ stripe 1 it is in stripe 1 of sump lump L at time step 42.</p>
 
 <p>This lump copies the per-stripe states from different lumps into a
 single lump so that further processing can take place (typically
-when the <a href="#x-28MGL-BP-3ARNN-20CLASS-29" title="(MGL-BP:RNN CLASS)"><code>RNN</code></a> is embedded in another network).</p>
+when the <code>RNN</code> is embedded in another network).</p>
 
 <p>The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is automatically set to the size of the lump
 returned by <code>(FUNCALL SEQ-ELT-FN 0)</code>.</p></li>
@@ -5731,7 +5731,7 @@ precisions (also between 0 and 1 or <code>NIL</code>), one for each element in
 
 <p><a href="#x-28MGL-CORE-3AENCODE-20GENERIC-FUNCTION-29" title="(MGL-CORE:ENCODE GENERIC-FUNCTION)"><code>ENCODE</code></a> all features of a document with a sparse
 vector. Get the features of document from <code>MAPPER</code>, encode each
-feature with <a href="#x-28MGL-NLP-3AFEATURE-ENCODER-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29" title="(MGL-NLP:FEATURE-ENCODER (MGL-PAX:READER MGL-NLP:BAG-OF-WORDS-ENCODER))"><code>FEATURE-ENCODER</code></a>. <a href="#x-28MGL-NLP-3AFEATURE-ENCODER-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29" title="(MGL-NLP:FEATURE-ENCODER (MGL-PAX:READER MGL-NLP:BAG-OF-WORDS-ENCODER))"><code>FEATURE-ENCODER</code></a> may return <code>NIL</code> if the
+feature with <a href="#x-28MGL-NLP-3AFEATURE-ENCODER-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29" title="(MGL-NLP:FEATURE-ENCODER (MGL-PAX:READER MGL-NLP:BAG-OF-WORDS-ENCODER))"><code>FEATURE-ENCODER</code></a>. <code>FEATURE-ENCODER</code> may return <code>NIL</code> if the
 feature is not used. The result is a vector of encoded-feature/value
 conses. encoded-features are unique (under <a href="#x-28MGL-NLP-3AENCODED-FEATURE-TEST-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29" title="(MGL-NLP:ENCODED-FEATURE-TEST (MGL-PAX:READER MGL-NLP:BAG-OF-WORDS-ENCODER))"><code>ENCODED-FEATURE-TEST</code></a>)
 within the vector but are in no particular order.</p>

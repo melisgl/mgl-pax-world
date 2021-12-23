@@ -215,7 +215,7 @@ implementation of choice are welcome, of course.)</p></li>
 <p>If you define a package via <code>DEFPACKAGE</code>, you can make that
 package the currently active package for the subsequent
 compilation of the same file via <code>IN-PACKAGE</code>. The same is,
-however, not true for <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO)"><code>DEFREADTABLE</code></a> and <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE MGL-PAX:MACRO)"><code>IN-READTABLE</code></a> for the
+however, not true for <code>DEFREADTABLE</code> and <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE MGL-PAX:MACRO)"><code>IN-READTABLE</code></a> for the
 following reason:</p>
 
 <p>It's unlikely that the need for special reader-macros arises for
@@ -223,14 +223,14 @@ a problem which can be solved in just one file. Most often,
 you're going to define the reader macro functions, and set up
 the corresponding readtable in an extra file.</p>
 
-<p>If <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO)"><code>DEFREADTABLE</code></a> had compile-time effects, you'd have to wrap
+<p>If <code>DEFREADTABLE</code> had compile-time effects, you'd have to wrap
 each definition of a reader-macro function in an <code>EVAL-WHEN</code> to
 make its definition available at compile-time. Because that's
-simply not the common case, <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO)"><code>DEFREADTABLE</code></a> does not have a
+simply not the common case, <code>DEFREADTABLE</code> does not have a
 compile-time effect.</p>
 
 <p>If you want to use a readtable within the same file as its
-definition, wrap the <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO)"><code>DEFREADTABLE</code></a> and the reader-macro function
+definition, wrap the <code>DEFREADTABLE</code> and the reader-macro function
 definitions in an explicit <code>EVAL-WHEN</code>.</p></li>
 </ol>
 

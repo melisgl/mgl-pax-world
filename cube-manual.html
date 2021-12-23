@@ -75,7 +75,7 @@ its own package and all ties to MGL-MAT has been severed.</p>
 
 <p>This package defines <a href="#x-28MGL-CUBE-3ACUBE-20CLASS-29" title="(MGL-CUBE:CUBE CLASS)"><code>CUBE</code></a>, an abstract base class that provides a
 framework for automatic conversion between various representations
-of the same data. To define a cube, <a href="#x-28MGL-CUBE-3ACUBE-20CLASS-29" title="(MGL-CUBE:CUBE CLASS)"><code>CUBE</code></a> needs to be subclassed and
+of the same data. To define a cube, <code>CUBE</code> needs to be subclassed and
 the <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29" title="Facet Extension API">Facet Extension API</a> be implemented.</p>
 
 <p>If you are only interested in how to use cubes in general, read
@@ -102,7 +102,7 @@ the <a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29"
 same stuff. These representations go by the name `facet'. Clients
 must use <a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a> to acquire a dynamic extent reference to a
 facet. With the information provided in the <a href="#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a> argument of
-<a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a>, the cube keeps track of which facets are up-to-date and
+<code>WITH-FACET</code>, the cube keeps track of which facets are up-to-date and
 copies data between them as necessary.</p>
 
 <p>The cube is an abstract class, it does not provide useful behavior
@@ -148,14 +148,14 @@ it. For the description of the <code>DIRECTION</code> parameter, see the type
   facets become non-up-to-date, while this facet is marked as
   up-to-date. If the facet in question is not up-to-date then data
   is copied to it from one of the up-to-date facets (see
-  <a href="#x-28MGL-CUBE-3ASELECT-COPY-SOURCE-FOR-FACET-2A-20GENERIC-FUNCTION-29" title="(MGL-CUBE:SELECT-COPY-SOURCE-FOR-FACET* GENERIC-FUNCTION)"><code>SELECT-COPY-SOURCE-FOR-FACET*</code></a>).</p></li>
+  <code>SELECT-COPY-SOURCE-FOR-FACET*</code>).</p></li>
 </ul>
 
-<p>Any number of <a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a>s with direction <code>:INPUT</code> may be active at
+<p>Any number of <code>WITH-FACET</code>s with direction <code>:INPUT</code> may be active at
 the same time, but <code>:IO</code> and <code>:OUTPUT</code> cannot coexists with another
-<a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a> regardless of the direction. The exception for this rule
-is that an inner <a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a> does not conflict with an enclosing
-<a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a> if they are for the same facet (but inner <a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a>s
+<code>WITH-FACET</code> regardless of the direction. The exception for this rule
+is that an inner <code>WITH-FACET</code> does not conflict with an enclosing
+<code>WITH-FACET</code> if they are for the same facet (but inner <code>WITH-FACET</code>s
 for another facet or for the same facet from another thread do).</p>
 
 <p>See <a href="#x-28MGL-CUBE-3ACHECK-NO-WRITERS-20FUNCTION-29" title="(MGL-CUBE:CHECK-NO-WRITERS FUNCTION)"><code>CHECK-NO-WRITERS</code></a> and <a href="#x-28MGL-CUBE-3ACHECK-NO-WATCHERS-20FUNCTION-29" title="(MGL-CUBE:CHECK-NO-WATCHERS FUNCTION)"><code>CHECK-NO-WATCHERS</code></a> called by
@@ -216,7 +216,7 @@ determined by <a href="#x-28MGL-CUBE-3A-2AMAYBE-SYNCHRONIZE-CUBE-2A-20VARIABLE-2
 <p>The default is the value of <a href="#x-28MGL-CUBE-3A-2ADEFAULT-SYNCHRONIZATION-2A-20VARIABLE-29" title="(MGL-CUBE:*DEFAULT-SYNCHRONIZATION* VARIABLE)"><code>*DEFAULT-SYNCHRONIZATION*</code></a>
 that's <code>:MAYBE</code> by default.</p>
 
-<p>Note that the body of a <a href="#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a> is never synchronized with
+<p>Note that the body of a <code>WITH-FACET</code> is never synchronized with
 anyone, apart from the implicit reader/writer conflict (see
 <a href="#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a>).</p></li>
 </ul>
@@ -347,7 +347,7 @@ updated. See <a href="#x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-2A-20GENERIC-FUNCTION-2
 <h2><a href="#x-28MGL-CUBE-3A-40CUBE-FACET-EXTENSION-API-20MGL-PAX-3ASECTION-29">6 Facet Extension API</a></h2>
 
 <p>Many of the generic functions in this section take <a href="#x-28MGL-CUBE-3AFACET-20CLASS-29" title="(MGL-CUBE:FACET CLASS)"><code>FACET</code></a> arguments.
-<a href="#x-28MGL-CUBE-3AFACET-20CLASS-29" title="(MGL-CUBE:FACET CLASS)"><code>FACET</code></a> is a structure and is not intended to be subclassed. To be
+<code>FACET</code> is a structure and is not intended to be subclassed. To be
 able to add specialized methods, the name of the
 facet (<a href="#x-28MGL-CUBE-3AFACET-NAME-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29" title="(MGL-CUBE:FACET-NAME MGL-PAX:STRUCTURE-ACCESSOR)"><code>FACET-NAME</code></a>) is also passed as the
 argument right in front of the corresponding facet argument.</p>
@@ -404,7 +404,7 @@ details.</p>
 
 <p>Specializations will most likely want to call the default
 implementation (with <code>CALL-NEXT-METHOD</code>) but with a lambda that
-transforms <a href="#x-28MGL-CUBE-3AFACET-VALUE-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29" title="(MGL-CUBE:FACET-VALUE MGL-PAX:STRUCTURE-ACCESSOR)"><code>FACET-VALUE</code></a> before passing it on to <code>FN</code>.</p></li>
+transforms <code>FACET-VALUE</code> before passing it on to <code>FN</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-2A-20GENERIC-FUNCTION-29'></a></p>
@@ -461,7 +461,7 @@ an example of how MGL-MAT (see <a href="mat-manual.html#x-28MGL-MAT-3A-40MAT-MAN
   <span class="string">"The corresponding facet is a one dimensional lisp array."</span></span>)</span></span></code></pre>
 
 <p>Which makes it possible to refer to this definition (refer as in
-link and <code>M-.</code> to) <a href="mat-manual.html#x-28MGL-MAT-3ABACKING-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME)"><code>MGL-MAT:BACKING-ARRAY</code></a> facet-name. See
+link and <code>M-.</code> to) <code>MGL-MAT:BACKING-ARRAY</code> facet-name. See
 <a href="mgl-pax-manual.html#x-28MGL-PAX-3A-40MGL-PAX-MANUAL-20MGL-PAX-3ASECTION-29" title="PAX Manual">PAX Manual</a> for more.</p></li>
 </ul>
 

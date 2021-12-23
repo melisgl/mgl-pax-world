@@ -206,7 +206,7 @@ to <code>:DOUBLE</code>.</p>
   m</span>)</span>
 ==&gt; #&lt;MAT 2x3 AB #2A<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">1.0d0 2.0d0 4.0d0</span>)</span> <span class="paren2">(<span class="code">0.0d0 0.0d0 0.0d0</span>)</span></span>)</span>&gt;</span></code></pre>
 
-<p>Compared to <code>AREF</code> <a href="#x-28MGL-MAT-3AMREF-20FUNCTION-29" title="(MGL-MAT:MREF FUNCTION)"><code>MREF</code></a> is a very expensive operation and it's best
+<p>Compared to <code>AREF</code> <code>MREF</code> is a very expensive operation and it's best
 used sparingly. Instead, typical code relies much more on matrix
 level operations:</p>
 
@@ -237,9 +237,9 @@ CUDA-capable GPU, CUDA can be enabled with <a href="#x-28MGL-MAT-3AWITH-CUDA-2A-
 ==&gt; #&lt;MAT 4 A #<span class="paren1">(<span class="code">6.0d0 6.0d0 6.0d0 6.0d0</span>)</span>&gt;</span></code></pre>
 
 <p>Note the lonely <code>C</code> showing that only the <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a>
-facet was used for both <a href="#x-28MGL-MAT-3AFILL-21-20FUNCTION-29" title="(MGL-MAT:FILL! FUNCTION)"><code>FILL!</code></a> and <a href="#x-28MGL-MAT-3ASCAL-21-20FUNCTION-29" title="(MGL-MAT:SCAL! FUNCTION)"><code>SCAL!</code></a>. When <a href="#x-28MGL-MAT-3AWITH-CUDA-2A-20MGL-PAX-3AMACRO-29" title="(MGL-MAT:WITH-CUDA* MGL-PAX:MACRO)"><code>WITH-CUDA*</code></a> exits and
+facet was used for both <code>FILL!</code> and <code>SCAL!</code>. When <code>WITH-CUDA*</code> exits and
 destroys the CUDA context, it destroys all CUDA facets, moving their
-data to the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet, so the returned <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> only has
+data to the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet, so the returned <code>MAT</code> only has
 that facet.</p>
 
 <p>When there is no high-level operation that does what we want, we may
@@ -260,7 +260,7 @@ gives it the content of the matrix as a normal multidimensional lisp
 array, copying the data from the GPU or elsewhere if necessary. This
 allows new representations (<a href="cube-manual.html#x-28MGL-CUBE-3AFACET-20CLASS-29" title="(MGL-CUBE:FACET CLASS)"><code>FACET</code></a>s) to be added easily and it also
 avoids copying if the facet is already up-to-date. Of course, adding
-CUDA support to <a href="#x-28MGL-MAT-3ALOGDET-20FUNCTION-29" title="(MGL-MAT:LOGDET FUNCTION)"><code>LOGDET</code></a> could make it more efficient.</p>
+CUDA support to <code>LOGDET</code> could make it more efficient.</p>
 
 <p>Adding support for matrices that, for instance, live on a remote
 machine is thus possible with a new facet type and existing code
@@ -362,14 +362,14 @@ is the number of trailing invisible elements.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L304">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAKE-MAT-20FUNCTION-29" >MAKE-MAT</a></span></span> <span class="locative-args">DIMENSIONS &amp;REST ARGS &amp;KEY (CTYPE <a href="#x-28MGL-MAT-3A-2ADEFAULT-MAT-CTYPE-2A-20VARIABLE-29" title="(MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE)"><code>*DEFAULT-MAT-CTYPE*</code></a>) (DISPLACEMENT 0) MAX-SIZE INITIAL-ELEMENT INITIAL-CONTENTS (SYNCHRONIZATION <a href="cube-manual.html#x-28MGL-CUBE-3A-2ADEFAULT-SYNCHRONIZATION-2A-20VARIABLE-29" title="(MGL-CUBE:*DEFAULT-SYNCHRONIZATION* VARIABLE)"><code>*DEFAULT-SYNCHRONIZATION*</code></a>) DISPLACED-TO (CUDA-ENABLED <a href="#x-28MGL-MAT-3A-2ADEFAULT-MAT-CUDA-ENABLED-2A-20VARIABLE-29" title="(MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* VARIABLE)"><code>*DEFAULT-MAT-CUDA-ENABLED*</code></a>)</span></span></p>
 
 <p>Return a new <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> object. If <code>INITIAL-CONTENTS</code> is given then the
-matrix contents are initialized with <a href="#x-28MGL-MAT-3AREPLACE-21-20FUNCTION-29" title="(MGL-MAT:REPLACE! FUNCTION)"><code>REPLACE!</code></a>. See class <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> for the
+matrix contents are initialized with <a href="#x-28MGL-MAT-3AREPLACE-21-20FUNCTION-29" title="(MGL-MAT:REPLACE! FUNCTION)"><code>REPLACE!</code></a>. See class <code>MAT</code> for the
 description of the rest of the parameters. This is exactly
-what (<code>MAKE-INSTANCE</code> '<a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> ...) does except <code>DIMENSIONS</code> is not a
+what (<code>MAKE-INSTANCE</code> '<code>MAT</code> ...) does except <code>DIMENSIONS</code> is not a
 keyword argument so that <code>MAKE-MAT</code> looks more like <code>MAKE-ARRAY</code>. The
 semantics of <code>SYNCHRONIZATION</code> are desribed in the
 <a href="cube-manual.html#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="Synchronization">Synchronization</a> section.</p>
 
-<p>If specified, <code>DISPLACED-TO</code> must be a <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> object large enough (in the
+<p>If specified, <code>DISPLACED-TO</code> must be a <code>MAT</code> object large enough (in the
 sense of its <a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a>), to hold <code>DISPLACEMENT</code> plus <code>(REDUCE #'*
 DIMENSIONS)</code> elements. Just like with <code>MAKE-ARRAY</code>, <code>INITIAL-ELEMENT</code>
 and <code>INITIAL-CONTENTS</code> must not be supplied together with
@@ -1465,8 +1465,8 @@ mispecifies the <a href="cube-manual.html#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" ti
 matrix argument of <a href="#x-28MGL-MAT-3ASCAL-21-20FUNCTION-29" title="(MGL-MAT:SCAL! FUNCTION)"><code>SCAL!</code></a> should be accessed with direciton <code>:IO</code>. But
 if it's <code>:INPUT</code> instead, then subsequent access to the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet
 will not see the changes made by <a href="#x-28MGL-MAT-3AAXPY-21-20FUNCTION-29" title="(MGL-MAT:AXPY! FUNCTION)"><code>AXPY!</code></a>, and if it's <code>:OUTPUT</code>, then
-any changes made to the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet since the last update of the
-<a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> facet will not be copied and from the wrong input <a href="#x-28MGL-MAT-3ASCAL-21-20FUNCTION-29" title="(MGL-MAT:SCAL! FUNCTION)"><code>SCAL!</code></a>
+any changes made to the <code>ARRAY</code> facet since the last update of the
+<a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> facet will not be copied and from the wrong input <code>SCAL!</code>
 will compute the wrong result.</p>
 
 <p>Using the SLIME inspector or trying to access the
@@ -1591,7 +1591,7 @@ automatically.</p></li>
 
 <p>Facets bound by with <a href="cube-manual.html#x-28MGL-CUBE-3AWITH-FACETS-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACETS MGL-PAX:MACRO)"><code>WITH-FACETS</code></a> are to be treated as dynamic
 extent: it is not allowed to keep a reference to them beyond the
-dynamic scope of <a href="cube-manual.html#x-28MGL-CUBE-3AWITH-FACETS-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACETS MGL-PAX:MACRO)"><code>WITH-FACETS</code></a>.</p>
+dynamic scope of <code>WITH-FACETS</code>.</p>
 
 <p>For example, to implement the <a href="#x-28MGL-MAT-3AFILL-21-20FUNCTION-29" title="(MGL-MAT:FILL! FUNCTION)"><code>FILL!</code></a> operation using only the
 <a href="#x-28MGL-MAT-3ABACKING-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME)"><code>BACKING-ARRAY</code></a>, one could do this:</p>
@@ -1602,7 +1602,7 @@ dynamic scope of <a href="cube-manual.html#x-28MGL-CUBE-3AWITH-FACETS-20MGL-PAX-
    <span class="paren3">(<span class="code">fill x* 1 <span class="keyword">:start</span> displacement <span class="keyword">:end</span> <span class="paren4">(<span class="code">+ displacement size</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p><a href="cube-manual.html#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a> is <code>:OUTPUT</code> because we clobber all values in <code>X</code>. Armed
-with this knowledge about the direction, <a href="cube-manual.html#x-28MGL-CUBE-3AWITH-FACETS-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACETS MGL-PAX:MACRO)"><code>WITH-FACETS</code></a> will not copy
+with this knowledge about the direction, <code>WITH-FACETS</code> will not copy
 data from another facet if the backing array is not up-to-date.</p>
 
 <p>To transpose a 2d matrix with the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet:</p>
@@ -1613,7 +1613,7 @@ data from another facet if the backing array is not up-to-date.</p>
       <span class="paren4">(<span class="code">dotimes <span class="paren5">(<span class="code">column n-columns</span>)</span>
         <span class="paren5">(<span class="code">setf <span class="paren6">(<span class="code">aref x* row column</span>)</span> <span class="paren6">(<span class="code">aref x* column row</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
-<p>Note that <a href="cube-manual.html#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a> is <code>:IO</code>, because we need the data in this facet
+<p>Note that <code>DIRECTION</code> is <code>:IO</code>, because we need the data in this facet
 to be up-to-date (that's the input part) and we are invalidating all
 other facets by changing values (that's the output part).</p>
 
@@ -1627,15 +1627,15 @@ facet:</p>
             do <span class="paren5">(<span class="code">incf sum <span class="paren6">(<span class="code">cffi:mem-aref pointer <span class="paren1">(<span class="code">mat-ctype x</span>)</span> index</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
   sum</span>)</span></span></code></pre>
 
-<p>See <a href="cube-manual.html#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a> for a complete description of <code>:INPUT</code>, <code>:OUTPUT</code> and <code>:IO</code>.
-For <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects, that needs to be refined. If a <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> is reshaped
+<p>See <code>DIRECTION</code> for a complete description of <code>:INPUT</code>, <code>:OUTPUT</code> and <code>:IO</code>.
+For <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects, that needs to be refined. If a <code>MAT</code> is reshaped
 and/or displaced in a way that not all elements are visible then
 those elements are always kept intact and copied around. This is
 accomplished by turning <code>:OUTPUT</code> into <code>:IO</code> automatically on such <code>MATs</code>.</p>
 
 <p>We have finished our introduction to the various facets. It must be
 said though that one can do anything without ever accessing a facet
-directly or even being aware of them as most operations on <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a>s
+directly or even being aware of them as most operations on <code>MAT</code>s
 take care of choosing the most appropriate facet behind the scenes.
 In particular, most operations automatically use CUDA, if available
 and initialized. See <a href="#x-28MGL-MAT-3AWITH-CUDA-2A-20MGL-PAX-3AMACRO-29" title="(MGL-MAT:WITH-CUDA* MGL-PAX:MACRO)"><code>WITH-CUDA*</code></a> for detail.</p>
@@ -1923,7 +1923,7 @@ a performing a non-local-exit the following are true:</p>
 <ul>
 <li><p>All <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a>s in <code>MATS-TO-CUDA</code> have an up-to-date
   <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> facet.</p></li>
-<li><p>All <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a>s in <code>MATS-TO-CUDA-HOST</code> have an up-to-date
+<li><p>All <code>MAT</code>s in <code>MATS-TO-CUDA-HOST</code> have an up-to-date
   <a href="#x-28MGL-MAT-3ACUDA-HOST-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-HOST-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-HOST-ARRAY</code></a> facet and no
   <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a>.</p></li>
 </ul>
@@ -1997,7 +1997,7 @@ one kernel for <code>SINGLE-FLOAT</code> and <code>DOUBLE-FLOAT</code>. All such
 the declaration from <a href="#x-28MGL-MAT-3A-2ADEFAULT-LISP-KERNEL-DECLARATIONS-2A-20VARIABLE-29" title="(MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS* VARIABLE)"><code>*DEFAULT-LISP-KERNEL-DECLARATIONS*</code></a>.</p>
 
 <p>Finally, a dispatcher function with <code>NAME</code> is defined which determines
-the ctype of the <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects passed for <code>:MAT</code> typed parameters. It's
+the ctype of the <code>MAT</code> objects passed for <code>:MAT</code> typed parameters. It's
 an error if they are not of the same type. Scalars declared
 <code>SINGLE-FLOAT</code> are coerced to that type and the appropriate kernel is
 called.</p></li>
@@ -2157,7 +2157,7 @@ equivalents. Currently this only means that one needs to write only
 one kernel for <code>FLOAT</code> and <code>DOUBLE</code>.</p>
 
 <p>Finally, a dispatcher function with <code>NAME</code> is defined which determines
-the ctype of the <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects passed for <code>:MAT</code> typed parameters. It's
+the ctype of the <code>MAT</code> objects passed for <code>:MAT</code> typed parameters. It's
 an error if they are not of the same type. Scalars declared <code>FLOAT</code>
 are coerced to that type and the appropriate kernel is called.</p></li>
 </ul>
