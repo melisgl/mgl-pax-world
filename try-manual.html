@@ -148,7 +148,7 @@ prominently in parameterization.</p>
 
 <h5>Looking for Truth</h5>
 
-<p><a href="#x-28TRY-3A-40TRY-2FIS-20MGL-PAX-3ASECTION-29" title="The IS Macro">The IS Macro</a> is a replacement for <code>CL:ASSERT</code>, that can capture values of
+<p><a href="#x-28TRY-3A-40TRY-2FIS-20MGL-PAX-3ASECTION-29" title="The IS Macro">The IS Macro</a> is a replacement for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="(ASSERT MGL-PAX:MACRO)"><code>CL:ASSERT</code></a>, that can capture values of
 subforms to provide context to failures:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">1+ 5</span>)</span> 0</span>)</span></span>)</span>
@@ -159,11 +159,11 @@ debugger invoked on a TRY:UNEXPECTED-RESULT-FAILURE:
   where
     #1# = 6</span></code></pre>
 
-<p>Note the <code>#N#</code> syntax due to <code>*PRINT-CIRCLE*</code>.</p>
+<p>Note the <code>#N#</code> syntax due to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_cir.htm" title="(*PRINT-CIRCLE* VARIABLE)"><code>*PRINT-CIRCLE*</code></a>.</p>
 
 <h5>Checking Multiple Values</h5>
 
-<p><a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> automatically captures values of arguments to functions like <code>1+</code>
+<p><a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> automatically captures values of arguments to functions like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_1pl_1_.htm" title="(1+ FUNCTION)"><code>1+</code></a>
 in the above example (see <a href="#x-28TRY-3A-40TRY-2FAUTOMATIC-CAPTURES-20MGL-PAX-3ASECTION-29" title="Automatic Captures">Automatic Captures</a>). Values of other
 interesting subforms can be explicitly requested to be
 captured (<a href="#x-28TRY-3A-40TRY-2FEXPLICIT-CAPTURES-20MGL-PAX-3ASECTION-29" title="Explicit Captures">Explicit Captures</a>). <code>IS</code> supports capturing multiple
@@ -184,17 +184,17 @@ debugger invoked on a TRY:UNEXPECTED-FAILURE:
     #1# == 6
            #2#</span></code></pre>
 
-<p>In the body of <code>MATCH-VALUES</code>, <code>*</code> is bound to successive return
-values of some form, here <code>(VALUES (1+ 5) &quot;sdf&quot;)</code>. <code>MATCH-VALUES</code>
-comes with an automatic rewrite rule that captures the values of
-this form, which are printed above as <code>#1# == 6 #2#</code>. <code>IS</code> is flexible
-enough that all other checks (<a href="#x-28TRY-3ASIGNALS-20MGL-PAX-3AMACRO-29" title="(TRY:SIGNALS MGL-PAX:MACRO)"><code>SIGNALS</code></a>, <a href="#x-28TRY-3ASIGNALS-NOT-20MGL-PAX-3AMACRO-29" title="(TRY:SIGNALS-NOT MGL-PAX:MACRO)"><code>SIGNALS-NOT</code></a>,
+<p>In the body of <code>MATCH-VALUES</code>, <code>*</code> is bound to successive
+return values of some form, here <code>(VALUES (1+ 5) &quot;sdf&quot;)</code>.
+<code>MATCH-VALUES</code> comes with an automatic rewrite rule that captures the
+values of this form, which are printed above as <code>#1# == 6 #2#</code>. <code>IS</code>
+is flexible enough that all other checks (<a href="#x-28TRY-3ASIGNALS-20MGL-PAX-3AMACRO-29" title="(TRY:SIGNALS MGL-PAX:MACRO)"><code>SIGNALS</code></a>, <a href="#x-28TRY-3ASIGNALS-NOT-20MGL-PAX-3AMACRO-29" title="(TRY:SIGNALS-NOT MGL-PAX:MACRO)"><code>SIGNALS-NOT</code></a>,
 <a href="#x-28TRY-3AINVOKES-DEBUGGER-20MGL-PAX-3AMACRO-29" title="(TRY:INVOKES-DEBUGGER MGL-PAX:MACRO)"><code>INVOKES-DEBUGGER</code></a>, <a href="#x-28TRY-3AINVOKES-DEBUGGER-NOT-20MGL-PAX-3AMACRO-29" title="(TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO)"><code>INVOKES-DEBUGGER-NOT</code></a>, <a href="#x-28TRY-3AFAILS-20MGL-PAX-3AMACRO-29" title="(TRY:FAILS MGL-PAX:MACRO)"><code>FAILS</code></a>, and <a href="#x-28TRY-3AIN-TIME-20MGL-PAX-3AMACRO-29" title="(TRY:IN-TIME MGL-PAX:MACRO)"><code>IN-TIME</code></a> are built
 on top of it.</p>
 
 <h5>Writing Tests</h5>
 
-<p>Beyond a fancy <code>ASSERT</code>, Try provides tests, which are Lisp functions
+<p>Beyond a fancy <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="(ASSERT MGL-PAX:MACRO)"><code>ASSERT</code></a>, Try provides tests, which are Lisp functions
 that record their execution in <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> objects. Let's define a test
 and run it:</p>
 
@@ -352,7 +352,7 @@ rerun it. Now, let's fix <code>MY-SUITE</code> and rerun it:</p>
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-SUITE</span>)</span> EXPECTED-SUCCESS 0.004s ⋅1&gt;</span></code></pre>
 
 <p>Here, <a href="#x-28TRY-3A-21-20-28VARIABLE-20NIL-29-29" title="(TRY:! (VARIABLE NIL))"><code>!</code></a> refers to the most recent <code>TRIAL</code> returned by <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>. When a
-trial is passed to <code>TRY</code> or is <code>FUNCALL</code>ed, trials in it which match
+trial is passed to <code>TRY</code> or is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="(FUNCALL FUNCTION)"><code>FUNCALL</code></a>ed, trials in it which match
 the type in <code>TRY</code>'s <code>RERUN</code> argument are rerun (here, <code>UNEXPECTED</code> by
 default). <code>SHOULD-WORK</code> and its check are <a href="#x-28TRY-3AEXPECTED-SUCCESS-20TYPE-29" title="(TRY:EXPECTED-SUCCESS TYPE)"><code>EXPECTED-SUCCESS</code></a>es,
 hence they don't match <code>UNEXPECTED</code> and are not rerun (see
@@ -485,8 +485,8 @@ explicitly:</p>
 
 <p>Note how the <code>TEST</code> function uses <a href="#x-28TRY-3AWARN-ON-TESTS-NOT-RUN-20MGL-PAX-3AMACRO-29" title="(TRY:WARN-ON-TESTS-NOT-RUN MGL-PAX:MACRO)"><code>WARN-ON-TESTS-NOT-RUN</code></a> to catch any
 tests defined in <code>SOME-TEST-PACKAGE</code> that were not run. Tests can be
-deleted by <code>FMAKUNBOUND</code>, <code>UNINTERN</code>, or by redefining the function with
-<code>DEFUN</code>. Tests defined in a given package can be listed with
+deleted by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fmakun.htm" title="(FMAKUNBOUND FUNCTION)"><code>FMAKUNBOUND</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_uninte.htm" title="(UNINTERN FUNCTION)"><code>UNINTERN</code></a>, or by redefining the function with
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="(DEFUN MGL-PAX:MACRO)"><code>DEFUN</code></a>. Tests defined in a given package can be listed with
 <a href="#x-28TRY-3ALIST-PACKAGE-TESTS-20FUNCTION-29" title="(TRY:LIST-PACKAGE-TESTS FUNCTION)"><code>LIST-PACKAGE-TESTS</code></a>.</p>
 
 <p>This style allows higher level tests to establish the dynamic
@@ -498,7 +498,7 @@ environment necessary for lower level tests.</p>
 
 <h2><a href="#x-28TRY-3A-40TRY-2FEVENTS-20MGL-PAX-3ASECTION-29">4 Events</a></h2>
 
-<p>Try is built around events implemented as <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>CONDITION</code></a>s.
+<p>Try is built around events implemented as <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="(CONDITION CONDITION)"><code>0</code></a> <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>1</code></a>)s.
 Matching the types of events to <a href="#x-28TRY-3A-2ADEBUG-2A-20VARIABLE-29" title="(TRY:*DEBUG* VARIABLE)"><code>*DEBUG*</code></a>, <a href="#x-28TRY-3A-2ACOUNT-2A-20VARIABLE-29" title="(TRY:*COUNT* VARIABLE)"><code>*COUNT*</code></a>, <a href="#x-28TRY-3A-2ACOLLECT-2A-20VARIABLE-29" title="(TRY:*COLLECT* VARIABLE)"><code>*COLLECT*</code></a>, <a href="#x-28TRY-3A-2ARERUN-2A-20VARIABLE-29" title="(TRY:*RERUN* VARIABLE)"><code>*RERUN*</code></a>,
 <a href="#x-28TRY-3A-2APRINT-2A-20VARIABLE-29" title="(TRY:*PRINT* VARIABLE)"><code>*PRINT*</code></a>, and <a href="#x-28TRY-3A-2ADESCRIBE-2A-20VARIABLE-29" title="(TRY:*DESCRIBE* VARIABLE)"><code>*DESCRIBE*</code></a> is what gives Try its flexibility.</p>
 
@@ -516,7 +516,7 @@ The condition <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDIT
   <a href="#x-28TRY-3A-40TRY-2FTESTS-20MGL-PAX-3ASECTION-29" title="Tests">Tests</a>),</p></li>
 <li><p><a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>, the <a href="#x-28TRY-3AOUTCOME-20CONDITION-29" title="(TRY:OUTCOME CONDITION)"><code>OUTCOME</code></a> of a <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a>,</p></li>
 <li><p><a href="#x-28TRY-3ARESULT-20CONDITION-29" title="(TRY:RESULT CONDITION)"><code>RESULT</code></a>, the <code>OUTCOME</code> of a check (see <a href="#x-28TRY-3A-40TRY-2FCHECKS-20MGL-PAX-3ASECTION-29" title="Checks">Checks</a>), and</p></li>
-<li><p><a href="#x-28TRY-3AERROR-2A-20CONDITION-29" title="(TRY:ERROR* CONDITION)"><code>ERROR*</code></a>, an unexpected <code>CL:ERROR</code> or unadorned <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
+<li><p><a href="#x-28TRY-3AERROR-2A-20CONDITION-29" title="(TRY:ERROR* CONDITION)"><code>ERROR*</code></a>, an unexpected <code>CL:ERROR</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="(ERROR CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="(ERROR FUNCTION)"><code>1</code></a>) or unadorned <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
 </ul>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="comment">;; We don't want to debug nor print a backtrace for the error below.
@@ -559,7 +559,7 @@ signalled are called concrete.</p>
 <p><a href="#x-28TRY-3AERROR-2A-20CONDITION-29" title="(TRY:ERROR* CONDITION)"><code>ERROR*</code></a> is an abstract class with two concrete subclasses:</p>
 
 <ul>
-<li><p><a href="#x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29" title="(TRY:UNHANDLED-ERROR CONDITION)"><code>UNHANDLED-ERROR</code></a>, signalled when a <code>CL:ERROR</code> reaches the handler set
+<li><p><a href="#x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29" title="(TRY:UNHANDLED-ERROR CONDITION)"><code>UNHANDLED-ERROR</code></a>, signalled when a <code>CL:ERROR</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="(ERROR CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="(ERROR FUNCTION)"><code>1</code></a>) reaches the handler set
    up by <a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" title="(TRY:DEFTEST MGL-PAX:MACRO)"><code>DEFTEST</code></a> or <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a>, or when the debugger is invoked.</p></li>
 <li><p><a href="#x-28TRY-3ANLX-20CONDITION-29" title="(TRY:NLX CONDITION)"><code>NLX</code></a>, signalled when no error was detected by the handler, but the
    trial finishes with a <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
@@ -721,7 +721,7 @@ Either <a href="#x-28TRY-3ASKIP-20CONDITION-29" title="(TRY:SKIP CONDITION)"><co
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/events.lisp#L173">[variable]</a></span> <span class="reference-object"><a href="#x-28TRY-3A-2AEVENT-PRINT-BINDINGS-2A-20VARIABLE-29" >*EVENT-PRINT-BINDINGS*</a></span></span> <span class="locative-args">((*PRINT-CIRCLE* T))</span></span></p>
 
 <p><a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a>s are conditions signalled in code that may change printer
-variables such as <code>*PRINT-CIRCLE*</code>, <code>*PRINT-LENGTH*</code>, etc. To control
+variables such as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_cir.htm" title="(*PRINT-CIRCLE* VARIABLE)"><code>*PRINT-CIRCLE*</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_lev.htm" title="(*PRINT-LENGTH* VARIABLE)"><code>*PRINT-LENGTH*</code></a>, etc. To control
 how events are printed, the list of variable bindings in
 <code>*EVENT-PRINT-BINDINGS*</code> is established whenever an <code>EVENT</code> is printed
 as if with:</p>
@@ -903,7 +903,7 @@ cancels the effect of any enclosing <code>WITH-SKIP</code> with <code>SKIP</code
 
 <h4><a href="#x-28TRY-3A-40TRY-2FCHECKS-20MGL-PAX-3ASECTION-29">4.6.2 Checks</a></h4>
 
-<p>Checks are like <code>CL:ASSERT</code>s, they check whether some condition holds
+<p>Checks are like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="(ASSERT MGL-PAX:MACRO)"><code>CL:ASSERT</code></a>s, they check whether some condition holds
 and signal an <a href="#x-28TRY-3AOUTCOME-20CONDITION-29" title="(TRY:OUTCOME CONDITION)"><code>OUTCOME</code></a>. The outcome signalled for checks is a
 subclass of <a href="#x-28TRY-3ARESULT-20CONDITION-29" title="(TRY:RESULT CONDITION)"><code>RESULT</code></a>.</p>
 
@@ -990,7 +990,7 @@ it, and it can be changed with the <a href="#x-28TRY-3A-40TRY-2FOUTCOME-RESTARTS
 
 <p>Change the <a href="#x-28TRY-3AOUTCOME-20CONDITION-29" title="(TRY:OUTCOME CONDITION)"><code>OUTCOME</code></a> of the check being signalled to <a href="#x-28TRY-3ARESULT-SKIP-20CONDITION-29" title="(TRY:RESULT-SKIP CONDITION)"><code>RESULT-SKIP</code></a>.
 <code>RESULT-SKIP</code>, being a <a href="#x-28TRY-3APASS-20TYPE-29" title="(TRY:PASS TYPE)"><code>PASS</code></a>, will cause the check to return <code>T</code> if
-<code>CONTINUE</code> or <a href="#x-28TRY-3ARECORD-EVENT-20FUNCTION-29" title="(TRY:RECORD-EVENT FUNCTION)"><code>RECORD-EVENT</code></a> is invoked on it.</p></li>
+<code>CONTINUE</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_abortc.htm" title="(CONTINUE FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_contin.htm" title="(CONTINUE RESTART)"><code>1</code></a>) or <a href="#x-28TRY-3ARECORD-EVENT-20FUNCTION-29" title="(TRY:RECORD-EVENT FUNCTION)"><code>RECORD-EVENT</code></a> is invoked on it.</p></li>
 </ul>
 
 <p><a id='x-28TRY-3ARETRY-CHECK-20FUNCTION-29'></a></p>
@@ -1099,7 +1099,7 @@ of other <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"
 <ul>
 <li><p>When a <code>TRIAL-START</code> event matches the <code>COLLECT</code> type (see
   <a href="#x-28TRY-3A-40TRY-2FCOLLECT-20MGL-PAX-3ASECTION-29" title="Collecting Events">Collecting Events</a>), its <a href="#x-28TRY-3ATRIAL-20-28MGL-PAX-3AREADER-20TRY-3ATRIAL-EVENT-29-29" title="(TRY:TRIAL (MGL-PAX:READER TRY:TRIAL-EVENT))"><code>TRIAL</code></a> is collected.</p></li>
-<li><p>Similarly, when a <code>TRIAL-START</code> matches the <code>PRINT</code> type (see
+<li><p>Similarly, when a <code>TRIAL-START</code> matches the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="(PRINT FUNCTION)"><code>PRINT</code></a> type (see
   <a href="#x-28TRY-3A-40TRY-2FPRINT-20MGL-PAX-3ASECTION-29" title="Printing Events">Printing Events</a>), it is printed immediately, and its trial's <a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>
   will be printed too regardless of whether it matches <code>PRINT</code>. If
   <code>TRIAL-START</code> does not match <code>PRINT</code>, it may still be printed if for
@@ -1281,7 +1281,7 @@ from the trial. If during the unwinding of the stack, the
 non-local-exit is cancelled (see <a href="#x-28TRY-3A-3A-40CANCELLED-NLX-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@CANCELLED-NLX MGL-PAX:GLOSSARY-TERM)">cancelled non-local exit</a>), the appropriate
 restart will be invoked upon returning from the trial. In the
 following example, the non-local exit from a skip is cancelled by a
-<code>THROW</code>.</p>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="(THROW MGL-PAX:MACRO)"><code>THROW</code></a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">some-test</span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">catch</span></i> 'foo
@@ -1296,7 +1296,7 @@ following example, the non-local exit from a skip is cancelled by a
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">SOME-TEST</span>)</span></span>)</span> SKIP 0.000s ⋅1&gt;</span></code></pre>
 
 <p>In the next example, the non-local exit from a skip is cancelled by
-an <code>ERROR</code>, which triggers an <code>ABORT-TRIAL</code>.</p>
+an <code>ERROR</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="(ERROR CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="(ERROR FUNCTION)"><code>1</code></a>), which triggers an <code>ABORT-TRIAL</code>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
       <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
@@ -1311,7 +1311,7 @@ an <code>ERROR</code>, which triggers an <code>ABORT-TRIAL</code>.</p>
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">FOO</span>)</span></span>)</span> ABORT* 0.000s ⊟1&gt;</span></code></pre>
 
 <p>All three restarts may be invoked on any <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a>, including the
-trial's own <a href="#x-28TRY-3ATRIAL-START-20CONDITION-29" title="(TRY:TRIAL-START CONDITION)"><code>TRIAL-START</code></a> and <a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>. If <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>CONDITION</code></a> is an <code>EVENT</code>
+trial's own <a href="#x-28TRY-3ATRIAL-START-20CONDITION-29" title="(TRY:TRIAL-START CONDITION)"><code>TRIAL-START</code></a> and <a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>. If <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="(CONDITION CONDITION)"><code>0</code></a> <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>1</code></a>) is an <code>EVENT</code>
 (<code>RETRY-TRIAL</code> has a special case here), they also record it (as in
 <a href="#x-28TRY-3ARECORD-EVENT-20FUNCTION-29" title="(TRY:RECORD-EVENT FUNCTION)"><code>RECORD-EVENT</code></a>) to ensure that when they handle an <code>EVENT</code> in the
 debugger or programatically that event is not dropped.</p>
@@ -1436,8 +1436,8 @@ so as <a href="#x-28TRY-3ARECORD-EVENT-20FUNCTION-29" title="(TRY:RECORD-EVENT F
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/error.lisp#L20">[condition]</a></span> <span class="reference-object"><a href="#x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29" >UNHANDLED-ERROR</a></span></span> <span class="locative-args">ERROR*</span></span></p>
 
-<p>Signalled when an <code>CL:ERROR</code> condition reaches the
-handlers set up <a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" title="(TRY:DEFTEST MGL-PAX:MACRO)"><code>DEFTEST</code></a> or <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a>, or when their <code>*DEBUGGER-HOOK*</code>
+<p>Signalled when an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="(ERROR CONDITION)"><code>CL:ERROR</code></a> condition reaches the
+handlers set up <a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" title="(TRY:DEFTEST MGL-PAX:MACRO)"><code>DEFTEST</code></a> or <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a>, or when their <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debugg.htm" title="(*DEBUGGER-HOOK* VARIABLE)"><code>*DEBUGGER-HOOK*</code></a>
 is invoked with a condition that's not an <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a>.</p></li>
 </ul>
 
@@ -1477,7 +1477,7 @@ populated.</p></li>
 <p>Representing a <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a> of unknown origin,
 this is signalled if a <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> does not return normally although it
 should have because it was not dismissed (see <a href="#x-28TRY-3ADISMISSAL-20CONDITION-29" title="(TRY:DISMISSAL CONDITION)"><code>DISMISSAL</code></a>, <a href="#x-28TRY-3ASKIP-TRIAL-20FUNCTION-29" title="(TRY:SKIP-TRIAL FUNCTION)"><code>SKIP-TRIAL</code></a>,
-<a href="#x-28TRY-3AABORT-TRIAL-20FUNCTION-29" title="(TRY:ABORT-TRIAL FUNCTION)"><code>ABORT-TRIAL</code></a>). In this case, there is no <code>CL:ERROR</code> associated with the
+<a href="#x-28TRY-3AABORT-TRIAL-20FUNCTION-29" title="(TRY:ABORT-TRIAL FUNCTION)"><code>ABORT-TRIAL</code></a>). In this case, there is no <code>CL:ERROR</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="(ERROR CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="(ERROR FUNCTION)"><code>1</code></a>) associated with the
 event.</p></li>
 </ul>
 
@@ -1549,7 +1549,7 @@ characters for the markers.</p>
 <h2><a href="#x-28TRY-3A-40TRY-2FIS-20MGL-PAX-3ASECTION-29">5 The IS Macro</a></h2>
 
 <p><a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> is the most fundamental one among <a href="#x-28TRY-3A-40TRY-2FCHECKS-20MGL-PAX-3ASECTION-29" title="Checks">Checks</a>, on which all
-the others are built, and it is a replacement for <code>CL:ASSERT</code> that can
+the others are built, and it is a replacement for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="(ASSERT MGL-PAX:MACRO)"><code>CL:ASSERT</code></a> that can
 capture values of subforms to provide context to failures:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">1+ 5</span>)</span> 0</span>)</span></span>)</span>
@@ -1560,7 +1560,7 @@ debugger invoked on a TRY:UNEXPECTED-FAILURE:
   where
     #1# = 6</span></code></pre>
 
-<p><code>IS</code> automatically captures values of arguments to functions like <code>1+</code>
+<p><code>IS</code> automatically captures values of arguments to functions like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_1pl_1_.htm" title="(1+ FUNCTION)"><code>1+</code></a>
 in the above example. Values of other interesting subforms can be
 explicitly requested to be captured. <code>IS</code> supports capturing multiple
 values and can be taught how to deal with macros. The combination of
@@ -1596,7 +1596,7 @@ value is not <code>NIL</code>, else signal a <code>RESULT</code> <a href="#x-28T
 <ul>
 <li><p>the <a href="#x-28TRY-3ARECORD-EVENT-20FUNCTION-29" title="(TRY:RECORD-EVENT FUNCTION)"><code>RECORD-EVENT</code></a> restart is invoked (available when running in a
   trial), or</p></li>
-<li><p>the <code>CONTINUE</code> restart is invoked (available when not running in a
+<li><p>the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_contin.htm" title="(CONTINUE RESTART)"><code>CONTINUE</code></a> restart is invoked (available when not running in a
   trial), or</p></li>
 <li><p>the signalled <code>RESULT</code> condition is not handled (possible only when
   not running in a trial, and the result is a <a href="#x-28TRY-3APASS-20TYPE-29" title="(TRY:PASS TYPE)"><code>PASS</code></a>).</p></li>
@@ -1627,7 +1627,7 @@ automatically recorded in the condition and also made available for
 <code>CTX</code> via <a href="#x-28TRY-3A-2AIS-CAPTURES-2A-20VARIABLE-29" title="(TRY:*IS-CAPTURES* VARIABLE)"><code>*IS-CAPTURES*</code></a>. See <a href="#x-28TRY-3A-40TRY-2FCAPTURES-20MGL-PAX-3ASECTION-29" title="Captures">Captures</a> for more.</p>
 
 <p>If <code>PRINT-CAPTURES</code> is true, the captures made are printed when the
-<code>RESULT</code> condition is displayed in the debugger or <code>DESCRIBE</code>d (see
+<code>RESULT</code> condition is displayed in the debugger or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm" title="(DESCRIBE FUNCTION)"><code>DESCRIBE</code></a>d (see
 <a href="#x-28TRY-3A-40TRY-2FPRINT-20MGL-PAX-3ASECTION-29" title="Printing Events">Printing Events</a>). This is the <code>where (PRIN1-TO-STRING 'HELLO) = &quot;HELLO&quot;</code>
 part above. If <code>PRINT-CAPTURES</code> is <code>NIL</code>, the captures are still
 available in <code>*IS-CAPTURES*</code> for writing custom <code>CTX</code> messages.</p>
@@ -1663,7 +1663,7 @@ to implement their own retry mechanism.</p></li>
 
 <p>A format specifier form is a Lisp form, typically an argument to
 macro, standing for the <code>FORMAT-CONTROL</code> and <code>FORMAT-ARGS</code> arguments to
-the <code>FORMAT</code> function.</p>
+the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm" title="(FORMAT FUNCTION)"><code>FORMAT</code></a> function.</p>
 
 <p>It may be a constant string:</p>
 
@@ -1729,7 +1729,7 @@ where
   #2# = 1</span></code></pre>
 
 <p>By default, automatic captures are not made for subforms deeper in
-<code>FORM</code>, except for when <code>FORM</code> is a call to <code>NULL</code>, <code>ENDP</code> and <code>NOT</code>:</p>
+<code>FORM</code>, except for when <code>FORM</code> is a call to <code>NULL</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_null.htm" title="(NULL FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm" title="(NULL TYPE)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_endp.htm" title="(ENDP FUNCTION)"><code>ENDP</code></a> and <code>NOT</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_not.htm" title="(NOT FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_not.htm" title="(NOT TYPE)"><code>1</code></a>):</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">null <span class="paren3">(<span class="code">find <span class="paren4">(<span class="code">1+ 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
 
@@ -1773,10 +1773,10 @@ functionality such as <a href="#x-28TRY-3AMATCH-VALUES-20MGL-PAX-3AMACRO-29" tit
 
 <p>A <code>SUB</code> (short for substitution) says that in the original form <a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> is
 checking, a <code>SUBFORM</code> was substituted (by <code>SUBSTITUTE-IS-FORM</code>) with
-<code>VAR</code> (if <code>VALUESP</code> is <code>NIL</code>) or with (<code>VALUES-LIST</code> <code>VAR</code>) if <code>VALUESP</code> is
+<code>VAR</code> (if <code>VALUESP</code> is <code>NIL</code>) or with (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vals_l.htm" title="(VALUES-LIST FUNCTION)"><code>VALUES-LIST</code></a> <code>VAR</code>) if <code>VALUESP</code> is
 true. Conversely, <code>VAR</code> is to be bound to the evaluated <code>NEW-FORM</code> if
-<code>VALUESP</code> is <code>NIL</code>, and to (<code>MULTIPLE-VALUE-LIST</code> <code>FORM</code>) if <code>VALUESP</code>.
-<code>NEW-FORM</code> is often <code>EQ</code> to <code>SUBFORM</code>, but it may be different, which is
+<code>VALUESP</code> is <code>NIL</code>, and to (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_mult_1.htm" title="(MULTIPLE-VALUE-LIST MGL-PAX:MACRO)"><code>MULTIPLE-VALUE-LIST</code></a> <code>FORM</code>) if <code>VALUESP</code>.
+<code>NEW-FORM</code> is often <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="(EQ FUNCTION)"><code>EQ</code></a> to <code>SUBFORM</code>, but it may be different, which is
 the case when further substitutions are made within a substitution.</p></li>
 </ul>
 
@@ -1815,13 +1815,13 @@ the case when further substitutions are made within a substitution.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/is.lisp#L473">[generic-function]</a></span> <span class="reference-object"><a href="#x-28TRY-3ASUBSTITUTE-IS-LIST-FORM-20GENERIC-FUNCTION-29" >SUBSTITUTE-IS-LIST-FORM</a></span></span> <span class="locative-args">FIRST FORM ENV</span></span></p>
 
-<p>In the list <code>FORM</code>, whose <code>CAR</code> is <code>FIRST</code>, substitute
-subexpressions of interest with a <code>GENSYM</code> and return the new form. As
+<p>In the list <code>FORM</code>, whose <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="(CAR FUNCTION)"><code>CAR</code></a> is <code>FIRST</code>, substitute
+subexpressions of interest with a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gensym.htm" title="(GENSYM FUNCTION)"><code>GENSYM</code></a> and return the new form. As
 the second value, return a list of <code>SUBs</code>.</p>
 
 <p>For example, consider <code>(IS (FIND (FOO) LIST))</code>. When
 <code>SUBSTITUTE-IS-LIST-FORM</code> is invoked on <code>(FIND (FOO) LIST)</code>, it
-substitutes each argument of <code>FIND</code> with a variable, returning the new
+substitutes each argument of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm" title="(FIND FUNCTION)"><code>FIND</code></a> with a variable, returning the new
 form <code>(FIND TEMP1 TEMP2)</code> and the list of two
 substitutions <code>((TEMP2 (FOO) (FOO) NIL) (TEMP3 LIST LIST NIL))</code>.
 This allows the original form to be rewritten as</p>
@@ -1885,7 +1885,7 @@ where
   #1# == 1
          2</span></code></pre>
 
-<p>where printing <code>==</code> instead of <code>=</code> indicates that this is a multiple
+<p>where printing <code>==</code> instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm" title="(= FUNCTION)"><code>=</code></a> indicates that this is a multiple
 value capture.</p>
 
 <p><a id='x-28TRY-3ACAPTURE-20MGL-PAX-3AMACRO-29'></a></p>
@@ -1897,7 +1897,7 @@ value capture.</p>
 dynamic extent of an <a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> evaluation, and finally return that value.
 If <code>CAPTURE</code> is used within the lexical scope of <code>IS</code>, then <code>CAPTURE</code>
 itself will show up in the form that the default <code>MSG</code> prints. Thus it
-is recommended to use the equivalent <code>MACROLET</code> <a href="#x-28TRY-3A-25-20MACROLET-29" title="(TRY:% MACROLET)"><code>%</code></a> in the lexical
+is recommended to use the equivalent <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm" title="(MACROLET MGL-PAX:MACRO)"><code>MACROLET</code></a> <a href="#x-28TRY-3A-25-20MACROLET-29" title="(TRY:% MACROLET)"><code>%</code></a> in the lexical
 scope as <code>%</code> is removed before printing.</p></li>
 </ul>
 
@@ -1907,7 +1907,7 @@ scope as <code>%</code> is removed before printing.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/is.lisp#L286">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3ACAPTURE-VALUES-20MGL-PAX-3AMACRO-29" >CAPTURE-VALUES</a></span></span> <span class="locative-args">FORM</span></span></p>
 
 <p>Like <code>CAPTURE-VALUES</code>, but record and return all values returned by
-<code>FORM</code>. It is recommended to use the equivalent <code>MACROLET</code> <a href="#x-28TRY-3A-25-25-20MACROLET-29" title="(TRY:%% MACROLET)"><code>%%</code></a> in the
+<code>FORM</code>. It is recommended to use the equivalent <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm" title="(MACROLET MGL-PAX:MACRO)"><code>MACROLET</code></a> <a href="#x-28TRY-3A-25-25-20MACROLET-29" title="(TRY:%% MACROLET)"><code>%%</code></a> in the
 lexical scope as <code>%%</code> is removed before printing.</p></li>
 </ul>
 
@@ -1944,7 +1944,7 @@ Many of them share a number of arguments, which are described here.</p>
 <li><p><code>ON-NLX</code> is a boolean that determines whether the check in a macro
   that wraps <code>BODY</code> is made when <code>BODY</code> performs a <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
 <li><p><code>MSG</code> and <code>CTX</code> are <a href="#x-28TRY-3A-40TRY-2FFORMAT-SPECIFIER-FORMS-20MGL-PAX-3ASECTION-29" title="Format Specifier Forms">Format Specifier Forms</a> as in <code>IS</code>.</p></li>
-<li><p><code>NAME</code> may be provided so that it is printed (with <code>PRIN1</code>) instead of
+<li><p><code>NAME</code> may be provided so that it is printed (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="(PRIN1 FUNCTION)"><code>PRIN1</code></a>) instead of
   <code>BODY</code> in <code>MSG</code>.</p></li>
 </ul>
 
@@ -1965,11 +1965,11 @@ evaluated) and satisfy the predicate <code>PRED</code>.</p>
 
 <p>When <code>PRED</code> is <code>NIL</code>, it always matches. When it is a string, then it
 matches if it is a substring of the printed representation of the
-condition being handled (by <code>PRINC</code> under <code>WITH-STANDARD-IO-SYNTAX</code>).
+condition being handled (by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="(PRINC FUNCTION)"><code>PRINC</code></a> under <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_std_.htm" title="(WITH-STANDARD-IO-SYNTAX MGL-PAX:MACRO)"><code>WITH-STANDARD-IO-SYNTAX</code></a>).
 When it is a function, it matches if it returns true when called
 with the condition as its argument.</p>
 
-<p>The check is performed in the cleanup form of an <code>UNWIND-PROTECT</code>
+<p>The check is performed in the cleanup form of an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_unwind.htm" title="(UNWIND-PROTECT MGL-PAX:MACRO)"><code>UNWIND-PROTECT</code></a>
 around <code>BODY</code>.</p>
 
 <p><code>HANDLER</code> is called when a matching condition is found. It can be a
@@ -2014,9 +2014,9 @@ Else, it is the most recent condition that matched
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L148">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3ASIGNALS-20MGL-PAX-3AMACRO-29" >SIGNALS</a></span></span> <span class="locative-args">(CONDITION-TYPE &amp;KEY PRED (HANDLER <code>T</code>) (ON-RETURN <code>T</code>) (ON-NLX <code>T</code>) NAME MSG CTX) &amp;BODY BODY</span></span></p>
 
-<p>Check that <code>BODY</code> signals a <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>CONDITION</code></a> of <code>CONDITION-TYPE</code> (not
+<p>Check that <code>BODY</code> signals a <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="(CONDITION CONDITION)"><code>0</code></a> <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>1</code></a>) of <code>CONDITION-TYPE</code> (not
 evaluated) that matches <code>PRED</code>. To detect matching conditions, <code>SIGNALS</code>
-sets up a <code>HANDLER-BIND</code>. Thus it can only see what <code>BODY</code> does not
+sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_handle.htm" title="(HANDLER-BIND MGL-PAX:MACRO)"><code>HANDLER-BIND</code></a>. Thus it can only see what <code>BODY</code> does not
 handle. The arguments are described in <a href="#x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-20MGL-PAX-3ASECTION-29" title="Checking Conditions">Checking Conditions</a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">signals <span class="paren2">(<span class="code">error</span>)</span>
@@ -2041,9 +2041,9 @@ The predicate did not match "xxx".</span></code></pre></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L204">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3ASIGNALS-NOT-20MGL-PAX-3AMACRO-29" >SIGNALS-NOT</a></span></span> <span class="locative-args">(CONDITION-TYPE &amp;KEY PRED (HANDLER <code>T</code>) (ON-RETURN <code>T</code>) (ON-NLX <code>T</code>) NAME MSG CTX) &amp;BODY BODY</span></span></p>
 
-<p>Check that <code>BODY</code> does not signal a <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>CONDITION</code></a> of <code>CONDITION-TYPE</code> (not
+<p>Check that <code>BODY</code> does not signal a <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="(CONDITION CONDITION)"><code>0</code></a> <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>1</code></a>) of <code>CONDITION-TYPE</code> (not
 evaluated) that matches <code>PRED</code>. To detect matching conditions,
-<code>SIGNALS-NOT</code> sets up a <code>HANDLER-BIND</code>. Thus it can only see what <code>BODY</code>
+<code>SIGNALS-NOT</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_handle.htm" title="(HANDLER-BIND MGL-PAX:MACRO)"><code>HANDLER-BIND</code></a>. Thus it can only see what <code>BODY</code>
 does not handle. The arguments are described in
 <a href="#x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-20MGL-PAX-3ASECTION-29" title="Checking Conditions">Checking Conditions</a>.</p></li>
 </ul>
@@ -2053,13 +2053,13 @@ does not handle. The arguments are described in
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L235">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3AINVOKES-DEBUGGER-20MGL-PAX-3AMACRO-29" >INVOKES-DEBUGGER</a></span></span> <span class="locative-args">(CONDITION-TYPE &amp;KEY PRED (HANDLER <code>T</code>) (ON-RETURN <code>T</code>) (ON-NLX <code>T</code>) NAME MSG CTX) &amp;BODY BODY</span></span></p>
 
-<p>Check that <code>BODY</code> enters the debugger with a <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>CONDITION</code></a> of
+<p>Check that <code>BODY</code> enters the debugger with a <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="(CONDITION CONDITION)"><code>0</code></a> <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>1</code></a>) of
 <code>CONDITION-TYPE</code> (not evaluated) that matches <code>PRED</code>. To detect matching
-conditions, <code>INVOKES-DEBUGGER</code> sets up a <code>*DEBUGGER-HOOK*</code>. Thus if
+conditions, <code>INVOKES-DEBUGGER</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debugg.htm" title="(*DEBUGGER-HOOK* VARIABLE)"><code>*DEBUGGER-HOOK*</code></a>. Thus if
 <code>*DEBUGGER-HOOK*</code> is changed by <code>BODY</code>, it may not detect the condition.
 The arguments are described in <a href="#x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-20MGL-PAX-3ASECTION-29" title="Checking Conditions">Checking Conditions</a>.</p>
 
-<p>Note that in a trial (see <a href="#x-28TRY-3ACURRENT-TRIAL-20FUNCTION-29" title="(TRY:CURRENT-TRIAL FUNCTION)"><code>CURRENT-TRIAL</code></a>), all <code>ERROR</code>s are handled,
+<p>Note that in a trial (see <a href="#x-28TRY-3ACURRENT-TRIAL-20FUNCTION-29" title="(TRY:CURRENT-TRIAL FUNCTION)"><code>CURRENT-TRIAL</code></a>), all <code>ERROR</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="(ERROR CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="(ERROR FUNCTION)"><code>1</code></a>)s are handled,
 and a <code>*DEBUGGER-HOOK*</code> is set up (see <a href="#x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29" title="(TRY:UNHANDLED-ERROR CONDITION)"><code>UNHANDLED-ERROR</code></a>). Thus invoking
 debugger would normally cause the trial to abort.</p>
 
@@ -2074,9 +2074,9 @@ debugger would normally cause the trial to abort.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L288">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3AINVOKES-DEBUGGER-NOT-20MGL-PAX-3AMACRO-29" >INVOKES-DEBUGGER-NOT</a></span></span> <span class="locative-args">(CONDITION-TYPE &amp;KEY PRED (HANDLER <code>T</code>) (ON-RETURN <code>T</code>) (ON-NLX <code>T</code>) NAME MSG CTX) &amp;BODY BODY</span></span></p>
 
-<p>Check that <code>BODY</code> does not enter the debugger with a <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>CONDITION</code></a> of
+<p>Check that <code>BODY</code> does not enter the debugger with a <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="(CONDITION CONDITION)"><code>0</code></a> <a href="mgl-pax-manual.html#x-28CONDITION-20MGL-PAX-3ALOCATIVE-29" title="(CONDITION MGL-PAX:LOCATIVE)"><code>1</code></a>) of
 <code>CONDITION-TYPE</code> (not evaluated) that matches <code>PRED</code>. To detect matching
-conditions, <code>INVOKES-DEBUGGER-NOT</code> sets up a <code>*DEBUGGER-HOOK*</code>. Thus if
+conditions, <code>INVOKES-DEBUGGER-NOT</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debugg.htm" title="(*DEBUGGER-HOOK* VARIABLE)"><code>*DEBUGGER-HOOK*</code></a>. Thus if
 <code>*DEBUGGER-HOOK*</code> is changed by <code>BODY</code>, it may not detect the condition.
 The arguments are described in <a href="#x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-20MGL-PAX-3ASECTION-29" title="Checking Conditions">Checking Conditions</a>.</p></li>
 </ul>
@@ -2158,7 +2158,7 @@ functions and macros that may be useful for writing <a href="#x-28TRY-3AIS-20MGL
 
 <p><code>ON-VALUES</code> evaluates <code>FORM</code> and transforms its return values one by
 one based on forms in <code>BODY</code>. The Nth value is replaced by the return
-value of the Nth form of <code>BODY</code> evaluated with <code>*</code> bound to the Nth
+value of the Nth form of <code>BODY</code> evaluated with <code>*</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_st.htm" title="(* FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_stst.htm" title="(* VARIABLE)"><code>1</code></a>) bound to the Nth
 value. If the number of values exceeds the number of transformation
 forms in <code>BODY</code> then the excess values are returned as is.</p>
 
@@ -2245,9 +2245,9 @@ always returns <code>NIL</code>.</p>
 <p><a id='x-28TRY-3AMISMATCH-25-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L477">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3AMISMATCH-25-20FUNCTION-29" >MISMATCH%</a></span></span> <span class="locative-args">SEQUENCE1 SEQUENCE2 &amp;KEY FROM-END (TEST #'<code>EQL</code>) (START1 0) END1 (START2 0) END2 KEY MAX-PREFIX-LENGTH MAX-SUFFIX-LENGTH</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L477">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3AMISMATCH-25-20FUNCTION-29" >MISMATCH%</a></span></span> <span class="locative-args">SEQUENCE1 SEQUENCE2 &amp;KEY FROM-END (TEST #'<code>EQL</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="(EQL FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="(EQL TYPE)"><code>1</code></a>)) (START1 0) END1 (START2 0) END2 KEY MAX-PREFIX-LENGTH MAX-SUFFIX-LENGTH</span></span></p>
 
-<p>Like <code>CL:MISMATCH</code> but <code>CAPTUREs</code> and returns the common prefix and
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mismat.htm" title="(MISMATCH FUNCTION)"><code>CL:MISMATCH</code></a> but <code>CAPTUREs</code> and returns the common prefix and
 the mismatched suffixes. The <code>TEST-NOT</code> argument is deprecated by
 the CLHS and is not supported. In addition, if <code>MAX-PREFIX-LENGTH</code> and
 <code>MAX-SUFFIX-LENGTH</code> are non-<code>NIL</code>, they must be non-negative integers,
@@ -2284,7 +2284,7 @@ where
 <p><a id='x-28TRY-3ADIFFERENT-ELEMENTS-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L545">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3ADIFFERENT-ELEMENTS-20FUNCTION-29" >DIFFERENT-ELEMENTS</a></span></span> <span class="locative-args">SEQUENCE1 SEQUENCE2 &amp;KEY (PRED #'<code>EQL</code>) (MISSING <code>:MISSING</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/checks.lisp#L545">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3ADIFFERENT-ELEMENTS-20FUNCTION-29" >DIFFERENT-ELEMENTS</a></span></span> <span class="locative-args">SEQUENCE1 SEQUENCE2 &amp;KEY (PRED #'<code>EQL</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="(EQL FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="(EQL TYPE)"><code>1</code></a>)) (MISSING <code>:MISSING</code>)</span></span></p>
 
 <p>Return the different elements under <code>PRED</code> in the given sequences as
 a list of <code>(:INDEX &lt;INDEX&gt; &lt;E1&gt; &lt;E2&gt;)</code> elements, where <code>E1</code> and <code>E2</code>
@@ -2340,10 +2340,10 @@ than <code>MAX-DIFF-IN-VALUE</code>, then they are considered equal.</p>
 floats (ULP, unit in the last place) between them is less than
 <code>MAX-DIFF-IN-ULP</code>, then they are considered equal.</p>
 
-<p>If neither <code>X</code> nor <code>Y</code> are floats, then the comparison is done with <code>=</code>.
-If one of them is a <code>DOUBLE-FLOAT</code>, then the other is converted to a
+<p>If neither <code>X</code> nor <code>Y</code> are floats, then the comparison is done with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm" title="(= FUNCTION)"><code>=</code></a>.
+If one of them is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="(DOUBLE-FLOAT TYPE)"><code>DOUBLE-FLOAT</code></a>, then the other is converted to a
 double float, and the comparison takes place in double float space.
-Else, both are converted to <code>SINGLE-FLOAT</code> and the comparison takes
+Else, both are converted to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="(SINGLE-FLOAT TYPE)"><code>SINGLE-FLOAT</code></a> and the comparison takes
 place in single float space.</p></li>
 </ul>
 
@@ -2368,7 +2368,7 @@ place in single float space.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/floats.lisp#L68">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3AFLOAT--7E-3C-20FUNCTION-29" >FLOAT-~&lt;</a></span></span> <span class="locative-args">X Y &amp;KEY (MAX-DIFF-IN-VALUE <a href="#x-28TRY-3A-2AMAX-DIFF-IN-VALUE-2A-20VARIABLE-29" title="(TRY:*MAX-DIFF-IN-VALUE* VARIABLE)"><code>*MAX-DIFF-IN-VALUE*</code></a>) (MAX-DIFF-IN-ULP <a href="#x-28TRY-3A-2AMAX-DIFF-IN-ULP-2A-20VARIABLE-29" title="(TRY:*MAX-DIFF-IN-ULP* VARIABLE)"><code>*MAX-DIFF-IN-ULP*</code></a>)</span></span></p>
 
-<p>Return whether <code>X</code> is approximately less than <code>Y</code>. Equivalent to <code>&lt;</code>,
+<p>Return whether <code>X</code> is approximately less than <code>Y</code>. Equivalent to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm" title="(&lt; FUNCTION)"><code>&lt;</code></a>,
 but it also allows for approximate equality according to <a href="#x-28TRY-3AFLOAT--7E-3D-20FUNCTION-29" title="(TRY:FLOAT-~= FUNCTION)"><code>FLOAT-~=</code></a>.</p></li>
 </ul>
 
@@ -2377,7 +2377,7 @@ but it also allows for approximate equality according to <a href="#x-28TRY-3AFLO
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/floats.lisp#L78">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3AFLOAT--7E-3E-20FUNCTION-29" >FLOAT-~&gt;</a></span></span> <span class="locative-args">X Y &amp;KEY (MAX-DIFF-IN-VALUE <a href="#x-28TRY-3A-2AMAX-DIFF-IN-VALUE-2A-20VARIABLE-29" title="(TRY:*MAX-DIFF-IN-VALUE* VARIABLE)"><code>*MAX-DIFF-IN-VALUE*</code></a>) (MAX-DIFF-IN-ULP <a href="#x-28TRY-3A-2AMAX-DIFF-IN-ULP-2A-20VARIABLE-29" title="(TRY:*MAX-DIFF-IN-ULP* VARIABLE)"><code>*MAX-DIFF-IN-ULP*</code></a>)</span></span></p>
 
-<p>Return whether <code>X</code> is approximately greater than <code>Y</code>. Equivalent to <code>&gt;</code>,
+<p>Return whether <code>X</code> is approximately greater than <code>Y</code>. Equivalent to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm" title="(&gt; FUNCTION)"><code>&gt;</code></a>,
 but it also allows for approximate equality according to <a href="#x-28TRY-3AFLOAT--7E-3D-20FUNCTION-29" title="(TRY:FLOAT-~= FUNCTION)"><code>FLOAT-~=</code></a>.</p></li>
 </ul>
 
@@ -2408,7 +2408,7 @@ functions. In more detail, tests</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/test.lisp#L41">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" >DEFTEST</a></span></span> <span class="locative-args">NAME LAMBDA-LIST &amp;BODY BODY</span></span></p>
 
-<p><code>DEFTEST</code> is a wrapper around <code>DEFUN</code> to define global test functions.
+<p><code>DEFTEST</code> is a wrapper around <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="(DEFUN MGL-PAX:MACRO)"><code>DEFUN</code></a> to define global test functions.
 See <code>DEFUN</code> for a description of <code>NAME</code>, <code>LAMBDA-LIST</code>, and <code>BODY</code>. The
 behaviour common with <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a> is described in <a href="#x-28TRY-3A-40TRY-2FTESTS-20MGL-PAX-3ASECTION-29" title="Tests">Tests</a>.</p>
 
@@ -2430,7 +2430,7 @@ supports general function lambda lists. Within a global test,</p>
 <li><p><code>NAME</code> is bound to the <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> object</p></li>
 <li><p>the first return value is the trial</p></li>
 <li><p>values are not returned implicitly</p></li>
-<li><p>values returned with an explicit <code>RETURN-FROM</code> are returned as
+<li><p>values returned with an explicit <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="(RETURN-FROM MGL-PAX:MACRO)"><code>RETURN-FROM</code></a> are returned as
   values after the trial</p></li>
 </ul>
 
@@ -2452,7 +2452,7 @@ supports general function lambda lists. Within a global test,</p>
 
 <p>This may be any of <code>:COMPILE-TOPLEVEL</code>, <code>:LOAD-TOPLEVEL</code>, <code>:EXECUTE</code>, or
 a list thereof. The value of <code>*RUN-DEFTEST-WHEN*</code> determines in what
-<code>EVAL-WHEN</code> situation to call the test function immediately after it
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="(EVAL-WHEN MGL-PAX:MACRO)"><code>EVAL-WHEN</code></a> situation to call the test function immediately after it
 has been defined with <a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" title="(TRY:DEFTEST MGL-PAX:MACRO)"><code>DEFTEST</code></a>.</p>
 
 <p>For interactive development, it may be convenient to set it to
@@ -2462,7 +2462,7 @@ with Slime <code>C-M-x</code>, <code>slime-eval-defun</code>). Or set it to
 <code>slime-compile-defun</code>.</p>
 
 <p>If the test has required arguments, an argument list is prompted for
-and read from <code>*QUERY-IO*</code>.</p></li>
+and read from <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="(*QUERY-IO* VARIABLE)"><code>*QUERY-IO*</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28TRY-3ATEST-BOUND-P-20FUNCTION-29'></a></p>
@@ -2472,7 +2472,7 @@ and read from <code>*QUERY-IO*</code>.</p></li>
 
 <p>See if <code>SYMBOL</code> names a global test (i.e. a test defined with
 <a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" title="(TRY:DEFTEST MGL-PAX:MACRO)"><code>DEFTEST</code></a>). If since the execution of <code>DEFTEST</code>, the symbol has been
-uninterned, <code>FMAKUNBOUND</code>, or redefined with <code>DEFUN</code>, then it no longer
+uninterned, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fmakun.htm" title="(FMAKUNBOUND FUNCTION)"><code>FMAKUNBOUND</code></a>, or redefined with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="(DEFUN MGL-PAX:MACRO)"><code>DEFUN</code></a>, then it no longer
 names a global test.</p></li>
 </ul>
 
@@ -2489,7 +2489,7 @@ environment even on a rerun (see <a href="#x-28TRY-3A-40TRY-2FRERUN-20MGL-PAX-3A
 <code>NAME</code> may be any type, it is purely for presentation purposes. If
 <code>NAME</code> is <code>NIL</code>, then it defaults to <code>TRIAL-VAR</code>.</p>
 
-<p>To facilitate returning values, a <code>BLOCK</code> is wrapped around <code>BODY</code>. The
+<p>To facilitate returning values, a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_block.htm" title="(BLOCK MGL-PAX:MACRO)"><code>BLOCK</code></a> is wrapped around <code>BODY</code>. The
 name of the block is <code>TRIAL-VAR</code> if it is a symbol, else it's <code>NIL</code>.</p>
 
 <p>When both <code>TRIAL-VAR</code> and <code>NAME</code> are specified:</p>
@@ -2565,14 +2565,14 @@ to specify non-symbols for <code>TRIAL-VAR</code>, one can also write:</p>
 </ul>
 
 <p>Lambda tests can be thought of as analogous to <code>(FUNCALL (LAMBDA ()
-BODY))</code>. The presence of the <code>LAMBDA</code> is important because it is
+BODY))</code>. The presence of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="(LAMBDA MGL-PAX:MACRO)"><code>LAMBDA</code></a> is important because it is
 stored in the <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> object to support <a href="#x-28TRY-3A-40TRY-2FRERUN-20MGL-PAX-3ASECTION-29" title="Rerunning Trials">Rerunning Trials</a>.</p></li>
 </ul>
 
 <p><a id='x-28TRY-3ALIST-PACKAGE-TESTS-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/test.lisp#L373">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3ALIST-PACKAGE-TESTS-20FUNCTION-29" >LIST-PACKAGE-TESTS</a></span></span> <span class="locative-args">&amp;OPTIONAL (PACKAGE <code>*PACKAGE*</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/test.lisp#L373">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3ALIST-PACKAGE-TESTS-20FUNCTION-29" >LIST-PACKAGE-TESTS</a></span></span> <span class="locative-args">&amp;OPTIONAL (PACKAGE <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm" title="(*PACKAGE* VARIABLE)"><code>*PACKAGE*</code></a>)</span></span></p>
 
 <p>List all symbols in <code>PACKAGE</code> that name global tests in the sense of
 <a href="#x-28TRY-3ATEST-BOUND-P-20FUNCTION-29" title="(TRY:TEST-BOUND-P FUNCTION)"><code>TEST-BOUND-P</code></a>.</p></li>
@@ -2583,7 +2583,7 @@ stored in the <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><cod
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/test.lisp#L392">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3AWITH-TESTS-RUN-20MGL-PAX-3AMACRO-29" >WITH-TESTS-RUN</a></span></span> <span class="locative-args">(TESTS-RUN) &amp;BODY BODY</span></span></p>
 
-<p>Bind the symbol <code>TESTS-RUN</code> to an empty <code>EQ</code> hash table and execute
+<p>Bind the symbol <code>TESTS-RUN</code> to an empty <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="(EQ FUNCTION)"><code>EQ</code></a> hash table and execute
 <code>BODY</code>. The has table reflects call counts to global tests. Keys are
 symbols naming global tests, and the values are the number of times
 the keys have been called.</p></li>
@@ -2592,7 +2592,7 @@ the keys have been called.</p></li>
 <p><a id='x-28TRY-3AWARN-ON-TESTS-NOT-RUN-20MGL-PAX-3AMACRO-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/test.lisp#L405">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3AWARN-ON-TESTS-NOT-RUN-20MGL-PAX-3AMACRO-29" >WARN-ON-TESTS-NOT-RUN</a></span></span> <span class="locative-args">(&amp;OPTIONAL (PACKAGE <code>*PACKAGE*</code>)) &amp;BODY BODY</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/test.lisp#L405">[macro]</a></span> <span class="reference-object"><a href="#x-28TRY-3AWARN-ON-TESTS-NOT-RUN-20MGL-PAX-3AMACRO-29" >WARN-ON-TESTS-NOT-RUN</a></span></span> <span class="locative-args">(&amp;OPTIONAL (PACKAGE <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm" title="(*PACKAGE* VARIABLE)"><code>*PACKAGE*</code></a>)) &amp;BODY BODY</span></span></p>
 
 <p>A convenience utility to that records the global tests run by <code>BODY</code>
 with <a href="#x-28TRY-3AWITH-TESTS-RUN-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TESTS-RUN MGL-PAX:MACRO)"><code>WITH-TESTS-RUN</code></a> and, when <code>BODY</code> finishes, signals a warning for
@@ -2738,7 +2738,7 @@ run by invoking the <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCT
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-TEST</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
 
 <p>The situation is similar with a <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a>, only that <code>TRY</code> wraps an
-extra <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> around the execution of the <code>LAMBDA</code> to ensure that all
+extra <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> around the execution of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="(LAMBDA MGL-PAX:MACRO)"><code>LAMBDA</code></a> to ensure that all
 <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a>s are signalled within a trial.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code"></span>)</span>
@@ -2784,7 +2784,7 @@ specifiers for types that are either <code>NIL</code> (the empty type) or have a
 non-empty intersection with the type <code>EVENT</code> (e.g. <code>T</code>, <a href="#x-28TRY-3AOUTCOME-20CONDITION-29" title="(TRY:OUTCOME CONDITION)"><code>OUTCOME</code></a>,
 <a href="#x-28TRY-3AUNEXPECTED-20CONDITION-29" title="(TRY:UNEXPECTED CONDITION)"><code>UNEXPECTED</code></a>, <a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>).</p>
 
-<p><code>TRY</code> sets up a <code>HANDLER-BIND</code> handler for <code>EVENT</code>s and runs <code>TESTABLE</code> (see
+<p><code>TRY</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_handle.htm" title="(HANDLER-BIND MGL-PAX:MACRO)"><code>HANDLER-BIND</code></a> handler for <code>EVENT</code>s and runs <code>TESTABLE</code> (see
 <a href="#x-28TRY-3A-40TRY-2FTESTABLES-20MGL-PAX-3ASECTION-29" title="Testables">Testables</a>). When an <code>EVENT</code> is signalled, the handler matches its
 type to the value of the <code>DEBUG</code> argument (in the sense of <code>(TYPEP
 EVENT DEBUG)</code>). If it matches, then the debugger is invoked with the
@@ -2817,7 +2817,7 @@ available, which is always <a href="#x-28TRY-3ARECORD-EVENT-20FUNCTION-29" title
 <p>Invoke the <code>SET-TRY-DEBUG</code> restart to override the <code>DEBUG</code> argument of
 the currently running <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>. <code>DEBUG</code> must thus be a suitable type. When
 the <code>SET-TRY-DEBUG</code> restart is invoked interactively, <code>DEBUG</code> is read as
-a non-evaluated form from <code>*QUERY-IO*</code>.</p></li>
+a non-evaluated form from <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="(*QUERY-IO* VARIABLE)"><code>*QUERY-IO*</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28TRY-3A-2ATRY-DEBUG-2A-20VARIABLE-29'></a></p>
@@ -2953,7 +2953,7 @@ be:</p>
 <li><p>a trial</p></li>
 </ul></li>
 <li><p>a list of testables</p></li>
-<li><p>a <a href="mgl-pax-manual.html#x-28PACKAGE-20MGL-PAX-3ALOCATIVE-29" title="(PACKAGE MGL-PAX:LOCATIVE)"><code>PACKAGE</code></a></p></li>
+<li><p>a <code>PACKAGE</code>(<a href="mgl-pax-manual.html#x-28PACKAGE-20MGL-PAX-3ALOCATIVE-29" title="(PACKAGE MGL-PAX:LOCATIVE)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="(PACKAGE TYPE)"><code>1</code></a>)</p></li>
 </ul>
 
 <p>In the function designator cases, <code>TRY</code> calls the designated function.
@@ -2996,8 +2996,8 @@ are infinite recursions:</p>
 
 <p><a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a> instantiates a printer of the type given by its <code>PRINTER</code>
 argument. All <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a>s recorded by <code>TRY</code> are sent to this printer. The
-printer then prints events that match the type given by the <code>PRINT</code>
-argument of <code>TRY</code>. Events that also match the <code>DESCRIBE</code> argument of <code>TRY</code>
+printer then prints events that match the type given by the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="(PRINT FUNCTION)"><code>PRINT</code></a>
+argument of <code>TRY</code>. Events that also match the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm" title="(DESCRIBE FUNCTION)"><code>DESCRIBE</code></a> argument of <code>TRY</code>
 are printed with context information (see <a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a>) and backtraces (see
 <a href="#x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29" title="(TRY:UNHANDLED-ERROR CONDITION)"><code>UNHANDLED-ERROR</code></a>).</p>
 
@@ -3076,7 +3076,7 @@ with their markers.</p></li>
 
 <p>When an <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a> is signalled and its parent <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a>'s type matches
 <code>*PRINT-PARENT*</code>, the trial is printed as if its <a href="#x-28TRY-3ATRIAL-START-20CONDITION-29" title="(TRY:TRIAL-START CONDITION)"><code>TRIAL-START</code></a> matched
-the <code>PRINT</code> argument of <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>.</p>
+the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="(PRINT FUNCTION)"><code>PRINT</code></a> argument of <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
       <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> t</span>)</span></span>)</span>
@@ -3184,7 +3184,7 @@ verbosely. <a href="#x-28TRY-3ALEAF-20CONDITION-29" title="(TRY:LEAF CONDITION)"
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">OUTER</span>)</span></span>)</span> UNEXPECTED-FAILURE 0.000s ⊟1 ⊠1 ⋅21&gt;</span></code></pre>
 
-<p><code>*PRINT-COMPACTLY*</code> has no effect on events being <code>DESCRIBE</code>d.</p></li>
+<p><code>*PRINT-COMPACTLY*</code> has no effect on events being <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm" title="(DESCRIBE FUNCTION)"><code>DESCRIBE</code></a>d.</p></li>
 </ul>
 
 <p><a id='x-28TRY-3A-2ADEFER-DESCRIBE-2A-20VARIABLE-29'></a></p>
@@ -3192,7 +3192,7 @@ verbosely. <a href="#x-28TRY-3ALEAF-20CONDITION-29" title="(TRY:LEAF CONDITION)"
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/print.lisp#L320">[variable]</a></span> <span class="reference-object"><a href="#x-28TRY-3A-2ADEFER-DESCRIBE-2A-20VARIABLE-29" >*DEFER-DESCRIBE*</a></span></span> <span class="locative-args">NIL</span></span></p>
 
-<p>When an <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a> is to be <code>DESCRIBE</code>d and its type matches
+<p>When an <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a> is to be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm" title="(DESCRIBE FUNCTION)"><code>DESCRIBE</code></a>d and its type matches
 <code>*DEFER-DESCRIBE*</code>, then instead of printing the often longish context
 information in the tree of events, it is deferred until after <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>
 has finished. The following example only prints <a href="#x-28TRY-3ALEAF-20CONDITION-29" title="(TRY:LEAF CONDITION)"><code>LEAF</code></a> events (due to
@@ -3294,15 +3294,15 @@ but the <code>VERDICT</code>s of child trials' are.</p></li>
 
 <h3><a href="#x-28TRY-3A-40TRY-2FRERUN-20MGL-PAX-3ASECTION-29">7.6 Rerunning Trials</a></h3>
 
-<p>When a <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> is <code>FUNCALL</code>ed or passed to <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>, the same tests that
+<p>When a <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="(FUNCALL FUNCTION)"><code>FUNCALL</code></a>ed or passed to <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>, the same tests that
 instantiated <code>TRIAL</code> are executed.</p>
 
 <ul>
 <li><p>If the trial was created by calling a <a href="#x-28TRY-3ADEFTEST-20MGL-PAX-3AMACRO-29" title="(TRY:DEFTEST MGL-PAX:MACRO)"><code>DEFTEST</code></a> function, then the
   test currently associated with that symbol naming the function is
   called with the arguments of the original function call. If the
-  symbol is no longer <code>FBOUNDP</code> (because it was <code>FMAKUNBOUND</code>) or it no
-  longer names a <code>DEFTEST</code> (it was redefined with <code>DEFUN</code>), then an
+  symbol is no longer <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fbound.htm" title="(FBOUNDP FUNCTION)"><code>FBOUNDP</code></a> (because it was <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fmakun.htm" title="(FMAKUNBOUND FUNCTION)"><code>FMAKUNBOUND</code></a>) or it no
+  longer names a <code>DEFTEST</code> (it was redefined with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="(DEFUN MGL-PAX:MACRO)"><code>DEFUN</code></a>), then an
   error is signalled.</p></li>
 <li><p>If the trial was created by entering a <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a> form, then its
   body is executed again in the original lexical but the current
@@ -3345,7 +3345,7 @@ immediately returns the <code>TRIAL</code> object. A new trial is skipped if</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/replay.lisp#L8">[function]</a></span> <span class="reference-object"><a href="#x-28TRY-3AREPLAY-EVENTS-20FUNCTION-29" >REPLAY-EVENTS</a></span></span> <span class="locative-args">TRIAL &amp;KEY (COLLECT <a href="#x-28TRY-3A-2ATRY-COLLECT-2A-20VARIABLE-29" title="(TRY:*TRY-COLLECT* VARIABLE)"><code>*TRY-COLLECT*</code></a>) (PRINT <a href="#x-28TRY-3A-2ATRY-PRINT-2A-20VARIABLE-29" title="(TRY:*TRY-PRINT* VARIABLE)"><code>*TRY-PRINT*</code></a>) (DESCRIBE <a href="#x-28TRY-3A-2ATRY-DESCRIBE-2A-20VARIABLE-29" title="(TRY:*TRY-DESCRIBE* VARIABLE)"><code>*TRY-DESCRIBE*</code></a>) (STREAM <a href="#x-28TRY-3A-2ATRY-STREAM-2A-20VARIABLE-29" title="(TRY:*TRY-STREAM* VARIABLE)"><code>*TRY-STREAM*</code></a>) (PRINTER <a href="#x-28TRY-3A-2ATRY-PRINTER-2A-20VARIABLE-29" title="(TRY:*TRY-PRINTER* VARIABLE)"><code>*TRY-PRINTER*</code></a>)</span></span></p>
 
 <p><code>REPLAY-EVENTS</code> reprocesses the events collected (see <a href="#x-28TRY-3A-40TRY-2FCOLLECT-20MGL-PAX-3ASECTION-29" title="Collecting Events">Collecting Events</a>)
-in <code>TRIAL</code>. It takes the same arguments as <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a> except <code>DEBUG</code>, <code>COUNT</code> and
+in <code>TRIAL</code>. It takes the same arguments as <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a> except <code>DEBUG</code>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_countc.htm" title="(COUNT FUNCTION)"><code>COUNT</code></a> and
 <code>RERUN</code>. This is because <code>REPLAY-EVENTS</code> does not run any tests. It
 simply signals the events collected in <code>TRIAL</code> again to allow further
 processing. The values of <a href="#x-28TRY-3A-2ACATEGORIES-2A-20-28VARIABLE-20-22--20see-20above-20--22-29-29" title="(TRY:*CATEGORIES* (VARIABLE \&quot;- see above -\&quot;))"><code>*CATEGORIES*</code></a> and <a href="#x-28TRY-3A-2ACOUNT-2A-20VARIABLE-29" title="(TRY:*COUNT* VARIABLE)"><code>*COUNT*</code></a> that were in
@@ -3392,8 +3392,8 @@ SBCL.</p>
   output may look garbled on them.</p></li>
 <li><p>Gray streams are broken on ABCL so the output may look even worse
   <a href="https://abcl.org/trac/ticket/373" >https://abcl.org/trac/ticket/373</a>.</p></li>
-<li><p>ABCL, CMUCL, and ECL have a bug related to losing <code>EQL</code>ness of
-  source literals
+<li><p>ABCL, CMUCL, and ECL have a bug related to losing
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="(EQL FUNCTION)"><code>EQL</code></a>ness of source literals
   <a href="https://gitlab.com/embeddable-common-lisp/ecl/-/issues/665" >https://gitlab.com/embeddable-common-lisp/ecl/-/issues/665</a>.
   The result is somewhat cosmetic, it may cause multiple captures
   being made for the same thing.</p></li>
@@ -3422,7 +3422,7 @@ in the global environment), or a function (denoting itself).</p></li>
 
 <p>This is a term from the MOP. A funcallable instance is an instance
 of a class that's a subclass of <code>MOP:FUNCALLABLE-STANDARD-CLASS</code>. It
-is like a normal instance, but it can also be <code>FUNCALL</code>ed.</p></li>
+is like a normal instance, but it can also be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="(FUNCALL FUNCTION)"><code>FUNCALL</code></a>ed.</p></li>
 </ul>
 
 <p><a id='x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29'></a></p>
@@ -3431,8 +3431,8 @@ is like a normal instance, but it can also be <code>FUNCALL</code>ed.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/9390e629bca55e35719c7cc6f0d6418ebfcb6732/src/manual.lisp#L442">[glossary-term]</a></span> <span class="reference-object"><a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" >non-local exit</a></span></span></span></p>
 
 <p>This is a term from the Common Lisp ANSI standard. If a form does
-not return normally, but control is transferred via <code>GO</code>, <code>RETURN</code>,
-<code>RETURN-FROM</code> or <code>THROW</code>, then it is said to have performed a non-local
+not return normally, but control is transferred via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="(GO MGL-PAX:MACRO)"><code>GO</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="(RETURN MGL-PAX:MACRO)"><code>RETURN</code></a>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="(RETURN-FROM MGL-PAX:MACRO)"><code>RETURN-FROM</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="(THROW MGL-PAX:MACRO)"><code>THROW</code></a>, then it is said to have performed a non-local
 exit.</p></li>
 </ul>
 
@@ -3443,7 +3443,7 @@ exit.</p></li>
 
 <p>This is a term from the Common Lisp ANSI standard. If during the
 unwinding of the stack initiated by a <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a> another nlx is
-initiated in, and exits from an <code>UNWIND-PROTECT</code> cleanup form, then
+initiated in, and exits from an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_unwind.htm" title="(UNWIND-PROTECT MGL-PAX:MACRO)"><code>UNWIND-PROTECT</code></a> cleanup form, then
 this second nlx is said to have cancelled the first, and the first
 nlx will not continue.</p>
 

@@ -212,9 +212,9 @@ Sbcl, ClozureCL, and AllegroCL at the moment. Patches for your
 implementation of choice are welcome, of course.)</p></li>
 <li><p><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO)"><code>DEFREADTABLE</code></a> does not have compile-time effects.</p>
 
-<p>If you define a package via <code>DEFPACKAGE</code>, you can make that
+<p>If you define a package via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm" title="(DEFPACKAGE MGL-PAX:MACRO)"><code>DEFPACKAGE</code></a>, you can make that
 package the currently active package for the subsequent
-compilation of the same file via <code>IN-PACKAGE</code>. The same is,
+compilation of the same file via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_in_pkg.htm" title="(IN-PACKAGE MGL-PAX:MACRO)"><code>IN-PACKAGE</code></a>. The same is,
 however, not true for <code>DEFREADTABLE</code> and <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20MGL-PAX-3AMACRO-29" title="(EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE MGL-PAX:MACRO)"><code>IN-READTABLE</code></a> for the
 following reason:</p>
 
@@ -224,7 +224,7 @@ you're going to define the reader macro functions, and set up
 the corresponding readtable in an extra file.</p>
 
 <p>If <code>DEFREADTABLE</code> had compile-time effects, you'd have to wrap
-each definition of a reader-macro function in an <code>EVAL-WHEN</code> to
+each definition of a reader-macro function in an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="(EVAL-WHEN MGL-PAX:MACRO)"><code>EVAL-WHEN</code></a> to
 make its definition available at compile-time. Because that's
 simply not the common case, <code>DEFREADTABLE</code> does not have a
 compile-time effect.</p>
@@ -302,7 +302,7 @@ that one.</p>
 designated into the new readtable being defined as per
 <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-INTO-20FUNCTION-29" title="(EDITOR-HINTS.NAMED-READTABLES:MERGE-READTABLES-INTO FUNCTION)"><code>MERGE-READTABLES-INTO</code></a>. The copied options are
 <code>:DISPATCH-MACRO-CHAR</code>, <code>:MACRO-CHAR</code> and <code>:SYNTAX-FROM</code>, but not
-<code>READTABLE-CASE</code>.</p>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="(READTABLE-CASE FUNCTION)"><code>READTABLE-CASE</code></a>.</p>
 
 <p>If no <code>:MERGE</code> clause is given, an empty readtable is used. See
 <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29" title="(EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE FUNCTION)"><code>MAKE-READTABLE</code></a>.</p></li>
@@ -318,20 +318,20 @@ accepted as an alias of <code>:FUSE</code>.</p></li>
 <li><p><code>(:DISPATCH-MACRO-CHAR MACRO-CHAR SUB-CHAR FUNCTION)</code></p>
 
 <p>Define a new sub character <code>SUB-CHAR</code> for the dispatching macro
-character <code>MACRO-CHAR</code>, per <code>SET-DISPATCH-MACRO-CHARACTER</code>. You
+character <code>MACRO-CHAR</code>, per <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set__1.htm" title="(SET-DISPATCH-MACRO-CHARACTER FUNCTION)"><code>SET-DISPATCH-MACRO-CHARACTER</code></a>. You
 probably have to define <code>MACRO-CHAR</code> as a dispatching macro
 character by the following option first.</p></li>
 <li><p><code>(:MACRO-CHAR MACRO-CHAR FUNCTION [NON-TERMINATING-P])</code></p>
 
 <p>Define a new macro character in the readtable, per
-<code>SET-MACRO-CHARACTER</code>. If <a href="mgl-pax-manual.html#x-28FUNCTION-20MGL-PAX-3ALOCATIVE-29" title="(FUNCTION MGL-PAX:LOCATIVE)"><code>FUNCTION</code></a> is the keyword <code>:DISPATCH</code>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_ma.htm" title="(SET-MACRO-CHARACTER FUNCTION)"><code>SET-MACRO-CHARACTER</code></a>. If <code>FUNCTION</code>(<a href="mgl-pax-manual.html#x-28FUNCTION-20MGL-PAX-3ALOCATIVE-29" title="(FUNCTION MGL-PAX:LOCATIVE)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm" title="(FUNCTION MGL-PAX:MACRO)"><code>1</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="(FUNCTION TYPE)"><code>2</code></a>) is the keyword <code>:DISPATCH</code>,
 <code>MACRO-CHAR</code> is made a dispatching macro character, per
-<code>MAKE-DISPATCH-MACRO-CHARACTER</code>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_dis.htm" title="(MAKE-DISPATCH-MACRO-CHARACTER FUNCTION)"><code>MAKE-DISPATCH-MACRO-CHARACTER</code></a>.</p></li>
 <li><p><code>(:SYNTAX-FROM FROM-READTABLE-DESIGNATOR FROM-CHAR TO-CHAR)</code></p>
 
 <p>Set the character syntax of <code>TO-CHAR</code> in the readtable being
 defined to the same syntax as <code>FROM-CHAR</code> as per
-<code>SET-SYNTAX-FROM-CHAR</code>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_sy.htm" title="(SET-SYNTAX-FROM-CHAR FUNCTION)"><code>SET-SYNTAX-FROM-CHAR</code></a>.</p></li>
 <li><p><code>(:CASE CASE-MODE)</code></p>
 
 <p>Defines the <em>case sensitivity mode</em> of the resulting readtable.</p></li>
@@ -349,7 +349,7 @@ finally <code>:SYNTAX-FROM</code>.</p>
 <p>The readtable is defined at load-time. If you want to have it
 available at compilation time -- say to use its reader-macros in the
 same file as its definition -- you have to wrap the <code>DEFREADTABLE</code>
-form in an explicit <code>EVAL-WHEN</code>.</p>
+form in an explicit <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="(EVAL-WHEN MGL-PAX:MACRO)"><code>EVAL-WHEN</code></a>.</p>
 
 <p>On redefinition, the target readtable is made empty first before
 it's refilled according to the clauses.</p>
@@ -363,7 +363,7 @@ preregistered readtable names.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a11bd91aa1996180959130b25356d49720c591d6/src/named-readtables.lisp#L163">[macro]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20MGL-PAX-3AMACRO-29" >IN-READTABLE</a></span></span> <span class="locative-args">NAME</span></span></p>
 
-<p>Set <code>*READTABLE*</code> to the readtable referred to by the symbol <code>NAME</code>.
+<p>Set <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm" title="(*READTABLE* VARIABLE)"><code>*READTABLE*</code></a> to the readtable referred to by the symbol <code>NAME</code>.
 Return the readtable.</p></li>
 </ul>
 
@@ -404,7 +404,7 @@ i.e. if a conflict is discovered during the merge, an error of type
 <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29" title="(EDITOR-HINTS.NAMED-READTABLES:READER-MACRO-CONFLICT CONDITION)"><code>READER-MACRO-CONFLICT</code></a> is signaled.</p>
 
 <p>The copied options are <code>:DISPATCH-MACRO-CHAR</code>, <code>:MACRO-CHAR</code> and
-<code>:SYNTAX-FROM</code>, but not <code>READTABLE-CASE</code>.</p></li>
+<code>:SYNTAX-FROM</code>, but not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="(READTABLE-CASE FUNCTION)"><code>READTABLE-CASE</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28EDITOR-HINTS-2ENAMED-READTABLES-3AFIND-READTABLE-20FUNCTION-29'></a></p>
@@ -470,7 +470,7 @@ or <code>NIL</code>.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a11bd91aa1996180959130b25356d49720c591d6/src/named-readtables.lisp#L344">[function]</a></span> <span class="reference-object"><a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ACOPY-NAMED-READTABLE-20FUNCTION-29" >COPY-NAMED-READTABLE</a></span></span> <span class="locative-args">NAMED-READTABLE</span></span></p>
 
-<p>Like <code>COPY-READTABLE</code> but takes a <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20TYPE-29" title="(EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR TYPE)"><code>NAMED-READTABLE-DESIGNATOR</code></a> as argument.</p></li>
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm" title="(COPY-READTABLE FUNCTION)"><code>COPY-READTABLE</code></a> but takes a <a href="#x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20TYPE-29" title="(EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR TYPE)"><code>NAMED-READTABLE-DESIGNATOR</code></a> as argument.</p></li>
 </ul>
 
 <p><a id='x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29'></a></p>

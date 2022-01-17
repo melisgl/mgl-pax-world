@@ -193,7 +193,7 @@ return a string instead of an octet vector.</p>
 <p><code>LMDB</code> treats keys and values as opaque byte arrays to be hung on a B+
 tree, and only requires a comparison function to be defined over
 keys. <code>LMDB</code> knows how to serialize the types <code>(UNSIGNED-BYTE 64)</code> and
-<code>STRING</code> (which are often used as keys so sorting must work as
+<code>STRING</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="(STRING FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="(STRING TYPE)"><code>1</code></a>) (which are often used as keys so sorting must work as
 expected). Serialization of the rest of the datatypes is left to the
 client. See <a href="#x-28LMDB-3A-40LMDB-2FENCODINGS-20MGL-PAX-3ASECTION-29" title="Encoding and decoding data">Encoding and decoding data</a> for more.</p>
 
@@ -1095,7 +1095,7 @@ opened.</p>
 
 <p>If <code>GET-DB</code> is called with the same name multiple times, the returned
 <code>DB</code> objects will be associated with the same database (although they
-may not be EQ). The first time <code>GET-DB</code> is called with any given name
+may not be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="(EQ FUNCTION)"><code>EQ</code></a>). The first time <code>GET-DB</code> is called with any given name
 and environment, it must not be from an open transaction. This is
 because <code>GET-DB</code> starts a transaction itself to comply with C lmdb's
 requirements on
@@ -1295,7 +1295,7 @@ associated with the same C lmdb database, which declutters the code:</p>
   <a href="#x-28LMDB-3AG3T-20FUNCTION-29" title="(LMDB:G3T FUNCTION)"><code>G3T</code></a>) must be a 1D byte array. If its element type
   is <code>(UNSIGNED-BYTE 8)</code>, then the data can be passed to the foreign
   code more efficiently, but declaring the element type is not
-  required. For example, <code>VECTOR</code>s can be used as long as the actual
+  required. For example, <code>VECTOR</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="(VECTOR FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="(VECTOR TYPE)"><code>1</code></a>)s can be used as long as the actual
   elements are of type <code>(UNSIGNED-BYTE 8)</code>. Foreign byte arrays to
   be decoded (e.g. the value returned by <code>G3T</code>) are returned as
   <a href="#x-28LMDB-3AOCTETS-20TYPE-29" title="(LMDB:OCTETS TYPE)"><code>OCTETS</code></a>.</p></li>
@@ -1305,8 +1305,8 @@ associated with the same C lmdb database, which declutters the code:</p>
 <li><p><code>NIL</code>: Data is encoded using the default encoding according to its
   Lisp type: strings as <code>:UTF-8</code>, vectors as <code>:OCTETS</code>, <code>(UNSIGNED-BYTE
   64)</code> as <code>:UINT64</code>. Decoding is always performed as <code>:OCTETS</code>.</p></li>
-<li><p>A <code>CONS</code>: Data is encoded by the function in the <code>CAR</code> of the cons and
-  decoded by the function in the <code>CDR</code>. For example, <code>:UINT64</code> is
+<li><p>A <code>CONS</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cons.htm" title="(CONS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm" title="(CONS TYPE)"><code>1</code></a>): Data is encoded by the function in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="(CAR FUNCTION)"><code>CAR</code></a> of the cons and
+  decoded by the function in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="(CDR FUNCTION)"><code>CDR</code></a>. For example, <code>:UINT64</code> is
   equivalent to <code>(CONS #'UINT64-TO-OCTETS #'MDB-VAL-TO-UINT64)</code>.</p></li>
 </ul></li>
 </ul>
@@ -1330,7 +1330,7 @@ is valid only within the context of current top-level transaction.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/060d7e64e5e36d71735fdfe7834f147f1a874b02/src/lmdb.lisp#L2162">[type]</a></span> <span class="reference-object"><a href="#x-28LMDB-3AOCTETS-20TYPE-29" >OCTETS</a></span></span> <span class="locative-args">&amp;OPTIONAL (SIZE '*)</span></span></p>
 
-<p>A 1D <code>SIMPLE-ARRAY</code> of <code>(UNSIGNED-BYTE 8)</code>.</p></li>
+<p>A 1D <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ar.htm" title="(SIMPLE-ARRAY TYPE)"><code>SIMPLE-ARRAY</code></a> of <code>(UNSIGNED-BYTE 8)</code>.</p></li>
 </ul>
 
 <p><a id='x-28LMDB-3AMDB-VAL-TO-OCTETS-20FUNCTION-29'></a></p>
@@ -1489,14 +1489,14 @@ value. If <code>KEY</code> is not found in <code>DB</code>, then <code>NIL</code
 supports <a href="#x-28LMDB-3A-40DUPSORT-20MGL-PAX-3ASECTION-29" title="DUPSORT">DUPSORT</a>, then the first value for <code>KEY</code> will be returned.
 Retrieval of other values requires the use of <a href="#x-28LMDB-3A-40LMDB-2FCURSORS-20MGL-PAX-3ASECTION-29" title="Cursors">Cursors</a>.</p>
 
-<p>This function is called <code>G3T</code> instead of <code>GET</code> to avoid having to shadow
-<code>CL:GET</code> when importing the <a href="#x-28-23A-28-284-29-20BASE-CHAR-20-2E-20-22lmdb-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29" title="(#A((4) BASE-CHAR . \&quot;lmdb\&quot;) ASDF/SYSTEM:SYSTEM)"><code>LMDB</code></a> package. On the other hand, importing
-the <code>LMDB+</code> package, which has <code>LMDB::GET</code> exported, requires some
+<p>This function is called <code>G3T</code> instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get.htm" title="(GET FUNCTION)"><code>GET</code></a> to avoid having to shadow
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get.htm" title="(GET FUNCTION)"><code>CL:GET</code></a> when importing the <a href="#x-28-23A-28-284-29-20BASE-CHAR-20-2E-20-22lmdb-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29" title="(#A((4) BASE-CHAR . \&quot;lmdb\&quot;) ASDF/SYSTEM:SYSTEM)"><code>LMDB</code></a> package. On the other hand, importing
+the <code>LMDB+</code> package, which has <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get.htm" title="(GET FUNCTION)"><code>LMDB::GET</code></a> exported, requires some
 shadowing.</p>
 
 <p>The <code>LMDB+</code> package is like the <code>LMDB</code> package, but it has <code>#'LMDB:G3T</code>
 fbound to <code>LMDB+:G3T</code> so it probably needs shadowing to avoid conflict
-with <code>CL:GET:</code></p>
+with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get.htm" title="(GET FUNCTION)"><code>CL:GET:</code></a></p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defpackage</span></i> lmdb/test
   <span class="paren2">(<span class="code"><span class="keyword">:shadow</span> <span class="keyword">#:get</span></span>)</span>

@@ -167,7 +167,7 @@ slow.</p></li>
 <p><a id='x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/cb6ce51e2f87bf1d589f3703c13eea6e25780afe/src/evolutionary-algorithm.lisp#L148">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >POPULATION</a></span></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(= (<code>MAKE-ARRAY</code> 0 <code>:ADJUSTABLE</code> 0 <code>:FILL-POINTER</code> <code>T</code>))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/cb6ce51e2f87bf1d589f3703c13eea6e25780afe/src/evolutionary-algorithm.lisp#L148">[accessor]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >POPULATION</a></span></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(= (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="(MAKE-ARRAY FUNCTION)"><code>MAKE-ARRAY</code></a> 0 <code>:ADJUSTABLE</code> 0 <code>:FILL-POINTER</code> <code>T</code>))</span></span></p>
 
 <p>An adjustable array with a fill-pointer that holds
 the individuals that make up the population.</p></li>
@@ -207,7 +207,7 @@ initializing the <code>EA</code>.</p></li>
 <p>A function of two arguments: the
 <a href="#x-28MGL-GPR-3AEVOLUTIONARY-ALGORITHM-20CLASS-29" title="(MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS)"><code>EVOLUTIONARY-ALGORITHM</code></a> object and an individual. It must return
 the fitness of the individual. For <a href="#x-28MGL-GPR-3A-40GPR-GP-20MGL-PAX-3ASECTION-29" title="Genetic Programming">Genetic Programming</a>, the evaluator often
-simply calls <code>EVAL</code>, or <code>COMPILE</code> + <code>FUNCALL</code>, and compares the result
+simply calls <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm" title="(EVAL FUNCTION)"><code>EVAL</code></a>, or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm" title="(COMPILE FUNCTION)"><code>COMPILE</code></a> + <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="(FUNCALL FUNCTION)"><code>FUNCALL</code></a>, and compares the result
 to some gold standard. It is also typical to slightly penalize
 solutions with too many nodes to control complexity and evaluation
 cost (see <a href="#x-28MGL-GPR-3ACOUNT-NODES-20FUNCTION-29" title="(MGL-GPR:COUNT-NODES FUNCTION)"><code>COUNT-NODES</code></a>). For <a href="#x-28MGL-GPR-3A-40GPR-DE-20MGL-PAX-3ASECTION-29" title="Differential Evolution">Differential Evolution</a>, individuals are
@@ -234,11 +234,11 @@ over <code>EVALUATOR</code>.</p></li>
 <p><a id='x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/cb6ce51e2f87bf1d589f3703c13eea6e25780afe/src/evolutionary-algorithm.lisp#L110">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITNESS-KEY</a></span></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:FITNESS-KEY = #'<code>IDENTITY</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/cb6ce51e2f87bf1d589f3703c13eea6e25780afe/src/evolutionary-algorithm.lisp#L110">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" >FITNESS-KEY</a></span></span> <span class="locative-args">EVOLUTIONARY-ALGORITHM</span> <span class="locative-args">(:FITNESS-KEY = #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="(IDENTITY FUNCTION)"><code>IDENTITY</code></a>)</span></span></p>
 
 <p>A function that returns a real number for an
 object returned by <a href="#x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29" title="(MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM))"><code>EVALUATOR</code></a>. It is called when two fitness are to
-be compared. The default value is #'<code>IDENTITY</code> which is sufficient
+be compared. The default value is #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="(IDENTITY FUNCTION)"><code>IDENTITY</code></a> which is sufficient
 when <code>EVALUATOR</code> returns real numbers. However, sometimes the
 evaluator returns more information about the solution (such as
 fitness in various situations) and <code>FITNESS-KEY</code> key be used to
@@ -357,7 +357,7 @@ expression well:</p>
 </code></pre>
 
 <p>Think of <code>*TARGET-EXPR*</code> as a function of <code>*X*</code>. The evaluator
-function will bind the special <code>*X*</code> to the input and simply <code>EVAL</code>
+function will bind the special <code>*X*</code> to the input and simply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm" title="(EVAL FUNCTION)"><code>EVAL</code></a>
 the expression to be evaluated.</p>
 
 <pre><code>(defvar *x*)
@@ -445,7 +445,7 @@ example/symbolic-regression.lisp.</p>
 <h3><a href="#x-28MGL-GPR-3A-40GPR-GP-EXPRESSIONS-20MGL-PAX-3ASECTION-29">5.3 Expressions</a></h3>
 
 <p>Genetic programming works with a population of individuals. The
-individuals are sexps that may be evaluated directly by <code>EVAL</code> or by
+individuals are sexps that may be evaluated directly by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm" title="(EVAL FUNCTION)"><code>EVAL</code></a> or by
 other means. The internal nodes and the leafs of the sexp as a tree
 represent the application of operators and literal objects,
 respectively. Note that currently there is no way to represent
@@ -487,8 +487,8 @@ weight.</p></li>
 
 <p>Defines how the symbol <a href="#x-28MGL-GPR-3ANAME-20-28MGL-PAX-3AREADER-20MGL-GPR-3AOPERATOR-29-29" title="(MGL-GPR:NAME (MGL-PAX:READER MGL-GPR:OPERATOR))"><code>NAME</code></a> in the function
 position of a list can be combined arguments: how many and of what
-types. The following defines <code>+</code> as an operator that adds two
-<code>FLOAT</code>s:</p>
+types. The following defines <code>+</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pl.htm" title="(+ FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm" title="(+ VARIABLE)"><code>1</code></a>) as an operator that adds two
+<code>FLOAT</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_float.htm" title="(FLOAT FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="(FLOAT TYPE)"><code>1</code></a>)s:</p>
 
 <pre><code>(make-instance 'operator 
                :name '+
@@ -671,7 +671,7 @@ with <a href="#x-28MGL-GPR-3AOPERATOR-20CLASS-29" title="(MGL-GPR:OPERATOR CLASS
 
 <p>The type of the results produced by individuals.
 If the problem is to find the minimum a 1d real function then this
-may be the symbol <code>REAL</code>. If the problem is to find the shortest
+may be the symbol <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_real.htm" title="(REAL TYPE)"><code>REAL</code></a>. If the problem is to find the shortest
 route, then this may be a vector. It all depends on the
 representation of the problem, the operators and the literals.</p></li>
 </ul>
@@ -801,13 +801,13 @@ individuals.</p></li>
 <p><a id='x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/cb6ce51e2f87bf1d589f3703c13eea6e25780afe/src/differential-evolution.lisp#L21">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29" >MAP-WEIGHTS-INTO-FN</a></span></span> <span class="locative-args">DIFFERENTIAL-EVOLUTION</span> <span class="locative-args">(:MAP-WEIGHTS-INTO-FN = #'<code>MAP-INTO</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/cb6ce51e2f87bf1d589f3703c13eea6e25780afe/src/differential-evolution.lisp#L21">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29" >MAP-WEIGHTS-INTO-FN</a></span></span> <span class="locative-args">DIFFERENTIAL-EVOLUTION</span> <span class="locative-args">(:MAP-WEIGHTS-INTO-FN = #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" title="(MAP-INTO FUNCTION)"><code>MAP-INTO</code></a>)</span></span></p>
 
 <p>The vector of numbers (the 'weights') are most
 often stored in some kind of array. All individuals must have the
 same number of weights, but the actual representation can be
 anything as long as the function in this slot mimics the semantics
-of <code>MAP-INTO</code> that's the default.</p></li>
+of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" title="(MAP-INTO FUNCTION)"><code>MAP-INTO</code></a> that's the default.</p></li>
 </ul>
 
 <p><a id='x-28MGL-GPR-3ACREATE-INDIVIDUAL-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29'></a></p>
@@ -817,7 +817,7 @@ of <code>MAP-INTO</code> that's the default.</p></li>
 
 <p>Holds a function of one argument, the DE, that
 returns a new individual that needs not be initialized in any way.
-Typically this just calls <code>MAKE-ARRAY</code>.</p></li>
+Typically this just calls <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="(MAKE-ARRAY FUNCTION)"><code>MAKE-ARRAY</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-GPR-3AMUTATE-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29'></a></p>

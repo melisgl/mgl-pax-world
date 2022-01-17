@@ -206,7 +206,7 @@ to <code>:DOUBLE</code>.</p>
   m</span>)</span>
 ==&gt; #&lt;MAT 2x3 AB #2A<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">1.0d0 2.0d0 4.0d0</span>)</span> <span class="paren2">(<span class="code">0.0d0 0.0d0 0.0d0</span>)</span></span>)</span>&gt;</span></code></pre>
 
-<p>Compared to <code>AREF</code> <code>MREF</code> is a very expensive operation and it's best
+<p>Compared to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="(AREF FUNCTION)"><code>AREF</code></a> <code>MREF</code> is a very expensive operation and it's best
 used sparingly. Instead, typical code relies much more on matrix
 level operations:</p>
 
@@ -313,7 +313,7 @@ is relative to the start of the underlying storage vector.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-DIMENSIONS-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" >MAT-DIMENSIONS</a></span></span> <span class="locative-args">MAT</span> <span class="locative-args">(:DIMENSIONS)</span></span></p>
 
-<p>Like <code>ARRAY-DIMENSIONS</code>. It holds a list of
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="(ARRAY-DIMENSIONS FUNCTION)"><code>ARRAY-DIMENSIONS</code></a>. It holds a list of
 dimensions, but it is allowed to pass in scalars too.</p></li>
 </ul>
 
@@ -323,7 +323,7 @@ dimensions, but it is allowed to pass in scalars too.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L299">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-DIMENSION-20FUNCTION-29" >MAT-DIMENSION</a></span></span> <span class="locative-args">MAT AXIS-NUMBER</span></span></p>
 
 <p>Return the dimension along <code>AXIS-NUMBER</code>. Similar to
-<code>ARRAY-DIMENSION</code>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="(ARRAY-DIMENSION FUNCTION)"><code>ARRAY-DIMENSION</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3AMAT-INITIAL-ELEMENT-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29'></a></p>
@@ -343,7 +343,7 @@ type. If <code>NIL</code>, then no initialization is performed.</p></li>
 
 <p>The number of elements in the visible portion of
 the array. This is always the product of the elements
-<a href="#x-28MGL-MAT-3AMAT-DIMENSIONS-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-DIMENSIONS</code></a> and is similar to <code>ARRAY-TOTAL-SIZE</code>.</p></li>
+<a href="#x-28MGL-MAT-3AMAT-DIMENSIONS-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-DIMENSIONS</code></a> and is similar to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="(ARRAY-TOTAL-SIZE FUNCTION)"><code>ARRAY-TOTAL-SIZE</code></a>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3AMAT-MAX-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29'></a></p>
@@ -364,8 +364,8 @@ is the number of trailing invisible elements.</p></li>
 <p>Return a new <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> object. If <code>INITIAL-CONTENTS</code> is given then the
 matrix contents are initialized with <a href="#x-28MGL-MAT-3AREPLACE-21-20FUNCTION-29" title="(MGL-MAT:REPLACE! FUNCTION)"><code>REPLACE!</code></a>. See class <code>MAT</code> for the
 description of the rest of the parameters. This is exactly
-what (<code>MAKE-INSTANCE</code> '<code>MAT</code> ...) does except <code>DIMENSIONS</code> is not a
-keyword argument so that <code>MAKE-MAT</code> looks more like <code>MAKE-ARRAY</code>. The
+what (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm" title="(MAKE-INSTANCE FUNCTION)"><code>MAKE-INSTANCE</code></a> '<code>MAT</code> ...) does except <code>DIMENSIONS</code> is not a
+keyword argument so that <code>MAKE-MAT</code> looks more like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="(MAKE-ARRAY FUNCTION)"><code>MAKE-ARRAY</code></a>. The
 semantics of <code>SYNCHRONIZATION</code> are desribed in the
 <a href="cube-manual.html#x-28MGL-CUBE-3A-40CUBE-SYNCHRONIZATION-20MGL-PAX-3ASECTION-29" title="Synchronization">Synchronization</a> section.</p>
 
@@ -383,7 +383,7 @@ and <code>INITIAL-CONTENTS</code> must not be supplied together with
 
 <p>Create a <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> that's equivalent to <code>ARRAY</code>. Displacement of the
 created array will be 0 and the size will be equal to
-<code>ARRAY-TOTAL-SIZE</code>. If <code>CTYPE</code> is non-nil, then it will be the ctype of
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="(ARRAY-TOTAL-SIZE FUNCTION)"><code>ARRAY-TOTAL-SIZE</code></a>. If <code>CTYPE</code> is non-nil, then it will be the ctype of
 the new matrix. Else <code>ARRAY</code>'s type is converted to a ctype. If there
 is no corresponding ctype, then <a href="#x-28MGL-MAT-3A-2ADEFAULT-MAT-CTYPE-2A-20VARIABLE-29" title="(MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE)"><code>*DEFAULT-MAT-CTYPE*</code></a> is used.
 Elements of <code>ARRAY</code> are coerced to <code>CTYPE</code>.</p>
@@ -404,7 +404,7 @@ Elements of <code>ARRAY</code> are coerced to <code>CTYPE</code>.</p>
 
 <p>Replace the contents of <code>MAT</code> with the elements of <code>SEQ-OF-SEQS</code>.
 <code>SEQ-OF-SEQS</code> is a nested sequence of sequences similar to the
-<code>INITIAL-CONTENTS</code> argument of <code>MAKE-ARRAY</code>. The total number of
+<code>INITIAL-CONTENTS</code> argument of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="(MAKE-ARRAY FUNCTION)"><code>MAKE-ARRAY</code></a>. The total number of
 elements must match the size of <code>MAT</code>. Returns <code>MAT</code>.</p>
 
 <p><code>SEQ-OF-SEQS</code> may contain multi-dimensional arrays as <em>leafs</em>, so the
@@ -419,11 +419,11 @@ following is legal:</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L408">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMREF-20FUNCTION-29" >MREF</a></span></span> <span class="locative-args">MAT &amp;REST INDICES</span></span></p>
 
-<p>Like <code>AREF</code> for arrays. Don't use this if you care about performance
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="(AREF FUNCTION)"><code>AREF</code></a> for arrays. Don't use this if you care about performance
 at all. SETFable. When set, the value is coerced to the ctype of <code>MAT</code>
 with <a href="#x-28MGL-MAT-3ACOERCE-TO-CTYPE-20FUNCTION-29" title="(MGL-MAT:COERCE-TO-CTYPE FUNCTION)"><code>COERCE-TO-CTYPE</code></a>. Note that currently <code>MREF</code> always operates on
 the <a href="#x-28MGL-MAT-3ABACKING-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME)"><code>BACKING-ARRAY</code></a> facet so it can trigger copying of facets. When
-it's <code>SETF</code>'ed, however, it will update the <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> if cuda is
+it's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="(SETF MGL-PAX:MACRO)"><code>SETF</code></a>'ed, however, it will update the <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> if cuda is
 enabled and it is up-to-date or there are no facets at all.</p></li>
 </ul>
 
@@ -432,11 +432,11 @@ enabled and it is up-to-date or there are no facets at all.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L443">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AROW-MAJOR-MREF-20FUNCTION-29" >ROW-MAJOR-MREF</a></span></span> <span class="locative-args">MAT INDEX</span></span></p>
 
-<p>Like <code>ROW-MAJOR-AREF</code> for arrays. Don't use this if you care about
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm" title="(ROW-MAJOR-AREF FUNCTION)"><code>ROW-MAJOR-AREF</code></a> for arrays. Don't use this if you care about
 performance at all. SETFable. When set, the value is coerced to the
 ctype of <code>MAT</code> with <a href="#x-28MGL-MAT-3ACOERCE-TO-CTYPE-20FUNCTION-29" title="(MGL-MAT:COERCE-TO-CTYPE FUNCTION)"><code>COERCE-TO-CTYPE</code></a>. Note that currently
 <code>ROW-MAJOR-MREF</code> always operates on the <a href="#x-28MGL-MAT-3ABACKING-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME)"><code>BACKING-ARRAY</code></a> facet so it can
-trigger copying of facets. When it's <code>SETF</code>'ed, however, it will
+trigger copying of facets. When it's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="(SETF MGL-PAX:MACRO)"><code>SETF</code></a>'ed, however, it will
 update the <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> if cuda is enabled and it is up-to-date or
 there are no facets at all.</p></li>
 </ul>
@@ -446,7 +446,7 @@ there are no facets at all.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L472">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-ROW-MAJOR-INDEX-20FUNCTION-29" >MAT-ROW-MAJOR-INDEX</a></span></span> <span class="locative-args">MAT &amp;REST SUBSCRIPTS</span></span></p>
 
-<p>Like <code>ARRAY-ROW-MAJOR-INDEX</code> for arrays.</p></li>
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_row.htm" title="(ARRAY-ROW-MAJOR-INDEX FUNCTION)"><code>ARRAY-ROW-MAJOR-INDEX</code></a> for arrays.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-40MAT-CTYPES-20MGL-PAX-3ASECTION-29'></a></p>
@@ -547,7 +547,7 @@ the matrices that share the same underlying vector.</p>
 
 <p>One way to reshape and displace <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects is with <a href="#x-28MGL-MAT-3AMAKE-MAT-20FUNCTION-29" title="(MGL-MAT:MAKE-MAT FUNCTION)"><code>MAKE-MAT</code></a> and
 its <code>DISPLACED-TO</code> argument whose semantics are similar to that of
-<code>MAKE-ARRAY</code> in that the displacement is <em>relative</em> to the
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="(MAKE-ARRAY FUNCTION)"><code>MAKE-ARRAY</code></a> in that the displacement is <em>relative</em> to the
 displacement of <code>DISPLACED-TO</code>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">base <span class="paren4">(<span class="code">make-mat 10 <span class="keyword">:initial-element</span> 5 <span class="keyword">:displacement</span> 1</span>)</span></span>)</span>
@@ -571,7 +571,7 @@ underlying conceptual non-displaced vector.</p>
   the adjusted displacement is non-negative.</p></li>
 <li><p>Further shaping operations can make invisible portions of the
   <code>DISPLACED-TO</code> matrix visible by changing the displacement.</p></li>
-<li><p>In contrast to <code>ARRAY-DISPLACEMENT</code>, <a href="#x-28MGL-MAT-3AMAT-DISPLACEMENT-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-DISPLACEMENT</code></a> only returns
+<li><p>In contrast to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dis.htm" title="(ARRAY-DISPLACEMENT FUNCTION)"><code>ARRAY-DISPLACEMENT</code></a>, <a href="#x-28MGL-MAT-3AMAT-DISPLACEMENT-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-DISPLACEMENT</code></a> only returns
   an offset into the underlying storage vector.</p></li>
 </ul>
 
@@ -757,7 +757,7 @@ cached object is updated with the binding of <code>VAR</code> which <code>BODY</
 change.</p>
 
 <p>There is a separate cache for each thread and each <code>PLACE</code> (under
-EQ). Since every cache holds exactly one <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> per <code>CTYPE</code>, nested
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="(EQ FUNCTION)"><code>EQ</code></a>). Since every cache holds exactly one <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> per <code>CTYPE</code>, nested
 <code>WITH-THREAD-CACHED-MAT</code> often want to use different <code>PLACE</code>s. By
 convention, these places are called <code>:SCRATCH-1</code>, <code>:SCRATCH-2</code>,
 etc.</p></li>
@@ -924,7 +924,7 @@ M --A--+  -C++
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L980">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2EEXP-21-20FUNCTION-29" >.EXP!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>EXP</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm" title="(EXP FUNCTION)"><code>EXP</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-2EEXPT-21-20FUNCTION-29'></a></p>
@@ -935,7 +935,7 @@ M --A--+  -C++
 <p>Raise matrix <code>X</code> to <code>POWER</code> in an elementwise manner. Return <code>X</code>. Note
 that CUDA and non-CUDA implementations may disagree on the treatment
 of NaNs, infinities and complex results. In particular, the lisp
-implementation always computes the <code>REALPART</code> of the results while
+implementation always computes the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realpa.htm" title="(REALPART FUNCTION)"><code>REALPART</code></a> of the results while
 CUDA's pow() returns NaNs instead of complex numbers.</p></li>
 </ul>
 
@@ -1070,7 +1070,7 @@ matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1431">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2ESIN-21-20FUNCTION-29" >.SIN!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>SIN</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="(SIN FUNCTION)"><code>SIN</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-2ECOS-21-20FUNCTION-29'></a></p>
@@ -1078,7 +1078,7 @@ matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1436">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2ECOS-21-20FUNCTION-29" >.COS!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>COS</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="(COS FUNCTION)"><code>COS</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-2ETAN-21-20FUNCTION-29'></a></p>
@@ -1086,7 +1086,7 @@ matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1441">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2ETAN-21-20FUNCTION-29" >.TAN!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>TAN</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="(TAN FUNCTION)"><code>TAN</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-2ESINH-21-20FUNCTION-29'></a></p>
@@ -1094,7 +1094,7 @@ matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1446">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2ESINH-21-20FUNCTION-29" >.SINH!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>SINH</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="(SINH FUNCTION)"><code>SINH</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-2ECOSH-21-20FUNCTION-29'></a></p>
@@ -1102,7 +1102,7 @@ matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1451">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2ECOSH-21-20FUNCTION-29" >.COSH!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>COSH</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="(COSH FUNCTION)"><code>COSH</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-2ETANH-21-20FUNCTION-29'></a></p>
@@ -1110,7 +1110,7 @@ matrix, <code>SCALES</code> is treated as a length <code>N</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1456">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3A-2ETANH-21-20FUNCTION-29" >.TANH!</a></span></span> <span class="locative-args">X &amp;KEY (N (<a href="#x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29" title="(MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT))"><code>MAT-SIZE</code></a> X))</span></span></p>
 
-<p>Apply <code>TANH</code> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="(TANH FUNCTION)"><code>TANH</code></a> elementwise to <code>X</code> in a destructive manner. Return <code>X</code>.</p></li>
 </ul>
 
 <p>Finally, some neural network operations.</p>
@@ -1127,8 +1127,8 @@ input (<code>X</code>) and output (Y} N dimensional feature maps. <code>START</c
 and <code>ANCHOR</code> are lists of length N. <code>START</code> is the multi-dimensional
 index of the first element of the input feature map (for each
 element in the batch) for which the convolution must be computed.
-Then (<code>ELT</code> <code>STRIDE</code> (- N 1)) is added to the last element of <code>START</code> and
-so on until (<code>ARRAY-DIMENSION</code> <code>X</code> 1) is reached. Then the last element
+Then (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_elt.htm" title="(ELT FUNCTION)"><code>ELT</code></a> <code>STRIDE</code> (- N 1)) is added to the last element of <code>START</code> and
+so on until (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="(ARRAY-DIMENSION FUNCTION)"><code>ARRAY-DIMENSION</code></a> <code>X</code> 1) is reached. Then the last element
 of <code>START</code> is reset, (<code>ELT</code> <code>STRIDE</code> (- N 2)) is added to the first but
 last element of <code>START</code> and we scan the last dimension again. Take a
 2d example, <code>START</code> is (0 0), <code>STRIDE</code> is (1 2), and <code>X</code> is a B*2x7
@@ -1228,7 +1228,7 @@ and shape of <code>A</code>. </p></li>
 <p><a id='x-28MGL-MAT-3ASCALAR-AS-MAT-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1645">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ASCALAR-AS-MAT-20FUNCTION-29" >SCALAR-AS-MAT</a></span></span> <span class="locative-args">X &amp;KEY (CTYPE (<code>LISP-&gt;CTYPE</code> (<code>TYPE-OF</code> X)))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1645">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ASCALAR-AS-MAT-20FUNCTION-29" >SCALAR-AS-MAT</a></span></span> <span class="locative-args">X &amp;KEY (CTYPE (<code>LISP-&gt;CTYPE</code> (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_of.htm" title="(TYPE-OF FUNCTION)"><code>TYPE-OF</code></a> X)))</span></span></p>
 
 <p>Return a matrix of one dimension and one element: <code>X</code>. <code>CTYPE</code>, the
 type of the matrix, defaults to the ctype corresponding to the type
@@ -1357,7 +1357,7 @@ current displacement. Returns <code>MAT</code>.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L1805">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAP-MATS-INTO-20FUNCTION-29" >MAP-MATS-INTO</a></span></span> <span class="locative-args">RESULT-MAT FN &amp;REST MATS</span></span></p>
 
-<p>Like <code>CL:MAP-INTO</code> but for <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects. Destructively modifies
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" title="(MAP-INTO FUNCTION)"><code>CL:MAP-INTO</code></a> but for <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> objects. Destructively modifies
 <code>RESULT-MAT</code> to contain the results of applying <code>FN</code> to each element in
 the argument <code>MATS</code> in turn.</p></li>
 </ul>
@@ -1463,7 +1463,7 @@ of elements from binary <code>STREAM</code>. Return <code>MAT</code>. Also see
 being broken. This is almost always caused by an operation that
 mispecifies the <a href="cube-manual.html#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a> argument of <a href="cube-manual.html#x-28MGL-CUBE-3AWITH-FACET-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACET MGL-PAX:MACRO)"><code>WITH-FACET</code></a>. For example, the
 matrix argument of <a href="#x-28MGL-MAT-3ASCAL-21-20FUNCTION-29" title="(MGL-MAT:SCAL! FUNCTION)"><code>SCAL!</code></a> should be accessed with direciton <code>:IO</code>. But
-if it's <code>:INPUT</code> instead, then subsequent access to the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet
+if it's <code>:INPUT</code> instead, then subsequent access to the <code>ARRAY</code>(<a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="(ARRAY TYPE)"><code>1</code></a>) facet
 will not see the changes made by <a href="#x-28MGL-MAT-3AAXPY-21-20FUNCTION-29" title="(MGL-MAT:AXPY! FUNCTION)"><code>AXPY!</code></a>, and if it's <code>:OUTPUT</code>, then
 any changes made to the <code>ARRAY</code> facet since the last update of the
 <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> facet will not be copied and from the wrong input <code>SCAL!</code>
@@ -1481,7 +1481,7 @@ used.</p>
 <p><a id='x-28MGL-MAT-3AMAT-ROOM-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L2051">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-ROOM-20FUNCTION-29" >MAT-ROOM</a></span></span> <span class="locative-args">&amp;KEY (STREAM <code>*STANDARD-OUTPUT*</code>) (VERBOSE <code>T</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/mat.lisp#L2051">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AMAT-ROOM-20FUNCTION-29" >MAT-ROOM</a></span></span> <span class="locative-args">&amp;KEY (STREAM <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="(*STANDARD-OUTPUT* VARIABLE)"><code>*STANDARD-OUTPUT*</code></a>) (VERBOSE <code>T</code>)</span></span></p>
 
 <p>Calls <a href="#x-28MGL-MAT-3AFOREIGN-ROOM-20FUNCTION-29" title="(MGL-MAT:FOREIGN-ROOM FUNCTION)"><code>FOREIGN-ROOM</code></a> and <a href="#x-28MGL-MAT-3ACUDA-ROOM-20FUNCTION-29" title="(MGL-MAT:CUDA-ROOM FUNCTION)"><code>CUDA-ROOM</code></a>.</p></li>
 </ul>
@@ -1495,7 +1495,7 @@ used.</p>
 require. <em>May require</em> here really means an upper bound,
 because <code>(MAKE-MAT (EXPT 2 60))</code> doesn't actually uses memory until
 one of its facets is accessed (don't simply evaluate it though,
-printing the result will access the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet if <a href="#x-28MGL-MAT-3A-2APRINT-MAT-2A-20VARIABLE-29" title="(MGL-MAT:*PRINT-MAT* VARIABLE)"><code>*PRINT-MAT*</code></a>).
+printing the result will access the <code>ARRAY</code>(<a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="(ARRAY TYPE)"><code>1</code></a>) facet if <a href="#x-28MGL-MAT-3A-2APRINT-MAT-2A-20VARIABLE-29" title="(MGL-MAT:*PRINT-MAT* VARIABLE)"><code>*PRINT-MAT*</code></a>).
 Also, while facets today all require the same number of bytes, this
 may change in the future. This is a debugging tool, don't use it in
 production.</p>
@@ -1605,7 +1605,7 @@ dynamic scope of <code>WITH-FACETS</code>.</p>
 with this knowledge about the direction, <code>WITH-FACETS</code> will not copy
 data from another facet if the backing array is not up-to-date.</p>
 
-<p>To transpose a 2d matrix with the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet:</p>
+<p>To transpose a 2d matrix with the <code>ARRAY</code>(<a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="(ARRAY TYPE)"><code>1</code></a>) facet:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">destructuring-bind <span class="paren2">(<span class="code">n-rows n-columns</span>)</span> <span class="paren2">(<span class="code">mat-dimensions x</span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x* <span class="paren5">(<span class="code">x 'array <span class="keyword">:direction</span> <span class="keyword">:io</span></span>)</span></span>)</span></span>)</span>
@@ -1714,7 +1714,7 @@ SBCL gencgc platforms.</p></li>
 <p><a id='x-28MGL-MAT-3AFOREIGN-ROOM-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/foreign.lisp#L24">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AFOREIGN-ROOM-20FUNCTION-29" >FOREIGN-ROOM</a></span></span> <span class="locative-args">&amp;KEY (STREAM <code>*STANDARD-OUTPUT*</code>) (VERBOSE <code>T</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/foreign.lisp#L24">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3AFOREIGN-ROOM-20FUNCTION-29" >FOREIGN-ROOM</a></span></span> <span class="locative-args">&amp;KEY (STREAM <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="(*STANDARD-OUTPUT* VARIABLE)"><code>*STANDARD-OUTPUT*</code></a>) (VERBOSE <code>T</code>)</span></span></p>
 
 <p>Print a summary of foreign memory usage to <code>STREAM</code>. If <code>VERBOSE</code>, make
 the output human easily readable, else try to present it in a very
@@ -1755,7 +1755,7 @@ fall back on blas and lisp kernels if there is none.</p>
 
 <p>If CUDA is already initialized, then it sets up a facet barrier
 which destroys <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-ARRAY</code></a> and <a href="#x-28MGL-MAT-3ACUDA-HOST-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:CUDA-HOST-ARRAY MGL-CUBE:FACET-NAME)"><code>CUDA-HOST-ARRAY</code></a> facets after ensuring
-that the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet is up-to-date.</p>
+that the <code>ARRAY</code>(<a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="(ARRAY TYPE)"><code>1</code></a>) facet is up-to-date.</p>
 
 <p>Else, if CUDA is available and <code>ENABLED</code>, then in addition to the
 facet barrier, a CUDA context is set up, <a href="#x-28MGL-MAT-3A-2AN-MEMCPY-HOST-TO-DEVICE-2A-20VARIABLE-29" title="(MGL-MAT:*N-MEMCPY-HOST-TO-DEVICE* VARIABLE)"><code>*N-MEMCPY-HOST-TO-DEVICE*</code></a>,
@@ -1885,7 +1885,7 @@ limits being reached), then <code>CUDA-OUT-OF-MEMORY</code> is signalled.</p></l
 <p><a id='x-28MGL-MAT-3ACUDA-ROOM-20FUNCTION-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/cuda-late.lisp#L41">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-ROOM-20FUNCTION-29" >CUDA-ROOM</a></span></span> <span class="locative-args">&amp;KEY (STREAM <code>*STANDARD-OUTPUT*</code>) (VERBOSE <code>T</code>)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/2ded4de8a0e7180d763b452037ab3cf8ee781d40/src/cuda-late.lisp#L41">[function]</a></span> <span class="reference-object"><a href="#x-28MGL-MAT-3ACUDA-ROOM-20FUNCTION-29" >CUDA-ROOM</a></span></span> <span class="locative-args">&amp;KEY (STREAM <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="(*STANDARD-OUTPUT* VARIABLE)"><code>*STANDARD-OUTPUT*</code></a>) (VERBOSE <code>T</code>)</span></span></p>
 
 <p>When CUDA is in use (see <a href="#x-28MGL-MAT-3AUSE-CUDA-P-20FUNCTION-29" title="(MGL-MAT:USE-CUDA-P FUNCTION)"><code>USE-CUDA-P</code></a>), print a summary of memory
 usage in the current CUDA context to <code>STREAM</code>. If <code>VERBOSE</code>, make the
@@ -1993,7 +1993,7 @@ the return type is not declared.</p>
 but one function is defined for each ctype in <code>CTYPES</code> by transforming
 types, constants and code by substituting them with their ctype
 equivalents. Currently this only means that one needs to write only
-one kernel for <code>SINGLE-FLOAT</code> and <code>DOUBLE-FLOAT</code>. All such functions get
+one kernel for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="(SINGLE-FLOAT TYPE)"><code>SINGLE-FLOAT</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="(DOUBLE-FLOAT TYPE)"><code>DOUBLE-FLOAT</code></a>. All such functions get
 the declaration from <a href="#x-28MGL-MAT-3A-2ADEFAULT-LISP-KERNEL-DECLARATIONS-2A-20VARIABLE-29" title="(MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS* VARIABLE)"><code>*DEFAULT-LISP-KERNEL-DECLARATIONS*</code></a>.</p>
 
 <p>Finally, a dispatcher function with <code>NAME</code> is defined which determines
@@ -2154,7 +2154,7 @@ that's used to acquire the cuda array.</p>
 but one function is defined for each ctype in <code>CTYPES</code> by transforming
 types, constants and code by substituting them with their ctype
 equivalents. Currently this only means that one needs to write only
-one kernel for <code>FLOAT</code> and <code>DOUBLE</code>.</p>
+one kernel for <code>FLOAT</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_float.htm" title="(FLOAT FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="(FLOAT TYPE)"><code>1</code></a>) and <code>DOUBLE</code>.</p>
 
 <p>Finally, a dispatcher function with <code>NAME</code> is defined which determines
 the ctype of the <code>MAT</code> objects passed for <code>:MAT</code> typed parameters. It's
