@@ -193,12 +193,12 @@ its body: one that records the name and an argument list (as in a
 function call), and another that records the return values. In
 Lisp-like pseudocode:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defmac.htm" class="symbol"><i><span class="symbol">defmacro</span></i></a> journaled <span class="paren2">(<span class="code">name args &amp;body body</span>)</span>
-  `<span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progn.htm" class="symbol"><i><span class="symbol">progn</span></i></a>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defmacro</span></i> journaled <span class="paren2">(<span class="code">name args &amp;body body</span>)</span>
+  `<span class="paren2">(<span class="code"><i><span class="symbol">progn</span></i>
      <span class="paren3">(<span class="code">record-event `<span class="paren4">(<span class="code"><span class="keyword">:in</span> ,name <span class="keyword">:args</span> ,args</span>)</span></span>)</span>
-     <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">,return-values <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_mult_1.htm" class="symbol">multiple-value-list</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progn.htm" class="symbol"><i><span class="symbol">progn</span></i></a> ,@body</span>)</span></span>)</span></span>)</span></span>)</span>
+     <span class="paren3">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">,return-values <span class="paren6">(<span class="code">multiple-value-list <span class="paren1">(<span class="code"><i><span class="symbol">progn</span></i> ,@body</span>)</span></span>)</span></span>)</span></span>)</span>
        <span class="paren4">(<span class="code">record-event `<span class="paren5">(<span class="code"><span class="keyword">:out</span> ,name <span class="keyword">:values</span> ,return-values</span>)</span></span>)</span>
-       <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_vals_l.htm" class="symbol">values-list</a> ,return-values</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+       <span class="paren4">(<span class="code">values-list ,return-values</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>The Journal library is this idea taken to its logical conclusion.</p>
 
@@ -231,9 +231,9 @@ Lisp-like pseudocode:</p>
 </ul>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">FOO 2.1</span>)</span>
-  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 2.1</span>)</span>
+  <span class="paren1">(<span class="code">1+ 2.1</span>)</span>
   =&gt; 3.1
-=E "SIMPLE-ERROR" "The assertion <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_inte_1.htm" class="symbol">INTEGERP</a> 3.1</span>)</span> failed."</span></code></pre>
+=E "SIMPLE-ERROR" "The assertion <span class="paren1">(<span class="code">INTEGERP 3.1</span>)</span> failed."</span></code></pre>
 
 <p>See <a href="#x-28JOURNAL-3A-40TRACING-20MGL-PAX-3ASECTION-29" title="Tracing">Tracing</a> for a complete example.</p>
 
@@ -246,11 +246,11 @@ Lisp-like pseudocode:</p>
 </ul>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">define-file-bundle-test</span></i> <span class="paren2">(<span class="code">test-user-registration <span class="keyword">:directory</span> <span class="string">"registration"</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">username <span class="paren5">(<span class="code">replayed <span class="paren6">(<span class="code"><span class="string">"ask-username"</span></span>)</span>
-                    <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Please type your username: "</span></span>)</span>
-                    <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_lin.htm" class="symbol">read-line</a></span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">username <span class="paren5">(<span class="code">replayed <span class="paren6">(<span class="code"><span class="string">"ask-username"</span></span>)</span>
+                    <span class="paren6">(<span class="code">format t <span class="string">"Please type your username: "</span></span>)</span>
+                    <span class="paren6">(<span class="code">read-line</span>)</span></span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">add-user username</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren4">(<span class="code">user-exists-p username</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+    <span class="paren3">(<span class="code">assert <span class="paren4">(<span class="code">user-exists-p username</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>See <a href="#x-28JOURNAL-3A-40TESTING-20MGL-PAX-3ASECTION-29" title="Testing">Testing</a> for a complete example.</p>
 
@@ -262,7 +262,7 @@ Lisp-like pseudocode:</p>
 <li><p>Easy to implement history, undo</p></li>
 </ul>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> my-resumable-autosaving-game-with-history <span class="paren2">(<span class="code"></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> my-resumable-autosaving-game-with-history <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code">bundle</span>)</span>
     <span class="paren3">(<span class="code">play-guess-my-number</span>)</span></span>)</span></span>)</span></span></code></pre>
 
@@ -474,9 +474,9 @@ journaled <a href="#x-28JOURNAL-3A-40BLOCK-20MGL-PAX-3AGLOSSARY-TERM-29" title="
 <p>If the <a href="#x-28JOURNAL-3AJOURNALED-20MGL-PAX-3AMACRO-29" title="(JOURNAL:JOURNALED MGL-PAX:MACRO)"><code>JOURNALED</code></a> <a href="#x-28JOURNAL-3A-40BLOCK-20MGL-PAX-3AGLOSSARY-TERM-29" title="(JOURNAL:@BLOCK MGL-PAX:GLOSSARY-TERM)">block</a> returns normally, <a href="#x-28JOURNAL-3AEVENT-EXIT-20TYPE-29" title="(JOURNAL:EVENT-EXIT TYPE)"><code>EVENT-EXIT</code></a> is
 <code>:VALUES</code> and the outcome is the list of values returned:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">journaled <span class="paren2">(<span class="code">foo</span>)</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 7 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">journaled <span class="paren2">(<span class="code">foo</span>)</span> <span class="paren2">(<span class="code">values 7 t</span>)</span></span>)</span>
 <span class="comment">;; generates the out-event
-</span><span class="paren1">(<span class="code"><span class="keyword">:out</span> foo <span class="keyword">:values</span> <span class="paren2">(<span class="code">7 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span></span></code></pre>
+</span><span class="paren1">(<span class="code"><span class="keyword">:out</span> foo <span class="keyword">:values</span> <span class="paren2">(<span class="code">7 t</span>)</span></span>)</span></span></code></pre>
 
 <p>The list of return values of the block is transformed by the <code>VALUES</code>
 argument of <code>JOURNALED</code>, whose default is <code>#'IDENTITY</code>. Also see
@@ -493,8 +493,8 @@ argument of <code>JOURNALED</code>, whose default is <code>#'IDENTITY</code>. Al
 returns non-NIL when invoked on it, then <a href="#x-28JOURNAL-3AEVENT-EXIT-20TYPE-29" title="(JOURNAL:EVENT-EXIT TYPE)"><code>EVENT-EXIT</code></a> is
 <code>:CONDITION</code> and the outcome is this return value:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">journaled <span class="paren2">(<span class="code">foo <span class="keyword">:condition</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code">c</span>)</span> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_to_.htm" class="symbol">prin1-to-string</a> c</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">journaled <span class="paren2">(<span class="code">foo <span class="keyword">:condition</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code">c</span>)</span> <span class="paren4">(<span class="code">prin1-to-string c</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span>
 <span class="comment">;; generates the out-event
 </span><span class="paren1">(<span class="code"><span class="keyword">:out</span> foo <span class="keyword">:condition</span> <span class="string">"xxx"</span></span>)</span></span></code></pre>
 
@@ -517,7 +517,7 @@ representations of the type of the condition and the condition
 itself.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">journaled <span class="paren2">(<span class="code">foo</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span>
 <span class="comment">;; generates the out-event
 </span><span class="paren1">(<span class="code"><span class="keyword">:out</span> foo <span class="keyword">:error</span> <span class="paren2">(<span class="code"><span class="string">"simple-error"</span> <span class="string">"xxx"</span></span>)</span></span>)</span></span></code></pre>
 
@@ -539,11 +539,11 @@ code is not prepared to handle or replay in a meaningful way.</p></li>
 due to a condition, then <a href="#x-28JOURNAL-3AEVENT-EXIT-20TYPE-29" title="(JOURNAL:EVENT-EXIT TYPE)"><code>EVENT-EXIT</code></a> is <code>:NLX</code> and the outcome
 is <code>NIL</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_catch.htm" class="symbol"><i><span class="symbol">catch</span></i></a> 'xxx
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">catch</span></i> 'xxx
   <span class="paren2">(<span class="code">journaled <span class="paren3">(<span class="code">foo</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_throw.htm" class="symbol"><i><span class="symbol">throw</span></i></a> 'xxx <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">throw</span></i> 'xxx nil</span>)</span></span>)</span></span>)</span>
 <span class="comment">;; generates the out-event
-</span><span class="paren1">(<span class="code"><span class="keyword">:out</span> foo <span class="keyword">:nlx</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span></code></pre>
+</span><span class="paren1">(<span class="code"><span class="keyword">:out</span> foo <span class="keyword">:nlx</span> nil</span>)</span></span></code></pre>
 
 <p>Note that <a href="#x-28JOURNAL-3ACONDITION-OUTCOME-20MGL-PAX-3AGLOSSARY-TERM-29" title="(JOURNAL:CONDITION-OUTCOME MGL-PAX:GLOSSARY-TERM)">condition outcome</a>s and <a href="#x-28JOURNAL-3AERROR-OUTCOME-20MGL-PAX-3AGLOSSARY-TERM-29" title="(JOURNAL:ERROR-OUTCOME MGL-PAX:GLOSSARY-TERM)">error outcome</a>s are also due to
 <code>@NON-LOCAL-EXIT</code>s, but are distinct from nlx outcomes.</p>
@@ -595,35 +595,35 @@ argument of <code>JOURNALED</code> is for.</p>
 
 <p>Let's see a complete example.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defcla.htm" class="symbol"><i><span class="symbol">defclass</span></i></a> user <span class="paren2">(<span class="code"></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defclass</span></i> user <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">id <span class="keyword">:initarg</span> <span class="keyword">:id</span> <span class="keyword">:reader</span> user-id</span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defmet.htm" class="symbol"><i><span class="symbol">defmethod</span></i></a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_pr_obj.htm" class="symbol">print-object</a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">user user</span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_pr_unr.htm" class="symbol">print-unreadable-object</a> <span class="paren3">(<span class="code">user <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a> <span class="keyword">:type</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a> <span class="string">"~S"</span> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_slt_va.htm" class="symbol">slot-value</a> user 'id</span>)</span></span>)</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defmethod</span></i> print-object <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">user user</span>)</span> stream</span>)</span>
+  <span class="paren2">(<span class="code">print-unreadable-object <span class="paren3">(<span class="code">user stream <span class="keyword">:type</span> t</span>)</span>
+    <span class="paren3">(<span class="code">format stream <span class="string">"~S"</span> <span class="paren4">(<span class="code">slot-value user 'id</span>)</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*users*</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_has.htm" class="symbol">make-hash-table</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*users*</span> <span class="paren2">(<span class="code">make-hash-table</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> find-user <span class="paren2">(<span class="code">id</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_gethas.htm" class="symbol">gethash</a> id <span class="special">*users*</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> find-user <span class="paren2">(<span class="code">id</span>)</span>
+  <span class="paren2">(<span class="code">gethash id <span class="special">*users*</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> add-user <span class="paren2">(<span class="code">id</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_gethas.htm" class="symbol">gethash</a> id <span class="special">*users*</span></span>)</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'user <span class="keyword">:id</span> id</span>)</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> add-user <span class="paren2">(<span class="code">id</span>)</span>
+  <span class="paren2">(<span class="code">setf <span class="paren3">(<span class="code">gethash id <span class="special">*users*</span></span>)</span> <span class="paren3">(<span class="code">make-instance 'user <span class="keyword">:id</span> id</span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*user7*</span> <span class="paren2">(<span class="code">add-user 7</span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*user7*</span> <span class="paren2">(<span class="code">add-user 7</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> get-message <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_listen.htm" class="symbol">listen</a> <span class="keyword">:values</span> <span class="paren4">(<span class="code">values-&gt; #'user-id</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> get-message <span class="paren2">(<span class="code"></span>)</span>
+  <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code">listen <span class="keyword">:values</span> <span class="paren4">(<span class="code">values-&gt; #'user-id</span>)</span>
                     <span class="keyword">:replay-values</span> <span class="paren4">(<span class="code">values&lt;- #'find-user</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> <span class="special">*user7*</span> <span class="string">"hello"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">values <span class="special">*user7*</span> <span class="string">"hello"</span></span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">jtrace user-id find-user get-message</span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-file-bundle <span class="string">"/tmp/user-example/"</span></span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Recording"</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-file-bundle <span class="string">"/tmp/user-example/"</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">format t <span class="string">"Recording"</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code">bundle</span>)</span>
     <span class="paren3">(<span class="code">get-message</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"~%Replaying"</span></span>)</span>
+  <span class="paren2">(<span class="code">format t <span class="string">"~%Replaying"</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code">bundle</span>)</span>
     <span class="paren3">(<span class="code">get-message</span>)</span></span>)</span></span>)</span>
 .. Recording
@@ -666,7 +666,7 @@ allowed, <code>VALUES-&gt;</code> handles the common case of transforming
 individual elements of the list independently by calling the
 functions in FN with the values of the list of the same position.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_funcal.htm" class="symbol">funcall</a> <span class="paren2">(<span class="code">values-&gt; #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a></span>)</span> '<span class="paren2">(<span class="code">7 <span class="keyword">:something</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">funcall <span class="paren2">(<span class="code">values-&gt; #'1+</span>)</span> '<span class="paren2">(<span class="code">7 <span class="keyword">:something</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code">8 <span class="keyword">:SOMETHING</span></span>)</span></span></code></pre>
 
 <p>Note how <code>#'1+</code> is applied only to the first element of the values
@@ -674,7 +674,7 @@ list. The list of functions is shorter than the values list, so
 <code>:SOMETHING</code> is not transformed. A value can be left explicitly
 untransformed by specifying #'<code>IDENTITY</code> or <code>NIL</code> as the function:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_funcal.htm" class="symbol">funcall</a> <span class="paren2">(<span class="code">values-&gt; #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_symb_2.htm" class="symbol">symbol-name</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">funcall <span class="paren2">(<span class="code">values-&gt; #'1+ nil #'symbol-name</span>)</span>
          '<span class="paren2">(<span class="code">7 <span class="keyword">:something</span> <span class="keyword">:another</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code">8 <span class="keyword">:SOMETHING</span> <span class="string">"ANOTHER"</span></span>)</span></span></code></pre></li>
 </ul>
@@ -689,7 +689,7 @@ the <code>REPLAY-VALUES</code> argument of <a href="#x-28JOURNAL-3AJOURNALED-20M
 <code>VALUES-&gt;</code> does, but the function returned returns the transformed
 list as multiple values instead of as a list.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_funcal.htm" class="symbol">funcall</a> <span class="paren2">(<span class="code">values&lt;- #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1-</a></span>)</span> '<span class="paren2">(<span class="code">8 <span class="keyword">:something</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">funcall <span class="paren2">(<span class="code">values&lt;- #'1-</span>)</span> '<span class="paren2">(<span class="code">8 <span class="keyword">:something</span></span>)</span></span>)</span>
 =&gt; 7
 =&gt; :SOMETHING</span></code></pre></li>
 </ul>
@@ -764,22 +764,22 @@ event and indenting them according to their nesting structure.
 <code>EVENTS</code> may be a <a href="#x-28JOURNAL-3AJOURNAL-20CLASS-29" title="(JOURNAL:JOURNAL CLASS)"><code>JOURNAL</code></a>, in which case <a href="#x-28JOURNAL-3ALIST-EVENTS-20FUNCTION-29" title="(JOURNAL:LIST-EVENTS FUNCTION)"><code>LIST-EVENTS</code></a> is called on it
 first.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">print-events '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:in</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">log</a> <span class="keyword">:args</span> <span class="paren4">(<span class="code"><span class="string">"first arg"</span> 2</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">print-events '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:in</span> log <span class="keyword">:args</span> <span class="paren4">(<span class="code"><span class="string">"first arg"</span> 2</span>)</span></span>)</span>
                 <span class="paren3">(<span class="code"><span class="keyword">:in</span> versioned <span class="keyword">:version</span> 1 <span class="keyword">:args</span> <span class="paren4">(<span class="code">3</span>)</span></span>)</span>
-                <span class="paren3">(<span class="code"><span class="keyword">:out</span> versioned <span class="keyword">:version</span> 1 <span class="keyword">:values</span> <span class="paren4">(<span class="code">42 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-                <span class="paren3">(<span class="code"><span class="keyword">:out</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">log</a> <span class="keyword">:condition</span> <span class="string">"a :CONDITION outcome"</span></span>)</span>
+                <span class="paren3">(<span class="code"><span class="keyword">:out</span> versioned <span class="keyword">:version</span> 1 <span class="keyword">:values</span> <span class="paren4">(<span class="code">42 t</span>)</span></span>)</span>
+                <span class="paren3">(<span class="code"><span class="keyword">:out</span> log <span class="keyword">:condition</span> <span class="string">"a :CONDITION outcome"</span></span>)</span>
                 <span class="paren3">(<span class="code"><span class="keyword">:in</span> log-2</span>)</span>
-                <span class="paren3">(<span class="code"><span class="keyword">:out</span> log-2 <span class="keyword">:nlx</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+                <span class="paren3">(<span class="code"><span class="keyword">:out</span> log-2 <span class="keyword">:nlx</span> nil</span>)</span>
                 <span class="paren3">(<span class="code"><span class="keyword">:in</span> external <span class="keyword">:version</span> <span class="keyword">:infinity</span></span>)</span>
                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> external <span class="keyword">:version</span> <span class="keyword">:infinity</span>
                  <span class="keyword">:error</span> <span class="paren4">(<span class="code"><span class="string">"ERROR"</span> <span class="string">"an :ERROR outcome"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 ..
-.. <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">LOG</a> <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"first arg"</span> 2</span>)</span></span>)</span>
+.. <span class="paren1">(<span class="code"><span class="keyword">:IN</span> LOG <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"first arg"</span> 2</span>)</span></span>)</span>
 ..   <span class="paren1">(<span class="code"><span class="keyword">:IN</span> VERSIONED <span class="keyword">:VERSION</span> 1 <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code">3</span>)</span></span>)</span>
-..   <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> VERSIONED <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code">42 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span></span>)</span>
-.. <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">LOG</a> <span class="keyword">:CONDITION</span> <span class="string">"a :CONDITION outcome"</span></span>)</span>
+..   <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> VERSIONED <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code">42 T</span>)</span></span>)</span>
+.. <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> LOG <span class="keyword">:CONDITION</span> <span class="string">"a :CONDITION outcome"</span></span>)</span>
 .. <span class="paren1">(<span class="code"><span class="keyword">:IN</span> LOG-2</span>)</span>
-.. <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> LOG-2 <span class="keyword">:NLX</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+.. <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> LOG-2 <span class="keyword">:NLX</span> NIL</span>)</span>
 .. <span class="paren1">(<span class="code"><span class="keyword">:IN</span> EXTERNAL <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span></span>)</span>
 .. <span class="paren1">(<span class="code"><span class="keyword">:OUT</span> EXTERNAL <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ERROR</span> <span class="paren2">(<span class="code"><span class="string">"ERROR"</span> <span class="string">"an :ERROR outcome"</span></span>)</span></span>)</span>
 =&gt; <span class="comment">; No value</span></span></code></pre></li>
@@ -793,18 +793,18 @@ first.</p>
 <p>Like <a href="#x-28JOURNAL-3APRINT-EVENTS-20FUNCTION-29" title="(JOURNAL:PRINT-EVENTS FUNCTION)"><code>PRINT-EVENTS</code></a>, but produces terser, more human readable
 output.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">pprint-events '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:in</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">log</a> <span class="keyword">:args</span> <span class="paren4">(<span class="code"><span class="string">"first arg"</span> 2</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">pprint-events '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:in</span> log <span class="keyword">:args</span> <span class="paren4">(<span class="code"><span class="string">"first arg"</span> 2</span>)</span></span>)</span>
                  <span class="paren3">(<span class="code"><span class="keyword">:in</span> versioned <span class="keyword">:version</span> 1 <span class="keyword">:args</span> <span class="paren4">(<span class="code">3</span>)</span></span>)</span>
                  <span class="paren3">(<span class="code"><span class="keyword">:leaf</span> <span class="string">"This is a leaf, not a frame."</span></span>)</span>
-                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> versioned <span class="keyword">:version</span> 1 <span class="keyword">:values</span> <span class="paren4">(<span class="code">42 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">log</a> <span class="keyword">:condition</span> <span class="string">"a :CONDITION outcome"</span></span>)</span>
+                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> versioned <span class="keyword">:version</span> 1 <span class="keyword">:values</span> <span class="paren4">(<span class="code">42 t</span>)</span></span>)</span>
+                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> log <span class="keyword">:condition</span> <span class="string">"a :CONDITION outcome"</span></span>)</span>
                  <span class="paren3">(<span class="code"><span class="keyword">:in</span> log-2</span>)</span>
-                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> log-2 <span class="keyword">:nlx</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+                 <span class="paren3">(<span class="code"><span class="keyword">:out</span> log-2 <span class="keyword">:nlx</span> nil</span>)</span>
                  <span class="paren3">(<span class="code"><span class="keyword">:in</span> external <span class="keyword">:version</span> <span class="keyword">:infinity</span></span>)</span>
                  <span class="paren3">(<span class="code"><span class="keyword">:out</span> external <span class="keyword">:version</span> <span class="keyword">:infinity</span>
                   <span class="keyword">:error</span> <span class="paren4">(<span class="code"><span class="string">"ERROR"</span> <span class="string">"an :ERROR outcome"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 ..
-.. <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_log.htm" class="symbol">LOG</a> <span class="string">"first arg"</span> 2</span>)</span>
+.. <span class="paren1">(<span class="code">LOG <span class="string">"first arg"</span> 2</span>)</span>
 ..   <span class="paren1">(<span class="code">VERSIONED 3</span>)</span> v1
 ..     This is a leaf, not a frame.
 ..   =&gt; 42, T
@@ -845,7 +845,7 @@ be pretty-printed to a stream as they generated. This is
 accomplished with <a href="#x-28JOURNAL-3A-40PPRINT-JOURNALS-20MGL-PAX-3ASECTION-29" title="Pretty-printing journals">Pretty-printing journals</a>, discussed in detail later, in
 the following way:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">journal <span class="paren4">(<span class="code">make-pprint-journal</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">journal <span class="paren4">(<span class="code">make-pprint-journal</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren3">(<span class="code"><span class="keyword">:record</span> journal</span>)</span>
     <span class="paren3">(<span class="code">journaled <span class="paren4">(<span class="code">foo</span>)</span> <span class="string">"Hello"</span></span>)</span></span>)</span></span>)</span>
 ..
@@ -979,12 +979,12 @@ reading past the end of the <a href="#x-28JOURNAL-3AJOURNAL-20CLASS-29" title="(
 
 <h5>Default to muffling</h5>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*glib-log*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*patience*</span> 1</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*glib-log*</span> nil</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*patience*</span> 1</span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> sl33p <span class="paren2">(<span class="code">seconds</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> sl33p <span class="paren2">(<span class="code">seconds</span>)</span>
   <span class="paren2">(<span class="code">logged <span class="paren3">(<span class="code"><span class="special">*glib-log*</span></span>)</span> <span class="string">"Sleeping for ~As."</span> seconds</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">sleep</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="special">*patience*</span> seconds</span>)</span></span>)</span></span>)</span></span></code></pre>
+  <span class="paren2">(<span class="code">sleep <span class="paren3">(<span class="code">* <span class="special">*patience*</span> seconds</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Glib follows the recommendation to have a special variable globally
 bound to <code>NIL</code> by default. The value of <code>*GLIB-LOG*</code> is the journal to
@@ -996,8 +996,8 @@ change its value.</p>
 
 <p>Let's send the logs to a <a href="#x-28JOURNAL-3APPRINT-JOURNAL-20CLASS-29" title="(JOURNAL:PPRINT-JOURNAL CLASS)"><code>PPRINT-JOURNAL</code></a>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*glib-log*</span> <span class="paren2">(<span class="code">make-pprint-journal
-                  <span class="keyword">:log-decorator</span> <span class="paren3">(<span class="code">make-log-decorator <span class="keyword">:time</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*glib-log*</span> <span class="paren2">(<span class="code">make-pprint-journal
+                  <span class="keyword">:log-decorator</span> <span class="paren3">(<span class="code">make-log-decorator <span class="keyword">:time</span> t</span>)</span></span>)</span></span>)</span>
 <span class="paren1">(<span class="code">sl33p 0.01</span>)</span>
 ..
 .. 2020-08-31T12:45:23.827172+02:00: Sleeping for 0.01s.</span></code></pre>
@@ -1005,7 +1005,7 @@ change its value.</p>
 <p>That's a bit too wordy. For this tutorial, let's stick to less
 verbose output:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*glib-log*</span> <span class="paren2">(<span class="code">make-pprint-journal</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*glib-log*</span> <span class="paren2">(<span class="code">make-pprint-journal</span>)</span></span>)</span>
 <span class="paren1">(<span class="code">sl33p 0.01</span>)</span>
 ..
 .. Sleeping for 0.01s.</span></code></pre>
@@ -1015,14 +1015,14 @@ verbose output:</p>
 <p>If we were recording a journal for replay and wanted to include glib
 logs in the journal, we would do something like this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><span class="special">*glib-log*</span> <span class="keyword">:record</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> t</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><span class="special">*glib-log*</span> <span class="keyword">:record</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">sl33p 0.01</span>)</span>
     <span class="paren3">(<span class="code">journaled <span class="paren4">(<span class="code">non-glib-stuff <span class="keyword">:version</span> 1</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">list-events</span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="keyword">:LEAF</span> <span class="string">"Sleeping for 0.01s."</span></span>)</span>
     <span class="paren2">(<span class="code"><span class="keyword">:IN</span> NON-GLIB-STUFF <span class="keyword">:VERSION</span> 1</span>)</span>
-    <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> NON-GLIB-STUFF <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span></span>)</span></span></code></pre>
+    <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> NON-GLIB-STUFF <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">NIL</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>We could even <code>(SETQ *GLIB-LOG* :RECORD)</code> to make it so that glib
 messages are included by default in the <a href="#x-28JOURNAL-3ARECORD-JOURNAL-20FUNCTION-29" title="(JOURNAL:RECORD-JOURNAL FUNCTION)"><code>RECORD-JOURNAL</code></a>. In this
@@ -1034,10 +1034,10 @@ the log messages of the glib library (currently one).</p>
 <p>Next, we route <code>*GLIB-LOG*</code> to wherever <code>*APP-LOG*</code> is pointing by
 binding <code>*GLIB-LOG*</code> <em>to the symbol</em> <code>*APP-LOG*</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*app-log*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*app-log*</span> nil</span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*glib-log*</span> '<span class="special">*app-log*</span></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*app-log*</span> <span class="paren4">(<span class="code">make-pprint-journal <span class="keyword">:pretty</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*glib-log*</span> '<span class="special">*app-log*</span></span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*app-log*</span> <span class="paren4">(<span class="code">make-pprint-journal <span class="keyword">:pretty</span> nil</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">sl33p 0.01</span>)</span></span>)</span>
 ..
 .. <span class="paren1">(<span class="code"><span class="keyword">:LEAF</span> <span class="string">"Sleeping for 0.01s."</span></span>)</span></span></code></pre>
@@ -1050,19 +1050,19 @@ generated by <a href="#x-28JOURNAL-3ALOGGED-20MGL-PAX-3AMACRO-29" title="(JOURNA
 <p>Finally, to make routing decisions conditional we need to change
 <code>SL33P</code>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*glib-log-level*</span> 1</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*glib-log-level*</span> 1</span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> sl33p <span class="paren2">(<span class="code">seconds</span>)</span>
-  <span class="paren2">(<span class="code">logged <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> <span class="paren5">(<span class="code">&lt;= 2 <span class="special">*glib-log-level*</span></span>)</span> <span class="special">*glib-log*</span></span>)</span></span>)</span>
-          <span class="string">"Sleeping for ~As."</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="special">*patience*</span> seconds</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">sleep</a> seconds</span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> sl33p <span class="paren2">(<span class="code">seconds</span>)</span>
+  <span class="paren2">(<span class="code">logged <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">and <span class="paren5">(<span class="code">&lt;= 2 <span class="special">*glib-log-level*</span></span>)</span> <span class="special">*glib-log*</span></span>)</span></span>)</span>
+          <span class="string">"Sleeping for ~As."</span> <span class="paren3">(<span class="code">* <span class="special">*patience*</span> seconds</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">sleep seconds</span>)</span></span>)</span>
 
 <span class="comment">;;; Check that it all works:
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*glib-log-level*</span> 1</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"~%With log-level ~A"</span> <span class="special">*glib-log-level*</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*glib-log-level*</span> 1</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">format t <span class="string">"~%With log-level ~A"</span> <span class="special">*glib-log-level*</span></span>)</span>
   <span class="paren2">(<span class="code">sl33p 0.01</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*glib-log-level*</span> 2</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"~%With log-level ~A"</span> <span class="special">*glib-log-level*</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*glib-log-level*</span> 2</span>)</span>
+  <span class="paren2">(<span class="code">format t <span class="string">"~%With log-level ~A"</span> <span class="special">*glib-log-level*</span></span>)</span>
   <span class="paren2">(<span class="code">sl33p 0.01</span>)</span></span>)</span>
 ..
 .. With log-level 1
@@ -1073,21 +1073,21 @@ generated by <a href="#x-28JOURNAL-3ALOGGED-20MGL-PAX-3AMACRO-29" title="(JOURNA
 
 <p><code>LOGGED</code> is for single messages. <a href="#x-28JOURNAL-3AJOURNALED-20MGL-PAX-3AMACRO-29" title="(JOURNAL:JOURNALED MGL-PAX:MACRO)"><code>JOURNALED</code></a> can provide nested context:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> callv <span class="paren2">(<span class="code">var value <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_symbol.htm" class="symbol">symbol</a> &amp;rest args</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> callv <span class="paren2">(<span class="code">var value symbol &amp;rest args</span>)</span>
   <span class="string">"Call SYMBOL-FUNCTION of SYMBOL with VAR dynamically bound to VALUE."</span>
   <span class="paren2">(<span class="code">framed <span class="paren3">(<span class="code"><span class="string">"glib:callv"</span> <span class="keyword">:log-record</span> <span class="special">*glib-log*</span>
-                        <span class="keyword">:args</span> `<span class="paren4">(<span class="code">,var ,value ,<a href="http://www.lispworks.com/reference/HyperSpec/Body/t_symbol.htm" class="symbol">symbol</a> ,@args</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progv.htm" class="symbol"><i><span class="symbol">progv</span></i></a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> var</span>)</span> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> value</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_apply.htm" class="symbol">apply</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_symb_1.htm" class="symbol">symbol-function</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_symbol.htm" class="symbol">symbol</a></span>)</span> args</span>)</span></span>)</span></span>)</span></span>)</span>
+                        <span class="keyword">:args</span> `<span class="paren4">(<span class="code">,var ,value ,symbol ,@args</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">progv</span></i> <span class="paren4">(<span class="code">list var</span>)</span> <span class="paren4">(<span class="code">list value</span>)</span>
+      <span class="paren4">(<span class="code">apply <span class="paren5">(<span class="code">symbol-function symbol</span>)</span> args</span>)</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code">callv '<a href="http://www.lispworks.com/reference/HyperSpec/Body/v_pr_bas.htm" class="symbol"><span class="special">*print-base*</span></a> 2 '<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> 10</span>)</span>
+<span class="paren1">(<span class="code">callv '<span class="special">*print-base*</span> 2 'print 10</span>)</span>
 ..
-.. <span class="paren1">(<span class="code"><span class="string">"glib:callv"</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/v_pr_bas.htm" class="symbol"><span class="special">*PRINT-BASE*</span></a> 2 <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">PRINT</a> 10</span>)</span>
+.. <span class="paren1">(<span class="code"><span class="string">"glib:callv"</span> <span class="special">*PRINT-BASE*</span> 2 PRINT 10</span>)</span>
 .. 1010 
 .. =&gt; 10
 =&gt; 10
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*glib-log-level*</span> 2</span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*glib-log-level*</span> 2</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">callv '<span class="special">*patience*</span> 7 'sl33p 0.01</span>)</span></span>)</span>
 ..
 .. <span class="paren1">(<span class="code"><span class="string">"glib:callv"</span> <span class="special">*PATIENCE*</span> 7 SL33P 0.01</span>)</span>
@@ -1140,7 +1140,7 @@ the name of the thread, a timestamp, the internal real-time or
 run-time (both in seconds) to events. <code>THREAD</code>, <code>TIME</code>, <code>REAL-TIME</code> and
 <code>RUN-TIME</code> are <a href="#x-28JOURNAL-3A-3A-40BOOLEAN-VALUED-SYMBOL-20MGL-PAX-3AGLOSSARY-TERM-29" title="(JOURNAL::@BOOLEAN-VALUED-SYMBOL MGL-PAX:GLOSSARY-TERM)">boolean-valued symbol</a>s.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_funcal.htm" class="symbol">funcall</a> <span class="paren2">(<span class="code">make-log-decorator <span class="keyword">:thread</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:time</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:real-time</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:run-time</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">funcall <span class="paren2">(<span class="code">make-log-decorator <span class="keyword">:thread</span> t <span class="keyword">:time</span> t <span class="keyword">:real-time</span> t <span class="keyword">:run-time</span> t</span>)</span>
          <span class="paren2">(<span class="code">make-leaf-event <span class="keyword">:foo</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="keyword">:LEAF</span> <span class="keyword">:FOO</span> <span class="keyword">:TIME</span> <span class="string">"2020-08-31T13:38:58.129178+02:00"</span>
     <span class="keyword">:REAL-TIME</span> 66328.82 <span class="keyword">:RUN-TIME</span> 98.663 <span class="keyword">:THREAD</span> <span class="string">"worker"</span></span>)</span></span></code></pre></li>
@@ -1205,7 +1205,7 @@ name of thread may be added to the events as <a href="#x-28JOURNAL-3A-40DECORATI
 <p><code>LOGGED</code> creates a single <a href="#x-28JOURNAL-3ALEAF-EVENT-20TYPE-29" title="(JOURNAL:LEAF-EVENT TYPE)"><code>LEAF-EVENT</code></a> whose name is the string
 constructed by <code>FORMAT</code>. For example:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> t</span>)</span>
   <span class="paren2">(<span class="code">logged <span class="paren3">(<span class="code"></span>)</span> <span class="string">"Hello, ~A."</span> <span class="string">"world"</span></span>)</span>
   <span class="paren2">(<span class="code">list-events</span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="keyword">:LEAF</span> <span class="string">"Hello, world."</span></span>)</span></span>)</span></span></code></pre>
@@ -1229,17 +1229,17 @@ gracefully.</p>
 
 <h5>Basic tracing</h5>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> foo <span class="paren2">(<span class="code">x</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">sleep</a> 0.12</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> x</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> foo <span class="paren2">(<span class="code">x</span>)</span>
+  <span class="paren2">(<span class="code">sleep 0.12</span>)</span>
+  <span class="paren2">(<span class="code">1+ x</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> bar <span class="paren2">(<span class="code">x</span>)</span>
-  <span class="paren2">(<span class="code">foo <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> x 2</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> bar <span class="paren2">(<span class="code">x</span>)</span>
+  <span class="paren2">(<span class="code">foo <span class="paren3">(<span class="code">+ x 2</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">jtrace foo bar</span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_ignore.htm" class="symbol">ignore-errors</a> <span class="paren2">(<span class="code">bar 1</span>)</span></span>)</span>
+<span class="paren1">(<span class="code">ignore-errors <span class="paren2">(<span class="code">bar 1</span>)</span></span>)</span>
 ..
 .. <span class="paren1">(<span class="code">BAR 1</span>)</span>
 ..   <span class="paren1">(<span class="code">FOO 3</span>)</span>
@@ -1251,9 +1251,9 @@ gracefully.</p>
 <p>It can also include the name of the originating thread and
 timestamps in the output:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*trace-thread*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*trace-time*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_ignore.htm" class="symbol">ignore-errors</a> <span class="paren3">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*trace-thread*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*trace-time*</span> t</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">ignore-errors <span class="paren3">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span>
 ..
 .. 2020-09-02T19:58:19.415204+02:00 worker: <span class="paren1">(<span class="code">BAR 1</span>)</span>
 .. 2020-09-02T19:58:19.415547+02:00 worker:   <span class="paren1">(<span class="code">FOO 3</span>)</span>
@@ -1262,9 +1262,9 @@ timestamps in the output:</p>
 
 <h5>Profiler-like output</h5>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*trace-real-time*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*trace-run-time*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_ignore.htm" class="symbol">ignore-errors</a> <span class="paren3">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*trace-real-time*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*trace-run-time*</span> t</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">ignore-errors <span class="paren3">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span>
 ..
 .. #16735.736 !68.368: <span class="paren1">(<span class="code">BAR 1</span>)</span>
 .. #16735.736 !68.369:   <span class="paren1">(<span class="code">FOO 3</span>)</span>
@@ -1276,15 +1276,15 @@ timestamps in the output:</p>
 <p>If these options are insufficient, the content and the format of the
 trace can be customized:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*trace-journal*</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*trace-journal*</span>
        <span class="paren4">(<span class="code">make-pprint-journal <span class="keyword">:pretty</span> '<span class="special">*trace-pretty*</span>
-                     <span class="keyword">:prettifier</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren6">(<span class="code">event depth <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a></span>)</span>
-                                   <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a> <span class="string">"~%Depth: ~A, event: ~S"</span>
+                     <span class="keyword">:prettifier</span> <span class="paren5">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren6">(<span class="code">event depth stream</span>)</span>
+                                   <span class="paren6">(<span class="code">format stream <span class="string">"~%Depth: ~A, event: ~S"</span>
                                            depth event</span>)</span></span>)</span>
-                     <span class="keyword">:stream</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_syn.htm" class="symbol">make-synonym-stream</a> '<a href="http://www.lispworks.com/reference/HyperSpec/Body/v_debug_.htm" class="symbol"><span class="special">*error-output*</span></a></span>)</span>
-                     <span class="keyword">:log-decorator</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren6">(<span class="code">event</span>)</span>
-                                      <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_append.htm" class="symbol">append</a> event '<span class="paren1">(<span class="code"><span class="keyword">:custom</span> 7</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_ignore.htm" class="symbol">ignore-errors</a> <span class="paren3">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span>
+                     <span class="keyword">:stream</span> <span class="paren5">(<span class="code">make-synonym-stream '<span class="special">*error-output*</span></span>)</span>
+                     <span class="keyword">:log-decorator</span> <span class="paren5">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren6">(<span class="code">event</span>)</span>
+                                      <span class="paren6">(<span class="code">append event '<span class="paren1">(<span class="code"><span class="keyword">:custom</span> 7</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">ignore-errors <span class="paren3">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span>
 ..
 .. Depth: 0, event: <span class="paren1">(<span class="code"><span class="keyword">:IN</span> BAR <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code">1</span>)</span> <span class="keyword">:CUSTOM</span> 7</span>)</span>
 .. Depth: 1, event: <span class="paren1">(<span class="code"><span class="keyword">:IN</span> FOO <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code">3</span>)</span> <span class="keyword">:CUSTOM</span> 7</span>)</span>
@@ -1311,9 +1311,9 @@ Behind the scenes, <code>JTRACE</code> encapsulates the global functions with
 <code>NAMES</code> in wrapper that behaves as if <code>FOO</code> in the example above was
 defined like this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> foo <span class="paren2">(<span class="code">x</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> foo <span class="paren2">(<span class="code">x</span>)</span>
   <span class="paren2">(<span class="code">framed <span class="paren3">(<span class="code">foo <span class="keyword">:args</span> `<span class="paren4">(<span class="code">,x</span>)</span> <span class="keyword">:log-record</span> <span class="special">*trace-journal*</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> x</span>)</span></span>)</span></span>)</span></span></code></pre>
+    <span class="paren3">(<span class="code">1+ x</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>If <code>JTRACE</code> is invoked with no arguments, it returns the list of
 symbols currently traced.</p>
@@ -1732,27 +1732,27 @@ function returns no values to make it less likely to affect control
 flow in a way that's not possible to reproduce when the function is
 called by the replay mechanism.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*state*</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*state*</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">define-invoked</span></i> foo <span class="paren2">(<span class="code">x</span>)</span> <span class="paren2">(<span class="code"><span class="string">"foo"</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*state*</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> x</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*state*</span> <span class="paren3">(<span class="code">1+ x</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">define-invoked</span></i> bar <span class="paren2">(<span class="code">x</span>)</span> <span class="paren2">(<span class="code"><span class="string">"bar"</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*state*</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 2 x</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*state*</span> <span class="paren3">(<span class="code">+ 2 x</span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren2">(<span class="code">zerop <span class="paren3">(<span class="code">random 2</span>)</span></span>)</span>
     <span class="paren2">(<span class="code">foo 0</span>)</span>
     <span class="paren2">(<span class="code">bar 1</span>)</span></span>)</span></span></code></pre>
 
 <p>The above can be alternatively implemented with <a href="#x-28JOURNAL-3AREPLAYED-20MGL-PAX-3AMACRO-29" title="(JOURNAL:REPLAYED MGL-PAX:MACRO)"><code>REPLAYED</code></a> explicitly
 encapsulating the non-determinism:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">x <span class="paren4">(<span class="code">replayed <span class="paren5">(<span class="code">choose</span>)</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span></span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> x</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">x <span class="paren4">(<span class="code">replayed <span class="paren5">(<span class="code">choose</span>)</span> <span class="paren5">(<span class="code">random 2</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren3">(<span class="code">zerop x</span>)</span>
       <span class="paren3">(<span class="code">checked <span class="paren4">(<span class="code">foo <span class="keyword">:args</span> `<span class="paren5">(<span class="code">,x</span>)</span></span>)</span>
-        <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*state*</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> x</span>)</span></span>)</span></span>)</span>
+        <span class="paren4">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*state*</span> <span class="paren5">(<span class="code">1+ x</span>)</span></span>)</span></span>)</span>
       <span class="paren3">(<span class="code">checked <span class="paren4">(<span class="code">bar <span class="keyword">:args</span> `<span class="paren5">(<span class="code">,x</span>)</span></span>)</span>
-        <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*state*</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 2 x</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
+        <span class="paren4">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*state*</span> <span class="paren5">(<span class="code">+ 2 x</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28JOURNAL-3AFLET-INVOKED-20MGL-PAX-3AMACRO-29'></a></p>
@@ -1765,12 +1765,12 @@ name and the function are associated in the dynamic extent of <code>BODY</code>.
 <a href="#x-28JOURNAL-3AWITH-JOURNALING-20MGL-PAX-3AMACRO-29" title="(JOURNAL:WITH-JOURNALING MGL-PAX:MACRO)"><code>WITH-JOURNALING</code></a> does not change the bindings. The example in
 <code>DEFINE-INVOKED</code> can be rewritten as:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">state <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">state nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">flet-invoked <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">foo <span class="paren5">(<span class="code">x</span>)</span> <span class="paren5">(<span class="code"><span class="string">"foo"</span></span>)</span>
-                   <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> state <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> x</span>)</span></span>)</span></span>)</span>
+                   <span class="paren5">(<span class="code"><i><span class="symbol">setq</span></i> state <span class="paren6">(<span class="code">1+ x</span>)</span></span>)</span></span>)</span>
                  <span class="paren4">(<span class="code">bar <span class="paren5">(<span class="code">x</span>)</span> <span class="paren5">(<span class="code"><span class="string">"bar"</span></span>)</span>
-                   <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> state <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 2 x</span>)</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span></span>)</span>
+                   <span class="paren5">(<span class="code"><i><span class="symbol">setq</span></i> state <span class="paren6">(<span class="code">+ 2 x</span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren4">(<span class="code">zerop <span class="paren5">(<span class="code">random 2</span>)</span></span>)</span>
       <span class="paren4">(<span class="code">foo 0</span>)</span>
       <span class="paren4">(<span class="code">bar 1</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
@@ -1787,23 +1787,23 @@ external input, the code may error out. After each run, one has to
 decide whether to keep the journal just recorded or stick with the
 replay journal. A typical solution to this would look like this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">record <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> record <span class="paren4">(<span class="code">make-in-memory-journal</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">record nil</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">loop</span></i>
+    <span class="paren3">(<span class="code"><i><span class="symbol">setq</span></i> record <span class="paren4">(<span class="code">make-in-memory-journal</span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren4">(<span class="code"><span class="keyword">:record</span> record <span class="keyword">:replay</span> replay</span>)</span>
       ...</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a>
+    <span class="paren3">(<span class="code">when <span class="paren4">(<span class="code">and
            <span class="comment">;; RECORD is a valid replay of REPLAY ...
-</span>           <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_eq.htm" class="symbol">eq</a> <span class="paren6">(<span class="code">journal-state record</span>)</span> <span class="keyword">:completed</span></span>)</span>
+</span>           <span class="paren5">(<span class="code">eq <span class="paren6">(<span class="code">journal-state record</span>)</span> <span class="keyword">:completed</span></span>)</span>
            <span class="comment">;; ... and is also significantly different from it ...
 </span>           <span class="paren5">(<span class="code">journal-diverged-p record</span>)</span></span>)</span>
       <span class="comment">;; so use it for future replays.
-</span>      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> replay record</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+</span>      <span class="paren4">(<span class="code"><i><span class="symbol">setq</span></i> replay record</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>This is pretty much what bundles automate. The above becomes:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">loop</span></i>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren4">(<span class="code">bundle</span>)</span>
       ...</span>)</span></span>)</span></span>)</span></span></code></pre>
 
@@ -2252,7 +2252,7 @@ contents of the replay. It is an error if <code>REPLAY-JOURNAL</code> is <code>N
 <p>Return the <a href="#x-28JOURNAL-3AREPLAY-EVENT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(JOURNAL:REPLAY-EVENT MGL-PAX:GLOSSARY-TERM)">replay event</a> to be read from <a href="#x-28JOURNAL-3AREPLAY-JOURNAL-20FUNCTION-29" title="(JOURNAL:REPLAY-JOURNAL FUNCTION)"><code>REPLAY-JOURNAL</code></a>. This is
 roughly equivalent to</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren2">(<span class="code">replay-journal</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">when <span class="paren2">(<span class="code">replay-journal</span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-replay-streamlet</span></i> <span class="paren3">(<span class="code">streamlet</span>)</span>
     <span class="paren3">(<span class="code">peek-event streamlet</span>)</span></span>)</span></span></span></span></code></pre>
 
@@ -2269,8 +2269,8 @@ version of this process, we just pay the invoice:</p>
 <p>We have left the implementation of PAY blank. In the second version,
 we need to get an approval first:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code">get-approval</span>)</span>
-        <span class="paren3">(<span class="code">= <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span> 0</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">when <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code">get-approval</span>)</span>
+        <span class="paren3">(<span class="code">= <span class="paren4">(<span class="code">random 2</span>)</span> 0</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code">pay</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Replaying a journal produced by the first version of the code with
@@ -2288,24 +2288,24 @@ payment process changes and is inspected at the start of journaling.</p>
 again, still with v2, the <code>GET-APPROVAL</code> block will be upgraded to
 <code>:INFINITY</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span>)</span>
   <span class="comment">;; First version of the payment process. Just pay.
 </span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code">bundle</span>)</span>
     <span class="paren3">(<span class="code">checked <span class="paren4">(<span class="code">process <span class="keyword">:version</span> 1</span>)</span></span>)</span>
     <span class="paren3">(<span class="code">replayed <span class="paren4">(<span class="code">pay</span>)</span></span>)</span></span>)</span>
   <span class="comment">;; Second version of the payment process. Only pay if approved.
-</span>  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> repeat 2 <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a>
+</span>  <span class="paren2">(<span class="code"><i><span class="symbol">loop</span></i> repeat 2 do
     <span class="paren3">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren4">(<span class="code">bundle</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">replay-process-event <span class="paren1">(<span class="code">peek-replay-event</span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">replay-process-event <span class="paren1">(<span class="code">peek-replay-event</span>)</span></span>)</span></span>)</span>
         <span class="paren5">(<span class="code">checked <span class="paren6">(<span class="code">process <span class="keyword">:version</span> 2</span>)</span></span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> replay-process-event
+        <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren1">(<span class="code">and replay-process-event
                        <span class="paren2">(<span class="code">&lt; <span class="paren3">(<span class="code">event-version replay-process-event</span>)</span> 2</span>)</span></span>)</span>
                   <span class="comment">;; This will be upgraded to :INFINITY the second
 </span>                  <span class="comment">;; time around the LOOP.
-</span>                  <span class="paren1">(<span class="code">checked <span class="paren2">(<span class="code">get-approval <span class="keyword">:insertable</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-                    <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+</span>                  <span class="paren1">(<span class="code">checked <span class="paren2">(<span class="code">get-approval <span class="keyword">:insertable</span> t</span>)</span>
+                    t</span>)</span>
                   <span class="paren1">(<span class="code">replayed <span class="paren2">(<span class="code">get-approval</span>)</span>
-                    <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span> 0</span>)</span></span>)</span></span>)</span>
+                    <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">random 2</span>)</span> 0</span>)</span></span>)</span></span>)</span>
           <span class="paren6">(<span class="code">replayed <span class="paren1">(<span class="code">pay</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
@@ -2356,7 +2356,7 @@ parent's <code>MAP</code>.</p>
 <span class="comment">;; Same as the previous
 </span><span class="paren1">(<span class="code"><span class="keyword">:name</span> bar</span>)</span>
 <span class="comment">;; Match all names
-</span><span class="paren1">(<span class="code"><span class="keyword">:name</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+</span><span class="paren1">(<span class="code"><span class="keyword">:name</span> nil</span>)</span>
 <span class="comment">;; Same as the previous
 </span><span class="paren1">(<span class="code"></span>)</span></span></code></pre>
 
@@ -2365,7 +2365,7 @@ connecting its children to its parent. The following example removes
 frames <code>J1</code> and <code>J2</code> from around <code>J3</code>, the <code>J1</code> frame from within
 <code>J3</code>, and the third <code>J1</code> frame.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">journal <span class="paren4">(<span class="code">make-in-memory-journal</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">journal <span class="paren4">(<span class="code">make-in-memory-journal</span>)</span></span>)</span></span>)</span>
   <span class="comment">;; Record trees J1 -&gt; J2 -&gt; J3 -&gt; J1, and J1.
 </span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren3">(<span class="code"><span class="keyword">:record</span> journal</span>)</span>
     <span class="paren3">(<span class="code">checked <span class="paren4">(<span class="code">j1</span>)</span>
@@ -2377,7 +2377,7 @@ frames <code>J1</code> and <code>J2</code> from around <code>J3</code>, the <cod
       7</span>)</span></span>)</span>
   <span class="comment">;; Filter out all occurrences of VERSIONED-EVENTs named J1 and
 </span>  <span class="comment">;; J2 from the replay, leaving only J3 to match.
-</span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren3">(<span class="code"><span class="keyword">:replay</span> journal <span class="keyword">:record</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:replay-eoj-error-p</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+</span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren3">(<span class="code"><span class="keyword">:replay</span> journal <span class="keyword">:record</span> t <span class="keyword">:replay-eoj-error-p</span> t</span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-replay-filter</span></i> <span class="paren4">(<span class="code"><span class="keyword">:skip</span> '<span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><span class="keyword">:name</span> j1</span>)</span> <span class="paren6">(<span class="code"><span class="keyword">:name</span> j2</span>)</span></span>)</span></span>)</span>
       <span class="paren4">(<span class="code">checked <span class="paren5">(<span class="code">j3</span>)</span>
         42</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
@@ -2400,31 +2400,31 @@ dependency and to allow it to run without user interaction.</p>
 <p>We do this below by wrapping external interaction in <a href="#x-28JOURNAL-3AJOURNALED-20MGL-PAX-3AMACRO-29" title="(JOURNAL:JOURNALED MGL-PAX:MACRO)"><code>JOURNALED</code></a> with
 <code>:VERSION</code> <code>:INFINITY</code> (see <a href="#x-28JOURNAL-3A-40REPLAYING-THE-OUTCOME-20MGL-PAX-3ASECTION-29" title="Replaying the outcome">Replaying the outcome</a>).</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*db*</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_has.htm" class="symbol">make-hash-table</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*db*</span> <span class="paren2">(<span class="code">make-hash-table</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> set-key <span class="paren2">(<span class="code">key value</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> set-key <span class="paren2">(<span class="code">key value</span>)</span>
   <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code"><span class="string">"set-key"</span> <span class="keyword">:args</span> `<span class="paren4">(<span class="code">,key ,value</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Updating db~%"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_gethas.htm" class="symbol">gethash</a> key <span class="special">*db*</span></span>)</span> value</span>)</span>
-    <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">format t <span class="string">"Updating db~%"</span></span>)</span>
+    <span class="paren3">(<span class="code">setf <span class="paren4">(<span class="code">gethash key <span class="special">*db*</span></span>)</span> value</span>)</span>
+    nil</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> get-key <span class="paren2">(<span class="code">key</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> get-key <span class="paren2">(<span class="code">key</span>)</span>
   <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code"><span class="string">"get-key"</span> <span class="keyword">:args</span> `<span class="paren4">(<span class="code">,key</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Query db~%"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_gethas.htm" class="symbol">gethash</a> key <span class="special">*db*</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">format t <span class="string">"Query db~%"</span></span>)</span>
+    <span class="paren3">(<span class="code">gethash key <span class="special">*db*</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> ask-username <span class="paren2">(<span class="code"></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> ask-username <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code"><span class="string">"ask-username"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Please type your username: "</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_lin.htm" class="symbol">read-line</a></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">format t <span class="string">"Please type your username: "</span></span>)</span>
+    <span class="paren3">(<span class="code">read-line</span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> maybe-win-the-grand-prize <span class="paren2">(<span class="code"></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> maybe-win-the-grand-prize <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">checked <span class="paren3">(<span class="code"><span class="string">"maybe-win-the-grand-prize"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren4">(<span class="code">= 1000000 <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_hash_1.htm" class="symbol">hash-table-count</a> <span class="special">*db*</span></span>)</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"You are the lucky one!"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">when <span class="paren4">(<span class="code">= 1000000 <span class="paren5">(<span class="code">hash-table-count <span class="special">*db*</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">format t <span class="string">"You are the lucky one!"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> register-user <span class="paren2">(<span class="code">username</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">unless</a> <span class="paren3">(<span class="code">get-key username</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> register-user <span class="paren2">(<span class="code">username</span>)</span>
+  <span class="paren2">(<span class="code">unless <span class="paren3">(<span class="code">get-key username</span>)</span>
     <span class="paren3">(<span class="code">set-key username `<span class="paren4">(<span class="code"><span class="keyword">:user-object</span> <span class="keyword">:username</span> ,username</span>)</span></span>)</span>
     <span class="paren3">(<span class="code">maybe-win-the-grand-prize</span>)</span></span>)</span></span>)</span></span></code></pre>
 
@@ -2434,11 +2434,11 @@ it's run for the first time.</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">define-file-bundle-test</span></i> <span class="paren2">(<span class="code">test-user-registration
                           <span class="keyword">:directory</span> <span class="paren3">(<span class="code">asdf:system-relative-pathname
                                       <span class="keyword">:journal</span> <span class="string">"test/registration/"</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">username <span class="paren5">(<span class="code">ask-username</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">username <span class="paren5">(<span class="code">ask-username</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">register-user username</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren4">(<span class="code">get-key username</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">assert <span class="paren4">(<span class="code">get-key username</span>)</span></span>)</span>
     <span class="paren3">(<span class="code">register-user username</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren4">(<span class="code">get-key username</span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">assert <span class="paren4">(<span class="code">get-key username</span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;; Original recording: everything is executed
 </span>JRN&gt; <span class="paren1">(<span class="code">test-user-registration</span>)</span>
@@ -2460,7 +2460,7 @@ of the external <code>JOURNALED</code> blocks are replayed from the journal:</p>
 <p>Should the code change, we might want to upgrade carefully (see
 <a href="#x-28JOURNAL-3A-40UPGRADES-AND-REPLAY-20MGL-PAX-3ASECTION-29" title="Upgrades and replay">Upgrades and replay</a>) or just rerecord from scratch:</p>
 
-<pre><code><span class="code">JRN&gt; <span class="paren1">(<span class="code">test-user-registration <span class="keyword">:rerecord</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+<pre><code><span class="code">JRN&gt; <span class="paren1">(<span class="code">test-user-registration <span class="keyword">:rerecord</span> t</span>)</span>
 Please type your username: joe
 Query db
 Updating db
@@ -2474,19 +2474,19 @@ the bundle into version control. Its contents are:</p>
 
 <pre><code><span class="code">
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"ask-username"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span></span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"ask-username"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"ask-username"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span> NIL</span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span></span>)</span></span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code">NIL NIL</span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"set-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span> <span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span></span>)</span></span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"set-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"set-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code">NIL</span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"maybe-win-the-grand-prize"</span> <span class="keyword">:VERSION</span> 1</span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"maybe-win-the-grand-prize"</span> <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"maybe-win-the-grand-prize"</span> <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code">NIL</span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span></span>)</span></span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span> T</span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span></span>)</span></span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span> T</span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><span class="keyword">:IN</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <span class="paren2">(<span class="code"><span class="string">"joe"</span></span>)</span></span>)</span>
-<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span></span>)</span></span></code></pre>
+<span class="paren1">(<span class="code"><span class="keyword">:OUT</span> <span class="string">"get-key"</span> <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:USER-OBJECT</span> <span class="keyword">:USERNAME</span> <span class="string">"joe"</span></span>)</span> T</span>)</span></span>)</span></span></code></pre>
 
 <p>Note that when this journal is replayed, new <a href="#x-28JOURNAL-3AVERSIONED-EVENT-20TYPE-29" title="(JOURNAL:VERSIONED-EVENT TYPE)"><code>VERSIONED-EVENT</code></a>s are
 required to match the replay. So after the original recording, we
@@ -2547,19 +2547,19 @@ replaying all previously recorded journals. For this, we prevent the
 outer <code>REPLAYED</code> from being replayed by outcome with
 <a href="#x-28JOURNAL-3AWITH-REPLAY-FILTER-20MGL-PAX-3AMACRO-29" title="(JOURNAL:WITH-REPLAY-FILTER MGL-PAX:MACRO)"><code>WITH-REPLAY-FILTER</code></a>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">bundle <span class="paren4">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span>)</span>
   <span class="comment">;; Original with READ-FROM-STRING
 </span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code">bundle</span>)</span>
     <span class="paren3">(<span class="code">replayed <span class="paren4">(<span class="code"><span class="string">"accept-number"</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_fro.htm" class="symbol">read-from-string</a> <span class="paren6">(<span class="code">replayed <span class="paren1">(<span class="code"><span class="string">"input-number"</span></span>)</span>
-                                  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_lin.htm" class="symbol">read-line</a></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">values <span class="paren5">(<span class="code">read-from-string <span class="paren6">(<span class="code">replayed <span class="paren1">(<span class="code"><span class="string">"input-number"</span></span>)</span>
+                                  <span class="paren1">(<span class="code">read-line</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
   <span class="comment">;; Switch to PARSE-INTEGER and test by replay.
 </span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code">bundle</span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-replay-filter</span></i> <span class="paren4">(<span class="code"><span class="keyword">:no-replay-outcome</span> '<span class="paren5">(<span class="code"><span class="string">"accept-number"</span></span>)</span></span>)</span>
       <span class="paren4">(<span class="code">replayed <span class="paren5">(<span class="code"><span class="string">"accept-number"</span></span>)</span>
         <span class="comment">;; 1+ is our bug.
-</span>        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_parse_.htm" class="symbol">parse-integer</a> <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code"><span class="string">"input-number"</span></span>)</span>
-                                     <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_lin.htm" class="symbol">read-line</a></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+</span>        <span class="paren5">(<span class="code">values <span class="paren6">(<span class="code">1+ <span class="paren1">(<span class="code">parse-integer <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code"><span class="string">"input-number"</span></span>)</span>
+                                     <span class="paren3">(<span class="code">read-line</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>The inner <code>input-number</code> block is replayed by outcome, and
 <code>PARSE-INTEGER</code> is called with the string <code>READ-LINE</code> returned in the
@@ -2581,21 +2581,21 @@ checked as if it was a <a href="#x-28JOURNAL-3AVERSIONED-EVENT-20TYPE-29" title=
 
 <p>Let's write a simple game.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> play-guess-my-number <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">my-number <span class="paren5">(<span class="code">replayed <span class="paren6">(<span class="code">think-of-a-number</span>)</span>
-                     <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 10</span>)</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"~%I thought of a number.~%"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> for i upfrom 0 <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_stg.htm" class="symbol">write-line</a> <span class="string">"Guess my number:"</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">guess <span class="paren1">(<span class="code">replayed <span class="paren2">(<span class="code">read-guess</span>)</span>
-                     <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_parse_.htm" class="symbol">parse-integer</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_lin.htm" class="symbol">read-line</a></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"You guessed ~D.~%"</span> guess</span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren6">(<span class="code">= guess my-number</span>)</span>
-          <span class="paren6">(<span class="code">checked <span class="paren1">(<span class="code">game-won <span class="keyword">:args</span> `<span class="paren2">(<span class="code">,<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> i</span>)</span></span>)</span></span>)</span></span>)</span>
-          <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"You guessed it in ~D tries!"</span> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> i</span>)</span></span>)</span>
-          <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_return.htm" class="symbol">return</a></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> play-guess-my-number <span class="paren2">(<span class="code"></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">my-number <span class="paren5">(<span class="code">replayed <span class="paren6">(<span class="code">think-of-a-number</span>)</span>
+                     <span class="paren6">(<span class="code">random 10</span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">format t <span class="string">"~%I thought of a number.~%"</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">loop</span></i> for i upfrom 0 do
+      <span class="paren4">(<span class="code">write-line <span class="string">"Guess my number:"</span></span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">guess <span class="paren1">(<span class="code">replayed <span class="paren2">(<span class="code">read-guess</span>)</span>
+                     <span class="paren2">(<span class="code">values <span class="paren3">(<span class="code">parse-integer <span class="paren4">(<span class="code">read-line</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">format t <span class="string">"You guessed ~D.~%"</span> guess</span>)</span>
+        <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">= guess my-number</span>)</span>
+          <span class="paren6">(<span class="code">checked <span class="paren1">(<span class="code">game-won <span class="keyword">:args</span> `<span class="paren2">(<span class="code">,<span class="paren3">(<span class="code">1+ i</span>)</span></span>)</span></span>)</span></span>)</span>
+          <span class="paren6">(<span class="code">format t <span class="string">"You guessed it in ~D tries!"</span> <span class="paren1">(<span class="code">1+ i</span>)</span></span>)</span>
+          <span class="paren6">(<span class="code">return</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*the-evergreen-game*</span> <span class="paren2">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span></code></pre>
+<span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*the-evergreen-game*</span> <span class="paren2">(<span class="code">make-in-memory-bundle</span>)</span></span>)</span></span></code></pre>
 
 <h5>Original recording</h5>
 
@@ -2603,11 +2603,11 @@ checked as if it was a <a href="#x-28JOURNAL-3AVERSIONED-EVENT-20TYPE-29" title=
 department. In the transcript below, <code>PARSE-INTEGER</code> fails with <code>junk
 in string</code> when the user enters <code>not a number</code>:</p>
 
-<pre><code><span class="code">CL-USER&gt; <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_hand_1.htm" class="symbol">handler-case</a>
+<pre><code><span class="code">CL-USER&gt; <span class="paren1">(<span class="code">handler-case
              <span class="paren2">(<span class="code"><i><span class="symbol">with-bundle</span></i> <span class="paren3">(<span class="code"><span class="special">*the-evergreen-game*</span></span>)</span>
                <span class="paren3">(<span class="code">play-guess-my-number</span>)</span></span>)</span>
-           <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="paren3">(<span class="code">e</span>)</span>
-             <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Oops. ~A~%"</span> e</span>)</span></span>)</span></span>)</span>
+           <span class="paren2">(<span class="code">error <span class="paren3">(<span class="code">e</span>)</span>
+             <span class="paren3">(<span class="code">format t <span class="string">"Oops. ~A~%"</span> e</span>)</span></span>)</span></span>)</span>
 I thought of a number.
 Guess my number:
 7 <span class="comment">; real user input
@@ -2665,14 +2665,14 @@ write tests in record-and-replay style based on the events produced:</p>
  <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> THINK-OF-A-NUMBER <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">2</span>)</span></span>)</span>
  <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span></span>)</span>
  <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">7</span>)</span></span>)</span>
- <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> NIL</span>)</span>
  <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">5</span>)</span></span>)</span>
- <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> NIL</span>)</span>
  <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">4</span>)</span></span>)</span>
- <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:IN</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:ARGS</span> NIL</span>)</span>
  <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> READ-GUESS <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">2</span>)</span></span>)</span>
  <span class="paren2">(<span class="code"><span class="keyword">:IN</span> GAME-WON <span class="keyword">:VERSION</span> 1 <span class="keyword">:ARGS</span> <span class="paren3">(<span class="code">4</span>)</span></span>)</span>
- <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> GAME-WON <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span></span>)</span></span></code></pre>
+ <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> GAME-WON <span class="keyword">:VERSION</span> 1 <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">NIL</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>In fact, being able to replay this game at all already checks it
 through the <code>GAME-WON</code> event that the number of tries calculation is
@@ -2796,29 +2796,29 @@ failed the replay (as in <a href="#x-28JOURNAL-3A-40REPLAY-FAILURES-20MGL-PAX-3A
 different from the replay journal as determined by
 <a href="#x-28JOURNAL-3AJOURNAL-DIVERGENT-P-20FUNCTION-29" title="(JOURNAL:JOURNAL-DIVERGENT-P FUNCTION)"><code>JOURNAL-DIVERGENT-P</code></a>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*db*</span> <span class="paren2">(<span class="code"></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*db*</span> <span class="paren2">(<span class="code"></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> sync-to-db <span class="paren2">(<span class="code">journal</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_member.htm" class="symbol">member</a> <span class="paren5">(<span class="code">journal-state journal</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> sync-to-db <span class="paren2">(<span class="code">journal</span>)</span>
+  <span class="paren2">(<span class="code">when <span class="paren3">(<span class="code">and <span class="paren4">(<span class="code">member <span class="paren5">(<span class="code">journal-state journal</span>)</span>
                      '<span class="paren5">(<span class="code"><span class="keyword">:recording</span> <span class="keyword">:logging</span> <span class="keyword">:completed</span></span>)</span></span>)</span>
              <span class="paren4">(<span class="code">journal-divergent-p journal</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*db*</span> <span class="paren4">(<span class="code">journal-events journal</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"Saved ~S~%New events from position ~S~%"</span> <span class="special">*db*</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*db*</span> <span class="paren4">(<span class="code">journal-events journal</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">format t <span class="string">"Saved ~S~%New events from position ~S~%"</span> <span class="special">*db*</span>
             <span class="paren4">(<span class="code">journal-previous-sync-position journal</span>)</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-db-backed-record-journal <span class="paren2">(<span class="code"></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-db-backed-record-journal <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">make-in-memory-journal <span class="keyword">:sync-fn</span> 'sync-to-db</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-db-backed-replay-journal <span class="paren2">(<span class="code"></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-db-backed-replay-journal <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">make-in-memory-journal <span class="keyword">:events</span> <span class="special">*db*</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> <span class="paren3">(<span class="code">make-db-backed-record-journal</span>)</span>
                   <span class="keyword">:replay</span> <span class="paren3">(<span class="code">make-db-backed-replay-journal</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">replayed <span class="paren3">(<span class="code">a</span>)</span>
     2</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_ignore.htm" class="symbol">ignore-errors</a>
+  <span class="paren2">(<span class="code">ignore-errors
     <span class="paren3">(<span class="code">replayed <span class="paren4">(<span class="code">b</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"Whoops"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">error <span class="string">"Whoops"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 .. Saved #<span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="keyword">:IN</span> A <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span></span>)</span>
 ..         <span class="paren2">(<span class="code"><span class="keyword">:OUT</span> A <span class="keyword">:VERSION</span> <span class="keyword">:INFINITY</span> <span class="keyword">:VALUES</span> <span class="paren3">(<span class="code">2</span>)</span></span>)</span></span>)</span>
 .. New events from position 0
@@ -2835,14 +2835,14 @@ an error, say, to simulate some kind of network condition. Now a new
 journal <em>for replay</em> is created and initialized with the saved
 events and the whole process is restarted.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> run-with-db <span class="paren2">(<span class="code"></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> run-with-db <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren3">(<span class="code"><span class="keyword">:record</span> <span class="paren4">(<span class="code">make-db-backed-record-journal</span>)</span>
                     <span class="keyword">:replay</span> <span class="paren4">(<span class="code">make-db-backed-replay-journal</span>)</span></span>)</span>
     <span class="paren3">(<span class="code">replayed <span class="paren4">(<span class="code">a</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"A~%"</span></span>)</span>
+      <span class="paren4">(<span class="code">format t <span class="string">"A~%"</span></span>)</span>
       2</span>)</span>
     <span class="paren3">(<span class="code">replayed <span class="paren4">(<span class="code">b</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"B~%"</span></span>)</span>
+      <span class="paren4">(<span class="code">format t <span class="string">"B~%"</span></span>)</span>
       3</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">run-with-db</span>)</span>
@@ -2976,9 +2976,9 @@ prominently in <a href="#x-28JOURNAL-3A-40THE-REPLAY-STRATEGY-20MGL-PAX-3ASECTIO
 <a href="#x-28JOURNAL-3A-40IN-EVENTS-20MGL-PAX-3ASECTION-29" title="In-events">In-events</a> and <a href="#x-28JOURNAL-3A-40OUT-EVENTS-20MGL-PAX-3ASECTION-29" title="Out-events">Out-events</a>, the following example is a reminder of
 how events look in the simplest case.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> t</span>)</span>
   <span class="paren2">(<span class="code">journaled <span class="paren3">(<span class="code">foo <span class="keyword">:version</span> 1 <span class="keyword">:args</span> '<span class="paren4">(<span class="code">1 2</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 1 2</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">+ 1 2</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">logged <span class="paren3">(<span class="code"></span>)</span> <span class="string">"Oops"</span></span>)</span>
   <span class="paren2">(<span class="code">list-events</span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="keyword">:IN</span> FOO <span class="keyword">:VERSION</span> 1 <span class="keyword">:ARGS</span> <span class="paren3">(<span class="code">1 2</span>)</span></span>)</span>
@@ -3935,9 +3935,9 @@ binding <code>*PRINT-PRETTY*</code> to <code>T</code> will affect writes to both
 with <code>(SYMBOL-VALUE (STREAM-PRETTY-PRINT STREAM))</code> and have the
 caller specify the dynamic variable they want:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*print-pretty-1*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren2">(<span class="code">stream-print-pretty stream-1</span>)</span> '<span class="special">*print-pretty-1*</span></span>)</span>
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-pretty-1*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*print-pretty-1*</span> nil</span>)</span>
+<span class="paren1">(<span class="code">setf <span class="paren2">(<span class="code">stream-print-pretty stream-1</span>)</span> '<span class="special">*print-pretty-1*</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-pretty-1*</span> t</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">spaghetti stream-1 stream-2</span>)</span></span>)</span></span></code></pre>
 
 <p>Note that if the default <code>STREAM-PRINT-PRETTY</code> is <code>'*PRINT-PRETTY*</code>,

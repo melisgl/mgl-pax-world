@@ -672,14 +672,14 @@ of <code>SEQ</code>.</p>
 constitute about half of the sum of weights across the whole
 sequence:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">sample-from 1/2 '<span class="paren2">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span> <span class="keyword">:weight</span> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_identi.htm" class="symbol">identity</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">sample-from 1/2 '<span class="paren2">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span> <span class="keyword">:weight</span> #'identity</span>)</span>
 =&gt; <span class="comment">;; sums to 28 that's near 45/2
 </span>   <span class="paren1">(<span class="code">9 4 1 6 8</span>)</span></span></code></pre>
 
 <p>To sample with replacement (that is, allowing the element to be
 sampled multiple times):</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">sample-from 1 '<span class="paren2">(<span class="code">0 1 2 3 4 5</span>)</span> <span class="keyword">:replacement</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">sample-from 1 '<span class="paren2">(<span class="code">0 1 2 3 4 5</span>)</span> <span class="keyword">:replacement</span> t</span>)</span>
 =&gt; <span class="paren1">(<span class="code">1 1 5 1 4 4</span>)</span></span></code></pre></li>
 </ul>
 
@@ -714,7 +714,7 @@ repeated CVs until <code>FN</code> performs a non-local exit.</p>
 2-fold CV repeated 3 times with shuffled data:</p>
 
 <pre><code><span class="code"><span class="comment">;;; This is non-deterministic.
-</span><span class="paren1">(<span class="code">bag-cv '<span class="paren2">(<span class="code">0 1 2 3 4</span>)</span> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="keyword">:n</span> 3 <span class="keyword">:n-folds</span> 2</span>)</span>
+</span><span class="paren1">(<span class="code">bag-cv '<span class="paren2">(<span class="code">0 1 2 3 4</span>)</span> #'list <span class="keyword">:n</span> 3 <span class="keyword">:n-folds</span> 2</span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="paren4">(<span class="code">2 3 4</span>)</span> <span class="paren4">(<span class="code">1 0</span>)</span></span>)</span>
      <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">1 0</span>)</span> <span class="paren4">(<span class="code">2 3 4</span>)</span></span>)</span></span>)</span>
     <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="paren4">(<span class="code">2 1 0</span>)</span> <span class="paren4">(<span class="code">4 3</span>)</span></span>)</span>
@@ -2285,21 +2285,21 @@ function with respect to some of its parameters.</p>
 
 <p><a id='x-28MGL-GD-3A-3ASGD-2ELISP-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fmgl-2Fexample-2Fsgd-2Elisp-22-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29'></a></p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpkg.htm" class="symbol"><i><span class="symbol">cl:defpackage</span></i></a> <span class="keyword">:mgl-example-sgd</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">cl:defpackage</span></i> <span class="keyword">:mgl-example-sgd</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:mgl</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_in_pkg.htm" class="symbol">in-package</a> <span class="keyword">:mgl-example-sgd</span></span>)</span>
+<span class="paren1">(<span class="code">in-package <span class="keyword">:mgl-example-sgd</span></span>)</span>
 
 <span class="comment">;;; Create an object representing the sine function.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*diff-fn-1*</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'mgl-diffun:diffun
-                 <span class="keyword">:fn</span> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sin_c.htm" class="symbol">sin</a>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*diff-fn-1*</span>
+  <span class="paren2">(<span class="code">make-instance 'mgl-diffun:diffun
+                 <span class="keyword">:fn</span> #'sin
                  <span class="comment">;; We are going to optimize its only parameter.
 </span>                 <span class="keyword">:weight-indices</span> '<span class="paren3">(<span class="code">0</span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Minimize SIN. Note that there is no dataset involved because all
 </span><span class="comment">;;; parameters are being optimized.
-</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'sgd-optimizer <span class="keyword">:termination</span> 1000</span>)</span>
+</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code">make-instance 'sgd-optimizer <span class="keyword">:termination</span> 1000</span>)</span>
           <span class="special">*diff-fn-1*</span>
           <span class="keyword">:weights</span> <span class="paren2">(<span class="code">make-mat 1</span>)</span></span>)</span>
 <span class="comment">;;; =&gt; A MAT with a single value of about -pi/2.
@@ -2307,21 +2307,21 @@ function with respect to some of its parameters.</p>
 <span class="comment">;;; Create a differentiable function for f(x,y)=(x-y)^2. X is a
 </span><span class="comment">;;; parameter whose values come from the DATASET argument passed to
 </span><span class="comment">;;; MINIMIZE. Y is a parameter to be optimized (a 'weight').
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*diff-fn-2*</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'mgl-diffun:diffun
-                 <span class="keyword">:fn</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code">x y</span>)</span>
-                       <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_exp_e.htm" class="symbol">expt</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a__.htm" class="symbol">-</a> x y</span>)</span> 2</span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*diff-fn-2*</span>
+  <span class="paren2">(<span class="code">make-instance 'mgl-diffun:diffun
+                 <span class="keyword">:fn</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code">x y</span>)</span>
+                       <span class="paren4">(<span class="code">expt <span class="paren5">(<span class="code">- x y</span>)</span> 2</span>)</span></span>)</span>
                  <span class="keyword">:parameter-indices</span> '<span class="paren3">(<span class="code">0</span>)</span>
                  <span class="keyword">:weight-indices</span> '<span class="paren3">(<span class="code">1</span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Find the Y that minimizes the distance from the instances
 </span><span class="comment">;;; generated by the sampler.
-</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'sgd-optimizer <span class="keyword">:batch-size</span> 10</span>)</span>
+</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code">make-instance 'sgd-optimizer <span class="keyword">:batch-size</span> 10</span>)</span>
           <span class="special">*diff-fn-2*</span>
           <span class="keyword">:weights</span> <span class="paren2">(<span class="code">make-mat 1</span>)</span>
-          <span class="keyword">:dataset</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'function-sampler
-                                  <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code"></span>)</span>
-                                               <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 10
+          <span class="keyword">:dataset</span> <span class="paren2">(<span class="code">make-instance 'function-sampler
+                                  <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code"></span>)</span>
+                                               <span class="paren4">(<span class="code">list <span class="paren5">(<span class="code">+ 10
                                                         <span class="paren6">(<span class="code">gaussian-random-1</span>)</span></span>)</span></span>)</span></span>)</span>
                                   <span class="keyword">:max-n-samples</span> 1000</span>)</span></span>)</span>
 <span class="comment">;;; =&gt; A MAT with a single value of about 10, the expected value of
@@ -2329,7 +2329,7 @@ function with respect to some of its parameters.</p>
 </span>
 <span class="comment">;;; The dataset can be a SEQUENCE in which case we'd better set
 </span><span class="comment">;;; TERMINATION else optimization would never finish.
-</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'sgd-optimizer <span class="keyword">:termination</span> 1000</span>)</span>
+</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code">make-instance 'sgd-optimizer <span class="keyword">:termination</span> 1000</span>)</span>
           <span class="special">*diff-fn-2*</span>
           <span class="keyword">:weights</span> <span class="paren2">(<span class="code">make-mat 1</span>)</span>
           <span class="keyword">:dataset</span> '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">0</span>)</span> <span class="paren3">(<span class="code">1</span>)</span> <span class="paren3">(<span class="code">2</span>)</span> <span class="paren3">(<span class="code">3</span>)</span> <span class="paren3">(<span class="code">4</span>)</span> <span class="paren3">(<span class="code">5</span>)</span></span>)</span></span>)</span>
@@ -2342,9 +2342,9 @@ defining a method on an optimizer subclass that computes the value
 in any way. For example, to decay the learning rate on a per
 mini-batch basis:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defmet.htm" class="symbol"><i><span class="symbol">defmethod</span></i></a> learning-rate <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">optimizer my-sgd-optimizer</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_slt_va.htm" class="symbol">slot-value</a> optimizer 'learning-rate</span>)</span>
-     <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_exp_e.htm" class="symbol">expt</a> 0.998
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defmethod</span></i> learning-rate <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">optimizer my-sgd-optimizer</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">* <span class="paren3">(<span class="code">slot-value optimizer 'learning-rate</span>)</span>
+     <span class="paren3">(<span class="code">expt 0.998
            <span class="paren4">(<span class="code">/ <span class="paren5">(<span class="code">n-instances optimizer</span>)</span> 60000</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p><a id='x-28MGL-GD-3A-40MGL-GD-BATCH-GD-OPTIMIZER-20MGL-PAX-3ASECTION-29'></a></p>
@@ -2749,15 +2749,15 @@ functions. Let's see how to minimize a numerical lisp function with
 respect to some of its parameters.</p>
 
 <pre><code><span class="code"><span class="comment">;;; Create an object representing the sine function.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*diff-fn-1*</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'mgl-diffun:diffun
-                 <span class="keyword">:fn</span> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sin_c.htm" class="symbol">sin</a>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*diff-fn-1*</span>
+  <span class="paren2">(<span class="code">make-instance 'mgl-diffun:diffun
+                 <span class="keyword">:fn</span> #'sin
                  <span class="comment">;; We are going to optimize its only parameter.
 </span>                 <span class="keyword">:weight-indices</span> '<span class="paren3">(<span class="code">0</span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Minimize SIN. Note that there is no dataset involved because all
 </span><span class="comment">;;; parameters are being optimized.
-</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'cg-optimizer
+</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code">make-instance 'cg-optimizer
                          <span class="keyword">:batch-size</span> 1
                          <span class="keyword">:termination</span> 1</span>)</span>
           <span class="special">*diff-fn-1*</span>
@@ -2767,21 +2767,21 @@ respect to some of its parameters.</p>
 <span class="comment">;;; Create a differentiable function for f(x,y)=(x-y)^2. X is a
 </span><span class="comment">;;; parameter whose values come from the DATASET argument passed to
 </span><span class="comment">;;; MINIMIZE. Y is a parameter to be optimized (a 'weight').
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*diff-fn-2*</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'mgl-diffun:diffun
-                 <span class="keyword">:fn</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code">x y</span>)</span>
-                       <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_exp_e.htm" class="symbol">expt</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a__.htm" class="symbol">-</a> x y</span>)</span> 2</span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*diff-fn-2*</span>
+  <span class="paren2">(<span class="code">make-instance 'mgl-diffun:diffun
+                 <span class="keyword">:fn</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code">x y</span>)</span>
+                       <span class="paren4">(<span class="code">expt <span class="paren5">(<span class="code">- x y</span>)</span> 2</span>)</span></span>)</span>
                  <span class="keyword">:parameter-indices</span> '<span class="paren3">(<span class="code">0</span>)</span>
                  <span class="keyword">:weight-indices</span> '<span class="paren3">(<span class="code">1</span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Find the Y that minimizes the distance from the instances
 </span><span class="comment">;;; generated by the sampler.
-</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'cg-optimizer <span class="keyword">:batch-size</span> 10</span>)</span>
+</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code">make-instance 'cg-optimizer <span class="keyword">:batch-size</span> 10</span>)</span>
           <span class="special">*diff-fn-2*</span>
           <span class="keyword">:weights</span> <span class="paren2">(<span class="code">make-mat 1</span>)</span>
-          <span class="keyword">:dataset</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'function-sampler
-                                  <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code"></span>)</span>
-                                               <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 10
+          <span class="keyword">:dataset</span> <span class="paren2">(<span class="code">make-instance 'function-sampler
+                                  <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code"></span>)</span>
+                                               <span class="paren4">(<span class="code">list <span class="paren5">(<span class="code">+ 10
                                                         <span class="paren6">(<span class="code">gaussian-random-1</span>)</span></span>)</span></span>)</span></span>)</span>
                                   <span class="keyword">:max-n-samples</span> 1000</span>)</span></span>)</span>
 <span class="comment">;;; =&gt; A MAT with a single value of about 10, the expected value of
@@ -2790,7 +2790,7 @@ respect to some of its parameters.</p>
 <span class="comment">;;; The dataset can be a SEQUENCE in which case we'd better set
 </span><span class="comment">;;; TERMINATION else optimization would never finish. Note how a
 </span><span class="comment">;;; single epoch suffices.
-</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'cg-optimizer <span class="keyword">:termination</span> 6</span>)</span>
+</span><span class="paren1">(<span class="code">minimize <span class="paren2">(<span class="code">make-instance 'cg-optimizer <span class="keyword">:termination</span> 6</span>)</span>
           <span class="special">*diff-fn-2*</span>
           <span class="keyword">:weights</span> <span class="paren2">(<span class="code">make-mat 1</span>)</span>
           <span class="keyword">:dataset</span> '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">0</span>)</span> <span class="paren3">(<span class="code">1</span>)</span> <span class="paren3">(<span class="code">2</span>)</span> <span class="paren3">(<span class="code">3</span>)</span> <span class="paren3">(<span class="code">4</span>)</span> <span class="paren3">(<span class="code">5</span>)</span></span>)</span></span>)</span>
@@ -3543,7 +3543,7 @@ argument), it must be wrapped in a <a href="#x-28MGL-BP-3ABP-LEARNER-20CLASS-29"
 
 <p>Without the bells an whistles, the basic shape of training is this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">minimize optimizer <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'bp-learner <span class="keyword">:bpn</span> bpn</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">minimize optimizer <span class="paren2">(<span class="code">make-instance 'bp-learner <span class="keyword">:bpn</span> bpn</span>)</span>
           <span class="keyword">:dataset</span> dataset</span>)</span></span></code></pre>
 
 <p><a id='x-28MGL-BP-3ABP-LEARNER-20CLASS-29'></a></p>
@@ -3598,8 +3598,8 @@ counterpairs with <code>COUNTER-VALUES-FN</code> and add them to their own
 counter that's created by <code>MAKE-COUNTER</code>. Wow. Ew. The idea is that
 one does something like this do monitor warped prediction:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*warp-time*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren3">(<span class="code">step-monitors rnn</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*warp-time*</span> t</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">setf <span class="paren3">(<span class="code">step-monitors rnn</span>)</span>
         <span class="paren3">(<span class="code">make-cost-monitors rnn <span class="keyword">:attributes</span> '<span class="paren4">(<span class="code"><span class="keyword">:event</span> <span class="string">"warped pred."</span></span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">monitor-bpn-results dataset rnn
                        <span class="comment">;; Just collect and reset the warp
@@ -3673,25 +3673,25 @@ read up on <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" ti
 
 <p><a id='x-28MGL-BP-3A-3ADIGIT-FNN-2ELISP-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fmgl-2Fexample-2Fdigit-fnn-2Elisp-22-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29'></a></p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpkg.htm" class="symbol"><i><span class="symbol">cl:defpackage</span></i></a> <span class="keyword">:mgl-example-digit-fnn</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">cl:defpackage</span></i> <span class="keyword">:mgl-example-digit-fnn</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:mgl</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_in_pkg.htm" class="symbol">in-package</a> <span class="keyword">:mgl-example-digit-fnn</span></span>)</span>
+<span class="paren1">(<span class="code">in-package <span class="keyword">:mgl-example-digit-fnn</span></span>)</span>
 
 <span class="comment">;;; There are 10 possible digits used as inputs ...
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*n-inputs*</span> 10</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*n-inputs*</span> 10</span>)</span>
 <span class="comment">;;; and we want to learn the rule that maps the input digit D to (MOD
 </span><span class="comment">;;; (1+ D) 3).
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*n-outputs*</span> 3</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*n-outputs*</span> 3</span>)</span>
 
 <span class="comment">;;; We define a feed-forward net to be able to specialize how inputs
 </span><span class="comment">;;; are translated by adding a SET-INPUT method later.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defcla.htm" class="symbol"><i><span class="symbol">defclass</span></i></a> digit-fnn <span class="paren2">(<span class="code">fnn</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defclass</span></i> digit-fnn <span class="paren2">(<span class="code">fnn</span>)</span>
   <span class="paren2">(<span class="code"></span>)</span></span>)</span>
 
 <span class="comment">;;; Build a DIGIT-FNN with a single hidden layer of rectified linear
 </span><span class="comment">;;; units and a softmax output.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-digit-fnn <span class="paren2">(<span class="code">&amp;key <span class="paren3">(<span class="code">n-hiddens 5</span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-digit-fnn <span class="paren2">(<span class="code">&amp;key <span class="paren3">(<span class="code">n-hiddens 5</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">build-fnn <span class="paren3">(<span class="code"><span class="keyword">:class</span> 'digit-fnn</span>)</span>
     <span class="paren3">(<span class="code">input <span class="paren4">(<span class="code">-&gt;input <span class="keyword">:size</span> <span class="special">*n-inputs*</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">hidden-activation <span class="paren4">(<span class="code">-&gt;activation input <span class="keyword">:size</span> n-hiddens</span>)</span></span>)</span>
@@ -3709,40 +3709,40 @@ read up on <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" ti
 </span><span class="comment">;;; determined by the input digit. This is called one-hot encoding.
 </span><span class="comment">;;; The TARGET could be encoded the same way, but instead we use the
 </span><span class="comment">;;; sparse option supported by TARGET of -&gt;SOFTMAX-XE-LOSS.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defmet.htm" class="symbol"><i><span class="symbol">defmethod</span></i></a> set-input <span class="paren2">(<span class="code">digits <span class="paren3">(<span class="code">fnn digit-fnn</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let*</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">input <span class="paren5">(<span class="code">nodes <span class="paren6">(<span class="code">find-clump 'input fnn</span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defmethod</span></i> set-input <span class="paren2">(<span class="code">digits <span class="paren3">(<span class="code">fnn digit-fnn</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">input <span class="paren5">(<span class="code">nodes <span class="paren6">(<span class="code">find-clump 'input fnn</span>)</span></span>)</span></span>)</span>
          <span class="paren4">(<span class="code">output-lump <span class="paren5">(<span class="code">find-clump 'output fnn</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">fill! 0 input</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> for i upfrom 0
+    <span class="paren3">(<span class="code"><i><span class="symbol">loop</span></i> for i upfrom 0
           for digit in digits
-          <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren5">(<span class="code">mref input i digit</span>)</span> 1</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren4">(<span class="code">target output-lump</span>)</span>
-          <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mapc_.htm" class="symbol">mapcar</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren6">(<span class="code">digit</span>)</span>
-                    <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_mod.htm" class="symbol">mod</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> digit</span>)</span> <span class="special">*n-outputs*</span></span>)</span></span>)</span>
+          do <span class="paren4">(<span class="code">setf <span class="paren5">(<span class="code">mref input i digit</span>)</span> 1</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">setf <span class="paren4">(<span class="code">target output-lump</span>)</span>
+          <span class="paren4">(<span class="code">mapcar <span class="paren5">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren6">(<span class="code">digit</span>)</span>
+                    <span class="paren6">(<span class="code">mod <span class="paren1">(<span class="code">1+ digit</span>)</span> <span class="special">*n-outputs*</span></span>)</span></span>)</span>
                   digits</span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Train the network by minimizing the loss (cross-entropy here) with
 </span><span class="comment">;;; stochastic gradient descent.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> train-digit-fnn <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">optimizer
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> train-digit-fnn <span class="paren2">(<span class="code"></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">optimizer
           <span class="comment">;; First create the optimizer for MINIMIZE.
-</span>          <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'segmented-gd-optimizer
+</span>          <span class="paren5">(<span class="code">make-instance 'segmented-gd-optimizer
                          <span class="keyword">:segmenter</span>
                          <span class="comment">;; We train each weight lump with the same
 </span>                         <span class="comment">;; parameters and, in fact, the same
 </span>                         <span class="comment">;; optimizer. But it need not be so, in
 </span>                         <span class="comment">;; general.
-</span>                         <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_cons_1.htm" class="symbol">constantly</a>
-                          <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'sgd-optimizer
+</span>                         <span class="paren6">(<span class="code">constantly
+                          <span class="paren1">(<span class="code">make-instance 'sgd-optimizer
                                          <span class="keyword">:learning-rate</span> 1
                                          <span class="keyword">:momentum</span> 0.9
                                          <span class="keyword">:batch-size</span> 100</span>)</span></span>)</span></span>)</span></span>)</span>
         <span class="paren4">(<span class="code">fnn <span class="paren5">(<span class="code">make-digit-fnn</span>)</span></span>)</span></span>)</span>
     <span class="comment">;; The number of instances the FNN can work with in parallel. It's
 </span>    <span class="comment">;; usually equal to the batch size or is a its divisor.
-</span>    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren4">(<span class="code">max-n-stripes fnn</span>)</span> 50</span>)</span>
+</span>    <span class="paren3">(<span class="code">setf <span class="paren4">(<span class="code">max-n-stripes fnn</span>)</span> 50</span>)</span>
     <span class="comment">;; Initialize all weights randomly.
-</span>    <span class="paren3">(<span class="code">map-segments <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren5">(<span class="code">weights</span>)</span>
+</span>    <span class="paren3">(<span class="code">map-segments <span class="paren4">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren5">(<span class="code">weights</span>)</span>
                     <span class="paren5">(<span class="code">gaussian-random! <span class="paren6">(<span class="code">nodes weights</span>)</span> <span class="keyword">:stddev</span> 0.01</span>)</span></span>)</span>
                   fnn</span>)</span>
     <span class="comment">;; Arrange for training and test error to be logged.
@@ -3755,7 +3755,7 @@ read up on <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" ti
 </span>              <span class="comment">;; cost to it. These monitors are going to be logged and
 </span>              <span class="comment">;; reset after every 100 training instance by
 </span>              <span class="comment">;; RESET-OPTIMIZATION-MONITORS above.
-</span>              <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'bp-learner
+</span>              <span class="paren4">(<span class="code">make-instance 'bp-learner
                              <span class="keyword">:bpn</span> fnn
                              <span class="keyword">:monitors</span> <span class="paren5">(<span class="code">make-cost-monitors
                                         fnn <span class="keyword">:attributes</span> `<span class="paren6">(<span class="code"><span class="keyword">:event</span> <span class="string">"train"</span></span>)</span></span>)</span></span>)</span>
@@ -3765,17 +3765,17 @@ read up on <a href="#x-28MGL-DATASET-3A-40MGL-DATASET-20MGL-PAX-3ASECTION-29" ti
 
 <span class="comment">;;; Return a sampler object that produces MAX-N-SAMPLES number of
 </span><span class="comment">;;; random inputs (numbers between 0 and 9).
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-sampler <span class="paren2">(<span class="code">max-n-samples</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'function-sampler <span class="keyword">:max-n-samples</span> max-n-samples
-                 <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code"></span>)</span> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> <span class="special">*n-inputs*</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-sampler <span class="paren2">(<span class="code">max-n-samples</span>)</span>
+  <span class="paren2">(<span class="code">make-instance 'function-sampler <span class="keyword">:max-n-samples</span> max-n-samples
+                 <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code"></span>)</span> <span class="paren4">(<span class="code">random <span class="special">*n-inputs*</span></span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Log the test error. Also, describe the optimizer and the bpn at
 </span><span class="comment">;;; the beginning of training. Called periodically during training
 </span><span class="comment">;;; (see above).
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> log-test-error <span class="paren2">(<span class="code">optimizer learner</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> <span class="paren4">(<span class="code">n-instances optimizer</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_descri.htm" class="symbol">describe</a> optimizer</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_descri.htm" class="symbol">describe</a> <span class="paren4">(<span class="code">bpn learner</span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> log-test-error <span class="paren2">(<span class="code">optimizer learner</span>)</span>
+  <span class="paren2">(<span class="code">when <span class="paren3">(<span class="code">zerop <span class="paren4">(<span class="code">n-instances optimizer</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">describe optimizer</span>)</span>
+    <span class="paren3">(<span class="code">describe <span class="paren4">(<span class="code">bpn learner</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">log-padded
    <span class="paren3">(<span class="code">monitor-bpn-results <span class="paren4">(<span class="code">make-sampler 1000</span>)</span> <span class="paren4">(<span class="code">bpn learner</span>)</span>
                         <span class="paren4">(<span class="code">make-cost-monitors
@@ -3893,16 +3893,16 @@ the concepts involved. Make sure you are comfortable with
 
 <p><a id='x-28MGL-BP-3A-3ASUM-SIG-RNN-2ELISP-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fmgl-2Fexample-2Fsum-sign-rnn-2Elisp-22-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29'></a></p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpkg.htm" class="symbol"><i><span class="symbol">cl:defpackage</span></i></a> <span class="keyword">:mgl-example-sum-sign-rnn</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">cl:defpackage</span></i> <span class="keyword">:mgl-example-sum-sign-rnn</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:mgl</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_in_pkg.htm" class="symbol">in-package</a> <span class="keyword">:mgl-example-sum-sign-rnn</span></span>)</span>
+<span class="paren1">(<span class="code">in-package <span class="keyword">:mgl-example-sum-sign-rnn</span></span>)</span>
 
 <span class="comment">;;; There is a single input at each time step...
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*n-inputs*</span> 1</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*n-inputs*</span> 1</span>)</span>
 <span class="comment">;;; and we want to learn the rule that outputs the sign of the sum of
 </span><span class="comment">;;; inputs so far in the sequence.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defparameter</span></i></a> <span class="special">*n-outputs*</span> 3</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defparameter</span></i> <span class="special">*n-outputs*</span> 3</span>)</span>
 
 <span class="comment">;;; Generate a training example that's a sequence of random length
 </span><span class="comment">;;; between 1 and LENGTH. Elements of the sequence are lists of two
@@ -3913,21 +3913,21 @@ the concepts involved. Make sure you are comfortable with
 </span><span class="comment">;;; 2. The sign of the sum of inputs so far encoded as 0, 1, 2 (for
 </span><span class="comment">;;;    negative, zero and positive values). To add a twist, the sum is
 </span><span class="comment">;;;    reset whenever a negative input is seen.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-sum-sign-instance <span class="paren2">(<span class="code">&amp;key <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> 10</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_max_m.htm" class="symbol">max</a> 1 <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-sum-sign-instance <span class="paren2">(<span class="code">&amp;key <span class="paren3">(<span class="code">length 10</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">length <span class="paren5">(<span class="code">max 1 <span class="paren6">(<span class="code">random length</span>)</span></span>)</span></span>)</span>
         <span class="paren4">(<span class="code">sum 0</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> for i below <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a>
-          collect <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">x <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1-</a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 2 <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
-                    <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_incf_.htm" class="symbol">incf</a> sum x</span>)</span>
-                    <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren6">(<span class="code">&lt; x 0</span>)</span>
-                      <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> sum x</span>)</span></span>)</span>
-                    <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> x <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_cond.htm" class="symbol"><i><span class="symbol">cond</span></i></a> <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_minusp.htm" class="symbol">minusp</a> sum</span>)</span> 0</span>)</span>
-                                  <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> sum</span>)</span> 1</span>)</span>
-                                  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> 2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">loop</span></i> for i below length
+          collect <span class="paren4">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">x <span class="paren1">(<span class="code">1- <span class="paren2">(<span class="code">* 2 <span class="paren3">(<span class="code">random 2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+                    <span class="paren5">(<span class="code">incf sum x</span>)</span>
+                    <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">&lt; x 0</span>)</span>
+                      <span class="paren6">(<span class="code"><i><span class="symbol">setq</span></i> sum x</span>)</span></span>)</span>
+                    <span class="paren5">(<span class="code">list x <span class="paren6">(<span class="code"><i><span class="symbol">cond</span></i> <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">minusp sum</span>)</span> 0</span>)</span>
+                                  <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">zerop sum</span>)</span> 1</span>)</span>
+                                  <span class="paren1">(<span class="code">t 2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Build an RNN with a single lstm hidden layer and softmax output.
 </span><span class="comment">;;; For each time step, a SUM-SIGN-FNN will be instantiated.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-sum-sign-rnn <span class="paren2">(<span class="code">&amp;key <span class="paren3">(<span class="code">n-hiddens 1</span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-sum-sign-rnn <span class="paren2">(<span class="code">&amp;key <span class="paren3">(<span class="code">n-hiddens 1</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">build-rnn <span class="paren3">(<span class="code"></span>)</span>
     <span class="paren3">(<span class="code">build-fnn <span class="paren4">(<span class="code"><span class="keyword">:class</span> 'sum-sign-fnn</span>)</span>
       <span class="paren4">(<span class="code">input <span class="paren5">(<span class="code">-&gt;input <span class="keyword">:size</span> 1</span>)</span></span>)</span>
@@ -3937,41 +3937,41 @@ the concepts involved. Make sure you are comfortable with
 
 <span class="comment">;;; We define this class to be able to specialize how inputs are
 </span><span class="comment">;;; translated by adding a SET-INPUT method later.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defcla.htm" class="symbol"><i><span class="symbol">defclass</span></i></a> sum-sign-fnn <span class="paren2">(<span class="code">fnn</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defclass</span></i> sum-sign-fnn <span class="paren2">(<span class="code">fnn</span>)</span>
   <span class="paren2">(<span class="code"></span>)</span></span>)</span>
 
 <span class="comment">;;; We have a batch of instances from MAKE-SUM-SIGN-INSTANCE for the
 </span><span class="comment">;;; RNN. This function is invoked with elements of these instances
 </span><span class="comment">;;; belonging to the same time step (i.e. at the same index) and sets
 </span><span class="comment">;;; the input and target up.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defmet.htm" class="symbol"><i><span class="symbol">defmethod</span></i></a> set-input <span class="paren2">(<span class="code">instances <span class="paren3">(<span class="code">fnn sum-sign-fnn</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">input-nodes <span class="paren5">(<span class="code">nodes <span class="paren6">(<span class="code">find-clump 'input fnn</span>)</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren4">(<span class="code">target <span class="paren5">(<span class="code">find-clump 'prediction fnn</span>)</span></span>)</span>
-          <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> for stripe upfrom 0
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defmethod</span></i> set-input <span class="paren2">(<span class="code">instances <span class="paren3">(<span class="code">fnn sum-sign-fnn</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">input-nodes <span class="paren5">(<span class="code">nodes <span class="paren6">(<span class="code">find-clump 'input fnn</span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">setf <span class="paren4">(<span class="code">target <span class="paren5">(<span class="code">find-clump 'prediction fnn</span>)</span></span>)</span>
+          <span class="paren4">(<span class="code"><i><span class="symbol">loop</span></i> for stripe upfrom 0
                 for instance in instances
                 collect
                 <span class="comment">;; Sequences in the batch are not of equal length. The
 </span>                <span class="comment">;; RNN sends a NIL our way if a sequence has run out.
-</span>                <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> instance
-                  <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_destru.htm" class="symbol">destructuring-bind</a> <span class="paren1">(<span class="code">input target</span>)</span> instance
-                    <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren2">(<span class="code">mref input-nodes stripe 0</span>)</span> input</span>)</span>
+</span>                <span class="paren5">(<span class="code">when instance
+                  <span class="paren6">(<span class="code">destructuring-bind <span class="paren1">(<span class="code">input target</span>)</span> instance
+                    <span class="paren1">(<span class="code">setf <span class="paren2">(<span class="code">mref input-nodes stripe 0</span>)</span> input</span>)</span>
                     target</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Train the network by minimizing the loss (cross-entropy here) with
 </span><span class="comment">;;; the Adam optimizer.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> train-sum-sign-rnn <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">rnn <span class="paren5">(<span class="code">make-sum-sign-rnn</span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren4">(<span class="code">max-n-stripes rnn</span>)</span> 50</span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> train-sum-sign-rnn <span class="paren2">(<span class="code"></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">rnn <span class="paren5">(<span class="code">make-sum-sign-rnn</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">setf <span class="paren4">(<span class="code">max-n-stripes rnn</span>)</span> 50</span>)</span>
     <span class="comment">;; Initialize the weights in the usual sqrt(1 / fan-in) style.
-</span>    <span class="paren3">(<span class="code">map-segments <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren5">(<span class="code">weights</span>)</span>
-                    <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let*</span></i></a> <span class="paren6">(<span class="code"><span class="paren1">(<span class="code">fan-in <span class="paren2">(<span class="code">mat-dimension <span class="paren3">(<span class="code">nodes weights</span>)</span> 0</span>)</span></span>)</span>
-                           <span class="paren1">(<span class="code">limit <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sqrt_.htm" class="symbol">sqrt</a> <span class="paren3">(<span class="code">/ 6 fan-in</span>)</span></span>)</span></span>)</span></span>)</span>
+</span>    <span class="paren3">(<span class="code">map-segments <span class="paren4">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren5">(<span class="code">weights</span>)</span>
+                    <span class="paren5">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren6">(<span class="code"><span class="paren1">(<span class="code">fan-in <span class="paren2">(<span class="code">mat-dimension <span class="paren3">(<span class="code">nodes weights</span>)</span> 0</span>)</span></span>)</span>
+                           <span class="paren1">(<span class="code">limit <span class="paren2">(<span class="code">sqrt <span class="paren3">(<span class="code">/ 6 fan-in</span>)</span></span>)</span></span>)</span></span>)</span>
                       <span class="paren6">(<span class="code">uniform-random! <span class="paren1">(<span class="code">nodes weights</span>)</span>
-                                       <span class="keyword">:limit</span> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 2 limit</span>)</span></span>)</span>
-                      <span class="paren6">(<span class="code">.+! <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a__.htm" class="symbol">-</a> limit</span>)</span> <span class="paren1">(<span class="code">nodes weights</span>)</span></span>)</span></span>)</span></span>)</span>
+                                       <span class="keyword">:limit</span> <span class="paren1">(<span class="code">* 2 limit</span>)</span></span>)</span>
+                      <span class="paren6">(<span class="code">.+! <span class="paren1">(<span class="code">- limit</span>)</span> <span class="paren1">(<span class="code">nodes weights</span>)</span></span>)</span></span>)</span></span>)</span>
                   rnn</span>)</span>
     <span class="paren3">(<span class="code">minimize <span class="paren4">(<span class="code">monitor-optimization-periodically
-               <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'adam-optimizer
+               <span class="paren5">(<span class="code">make-instance 'adam-optimizer
                               <span class="keyword">:learning-rate</span> 0.2
                               <span class="keyword">:mean-decay</span> 0.9
                               <span class="keyword">:mean-decay-decay</span> 0.9
@@ -3979,35 +3979,35 @@ the concepts involved. Make sure you are comfortable with
                               <span class="keyword">:batch-size</span> 100</span>)</span>
                '<span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><span class="keyword">:fn</span> log-test-error <span class="keyword">:period</span> 30000</span>)</span>
                  <span class="paren6">(<span class="code"><span class="keyword">:fn</span> reset-optimization-monitors <span class="keyword">:period</span> 3000</span>)</span></span>)</span></span>)</span>
-              <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'bp-learner
+              <span class="paren4">(<span class="code">make-instance 'bp-learner
                              <span class="keyword">:bpn</span> rnn
                              <span class="keyword">:monitors</span> <span class="paren5">(<span class="code">make-cost-monitors rnn</span>)</span></span>)</span>
               <span class="keyword">:dataset</span> <span class="paren4">(<span class="code">make-sampler 30000</span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Return a sampler object that produces MAX-N-SAMPLES number of
 </span><span class="comment">;;; random inputs.
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> make-sampler <span class="paren2">(<span class="code">max-n-samples &amp;key <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> 10</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mk_ins.htm" class="symbol">make-instance</a> 'function-sampler <span class="keyword">:max-n-samples</span> max-n-samples
-                 <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code"></span>)</span>
-                              <span class="paren4">(<span class="code">make-sum-sign-instance <span class="keyword">:length</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a></span>)</span></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> make-sampler <span class="paren2">(<span class="code">max-n-samples &amp;key <span class="paren3">(<span class="code">length 10</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">make-instance 'function-sampler <span class="keyword">:max-n-samples</span> max-n-samples
+                 <span class="keyword">:generator</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code"></span>)</span>
+                              <span class="paren4">(<span class="code">make-sum-sign-instance <span class="keyword">:length</span> length</span>)</span></span>)</span></span>)</span></span>)</span>
 
 <span class="comment">;;; Log the test error. Also, describe the optimizer and the bpn at
 </span><span class="comment">;;; the beginning of training. Called periodically during training
 </span><span class="comment">;;; (see above).
-</span><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> log-test-error <span class="paren2">(<span class="code">optimizer learner</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> <span class="paren4">(<span class="code">n-instances optimizer</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_descri.htm" class="symbol">describe</a> optimizer</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_descri.htm" class="symbol">describe</a> <span class="paren4">(<span class="code">bpn learner</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">rnn <span class="paren5">(<span class="code">bpn learner</span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> log-test-error <span class="paren2">(<span class="code">optimizer learner</span>)</span>
+  <span class="paren2">(<span class="code">when <span class="paren3">(<span class="code">zerop <span class="paren4">(<span class="code">n-instances optimizer</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">describe optimizer</span>)</span>
+    <span class="paren3">(<span class="code">describe <span class="paren4">(<span class="code">bpn learner</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">rnn <span class="paren5">(<span class="code">bpn learner</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">log-padded
-     <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_append.htm" class="symbol">append</a>
+     <span class="paren4">(<span class="code">append
       <span class="paren5">(<span class="code">monitor-bpn-results <span class="paren6">(<span class="code">make-sampler 1000</span>)</span> rnn
                            <span class="paren6">(<span class="code">make-cost-monitors
                             rnn <span class="keyword">:attributes</span> '<span class="paren1">(<span class="code"><span class="keyword">:event</span> <span class="string">"pred."</span></span>)</span></span>)</span></span>)</span>
       <span class="comment">;; Same result in a different way: monitor predictions for
 </span>      <span class="comment">;; sequences up to length 20, but don't unfold the RNN
 </span>      <span class="comment">;; unnecessarily to save memory.
-</span>      <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren6">(<span class="code"><span class="paren1">(<span class="code"><span class="special">*warp-time*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+</span>      <span class="paren5">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren6">(<span class="code"><span class="paren1">(<span class="code"><span class="special">*warp-time*</span> t</span>)</span></span>)</span>
         <span class="paren6">(<span class="code">monitor-bpn-results <span class="paren1">(<span class="code">make-sampler 1000 <span class="keyword">:length</span> 20</span>)</span> rnn
                              <span class="comment">;; Just collect and reset the warp
 </span>                             <span class="comment">;; monitors after each batch of
@@ -4015,7 +4015,7 @@ the concepts involved. Make sure you are comfortable with
 </span>                             <span class="paren1">(<span class="code">make-cost-monitors
                               rnn <span class="keyword">:attributes</span> '<span class="paren2">(<span class="code"><span class="keyword">:event</span> <span class="string">"warped pred."</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
     <span class="comment">;; Verify that no further unfoldings took place.
-</span>    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren4">(<span class="code">&lt;= <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> <span class="paren6">(<span class="code">clumps rnn</span>)</span></span>)</span> 10</span>)</span></span>)</span></span>)</span>
+</span>    <span class="paren3">(<span class="code">assert <span class="paren4">(<span class="code">&lt;= <span class="paren5">(<span class="code">length <span class="paren6">(<span class="code">clumps rnn</span>)</span></span>)</span> 10</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">log-mat-room</span>)</span></span>)</span>
 
 <span class="comment">#|
@@ -4856,7 +4856,7 @@ lumps for the scale and shift
 parameters. <code>(-&gt;BATCH-NORMALIZED-ACTIVATION INPUTS :NAME 'H1 :SIZE
 10)</code> is equivalent to:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;batch-normalized <span class="paren2">(<span class="code">-&gt;activation inputs <span class="keyword">:name</span> 'h1 <span class="keyword">:size</span> 10 <span class="keyword">:add-bias-p</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;batch-normalized <span class="paren2">(<span class="code">-&gt;activation inputs <span class="keyword">:name</span> 'h1 <span class="keyword">:size</span> 10 <span class="keyword">:add-bias-p</span> nil</span>)</span>
                     <span class="keyword">:name</span> '<span class="paren2">(<span class="code">h1 <span class="keyword">:batch-normalized-activation</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Note how biases are turned off since normalization will cancel them

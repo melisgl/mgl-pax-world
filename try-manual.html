@@ -151,11 +151,11 @@ prominently in parameterization.</p>
 <p><a href="#x-28TRY-3A-40TRY-2FIS-20MGL-PAX-3ASECTION-29" title="The IS Macro">The IS Macro</a> is a replacement for <code>CL:ASSERT</code>, that can capture values of
 subforms to provide context to failures:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 0</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">1+ 5</span>)</span> 0</span>)</span></span>)</span>
 
 debugger invoked on a TRY:UNEXPECTED-RESULT-FAILURE:
   UNEXPECTED-FAILURE in check:
-    <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 0</span>)</span></span>)</span>
+    <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code">1+ 5</span>)</span> 0</span>)</span></span>)</span>
   where
     #1# = 6</span></code></pre>
 
@@ -171,15 +171,15 @@ values and can be taught how to deal with macros
 (<a href="#x-28TRY-3A-40TRY-2FWRITING-AUTOMATIC-CAPTURE-RULES-20MGL-PAX-3ASECTION-29" title="Writing Automatic Capture Rules">Writing Automatic Capture Rules</a>). The combination of these
 features allows <a href="#x-28TRY-3AMATCH-VALUES-20MGL-PAX-3AMACRO-29" title="(TRY:MATCH-VALUES MGL-PAX:MACRO)"><code>MATCH-VALUES</code></a> to be implementable as tiny extension:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> <span class="string">"sdf"</span></span>)</span>
-      <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 0</span>)</span>
-      <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">string=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code">values <span class="paren4">(<span class="code">1+ 5</span>)</span> <span class="string">"sdf"</span></span>)</span>
+      <span class="paren3">(<span class="code">= * 0</span>)</span>
+      <span class="paren3">(<span class="code">string= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
 
 debugger invoked on a TRY:UNEXPECTED-FAILURE:
   <span class="paren1">(<span class="code">IS
-   <span class="paren2">(<span class="code">MATCH-VALUES #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">VALUES</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> #2=<span class="string">"sdf"</span></span>)</span>
-     <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 0</span>)</span>
-     <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">STRING=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
+   <span class="paren2">(<span class="code">MATCH-VALUES #1=<span class="paren3">(<span class="code">VALUES <span class="paren4">(<span class="code">1+ 5</span>)</span> #2=<span class="string">"sdf"</span></span>)</span>
+     <span class="paren3">(<span class="code">= * 0</span>)</span>
+     <span class="paren3">(<span class="code">STRING= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
   where
     #1# == 6
            #2#</span></code></pre>
@@ -199,11 +199,11 @@ that record their execution in <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:
 and run it:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> should-work <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">should-work</span>)</span>
 .. SHOULD-WORK            <span class="comment">; TRIAL-START
-</span>..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>             <span class="comment">; EXPECTED-RESULT-SUCCESS
+</span>..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>             <span class="comment">; EXPECTED-RESULT-SUCCESS
 </span>.. ⋅ SHOULD-WORK ⋅1       <span class="comment">; EXPECTED-VERDICT-SUCCESS
 </span>..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">SHOULD-WORK</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
@@ -221,7 +221,7 @@ debugger on events whose type matches the type in the variable
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">try 'should-work</span>)</span>
 .. SHOULD-WORK
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ SHOULD-WORK ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">SHOULD-WORK</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
@@ -234,13 +234,13 @@ debugger on events whose type matches the type in the variable
   <span class="paren2">(<span class="code">should-work</span>)</span>
   <span class="paren2">(<span class="code">is <span class="paren3">(<span class="code">= <span class="paren4">(<span class="code">foo</span>)</span> 5</span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> foo <span class="paren2">(<span class="code"></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> foo <span class="paren2">(<span class="code"></span>)</span>
   4</span>)</span>
 
 <span class="paren1">(<span class="code">try 'my-suite</span>)</span>
 .. MY-SUITE                 <span class="comment">; TRIAL-START
 </span>..   SHOULD-WORK            <span class="comment">; TRIAL-START
-</span>..     ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>             <span class="comment">; EXPECTED-RESULT-SUCCESS
+</span>..     ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>             <span class="comment">; EXPECTED-RESULT-SUCCESS
 </span>..   ⋅ SHOULD-WORK ⋅1       <span class="comment">; EXPECTED-VERDICT-SUCCESS
 </span>..   ⊠ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code">FOO</span>)</span> 5</span>)</span></span>)</span>  <span class="comment">; UNEXPECTED-RESULT-FAILURE
 </span>..     where
@@ -300,7 +300,7 @@ debugger, we press <code>v</code> on the frame of the call to <code>MY-SUITE</co
 navigate to its definition, realize what the problem is and fix
 <code>FOO</code>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> foo <span class="paren2">(<span class="code"></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> foo <span class="paren2">(<span class="code"></span>)</span>
   5</span>)</span></span></code></pre>
 
 <p>Now, we select the <a href="#x-28TRY-3ARETRY-TRIAL-20FUNCTION-29" title="(TRY:RETRY-TRIAL FUNCTION)"><code>RETRY-TRIAL</code></a> restart, and on the retry
@@ -308,7 +308,7 @@ navigate to its definition, realize what the problem is and fix
 
 <pre><code><span class="code">MY-SUITE
   SHOULD-WORK
-    ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+    ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
   ⋅ SHOULD-WORK ⋅1
 WARNING: redefining TRY::FOO in DEFUN
   ⊠ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code">FOO</span>)</span> 5</span>)</span></span>)</span>
@@ -316,7 +316,7 @@ WARNING: redefining TRY::FOO in DEFUN
       #1# = 4
 MY-SUITE retry #1
   SHOULD-WORK
-    ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+    ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
   ⋅ SHOULD-WORK ⋅1
   ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">FOO</span>)</span> 5</span>)</span></span>)</span>
 ⋅ MY-SUITE ⋅2</span></code></pre>
@@ -328,25 +328,25 @@ rerun it. Now, let's fix <code>MY-SUITE</code> and rerun it:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-suite <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">should-work</span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is nil</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">try 'my-suite</span>)</span>
 .. MY-SUITE
 ..   SHOULD-WORK
-..     ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..     ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..   ⋅ SHOULD-WORK ⋅1
-..   ⊠ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   ⊠ <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. ⊠ MY-SUITE ⊠1 ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-SUITE</span>)</span> UNEXPECTED-FAILURE 0.000s ⊠1 ⋅1&gt;
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-suite <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">should-work</span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">try !</span>)</span>
 .. MY-SUITE
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ MY-SUITE ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-SUITE</span>)</span> EXPECTED-SUCCESS 0.004s ⋅1&gt;</span></code></pre>
@@ -364,22 +364,22 @@ hence they don't match <code>UNEXPECTED</code> and are not rerun (see
 object returned by <a href="#x-28TRY-3A-40TRY-2FTESTS-20MGL-PAX-3ASECTION-29" title="Tests">Tests</a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-suite <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren3">(<span class="code">passedp <span class="paren4">(<span class="code">should-work</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"a test that depends on SHOULD-WORK"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="string">"never run"</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+  <span class="paren2">(<span class="code">when <span class="paren3">(<span class="code">passedp <span class="paren4">(<span class="code">should-work</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"a test that depends on SHOULD-WORK"</span></span>)</span>
+    <span class="paren3">(<span class="code">when <span class="paren4">(<span class="code">is nil</span>)</span>
+      <span class="paren4">(<span class="code">is nil <span class="keyword">:msg</span> <span class="string">"never run"</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <h5>Skipping</h5>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-suite <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-skip</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_not.htm" class="symbol">not</a> <span class="paren5">(<span class="code">server-available-p</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-skip</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">not <span class="paren5">(<span class="code">server-available-p</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">test-server</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> test-server <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> server-available-p <span class="paren2">(<span class="code"></span>)</span>
-  <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> server-available-p <span class="paren2">(<span class="code"></span>)</span>
+  nil</span>)</span>
 
 <span class="paren1">(<span class="code">my-suite</span>)</span>
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-SUITE</span>)</span> EXPECTED-SUCCESS 0.012s&gt;</span></code></pre>
@@ -390,12 +390,12 @@ errors happened, so nothing was printed.</p>
 <h5>Expecting Outcomes</h5>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> known-broken <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-failure-expected</span></i> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-failure-expected</span></i> <span class="paren3">(<span class="code">t</span>)</span>
+    <span class="paren3">(<span class="code">is nil</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">known-broken</span>)</span>
 .. KNOWN-BROKEN
-..   × <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   × <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. ⋅ KNOWN-BROKEN ×1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">KNOWN-BROKEN</span>)</span> EXPECTED-SUCCESS 0.000s ×1&gt;</span></code></pre>
@@ -410,29 +410,29 @@ fail. Also see <a href="#x-28TRY-3AWITH-EXPECTED-OUTCOME-20MGL-PAX-3AMACRO-29" t
 <p>With <a href="#x-28TRY-3A-2ARUN-DEFTEST-WHEN-2A-20VARIABLE-29" title="(TRY:*RUN-DEFTEST-WHEN* VARIABLE)"><code>*RUN-DEFTEST-WHEN*</code></a>, one can run test on definition. To run
 tests on evaluation, as in SLIME <code>C-M-x</code>, <code>slime-eval-defun</code>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*run-deftest-when*</span> <span class="keyword">:execute</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*run-deftest-when*</span> <span class="keyword">:execute</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> some-test <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 .. SOME-TEST
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ SOME-TEST ⋅1
 ..
 =&gt; SOME-TEST
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*run-deftest-when*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span></code></pre>
+<span class="paren1">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*run-deftest-when*</span> nil</span>)</span></span></code></pre>
 
 <h5>Fixtures</h5>
 
 <p>There is no direct support for fixtures in Try. One can easily write
 macros like the following.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*server*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*server*</span> nil</span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defmac.htm" class="symbol"><i><span class="symbol">defmacro</span></i></a> <i><span class="symbol">with-xxx</span></i> <span class="paren2">(<span class="code">&amp;body body</span>)</span>
-  `<span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_flet_.htm" class="symbol"><i><span class="symbol">flet</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">,<i><span class="symbol">with-xxx-body</span></i> <span class="paren5">(<span class="code"></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defmacro</span></i> <i><span class="symbol">with-xxx</span></i> <span class="paren2">(<span class="code">&amp;body body</span>)</span>
+  `<span class="paren2">(<span class="code"><i><span class="symbol">flet</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">,<i><span class="symbol">with-xxx-body</span></i> <span class="paren5">(<span class="code"></span>)</span>
             ,@body</span>)</span></span>)</span>
-     <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="special">*server*</span>
+     <span class="paren3">(<span class="code"><i><span class="symbol">if</span></i> <span class="special">*server*</span>
          <span class="paren4">(<span class="code"><i><span class="symbol">with-xxx-body</span></i></span>)</span>
          <span class="paren4">(<span class="code"><i><span class="symbol">with-server</span></i> <span class="paren5">(<span class="code">make-expensive-server</span>)</span>
            <span class="paren5">(<span class="code"><i><span class="symbol">with-xxx-body</span></i></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
@@ -445,9 +445,9 @@ is lessened.</p>
 <p>The suggested way of writing tests is to call test functions
 explicitly:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpkg.htm" class="symbol"><i><span class="symbol">defpackage</span></i></a> <span class="keyword">:some-test-package</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defpackage</span></i> <span class="keyword">:some-test-package</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:try</span></span>)</span></span>)</span>
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_in_pkg.htm" class="symbol">in-package</a> <span class="keyword">:some-test-package</span></span>)</span>
+<span class="paren1">(<span class="code">in-package <span class="keyword">:some-test-package</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> test-all <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code">test-this</span>)</span>
@@ -457,27 +457,27 @@ explicitly:</p>
   <span class="paren2">(<span class="code">test-this/more</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> test-this/more <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> test-that <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> not-called <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> test <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">warn-on-tests-not-run <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_find_p.htm" class="symbol">find-package</a> <span class="keyword">:some-test-package</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> test <span class="paren2">(<span class="code"></span>)</span>
+  <span class="paren2">(<span class="code">warn-on-tests-not-run <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">find-package <span class="keyword">:some-test-package</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code">try 'test-all</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">test</span>)</span>
 .. TEST-ALL
 ..   TEST-THIS
 ..     TEST-THIS/MORE
-..       ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..       ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..     ⋅ TEST-THIS/MORE ⋅1
 ..   ⋅ TEST-THIS ⋅1
 ..   TEST-THAT
-..     ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..     ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..   ⋅ TEST-THAT ⋅1
 .. ⋅ TEST-ALL ⋅2
 .. WARNING: Test NOT-CALLED not run.
@@ -519,18 +519,18 @@ The condition <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDIT
 <li><p><a href="#x-28TRY-3AERROR-2A-20CONDITION-29" title="(TRY:ERROR* CONDITION)"><code>ERROR*</code></a>, an unexpected <code>CL:ERROR</code> or unadorned <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TERM-29" title="(TRY::@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
 </ul>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="comment">;; We don't want to debug nor print a backtrace for the error below.
-</span>      <span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="comment">;; We don't want to debug nor print a backtrace for the error below.
+</span>      <span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
   <span class="comment">;; signals TRIAL-START / VERDICT-ABORT* on entry / exit
 </span>  <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">demo</span>)</span>
     <span class="comment">;; signals EXPECTED-RESULT-SUCCESS
-</span>    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+</span>    <span class="paren3">(<span class="code">is t</span>)</span>
     <span class="comment">;; signals UNHANDLED-ERROR with a nested CL:ERROR
-</span>    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
+</span>    <span class="paren3">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
 .. DEMO                       <span class="comment">; TRIAL-START
-</span>..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>                 <span class="comment">; EXPECTED-RESULT-SUCCESS (⋅)
-</span>..   ⊟ "xxx" <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/e_smp_er.htm" class="symbol">SIMPLE-ERROR</a></span>)</span>   <span class="comment">; UNHANDLED-ERROR (⊟)
+</span>..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>                 <span class="comment">; EXPECTED-RESULT-SUCCESS (⋅)
+</span>..   ⊟ "xxx" <span class="paren1">(<span class="code">SIMPLE-ERROR</span>)</span>   <span class="comment">; UNHANDLED-ERROR (⊟)
 </span>.. ⊟ DEMO ⊟1 ⋅1               <span class="comment">; VERDICT-ABORT* (⊟)
 </span>..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">DEMO</span>)</span></span>)</span> ABORT* 0.004s ⊟1 ⋅1&gt;</span></code></pre>
@@ -726,8 +726,8 @@ how events are printed, the list of variable bindings in
 <code>*EVENT-PRINT-BINDINGS*</code> is established whenever an <code>EVENT</code> is printed
 as if with:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progv.htm" class="symbol"><i><span class="symbol">progv</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mapc_.htm" class="symbol">mapcar</a> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_firstc.htm" class="symbol">first</a> <span class="special">*event-print-bindings*</span></span>)</span>
-       <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_mapc_.htm" class="symbol">mapcar</a> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_firstc.htm" class="symbol">second</a> <span class="special">*event-print-bindings*</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">progv</span></i> <span class="paren2">(<span class="code">mapcar #'first <span class="special">*event-print-bindings*</span></span>)</span>
+       <span class="paren2">(<span class="code">mapcar #'second <span class="special">*event-print-bindings*</span></span>)</span>
   ...</span>)</span></span></code></pre>
 
 <p>The default value ensures that shared structure is recognized (see
@@ -788,12 +788,12 @@ is evaluated and depending on whether it's true,
 expect both <code>SUCCESS</code> and <code>FAILURE</code> for <code>RESULT</code>s, while requiring
 <code>VERDICT</code>s to succeed:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren3">(<span class="code">'<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_or.htm" class="symbol">or</a> result <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> verdict success</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren3">(<span class="code">'<span class="paren4">(<span class="code">or result <span class="paren5">(<span class="code">and verdict success</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">t1</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is nil</span>)</span></span>)</span></span>)</span></span>)</span>
 .. T1
-..   × <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   × <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. ⋅ T1 ×1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T1</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ×1&gt;</span></code></pre>
@@ -801,14 +801,14 @@ expect both <code>SUCCESS</code> and <code>FAILURE</code> for <code>RESULT</code
 <p>This is equivalent to <code>(WITH-FAILURE-EXPECTED () ...)</code>. To make
 result failures expected but result successes unexpected:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren3">(<span class="code">'<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_or.htm" class="symbol">or</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> result failure</span>)</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> verdict success</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren3">(<span class="code">'<span class="paren4">(<span class="code">or <span class="paren5">(<span class="code">and result failure</span>)</span> <span class="paren5">(<span class="code">and verdict success</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">t1</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is t</span>)</span>
+      <span class="paren4">(<span class="code">is nil</span>)</span></span>)</span></span>)</span></span>)</span>
 .. T1
-..   ⊡ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
-..   × <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   ⊡ <span class="paren1">(<span class="code">IS T</span>)</span>
+..   × <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. ⋅ T1 ⊡1 ×1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T1</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⊡1 ×1&gt;</span></code></pre>
@@ -817,12 +817,12 @@ result failures expected but result successes unexpected:</p>
 final example leaves result failures unexpected but makes both
 verdict successes and failures expected:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren3">(<span class="code">'<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_or.htm" class="symbol">or</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> result success</span>)</span> verdict</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren3">(<span class="code">'<span class="paren4">(<span class="code">or <span class="paren5">(<span class="code">and result success</span>)</span> verdict</span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">t1</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is nil</span>)</span></span>)</span></span>)</span></span>)</span>
 .. T1
-..   ⊠ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   ⊠ <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. × T1 ⊠1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T1</span>)</span></span>)</span> EXPECTED-FAILURE 0.004s ⊠1&gt;</span></code></pre></li>
@@ -1022,7 +1022,7 @@ is explained in <a href="#x-28TRY-3A-40TRY-2FRERUN-20MGL-PAX-3ASECTION-29" title
 the test or through the return value of a test:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> xxx <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> xxx</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">prin1 xxx</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">xxx</span>)</span>
 .. #&lt;TRIAL <span class="paren1">(<span class="code">XXX</span>)</span> RUNNING&gt;
@@ -1031,7 +1031,7 @@ the test or through the return value of a test:</p>
 <p><code>WITH-TRIAL</code> can also provide access to its <code>TRIAL</code>:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">t0</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> t0</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">prin1 t0</span>)</span></span>)</span>
 .. #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T0</span>)</span></span>)</span> RUNNING&gt;
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T0</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s&gt;</span></code></pre>
 
@@ -1079,14 +1079,14 @@ then an error is signalled. The returned trial is <a href="#x-28TRY-3ARUNNINGP-2
 the <a href="#x-28TRY-3ACURRENT-TRIAL-20FUNCTION-29" title="(TRY:CURRENT-TRIAL FUNCTION)"><code>CURRENT-TRIAL</code></a>, and the <a href="#x-28TRY-3A-40TRY-2FTRIAL-RESTARTS-20MGL-PAX-3ASECTION-29" title="Trial Restarts">Trial Restarts</a> are available. It is
 also signalled when a trial is retried:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code"></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">trial-start <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren1">(<span class="code">c</span>)</span>
-                                  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_format.htm" class="symbol">format</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="string">"TRIAL-START for ~S retry#~S~%"</span>
+    <span class="paren3">(<span class="code">handler-bind <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">trial-start <span class="paren6">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren1">(<span class="code">c</span>)</span>
+                                  <span class="paren1">(<span class="code">format t <span class="string">"TRIAL-START for ~S retry#~S~%"</span>
                                           <span class="paren2">(<span class="code">test-name <span class="paren3">(<span class="code">trial c</span>)</span></span>)</span>
                                           <span class="paren2">(<span class="code">n-retries <span class="paren3">(<span class="code">trial c</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
       <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">this</span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">when</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">zerop <span class="paren1">(<span class="code">random 2</span>)</span></span>)</span>
           <span class="paren6">(<span class="code">retry-trial</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 .. TRIAL-START for THIS retry#0
 .. TRIAL-START for THIS retry#1
@@ -1124,21 +1124,21 @@ of other <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"
 still the <a href="#x-28TRY-3ACURRENT-TRIAL-20FUNCTION-29" title="(TRY:CURRENT-TRIAL FUNCTION)"><code>CURRENT-TRIAL</code></a>, and <a href="#x-28TRY-3A-40TRY-2FTRIAL-RESTARTS-20MGL-PAX-3ASECTION-29" title="Trial Restarts">Trial Restarts</a> are still
 available.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren3">(<span class="code"></span>)</span>
-       <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> verdict failure</span>)</span> #'retry-trial</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code"></span>)</span>
+       <span class="paren3">(<span class="code">handler-bind <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code">and verdict failure</span>)</span> #'retry-trial</span>)</span></span>)</span>
          <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">this</span>)</span>
-           <span class="paren5">(<span class="code">is <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">zerop</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">random</a> 2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
-.. <span class="paren1">(<span class="code">TRY #&lt;<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_fn.htm" class="symbol"><i><span class="symbol">FUNCTION</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">LAMBDA</span></i></a> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {53038ADB}&gt;</span>)</span>
+           <span class="paren5">(<span class="code">is <span class="paren6">(<span class="code">zerop <span class="paren1">(<span class="code">random 2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+.. <span class="paren1">(<span class="code">TRY #&lt;<i><span class="symbol">FUNCTION</span></i> <span class="paren2">(<span class="code"><i><span class="symbol">LAMBDA</span></i> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {53038ADB}&gt;</span>)</span>
 ..   THIS
-..     ⊠ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">ZEROP</a> #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">RANDOM</a> 2</span>)</span></span>)</span></span>)</span>
+..     ⊠ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">ZEROP #1=<span class="paren3">(<span class="code">RANDOM 2</span>)</span></span>)</span></span>)</span>
 ..       where
 ..         #1# = 1
 ..   THIS retry #1
-..     ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_zerop.htm" class="symbol">ZEROP</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_random.htm" class="symbol">RANDOM</a> 2</span>)</span></span>)</span></span>)</span>
+..     ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">ZEROP <span class="paren3">(<span class="code">RANDOM 2</span>)</span></span>)</span></span>)</span>
 ..   ⋅ THIS ⋅1
-.. ⋅ <span class="paren1">(<span class="code">TRY #&lt;<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_fn.htm" class="symbol"><i><span class="symbol">FUNCTION</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">LAMBDA</span></i></a> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {53038ADB}&gt;</span>)</span> ⋅1
+.. ⋅ <span class="paren1">(<span class="code">TRY #&lt;<i><span class="symbol">FUNCTION</span></i> <span class="paren2">(<span class="code"><i><span class="symbol">LAMBDA</span></i> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {53038ADB}&gt;</span>)</span> ⋅1
 ..
-==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">TRY #&lt;<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_fn.htm" class="symbol"><i><span class="symbol">FUNCTION</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">LAMBDA</span></i></a> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {53038ADB}&gt;</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre></li>
+==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">TRY #&lt;<i><span class="symbol">FUNCTION</span></i> <span class="paren2">(<span class="code"><i><span class="symbol">LAMBDA</span></i> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {53038ADB}&gt;</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28TRY-3AEXPECTED-VERDICT-SUCCESS-20CONDITION-29'></a></p>
@@ -1266,11 +1266,11 @@ that case, any intervening trials are skipped.</p>
 <pre><code><span class="code"><span class="comment">;; Skipped trials are marked with '-' in the output.
 </span><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">outer</span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">inner</span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-    <span class="paren3">(<span class="code">skip-trial <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> outer</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is t</span>)</span>
+    <span class="paren3">(<span class="code">skip-trial nil outer</span>)</span></span>)</span></span>)</span>
 .. OUTER
 ..   INNER
-..     ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..     ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..   - INNER ⋅1
 .. - OUTER ⋅1
 ..
@@ -1284,11 +1284,11 @@ following example, the non-local exit from a skip is cancelled by a
 <code>THROW</code>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">some-test</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_catch.htm" class="symbol"><i><span class="symbol">catch</span></i></a> 'foo
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_unwind.htm" class="symbol"><i><span class="symbol">unwind-protect</span></i></a>
+  <span class="paren2">(<span class="code"><i><span class="symbol">catch</span></i> 'foo
+    <span class="paren3">(<span class="code"><i><span class="symbol">unwind-protect</span></i>
          <span class="paren4">(<span class="code">skip-trial</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_throw.htm" class="symbol"><i><span class="symbol">throw</span></i></a> 'foo <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"check after skip"</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">throw</span></i> 'foo nil</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"check after skip"</span></span>)</span></span>)</span>
 .. SOME-TEST
 ..   ⋅ check after skip
 .. - SOME-TEST ⋅1
@@ -1298,14 +1298,14 @@ following example, the non-local exit from a skip is cancelled by a
 <p>In the next example, the non-local exit from a skip is cancelled by
 an <code>ERROR</code>, which triggers an <code>ABORT-TRIAL</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">foo</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_unwind.htm" class="symbol"><i><span class="symbol">unwind-protect</span></i></a>
+    <span class="paren3">(<span class="code"><i><span class="symbol">unwind-protect</span></i>
          <span class="paren4">(<span class="code">skip-trial</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 .. FOO
-..   ⊟ "xxx" <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/e_smp_er.htm" class="symbol">SIMPLE-ERROR</a></span>)</span>
+..   ⊟ "xxx" <span class="paren1">(<span class="code">SIMPLE-ERROR</span>)</span>
 .. ⊟ FOO ⊟1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">FOO</span>)</span></span>)</span> ABORT* 0.000s ⊟1&gt;</span></code></pre>
@@ -1353,10 +1353,10 @@ it initiates a <a href="#x-28TRY-3A-3A-40NON-LOCAL-EXIT-20MGL-PAX-3AGLOSSARY-TER
 called, then the skip is cancelled.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">skipped</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">unexpected-result-failure #'skip-trial</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">handler-bind <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">unexpected-result-failure #'skip-trial</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is nil</span>)</span></span>)</span></span>)</span>
 .. SKIPPED
-..   ⊠ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   ⊠ <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. - SKIPPED ⊠1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">SKIPPED</span>)</span></span>)</span> SKIP 0.000s ⊠1&gt;</span></code></pre>
@@ -1364,11 +1364,11 @@ called, then the skip is cancelled.</p>
 <p>Invoking <code>SKIP-TRIAL</code> on the <code>TRIAL</code>'s own <a href="#x-28TRY-3ATRIAL-START-20CONDITION-29" title="(TRY:TRIAL-START CONDITION)"><code>TRIAL-START</code></a> skips the trial
 being started.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> '<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_or.htm" class="symbol">or</a> outcome leaf</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> '<span class="paren4">(<span class="code">or outcome leaf</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">parent</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">trial-start #'skip-trial</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">handler-bind <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">trial-start #'skip-trial</span>)</span></span>)</span>
       <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">child</span>)</span>
-        <span class="paren5">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">is nil</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 .. PARENT
 ..   - CHILD
 .. ⋅ PARENT
@@ -1552,11 +1552,11 @@ characters for the markers.</p>
 the others are built, and it is a replacement for <code>CL:ASSERT</code> that can
 capture values of subforms to provide context to failures:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 0</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">1+ 5</span>)</span> 0</span>)</span></span>)</span>
 
 debugger invoked on a TRY:UNEXPECTED-FAILURE:
   UNEXPECTED-FAILURE in check:
-    <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 0</span>)</span></span>)</span>
+    <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code">1+ 5</span>)</span> 0</span>)</span></span>)</span>
   where
     #1# = 6</span></code></pre>
 
@@ -1567,15 +1567,15 @@ values and can be taught how to deal with macros. The combination of
 these features allows <a href="#x-28TRY-3AMATCH-VALUES-20MGL-PAX-3AMACRO-29" title="(TRY:MATCH-VALUES MGL-PAX:MACRO)"><code>MATCH-VALUES</code></a> to be implementable as tiny
 extension:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> <span class="string">"sdf"</span></span>)</span>
-      <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 0</span>)</span>
-      <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">string=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code">values <span class="paren4">(<span class="code">1+ 5</span>)</span> <span class="string">"sdf"</span></span>)</span>
+      <span class="paren3">(<span class="code">= * 0</span>)</span>
+      <span class="paren3">(<span class="code">string= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
 
 debugger invoked on a TRY:UNEXPECTED-FAILURE:
   <span class="paren1">(<span class="code">IS
-   <span class="paren2">(<span class="code">MATCH-VALUES #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">VALUES</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> #2=<span class="string">"sdf"</span></span>)</span>
-     <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 0</span>)</span>
-     <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">STRING=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
+   <span class="paren2">(<span class="code">MATCH-VALUES #1=<span class="paren3">(<span class="code">VALUES <span class="paren4">(<span class="code">1+ 5</span>)</span> #2=<span class="string">"sdf"</span></span>)</span>
+     <span class="paren3">(<span class="code">= * 0</span>)</span>
+     <span class="paren3">(<span class="code">STRING= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
   where
     #1# == 6
            #2#</span></code></pre>
@@ -1611,15 +1611,15 @@ description of the check being made, which is by default the whole
 desired outcome is, and <code>CTX</code> provides information about the
 evaluation.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_equal.htm" class="symbol">equal</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_to_.htm" class="symbol">prin1-to-string</a> 'hello</span>)</span> <span class="string">"hello"</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">equal <span class="paren3">(<span class="code">prin1-to-string 'hello</span>)</span> <span class="string">"hello"</span></span>)</span>
     <span class="keyword">:msg</span> <span class="string">"Symbols are replacements for strings."</span> 
     <span class="keyword">:ctx</span> <span class="paren2">(<span class="code"><span class="string">"*PACKAGE* is ~S and *PRINT-CASE* is ~S~%"</span>
-          <a href="http://www.lispworks.com/reference/HyperSpec/Body/v_pkg.htm" class="symbol"><span class="special">*package*</span></a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/v_pr_cas.htm" class="symbol"><span class="special">*print-case*</span></a></span>)</span></span>)</span>
+          <span class="special">*package*</span> <span class="special">*print-case*</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   Symbols are replacements for strings.
 where
-  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_to_.htm" class="symbol">PRIN1-TO-STRING</a> 'HELLO</span>)</span> = "HELLO"
+  <span class="paren1">(<span class="code">PRIN1-TO-STRING 'HELLO</span>)</span> = "HELLO"
 *PACKAGE* is #&lt;PACKAGE "TRY"&gt; and *PRINT-CASE* is :UPCASE</span></code></pre>
 
 <p>If <code>CAPTURE</code> is true, the value(s) of some subforms of <code>FORM</code> may be
@@ -1667,7 +1667,7 @@ the <code>FORMAT</code> function.</p>
 
 <p>It may be a constant string:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="string">"FORMAT-CONTROL~%with no args."</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is nil <span class="keyword">:msg</span> <span class="string">"FORMAT-CONTROL~%with no args."</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   FORMAT-CONTROL
@@ -1676,7 +1676,7 @@ UNEXPECTED-FAILURE in check:
 <p>It may be a list whose first element is a constant string, and the
 rest are the format arguments to be evaluated:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="paren2">(<span class="code"><span class="string">"Implicit LIST ~A."</span> <span class="string">"form"</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is nil <span class="keyword">:msg</span> <span class="paren2">(<span class="code"><span class="string">"Implicit LIST ~A."</span> <span class="string">"form"</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   Implicit LIST form.</span></code></pre>
@@ -1684,7 +1684,7 @@ UNEXPECTED-FAILURE in check:
 <p>Or it may be a form that evaluates to a list like <code>(FORMAT-CONTROL
 &amp;REST FORMAT-ARGS)</code>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="string">"Full ~A."</span> <span class="string">"form"</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is nil <span class="keyword">:msg</span> <span class="paren2">(<span class="code">list <span class="string">"Full ~A."</span> <span class="string">"form"</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   Full form.</span></code></pre>
@@ -1720,10 +1720,10 @@ captures.</p>
 to be informative. In particular, if <code>FORM</code> is a function call, then
 non-constant arguments are automatically captured:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= 3 <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 2</span>)</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a__.htm" class="symbol">-</a> 4 3</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= 3 <span class="paren3">(<span class="code">1+ 2</span>)</span> <span class="paren3">(<span class="code">- 4 3</span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= 3 #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 2</span>)</span> #2=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a__.htm" class="symbol">-</a> 4 3</span>)</span></span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= 3 #1=<span class="paren3">(<span class="code">1+ 2</span>)</span> #2=<span class="paren3">(<span class="code">- 4 3</span>)</span></span>)</span></span>)</span>
 where
   #1# = 3
   #2# = 1</span></code></pre>
@@ -1731,18 +1731,18 @@ where
 <p>By default, automatic captures are not made for subforms deeper in
 <code>FORM</code>, except for when <code>FORM</code> is a call to <code>NULL</code>, <code>ENDP</code> and <code>NOT</code>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">null</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_find_.htm" class="symbol">find</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">null <span class="paren3">(<span class="code">find <span class="paren4">(<span class="code">1+ 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">NULL</a> #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_find_.htm" class="symbol">FIND</a> #2=<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">NULL #1=<span class="paren3">(<span class="code">FIND #2=<span class="paren4">(<span class="code">1+ 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
 where
   #2# = 2
   #1# = 2</span></code></pre>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_endp.htm" class="symbol">endp</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_member.htm" class="symbol">member</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">endp <span class="paren3">(<span class="code">member <span class="paren4">(<span class="code">1+ 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_endp.htm" class="symbol">ENDP</a> #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_member.htm" class="symbol">MEMBER</a> #2=<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">ENDP #1=<span class="paren3">(<span class="code">MEMBER #2=<span class="paren4">(<span class="code">1+ 1</span>)</span> '<span class="paren4">(<span class="code">1 2 3</span>)</span></span>)</span></span>)</span></span>)</span>
 where
   #2# = 2
   #1# = <span class="paren1">(<span class="code">2 3</span>)</span></span></code></pre>
@@ -1750,10 +1750,10 @@ where
 <p>Note that the argument of <code>NOT</code> is not captured as it is assumed to be
 <code>NIL</code> or <code>T</code>. If that's not true, use <code>NULL</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_not.htm" class="symbol">not</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_equal.htm" class="symbol">equal</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 6</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">not <span class="paren3">(<span class="code">equal <span class="paren4">(<span class="code">1+ 5</span>)</span> 6</span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_not.htm" class="symbol">NOT</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_equal.htm" class="symbol">EQUAL</a> #1=<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 6</span>)</span></span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">NOT <span class="paren3">(<span class="code">EQUAL #1=<span class="paren4">(<span class="code">1+ 5</span>)</span> 6</span>)</span></span>)</span></span>)</span>
 where
   #1# = 6</span></code></pre>
 
@@ -1826,9 +1826,9 @@ form <code>(FIND TEMP1 TEMP2)</code> and the list of two
 substitutions <code>((TEMP2 (FOO) (FOO) NIL) (TEMP3 LIST LIST NIL))</code>.
 This allows the original form to be rewritten as</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let*</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">temp1 <span class="paren4">(<span class="code">foo</span>)</span></span>)</span>
-       <span class="paren3">(<span class="code">temp2 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_find_.htm" class="symbol">find</a> temp1 temp2</span>)</span></span>)</span></span></code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">temp1 <span class="paren4">(<span class="code">foo</span>)</span></span>)</span>
+       <span class="paren3">(<span class="code">temp2 list</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">find temp1 temp2</span>)</span></span>)</span></span></code></pre>
 
 <p>TEMP1 and TEMP2 may then be reported in the <a href="#x-28TRY-3AOUTCOME-20CONDITION-29" title="(TRY:OUTCOME CONDITION)"><code>OUTCOME</code></a> condition
 signalled by <a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> like this:</p>
@@ -1851,12 +1851,12 @@ where
 rewriting rules (see <a href="#x-28TRY-3A-40TRY-2FWRITING-AUTOMATIC-CAPTURE-RULES-20MGL-PAX-3ASECTION-29" title="Writing Automatic Capture Rules">Writing Automatic Capture Rules</a>),
 explicit, ad-hoc captures can also be made.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x 1</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x 1</span>)</span></span>)</span>
       <span class="paren3">(<span class="code">= <span class="paren4">(<span class="code">capture x</span>)</span> 2</span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   <span class="paren1">(<span class="code">IS
-   <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">LET</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">X 1</span>)</span></span>)</span>
+   <span class="paren2">(<span class="code"><i><span class="symbol">LET</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">X 1</span>)</span></span>)</span>
      <span class="paren3">(<span class="code">= <span class="paren4">(<span class="code">CAPTURE X</span>)</span> 2</span>)</span></span>)</span></span>)</span>
 where
   X = 1</span></code></pre>
@@ -1864,12 +1864,12 @@ where
 <p>If <a href="#x-28TRY-3ACAPTURE-20MGL-PAX-3AMACRO-29" title="(TRY:CAPTURE MGL-PAX:MACRO)"><code>CAPTURE</code></a> showing up in the form that <a href="#x-28TRY-3AIS-20MGL-PAX-3AMACRO-29" title="(TRY:IS MGL-PAX:MACRO)"><code>IS</code></a> print is undesirable, then
 <a href="#x-28TRY-3A-25-20MACROLET-29" title="(TRY:% MACROLET)"><code>%</code></a> may be used instead:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x 1</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x 1</span>)</span></span>)</span>
       <span class="paren3">(<span class="code">= <span class="paren4">(<span class="code">% x</span>)</span> 2</span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   <span class="paren1">(<span class="code">IS
-   <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">LET</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">X 1</span>)</span></span>)</span>
+   <span class="paren2">(<span class="code"><i><span class="symbol">LET</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">X 1</span>)</span></span>)</span>
      <span class="paren3">(<span class="code">= X 2</span>)</span></span>)</span></span>)</span>
 where
   X = 1</span></code></pre>
@@ -1877,10 +1877,10 @@ where
 <p>Multiple values may be captured with <a href="#x-28TRY-3ACAPTURE-VALUES-20MGL-PAX-3AMACRO-29" title="(TRY:CAPTURE-VALUES MGL-PAX:MACRO)"><code>CAPTURE-VALUES</code></a> and its
 secretive counterpart <a href="#x-28TRY-3A-25-25-20MACROLET-29" title="(TRY:%% MACROLET)"><code>%%</code></a>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">%% <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 2</span>)</span></span>)</span> 2</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">= <span class="paren3">(<span class="code">%% <span class="paren4">(<span class="code">values 1 2</span>)</span></span>)</span> 2</span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">VALUES</a> 1 2</span>)</span> 2</span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code">VALUES 1 2</span>)</span> 2</span>)</span></span>)</span>
 where
   #1# == 1
          2</span></code></pre>
@@ -2019,19 +2019,19 @@ evaluated) that matches <code>PRED</code>. To detect matching conditions, <code>
 sets up a <code>HANDLER-BIND</code>. Thus it can only see what <code>BODY</code> does not
 handle. The arguments are described in <a href="#x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-20MGL-PAX-3ASECTION-29" title="Checking Conditions">Checking Conditions</a>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">signals <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">signals <span class="paren2">(<span class="code">error</span>)</span>
+  <span class="paren2">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span>
 =&gt; NIL</span></code></pre>
 
 <p>The following example shows a failure where <code>CONDITION-TYPE</code> matches
 but <code>PRED</code> does not.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_ignore.htm" class="symbol">ignore-errors</a>
-  <span class="paren2">(<span class="code">signals <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="keyword">:pred</span> <span class="string">"non-matching"</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">ignore-errors
+  <span class="paren2">(<span class="code">signals <span class="paren3">(<span class="code">error <span class="keyword">:pred</span> <span class="string">"non-matching"</span></span>)</span>
+    <span class="paren3">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">ERROR</a> <span class="string">"xxx"</span></span>)</span> signals a condition of type ERROR that matches
+  <span class="paren1">(<span class="code">ERROR <span class="string">"xxx"</span></span>)</span> signals a condition of type ERROR that matches
   "non-matching".
 The predicate did not match "xxx".</span></code></pre></li>
 </ul>
@@ -2063,9 +2063,9 @@ The arguments are described in <a href="#x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-
 and a <code>*DEBUGGER-HOOK*</code> is set up (see <a href="#x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29" title="(TRY:UNHANDLED-ERROR CONDITION)"><code>UNHANDLED-ERROR</code></a>). Thus invoking
 debugger would normally cause the trial to abort.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">invokes-debugger <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="keyword">:pred</span> <span class="string">"xxx"</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_invoke.htm" class="symbol">invoke-debugger</a></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">invokes-debugger <span class="paren2">(<span class="code">error <span class="keyword">:pred</span> <span class="string">"xxx"</span></span>)</span>
+  <span class="paren2">(<span class="code">handler-bind <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">error #'invoke-debugger</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
 =&gt; NIL</span></code></pre></li>
 </ul>
 
@@ -2098,19 +2098,19 @@ of the other arguments.</p>
 
 <p>In the following example, <code>FAILS</code> signals a <a href="#x-28TRY-3ASUCCESS-20CONDITION-29" title="(TRY:SUCCESS CONDITION)"><code>SUCCESS</code></a>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_catch.htm" class="symbol"><i><span class="symbol">catch</span></i></a> 'foo
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">catch</span></i> 'foo
   <span class="paren2">(<span class="code">fails <span class="paren3">(<span class="code"></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_throw.htm" class="symbol"><i><span class="symbol">throw</span></i></a> 'foo 7</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">throw</span></i> 'foo 7</span>)</span></span>)</span></span>)</span>
 =&gt; 7</span></code></pre>
 
 <p>Next, <code>FAILS</code> signals an <a href="#x-28TRY-3AUNEXPECTED-FAILURE-20TYPE-29" title="(TRY:UNEXPECTED-FAILURE TYPE)"><code>UNEXPECTED-FAILURE</code></a> because <code>BODY</code> returns
 normally.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">fails <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> 'hey</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">print 'hey</span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">PRINT</a> 'HEY</span>)</span> does not return normally.</span></code></pre>
+  <span class="paren1">(<span class="code">PRINT 'HEY</span>)</span> does not return normally.</span></code></pre>
 
 <p>Note that there is no <code>FAILS-NOT</code> as <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a> fills that role.</p></li>
 </ul>
@@ -2124,10 +2124,10 @@ UNEXPECTED-FAILURE in check:
 the descriptions of the other arguments.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">in-time <span class="paren2">(<span class="code">1</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">sleep</a> 2</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">sleep 2</span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">SLEEP</a> 2</span>)</span> finishes within 1s.
+  <span class="paren1">(<span class="code">SLEEP 2</span>)</span> finishes within 1s.
 Took 2.000s.</span></code></pre>
 
 <p><a href="#x-28TRY-3ARETRY-CHECK-20FUNCTION-29" title="(TRY:RETRY-CHECK FUNCTION)"><code>RETRY-CHECK</code></a> restarts timing.</p></li>
@@ -2162,9 +2162,9 @@ value of the Nth form of <code>BODY</code> evaluated with <code>*</code> bound t
 value. If the number of values exceeds the number of transformation
 forms in <code>BODY</code> then the excess values are returned as is.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">on-values <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 <span class="string">"abc"</span> 7</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">on-values <span class="paren2">(<span class="code">values 1 <span class="string">"abc"</span> 7</span>)</span>
+  <span class="paren2">(<span class="code">1+ *</span>)</span>
+  <span class="paren2">(<span class="code">length *</span>)</span></span>)</span>
 =&gt; 2
 =&gt; 3
 =&gt; 7</span></code></pre>
@@ -2172,9 +2172,9 @@ forms in <code>BODY</code> then the excess values are returned as is.</p>
 <p>If the number of values is less than the number of transformation
 forms, then in later transformation forms <code>*</code> is bound to <code>NIL</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">on-values <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a></span>)</span>
-  <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a>
-  <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">on-values <span class="paren2">(<span class="code">values</span>)</span>
+  *
+  *</span>)</span>
 =&gt; NIL
 =&gt; NIL</span></code></pre>
 
@@ -2182,10 +2182,10 @@ forms, then in later transformation forms <code>*</code> is bound to <code>NIL</
 transformation forms. With <code>:TRUNCATE</code> <code>T</code>, the excess values are
 discarded.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">on-values <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 <span class="string">"abc"</span> 7</span>)</span>
-  <span class="paren2">(<span class="code"><span class="keyword">:truncate</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">on-values <span class="paren2">(<span class="code">values 1 <span class="string">"abc"</span> 7</span>)</span>
+  <span class="paren2">(<span class="code"><span class="keyword">:truncate</span> t</span>)</span>
+  <span class="paren2">(<span class="code">1+ *</span>)</span>
+  <span class="paren2">(<span class="code">length *</span>)</span></span>)</span>
 =&gt; 2
 =&gt; 3</span></code></pre>
 
@@ -2195,12 +2195,12 @@ forms is different, then this function is called to transform the
 list of values. <code>:TRUNCATE</code> is handled before <code>:ON-LENGTH-MISMATCH</code>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">on-values 1
-  <span class="paren2">(<span class="code"><span class="keyword">:on-length-mismatch</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a></span>)</span>
-                         <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_length.htm" class="symbol">length</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a></span>)</span> 1</span>)</span>
-                             <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_append.htm" class="symbol">append</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> '<span class="paren6">(<span class="code"><span class="string">"abc"</span></span>)</span></span>)</span>
-                             <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a></span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span>
-  <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a></span>)</span>
+  <span class="paren2">(<span class="code"><span class="keyword">:on-length-mismatch</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code">values</span>)</span>
+                         <span class="paren4">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">length values</span>)</span> 1</span>)</span>
+                             <span class="paren5">(<span class="code">append values '<span class="paren6">(<span class="code"><span class="string">"abc"</span></span>)</span></span>)</span>
+                             values</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">1+ *</span>)</span>
+  *</span>)</span>
 =&gt; 2
 =&gt; "abc"</span></code></pre>
 
@@ -2219,27 +2219,27 @@ the predicates given by <code>BODY</code>, which are described in <a href="#x-28
 always returns <code>NIL</code>.</p>
 
 <pre><code><span class="code"><span class="comment">;; no values
-</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code">values</span>)</span></span>)</span></span>)</span>
 <span class="comment">;; single value success
 </span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values 1
-      <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 1</span>)</span></span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">= * 1</span>)</span></span>)</span></span>)</span>
 <span class="comment">;; success with different types
-</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 <span class="string">"sdf"</span></span>)</span>
-      <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 1</span>)</span>
-      <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">string=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code">values 1 <span class="string">"sdf"</span></span>)</span>
+      <span class="paren3">(<span class="code">= * 1</span>)</span>
+      <span class="paren3">(<span class="code">string= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span>
 <span class="comment">;; too few values
-</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_not.htm" class="symbol">not</a> <span class="paren3">(<span class="code">match-values 1
-           <span class="paren4">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 1</span>)</span>
-           <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">string=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">not <span class="paren3">(<span class="code">match-values 1
+           <span class="paren4">(<span class="code">= * 1</span>)</span>
+           <span class="paren4">(<span class="code">string= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 <span class="comment">;; too many values
-</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_not.htm" class="symbol">not</a> <span class="paren3">(<span class="code">match-values <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 <span class="string">"sdf"</span> 3</span>)</span>
-           <span class="paren4">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 1</span>)</span>
-           <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">string=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">not <span class="paren3">(<span class="code">match-values <span class="paren4">(<span class="code">values 1 <span class="string">"sdf"</span> 3</span>)</span>
+           <span class="paren4">(<span class="code">= * 1</span>)</span>
+           <span class="paren4">(<span class="code">string= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span></span>)</span>
 <span class="comment">;; too many values, but truncated
-</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 <span class="string">"sdf"</span> 3</span>)</span>
-      <span class="paren3">(<span class="code"><span class="keyword">:truncate</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code">= <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 1</span>)</span>
-      <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_stgeq_.htm" class="symbol">string=</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
+</span><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">match-values <span class="paren3">(<span class="code">values 1 <span class="string">"sdf"</span> 3</span>)</span>
+      <span class="paren3">(<span class="code"><span class="keyword">:truncate</span> t</span>)</span>
+      <span class="paren3">(<span class="code">= * 1</span>)</span>
+      <span class="paren3">(<span class="code">string= * <span class="string">"sdf"</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28TRY-3AMISMATCH-25-20FUNCTION-29'></a></p>
@@ -2249,28 +2249,28 @@ always returns <code>NIL</code>.</p>
 
 <p>Like <code>CL:MISMATCH</code> but <code>CAPTUREs</code> and returns the common prefix and
 the mismatched suffixes. The <code>TEST-NOT</code> argument is deprecated by
-the <code>CLHS</code> and is not supported. In addition, if <code>MAX-PREFIX-LENGTH</code> and
+the CLHS and is not supported. In addition, if <code>MAX-PREFIX-LENGTH</code> and
 <code>MAX-SUFFIX-LENGTH</code> are non-<code>NIL</code>, they must be non-negative integers,
 and they limit the number of elements in the prefix and the
 suffixes.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">null</a> <span class="paren3">(<span class="code">mismatch% '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 2 4 5</span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">null <span class="paren3">(<span class="code">mismatch% '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 2 4 5</span>)</span></span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">NULL</a> #1=<span class="paren3">(<span class="code">MISMATCH% '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 2 4 5</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">NULL #1=<span class="paren3">(<span class="code">MISMATCH% '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 2 4 5</span>)</span></span>)</span></span>)</span></span>)</span>
 where
   COMMON-PREFIX = <span class="paren1">(<span class="code">1 2</span>)</span>
   MISMATCHED-SUFFIX-1 = <span class="paren1">(<span class="code">3</span>)</span>
   MISMATCHED-SUFFIX-2 = <span class="paren1">(<span class="code">4 5</span>)</span>
   #1# = 2</span></code></pre>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">null</a> <span class="paren3">(<span class="code">mismatch% <span class="string">"Hello, World!"</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">null <span class="paren3">(<span class="code">mismatch% <span class="string">"Hello, World!"</span>
                       <span class="string">"Hello,
 World!"</span></span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
   <span class="paren1">(<span class="code">IS
-   <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">NULL</a>
+   <span class="paren2">(<span class="code">NULL
     #1=<span class="paren3">(<span class="code">MISMATCH% <span class="string">"Hello, World!"</span> <span class="string">"Hello,
   World!"</span></span>)</span></span>)</span></span>)</span>
 where
@@ -2291,10 +2291,10 @@ a list of <code>(:INDEX &lt;INDEX&gt; &lt;E1&gt; &lt;E2&gt;)</code> elements, wh
 are elements of <code>SEQUENCE1</code> and <code>SEQUENCE2</code> at <code>&lt;INDEX&gt;</code>, respectively,
 and they may be <code>MISSING</code> if the corresponding sequence is too short.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_endp.htm" class="symbol">endp</a> <span class="paren3">(<span class="code">different-elements '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 b 3 d</span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">is <span class="paren2">(<span class="code">endp <span class="paren3">(<span class="code">different-elements '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 b 3 d</span>)</span></span>)</span></span>)</span></span>)</span>
 
 UNEXPECTED-FAILURE in check:
-  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_endp.htm" class="symbol">ENDP</a> #1=<span class="paren3">(<span class="code">DIFFERENT-ELEMENTS '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 B 3 D</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">ENDP #1=<span class="paren3">(<span class="code">DIFFERENT-ELEMENTS '<span class="paren4">(<span class="code">1 2 3</span>)</span> '<span class="paren4">(<span class="code">1 B 3 D</span>)</span></span>)</span></span>)</span></span>)</span>
 where
   #1# = <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="keyword">:INDEX</span> 1 2 B</span>)</span> <span class="paren2">(<span class="code"><span class="keyword">:INDEX</span> 3 <span class="keyword">:MISSING</span> D</span>)</span></span>)</span></span></code></pre></li>
 </ul>
@@ -2308,10 +2308,10 @@ where
 order and return <code>NIL</code>. This may be useful to prevent writing tests
 that accidentally depend on the order in which subtests are called.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> repeat 3 <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">loop</span></i> repeat 3 do
   <span class="paren2">(<span class="code"><i><span class="symbol">with-shuffling</span></i> <span class="paren3">(<span class="code"></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> 1</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> 2</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">prin1 1</span>)</span>
+    <span class="paren3">(<span class="code">prin1 2</span>)</span></span>)</span></span>)</span>
 .. 122112
 =&gt; NIL</span></code></pre></li>
 </ul>
@@ -2413,7 +2413,7 @@ See <code>DEFUN</code> for a description of <code>NAME</code>, <code>LAMBDA-LIST
 behaviour common with <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a> is described in <a href="#x-28TRY-3A-40TRY-2FTESTS-20MGL-PAX-3ASECTION-29" title="Tests">Tests</a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-test <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_stg.htm" class="symbol">write-string</a> <span class="string">"hey"</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">write-string <span class="string">"hey"</span></span>)</span></span>)</span>
 =&gt; MY-TEST
 
 <span class="paren1">(<span class="code">test-bound-p 'my-test</span>)</span>
@@ -2435,8 +2435,8 @@ supports general function lambda lists. Within a global test,</p>
 </ul>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-test <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> my-test</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_ret_fr.htm" class="symbol"><i><span class="symbol">return-from</span></i></a> my-test <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 2 3</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">prin1 my-test</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">return-from</span></i> my-test <span class="paren3">(<span class="code">values 2 3</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">my-test</span>)</span>
 .. #&lt;TRIAL <span class="paren1">(<span class="code">MY-TEST</span>)</span> RUNNING&gt;
@@ -2495,12 +2495,12 @@ name of the block is <code>TRIAL-VAR</code> if it is a symbol, else it's <code>N
 <p>When both <code>TRIAL-VAR</code> and <code>NAME</code> are specified:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">some-feature <span class="keyword">:name</span> <span class="string">"obscure feature"</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> some-feature</span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_ret_fr.htm" class="symbol"><i><span class="symbol">return-from</span></i></a> some-feature <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 2</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">prin1 some-feature</span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">return-from</span></i> some-feature <span class="paren3">(<span class="code">values 1 2</span>)</span></span>)</span></span>)</span>
 .. #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code"><span class="string">"obscure feature"</span></span>)</span></span>)</span> RUNNING&gt;
 .. obscure feature
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ obscure feature ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code"><span class="string">"obscure feature"</span></span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;
@@ -2510,12 +2510,12 @@ name of the block is <code>TRIAL-VAR</code> if it is a symbol, else it's <code>N
 <p>If only <code>TRIAL-VAR</code> is specified:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">some-feature</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> some-feature</span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_ret_fr.htm" class="symbol"><i><span class="symbol">return-from</span></i></a> some-feature <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 2</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">prin1 some-feature</span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">return-from</span></i> some-feature <span class="paren3">(<span class="code">values 1 2</span>)</span></span>)</span></span>)</span>
 .. #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">SOME-FEATURE</span>)</span></span>)</span> RUNNING&gt;
 .. SOME-FEATURE
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ SOME-FEATURE ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">SOME-FEATURE</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;
@@ -2525,15 +2525,15 @@ name of the block is <code>TRIAL-VAR</code> if it is a symbol, else it's <code>N
 <p>If neither is specified:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> <span class="paren3">(<span class="code">current-trial</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_return.htm" class="symbol">return</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 2</span>)</span></span>)</span></span>)</span>
-.. #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span> RUNNING&gt;
+  <span class="paren2">(<span class="code">prin1 <span class="paren3">(<span class="code">current-trial</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span>
+  <span class="paren2">(<span class="code">return <span class="paren3">(<span class="code">values 1 2</span>)</span></span>)</span></span>)</span>
+.. #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">NIL</span>)</span></span>)</span> RUNNING&gt;
 .. NIL
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ NIL ⋅1
 ..
-==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;
+==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">NIL</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;
 =&gt; 1
 =&gt; 2</span></code></pre>
 
@@ -2541,12 +2541,12 @@ name of the block is <code>TRIAL-VAR</code> if it is a symbol, else it's <code>N
 to specify non-symbols for <code>TRIAL-VAR</code>, one can also write:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code"><span class="string">"Some feature"</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">prin1</a> <span class="paren3">(<span class="code">current-trial</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_return.htm" class="symbol">return</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> 1 2</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">prin1 <span class="paren3">(<span class="code">current-trial</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span>
+  <span class="paren2">(<span class="code">return <span class="paren3">(<span class="code">values 1 2</span>)</span></span>)</span></span>)</span>
 .. #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code"><span class="string">"Some feature"</span></span>)</span></span>)</span> RUNNING&gt;
 .. Some feature
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ Some feature ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code"><span class="string">"Some feature"</span></span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;
@@ -2600,12 +2600,12 @@ each global tests in <code>PACKAGE</code> not run.</p>
 
 <p>This is how Try runs its own tests:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> test <span class="paren2">(<span class="code"></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> test <span class="paren2">(<span class="code"></span>)</span>
   <span class="comment">;; Bind *PACKAGE* so that names of tests printed have package names,
 </span>  <span class="comment">;; and M-. works on them in Slime.
-</span>  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/v_pkg.htm" class="symbol"><span class="special">*package*</span></a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_find_p.htm" class="symbol">find-package</a> <span class="keyword">:common-lisp</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">warn-on-tests-not-run <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_find_p.htm" class="symbol">find-package</a> <span class="keyword">:try</span></span>)</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> <span class="paren5">(<span class="code">try 'test-all
+</span>  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><span class="special">*package*</span> <span class="paren5">(<span class="code">find-package <span class="keyword">:common-lisp</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">warn-on-tests-not-run <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">find-package <span class="keyword">:try</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">print <span class="paren5">(<span class="code">try 'test-all
                   <span class="keyword">:print</span> 'unexpected
                   <span class="keyword">:describe</span> 'unexpected</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
@@ -2620,11 +2620,11 @@ each global tests in <code>PACKAGE</code> not run.</p>
 implicitly by calling a test function:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-test <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">my-test</span>)</span>
 .. MY-TEST
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ MY-TEST ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-TEST</span>)</span> EXPECTED-SUCCESS 0.004s ⋅1&gt;</span></code></pre>
@@ -2632,9 +2632,9 @@ implicitly by calling a test function:</p>
 <p>The situation is similar with a <a href="#x-28TRY-3AWITH-TEST-20MGL-PAX-3AMACRO-29" title="(TRY:WITH-TEST MGL-PAX:MACRO)"><code>WITH-TEST</code></a>:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">my-test</span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 .. MY-TEST
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ MY-TEST ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">MY-TEST</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
@@ -2728,11 +2728,11 @@ of is and other checks) of <a href="#x-28TRY-3AUNEXPECTED-20CONDITION-29" title=
 run by invoking the <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a> function.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-test <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">is t</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code">try 'my-test</span>)</span>
 .. MY-TEST
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ MY-TEST ⋅1
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-TEST</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
@@ -2741,16 +2741,16 @@ run by invoking the <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCT
 extra <a href="#x-28TRY-3ATRIAL-20TYPE-29" title="(TRY:TRIAL TYPE)"><code>TRIAL</code></a> around the execution of the <code>LAMBDA</code> to ensure that all
 <a href="#x-28TRY-3AEVENT-20CONDITION-29" title="(TRY:EVENT CONDITION)"><code>EVENT</code></a>s are signalled within a trial.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren3">(<span class="code"></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code"></span>)</span>
        <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">my-test</span>)</span>
-         <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span></span>)</span></span>)</span>
-.. <span class="paren1">(<span class="code">TRY #&lt;<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_fn.htm" class="symbol"><i><span class="symbol">FUNCTION</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">LAMBDA</span></i></a> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {531FE50B}&gt;</span>)</span>
+         <span class="paren4">(<span class="code">is t</span>)</span></span>)</span></span>)</span></span>)</span>
+.. <span class="paren1">(<span class="code">TRY #&lt;<i><span class="symbol">FUNCTION</span></i> <span class="paren2">(<span class="code"><i><span class="symbol">LAMBDA</span></i> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {531FE50B}&gt;</span>)</span>
 ..   MY-TEST
-..     ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..     ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..   ⋅ MY-TEST ⋅1
-.. ⋅ <span class="paren1">(<span class="code">TRY #&lt;<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_fn.htm" class="symbol"><i><span class="symbol">FUNCTION</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">LAMBDA</span></i></a> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {531FE50B}&gt;</span>)</span> ⋅1
+.. ⋅ <span class="paren1">(<span class="code">TRY #&lt;<i><span class="symbol">FUNCTION</span></i> <span class="paren2">(<span class="code"><i><span class="symbol">LAMBDA</span></i> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {531FE50B}&gt;</span>)</span> ⋅1
 ..
-==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">TRY #&lt;<a href="http://www.lispworks.com/reference/HyperSpec/Body/a_fn.htm" class="symbol"><i><span class="symbol">FUNCTION</span></i></a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">LAMBDA</span></i></a> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {531FE50B}&gt;</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
+==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">TRY #&lt;<i><span class="symbol">FUNCTION</span></i> <span class="paren2">(<span class="code"><i><span class="symbol">LAMBDA</span></i> <span class="paren3">(<span class="code"></span>)</span></span>)</span> {531FE50B}&gt;</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
 
 <p>Invoking tests with an explicit <code>TRY</code> is very similar to just calling
 the test functions directly (see <a href="#x-28TRY-3A-40TRY-2FIMPLICIT-TRY-20MGL-PAX-3ASECTION-29" title="Calling Test Functions">Calling Test Functions</a>). The differences
@@ -2986,7 +2986,7 @@ are infinite recursions:</p>
   <span class="paren2">(<span class="code">try recurse</span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren2">(<span class="code">recurse</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_funcal.htm" class="symbol">funcall</a> recurse</span>)</span></span>)</span></span></code></pre>
+  <span class="paren2">(<span class="code">funcall recurse</span>)</span></span>)</span></span></code></pre>
 
 <p><a id='x-28TRY-3A-40TRY-2FPRINT-20MGL-PAX-3ASECTION-29'></a></p>
 
@@ -3019,32 +3019,32 @@ tree-like structure, with each internal node corresponding to a
 
 <p>The following example prints all <a href="#x-28TRY-3A-40TRY-2FCONCRETE-EVENTS-20MGL-PAX-3ASECTION-29" title="Concrete Events">Concrete Events</a>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print*</span> '<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_not.htm" class="symbol">not</a> trial-start</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print*</span> '<span class="paren4">(<span class="code">not trial-start</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">verdict-abort*</span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">expected-verdict-success</span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-expected-outcome</span></i> <span class="paren4">(<span class="code">'failure</span>)</span>
       <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">unexpected-verdict-success</span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> verdict success</span>)</span> #'force-expected-failure</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">handler-bind <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code">and verdict success</span>)</span> #'force-expected-failure</span>)</span></span>)</span>
       <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">expected-verdict-failure</span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> verdict success</span>)</span> #'force-unexpected-failure</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">handler-bind <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code">and verdict success</span>)</span> #'force-unexpected-failure</span>)</span></span>)</span>
       <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">unexpected-verdict-failure</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">verdict-skip</span>)</span>
       <span class="paren4">(<span class="code">skip-trial</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"EXPECTED-RESULT-SUCCESS"</span></span>)</span>
+    <span class="paren3">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"EXPECTED-RESULT-SUCCESS"</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-failure-expected</span></i> <span class="paren4">(<span class="code">'failure</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"UNEXPECTED-RESULT-SUCCESS"</span></span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="string">"EXPECTED-RESULT-FAILURE"</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="string">"UNEXPECTED-RESULT-FAILURE"</span></span>)</span>
+      <span class="paren4">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"UNEXPECTED-RESULT-SUCCESS"</span></span>)</span>
+      <span class="paren4">(<span class="code">is nil <span class="keyword">:msg</span> <span class="string">"EXPECTED-RESULT-FAILURE"</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is nil <span class="keyword">:msg</span> <span class="string">"UNEXPECTED-RESULT-FAILURE"</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-skip</span></i> <span class="paren4">(<span class="code"></span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a> <span class="keyword">:msg</span> <span class="string">"RESULT-SKIP"</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_handle.htm" class="symbol">handler-bind</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_and.htm" class="symbol">and</a> result success</span>)</span> #'abort-check</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"RESULT-ABORT*"</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_catch.htm" class="symbol"><i><span class="symbol">catch</span></i></a> 'foo
+      <span class="paren4">(<span class="code">is nil <span class="keyword">:msg</span> <span class="string">"RESULT-SKIP"</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">handler-bind <span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="paren6">(<span class="code">and result success</span>)</span> #'abort-check</span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"RESULT-ABORT*"</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">catch</span></i> 'foo
       <span class="paren4">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren5">(<span class="code">nlx-test</span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_throw.htm" class="symbol"><i><span class="symbol">throw</span></i></a> 'foo <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"UNHANDLED-ERROR"</span></span>)</span></span>)</span></span>)</span>
+        <span class="paren5">(<span class="code"><i><span class="symbol">throw</span></i> 'foo nil</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">error <span class="string">"UNHANDLED-ERROR"</span></span>)</span></span>)</span></span>)</span>
 .. VERDICT-ABORT*                       <span class="comment">; TRIAL-START
 </span>..   ⋅ EXPECTED-VERDICT-SUCCESS
 ..   ⊡ UNEXPECTED-VERDICT-SUCCESS
@@ -3060,7 +3060,7 @@ tree-like structure, with each internal node corresponding to a
 ..   NLX-TEST                           <span class="comment">; TRIAL-START
 </span>..     ⊟ non-local exit                 <span class="comment">; NLX
 </span>..   ⊟ NLX-TEST ⊟1                      <span class="comment">; VERDICT-ABORT*
-</span>..   ⊟ "UNHANDLED-ERROR" <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/e_smp_er.htm" class="symbol">SIMPLE-ERROR</a></span>)</span>
+</span>..   ⊟ "UNHANDLED-ERROR" <span class="paren1">(<span class="code">SIMPLE-ERROR</span>)</span>
 .. ⊟ VERDICT-ABORT* ⊟3 ⊠1 -1 ×1 ⋅2
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">VERDICT-ABORT*</span>)</span></span>)</span> ABORT* 0.004s ⊟3 ⊠1 ⊡1 -1 ×1 ⋅1&gt;</span></code></pre>
@@ -3078,37 +3078,37 @@ with their markers.</p></li>
 <code>*PRINT-PARENT*</code>, the trial is printed as if its <a href="#x-28TRY-3ATRIAL-START-20CONDITION-29" title="(TRY:TRIAL-START CONDITION)"><code>TRIAL-START</code></a> matched
 the <code>PRINT</code> argument of <a href="#x-28TRY-3ATRY-20FUNCTION-29" title="(TRY:TRY FUNCTION)"><code>TRY</code></a>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> t</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">t0</span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is t</span>)</span>
+    <span class="paren3">(<span class="code">is t</span>)</span></span>)</span></span>)</span>
 .. T0
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 .. ⋅ T0 ⋅2
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T0</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅2&gt;</span></code></pre>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">t0</span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span></span>)</span>
-.. ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
-.. ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+    <span class="paren3">(<span class="code">is t</span>)</span>
+    <span class="paren3">(<span class="code">is t</span>)</span></span>)</span></span>)</span>
+.. ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
+.. ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">T0</span>)</span></span>)</span> EXPECTED-SUCCESS 0.000s ⋅2&gt;</span></code></pre>
 
 <p><code>*PRINT-PARENT*</code> <code>NIL</code> combined with printing <a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>s results in a flat
  output:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> '<span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_or.htm" class="symbol">or</a> leaf verdict</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> '<span class="paren4">(<span class="code">or leaf verdict</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">outer</span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">inner</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"inner-t"</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a> <span class="keyword">:msg</span> <span class="string">"outer-t"</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"inner-t"</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is t <span class="keyword">:msg</span> <span class="string">"outer-t"</span></span>)</span></span>)</span></span>)</span>
 .. ⋅ inner-t
 .. ⋅ INNER ⋅1
 .. ⋅ outer-t
@@ -3133,17 +3133,17 @@ of its children.</p></li>
 
 <p>If true, the number of seconds spent during execution is printed.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-duration*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-duration*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">timed</span>)</span>
-    <span class="paren3">(<span class="code">is <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progn.htm" class="symbol"><i><span class="symbol">progn</span></i></a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">sleep</a> 0.3</span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progn.htm" class="symbol"><i><span class="symbol">progn</span></i></a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">sleep</a> 0.2</span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is <span class="paren4">(<span class="code"><i><span class="symbol">progn</span></i> <span class="paren5">(<span class="code">sleep 0.3</span>)</span> t</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is <span class="paren4">(<span class="code"><i><span class="symbol">progn</span></i> <span class="paren5">(<span class="code">sleep 0.2</span>)</span> t</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span></span>)</span>
 ..        TIMED
-..  0.300   ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progn.htm" class="symbol"><i><span class="symbol">PROGN</span></i></a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">SLEEP</a> 0.3</span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span></span>)</span>
-..  0.200   ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_progn.htm" class="symbol"><i><span class="symbol">PROGN</span></i></a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_sleep.htm" class="symbol">SLEEP</a> 0.2</span>)</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span></span>)</span>
-..          ⊟ ""xxx <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/e_smp_er.htm" class="symbol">SIMPLE-ERROR</a></span>)</span>
+..  0.300   ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><i><span class="symbol">PROGN</span></i> <span class="paren3">(<span class="code">SLEEP 0.3</span>)</span> T</span>)</span></span>)</span>
+..  0.200   ⋅ <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code"><i><span class="symbol">PROGN</span></i> <span class="paren3">(<span class="code">SLEEP 0.2</span>)</span> T</span>)</span></span>)</span>
+..          ⊟ ""xxx <span class="paren1">(<span class="code">SIMPLE-ERROR</span>)</span>
 ..  0.504 ⊟ TIMED ⊟1 ⋅2
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">TIMED</span>)</span></span>)</span> ABORT* 0.504s ⊟1 ⋅2&gt;</span></code></pre>
@@ -3167,16 +3167,16 @@ verbosely. <a href="#x-28TRY-3ALEAF-20CONDITION-29" title="(TRY:LEAF CONDITION)"
 <a href="#x-28TRY-3AVERDICT-20CONDITION-29" title="(TRY:VERDICT CONDITION)"><code>VERDICT</code></a>s of trials without printed child trials are printed with <code>=&gt;
 &lt;MARKER&gt;</code> (see <a href="#x-28TRY-3A-2ACATEGORIES-2A-20-28VARIABLE-20-22--20see-20above-20--22-29-29" title="(TRY:*CATEGORIES* (VARIABLE \&quot;- see above -\&quot;))"><code>*CATEGORIES*</code></a>).</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-compactly*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-compactly*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">outer</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> repeat 10 <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">loop</span></i> repeat 10 do <span class="paren4">(<span class="code">is t</span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">inner</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_error.htm" class="symbol">error</a> <span class="string">"xxx"</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> repeat 10 <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is t</span>)</span>
+      <span class="paren4">(<span class="code">is nil</span>)</span>
+      <span class="paren4">(<span class="code">error <span class="string">"xxx"</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">loop</span></i> repeat 10 do <span class="paren4">(<span class="code">is t</span>)</span></span>)</span></span>)</span></span>)</span>
 .. OUTER ⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅
 ..   INNER ⋅⊠⊟ =&gt; ⊟
 ..   ⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅
@@ -3200,19 +3200,19 @@ has finished. The following example only prints <a href="#x-28TRY-3ALEAF-20CONDI
 <a href="#x-28TRY-3A-2APRINT-COMPACTLY-2A-20VARIABLE-29" title="(TRY:*PRINT-COMPACTLY* VARIABLE)"><code>*PRINT-COMPACTLY*</code></a>), deferring description of events matching
 <a href="#x-28TRY-3A-2ADESCRIBE-2A-20VARIABLE-29" title="(TRY:*DESCRIBE* VARIABLE)"><code>*DESCRIBE*</code></a> until the end.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print-compactly*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*defer-describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print*</span> 'leaf</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print-parent*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print-compactly*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*defer-describe*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">outer</span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> repeat 10 <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">loop</span></i> repeat 10 do <span class="paren4">(<span class="code">is t</span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">inner</span>)</span>
-      <span class="paren4">(<span class="code">is <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 7</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">1+ 5</span>)</span> 7</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 .. ⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⊠
 ..
 .. <span class="comment">;; UNEXPECTED-RESULT-FAILURE (⊠) in OUTER INNER:
-</span>.. <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> 5</span>)</span> 7</span>)</span></span>)</span>
+</span>.. <span class="paren1">(<span class="code">IS <span class="paren2">(<span class="code">= #1=<span class="paren3">(<span class="code">1+ 5</span>)</span> 7</span>)</span></span>)</span>
 .. where
 ..   #1# = 6
 ..
@@ -3237,18 +3237,18 @@ default values, then only <a href="#x-28TRY-3ALEAF-20CONDITION-29" title="(TRY:L
 separate counters for <a href="#x-28TRY-3AABORT-2A-20CONDITION-29" title="(TRY:ABORT* CONDITION)"><code>ABORT*</code></a>, <a href="#x-28TRY-3AUNEXPECTED-FAILURE-20TYPE-29" title="(TRY:UNEXPECTED-FAILURE TYPE)"><code>UNEXPECTED-FAILURE</code></a>,
 <a href="#x-28TRY-3AUNEXPECTED-SUCCESS-20TYPE-29" title="(TRY:UNEXPECTED-SUCCESS TYPE)"><code>UNEXPECTED-SUCCESS</code></a>, <a href="#x-28TRY-3ASKIP-20CONDITION-29" title="(TRY:SKIP CONDITION)"><code>SKIP</code></a>, <a href="#x-28TRY-3AEXPECTED-FAILURE-20TYPE-29" title="(TRY:EXPECTED-FAILURE TYPE)"><code>EXPECTED-FAILURE</code></a>, and <a href="#x-28TRY-3AEXPECTED-SUCCESS-20TYPE-29" title="(TRY:EXPECTED-SUCCESS TYPE)"><code>EXPECTED-SUCCESS</code></a>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren3">(<span class="code">outer</span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">inner</span>)</span>
-      <span class="paren4">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-    <span class="paren3">(<span class="code">is <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">is t</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">is t</span>)</span>
+    <span class="paren3">(<span class="code">is nil</span>)</span></span>)</span></span>)</span>
 .. OUTER
 ..   INNER
-..     ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
+..     ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
 ..   ⋅ INNER ⋅1
-..   ⋅ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">T</a></span>)</span>
-..   ⊠ <span class="paren1">(<span class="code">IS <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">NIL</a></span>)</span>
+..   ⋅ <span class="paren1">(<span class="code">IS T</span>)</span>
+..   ⊠ <span class="paren1">(<span class="code">IS NIL</span>)</span>
 .. ⊠ OUTER ⊠1 ⋅2
 ..
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">OUTER</span>)</span></span>)</span> UNEXPECTED-FAILURE 0.000s ⊠1 ⋅2&gt;</span></code></pre>
@@ -3363,9 +3363,9 @@ events:</p>
 <p>Or we could tell the printer to just print markers for <code>*CATEGORIES*</code>
 and <code>:DESCRIBE</code> at the end:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-parent*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_nil.htm" class="symbol">nil</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*print-compactly*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-      <span class="paren3">(<span class="code"><span class="special">*defer-describe*</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*print-parent*</span> nil</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*print-compactly*</span> t</span>)</span>
+      <span class="paren3">(<span class="code"><span class="special">*defer-describe*</span> t</span>)</span>
       <span class="paren3">(<span class="code"><span class="special">*categories*</span> <span class="paren4">(<span class="code">ascii-std-categories</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">replay-events !</span>)</span></span>)</span>
 .. ................F................!.....
@@ -3447,11 +3447,11 @@ initiated in, and exits from an <code>UNWIND-PROTECT</code> cleanup form, then
 this second nlx is said to have cancelled the first, and the first
 nlx will not continue.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_catch.htm" class="symbol"><i><span class="symbol">catch</span></i></a> 'foo
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_catch.htm" class="symbol"><i><span class="symbol">catch</span></i></a> 'bar
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_unwind.htm" class="symbol"><i><span class="symbol">unwind-protect</span></i></a>
-         <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_throw.htm" class="symbol"><i><span class="symbol">throw</span></i></a> 'foo 'foo</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_throw.htm" class="symbol"><i><span class="symbol">throw</span></i></a> 'bar 'bar</span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">catch</span></i> 'foo
+  <span class="paren2">(<span class="code"><i><span class="symbol">catch</span></i> 'bar
+    <span class="paren3">(<span class="code"><i><span class="symbol">unwind-protect</span></i>
+         <span class="paren4">(<span class="code"><i><span class="symbol">throw</span></i> 'foo 'foo</span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">throw</span></i> 'bar 'bar</span>)</span></span>)</span></span>)</span></span>)</span>
 =&gt; BAR</span></code></pre></li>
 </ul>
   </div>

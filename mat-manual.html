@@ -199,10 +199,10 @@ to <code>:DOUBLE</code>.</p>
 
 <p>Individual elements can be accessed or set with <a href="#x-28MGL-MAT-3AMREF-20FUNCTION-29" title="(MGL-MAT:MREF FUNCTION)"><code>MREF</code></a>:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">m <span class="paren4">(<span class="code">make-mat '<span class="paren5">(<span class="code">2 3</span>)</span></span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren3">(<span class="code">mref m 0 0</span>)</span> 1</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren3">(<span class="code">mref m 0 1</span>)</span> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> 2 <span class="paren4">(<span class="code">mref m 0 0</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_incf_.htm" class="symbol">incf</a> <span class="paren3">(<span class="code">mref m 0 2</span>)</span> 4</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">m <span class="paren4">(<span class="code">make-mat '<span class="paren5">(<span class="code">2 3</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">setf <span class="paren3">(<span class="code">mref m 0 0</span>)</span> 1</span>)</span>
+  <span class="paren2">(<span class="code">setf <span class="paren3">(<span class="code">mref m 0 1</span>)</span> <span class="paren3">(<span class="code">* 2 <span class="paren4">(<span class="code">mref m 0 0</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">incf <span class="paren3">(<span class="code">mref m 0 2</span>)</span> 4</span>)</span>
   m</span>)</span>
 ==&gt; #&lt;MAT 2x3 AB #2A<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">1.0d0 2.0d0 4.0d0</span>)</span> <span class="paren2">(<span class="code">0.0d0 0.0d0 0.0d0</span>)</span></span>)</span>&gt;</span></code></pre>
 
@@ -210,7 +210,7 @@ to <code>:DOUBLE</code>.</p>
 used sparingly. Instead, typical code relies much more on matrix
 level operations:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">princ</a> <span class="paren2">(<span class="code">scal! 2 <span class="paren3">(<span class="code">fill! 3 <span class="paren4">(<span class="code">make-mat 4</span>)</span></span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">princ <span class="paren2">(<span class="code">scal! 2 <span class="paren3">(<span class="code">fill! 3 <span class="paren4">(<span class="code">make-mat 4</span>)</span></span>)</span></span>)</span></span>)</span>
 .. #&lt;MAT 4 BF #<span class="paren1">(<span class="code">6.0d0 6.0d0 6.0d0 6.0d0</span>)</span>&gt;
 ==&gt; #&lt;MAT 4 ABF #<span class="paren1">(<span class="code">6.0d0 6.0d0 6.0d0 6.0d0</span>)</span>&gt;</span></code></pre>
 
@@ -232,7 +232,7 @@ for the <a href="#x-28MGL-MAT-3ACUDA-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(M
 CUDA-capable GPU, CUDA can be enabled with <a href="#x-28MGL-MAT-3AWITH-CUDA-2A-20MGL-PAX-3AMACRO-29" title="(MGL-MAT:WITH-CUDA* MGL-PAX:MACRO)"><code>WITH-CUDA*</code></a>:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-cuda*</span></i> <span class="paren2">(<span class="code"></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">princ</a> <span class="paren3">(<span class="code">scal! 2 <span class="paren4">(<span class="code">fill! 3 <span class="paren5">(<span class="code">make-mat 4</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">princ <span class="paren3">(<span class="code">scal! 2 <span class="paren4">(<span class="code">fill! 3 <span class="paren5">(<span class="code">make-mat 4</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 .. #&lt;MAT 4 C #<span class="paren1">(<span class="code">6.0d0 6.0d0 6.0d0 6.0d0</span>)</span>&gt;
 ==&gt; #&lt;MAT 4 A #<span class="paren1">(<span class="code">6.0d0 6.0d0 6.0d0 6.0d0</span>)</span>&gt;</span></code></pre>
 
@@ -248,11 +248,11 @@ accessing one of the facets directly, as in the following example:</p>
 
 <p><a id='x-28MGL-MAT-3A-3ALOG-DET-EXAMPLE-20-28MGL-PAX-3AINCLUDE-20-28-3ASTART-20-28MGL-MAT-3ALOGDET-20FUNCTION-29-20-3AEND-20-28MGL-MAT-3A-3AEND-OF-LOGDET-EXAMPLE-20VARIABLE-29-29-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29'></a></p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defun.htm" class="symbol"><i><span class="symbol">defun</span></i></a> logdet <span class="paren2">(<span class="code">mat</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> logdet <span class="paren2">(<span class="code">mat</span>)</span>
   <span class="string">"Logarithm of the determinant of MAT. Return -1, 1 or 0 (or
   equivalent) to correct for the sign, as the second value."</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/t_array.htm" class="symbol">array</a> <span class="paren5">(<span class="code">mat '<a href="http://www.lispworks.com/reference/HyperSpec/Body/t_array.htm" class="symbol">array</a> <span class="keyword">:direction</span> <span class="keyword">:input</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code">lla:logdet <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_array.htm" class="symbol">array</a></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">array <span class="paren5">(<span class="code">mat 'array <span class="keyword">:direction</span> <span class="keyword">:input</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">lla:logdet array</span>)</span></span>)</span></span>)</span>
 </span></code></pre>
 
 <p>Notice that <a href="#x-28MGL-MAT-3ALOGDET-20FUNCTION-29" title="(MGL-MAT:LOGDET FUNCTION)"><code>LOGDET</code></a> doesn't know about CUDA at all. <a href="cube-manual.html#x-28MGL-CUBE-3AWITH-FACETS-20MGL-PAX-3AMACRO-29" title="(MGL-CUBE:WITH-FACETS MGL-PAX:MACRO)"><code>WITH-FACETS</code></a>
@@ -550,10 +550,10 @@ its <code>DISPLACED-TO</code> argument whose semantics are similar to that of
 <code>MAKE-ARRAY</code> in that the displacement is <em>relative</em> to the
 displacement of <code>DISPLACED-TO</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let*</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">base <span class="paren4">(<span class="code">make-mat 10 <span class="keyword">:initial-element</span> 5 <span class="keyword">:displacement</span> 1</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">base <span class="paren4">(<span class="code">make-mat 10 <span class="keyword">:initial-element</span> 5 <span class="keyword">:displacement</span> 1</span>)</span></span>)</span>
        <span class="paren3">(<span class="code">mat <span class="paren4">(<span class="code">make-mat 6 <span class="keyword">:displaced-to</span> base <span class="keyword">:displacement</span> 2</span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">fill! 1 mat</span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_values.htm" class="symbol">values</a> base mat</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">values base mat</span>)</span></span>)</span>
 ==&gt; #&lt;MAT 1+10+0 A #<span class="paren1">(<span class="code">5.0d0 5.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 5.0d0
 --&gt;                  5.0d0</span>)</span>&gt;
 ==&gt; #&lt;MAT 3+6+2 AB #<span class="paren1">(<span class="code">1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0</span>)</span>&gt;</span></code></pre>
@@ -718,7 +718,7 @@ supported. All dimensions except for <code>AXIS</code> must be the same for all
 
 <p>Like <a href="#x-28MGL-MAT-3ASTACK-21-20FUNCTION-29" title="(MGL-MAT:STACK! FUNCTION)"><code>STACK!</code></a> but return a new <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>MAT</code></a> of <code>CTYPE</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">stack 1 <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="paren3">(<span class="code">make-mat '<span class="paren4">(<span class="code">3 2</span>)</span> <span class="keyword">:initial-element</span> 0</span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">stack 1 <span class="paren2">(<span class="code">list <span class="paren3">(<span class="code">make-mat '<span class="paren4">(<span class="code">3 2</span>)</span> <span class="keyword">:initial-element</span> 0</span>)</span>
                <span class="paren3">(<span class="code">make-mat '<span class="paren4">(<span class="code">3 1</span>)</span> <span class="keyword">:initial-element</span> 1</span>)</span></span>)</span></span>)</span>
 ==&gt; #&lt;MAT 3x3 B #2A<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0.0d0 0.0d0 1.0d0</span>)</span>
 --&gt;                 <span class="paren2">(<span class="code">0.0d0 0.0d0 1.0d0</span>)</span>
@@ -1326,7 +1326,7 @@ overlap.</p>
 calculate dimensions and the element of <code>MATS</code> that was passed to <code>KEY</code>
 is passed to <code>FN</code>, too.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code">map-concat #'copy! <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="paren3">(<span class="code">make-mat 2</span>)</span> <span class="paren3">(<span class="code">make-mat 4 <span class="keyword">:initial-element</span> 1</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code">map-concat #'copy! <span class="paren2">(<span class="code">list <span class="paren3">(<span class="code">make-mat 2</span>)</span> <span class="paren3">(<span class="code">make-mat 4 <span class="keyword">:initial-element</span> 1</span>)</span></span>)</span>
             <span class="paren2">(<span class="code">make-mat '<span class="paren3">(<span class="code">2 3</span>)</span></span>)</span></span>)</span>
 ==&gt; #&lt;MAT 2x3 AB #2A<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0.0d0 0.0d0 1.0d0</span>)</span> <span class="paren2">(<span class="code">1.0d0 1.0d0 1.0d0</span>)</span></span>)</span>&gt;</span></code></pre></li>
 </ul>
@@ -1341,11 +1341,11 @@ is passed to <code>FN</code>, too.</p>
 iteration while there are enough elements left for <code>DIMENSIONS</code> at the
 current displacement. Returns <code>MAT</code>.</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">mat <span class="paren4">(<span class="code">make-mat 14 <span class="keyword">:initial-contents</span> '<span class="paren5">(<span class="code">-1 0 1 2 3
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">mat <span class="paren4">(<span class="code">make-mat 14 <span class="keyword">:initial-contents</span> '<span class="paren5">(<span class="code">-1 0 1 2 3
                                             4 5 6 7
                                             8 9 10 11 12</span>)</span></span>)</span></span>)</span></span>)</span>
   <span class="paren2">(<span class="code">reshape-and-displace! mat '<span class="paren3">(<span class="code">4 3</span>)</span> 1</span>)</span>
-  <span class="paren2">(<span class="code">map-displacements #'<a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> mat 4</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">map-displacements #'print mat 4</span>)</span></span>)</span>
 ..
 .. #&lt;MAT 1+4+9 B #<span class="paren1">(<span class="code">0.0d0 1.0d0 2.0d0 3.0d0</span>)</span>&gt; 
 .. #&lt;MAT 5+4+5 B #<span class="paren1">(<span class="code">4.0d0 5.0d0 6.0d0 7.0d0</span>)</span>&gt; 
@@ -1596,10 +1596,10 @@ dynamic scope of <code>WITH-FACETS</code>.</p>
 <p>For example, to implement the <a href="#x-28MGL-MAT-3AFILL-21-20FUNCTION-29" title="(MGL-MAT:FILL! FUNCTION)"><code>FILL!</code></a> operation using only the
 <a href="#x-28MGL-MAT-3ABACKING-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME)"><code>BACKING-ARRAY</code></a>, one could do this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">displacement <span class="paren4">(<span class="code">mat-displacement x</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">displacement <span class="paren4">(<span class="code">mat-displacement x</span>)</span></span>)</span>
       <span class="paren3">(<span class="code">size <span class="paren4">(<span class="code">mat-size x</span>)</span></span>)</span></span>)</span>
  <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x* <span class="paren5">(<span class="code">x 'backing-array <span class="keyword">:direction</span> <span class="keyword">:output</span></span>)</span></span>)</span></span>)</span>
-   <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_fill.htm" class="symbol">fill</a> x* 1 <span class="keyword">:start</span> displacement <span class="keyword">:end</span> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> displacement size</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+   <span class="paren3">(<span class="code">fill x* 1 <span class="keyword">:start</span> displacement <span class="keyword">:end</span> <span class="paren4">(<span class="code">+ displacement size</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p><a href="cube-manual.html#x-28MGL-CUBE-3ADIRECTION-20TYPE-29" title="(MGL-CUBE:DIRECTION TYPE)"><code>DIRECTION</code></a> is <code>:OUTPUT</code> because we clobber all values in <code>X</code>. Armed
 with this knowledge about the direction, <code>WITH-FACETS</code> will not copy
@@ -1607,11 +1607,11 @@ data from another facet if the backing array is not up-to-date.</p>
 
 <p>To transpose a 2d matrix with the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(ARRAY MGL-CUBE:FACET-NAME)"><code>ARRAY</code></a> facet:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_destru.htm" class="symbol">destructuring-bind</a> <span class="paren2">(<span class="code">n-rows n-columns</span>)</span> <span class="paren2">(<span class="code">mat-dimensions x</span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x* <span class="paren5">(<span class="code">x '<a href="http://www.lispworks.com/reference/HyperSpec/Body/t_array.htm" class="symbol">array</a> <span class="keyword">:direction</span> <span class="keyword">:io</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_dotime.htm" class="symbol">dotimes</a> <span class="paren4">(<span class="code">row n-rows</span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_dotime.htm" class="symbol">dotimes</a> <span class="paren5">(<span class="code">column n-columns</span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_setf.htm" class="symbol">setf</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x* row column</span>)</span> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x* column row</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">destructuring-bind <span class="paren2">(<span class="code">n-rows n-columns</span>)</span> <span class="paren2">(<span class="code">mat-dimensions x</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x* <span class="paren5">(<span class="code">x 'array <span class="keyword">:direction</span> <span class="keyword">:io</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">dotimes <span class="paren4">(<span class="code">row n-rows</span>)</span>
+      <span class="paren4">(<span class="code">dotimes <span class="paren5">(<span class="code">column n-columns</span>)</span>
+        <span class="paren5">(<span class="code">setf <span class="paren6">(<span class="code">aref x* row column</span>)</span> <span class="paren6">(<span class="code">aref x* column row</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Note that <code>DIRECTION</code> is <code>:IO</code>, because we need the data in this facet
 to be up-to-date (that's the input part) and we are invalidating all
@@ -1620,11 +1620,11 @@ other facets by changing values (that's the output part).</p>
 <p>To sum the values of a matrix using the <a href="#x-28MGL-MAT-3AFOREIGN-ARRAY-20MGL-CUBE-3AFACET-NAME-29" title="(MGL-MAT:FOREIGN-ARRAY MGL-CUBE:FACET-NAME)"><code>FOREIGN-ARRAY</code></a>
 facet:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">sum 0</span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">sum 0</span>)</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-facets</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">x* <span class="paren5">(<span class="code">x 'foreign-array <span class="keyword">:direction</span> <span class="keyword">:input</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">pointer <span class="paren6">(<span class="code">offset-pointer x*</span>)</span></span>)</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> for index below <span class="paren5">(<span class="code">mat-size x</span>)</span>
-            <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_incf_.htm" class="symbol">incf</a> sum <span class="paren6">(<span class="code">cffi:mem-aref pointer <span class="paren1">(<span class="code">mat-ctype x</span>)</span> index</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">pointer <span class="paren6">(<span class="code">offset-pointer x*</span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">loop</span></i> for index below <span class="paren5">(<span class="code">mat-size x</span>)</span>
+            do <span class="paren5">(<span class="code">incf sum <span class="paren6">(<span class="code">cffi:mem-aref pointer <span class="paren1">(<span class="code">mat-ctype x</span>)</span> index</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
   sum</span>)</span></span></code></pre>
 
 <p>See <code>DIRECTION</code> for a complete description of <code>:INPUT</code>, <code>:OUTPUT</code> and <code>:IO</code>.
@@ -1899,7 +1899,7 @@ host-&gt;device copies: 154,102,488, device-&gt;host copies: 117,136,434</span><
 
 <p>The same data presented with <code>VERBOSE</code> false:</p>
 
-<pre><code><span class="code">d: 450 <span class="paren1">(<span class="code">3,386,295,808 <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> 1,816,657,920</span>)</span>, h: 14640 <span class="paren1">(<span class="code">17,380,147,200</span>)</span>
+<pre><code><span class="code">d: 450 <span class="paren1">(<span class="code">3,386,295,808 + 1,816,657,920</span>)</span>, h: 14640 <span class="paren1">(<span class="code">17,380,147,200</span>)</span>
 h-&gt;d: 154,102,488, d-&gt;h: 117,136,434</span></code></pre></li>
 </ul>
 
@@ -1978,10 +1978,10 @@ It knows how to deal with <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MA
 function for multiple <code>CTYPES</code>. Example:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">define-lisp-kernel</span></i> <span class="paren2">(<span class="code">lisp-.+!</span>)</span>
-    <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">alpha <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_short_.htm" class="symbol">single-float</a></span>)</span> <span class="paren3">(<span class="code">x <span class="keyword">:mat</span> <span class="keyword">:input</span></span>)</span> <span class="paren3">(<span class="code">start-x index</span>)</span> <span class="paren3">(<span class="code">n index</span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_loop.htm" class="symbol"><i><span class="symbol">loop</span></i></a> for xi of-type index upfrom start-x
-          below <span class="paren3">(<span class="code">the! index <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> start-x n</span>)</span></span>)</span>
-        <a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_incf_.htm" class="symbol">incf</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x xi</span>)</span> alpha</span>)</span></span>)</span></span>)</span></span></code></pre>
+    <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">alpha single-float</span>)</span> <span class="paren3">(<span class="code">x <span class="keyword">:mat</span> <span class="keyword">:input</span></span>)</span> <span class="paren3">(<span class="code">start-x index</span>)</span> <span class="paren3">(<span class="code">n index</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">loop</span></i> for xi of-type index upfrom start-x
+          below <span class="paren3">(<span class="code">the! index <span class="paren4">(<span class="code">+ start-x n</span>)</span></span>)</span>
+        do <span class="paren3">(<span class="code">incf <span class="paren4">(<span class="code">aref x xi</span>)</span> alpha</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Parameters are either of the form <code>(&lt;NAME&gt; &lt;LISP-TYPE)</code>
 or <code>(&lt;NAME&gt; :MAT &lt;DIRECTION&gt;)</code>. In the latter case, the appropriate
@@ -2044,11 +2044,11 @@ means that the kernel must be able handle any number of elements in
 each thread. For example, a strided kernel that adds a constant to
 each element of a length <code>N</code> vector looks like this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">stride <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x grid-dim-x</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">i <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span>
-          <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> i stride</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">stride <span class="paren4">(<span class="code">* block-dim-x grid-dim-x</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">do <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">i <span class="paren5">(<span class="code">+ <span class="paren6">(<span class="code">* block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span>
+          <span class="paren5">(<span class="code">+ i stride</span>)</span></span>)</span></span>)</span>
       <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">&gt;= i n</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_set.htm" class="symbol">set</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> alpha</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+    <span class="paren3">(<span class="code">set <span class="paren4">(<span class="code">aref x i</span>)</span> <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">aref x i</span>)</span> alpha</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>It is often the most efficient to have <code>MAX-N-WARPS-PER-BLOCK</code> around
 4. Note that the maximum number of threads per block is limited by
@@ -2076,17 +2076,17 @@ Currently - but this may change - the <code>BLOCK-DIM-X</code> is always
 elements in each thread. For example, a strided kernel that adds a
 constant to each element of a HEIGHT*WIDTH matrix looks like this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">id-x <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">id-y <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-y block-idx-y</span>)</span> thread-idx-y</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">stride-x <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x grid-dim-x</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">stride-y <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-y grid-dim-y</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">row id-y <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> row stride-y</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">id-x <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">* block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">id-y <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">* block-dim-y block-idx-y</span>)</span> thread-idx-y</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">stride-x <span class="paren4">(<span class="code">* block-dim-x grid-dim-x</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">stride-y <span class="paren4">(<span class="code">* block-dim-y grid-dim-y</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">do <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">row id-y <span class="paren5">(<span class="code">+ row stride-y</span>)</span></span>)</span></span>)</span>
       <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">&gt;= row height</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">i <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> row width</span>)</span></span>)</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">column id-x <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> column stride-x</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">i <span class="paren6">(<span class="code">* row width</span>)</span></span>)</span></span>)</span>
+      <span class="paren4">(<span class="code">do <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">column id-x <span class="paren1">(<span class="code">+ column stride-x</span>)</span></span>)</span></span>)</span>
           <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">&gt;= column width</span>)</span></span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_set.htm" class="symbol">set</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> alpha</span>)</span></span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_incf_.htm" class="symbol">incf</a> i stride-x</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
+        <span class="paren5">(<span class="code">set <span class="paren6">(<span class="code">aref x i</span>)</span> <span class="paren6">(<span class="code">+ <span class="paren1">(<span class="code">aref x i</span>)</span> alpha</span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">incf i stride-x</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3ACHOOSE-3D-BLOCK-AND-GRID-20FUNCTION-29'></a></p>
@@ -2109,22 +2109,22 @@ elements in each thread. For example, a strided kernel that adds a
 constant to each element of a <code>THICKNESS</code> * <code>HEIGHT</code> * <code>WIDTH</code> 3d array
 looks like this:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">id-x <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">id-y <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-y block-idx-y</span>)</span> thread-idx-y</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">id-z <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-z block-idx-z</span>)</span> thread-idx-z</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">stride-x <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x grid-dim-x</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">stride-y <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-y grid-dim-y</span>)</span></span>)</span>
-      <span class="paren3">(<span class="code">stride-z <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-z grid-dim-z</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">plane id-z <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> plane stride-z</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">id-x <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">* block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">id-y <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">* block-dim-y block-idx-y</span>)</span> thread-idx-y</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">id-z <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">* block-dim-z block-idx-z</span>)</span> thread-idx-z</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">stride-x <span class="paren4">(<span class="code">* block-dim-x grid-dim-x</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">stride-y <span class="paren4">(<span class="code">* block-dim-y grid-dim-y</span>)</span></span>)</span>
+      <span class="paren3">(<span class="code">stride-z <span class="paren4">(<span class="code">* block-dim-z grid-dim-z</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">do <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">plane id-z <span class="paren5">(<span class="code">+ plane stride-z</span>)</span></span>)</span></span>)</span>
       <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">&gt;= plane thickness</span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">row id-y <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> row stride-y</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">do <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">row id-y <span class="paren6">(<span class="code">+ row stride-y</span>)</span></span>)</span></span>)</span>
         <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">&gt;= row height</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">i <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> plane height</span>)</span> row</span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">i <span class="paren1">(<span class="code">* <span class="paren2">(<span class="code">+ <span class="paren3">(<span class="code">* plane height</span>)</span> row</span>)</span>
                   width</span>)</span></span>)</span></span>)</span>
-        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren6">(<span class="code"><span class="paren1">(<span class="code">column id-x <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> column stride-x</span>)</span></span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">do <span class="paren6">(<span class="code"><span class="paren1">(<span class="code">column id-x <span class="paren2">(<span class="code">+ column stride-x</span>)</span></span>)</span></span>)</span>
             <span class="paren6">(<span class="code"><span class="paren1">(<span class="code">&gt;= column width</span>)</span></span>)</span>
-          <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_set.htm" class="symbol">set</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> alpha</span>)</span></span>)</span>
-          <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_incf_.htm" class="symbol">incf</a> i stride-x</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
+          <span class="paren6">(<span class="code">set <span class="paren1">(<span class="code">aref x i</span>)</span> <span class="paren1">(<span class="code">+ <span class="paren2">(<span class="code">aref x i</span>)</span> alpha</span>)</span></span>)</span>
+          <span class="paren6">(<span class="code">incf i stride-x</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3ADEFINE-CUDA-KERNEL-20MGL-PAX-3AMACRO-29'></a></p>
@@ -2137,12 +2137,12 @@ with <a href="#x-28MGL-MAT-3AMAT-20CLASS-29" title="(MGL-MAT:MAT CLASS)"><code>M
 <code>CTYPES</code>. Example:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">define-cuda-kernel</span></i> <span class="paren2">(<span class="code">cuda-.+!</span>)</span>
-    <span class="paren2">(<span class="code">void <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">alpha <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_float.htm" class="symbol">float</a></span>)</span> <span class="paren4">(<span class="code">x <span class="keyword">:mat</span> <span class="keyword">:input</span></span>)</span> <span class="paren4">(<span class="code">n int</span>)</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">stride <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x grid-dim-x</span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_do_do.htm" class="symbol">do</a> <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">i <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_st.htm" class="symbol">*</a> block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span>
-            <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> i stride</span>)</span></span>)</span></span>)</span>
+    <span class="paren2">(<span class="code">void <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">alpha float</span>)</span> <span class="paren4">(<span class="code">x <span class="keyword">:mat</span> <span class="keyword">:input</span></span>)</span> <span class="paren4">(<span class="code">n int</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">stride <span class="paren5">(<span class="code">* block-dim-x grid-dim-x</span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">do <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">i <span class="paren6">(<span class="code">+ <span class="paren1">(<span class="code">* block-dim-x block-idx-x</span>)</span> thread-idx-x</span>)</span>
+            <span class="paren6">(<span class="code">+ i stride</span>)</span></span>)</span></span>)</span>
         <span class="paren4">(<span class="code"><span class="paren5">(<span class="code">&gt;= i n</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_set.htm" class="symbol">set</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_pl.htm" class="symbol">+</a> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_aref.htm" class="symbol">aref</a> x i</span>)</span> alpha</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+      <span class="paren4">(<span class="code">set <span class="paren5">(<span class="code">aref x i</span>)</span> <span class="paren5">(<span class="code">+ <span class="paren6">(<span class="code">aref x i</span>)</span> alpha</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>The signature looks pretty much like in <code>CL-CUDA:DEFKERNEL</code>, but
 parameters can take the form of <code>(&lt;NAME&gt; :MAT &lt;DIRECTION&gt;)</code> too, in

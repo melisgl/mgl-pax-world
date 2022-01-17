@@ -255,15 +255,15 @@ definitions in an explicit <code>EVAL-WHEN</code>.</p></li>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defreadtable</span></i> elisp:syntax
    <span class="paren2">(<span class="code"><span class="keyword">:merge</span> <span class="keyword">:standard</span></span>)</span>
-   <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\?</span> #'elisp::read-character-literal <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
-   <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\[</span> #'elisp::read-vector-literal <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+   <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\?</span> #'elisp::read-character-literal t</span>)</span>
+   <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\[</span> #'elisp::read-vector-literal t</span>)</span>
    ...
    <span class="paren2">(<span class="code"><span class="keyword">:case</span> <span class="keyword">:preserve</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">defreadtable</span></i> scheme:syntax
    <span class="paren2">(<span class="code"><span class="keyword">:merge</span> <span class="keyword">:standard</span></span>)</span>
-   <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\[</span> #'<span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a> <a href="http://www.lispworks.com/reference/HyperSpec/Body/f_char_.htm" class="symbol">char</a></span>)</span>
-                         <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_rd_del.htm" class="symbol">read-delimited-list</a> <span class="character">#\]</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/t_stream.htm" class="symbol">stream</a></span>)</span></span>)</span></span>)</span>
+   <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\[</span> #'<span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code">stream char</span>)</span>
+                         <span class="paren4">(<span class="code">read-delimited-list <span class="character">#\]</span> stream</span>)</span></span>)</span></span>)</span>
    <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\#</span> <span class="keyword">:dispatch</span></span>)</span>
    <span class="paren2">(<span class="code"><span class="keyword">:dispatch-macro-char</span> <span class="character">#\#</span> <span class="character">#\t</span> #'scheme::read-#t</span>)</span>
    <span class="paren2">(<span class="code"><span class="keyword">:dispatch-macro-char</span> <span class="character">#\#</span> <span class="character">#\f</span> #'scheme::read-#f</span>)</span>
