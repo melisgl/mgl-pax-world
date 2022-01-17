@@ -167,24 +167,24 @@ because <code>LMDB</code>'s write locking is tied to native threads.</p>
 <p>Using <code>LMDB</code> is easy:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
       <span class="paren4">(<span class="code">put db <span class="string">"k1"</span> #<span class="paren5">(<span class="code">2 3</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code">print <span class="paren5">(<span class="code">g3t db <span class="string">"k1"</span></span>)</span></span>)</span> <span class="comment">; =&gt; #(2 3)
+      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> <span class="paren5">(<span class="code">g3t db <span class="string">"k1"</span></span>)</span></span>)</span> <span class="comment">; =&gt; #(2 3)
 </span>      <span class="paren4">(<span class="code">del db <span class="string">"k1"</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>More typically, the environment and databases are opened once so
 that multiple threads and transactions can access them:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*test-db*</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*test-db*</span></span>)</span>
 
-<span class="paren1">(<span class="code">unless <span class="special">*env*</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*env*</span> <span class="paren3">(<span class="code">open-env <span class="string">"/tmp/lmdb-test-env/"</span> <span class="keyword">:if-does-not-exist</span> <span class="keyword">:create</span></span>)</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*test-db*</span> <span class="paren3">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:value-encoding</span> <span class="keyword">:utf-8</span></span>)</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_when_.htm" class="symbol">unless</a> <span class="special">*env*</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*env*</span> <span class="paren3">(<span class="code">open-env <span class="string">"/tmp/lmdb-test-env/"</span> <span class="keyword">:if-does-not-exist</span> <span class="keyword">:create</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*test-db*</span> <span class="paren3">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:value-encoding</span> <span class="keyword">:utf-8</span></span>)</span></span>)</span></span>)</span>
 
-<span class="paren1">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren2">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+<span class="paren1">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren2">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
   <span class="paren2">(<span class="code">put <span class="special">*test-db*</span> 1 <span class="string">"hello"</span></span>)</span>
-  <span class="paren2">(<span class="code">print <span class="paren3">(<span class="code">g3t <span class="special">*test-db*</span> 1</span>)</span></span>)</span> <span class="comment">; =&gt; "hello"
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> <span class="paren3">(<span class="code">g3t <span class="special">*test-db*</span> 1</span>)</span></span>)</span> <span class="comment">; =&gt; "hello"
 </span>  <span class="paren2">(<span class="code">del <span class="special">*test-db*</span> 1</span>)</span></span>)</span></span></code></pre>
 
 <p>Note how <code>:VALUE-ENCODING</code> sneaked in above. This was so to make <a href="#x-28LMDB-3AG3T-20FUNCTION-29" title="(LMDB:G3T FUNCTION)"><code>G3T</code></a>
@@ -601,7 +601,7 @@ their default values):</p>
 <p>Open environments have a finalizer attached to them that takes care
 of freeing foreign resources. Thus, the common idiom:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">setq</span></i> <span class="special">*env*</span> <span class="paren2">(<span class="code">open-env <span class="string">"some-path"</span></span>)</span></span>)</span></span></code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_setq.htm" class="symbol"><i><span class="symbol">setq</span></i></a> <span class="special">*env*</span> <span class="paren2">(<span class="code">open-env <span class="string">"some-path"</span></span>)</span></span>)</span></span></code></pre>
 
 <p>is okay for development, too. No need to always do <a href="#x-28LMDB-3AWITH-ENV-20MGL-PAX-3AMACRO-29" title="(LMDB:WITH-ENV MGL-PAX:MACRO)"><code>WITH-ENV</code></a>,
 which does not mesh with threads anyway.</p>
@@ -770,10 +770,10 @@ and values for <a href="#x-28LMDB-3AOPEN-ENV-20FUNCTION-29" title="(LMDB:OPEN-EN
 examples.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
       <span class="paren4">(<span class="code">put db <span class="string">"k1"</span> #<span class="paren5">(<span class="code">2 3</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code">print <span class="paren5">(<span class="code">g3t db <span class="string">"k1"</span></span>)</span></span>)</span> <span class="comment">; =&gt; #(2 3)
+      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> <span class="paren5">(<span class="code">g3t db <span class="string">"k1"</span></span>)</span></span>)</span> <span class="comment">; =&gt; #(2 3)
 </span>      <span class="paren4">(<span class="code">del db <span class="string">"k1"</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Since data corruption in temporary environments is not a concern,
@@ -858,9 +858,9 @@ enclosing <code>WITH-TXN</code>, but if <code>WITH-TXN</code>s with different <c
 are nested, then it may not be:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code">env</span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"db"</span> <span class="keyword">:env</span> env</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"db"</span> <span class="keyword">:env</span> env</span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren4">(<span class="code">inner-env</span>)</span>
-      <span class="paren4">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren5">(<span class="code"><span class="keyword">:env</span> env <span class="keyword">:write</span> t</span>)</span>
+      <span class="paren4">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren5">(<span class="code"><span class="keyword">:env</span> env <span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
         <span class="paren5">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren6">(<span class="code"><span class="keyword">:env</span> inner-env</span>)</span>
           <span class="paren6">(<span class="code">put db #<span class="paren1">(<span class="code">1</span>)</span> #<span class="paren1">(<span class="code">2</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
@@ -973,31 +973,31 @@ transactions. To simplify usage, the Lisp side turns read-only
 <code>WITH-TXN</code>s nested in another <code>WITH-TXN</code>s into noops.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:value-encoding</span> <span class="keyword">:uint64</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:value-encoding</span> <span class="keyword">:uint64</span></span>)</span></span>)</span></span>)</span>
     <span class="comment">;; Create a top-level write transaction.
-</span>    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+</span>    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
       <span class="paren4">(<span class="code">put db <span class="string">"p"</span> 0</span>)</span>
       <span class="comment">;; First child transaction
-</span>      <span class="paren4">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren5">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+</span>      <span class="paren4">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren5">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
         <span class="comment">;; Writes of the parent are visible in children.
-</span>        <span class="paren5">(<span class="code">assert <span class="paren6">(<span class="code">= <span class="paren1">(<span class="code">g3t db <span class="string">"p"</span></span>)</span> 0</span>)</span></span>)</span>
+</span>        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren6">(<span class="code">= <span class="paren1">(<span class="code">g3t db <span class="string">"p"</span></span>)</span> 0</span>)</span></span>)</span>
         <span class="paren5">(<span class="code">put db <span class="string">"c1"</span> 1</span>)</span></span>)</span>
       <span class="comment">;; Parent sees what the child committed (but it's not visible to
 </span>      <span class="comment">;; unrelated transactions).
-</span>      <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
+</span>      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
       <span class="comment">;; Second child transaction
-</span>      <span class="paren4">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren5">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+</span>      <span class="paren4">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren5">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
         <span class="comment">;; Sees writes from the parent that came from the first child.
-</span>        <span class="paren5">(<span class="code">assert <span class="paren6">(<span class="code">= <span class="paren1">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
+</span>        <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren6">(<span class="code">= <span class="paren1">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
         <span class="paren5">(<span class="code">put db <span class="string">"c1"</span> 2</span>)</span>
         <span class="paren5">(<span class="code">put db <span class="string">"c2"</span> 2</span>)</span>
         <span class="paren5">(<span class="code">abort-txn</span>)</span></span>)</span></span>)</span>
     <span class="comment">;; Create a top-level read transaction to check what was committed.
 </span>    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"></span>)</span>
       <span class="comment">;; Since the second child aborted, its writes are discarded.
-</span>      <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"p"</span></span>)</span> 0</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
-      <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">null <span class="paren6">(<span class="code">g3t db <span class="string">"c2"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+</span>      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"p"</span></span>)</span> 0</span>)</span></span>)</span>
+      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
+      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_assert.htm" class="symbol">assert</a> <span class="paren5">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_null.htm" class="symbol">null</a> <span class="paren6">(<span class="code">g3t db <span class="string">"c2"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p><a href="#x-28LMDB-3ACOMMIT-TXN-20FUNCTION-29" title="(LMDB:COMMIT-TXN FUNCTION)"><code>COMMIT-TXN</code></a>, <a href="#x-28LMDB-3AABORT-TXN-20FUNCTION-29" title="(LMDB:ABORT-TXN FUNCTION)"><code>ABORT-TXN</code></a>, and <a href="#x-28LMDB-3ARESET-TXN-20FUNCTION-29" title="(LMDB:RESET-TXN FUNCTION)"><code>RESET-TXN</code></a> all close the
 <a href="#x-28LMDB-3A-40ACTIVE-TRANSACTION-20MGL-PAX-3AGLOSSARY-TERM-29" title="(LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM)">active transaction</a> (see <a href="#x-28LMDB-3AOPEN-TXN-P-20FUNCTION-29" title="(LMDB:OPEN-TXN-P FUNCTION)"><code>OPEN-TXN-P</code></a>). When the active transaction is
@@ -1253,27 +1253,27 @@ types, it is fast and space-efficient, has a stable specification
 and an alternative implementation in C. For example:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
-      <span class="paren4">(<span class="code">put db <span class="string">"key1"</span> <span class="paren5">(<span class="code">cpk:encode <span class="paren6">(<span class="code">list <span class="keyword">:some</span> <span class="string">"stuff"</span> 42</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+      <span class="paren4">(<span class="code">put db <span class="string">"key1"</span> <span class="paren5">(<span class="code">cpk:encode <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="keyword">:some</span> <span class="string">"stuff"</span> 42</span>)</span></span>)</span></span>)</span>
       <span class="paren4">(<span class="code">cpk:decode <span class="paren5">(<span class="code">g3t db <span class="string">"key1"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="keyword">:SOME</span> <span class="string">"stuff"</span> 42</span>)</span></span></code></pre>
 
 <p>Note that multiple <a href="#x-28LMDB-3ADB-20CLASS-29" title="(LMDB:DB CLASS)"><code>DB</code></a> objects with different encodings can be
 associated with the same C lmdb database, which declutters the code:</p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*cpk-encoding*</span>
-  <span class="paren2">(<span class="code">cons #'cpk:encode <span class="paren3">(<span class="code">alexandria:compose #'cpk:decode #'mdb-val-to-octets</span>)</span></span>)</span></span>)</span>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpar.htm" class="symbol"><i><span class="symbol">defvar</span></i></a> <span class="special">*cpk-encoding*</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_cons.htm" class="symbol">cons</a> #'cpk:encode <span class="paren3">(<span class="code">alexandria:compose #'cpk:decode #'mdb-val-to-octets</span>)</span></span>)</span></span>)</span>
 
 <span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">next-id-db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:key-encoding</span> <span class="special">*cpk-encoding*</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">next-id-db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:key-encoding</span> <span class="special">*cpk-encoding*</span>
                                    <span class="keyword">:value-encoding</span> <span class="keyword">:uint64</span></span>)</span></span>)</span>
         <span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:key-encoding</span> <span class="special">*cpk-encoding*</span>
                            <span class="keyword">:value-encoding</span> <span class="special">*cpk-encoding*</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
-      <span class="paren4">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">id <span class="paren1">(<span class="code">or <span class="paren2">(<span class="code">g3t next-id-db <span class="keyword">:next-id</span></span>)</span> 0</span>)</span></span>)</span></span>)</span>
-        <span class="paren5">(<span class="code">put next-id-db <span class="keyword">:next-id</span> <span class="paren6">(<span class="code">1+ id</span>)</span></span>)</span>
-        <span class="paren5">(<span class="code">put db id <span class="paren6">(<span class="code">list <span class="keyword">:some</span> <span class="string">"stuff"</span> 42</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
+      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code">id <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_or.htm" class="symbol">or</a> <span class="paren2">(<span class="code">g3t next-id-db <span class="keyword">:next-id</span></span>)</span> 0</span>)</span></span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">put next-id-db <span class="keyword">:next-id</span> <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1+</a> id</span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">put db id <span class="paren6">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_list.htm" class="symbol">list</a> <span class="keyword">:some</span> <span class="string">"stuff"</span> 42</span>)</span></span>)</span>
         <span class="paren5">(<span class="code">g3t db id</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="keyword">:SOME</span> <span class="string">"stuff"</span> 42</span>)</span>
 =&gt; T</span></code></pre>
@@ -1439,14 +1439,14 @@ and want to avoid creating a lisp vector on the heap, we can do
 this:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
       <span class="paren4">(<span class="code">put db <span class="string">"key1"</span> <span class="string">"abc"</span></span>)</span>
-      <span class="paren4">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><span class="special">*value-decoder*</span> <span class="paren1">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren2">(<span class="code">mdb-val</span>)</span>
+      <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><span class="special">*value-decoder*</span> <span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_lambda.htm" class="symbol"><i><span class="symbol">lambda</span></i></a> <span class="paren2">(<span class="code">mdb-val</span>)</span>
                                <span class="paren2">(<span class="code"><i><span class="symbol">with-mdb-val-slots</span></i> <span class="paren3">(<span class="code">%bytes size mdb-val</span>)</span>
-                                 <span class="paren3">(<span class="code">declare <span class="paren4">(<span class="code">ignore %bytes</span>)</span></span>)</span>
+                                 <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_declar.htm" class="symbol">declare</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/d_ignore.htm" class="symbol">ignore</a> %bytes</span>)</span></span>)</span>
                                  <span class="comment">;; Take null termination into account.
-</span>                                 <span class="paren3">(<span class="code">1- size</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</span>                                 <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_1pl_1_.htm" class="symbol">1-</a> size</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
         <span class="paren5">(<span class="code">g3t db <span class="string">"key1"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 =&gt; 3
 =&gt; T</span></code></pre></li>
@@ -1498,7 +1498,7 @@ shadowing.</p>
 fbound to <code>LMDB+:G3T</code> so it probably needs shadowing to avoid conflict
 with <code>CL:GET:</code></p>
 
-<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defpackage</span></i> lmdb/test
+<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/m_defpkg.htm" class="symbol"><i><span class="symbol">defpackage</span></i></a> lmdb/test
   <span class="paren2">(<span class="code"><span class="keyword">:shadow</span> <span class="keyword">#:get</span></span>)</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:cl</span> <span class="keyword">#:lmdb+</span></span>)</span></span>)</span></span></code></pre>
 
@@ -1598,7 +1598,7 @@ cursor is needed. That is, use</p>
   <span class="paren2">(<span class="code"><i><span class="symbol">with-cursor</span></i> <span class="paren3">(<span class="code">c2 db</span>)</span>
     <span class="paren3">(<span class="code">cursor-first c1</span>)</span>
     <span class="paren3">(<span class="code">cursor-last c2</span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren4">(<span class="code">some-pred <span class="paren5">(<span class="code">cursor-value c1</span>)</span> <span class="paren5">(<span class="code">cursor-value c2</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_if.htm" class="symbol"><i><span class="symbol">if</span></i></a> <span class="paren4">(<span class="code">some-pred <span class="paren5">(<span class="code">cursor-value c1</span>)</span> <span class="paren5">(<span class="code">cursor-value c2</span>)</span></span>)</span>
         <span class="paren4">(<span class="code">cursor-next c1</span>)</span>
         <span class="paren4">(<span class="code">cursor-prev c2</span>)</span></span>)</span>
     ...</span>)</span></span>)</span></span></code></pre>
@@ -1996,7 +1996,7 @@ will be seen.</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-cursor</span></i> <span class="paren2">(<span class="code">cursor db</span>)</span>
   <span class="paren2">(<span class="code">cursor-set-key 7 cursor</span>)</span>
   <span class="paren2">(<span class="code">do-cursor <span class="paren3">(<span class="code">key value cursor</span>)</span>
-    <span class="paren3">(<span class="code">print <span class="paren4">(<span class="code">cons key value</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
+    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> <span class="paren4">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_cons.htm" class="symbol">cons</a> key value</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28LMDB-3ADO-CURSOR-DUP-20MGL-PAX-3AMACRO-29'></a></p>
@@ -2017,7 +2017,7 @@ associated with the key 7:</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-cursor</span></i> <span class="paren2">(<span class="code">cursor db</span>)</span>
   <span class="paren2">(<span class="code">cursor-set-key-dup cursor 7 #<span class="paren3">(<span class="code">3 4 5</span>)</span></span>)</span>
   <span class="paren2">(<span class="code">do-cursor-dup <span class="paren3">(<span class="code">value cursor</span>)</span>
-    <span class="paren3">(<span class="code">print value</span>)</span></span>)</span></span>)</span></span></code></pre></li>
+    <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> value</span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28LMDB-3ADO-DB-20MGL-PAX-3AMACRO-29'></a></p>
@@ -2032,7 +2032,7 @@ first (or last if <code>FROM-END</code>) value for each key are skipped. If
 <p>To iterate over all values in <code>DB</code>:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">do-db <span class="paren2">(<span class="code">key value db</span>)</span>
-  <span class="paren2">(<span class="code">print <span class="paren3">(<span class="code">cons key value</span>)</span></span>)</span></span>)</span></span></code></pre>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> <span class="paren3">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/a_cons.htm" class="symbol">cons</a> key value</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>This macro establishes a <a href="#x-28LMDB-3A-40DEFAULT-CURSOR-20MGL-PAX-3AGLOSSARY-TERM-29" title="(LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM)">default cursor</a>.</p></li>
 </ul>
@@ -2048,7 +2048,7 @@ then iteration starts at the largest value.</p>
 <p>To iterate over all values associated with the key 7:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">do-db-dup <span class="paren2">(<span class="code">value db 7</span>)</span>
-  <span class="paren2">(<span class="code">print value</span>)</span></span>)</span></span></code></pre>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/f_wr_pr.htm" class="symbol">print</a> value</span>)</span></span>)</span></span></code></pre>
 
 <p>This macro establishes a <a href="#x-28LMDB-3A-40DEFAULT-CURSOR-20MGL-PAX-3AGLOSSARY-TERM-29" title="(LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM)">default cursor</a>.</p></li>
 </ul>
@@ -2328,11 +2328,11 @@ always executed in the <a href="#x-28LMDB-3A-40ACTIVE-TRANSACTION-20MGL-PAX-3AGL
 refer to the parent transaction:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
-  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"db"</span></span>)</span></span>)</span></span>)</span>
-    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm" class="symbol"><i><span class="symbol">let</span></i></a> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"db"</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
       <span class="paren4">(<span class="code">put db #<span class="paren5">(<span class="code">1</span>)</span> #<span class="paren5">(<span class="code">1</span>)</span></span>)</span>
       <span class="paren4">(<span class="code"><i><span class="symbol">with-cursor</span></i> <span class="paren5">(<span class="code">cursor db</span>)</span>
-        <span class="paren5">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren6">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
+        <span class="paren5">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren6">(<span class="code"><span class="keyword">:write</span> <a href="http://www.lispworks.com/reference/HyperSpec/Body/a_t.htm" class="symbol">t</a></span>)</span>
           <span class="paren6">(<span class="code">assert-error lmdb-illegal-access-to-parent-txn-error
             <span class="paren1">(<span class="code">cursor-set-key #<span class="paren2">(<span class="code">1</span>)</span> cursor</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
