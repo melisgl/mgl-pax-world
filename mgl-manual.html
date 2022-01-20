@@ -1630,7 +1630,7 @@ results.</p></li>
 
 <p>The functions here compare some known good solution (also known as
 <em>ground truth</em> or <em>target</em>) to a prediction or approximation and
-return some measure of their [dis][]similarity. They are model
+return some measure of their [dis]similarity. They are model
 independent, hence one has to extract the ground truths and
 predictions first. Rarely used directly, they are mostly hidden
 behind <a href="#x-28MGL-CORE-3A-40MGL-CLASSIFICATION-MONITOR-20MGL-PAX-3ASECTION-29" title="Classification Monitors">Classification Monitors</a>.</p>
@@ -1976,7 +1976,7 @@ model that takes a single word as input and predicts the next word.
 However, both input and output is to be encoded as float vectors of
 length 1000. What we do is find the top 1000 words by some
 measure (see <a href="#x-28MGL-CORE-3A-40MGL-FEATURE-SELECTION-20MGL-PAX-3ASECTION-29" title="Feature Selection">Feature Selection</a>) and associate these words with
-the integers in [0..999][] (this is <a href="#x-28MGL-CORE-3AENCODE-20GENERIC-FUNCTION-29" title="(MGL-CORE:ENCODE GENERIC-FUNCTION)"><code>ENCODE</code></a>ing). By using for
+the integers in [0..999] (this is <a href="#x-28MGL-CORE-3AENCODE-20GENERIC-FUNCTION-29" title="(MGL-CORE:ENCODE GENERIC-FUNCTION)"><code>ENCODE</code></a>ing). By using for
 example <a href="http://en.wikipedia.org/wiki/One-hot" >one-hot</a> encoding, we
 translate a word into a float vector when passing in the input. When
 the model outputs the probability distribution of the next word, we
@@ -5698,7 +5698,7 @@ percentage). The second value is the sum of the lengths of
 <code>CANDIDATES</code> divided by the sum of the lengths of <code>REFERENCES</code> (or <code>NIL</code>,
 if the denominator is 0). The third is a list of n-gram
 precisions (also between 0 and 1 or <code>NIL</code>), one for each element in
-[1..<code>N</code>][].</p>
+[1..<code>N</code>].</p>
 
 <p>This is basically a reimplementation of
 <a href="https://github.com/moses-smt/mosesdecoder/blob/master/scripts/generic/multi-bleu.perl" >multi-bleu.perl</a>.</p>
