@@ -315,20 +315,18 @@ the largest dataset is consumed imputing <code>IMPUTE</code> for missing values.
 If <code>IMPUTE</code> is not specified then iterate until the smallest dataset
 runs out.</p>
 
-<pre><code>(map-datasets #'prin1 '((0 1 2) (:a :b)))
-.. (0 :A)(1 :B)
+<pre><code><span class="code"><span class="paren1">(<span class="code">map-datasets #'prin1 '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">0 1 2</span>)</span> <span class="paren3">(<span class="code"><span class="keyword">:a</span> <span class="keyword">:b</span></span>)</span></span>)</span></span>)</span>
+.. <span class="paren1">(<span class="code">0 <span class="keyword">:A</span></span>)</span><span class="paren1">(<span class="code">1 <span class="keyword">:B</span></span>)</span>
 
-(map-datasets #'prin1 '((0 1 2) (:a :b)) :impute nil)
-.. (0 :A)(1 :B)(2 NIL)
-</code></pre>
+<span class="paren1">(<span class="code">map-datasets #'prin1 '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">0 1 2</span>)</span> <span class="paren3">(<span class="code"><span class="keyword">:a</span> <span class="keyword">:b</span></span>)</span></span>)</span> <span class="keyword">:impute</span> nil</span>)</span>
+.. <span class="paren1">(<span class="code">0 <span class="keyword">:A</span></span>)</span><span class="paren1">(<span class="code">1 <span class="keyword">:B</span></span>)</span><span class="paren1">(<span class="code">2 NIL</span>)</span></span></code></pre>
 
 <p>It is of course allowed to mix sequences with samplers:</p>
 
-<pre><code>(map-datasets #'prin1
-              (list '(0 1 2)
-                    (make-sequence-sampler '(:a :b) :max-n-samples 2)))
-.. (0 :A)(1 :B)
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">map-datasets #'prin1
+              <span class="paren2">(<span class="code">list '<span class="paren3">(<span class="code">0 1 2</span>)</span>
+                    <span class="paren3">(<span class="code">make-sequence-sampler '<span class="paren4">(<span class="code"><span class="keyword">:a</span> <span class="keyword">:b</span></span>)</span> <span class="keyword">:max-n-samples</span> 2</span>)</span></span>)</span></span>)</span>
+.. <span class="paren1">(<span class="code">0 <span class="keyword">:A</span></span>)</span><span class="paren1">(<span class="code">1 <span class="keyword">:B</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-DATASET-3A-40MGL-SAMPLER-20MGL-PAX-3ASECTION-29'></a></p>
@@ -499,16 +497,14 @@ have the same weight.</p>
 
 <p>To split into 5 sequences:</p>
 
-<pre><code>(fracture 5 '(0 1 2 3 4 5 6 7 8 9))
-=&gt; ((0 1) (2 3) (4 5) (6 7) (8 9))
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">fracture 5 '<span class="paren2">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span></span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0 1</span>)</span> <span class="paren2">(<span class="code">2 3</span>)</span> <span class="paren2">(<span class="code">4 5</span>)</span> <span class="paren2">(<span class="code">6 7</span>)</span> <span class="paren2">(<span class="code">8 9</span>)</span></span>)</span></span></code></pre>
 
 <p>To split into two sequences whose lengths are proportional to 2 and
 3:</p>
 
-<pre><code>(fracture '(2 3) '(0 1 2 3 4 5 6 7 8 9))
-=&gt; ((0 1 2 3) (4 5 6 7 8 9))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">fracture '<span class="paren2">(<span class="code">2 3</span>)</span> '<span class="paren2">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span></span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0 1 2 3</span>)</span> <span class="paren2">(<span class="code">4 5 6 7 8 9</span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-RESAMPLE-3ASTRATIFY-20FUNCTION-29'></a></p>
@@ -521,9 +517,8 @@ which the function <code>KEY</code> returns the class they belong to. Such
 classes are opaque objects compared for equality with <code>TEST</code>. A
 stratum is a sequence of elements with the same (under <code>TEST</code>) <code>KEY</code>.</p>
 
-<pre><code>(stratify '(0 1 2 3 4 5 6 7 8 9) :key #'evenp)
-=&gt; ((0 2 4 6 8) (1 3 5 7 9))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">stratify '<span class="paren2">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span> <span class="keyword">:key</span> #'evenp</span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0 2 4 6 8</span>)</span> <span class="paren2">(<span class="code">1 3 5 7 9</span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-RESAMPLE-3AFRACTURE-STRATIFIED-20FUNCTION-29'></a></p>
@@ -542,9 +537,8 @@ are sorted internally by <code>KEY</code>.</p>
 <p>For example, to make two splits with approximately the same number
 of even and odd numbers:</p>
 
-<pre><code>(fracture-stratified 2 '(0 1 2 3 4 5 6 7 8 9) :key #'evenp)
-=&gt; ((0 2 1 3) (4 6 8 5 7 9))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">fracture-stratified 2 '<span class="paren2">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span> <span class="keyword">:key</span> #'evenp</span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0 2 1 3</span>)</span> <span class="paren2">(<span class="code">4 6 8 5 7 9</span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-RESAMPLE-3A-40MGL-RESAMPLE-CROSS-VALIDATION-20MGL-PAX-3ASECTION-29'></a></p>
@@ -561,29 +555,27 @@ of even and odd numbers:</p>
 <p>Map <code>FN</code> over the <code>FOLDS</code> of <code>DATA</code> split with <code>SPLIT-FN</code> and collect the
 results in a list. The simplest demonstration is:</p>
 
-<pre><code>(cross-validate '(0 1 2 3 4)
-                (lambda (test training)
-                 (list test training))
-                :n-folds 5)
-=&gt; (((0) (1 2 3 4))
-    ((1) (0 2 3 4))
-    ((2) (0 1 3 4))
-    ((3) (0 1 2 4))
-    ((4) (0 1 2 3)))
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">cross-validate '<span class="paren2">(<span class="code">0 1 2 3 4</span>)</span>
+                <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code">test training</span>)</span>
+                 <span class="paren3">(<span class="code">list test training</span>)</span></span>)</span>
+                <span class="keyword">:n-folds</span> 5</span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="paren3">(<span class="code">0</span>)</span> <span class="paren3">(<span class="code">1 2 3 4</span>)</span></span>)</span>
+    <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">1</span>)</span> <span class="paren3">(<span class="code">0 2 3 4</span>)</span></span>)</span>
+    <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">2</span>)</span> <span class="paren3">(<span class="code">0 1 3 4</span>)</span></span>)</span>
+    <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">3</span>)</span> <span class="paren3">(<span class="code">0 1 2 4</span>)</span></span>)</span>
+    <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">4</span>)</span> <span class="paren3">(<span class="code">0 1 2 3</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Of course, in practice one would typically train a model and return
 the trained model and/or its score on <code>TEST</code>. Also, sometimes one may
 want to do only some of the folds and remember which ones they were:</p>
 
-<pre><code>(cross-validate '(0 1 2 3 4)
-                (lambda (fold test training)
-                 (list :fold fold test training))
-                :folds '(2 3)
-                :pass-fold t)
-=&gt; ((:fold 2 (2) (0 1 3 4))
-    (:fold 3 (3) (0 1 2 4)))
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">cross-validate '<span class="paren2">(<span class="code">0 1 2 3 4</span>)</span>
+                <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code">fold test training</span>)</span>
+                 <span class="paren3">(<span class="code">list <span class="keyword">:fold</span> fold test training</span>)</span></span>)</span>
+                <span class="keyword">:folds</span> '<span class="paren2">(<span class="code">2 3</span>)</span>
+                <span class="keyword">:pass-fold</span> t</span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="keyword">:fold</span> 2 <span class="paren3">(<span class="code">2</span>)</span> <span class="paren3">(<span class="code">0 1 3 4</span>)</span></span>)</span>
+    <span class="paren2">(<span class="code"><span class="keyword">:fold</span> 3 <span class="paren3">(<span class="code">3</span>)</span> <span class="paren3">(<span class="code">0 1 2 4</span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <p>Finally, the way the data is split can be customized. By default
 <a href="#x-28MGL-RESAMPLE-3ASPLIT-FOLD-2FMOD-20FUNCTION-29" title="(MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION)"><code>SPLIT-FOLD/MOD</code></a> is called with the arguments <code>DATA</code>, the fold (from
@@ -748,19 +740,17 @@ stratum is unchanged.</p>
 <p>For example, to make sure that even and odd numbers are distributed
 evenly:</p>
 
-<pre><code>(spread-strata '(0 2 4 6 8 1 3 5 7 9) :key #'evenp)
-=&gt; (0 1 2 3 4 5 6 7 8 9)
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">spread-strata '<span class="paren2">(<span class="code">0 2 4 6 8 1 3 5 7 9</span>)</span> <span class="keyword">:key</span> #'evenp</span>)</span>
+=&gt; <span class="paren1">(<span class="code">0 1 2 3 4 5 6 7 8 9</span>)</span></span></code></pre>
 
 <p>Same thing with unbalanced classes:</p>
 
-<pre><code>(spread-strata (vector 0 2 3 5 6 1 4)
-               :key (lambda (x)
-                      (if (member x '(1 4))
+<pre><code><span class="code"><span class="paren1">(<span class="code">spread-strata <span class="paren2">(<span class="code">vector 0 2 3 5 6 1 4</span>)</span>
+               <span class="keyword">:key</span> <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code">x</span>)</span>
+                      <span class="paren3">(<span class="code"><i><span class="symbol">if</span></i> <span class="paren4">(<span class="code">member x '<span class="paren5">(<span class="code">1 4</span>)</span></span>)</span>
                           t
-                          nil)))
-=&gt; #(0 1 2 3 4 5 6)
-</code></pre></li>
+                          nil</span>)</span></span>)</span></span>)</span>
+=&gt; #<span class="paren1">(<span class="code">0 1 2 3 4 5 6</span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-RESAMPLE-3AZIP-EVENLY-20FUNCTION-29'></a></p>
@@ -775,9 +765,8 @@ list is <code>RESULT-TYPE</code> is <code>LIST</code>(<a href="http://www.lispwo
 If <code>RESULT-TYPE</code> is <code>NIL</code>, then it's determined by the type of the first
 sequence in <code>SEQS</code>.</p>
 
-<pre><code>(zip-evenly '((0 2 4) (1 3)))
-=&gt; (0 1 2 3 4)
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">zip-evenly '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">0 2 4</span>)</span> <span class="paren3">(<span class="code">1 3</span>)</span></span>)</span></span>)</span>
+=&gt; <span class="paren1">(<span class="code">0 1 2 3 4</span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3A-40MGL-CORE-20MGL-PAX-3ASECTION-29'></a></p>
@@ -1918,14 +1907,13 @@ features of <code>DOCUMENTS</code> and values are counts of occurrences of
 features. <code>MAPPER</code> takes a function and a document and calls function
 with features of the document.</p>
 
-<pre><code>(sort (alexandria:hash-table-alist
-       (count-features '(("hello" "world")
-                         ("this" "is" "our" "world"))
-                       (lambda (fn document)
-                         (map nil fn document))))
-      #'string&lt; :key #'car)
-=&gt; (("hello" . 1) ("is" . 1) ("our" . 1) ("this" . 1) ("world" . 2))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">sort <span class="paren2">(<span class="code">alexandria:hash-table-alist
+       <span class="paren3">(<span class="code">count-features '<span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="string">"hello"</span> <span class="string">"world"</span></span>)</span>
+                         <span class="paren5">(<span class="code"><span class="string">"this"</span> <span class="string">"is"</span> <span class="string">"our"</span> <span class="string">"world"</span></span>)</span></span>)</span>
+                       <span class="paren4">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren5">(<span class="code">fn document</span>)</span>
+                         <span class="paren5">(<span class="code">map nil fn document</span>)</span></span>)</span></span>)</span></span>)</span>
+      #'string&lt; <span class="keyword">:key</span> #'car</span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="string">"hello"</span> . 1</span>)</span> <span class="paren2">(<span class="code"><span class="string">"is"</span> . 1</span>)</span> <span class="paren2">(<span class="code"><span class="string">"our"</span> . 1</span>)</span> <span class="paren2">(<span class="code"><span class="string">"this"</span> . 1</span>)</span> <span class="paren2">(<span class="code"><span class="string">"world"</span> . 2</span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3AFEATURE-LLRS-20FUNCTION-29'></a></p>
@@ -1938,16 +1926,15 @@ features of <code>DOCUMENTS</code> and values are their log likelihood ratios.
 <code>MAPPER</code> takes a function and a document and calls function with
 features of the document.</p>
 
-<pre><code>(sort (alexandria:hash-table-alist
-       (feature-llrs '((:a "hello" "world")
-                       (:b "this" "is" "our" "world"))
-                     (lambda (fn document)
-                       (map nil fn (rest document)))
-                     #'first))
-      #'string&lt; :key #'car)
-=&gt; (("hello" . 2.6032386) ("is" . 2.6032386) ("our" . 2.6032386)
-    ("this" . 2.6032386) ("world" . 4.8428774e-8))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">sort <span class="paren2">(<span class="code">alexandria:hash-table-alist
+       <span class="paren3">(<span class="code">feature-llrs '<span class="paren4">(<span class="code"><span class="paren5">(<span class="code"><span class="keyword">:a</span> <span class="string">"hello"</span> <span class="string">"world"</span></span>)</span>
+                       <span class="paren5">(<span class="code"><span class="keyword">:b</span> <span class="string">"this"</span> <span class="string">"is"</span> <span class="string">"our"</span> <span class="string">"world"</span></span>)</span></span>)</span>
+                     <span class="paren4">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren5">(<span class="code">fn document</span>)</span>
+                       <span class="paren5">(<span class="code">map nil fn <span class="paren6">(<span class="code">rest document</span>)</span></span>)</span></span>)</span>
+                     #'first</span>)</span></span>)</span>
+      #'string&lt; <span class="keyword">:key</span> #'car</span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code"><span class="string">"hello"</span> . 2.6032386</span>)</span> <span class="paren2">(<span class="code"><span class="string">"is"</span> . 2.6032386</span>)</span> <span class="paren2">(<span class="code"><span class="string">"our"</span> . 2.6032386</span>)</span>
+    <span class="paren2">(<span class="code"><span class="string">"this"</span> . 2.6032386</span>)</span> <span class="paren2">(<span class="code"><span class="string">"world"</span> . 4.8428774e-8</span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3AFEATURE-DISAMBIGUITIES-20FUNCTION-29'></a></p>
@@ -2021,23 +2008,22 @@ table. <code>ENCODER/DECODER</code> objects can be saved and loaded (see
 <a href="#x-28MGL-CORE-3A-40MGL-PERSISTENCE-20MGL-PAX-3ASECTION-29" title="Persistence">Persistence</a>) as long as the elements in the hash tables have
 read/write consitency.</p>
 
-<pre><code>(let ((indexer
-        (make-indexer
-         (alexandria:alist-hash-table '(("I" . 3) ("me" . 2) ("mine" . 1)))
-         2)))
-  (values (encode indexer "I")
-          (encode indexer "me")
-          (encode indexer "mine")
-          (decode indexer 0)
-          (decode indexer 1)
-          (decode indexer 2)))
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">indexer
+        <span class="paren4">(<span class="code">make-indexer
+         <span class="paren5">(<span class="code">alexandria:alist-hash-table '<span class="paren6">(<span class="code"><span class="paren1">(<span class="code"><span class="string">"I"</span> . 3</span>)</span> <span class="paren1">(<span class="code"><span class="string">"me"</span> . 2</span>)</span> <span class="paren1">(<span class="code"><span class="string">"mine"</span> . 1</span>)</span></span>)</span></span>)</span>
+         2</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">values <span class="paren3">(<span class="code">encode indexer <span class="string">"I"</span></span>)</span>
+          <span class="paren3">(<span class="code">encode indexer <span class="string">"me"</span></span>)</span>
+          <span class="paren3">(<span class="code">encode indexer <span class="string">"mine"</span></span>)</span>
+          <span class="paren3">(<span class="code">decode indexer 0</span>)</span>
+          <span class="paren3">(<span class="code">decode indexer 1</span>)</span>
+          <span class="paren3">(<span class="code">decode indexer 2</span>)</span></span>)</span></span>)</span>
 =&gt; 0
 =&gt; 1
 =&gt; NIL
 =&gt; "I"
 =&gt; "me"
-=&gt; NIL
-</code></pre></li>
+=&gt; NIL</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-CORE-3AMAKE-INDEXER-20FUNCTION-29'></a></p>
@@ -4525,9 +4511,8 @@ inputs on <a href="#x-28MGL-COMMON-3ANODES-20GENERIC-FUNCTION-29" title="(MGL-CO
 <p>For convenience, <code>-&gt;INPUT</code> can perform dropout itself although it
 defaults to no dropout.</p>
 
-<pre><code>(-&gt;input :size 10 :name 'some-input)
-==&gt; #&lt;-&gt;INPUT SOME-INPUT :SIZE 10 1/1 :NORM 0.00000&gt;
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;input <span class="keyword">:size</span> 10 <span class="keyword">:name</span> 'some-input</span>)</span>
+==&gt; #&lt;-&gt;INPUT SOME-INPUT :SIZE 10 1/1 :NORM 0.00000&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-BP-3ADROPOUT-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EINPUT-29-29'></a></p>
@@ -4561,11 +4546,10 @@ with a sparse representation of the input.</p>
 <p>The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is the number of columns of <code>WEIGHTS</code> which is
 determined automatically.</p>
 
-<pre><code>(-&gt;embedding :weights (-&gt;weight :name 'embedding-weights
-                                :dimensions '(3 5))
-             :name 'embeddings)
-==&gt; #&lt;-&gt;EMBEDDING EMBEDDINGS :SIZE 5 1/1 :NORM 0.00000&gt;
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;embedding <span class="keyword">:weights</span> <span class="paren2">(<span class="code">-&gt;weight <span class="keyword">:name</span> 'embedding-weights
+                                <span class="keyword">:dimensions</span> '<span class="paren3">(<span class="code">3 5</span>)</span></span>)</span>
+             <span class="keyword">:name</span> 'embeddings</span>)</span>
+==&gt; #&lt;-&gt;EMBEDDING EMBEDDINGS :SIZE 5 1/1 :NORM 0.00000&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-COMMON-3AWEIGHTS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EEMBEDDING-29-29'></a></p>
@@ -4604,11 +4588,10 @@ will be changed. Weight lumps perform no computation.</p>
 <p>Weights can be created by specifying the total size or the
 dimensions:</p>
 
-<pre><code>(dimensions (-&gt;weight :size 10 :name 'w))
-=&gt; (1 10)
-(dimensions (-&gt;weight :dimensions '(5 10) :name 'w))
-=&gt; (5 10)
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">dimensions <span class="paren2">(<span class="code">-&gt;weight <span class="keyword">:size</span> 10 <span class="keyword">:name</span> 'w</span>)</span></span>)</span>
+=&gt; <span class="paren1">(<span class="code">1 10</span>)</span>
+<span class="paren1">(<span class="code">dimensions <span class="paren2">(<span class="code">-&gt;weight <span class="keyword">:dimensions</span> '<span class="paren3">(<span class="code">5 10</span>)</span> <span class="keyword">:name</span> 'w</span>)</span></span>)</span>
+=&gt; <span class="paren1">(<span class="code">5 10</span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-BP-3ADIMENSIONS-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EWEIGHT-29-29'></a></p>
@@ -4674,9 +4657,8 @@ list of lumps. Finally, if <code>ADD-BIAS-P</code>, then add an elementwise bias
 too. <code>SIZE</code> must be specified explicitly, because it is not possible
 to determine it unless there are peephole connections.</p>
 
-<pre><code>(-&gt;activation (-&gt;input :size 10 :name 'input) :name 'h1 :size 4)
-==&gt; #&lt;-&gt;ACTIVATION (H1 :ACTIVATION) :STRIPES 1/1 :CLUMPS 4&gt;
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;activation <span class="paren2">(<span class="code">-&gt;input <span class="keyword">:size</span> 10 <span class="keyword">:name</span> 'input</span>)</span> <span class="keyword">:name</span> 'h1 <span class="keyword">:size</span> 4</span>)</span>
+==&gt; #&lt;-&gt;ACTIVATION <span class="paren1">(<span class="code">H1 <span class="keyword">:ACTIVATION</span></span>)</span> :STRIPES 1/1 :CLUMPS 4&gt;</span></code></pre>
 
 <p>This is the basic workhorse of neural networks which takes care of
 the linear transformation whose results and then fed to some
@@ -4890,9 +4872,8 @@ networks.</p>
 <p>For convenience, <code>-&gt;SIGMOID</code> can perform dropout itself although it
 defaults to no dropout.</p>
 
-<pre><code>(-&gt;sigmoid (-&gt;activation (-&gt;input :size 10) :size 5) :name 'this)
-==&gt; #&lt;-&gt;SIGMOID THIS :SIZE 5 1/1 :NORM 0.00000&gt;
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;sigmoid <span class="paren2">(<span class="code">-&gt;activation <span class="paren3">(<span class="code">-&gt;input <span class="keyword">:size</span> 10</span>)</span> <span class="keyword">:size</span> 5</span>)</span> <span class="keyword">:name</span> 'this</span>)</span>
+==&gt; #&lt;-&gt;SIGMOID THIS :SIZE 5 1/1 :NORM 0.00000&gt;</span></code></pre>
 
 <p>The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is the size of its input which is determined
 automatically.</p></li>
@@ -4980,9 +4961,8 @@ http://arxiv.org/abs/1302.4389). It groups its inputs by
 The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of the output is automatically calculated, it is the size
 of the input divided by <a href="#x-28MGL-COMMON-3AGROUP-SIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3A--3EMAX-29-29" title="(MGL-COMMON:GROUP-SIZE (MGL-PAX:READER MGL-BP:-&gt;MAX))"><code>GROUP-SIZE</code></a>.</p>
 
-<pre><code>(-&gt;max (-&gt;input :size 120) :group-size 3 :name 'my-max)
-==&gt; #&lt;-&gt;MAX MY-MAX :SIZE 40 1/1 :NORM 0.00000 :GROUP-SIZE 3&gt;
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;max <span class="paren2">(<span class="code">-&gt;input <span class="keyword">:size</span> 120</span>)</span> <span class="keyword">:group-size</span> 3 <span class="keyword">:name</span> 'my-max</span>)</span>
+==&gt; #&lt;-&gt;MAX MY-MAX :SIZE 40 1/1 :NORM 0.00000 :GROUP-SIZE 3&gt;</span></code></pre>
 
 <p>The advantage of <code>-&gt;MAX</code> over <a href="#x-28MGL-BP-3A--3ERELU-20CLASS-29" title="(MGL-BP:-&gt;RELU CLASS)"><code>-&gt;RELU</code></a> is that flow gradient is never
 stopped so there is no problem of units getting stuck in off
@@ -5114,12 +5094,11 @@ their squared difference <code>(x - y)^2</code> in an elementwise manner. The
 inputs. This lump is often fed into <a href="#x-28MGL-BP-3A--3ELOSS-20CLASS-29" title="(MGL-BP:-&gt;LOSS CLASS)"><code>-&gt;LOSS</code></a> that sums the squared
 differences and makes it part of the function to be minimized.</p>
 
-<pre><code>(-&gt;loss (-&gt;squared-difference (-&gt;activation (-&gt;input :size 100)
-                                            :size 10)
-                              (-&gt;input :name 'target :size 10))
-        :name 'squared-error)
-==&gt; #&lt;-&gt;LOSS SQUARED-ERROR :SIZE 1 1/1 :NORM 0.00000&gt;
-</code></pre>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;loss <span class="paren2">(<span class="code">-&gt;squared-difference <span class="paren3">(<span class="code">-&gt;activation <span class="paren4">(<span class="code">-&gt;input <span class="keyword">:size</span> 100</span>)</span>
+                                            <span class="keyword">:size</span> 10</span>)</span>
+                              <span class="paren3">(<span class="code">-&gt;input <span class="keyword">:name</span> 'target <span class="keyword">:size</span> 10</span>)</span></span>)</span>
+        <span class="keyword">:name</span> 'squared-error</span>)</span>
+==&gt; #&lt;-&gt;LOSS SQUARED-ERROR :SIZE 1 1/1 :NORM 0.00000&gt;</span></code></pre>
 
 <p>Currently this lump is not CUDAized, but it will copy data from the
 GPU if it needs to.</p></li>
@@ -5281,9 +5260,8 @@ distributed independent random numbers with <a href="#x-28MGL-BP-3AMEAN-20-28MGL
 <a href="#x-28MGL-BP-3AVARIANCE-FOR-PREDICTION-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EGAUSSIAN-RANDOM-29-29" title="(MGL-BP:VARIANCE-FOR-PREDICTION (MGL-PAX:ACCESSOR MGL-BP:-&gt;GAUSSIAN-RANDOM))"><code>VARIANCE-FOR-PREDICTION</code></a>). This is useful building block for noise
 based regularization methods.</p>
 
-<pre><code>(-&gt;gaussian-random :size 10 :name 'normal :mean 1 :variance 2)
-==&gt; #&lt;-&gt;GAUSSIAN-RANDOM NORMAL :SIZE 10 1/1 :NORM 0.00000&gt;
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;gaussian-random <span class="keyword">:size</span> 10 <span class="keyword">:name</span> 'normal <span class="keyword">:mean</span> 1 <span class="keyword">:variance</span> 2</span>)</span>
+==&gt; #&lt;-&gt;GAUSSIAN-RANDOM NORMAL :SIZE 10 1/1 :NORM 0.00000&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-BP-3AMEAN-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3A--3EGAUSSIAN-RANDOM-29-29'></a></p>
@@ -5327,9 +5305,8 @@ sample independent binomials. Turn true into 1 and false into 0. The
 <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is determined automatically from the size of its
 input.</p>
 
-<pre><code>(-&gt;sample-binary (-&gt;input :size 10) :name 'binarized-input)
-==&gt; #&lt;-&gt;SAMPLE-BINARY BINARIZED-INPUT :SIZE 10 1/1 :NORM 0.00000&gt;
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;sample-binary <span class="paren2">(<span class="code">-&gt;input <span class="keyword">:size</span> 10</span>)</span> <span class="keyword">:name</span> 'binarized-input</span>)</span>
+==&gt; #&lt;-&gt;SAMPLE-BINARY BINARIZED-INPUT :SIZE 10 1/1 :NORM 0.00000&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-BP-3A-40MGL-BP-ARITHMETIC-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5404,10 +5381,9 @@ The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MG
 its inputs if there is at least one. If one of the inputs is a
 <a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" title="(MGL-BP:-&gt;WEIGHT CLASS)"><code>-&gt;WEIGHT</code></a> lump, then it is added to every stripe.</p>
 
-<pre><code>(-&gt;+ (list (-&gt;input :size 10) (-&gt;weight :size 10 :name 'bias))
-     :name 'plus)
-==&gt; #&lt;-&gt;+ PLUS :SIZE 10 1/1 :NORM 0.00000&gt;
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;+ <span class="paren2">(<span class="code">list <span class="paren3">(<span class="code">-&gt;input <span class="keyword">:size</span> 10</span>)</span> <span class="paren3">(<span class="code">-&gt;weight <span class="keyword">:size</span> 10 <span class="keyword">:name</span> 'bias</span>)</span></span>)</span>
+     <span class="keyword">:name</span> 'plus</span>)</span>
+==&gt; #&lt;-&gt;+ PLUS :SIZE 10 1/1 :NORM 0.00000&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-BP-3A-40MGL-BP--2A-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5425,10 +5401,9 @@ its inputs if there is at least one. If one of the inputs is a
 input lumps. The <code>SIZE</code>(<a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-BP-3ALUMP-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP))"><code>0</code></a> <a href="#x-28MGL-COMMON-3ASIZE-20-28MGL-PAX-3AREADER-20MGL-OPT-3ASEGMENT-SET-29-29" title="(MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET))"><code>1</code></a>) of this lump is automatically determined from
 the size of its inputs. Either input can be a <a href="#x-28MGL-BP-3A--3EWEIGHT-20CLASS-29" title="(MGL-BP:-&gt;WEIGHT CLASS)"><code>-&gt;WEIGHT</code></a> lump.</p>
 
-<pre><code>(-&gt;* (-&gt;input :size 10) (-&gt;weight :size 10 :name 'scale)
-     :name 'mult)
-==&gt; #&lt;-&gt;* MULT :SIZE 10 1/1 :NORM 0.00000&gt;
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code">-&gt;* <span class="paren2">(<span class="code">-&gt;input <span class="keyword">:size</span> 10</span>)</span> <span class="paren2">(<span class="code">-&gt;weight <span class="keyword">:size</span> 10 <span class="keyword">:name</span> 'scale</span>)</span>
+     <span class="keyword">:name</span> 'mult</span>)</span>
+==&gt; #&lt;-&gt;* MULT :SIZE 10 1/1 :NORM 0.00000&gt;</span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-BP-3A-40MGL-BP-ABS-LUMP-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5668,12 +5643,11 @@ grow into a more serious toolset for NLP eventually.</p>
 function argument to a mapper function. It calls <code>FUNCTION</code> with every
 <code>N</code> element.</p>
 
-<pre><code>(map nil (make-n-gram-mappee #'print 3) '(a b c d e))
+<pre><code><span class="code"><span class="paren1">(<span class="code">map nil <span class="paren2">(<span class="code">make-n-gram-mappee #'print 3</span>)</span> '<span class="paren2">(<span class="code">a b c d e</span>)</span></span>)</span>
 ..
-.. (A B C) 
-.. (B C D) 
-.. (C D E) 
-</code></pre></li>
+.. <span class="paren1">(<span class="code">A B C</span>)</span> 
+.. <span class="paren1">(<span class="code">B C D</span>)</span> 
+.. <span class="paren1">(<span class="code">C D E</span>)</span> </span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-NLP-3ABLEU-20FUNCTION-29'></a></p>
@@ -5703,19 +5677,18 @@ precisions (also between 0 and 1 or <code>NIL</code>), one for each element in
 <p>This is basically a reimplementation of
 <a href="https://github.com/moses-smt/mosesdecoder/blob/master/scripts/generic/multi-bleu.perl" >multi-bleu.perl</a>.</p>
 
-<pre><code>(bleu '((1 2 3 4) (a b))
-      '((1 2 3 4) (1 2)))
+<pre><code><span class="code"><span class="paren1">(<span class="code">bleu '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">1 2 3 4</span>)</span> <span class="paren3">(<span class="code">a b</span>)</span></span>)</span>
+      '<span class="paren2">(<span class="code"><span class="paren3">(<span class="code">1 2 3 4</span>)</span> <span class="paren3">(<span class="code">1 2</span>)</span></span>)</span></span>)</span>
 =&gt; 0.8408964
 =&gt; 1
-=&gt; (;; 1-gram precision: 4/6
-    2/3
-    ;; 2-gram precision: 3/4
-    3/4
-    ;; 3-gram precision: 2/2
-    1
-    ;; 4-gram precision: 1/1
-    1)
-</code></pre></li>
+=&gt; <span class="paren1">(<span class="code"><span class="comment">;; 1-gram precision: 4/6
+</span>    2/3
+    <span class="comment">;; 2-gram precision: 3/4
+</span>    3/4
+    <span class="comment">;; 3-gram precision: 2/2
+</span>    1
+    <span class="comment">;; 4-gram precision: 1/1
+</span>    1</span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-NLP-3A-40MGL-NLP-BAG-OF-WORDS-20MGL-PAX-3ASECTION-29'></a></p>
@@ -5750,20 +5723,19 @@ was found in <a href="mgl-pax-manual.html#x-28MGL-PAX-3ADOCUMENT-20FUNCTION-29" 
   <a href="#x-28MGL-NLP-3AENCODED-FEATURE-TYPE-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29" title="(MGL-NLP:ENCODED-FEATURE-TYPE (MGL-PAX:READER MGL-NLP:BAG-OF-WORDS-ENCODER))"><code>ENCODED-FEATURE-TYPE</code></a>.</p></li>
 </ul>
 
-<pre><code>(let* ((feature-indexer
-         (make-indexer
-          (alexandria:alist-hash-table '(("I" . 3) ("me" . 2) ("mine" . 1)))
-          2))
-       (bag-of-words-encoder
-         (make-instance 'bag-of-words-encoder
-                        :feature-encoder feature-indexer
-                        :feature-mapper (lambda (fn document)
-                                          (map nil fn document))
-                        :kind :frequency)))
-  (encode bag-of-words-encoder '("All" "through" "day" "I" "me" "mine"
-                                 "I" "me" "mine" "I" "me" "mine")))
-=&gt; #((0 . 3.0d0) (1 . 3.0d0))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">feature-indexer
+         <span class="paren4">(<span class="code">make-indexer
+          <span class="paren5">(<span class="code">alexandria:alist-hash-table '<span class="paren6">(<span class="code"><span class="paren1">(<span class="code"><span class="string">"I"</span> . 3</span>)</span> <span class="paren1">(<span class="code"><span class="string">"me"</span> . 2</span>)</span> <span class="paren1">(<span class="code"><span class="string">"mine"</span> . 1</span>)</span></span>)</span></span>)</span>
+          2</span>)</span></span>)</span>
+       <span class="paren3">(<span class="code">bag-of-words-encoder
+         <span class="paren4">(<span class="code">make-instance 'bag-of-words-encoder
+                        <span class="keyword">:feature-encoder</span> feature-indexer
+                        <span class="keyword">:feature-mapper</span> <span class="paren5">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren6">(<span class="code">fn document</span>)</span>
+                                          <span class="paren6">(<span class="code">map nil fn document</span>)</span></span>)</span>
+                        <span class="keyword">:kind</span> <span class="keyword">:frequency</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">encode bag-of-words-encoder '<span class="paren3">(<span class="code"><span class="string">"All"</span> <span class="string">"through"</span> <span class="string">"day"</span> <span class="string">"I"</span> <span class="string">"me"</span> <span class="string">"mine"</span>
+                                 <span class="string">"I"</span> <span class="string">"me"</span> <span class="string">"mine"</span> <span class="string">"I"</span> <span class="string">"me"</span> <span class="string">"mine"</span></span>)</span></span>)</span></span>)</span>
+=&gt; #<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">0 . 3.0d0</span>)</span> <span class="paren2">(<span class="code">1 . 3.0d0</span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-NLP-3AFEATURE-ENCODER-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29'></a></p>

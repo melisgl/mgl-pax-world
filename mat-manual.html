@@ -1500,19 +1500,18 @@ printing the result will access the <a href="#x-28ARRAY-20MGL-CUBE-3AFACET-NAME-
 of bytes, this may change in the future. This is a debugging tool,
 don't use it in production.</p>
 
-<pre><code>(with-mat-counters (:count count :n-bytes n-bytes)
-  (assert (= count 0))
-  (assert (= n-bytes 0))
-  (make-mat '(2 3) :ctype :double)
-  (assert (= count 1))
-  (assert (= n-bytes (* 2 3 8)))
-  (with-mat-counters (:n-bytes n-bytes-1 :count count-1)
-    (make-mat '7 :ctype :float)
-    (assert (= count-1 1))
-    (assert (= n-bytes-1 (* 7 4))))
-  (assert (= n-bytes (+ (* 2 3 8) (* 7 4))))
-  (assert (= count 2)))
-</code></pre></li>
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-mat-counters</span></i> <span class="paren2">(<span class="code"><span class="keyword">:count</span> count <span class="keyword">:n-bytes</span> n-bytes</span>)</span>
+  <span class="paren2">(<span class="code">assert <span class="paren3">(<span class="code">= count 0</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">assert <span class="paren3">(<span class="code">= n-bytes 0</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">make-mat '<span class="paren3">(<span class="code">2 3</span>)</span> <span class="keyword">:ctype</span> <span class="keyword">:double</span></span>)</span>
+  <span class="paren2">(<span class="code">assert <span class="paren3">(<span class="code">= count 1</span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">assert <span class="paren3">(<span class="code">= n-bytes <span class="paren4">(<span class="code">* 2 3 8</span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">with-mat-counters</span></i> <span class="paren3">(<span class="code"><span class="keyword">:n-bytes</span> n-bytes-1 <span class="keyword">:count</span> count-1</span>)</span>
+    <span class="paren3">(<span class="code">make-mat '7 <span class="keyword">:ctype</span> <span class="keyword">:float</span></span>)</span>
+    <span class="paren3">(<span class="code">assert <span class="paren4">(<span class="code">= count-1 1</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">assert <span class="paren4">(<span class="code">= n-bytes-1 <span class="paren5">(<span class="code">* 7 4</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">assert <span class="paren3">(<span class="code">= n-bytes <span class="paren4">(<span class="code">+ <span class="paren5">(<span class="code">* 2 3 8</span>)</span> <span class="paren5">(<span class="code">* 7 4</span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="paren2">(<span class="code">assert <span class="paren3">(<span class="code">= count 2</span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
 <p><a id='x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29'></a></p>
