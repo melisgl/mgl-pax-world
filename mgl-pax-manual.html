@@ -1403,7 +1403,7 @@ Reader</a> can help with that.</p>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-UPPERCASE-IS-CODE-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L10">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-UPPERCASE-IS-CODE-2A-20VARIABLE-29" >*DOCUMENT-UPPERCASE-IS-CODE*</a></span></span> <span class="locative-args">T</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L610">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-UPPERCASE-IS-CODE-2A-20VARIABLE-29" >*DOCUMENT-UPPERCASE-IS-CODE*</a></span></span> <span class="locative-args">T</span></span></p>
 
 <p>When true, certain words are assumed to be code as if they were
 marked up with backticks. In particular, the words thus codified are
@@ -1521,7 +1521,7 @@ class `\section`</span></code></pre>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-LINK-CODE-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L12">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-LINK-CODE-2A-20VARIABLE-29" >*DOCUMENT-LINK-CODE*</a></span></span> <span class="locative-args">T</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L917">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-LINK-CODE-2A-20VARIABLE-29" >*DOCUMENT-LINK-CODE*</a></span></span> <span class="locative-args">T</span></span></p>
 
 <p>When true, during the process of generating documentation for a
 <a href="#x-28MGL-PAX-3ASECTION-20CLASS-29" title="(MGL-PAX:SECTION CLASS)"><code>SECTION</code></a>, HTML anchors are added before the documentation of
@@ -1733,7 +1733,7 @@ table of contents and navigation links.</p>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-LINK-SECTIONS-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L14">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-LINK-SECTIONS-2A-20VARIABLE-29" >*DOCUMENT-LINK-SECTIONS*</a></span></span> <span class="locative-args">T</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1475">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-LINK-SECTIONS-2A-20VARIABLE-29" >*DOCUMENT-LINK-SECTIONS*</a></span></span> <span class="locative-args">T</span></span></p>
 
 <p>When true, HTML anchors are generated before the heading of
 sections, which allows the table of contents to contain links and
@@ -1745,7 +1745,7 @@ link.</p></li>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-MAX-NUMBERING-LEVEL-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L16">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-MAX-NUMBERING-LEVEL-2A-20VARIABLE-29" >*DOCUMENT-MAX-NUMBERING-LEVEL*</a></span></span> <span class="locative-args">3</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1482">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-MAX-NUMBERING-LEVEL-2A-20VARIABLE-29" >*DOCUMENT-MAX-NUMBERING-LEVEL*</a></span></span> <span class="locative-args">3</span></span></p>
 
 <p>A non-negative integer. In their hierarchy, sections on levels less
 than this value get numbered in the format of <code>3.1.2</code>. Setting it to
@@ -1755,7 +1755,7 @@ than this value get numbered in the format of <code>3.1.2</code>. Setting it to
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-MAX-TABLE-OF-CONTENTS-LEVEL-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L18">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-MAX-TABLE-OF-CONTENTS-LEVEL-2A-20VARIABLE-29" >*DOCUMENT-MAX-TABLE-OF-CONTENTS-LEVEL*</a></span></span> <span class="locative-args">3</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1487">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-MAX-TABLE-OF-CONTENTS-LEVEL-2A-20VARIABLE-29" >*DOCUMENT-MAX-TABLE-OF-CONTENTS-LEVEL*</a></span></span> <span class="locative-args">3</span></span></p>
 
 <p>A non-negative integer. Top-level sections are given a table of
 contents, which includes a nested tree of section titles whose depth
@@ -1767,7 +1767,7 @@ table of contents will link to the sections.</p></li>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-TEXT-NAVIGATION-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L20">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-TEXT-NAVIGATION-2A-20VARIABLE-29" >*DOCUMENT-TEXT-NAVIGATION*</a></span></span> <span class="locative-args">NIL</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1494">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-TEXT-NAVIGATION-2A-20VARIABLE-29" >*DOCUMENT-TEXT-NAVIGATION*</a></span></span> <span class="locative-args">NIL</span></span></p>
 
 <p>If true, then before each heading a line is printed with links to
 the previous, parent and next section. Needs
@@ -1777,7 +1777,7 @@ the previous, parent and next section. Needs
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-FANCY-HTML-NAVIGATION-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L22">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-FANCY-HTML-NAVIGATION-2A-20VARIABLE-29" >*DOCUMENT-FANCY-HTML-NAVIGATION*</a></span></span> <span class="locative-args">T</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1499">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-FANCY-HTML-NAVIGATION-2A-20VARIABLE-29" >*DOCUMENT-FANCY-HTML-NAVIGATION*</a></span></span> <span class="locative-args">T</span></span></p>
 
 <p>If true and the output format is HTML, then headings get a
 navigation component that consists of links to the previous, parent,
@@ -1816,7 +1816,7 @@ it can make markdown output more readable.</p></li>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-MARK-UP-SIGNATURES-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L24">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-MARK-UP-SIGNATURES-2A-20VARIABLE-29" >*DOCUMENT-MARK-UP-SIGNATURES*</a></span></span> <span class="locative-args">T</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1733">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-MARK-UP-SIGNATURES-2A-20VARIABLE-29" >*DOCUMENT-MARK-UP-SIGNATURES*</a></span></span> <span class="locative-args">T</span></span></p>
 
 <p>When true, some things such as function names and arglists are
 rendered as bold and italic. In <code>:HTML</code> output, locative types become
@@ -1840,7 +1840,7 @@ the symbol becomes a self-link for your permalinking pleasure.</p>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-NORMALIZE-PACKAGES-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L26">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-NORMALIZE-PACKAGES-2A-20VARIABLE-29" >*DOCUMENT-NORMALIZE-PACKAGES*</a></span></span> <span class="locative-args">T</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document.lisp#L1858">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-NORMALIZE-PACKAGES-2A-20VARIABLE-29" >*DOCUMENT-NORMALIZE-PACKAGES*</a></span></span> <span class="locative-args">T</span></span></p>
 
 <p>Determines what <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm" title="(*PACKAGE* VARIABLE)"><code>*PACKAGE*</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm" title="(*READTABLE* VARIABLE)"><code>*READTABLE*</code></a> are when working with
 generating documentation. If true and documentation is generated for
@@ -1907,7 +1907,7 @@ sheet to <code>TARGET-DIR</code>, as well. Example usage:</p>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-HTML-MAX-NAVIGATION-TABLE-OF-CONTENTS-LEVEL-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L32">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-MAX-NAVIGATION-TABLE-OF-CONTENTS-LEVEL-2A-20VARIABLE-29" >*DOCUMENT-HTML-MAX-NAVIGATION-TABLE-OF-CONTENTS-LEVEL*</a></span></span> <span class="locative-args">NIL</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document-util.lisp#L281">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-MAX-NAVIGATION-TABLE-OF-CONTENTS-LEVEL-2A-20VARIABLE-29" >*DOCUMENT-HTML-MAX-NAVIGATION-TABLE-OF-CONTENTS-LEVEL*</a></span></span> <span class="locative-args">NIL</span></span></p>
 
 <p><code>NIL</code> or a non-negative integer. If non-NIL, it overrides
 <a href="#x-28MGL-PAX-3A-2ADOCUMENT-MAX-NUMBERING-LEVEL-2A-20VARIABLE-29" title="(MGL-PAX:*DOCUMENT-MAX-NUMBERING-LEVEL* VARIABLE)"><code>*DOCUMENT-MAX-NUMBERING-LEVEL*</code></a> in dynamic HTML table of contents on
@@ -1917,7 +1917,7 @@ the left of the page.</p></li>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-HTML-TOP-BLOCKS-OF-LINKS-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L28">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-TOP-BLOCKS-OF-LINKS-2A-20VARIABLE-29" >*DOCUMENT-HTML-TOP-BLOCKS-OF-LINKS*</a></span></span> <span class="locative-args">NIL</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document-util.lisp#L183">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-TOP-BLOCKS-OF-LINKS-2A-20VARIABLE-29" >*DOCUMENT-HTML-TOP-BLOCKS-OF-LINKS*</a></span></span> <span class="locative-args">NIL</span></span></p>
 
 <p>A list of blocks of links to be display on the sidebar on the left,
 above the table of contents. A block is of the form <code>(&amp;KEY TITLE ID
@@ -1929,7 +1929,7 @@ of <code>(URI LABEL) elements.</code></p></li>
 <p><a id='x-28MGL-PAX-3A-2ADOCUMENT-HTML-BOTTOM-BLOCKS-OF-LINKS-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L30">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-BOTTOM-BLOCKS-OF-LINKS-2A-20VARIABLE-29" >*DOCUMENT-HTML-BOTTOM-BLOCKS-OF-LINKS*</a></span></span> <span class="locative-args">NIL</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/document-util.lisp#L190">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-BOTTOM-BLOCKS-OF-LINKS-2A-20VARIABLE-29" >*DOCUMENT-HTML-BOTTOM-BLOCKS-OF-LINKS*</a></span></span> <span class="locative-args">NIL</span></span></p>
 
 <p>Like <a href="#x-28MGL-PAX-3A-2ADOCUMENT-HTML-TOP-BLOCKS-OF-LINKS-2A-20VARIABLE-29" title="(MGL-PAX:*DOCUMENT-HTML-TOP-BLOCKS-OF-LINKS* VARIABLE)"><code>*DOCUMENT-HTML-TOP-BLOCKS-OF-LINKS*</code></a>, only it is displayed
 below the table of contents.</p></li>
@@ -2431,7 +2431,7 @@ as much as possible.</p></li>
 <p><a id='x-28MGL-PAX-3A-2ATRANSCRIBE-CHECK-CONSISTENCY-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L6">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ATRANSCRIBE-CHECK-CONSISTENCY-2A-20VARIABLE-29" >*TRANSCRIBE-CHECK-CONSISTENCY*</a></span></span> <span class="locative-args">NIL</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/transcribe.lisp#L121">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ATRANSCRIBE-CHECK-CONSISTENCY-2A-20VARIABLE-29" >*TRANSCRIBE-CHECK-CONSISTENCY*</a></span></span> <span class="locative-args">NIL</span></span></p>
 
 <p>The default value of <a href="#x-28MGL-PAX-3ATRANSCRIBE-20FUNCTION-29" title="(MGL-PAX:TRANSCRIBE FUNCTION)"><code>TRANSCRIBE</code></a>'s <code>CHECK-CONSISTENCY</code> argument.</p></li>
 </ul>
@@ -2439,7 +2439,7 @@ as much as possible.</p></li>
 <p><a id='x-28MGL-PAX-3A-2ATRANSCRIBE-SYNTAXES-2A-20VARIABLE-29'></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/autoload.lisp#L8">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ATRANSCRIBE-SYNTAXES-2A-20VARIABLE-29" >*TRANSCRIBE-SYNTAXES*</a></span></span> <span class="locative-args">((:DEFAULT (:OUTPUT &quot;..&quot;) (:NO-VALUE &quot;=&gt; ; No value&quot;) (:READABLE &quot;=&gt;&quot;)
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/aa3a226216b8078bed7b632bd9465a25eef89398/src/transcribe.lisp#L68">[variable]</a></span> <span class="reference-object"><a href="#x-28MGL-PAX-3A-2ATRANSCRIBE-SYNTAXES-2A-20VARIABLE-29" >*TRANSCRIBE-SYNTAXES*</a></span></span> <span class="locative-args">((:DEFAULT (:OUTPUT &quot;..&quot;) (:NO-VALUE &quot;=&gt; ; No value&quot;) (:READABLE &quot;=&gt;&quot;)
   (:UNREADABLE &quot;==&gt;&quot;) (:UNREADABLE-CONTINUATION &quot;--&gt;&quot;))
  (:COMMENTED-1 (:OUTPUT &quot;;..&quot;) (:NO-VALUE &quot;;=&gt; ; No value&quot;) (:READABLE &quot;;=&gt;&quot;)
   (:READABLE-CONTINUATION &quot;;-&gt;&quot;) (:UNREADABLE &quot;;==&gt;&quot;)
