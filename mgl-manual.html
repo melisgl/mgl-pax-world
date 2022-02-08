@@ -2049,7 +2049,7 @@ with features of the document.</p>
 <a id="MGL-CORE:FEATURE-LLRS%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/0dad3815811bdc4ef6bf7f81cab4434d45af03c1/src/feature.lisp#L59">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:FEATURE-LLRS%20FUNCTION" >FEATURE-LLRS</a></span></span> <span class="locative-args">DOCUMENTS MAPPER CLASS-FN &amp;KEY (CLASSES (<code>ALL-DOCUMENT-CLASSES</code> <a href="manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION"><code>DOCUMENTS</code></a> <code>CLASS-FN</code>))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/0dad3815811bdc4ef6bf7f81cab4434d45af03c1/src/feature.lisp#L59">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:FEATURE-LLRS%20FUNCTION" >FEATURE-LLRS</a></span></span> <span class="locative-args">DOCUMENTS MAPPER CLASS-FN &amp;KEY (CLASSES (<code>ALL-DOCUMENT-CLASSES</code> <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION"><code>DOCUMENTS</code></a> <code>CLASS-FN</code>))</span></span></p>
 
 <p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>EQUAL</code></a> hash table whose keys are
 features of <code>DOCUMENTS</code> and values are their log likelihood ratios.
@@ -2071,7 +2071,7 @@ features of the document.</p>
 <a id="MGL-CORE:FEATURE-DISAMBIGUITIES%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/0dad3815811bdc4ef6bf7f81cab4434d45af03c1/src/feature.lisp#L122">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:FEATURE-DISAMBIGUITIES%20FUNCTION" >FEATURE-DISAMBIGUITIES</a></span></span> <span class="locative-args">DOCUMENTS MAPPER CLASS-FN &amp;KEY (CLASSES (<code>ALL-DOCUMENT-CLASSES</code> <a href="manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION"><code>DOCUMENTS</code></a> <code>CLASS-FN</code>))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/0dad3815811bdc4ef6bf7f81cab4434d45af03c1/src/feature.lisp#L122">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:FEATURE-DISAMBIGUITIES%20FUNCTION" >FEATURE-DISAMBIGUITIES</a></span></span> <span class="locative-args">DOCUMENTS MAPPER CLASS-FN &amp;KEY (CLASSES (<code>ALL-DOCUMENT-CLASSES</code> <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION"><code>DOCUMENTS</code></a> <code>CLASS-FN</code>))</span></span></p>
 
 <p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>EQUAL</code></a> hash table whose keys are
 features of <code>DOCUMENTS</code> and values are their <em>disambiguities</em>. <code>MAPPER</code>
@@ -3362,7 +3362,7 @@ and <code>OPTIMIZER</code> <a href="#MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%20CLAS
 
 <p>Return the weight matrix of <code>SEGMENT</code>. A segment
 doesn't need to be a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>MAT</code></a> object itself. For example, it may be a
-<code>MGL-BM:CHUNK</code> of a <code>MGL-BM:BM</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm" title="CLASS CLASS"><code>0</code></a> <a href="manual.html#CLASS%20MGL-PAX:LOCATIVE" title="CLASS MGL-PAX:LOCATIVE"><code>1</code></a>) or a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>MGL-BP:LUMP</code></a> of a
+<code>MGL-BM:CHUNK</code> of a <code>MGL-BM:BM</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm" title="CLASS CLASS"><code>0</code></a> <a href="pax-manual.html#CLASS%20MGL-PAX:LOCATIVE" title="CLASS MGL-PAX:LOCATIVE"><code>1</code></a>) or a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>MGL-BP:LUMP</code></a> of a
 <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>MGL-BP:BPN</code></a> whose <a href="#MGL-COMMON:NODES%20GENERIC-FUNCTION" title="MGL-COMMON:NODES GENERIC-FUNCTION"><code>NODES</code></a> slot holds the weights.</p></li>
 </ul>
 
@@ -3383,7 +3383,7 @@ doesn't need to be a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MA
 
 <p>Return the derivatives matrix of <code>SEGMENT</code>. A segment
 doesn't need to be a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>MAT</code></a> object itself. For example, it may be a
-<code>MGL-BM:CHUNK</code> of a <code>MGL-BM:BM</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm" title="CLASS CLASS"><code>0</code></a> <a href="manual.html#CLASS%20MGL-PAX:LOCATIVE" title="CLASS MGL-PAX:LOCATIVE"><code>1</code></a>) or a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>MGL-BP:LUMP</code></a> of a
+<code>MGL-BM:CHUNK</code> of a <code>MGL-BM:BM</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm" title="CLASS CLASS"><code>0</code></a> <a href="pax-manual.html#CLASS%20MGL-PAX:LOCATIVE" title="CLASS MGL-PAX:LOCATIVE"><code>1</code></a>) or a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>MGL-BP:LUMP</code></a> of a
 <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>MGL-BP:BPN</code></a> whose DERIVATIVES slot holds the gradient.</p></li>
 </ul>
 
@@ -3892,11 +3892,11 @@ recurrent one, see <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/0dad3815811bdc4ef6bf7f81cab4434d45af03c1/src/backprop.lisp#L361">[macro]</a></span> <span class="reference-object"><a href="#MGL-BP:BUILD-FNN%20MGL-PAX:MACRO" >BUILD-FNN</a></span></span> <span class="locative-args">(&amp;KEY FNN (CLASS ''<a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>FNN</code></a>) INITARGS MAX-N-STRIPES NAME) &amp;BODY CLUMPS</span></span></p>
 
-<p>Syntactic sugar to assemble <code>FNN</code>s from <code>CLUMPs</code>. Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm" title="LET* MGL-PAX:MACRO"><code>LET*</code></a>, it is a
-sequence of bindings (of symbols to <code>CLUMPs</code>). The names of the clumps
+<p>Syntactic sugar to assemble <code>FNN</code>s from <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>CLUMP</code></a>s. Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm" title="LET* MGL-PAX:MACRO"><code>LET*</code></a>, it is a
+sequence of bindings (of symbols to <code>CLUMP</code>s). The names of the clumps
 created default to the symbol of the binding. In case a clump is not
 bound to a symbol (because it was created in a nested expression),
-the local function <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>CLUMP</code></a> can be used to find the clump with the
+the local function <code>CLUMP</code> can be used to find the clump with the
 given name in the fnn being built. Example:</p>
 
 <pre><code>(build-fnn ()
@@ -6105,7 +6105,7 @@ within the vector but are in no particular order.</p>
 
 <ul>
 <li><p>For <code>:FREQUENCY</code> it is the number of times the corresponding feature
-was found in <a href="manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION"><code>DOCUMENT</code></a>.</p></li>
+was found in <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION"><code>DOCUMENT</code></a>.</p></li>
 <li><p>For <code>:BINARY</code> it is always 1.</p></li>
 <li><p>For <code>:NORMALIZED-FREQUENCY</code> and <code>:NORMALIZED-BINARY</code> are like the
   unnormalized counterparts except that as the final step values in

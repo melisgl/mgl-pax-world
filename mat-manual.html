@@ -503,7 +503,7 @@ there are no facets at all.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/161a68c89e47ce902d42423f18164ce0bfe39719/src/util.lisp#L193">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" >*DEFAULT-MAT-CTYPE*</a></span></span> <span class="locative-args">:DOUBLE</span></span></p>
 
-<p>By default <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>MATs</code></a> are created with this ctype. One of <code>:FLOAT</code>
+<p>By default <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>MAT</code></a>s are created with this ctype. One of <code>:FLOAT</code>
 or <code>:DOUBLE</code>.</p></li>
 </ul>
 
@@ -1759,7 +1759,7 @@ facet:</p>
 For <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>MAT</code></a> objects, that needs to be refined. If a <code>MAT</code> is reshaped
 and/or displaced in a way that not all elements are visible then
 those elements are always kept intact and copied around. This is
-accomplished by turning <code>:OUTPUT</code> into <code>:IO</code> automatically on such <code>MATs</code>.</p>
+accomplished by turning <code>:OUTPUT</code> into <code>:IO</code> automatically on such <code>MAT</code>s.</p>
 
 <p>We have finished our introduction to the various facets. It must be
 said though that one can do anything without ever accessing a facet
@@ -2315,7 +2315,7 @@ that's used to acquire the cuda array.</p>
 but one function is defined for each ctype in <code>CTYPES</code> by transforming
 types, constants and code by substituting them with their ctype
 equivalents. Currently this means that one needs to write only one
-kernel for <code>FLOAT</code> and <a href="manual.html#MGL-PAX:DISLOCATED%20MGL-PAX:LOCATIVE" title="MGL-PAX:DISLOCATED MGL-PAX:LOCATIVE"><code>DOUBLE</code></a>.</p>
+kernel for <code>FLOAT</code> and <a href="pax-manual.html#MGL-PAX:DISLOCATED%20MGL-PAX:LOCATIVE" title="MGL-PAX:DISLOCATED MGL-PAX:LOCATIVE"><code>DOUBLE</code></a>.</p>
 
 <p>Finally, a dispatcher function with <code>NAME</code> is defined which determines
 the ctype of the <code>MAT</code> objects passed for <code>:MAT</code> typed parameters. It's

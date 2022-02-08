@@ -1692,7 +1692,7 @@ upgrades in combination with <a href="#JOURNAL:WITH-REPLAY-FILTER%20MGL-PAX:MACR
 <p>An event's version is either <code>NIL</code>, a positive fixnum, or <code>:INFINITY</code>,
 which correspond to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>LOG-EVENT</code></a>s, <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-EVENT TYPE"><code>VERSIONED-EVENT</code></a>s, and
 <a href="#JOURNAL:EXTERNAL-EVENT%20TYPE" title="JOURNAL:EXTERNAL-EVENT TYPE"><code>EXTERNAL-EVENT</code></a>s, respectively, and have an increasingly strict
-behaviour with regards to <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a>. All <a href="#JOURNAL:EVENT%20TYPE" title="JOURNAL:EVENT TYPE"><code>EVENTs</code></a> have versions. The
+behaviour with regards to <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a>. All <a href="#JOURNAL:EVENT%20TYPE" title="JOURNAL:EVENT TYPE"><code>EVENT</code></a>s have versions. The
 versions of the in- and out-events belonging to the same <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@FRAME MGL-PAX:GLOSSARY-TERM">frame</a> are
 the same.</p></li>
 </ul>
@@ -3149,7 +3149,7 @@ low-level substrate of the Journal library, working with events
 directly is sometimes useful when writing tests that inspect
 recorded events. Otherwise, skip this entire section.</p>
 
-<p>All <a href="#JOURNAL:EVENT%20TYPE" title="JOURNAL:EVENT TYPE"><code>EVENTs</code></a> have <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>EVENT-NAME</code></a> and <code>EVENT-VERSION</code>(<a href="#JOURNAL:EVENT-VERSION%20FUNCTION" title="JOURNAL:EVENT-VERSION FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-VERSION%20TYPE" title="JOURNAL:EVENT-VERSION TYPE"><code>1</code></a>), which feature
+<p>All <a href="#JOURNAL:EVENT%20TYPE" title="JOURNAL:EVENT TYPE"><code>EVENT</code></a>s have <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>EVENT-NAME</code></a> and <code>EVENT-VERSION</code>(<a href="#JOURNAL:EVENT-VERSION%20FUNCTION" title="JOURNAL:EVENT-VERSION FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-VERSION%20TYPE" title="JOURNAL:EVENT-VERSION TYPE"><code>1</code></a>), which feature
 prominently in <a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION" title="The replay strategy">The replay strategy</a>. After the examples in
 <a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">In-events</a> and <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">Out-events</a>, the following example is a reminder of
 how events look in the simplest case.</p>
@@ -3197,7 +3197,7 @@ representations. This function is useful in conjunction with
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/15ddaff5d900734f033822a14d7694e44119fcfd/src/journal.lisp#L186">[function]</a></span> <span class="reference-object"><a href="#JOURNAL:EVENT-NAME%20FUNCTION" >EVENT-NAME</a></span></span> <span class="locative-args">EVENT</span></span></p>
 
 <p>The name of an event can be of any type. It is often a symbol or a
-string. When replaying, names may be compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>EQUAL</code></a>. All <code>EVENTs</code>
+string. When replaying, names may be compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>EQUAL</code></a>. All <code>EVENT</code>s
 have names. The names of the in- and out-events belonging to the
 same <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@FRAME MGL-PAX:GLOSSARY-TERM">frame</a> are the same.</p></li>
 </ul>
@@ -3563,7 +3563,7 @@ generated. They differ from <code>FILE-JOURNAL</code>s in that events written to
 <code>IN-MEMORY-JOURNAL</code>s are not serialized (and deserialized on replay)
 with the following consequences for the objects recorded by
 <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>JOURNALED</code></a> (i.e. its <code>NAME</code>, <code>ARGS</code> arguments, but also the return <code>VALUES</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES TYPE"><code>1</code></a>)
-of the block, or the value returned by <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION CONDITION"><code>0</code></a> <a href="manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)):</p>
+of the block, or the value returned by <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION CONDITION"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)):</p>
 
 <ul>
 <li><p>These objects need not be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p></li>
@@ -3634,7 +3634,7 @@ a more full-featured solution for repeated <a href="#JOURNAL:@REPLAY%20MGL-PAX:S
 <p>Since serialization in <code>FILE-JOURNAL</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ FUNCTION"><code>READ</code></a>
 and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE FUNCTION"><code>WRITE</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>JOURNALED</code></a> records in events (i.e. its
 <code>NAME</code>, <code>ARGS</code> arguments, but also the return <code>VALUES</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES TYPE"><code>1</code></a>) of the block, or
-the value returned by <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION CONDITION"><code>0</code></a> <a href="manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p>
+the value returned by <code>CONDITION</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION CONDITION"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p>
 
 <p>File journals are human-readable, and editable by hand with some
 care. When editing, the following needs to be remembered:</p>
@@ -3906,7 +3906,7 @@ an error. Existing <a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BU
 <h2><a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION">16 Streamlets reference</a></h2>
 
 <p>This section is relevant mostly for implementing new kinds of
-<a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>JOURNALs</code></a> in addition to <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>FILE-JOURNAL</code></a>s and <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>IN-MEMORY-JOURNAL</code></a>s. In
+<a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>JOURNAL</code></a>s in addition to <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>FILE-JOURNAL</code></a>s and <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>IN-MEMORY-JOURNAL</code></a>s. In
 normal operation, <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>STREAMLET</code></a>s are not worked with directly.</p>
 
 <p><a id="x-28JOURNAL-3A-40OPENING-AND-CLOSING-20MGL-PAX-3ASECTION-29"></a>
