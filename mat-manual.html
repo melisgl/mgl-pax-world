@@ -304,7 +304,7 @@ an introduction.</p></li>
 <a id="MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L248">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-ctype</a></span></span> <span class="locative-args">mat</span> <span class="locative-args">(:ctype = *default-mat-ctype*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L248">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-ctype</a></span></span> <span class="locative-args">mat (:ctype = *default-mat-ctype*)</span></span></p>
 
 <p>One of <a href="#MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE" title="MGL-MAT:*SUPPORTED-CTYPES* VARIABLE"><code>*supported-ctypes*</code></a>. The matrix can hold
 only values of this type.</p></li>
@@ -314,7 +314,7 @@ only values of this type.</p></li>
 <a id="MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L197">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-displacement</a></span></span> <span class="locative-args">mat</span> <span class="locative-args">(:displacement = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L197">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-displacement</a></span></span> <span class="locative-args">mat (:displacement = 0)</span></span></p>
 
 <p>A value in the <code>[0,max-size]</code> interval. This is
 like the DISPLACED-INDEX-OFFSET of a lisp array, but displacement
@@ -325,7 +325,7 @@ is relative to the start of the underlying storage vector.</p></li>
 <a id="MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="locative-args">mat</span> <span class="locative-args">(:dimensions)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="locative-args">mat (:dimensions)</span></span></p>
 
 <p>Like <code>array-dimensions</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="ARRAY-DIMENSION FUNCTION"><code>1</code></a>). It holds a list of
 dimensions, but it is allowed to pass in scalars too.</p></li>
@@ -345,7 +345,7 @@ dimensions, but it is allowed to pass in scalars too.</p></li>
 <a id="MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L251">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-initial-element</a></span></span> <span class="locative-args">mat</span> <span class="locative-args">(:initial-element = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L251">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-initial-element</a></span></span> <span class="locative-args">mat (:initial-element = 0)</span></span></p>
 
 <p>If non-nil, then when a facet is created, it is
 filled with <code>initial-element</code> coerced to the appropriate numeric
@@ -356,7 +356,7 @@ type. If <code>nil</code>, then no initialization is performed.</p></li>
 <a id="MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L206">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-size</a></span></span> <span class="locative-args">mat</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L206">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-size</a></span></span> <span class="locative-args">mat NIL</span></span></p>
 
 <p>The number of elements in the visible portion of
 the array. This is always the product of the elements
@@ -367,7 +367,7 @@ the array. This is always the product of the elements
 <a id="MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L254">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-max-size</a></span></span> <span class="locative-args">mat</span> <span class="locative-args">(:max-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L254">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-max-size</a></span></span> <span class="locative-args">mat (:max-size)</span></span></p>
 
 <p>The number of elements for which storage may be
 allocated. This is <code>displacement</code> + <a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a> + <code>slack</code> where <code>slack</code>
@@ -1836,7 +1836,7 @@ efficient. If pinning is not available, then it's <code>:static</code>.</p></li>
 <a id="MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/foreign.lisp#L99">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION" >pinning-supported-p</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/foreign.lisp#L99">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION" >pinning-supported-p</a></span></span></span></p>
 
 <p>Return true iff the lisp implementation efficiently supports
 pinning lisp arrays. Pinning ensures that the garbage collector
@@ -1932,7 +1932,7 @@ turns off cuda initialization entirely.</p></li>
 <a id="MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L211">[accessor]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" >cuda-enabled</a></span></span> <span class="locative-args">mat</span> <span class="locative-args">(:cuda-enabled = *default-mat-cuda-enabled*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/mat.lisp#L211">[accessor]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" >cuda-enabled</a></span></span> <span class="locative-args">mat (:cuda-enabled = *default-mat-cuda-enabled*)</span></span></p>
 
 <p>The control provided by <a href="#MGL-MAT:*CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*CUDA-ENABLED* VARIABLE"><code>*cuda-enabled*</code></a> can be too
 coarse. This flag provides a per-object mechanism to turn cuda
@@ -2345,21 +2345,21 @@ use these at all.</p>
 <a id="MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-function-name</a></span></span> <span class="locative-args">cublas-error</span> <span class="locative-args">(:function-name)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-function-name</a></span></span> <span class="locative-args">cublas-error (:function-name)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ACUBLAS-ERROR-STATUS-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACUBLAS-ERROR-29-29"></a>
 <a id="MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-status</a></span></span> <span class="locative-args">cublas-error</span> <span class="locative-args">(:status)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-status</a></span></span> <span class="locative-args">cublas-error (:status)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2ACUBLAS-HANDLE-2A-20VARIABLE-29"></a>
 <a id="MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/cublas.lisp#L82">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE" >*cublas-handle*</a></span></span> </span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/cublas.lisp#L82">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE" >*cublas-handle*</a></span></span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ACUBLAS-CREATE-20FUNCTION-29"></a>
@@ -2411,7 +2411,7 @@ instead.</p>
 <a id="MGL-MAT:*CURAND-STATE*%20VARIABLE"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/curand.lisp#L12">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*CURAND-STATE*%20VARIABLE" >*curand-state*</a></span></span> </span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/curand.lisp#L12">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*CURAND-STATE*%20VARIABLE" >*curand-state*</a></span></span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ACURAND-XORWOW-STATE-20CLASS-29"></a>
@@ -2425,14 +2425,14 @@ instead.</p>
 <a id="MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/curand.lisp#L34">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >n-states</a></span></span> <span class="locative-args">curand-xorwow-state</span> <span class="locative-args">(:n-states)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/curand.lisp#L34">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >n-states</a></span></span> <span class="locative-args">curand-xorwow-state (:n-states)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ASTATES-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACURAND-XORWOW-STATE-29-29"></a>
 <a id="MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/curand.lisp#L35">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >states</a></span></span> <span class="locative-args">curand-xorwow-state</span> <span class="locative-args">(:states)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/7b0740daa6f456ba0779fc6409393add62c53369/src/curand.lisp#L35">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >states</a></span></span> <span class="locative-args">curand-xorwow-state (:states)</span></span></li>
 </ul>
   </div>
 </div>

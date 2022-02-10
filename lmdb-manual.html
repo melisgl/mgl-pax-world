@@ -354,7 +354,7 @@ the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MG
 <a id="LMDB:LMDB-FOREIGN-VERSION%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L642">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-FOREIGN-VERSION%20FUNCTION" >lmdb-foreign-version</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L642">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-FOREIGN-VERSION%20FUNCTION" >lmdb-foreign-version</a></span></span></span></p>
 
 <p>Return the version of the C lmdb library as a string like <code>0.9.26</code>.</p>
 
@@ -365,7 +365,7 @@ the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MG
 <a id="LMDB:LMDB-BINDING-VERSION%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L652">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BINDING-VERSION%20FUNCTION" >lmdb-binding-version</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L652">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BINDING-VERSION%20FUNCTION" >lmdb-binding-version</a></span></span></span></p>
 
 <p>Return a string representing the version of C lmdb based on which
 the <code>cffi</code> bindings were created. The version string has the same
@@ -408,7 +408,7 @@ data file can be accessed. Always to be created by <a href="#LMDB:OPEN-ENV%20FUN
 <a id="LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L687">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="locative-args">env</span> <span class="locative-args">(:path)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L687">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="locative-args">env (:path)</span></span></p>
 
 <p>The location of the memory-mapped file and the
 environment lock file.</p></li>
@@ -418,7 +418,7 @@ environment lock file.</p></li>
 <a id="LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L691">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="locative-args">env</span> <span class="locative-args">(:max-dbs)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L691">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="locative-args">env (:max-dbs)</span></span></p>
 
 <p>The maximum number of named databases in the
 environment. Currently a moderate number is cheap, but a huge
@@ -430,7 +430,7 @@ number gets expensive: 7-120 words per transaction, and every
 <a id="LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L697">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="locative-args">env</span> <span class="locative-args">(:max-readers)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L697">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="locative-args">env (:max-readers)</span></span></p>
 
 <p>The maximum number of threads/reader slots. See
 the documentation of the <a href="http://lmdb.tech/doc/group__readers.html" >reader lock
@@ -441,7 +441,7 @@ table</a> for more.</p></li>
 <a id="LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L702">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="locative-args">env</span> <span class="locative-args">(:map-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L702">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="locative-args">env (:map-size)</span></span></p>
 
 <p>Specifies the size of the data file in bytes.</p></li>
 </ul>
@@ -450,14 +450,14 @@ table</a> for more.</p></li>
 <a id="LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L711">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="locative-args">env</span> <span class="locative-args">(:mode)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L711">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="locative-args">env (:mode)</span></span></li>
 </ul>
 
 <p><a id="x-28LMDB-3AENV-FLAGS-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L707">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="locative-args">env</span> <span class="locative-args">(:flags)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L707">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="locative-args">env (:flags)</span></span></p>
 
 <p>A plist of the options as captured by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.
 For example, <code>(:fixed-map nil :subdir t ...)</code>.</p></li>
@@ -924,7 +924,7 @@ without a corresponding <a href="#LMDB:RENEW-TXN%20FUNCTION" title="LMDB:RENEW-T
 <a id="LMDB:TXN-ID%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1436">[function]</a></span> <span class="reference-object"><a href="#LMDB:TXN-ID%20FUNCTION" >txn-id</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1436">[function]</a></span> <span class="reference-object"><a href="#LMDB:TXN-ID%20FUNCTION" >txn-id</a></span></span></span></p>
 
 <p>The ID of <code>txn</code>. IDs are integers incrementing from 1. For a
 read-only transaction, this corresponds to the snapshot being read;
@@ -1221,7 +1221,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1822">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="locative-args">db</span> <span class="locative-args">(:name)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1822">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="locative-args">db (:name)</span></span></p>
 
 <p>The name of the database.</p></li>
 </ul>
@@ -1230,7 +1230,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1828">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="locative-args">db</span> <span class="locative-args">(:key-encoding)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1828">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="locative-args">db (:key-encoding)</span></span></p>
 
 <p>The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>key-encoding</code> to
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
@@ -1240,7 +1240,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1834">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="locative-args">db</span> <span class="locative-args">(:value-encoding)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/0dab631b9cf1a0329b1a8500378662dccf54ece3/src/lmdb.lisp#L1834">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="locative-args">db (:value-encoding)</span></span></p>
 
 <p>The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>value-encoding</code>
 to <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>

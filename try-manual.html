@@ -1092,7 +1092,7 @@ the test or through the return value of a test:</p>
 <a id="TRY:CURRENT-TRIAL%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L168">[function]</a></span> <span class="reference-object"><a href="#TRY:CURRENT-TRIAL%20FUNCTION" >current-trial</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L168">[function]</a></span> <span class="reference-object"><a href="#TRY:CURRENT-TRIAL%20FUNCTION" >current-trial</a></span></span></span></p>
 
 <p><a href="#TRY:TRIAL%20TYPE" title="TRY:TRIAL TYPE"><code>trial</code></a>s, like the calls to tests they stand for, nest. <code>current-trial</code>
 returns the innermost trial. If there is no currently running test,
@@ -1120,7 +1120,7 @@ then an error is signalled. The returned trial is <a href="#TRY:RUNNINGP%20FUNCT
 <a id="TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial-event.lisp#L17">[reader]</a></span> <span class="reference-object"><a href="#TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29" >trial</a></span></span> <span class="locative-args">trial-event</span> <span class="locative-args">(:trial)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial-event.lisp#L17">[reader]</a></span> <span class="reference-object"><a href="#TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29" >trial</a></span></span> <span class="locative-args">trial-event (:trial)</span></span></li>
 </ul>
 
 <p><a id="x-28TRY-3ATRIAL-START-20CONDITION-29"></a>
@@ -1280,7 +1280,7 @@ by the <a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome R
 <a id="TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L76">[reader]</a></span> <span class="reference-object"><a href="#TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29" >verdict</a></span></span> <span class="locative-args">trial</span> <span class="locative-args">(= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L76">[reader]</a></span> <span class="reference-object"><a href="#TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29" >verdict</a></span></span> <span class="locative-args">trial (= nil)</span></span></p>
 
 <p>The <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a> <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a> signalled when this
 <code>trial</code> finished or <code>nil</code> if it has not finished yet.</p></li>
@@ -1478,7 +1478,7 @@ the <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdi
 <a id="TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L62">[reader]</a></span> <span class="reference-object"><a href="#TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29" >n-retries</a></span></span> <span class="locative-args">trial</span> <span class="locative-args">(:n-retries = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L62">[reader]</a></span> <span class="reference-object"><a href="#TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29" >n-retries</a></span></span> <span class="locative-args">trial (:n-retries = 0)</span></span></p>
 
 <p>The number of times this <code>trial</code> has
 been retried. See <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL FUNCTION"><code>retry-trial</code></a>.</p></li>
@@ -1507,7 +1507,7 @@ so as <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><
 <a id="TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L13">[reader]</a></span> <span class="reference-object"><a href="#TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29" >test-name</a></span></span> <span class="locative-args">error*</span> <span class="locative-args">(:test-name)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L13">[reader]</a></span> <span class="reference-object"><a href="#TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29" >test-name</a></span></span> <span class="locative-args">error* (:test-name)</span></span></li>
 </ul>
 
 <p><a id="x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29"></a>
@@ -1525,21 +1525,21 @@ is invoked with a condition that's not an <a href="#TRY:EVENT%20CONDITION" title
 <a id="TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >nested-condition</a></span></span> <span class="locative-args">unhandled-error</span> <span class="locative-args">(:condition = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >nested-condition</a></span></span> <span class="locative-args">unhandled-error (:condition = 'nil)</span></span></li>
 </ul>
 
 <p><a id="x-28TRY-3ABACKTRACE-OF-20-28MGL-PAX-3AREADER-20TRY-3AUNHANDLED-ERROR-29-29"></a>
 <a id="TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >backtrace-of</a></span></span> <span class="locative-args">unhandled-error</span> <span class="locative-args">(:backtrace = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >backtrace-of</a></span></span> <span class="locative-args">unhandled-error (:backtrace = 'nil)</span></span></li>
 </ul>
 
 <p><a id="x-28TRY-3ADEBUGGER-INVOKED-P-20-28MGL-PAX-3AREADER-20TRY-3AUNHANDLED-ERROR-29-29"></a>
 <a id="TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >debugger-invoked-p</a></span></span> <span class="locative-args">unhandled-error</span> <span class="locative-args">(:debugger-invoked-p = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >debugger-invoked-p</a></span></span> <span class="locative-args">unhandled-error (:debugger-invoked-p = 'nil)</span></span></li>
 </ul>
 
 <p><a id="x-28TRY-3A-2AGATHER-BACKTRACE-2A-20VARIABLE-29"></a>
@@ -1608,7 +1608,7 @@ all matching types are incremented.</p></li>
 <a id="TRY:FANCY-STD-CATEGORIES%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/events.lisp#L259">[function]</a></span> <span class="reference-object"><a href="#TRY:FANCY-STD-CATEGORIES%20FUNCTION" >fancy-std-categories</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/events.lisp#L259">[function]</a></span> <span class="reference-object"><a href="#TRY:FANCY-STD-CATEGORIES%20FUNCTION" >fancy-std-categories</a></span></span></span></p>
 
 <p>Returns the default value of <a href="#TRY:*CATEGORIES*%20%28VARIABLE%20%22-%20see%20above%20-%22%29" title="TRY:*CATEGORIES* (VARIABLE &quot;- see above -&quot;)"><code>*categories*</code></a> (see <a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION" title="Categories">Categories</a>),
 which contains some fancy Unicode characters.</p></li>
@@ -1618,7 +1618,7 @@ which contains some fancy Unicode characters.</p></li>
 <a id="TRY:ASCII-STD-CATEGORIES%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/events.lisp#L269">[function]</a></span> <span class="reference-object"><a href="#TRY:ASCII-STD-CATEGORIES%20FUNCTION" >ascii-std-categories</a></span></span> <span class="locative-args"></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/events.lisp#L269">[function]</a></span> <span class="reference-object"><a href="#TRY:ASCII-STD-CATEGORIES%20FUNCTION" >ascii-std-categories</a></span></span></span></p>
 
 <p>Returns a value suitable for <a href="#TRY:*CATEGORIES*%20%28VARIABLE%20%22-%20see%20above%20-%22%29" title="TRY:*CATEGORIES* (VARIABLE &quot;- see above -&quot;)"><code>*categories*</code></a>, which uses only ASCII
 characters for the markers.</p>
@@ -1733,7 +1733,7 @@ to implement their own retry mechanism.</p></li>
 <a id="TRY:*IS-FORM*%20VARIABLE"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/is.lisp#L51">[variable]</a></span> <span class="reference-object"><a href="#TRY:*IS-FORM*%20VARIABLE" >*is-form*</a></span></span> </span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/is.lisp#L51">[variable]</a></span> <span class="reference-object"><a href="#TRY:*IS-FORM*%20VARIABLE" >*is-form*</a></span></span></span></p>
 
 <p><a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> binds this to its <code>form</code> argument for <code>ctx</code> and <code>msg</code>.</p></li>
 </ul>
@@ -1742,7 +1742,7 @@ to implement their own retry mechanism.</p></li>
 <a id="TRY:*IS-CAPTURES*%20VARIABLE"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/is.lisp#L54">[variable]</a></span> <span class="reference-object"><a href="#TRY:*IS-CAPTURES*%20VARIABLE" >*is-captures*</a></span></span> </span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/is.lisp#L54">[variable]</a></span> <span class="reference-object"><a href="#TRY:*IS-CAPTURES*%20VARIABLE" >*is-captures*</a></span></span></span></p>
 
 <p>Captures made during an <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> evaluation are made available for
 <code>ctx</code> via <code>*is-captures*</code>.</p></li>
@@ -2103,7 +2103,7 @@ terms of <a href="#TRY:*CONDITION-MATCHED-P*%20VARIABLE" title="TRY:*CONDITION-M
 <a id="TRY:*CONDITION-MATCHED-P*%20VARIABLE"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/checks.lisp#L87">[variable]</a></span> <span class="reference-object"><a href="#TRY:*CONDITION-MATCHED-P*%20VARIABLE" >*condition-matched-p*</a></span></span> </span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/checks.lisp#L87">[variable]</a></span> <span class="reference-object"><a href="#TRY:*CONDITION-MATCHED-P*%20VARIABLE" >*condition-matched-p*</a></span></span></span></p>
 
 <p>When a check described in <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">Checking Conditions</a> signals its
 <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a>, this variable is bound to a boolean value to indicate
@@ -2115,7 +2115,7 @@ found.</p></li>
 <a id="TRY:*BEST-MATCHING-CONDITION*%20VARIABLE"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/checks.lisp#L94">[variable]</a></span> <span class="reference-object"><a href="#TRY:*BEST-MATCHING-CONDITION*%20VARIABLE" >*best-matching-condition*</a></span></span> </span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/checks.lisp#L94">[variable]</a></span> <span class="reference-object"><a href="#TRY:*BEST-MATCHING-CONDITION*%20VARIABLE" >*best-matching-condition*</a></span></span></span></p>
 
 <p>Bound when a check described in <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">Checking Conditions</a>
 signals its <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a>. If <a href="#TRY:*CONDITION-MATCHED-P*%20VARIABLE" title="TRY:*CONDITION-MATCHED-P* VARIABLE"><code>*condition-matched-p*</code></a>, then it is the
@@ -2260,7 +2260,7 @@ the descriptions of the other arguments.</p>
 <a id="TRY:*IN-TIME-ELAPSED-SECONDS*%20VARIABLE"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/checks.lisp#L414">[variable]</a></span> <span class="reference-object"><a href="#TRY:*IN-TIME-ELAPSED-SECONDS*%20VARIABLE" >*in-time-elapsed-seconds*</a></span></span> </span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/checks.lisp#L414">[variable]</a></span> <span class="reference-object"><a href="#TRY:*IN-TIME-ELAPSED-SECONDS*%20VARIABLE" >*in-time-elapsed-seconds*</a></span></span></span></p>
 
 <p>Bound to the number of seconds passed during the evaluation of
 <code>body</code> when <a href="#TRY:IN-TIME%20MGL-PAX:MACRO" title="TRY:IN-TIME MGL-PAX:MACRO"><code>in-time</code></a> signals its <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a>.</p></li>
@@ -3458,7 +3458,7 @@ the enclosing trials.</p>
 <a id="TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L80">[reader]</a></span> <span class="reference-object"><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" >children</a></span></span> <span class="locative-args">trial</span> <span class="locative-args">(:children = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/d11f62ac54de7565b2ad194ab53066ea5db6f6e5/src/trial.lisp#L80">[reader]</a></span> <span class="reference-object"><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" >children</a></span></span> <span class="locative-args">trial (:children = nil)</span></span></p>
 
 <p>A list of immediate child <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a>s, <a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>s, and
 ERROR*s collected in reverse chronological order (see

@@ -250,14 +250,14 @@ the starting state or by customizing <a href="#MICMAC.UCT:MAKE-UCT-NODE%20GENERI
 <a id="MICMAC.UCT:DEPTH%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-NODE%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L32">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:DEPTH%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-NODE%29" >depth</a></span></span> <span class="locative-args">uct-node</span> <span class="locative-args">(:depth = 0)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L32">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:DEPTH%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-NODE%29" >depth</a></span></span> <span class="locative-args">uct-node (:depth = 0)</span></span></li>
 </ul>
 
 <p><a id="x-28MICMAC-2EUCT-3AEDGES-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-NODE-29-29"></a>
 <a id="MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L36">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >edges</a></span></span> <span class="locative-args">uct-node</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L36">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >edges</a></span></span> <span class="locative-args">uct-node NIL</span></span></p>
 
 <p>Outgoing edges.</p></li>
 </ul>
@@ -266,7 +266,7 @@ the starting state or by customizing <a href="#MICMAC.UCT:MAKE-UCT-NODE%20GENERI
 <a id="MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L37">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >average-reward</a></span></span> <span class="locative-args">uct-node</span> <span class="locative-args">(:average-reward = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L37">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >average-reward</a></span></span> <span class="locative-args">uct-node (:average-reward = 0)</span></span></p>
 
 <p>Average reward over random playouts started from
 below this node. See <a href="#MICMAC.UCT:UPDATE-UCT-STATISTICS%20GENERIC-FUNCTION" title="MICMAC.UCT:UPDATE-UCT-STATISTICS GENERIC-FUNCTION"><code>update-uct-statistics</code></a> and REWARD.</p></li>
@@ -288,7 +288,7 @@ specialize <a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UC
 <a id="MICMAC.UCT:ACTION%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-EDGE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L56">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:ACTION%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-EDGE%29" >action</a></span></span> <span class="locative-args">uct-edge</span> <span class="locative-args">(:action)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L56">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:ACTION%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-EDGE%29" >action</a></span></span> <span class="locative-args">uct-edge (:action)</span></span></p>
 
 <p>The action represented by the edge.</p></li>
 </ul>
@@ -297,7 +297,7 @@ specialize <a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UC
 <a id="MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L59">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >from-node</a></span></span> <span class="locative-args">uct-edge</span> <span class="locative-args">(:from-node)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L59">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >from-node</a></span></span> <span class="locative-args">uct-edge (:from-node)</span></span></p>
 
 <p>The node this edge starts from.</p></li>
 </ul>
@@ -306,7 +306,7 @@ specialize <a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UC
 <a id="MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L62">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >to-node</a></span></span> <span class="locative-args">uct-edge</span> <span class="locative-args">(= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/uct.lisp#L62">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >to-node</a></span></span> <span class="locative-args">uct-edge (= nil)</span></span></p>
 
 <p>The node this edge points to if the edge has been
 visited or <code>nil</code>.</p></li>
@@ -478,7 +478,7 @@ temperature it is suitable for <code>mc3</code>.</p></li>
 <a id="MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/metropolis-hastings.lisp#L43">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >temperature</a></span></span> <span class="locative-args">mc-chain</span> <span class="locative-args">(:temperature = 1.0d0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/metropolis-hastings.lisp#L43">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >temperature</a></span></span> <span class="locative-args">mc-chain (:temperature = 1.0d0)</span></span></p>
 
 <p>The PROBABILITY-RATIO of samples is raised to the
 power of 1 / <code>temperature</code> before calculating the acceptance
@@ -490,7 +490,7 @@ probability. This effectively flattens the peaks if <code>temperature</code> &gt
 <a id="MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/metropolis-hastings.lisp#L49">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >state</a></span></span> <span class="locative-args">mc-chain</span> <span class="locative-args">(:state)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/78d69852970b4af7819fb21e1cfff309e28fb3d9/src/metropolis-hastings.lisp#L49">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >state</a></span></span> <span class="locative-args">mc-chain (:state)</span></span></p>
 
 <p>This is the current sample where the chain is.</p></li>
 </ul>
