@@ -368,7 +368,7 @@ the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MG
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/d9bca414c002e6c038eece21a588e30c8d20e77c/src/lmdb.lisp#L652">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BINDING-VERSION%20FUNCTION" >lmdb-binding-version</a></span></span></span></p>
 
 <p>Return a string representing the version of C lmdb based on which
-the <code>cffi</code> bindings were created. The version string has the same
+the CFFI bindings were created. The version string has the same
 format as <a href="#LMDB:LMDB-FOREIGN-VERSION%20FUNCTION" title="LMDB:LMDB-FOREIGN-VERSION FUNCTION"><code>lmdb-foreign-version</code></a>.</p></li>
 </ul>
 
@@ -1564,10 +1564,10 @@ Retrieval of other values requires the use of <a href="#LMDB:@LMDB%2FCURSORS%20M
 
 <p>This function is called <code>g3t</code> instead of <code>get</code> to avoid
 having to shadow <code>cl:get</code> when importing the <a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM"><code>lmdb</code></a> package. On the
-other hand, importing the <code>lmdb+</code> package, which has <code>lmdb::get</code>
+other hand, importing the LMDB+ package, which has <code>lmdb::get</code>
 exported, requires some shadowing.</p>
 
-<p>The <code>lmdb+</code> package is like the <code>lmdb</code> package, but it has <code>#'lmdb:g3t</code>
+<p>The LMDB+ package is like the <code>lmdb</code> package, but it has <code>#'lmdb:g3t</code>
 fbound to <code>lmdb+:g3t</code> so it probably needs shadowing to avoid conflict
 with <code>cl:get:</code></p>
 

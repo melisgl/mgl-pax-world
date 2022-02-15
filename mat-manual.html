@@ -1427,7 +1427,7 @@ the dimensions of the current element of <code>mats</code> and return <code>mat<
 the next element the displacement is increased so that there is no
 overlap.</p>
 
-<p><code>mats</code> is keyed by <code>key</code> just like the <code>cl</code> sequence functions. Normally,
+<p><code>mats</code> is keyed by <code>key</code> just like the CL sequence functions. Normally,
 <code>fn</code> is called with the matrix returned by <code>key</code>. However, if
 <code>pass-raw-p</code>, then the matrix returned by <code>key</code> is only used to
 calculate dimensions and the element of <code>mats</code> that was passed to <code>key</code>
@@ -1684,7 +1684,7 @@ displaced to the backing array.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/c78ccbcc76df3c32004d18084d885c7cbe3618bc/src/mat.lisp#L2184">[facet-name]</a></span> <span class="reference-object"><a href="#MGL-MAT:FOREIGN-ARRAY%20MGL-CUBE:FACET-NAME" >foreign-array</a></span></span></span></p>
 
 <p>The facet's value is a <a href="#MGL-MAT:FOREIGN-ARRAY%20CLASS" title="MGL-MAT:FOREIGN-ARRAY CLASS"><code>foreign-array</code></a> which is an
-<code>offset-pointer</code> wrapping a <code>cffi</code> pointer. See
+<code>offset-pointer</code> wrapping a CFFI pointer. See
 <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* (VARIABLE &quot;-see below-&quot;)"><code>*foreign-array-strategy*</code></a>.</p></li>
 </ul>
 
@@ -2138,7 +2138,7 @@ function for multiple <code>ctypes</code>. Example:</p>
 
 <p>Parameters are either of the form <code>(&lt;name&gt; &lt;lisp-type)</code>
 or <code>(&lt;name&gt; :mat &lt;direction&gt;)</code>. In the latter case, the appropriate
-<code>cffi</code> pointer is passed to the kernel. <code>&lt;direction&gt;</code> is passed on to
+CFFI pointer is passed to the kernel. <code>&lt;direction&gt;</code> is passed on to
 the <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a> that's used to acquire the foreign array. Note that
 the return type is not declared.</p>
 
