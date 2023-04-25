@@ -1,68 +1,159 @@
-body {
-  font-family: sans-serif;
-  margin: auto;
-  background-color: #FFFEFB;
-  color: #000000;
+@import url("xcharter/xcharter.css");
+@import url("xeb-garamond/xeb-garamond.css");
+
+:root {
+  --font-family: 'XCharter', serif;
+  --font-feature-settings: "onum" 1, "cv01" 1;
+  --font-family-heading: 'XEB Garamond', serif;
+  --font-feature-settings-heading: "onum" 0;
+  --font-family-monospace: 'DejaVu Sans Mono', 'Liberation Mono', 'Hack', 'Roboto Mono', monospace;
+  /* To make DejaVu Sans Mono's x-height match XCharter's. */
+  --font-size-monospace: 86%;
+  --line-height: 1.35rem;
+  --parsep: 0.4rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: serif;
+html {
+  font-size: calc(0.9em + 0.25vw);
+}
+
+/* @media (min-width: 40rem) { */
+/*   html { */
+/*     text-align: justify; */
+/*   } */
+/* } */
+
+body {
+  font-family: var(--font-family);
+  font-feature-settings: var(--font-feature-settings);
+  margin: auto;
+  background-color: #faf9f6;
+  color: #333;
+  /* max-width: calc(73ch + 8*var(--line-height)); */
+  hyphens: auto;
+  hyphenate-limit-chars: 4 2 2;
+  min-height: 100vh;
+}
+
+p {
+  margin: var(--parsep) 0 0 0;
+  line-height: var(--line-height);
+}
+
+li {
+  margin: calc(0.5*var(--parsep)) 0 0 0;
+  line-height: var(--line-height);
+}
+
+/* p + p { */
+/*   margin: 0; */
+/*   text-indent: var(--line-height); */
+/* } */
+
+/* ul + p, ol + p, dl + p { */
+/*   margin: 0; */
+/*   text-indent: 0; */
+/* } */
+
+/* li > p { */
+/*   margin: 0; */
+/* } */
+
+h1 {
+  font-family: var(--font-family-heading);
+  font-feature-settings: var(--font-feature-settings-heading);
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  /* text-shadow: 0.05em 0.05em 0.02em #DDD; */
+  line-height: calc(2*var(--line-height));
+  font-size: 1.7rem;
+  margin: calc(2*var(--line-height)) 0;
+  /* margin: calc(3*var(--line-height)) 0 calc(2*var(--line-height)) 0; */
+  text-align: center;
+}
+
+h2 {
+  /* font-family: var(--font-family-heading); */
+  /* font-feature-settings: var(--font-feature-settings-heading); */
+  /* font-size: 1.8rem; */
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  line-height: var(--line-height);
+  margin: var(--line-height) 0;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  font-style: italic;
+  line-height: var(--line-height);
+  margin: var(--line-height) 0;
+}
+
+h4 {
+  /* font-family: var(--font-family-heading); */
+  /* font-size: 1.416rem; */
+  font-size: 1.1rem;
+  font-weight: normal;
+  line-height: var(--line-height);
+  margin: var(--line-height) 0;
+}
+
+h5 {
+  font-size: 1rem;
   font-weight: bold;
-  text-shadow: 0.05em 0.05em 0.02em #DDDDDD;
+  line-height: var(--line-height);
+  margin: calc(0.5*var(--line-height)) 0;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: normal;
+  font-variant: italic;
+  line-height: var(--line-height);
+  margin: calc(0.5*var(--line-height)) 0;
 }
 
 h1 a {
   text-decoration: none;
-  border-bottom: none;
+  color: #333;
 }
-
 h2 a {
   text-decoration: none;
-  border-bottom: none;
+  color: #333;
 }
-
 h3 a {
   text-decoration: none;
-  border-bottom: none;
+  color: #333;
 }
-
 h4 a {
   text-decoration: none;
-  border-bottom: none;
+  color: #333;
 }
-
 h5 a {
   text-decoration: none;
-  border-bottom: none;
+  color: #333;
+}
+h6 a {
+  text-decoration: none;
+  color: #333;
 }
 
-h1 {
-  font-size: 250%
+pre {
+  font-family: var(--font-family-monospace);
+  /* With DejaVu Sans Mono 97% gets about 80 characters per line at full
+   * width (73ch). */
+  font-size: 97%;
 }
 
-h2 {
-  border-bottom: 0.05em solid #CCCCCC;
-  font-size: 200%;
-}
-
-h3 {
-  font-size: 150%;
-}
-
-h4 {
-  font-size: 130%;
-}
-
-h5 {
-  font-size: 110%;
-  margin-top: 0.75em;
-  margin-bottom: 0.5em;
-}
-
-h6 {
-  color: #777777;
-  background-color: inherit;
-  font-size: 100%;
+code {
+  font-family: var(--font-family-monospace);
+  font-size: var(--font-size-monospace);
+  color: #111;
 }
 
 hr {
@@ -72,52 +163,35 @@ hr {
   background-color: #CCCCCC;
 }
 
-p, blockquote, table, pre {
-  line-height: 1.5;
-  margin: 0.5em 0 0 0;
-}
-
-ul, ol, dl {
-  padding-left: 1.1em;
-  list-style-position: outside;
-  /* margin: 0; */
-}
-
-li {
-  line-height: 1.5;
-  margin: 0 0 0 0;
+blockquote, table, pre {
+  line-height: var(--line-height);
+  margin: var(--parsep) 0 0 0;
 }
 
 pre {
   background-color: #F5F3ED;
-  color: #000000;
+  color: #333;
   border: 0.1em solid #CCCCCC;
   line-height: 1.25em;
   overflow: auto;
-  margin: 0.5em 0 0 0;
-  padding: 0.2em;
+  padding: 0;
 }
 
-pre > code {
-  color: #222222;
-}
-
-code {
-  color: #222222;
+ul, ol, dl {
+  padding-left: var(--line-height);
+  margin: 0;
 }
 
 a {
-  color: #222222;
-  text-decoration-thickness: 0.06em;
-  text-underline-offset: 0.15em;
-}
-
-h6 a {
-  color: #777777;
+  /* text-decoration: none; */
+  /* color: #0233c8; */
+  color: #333;
+  text-decoration-thickness: 0.04em;
+  text-underline-offset: 0.1em;
 }
 
 a:hover {
-  /* text-decoration: none; */
+  text-decoration: underline;
 }
 
 img {
@@ -135,6 +209,7 @@ img {
 }
 
 .locative-type a {
+  color: #333;
   text-decoration: none;
   border-bottom: 0;
   font-weight: bold;
@@ -149,6 +224,7 @@ img {
 
 .reference-object a {
   text-decoration: none;
+  color: #333;
   border-bottom: none;
 }
 
@@ -251,7 +327,7 @@ a.symbol:hover { color : #229955; background-color : transparent; text-decoratio
 #content-container
 {
   margin: 0;
-  padding: 0;
+  padding: 0 0 var(--line-height) 0;
 }
 
 #content
@@ -276,6 +352,7 @@ a.symbol:hover { color : #229955; background-color : transparent; text-decoratio
 }
 
 #toc ul {
+  font-family: sans-serif;
   font-size: 80%;
 }
 
