@@ -351,6 +351,7 @@ a.symbol:hover { color : #229955; background-color : transparent; text-decoratio
   background: #333;
   box-shadow: inset -5px 0 5px 0px #000;
   color: #aaa;
+  text-align: left;
 }
 
 #toc ul {
