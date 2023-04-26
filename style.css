@@ -7,21 +7,23 @@
   --font-family-heading: 'XEB Garamond', serif;
   --font-feature-settings-heading: "onum" 0;
   --font-family-monospace: 'DejaVu Sans Mono', 'Liberation Mono', 'Hack', 'Roboto Mono', monospace;
-  /* To make DejaVu Sans Mono's x-height match XCharter's. */
-  --font-size-monospace: 86%;
-  --line-height: 1.35rem;
-  --parsep: 0.4rem;
+  /* 86% makes DejaVu Sans Mono match XCharter in x-height. This is
+   * slightly larger to allow inline code to stand out a tiny bit more
+   * without becoming an eye sore. */
+  --font-size-monospace: 88%;
+  --line-height: 1.25rem;
+  --parsep: 0.3125rem;
 }
 
 html {
   font-size: calc(0.9em + 0.25vw);
 }
 
-/* @media (min-width: 40rem) { */
-/*   html { */
-/*     text-align: justify; */
-/*   } */
-/* } */
+@media (min-width: 70rem) {
+  html {
+    text-align: justify;
+  }
+}
 
 body {
   font-family: var(--font-family);
@@ -77,19 +79,18 @@ h2 {
   /* font-family: var(--font-family-heading); */
   /* font-feature-settings: var(--font-feature-settings-heading); */
   /* font-size: 1.8rem; */
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: 0.1em;
+  /* font-variant: small-caps; */
+  /* text-transform: lowercase; */
+  /* letter-spacing: 0.1em; */
   line-height: var(--line-height);
   margin: var(--line-height) 0;
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  font-style: italic;
   line-height: var(--line-height);
   margin: var(--line-height) 0;
 }
@@ -107,15 +108,14 @@ h5 {
   font-size: 1rem;
   font-weight: bold;
   line-height: var(--line-height);
-  margin: calc(0.5*var(--line-height)) 0;
+  margin: var(--line-height) 0;
 }
 
 h6 {
   font-size: 1rem;
   font-weight: normal;
-  font-variant: italic;
   line-height: var(--line-height);
-  margin: calc(0.5*var(--line-height)) 0;
+  margin: calc(0.75*var(--line-height)) 0;
 }
 
 h1 a {
@@ -201,6 +201,9 @@ img {
 }
 
 .reference-bullet {
+  display: block;
+  text-align: left;
+  margin-top: calc(2*var(--parsep));
 }
 
 .reference {
@@ -324,17 +327,16 @@ a.symbol:hover { color : #229955; background-color : transparent; text-decoratio
 /* span.paren6 { background-color : inherit; -webkit-transition: background-color 0.2s linear; } */
 /* span.paren6:hover { color : inherit; background-color : #FFBAFF; } */
 
-#content-container
-{
+#content-container {
   margin: 0;
   padding: 0 0 var(--line-height) 0;
 }
 
-#content
-{
-  margin-left: 40ex;
-  padding-left: 2.5em;
+#content {
   max-width: 85ex;
+  margin-left: calc(min(40ex,33%));
+  padding-left: 4ch;
+  padding-right: 4ch;
 }
 
 #toc {
