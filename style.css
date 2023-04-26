@@ -11,8 +11,8 @@
    * slightly larger to allow inline code to stand out a tiny bit more
    * without becoming an eye sore. */
   --font-size-monospace: 88%;
-  --line-height: 1.25rem;
-  --parsep: 0.3125rem;
+  --line-height: 1.30rem;
+  --parsep: 0.325rem;
 }
 
 html {
