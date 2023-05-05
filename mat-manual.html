@@ -266,7 +266,7 @@ accessing one of the facets directly, as in the following example:</p>
     <span class="paren3">(<span class="code">lla:logdet array</span>)</span></span>)</span></span>)</span>
 </span></code></pre>
 
-<p>Notice that <a href="#MGL-MAT:LOGDET%20FUNCTION" title="MGL-MAT:LOGDET FUNCTION"><code>logdet</code></a> doesn't know about CUDA at all. <code>with-facets</code>(<a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>0</code></a> <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>1</code></a>)
+<p>Notice that <a href="#MGL-MAT:LOGDET%20FUNCTION" title="MGL-MAT:LOGDET FUNCTION"><code>logdet</code></a> doesn't know about CUDA at all. <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a>
 gives it the content of the matrix as a normal multidimensional lisp
 array, copying the data from the GPU or elsewhere if necessary. This
 allows new representations (<a href="cube-manual.html#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>facet</code></a>s) to be added easily and it also
@@ -329,7 +329,7 @@ is relative to the start of the underlying storage vector.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="locative-args">mat (:dimensions)</span></span></p>
 
-<p>Like <code>array-dimensions</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="ARRAY-DIMENSION FUNCTION"><code>1</code></a>). It holds a list of
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS FUNCTION"><code>array-dimensions</code></a>. It holds a list of
 dimensions, but it is allowed to pass in scalars too.</p></li>
 </ul>
 
@@ -362,7 +362,7 @@ type. If <code>nil</code>, then no initialization is performed.</p></li>
 
 <p>The number of elements in the visible portion of
 the array. This is always the product of the elements
-<code>mat-dimensions</code>(<a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT)"><code>0</code></a> <a href="#MGL-MAT:MAT-DIMENSION%20FUNCTION" title="MGL-MAT:MAT-DIMENSION FUNCTION"><code>1</code></a>) and is similar to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="ARRAY-TOTAL-SIZE FUNCTION"><code>array-total-size</code></a>.</p></li>
+<a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-dimensions</code></a> and is similar to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="ARRAY-TOTAL-SIZE FUNCTION"><code>array-total-size</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3AMAT-MAX-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
@@ -385,7 +385,7 @@ is the number of trailing invisible elements.</p></li>
 <p>Return a new <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> object. If <code>initial-contents</code> is given then the
 matrix contents are initialized with <a href="#MGL-MAT:REPLACE%21%20FUNCTION" title="MGL-MAT:REPLACE! FUNCTION"><code>replace!</code></a>. See class <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> for the
 description of the rest of the parameters. This is exactly
-what (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm" title="MAKE-INSTANCE FUNCTION"><code>make-instance</code></a> '<code>mat</code> ...) does except <code>dimensions</code> is not a
+what (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm" title="MAKE-INSTANCE GENERIC-FUNCTION"><code>make-instance</code></a> '<code>mat</code> ...) does except <code>dimensions</code> is not a
 keyword argument so that <code>make-mat</code> looks more like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY FUNCTION"><code>make-array</code></a>. The
 semantics of <code>synchronization</code> are desribed in the
 <a href="cube-manual.html#MGL-CUBE:@CUBE-SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization">Synchronization</a> section.</p>
@@ -680,7 +680,7 @@ affect this visible portion as if the rest of the elements were not
 there. Return <code>mat</code>.</p>
 
 <p><code>displacement</code> + the new size must not exceed <a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a>.
-Furthermore, there must be no facets being viewed (with <code>with-facets</code>(<a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>0</code></a> <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>1</code></a>))
+Furthermore, there must be no facets being viewed (with <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a>)
 when calling this function as the identity of the facets is not
 stable.</p></li>
 </ul>
@@ -1654,7 +1654,7 @@ don't use it in production.</p>
 
 <p>A <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> is a <a href="cube-manual.html#MGL-CUBE:CUBE%20CLASS" title="MGL-CUBE:CUBE CLASS"><code>cube</code></a> (see <a href="cube-manual.html" title="Cube Manual">Cube Manual</a>) whose facets are
 different representations of numeric arrays. These facets can be
-accessed with <code>with-facets</code>(<a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>0</code></a> <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>1</code></a>) with one of the following
+accessed with <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a> with one of the following
 <a href="cube-manual.html#MGL-CUBE:FACET-NAME%20MGL-PAX:LOCATIVE" title="MGL-CUBE:FACET-NAME MGL-PAX:LOCATIVE"><code>facet-name</code></a> locatives:</p>
 
 <p><a id="x-28MGL-MAT-3ABACKING-ARRAY-20MGL-CUBE-3AFACET-NAME-29"></a>
@@ -1718,7 +1718,7 @@ wrapping a <code>cl-cuda.driver-api:cu-device-ptr</code>, allocated with
 <code>cl-cuda.driver-api:cu-mem-alloc</code> and freed automatically.</p></li>
 </ul>
 
-<p>Facets bound by with <code>with-facets</code>(<a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>0</code></a> <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>1</code></a>) are to be treated as dynamic
+<p>Facets bound by with <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a> are to be treated as dynamic
 extent: it is not allowed to keep a reference to them beyond the
 dynamic scope of <code>with-facets</code>.</p>
 

@@ -203,8 +203,8 @@ features allows <a href="#TRY:MATCH-VALUES%20MGL-PAX:MACRO" title="TRY:MATCH-VAL
 successive return values of some form, here <code>(values (1+ 5) &quot;sdf&quot;)</code>.
 <code>match-values</code> comes with an automatic rewrite rule that captures the
 values of this form, which are printed above as <code>#1# == 6 #2#</code>. <code>is</code>
-is flexible enough that all other checks (<code>signals</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL FUNCTION"><code>0</code></a> <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>1</code></a>), <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>,
-<a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO"><code>invokes-debugger-not</code></a>, <code>fails</code>(<a href="#TRY:FAILS%20MGL-PAX:MACRO" title="TRY:FAILS MGL-PAX:MACRO"><code>0</code></a> <a href="#TRY:FAIL%20TYPE" title="TRY:FAIL TYPE"><code>1</code></a>), and <a href="#TRY:IN-TIME%20MGL-PAX:MACRO" title="TRY:IN-TIME MGL-PAX:MACRO"><code>in-time</code></a> are built
+is flexible enough that all other checks (<a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>signals</code></a>, <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>,
+<a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO"><code>invokes-debugger-not</code></a>, <a href="#TRY:FAILS%20MGL-PAX:MACRO" title="TRY:FAILS MGL-PAX:MACRO"><code>fails</code></a>, and <a href="#TRY:IN-TIME%20MGL-PAX:MACRO" title="TRY:IN-TIME MGL-PAX:MACRO"><code>in-time</code></a> are built
 on top of it.</p>
 
 <h5>Writing Tests</h5>
@@ -1679,8 +1679,8 @@ extension:</p>
 ..     #1# == 6
 ..            #2#</span></code></pre>
 
-<p><code>is</code> is flexible enough that all other checks (<code>signals</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL FUNCTION"><code>0</code></a> <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>1</code></a>), <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>,
-<a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO"><code>invokes-debugger-not</code></a>, <code>fails</code>(<a href="#TRY:FAILS%20MGL-PAX:MACRO" title="TRY:FAILS MGL-PAX:MACRO"><code>0</code></a> <a href="#TRY:FAIL%20TYPE" title="TRY:FAIL TYPE"><code>1</code></a>), and <a href="#TRY:IN-TIME%20MGL-PAX:MACRO" title="TRY:IN-TIME MGL-PAX:MACRO"><code>in-time</code></a> are built
+<p><code>is</code> is flexible enough that all other checks (<a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>signals</code></a>, <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>,
+<a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO"><code>invokes-debugger-not</code></a>, <a href="#TRY:FAILS%20MGL-PAX:MACRO" title="TRY:FAILS MGL-PAX:MACRO"><code>fails</code></a>, and <a href="#TRY:IN-TIME%20MGL-PAX:MACRO" title="TRY:IN-TIME MGL-PAX:MACRO"><code>in-time</code></a> are built
 on top of it.</p>
 
 <p><a id="x-28TRY-3AIS-20MGL-PAX-3AMACRO-29"></a>
@@ -1735,7 +1735,7 @@ available in <code>*is-captures*</code> for writing custom <code>ctx</code> mess
 
 <p>If <code>retry</code> is true, then the <a href="#TRY:RETRY-CHECK%20FUNCTION" title="TRY:RETRY-CHECK FUNCTION"><code>retry-check</code></a> restart evaluates <code>form</code> again
 and signals a new <code>result</code>. If <code>retry</code> is <code>nil</code>, then the <code>retry-check</code>
-restart returns <code>:retry</code>, which allows complex checks such as <code>signals</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL FUNCTION"><code>0</code></a> <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>1</code></a>)
+restart returns <code>:retry</code>, which allows complex checks such as <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>signals</code></a>
 to implement their own retry mechanism.</p></li>
 </ul>
 
@@ -2077,7 +2077,7 @@ Many of them share a number of arguments, which are described here.</p>
 
 <h3><a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION">6.1 Checking Conditions</a></h3>
 
-<p>The macros <code>signals</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL FUNCTION"><code>0</code></a> <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>1</code></a>), <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>, <a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, and
+<p>The macros <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>signals</code></a>, <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>, <a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, and
 <a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO"><code>invokes-debugger-not</code></a> all check whether a condition of a given type,
 possibly also matching a predicate, was signalled. In addition to
 those already described in <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">Check Library</a>, these macros share a

@@ -1715,7 +1715,7 @@ used to extract label indices from model results.</p></li>
 <p>Identical to <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS FUNCTION"><code>make-cross-entropy-monitors</code></a> bar the
 keywords arguments. Specialize this to add to support for new model
 types. The default implementation also allows for some
-extensibility: if <code>label-index-distributions</code>(<a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"><code>0</code></a> <a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION"><code>1</code></a>) is defined on <code>model</code>,
+extensibility: if <a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"><code>label-index-distributions</code></a> is defined on <code>model</code>,
 then it will be used to extract label distributions from model
 results.</p></li>
 </ul>
@@ -3718,7 +3718,7 @@ a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>lump</code></a>
 <p>The current number of instances the network has.
 This is automatically set to the number of instances passed to
 <a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" title="MGL-CORE:SET-INPUT GENERIC-FUNCTION"><code>set-input</code></a>, so it rarely has to be manipulated directly although it
-can be set. When set <code>n-stripes</code> of all <code>clumps</code>(<a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>0</code></a> <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>1</code></a>) get set to the same
+can be set. When set <code>n-stripes</code> of all <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>clumps</code></a> get set to the same
 value.</p></li>
 </ul>
 
@@ -3731,7 +3731,7 @@ value.</p></li>
 <p>The maximum number of instances the network can
 operate on in parallel. Within <a href="#MGL-BP:BUILD-FNN%20MGL-PAX:MACRO" title="MGL-BP:BUILD-FNN MGL-PAX:MACRO"><code>build-fnn</code></a> or <a href="#MGL-BP:BUILD-RNN%20MGL-PAX:MACRO" title="MGL-BP:BUILD-RNN MGL-PAX:MACRO"><code>build-rnn</code></a>, it defaults
 to <code>max-n-stripes</code> of that parent network, else it defaults to 1.
-When set <code>max-n-stripes</code> of all <code>clumps</code>(<a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>0</code></a> <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>1</code></a>) get set to the same value.</p></li>
+When set <code>max-n-stripes</code> of all <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>clumps</code></a> get set to the same value.</p></li>
 </ul>
 
 <p><a id="x-28MGL-BP-3ACLUMPS-20-28MGL-PAX-3AREADER-20MGL-BP-3ABPN-29-29"></a>
@@ -3753,7 +3753,7 @@ most uses.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/backprop.lisp#L237">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:FIND-CLUMP%20FUNCTION" >find-clump</a></span></span> <span class="locative-args">name bpn &amp;key (errorp t)</span></span></p>
 
-<p>Find the clump with <code>name</code> among <code>clumps</code>(<a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>0</code></a> <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>1</code></a>) of <code>bpn</code>. As always, names are
+<p>Find the clump with <code>name</code> among <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>clumps</code></a> of <code>bpn</code>. As always, names are
 compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. If not found, then return <code>nil</code> or signal and
 error depending on <code>errorp</code>.</p></li>
 </ul>
@@ -3828,7 +3828,7 @@ gradients.</p></li>
 
 <p>For every batch (of size <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a> of <code>bpn</code>) of instances in
 <code>dataset</code>, set the batch as the next input with <a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" title="MGL-CORE:SET-INPUT GENERIC-FUNCTION"><code>set-input</code></a>, perform a
-<a href="#MGL-BP:FORWARD%20GENERIC-FUNCTION" title="MGL-BP:FORWARD GENERIC-FUNCTION"><code>forward</code></a> pass and apply <code>monitors</code> to the <code>bpn</code> (with <code>apply-monitors</code>(<a href="#MGL-CORE:APPLY-MONITORS%20FUNCTION" title="MGL-CORE:APPLY-MONITORS FUNCTION"><code>0</code></a> <a href="#MGL-CORE:APPLY-MONITOR%20GENERIC-FUNCTION" title="MGL-CORE:APPLY-MONITOR GENERIC-FUNCTION"><code>1</code></a>)).
+<a href="#MGL-BP:FORWARD%20GENERIC-FUNCTION" title="MGL-BP:FORWARD GENERIC-FUNCTION"><code>forward</code></a> pass and apply <code>monitors</code> to the <code>bpn</code> (with <a href="#MGL-CORE:APPLY-MONITORS%20FUNCTION" title="MGL-CORE:APPLY-MONITORS FUNCTION"><code>apply-monitors</code></a>).
 Finally, return the counters of <code>monitors</code>. This is built on top of
 <a href="#MGL-CORE:MONITOR-MODEL-RESULTS%20FUNCTION" title="MGL-CORE:MONITOR-MODEL-RESULTS FUNCTION"><code>monitor-model-results</code></a>.</p></li>
 </ul>
@@ -4542,7 +4542,7 @@ It is 0 when the <code>rnn</code> is being unfolded for the first time.</p></li>
 <p><code>rnn</code>s operate on batches of instances just like <a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>fnn</code></a>s. But the
 instances here are like datasets: sequences or samplers and they are
 turned into sequences of batches of instances with
-<code>map-datasets</code>(<a href="#MGL-DATASET:MAP-DATASETS%20FUNCTION" title="MGL-DATASET:MAP-DATASETS FUNCTION"><code>0</code></a> <a href="#MGL-DATASET:MAP-DATASET%20FUNCTION" title="MGL-DATASET:MAP-DATASET FUNCTION"><code>1</code></a>) <code>:impute</code> <code>nil</code>. The batch of instances at index 2 is
+<a href="#MGL-DATASET:MAP-DATASETS%20FUNCTION" title="MGL-DATASET:MAP-DATASETS FUNCTION"><code>map-datasets</code></a> <code>:impute</code> <code>nil</code>. The batch of instances at index 2 is
 clamped onto the <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a> at time step 2 with <code>set-input</code>.</p>
 
 <p>When the input sequences in the batch are not of the same length,
@@ -4586,7 +4586,7 @@ enable it for training, as it would make backprop impossible.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/backprop.lisp#L618">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:WARPED-TIME%20FUNCTION" >warped-time</a></span></span> <span class="locative-args">&amp;key (rnn *rnn*) (time (time-step :rnn rnn)) (lag 0)</span></span></p>
 
-<p>Return the index of the <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a> in <code>clumps</code>(<a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>0</code></a> <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>1</code></a>) of <code>rnn</code> whose task it is to
+<p>Return the index of the <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a> in <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>clumps</code></a> of <code>rnn</code> whose task it is to
 execute computation at <code>(- (time-step rnn) lag)</code>. This is normally
 the same as <a href="#MGL-BP:TIME-STEP%20FUNCTION" title="MGL-BP:TIME-STEP FUNCTION"><code>time-step</code></a> (disregarding <code>lag</code>). That is, <code>clumps</code> can be
 indexed by <code>time-step</code> to get the <code>bpn</code>. However, when <a href="#MGL-BP:*WARP-TIME*%20VARIABLE" title="MGL-BP:*WARP-TIME* VARIABLE"><code>*warp-time*</code></a> is

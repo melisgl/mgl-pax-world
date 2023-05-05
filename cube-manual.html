@@ -560,7 +560,7 @@ may want to hook into this to handle unused facets.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L500">[variable]</a></span> <span class="reference-object"><a href="#MGL-CUBE:*LET-INPUT-THROUGH-P*%20VARIABLE" >*let-input-through-p*</a></span></span> <span class="locative-args">nil</span></span></p>
 
-<p>If true, <code>with-facets</code>(<a href="#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>0</code></a> <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>1</code></a>) (more precisely, the default implementation of
+<p>If true, <a href="#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a> (more precisely, the default implementation of
 <a href="#MGL-CUBE:CALL-WITH-FACET*%20GENERIC-FUNCTION" title="MGL-CUBE:CALL-WITH-FACET* GENERIC-FUNCTION"><code>call-with-facet*</code></a>) with <code>:direction</code> <code>:input</code> does not call
 <a href="#MGL-CUBE:CHECK-NO-WRITERS%20FUNCTION" title="MGL-CUBE:CHECK-NO-WRITERS FUNCTION"><code>check-no-writers</code></a>. This knob is intended to be bound locally for
 debugging purposes.</p></li>
@@ -572,7 +572,7 @@ debugging purposes.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L506">[variable]</a></span> <span class="reference-object"><a href="#MGL-CUBE:*LET-OUTPUT-THROUGH-P*%20VARIABLE" >*let-output-through-p*</a></span></span> <span class="locative-args">nil</span></span></p>
 
-<p>If true, <code>with-facets</code>(<a href="#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>0</code></a> <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>1</code></a>) (more precisely, the default implementation of
+<p>If true, <a href="#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a> (more precisely, the default implementation of
 <a href="#MGL-CUBE:CALL-WITH-FACET*%20GENERIC-FUNCTION" title="MGL-CUBE:CALL-WITH-FACET* GENERIC-FUNCTION"><code>call-with-facet*</code></a>) with <code>:direction</code> <code>:io</code> or <code>:output</code> does not call
 <a href="#MGL-CUBE:CHECK-NO-WATCHERS%20FUNCTION" title="MGL-CUBE:CHECK-NO-WATCHERS FUNCTION"><code>check-no-watchers</code></a>. This knob is intended to be bound locally for
 debugging purposes.</p></li>
@@ -618,7 +618,7 @@ may destroy a single facet or all facets of a cube with
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L564">[function]</a></span> <span class="reference-object"><a href="#MGL-CUBE:DESTROY-FACET%20FUNCTION" >destroy-facet</a></span></span> <span class="locative-args">cube facet-name</span></span></p>
 
 <p>Free resources associated with the facet with <code>facet-name</code> and remove
-it from <code>facets</code>(<a href="#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>0</code></a> <a href="#MGL-CUBE:FACETS%20FUNCTION" title="MGL-CUBE:FACETS FUNCTION"><code>1</code></a>) of <code>cube</code>.</p></li>
+it from <a href="#MGL-CUBE:FACETS%20FUNCTION" title="MGL-CUBE:FACETS FUNCTION"><code>facets</code></a> of <code>cube</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CUBE-3ADESTROY-CUBE-20FUNCTION-29"></a>
