@@ -205,8 +205,8 @@
 Melis</a> with some parts originally contributed
 by Ravenpack International. It mainly concentrates on various forms
 of neural networks (boltzmann machines, feed-forward and recurrent
-backprop nets). Most of MGL is built on top of <a href="mat-manual.html#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-mat</code></a> so it has
-BLAS and CUDA support.</p>
+backprop nets). Most of MGL is built on top of
+<a href="mat-manual.html" title="MAT Manual">MGL-MAT</a> so it has BLAS and CUDA support.</p>
 
 <p>In general, the focus is on power and performance not on ease of
 use. Perhaps one day there will be a cookie cutter interface with
@@ -303,7 +303,7 @@ instances are simply called <strong>results</strong>.</p>
 <p>An instance can often be any kind of object of the user's choice.
 It is typically represented by a set of numbers which is called a
 feature vector or by a structure holding the feature vector, the
-label, etc. A dataset is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE TYPE"><code>sequence</code></a> of such instances or a
+label, etc. A dataset is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a> of such instances or a
 <a href="#MGL-DATASET:@MGL-SAMPLER%20MGL-PAX:SECTION" title="Samplers">Samplers</a> object that produces instances.</p>
 
 <p><a id="x-28MGL-DATASET-3AMAP-DATASET-20FUNCTION-29"></a>
@@ -505,7 +505,7 @@ tend to be used together with resampling.</p>
 <h3><a href="#MGL-RESAMPLE:@MGL-RESAMPLE-PARTITIONS%20MGL-PAX:SECTION">4.1 Partitions</a></h3>
 
 <p>The following functions partition a dataset (currently only
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE TYPE"><code>sequence</code></a>s are supported) into a number of partitions. For each
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a>s are supported) into a number of partitions. For each
 element in the original dataset there is exactly one partition that
 contains it.</p>
 
@@ -807,7 +807,7 @@ evenly:</p>
 <p>Make a single sequence out of the sequences in <code>seqs</code> so that in the
 returned sequence indices of elements belonging to the same source
 sequence are spread evenly across the whole range. The result is a
-list is <code>result-type</code> is <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST TYPE"><code>1</code></a>), it's a vector if <code>result-type</code> is <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR TYPE"><code>1</code></a>).
+list is <code>result-type</code> is <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST FUNCTION"><code>1</code></a>), it's a vector if <code>result-type</code> is <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR FUNCTION"><code>1</code></a>).
 If <code>result-type</code> is <code>nil</code>, then it's determined by the type of the first
 sequence in <code>seqs</code>.</p>
 
@@ -1020,7 +1020,7 @@ array or matrix of <code>object</code>.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/core.lisp#L168">[generic-function]</a></span> <span class="reference-object"><a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" >set-input</a></span></span> <span class="locative-args">instances model</span></span></p>
 
 <p>Set <code>instances</code> as inputs in <code>model</code>. <code>instances</code> is
-always a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE TYPE"><code>sequence</code></a> of instances even for models not capable of batch
+always a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a> of instances even for models not capable of batch
 operation. It sets <a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a> to (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm" title="LENGTH FUNCTION"><code>length</code></a> <code>instances</code>) in a <code>:before</code>
 method.</p></li>
 </ul>
@@ -2221,7 +2221,7 @@ environment.</p>
 
 <p>Optimization terminates if <code>dataset</code> is a sampler and it runs out or
 when some other condition met (see <a href="#MGL-OPT:TERMINATION%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" title="MGL-OPT:TERMINATION (MGL-PAX:ACCESSOR MGL-OPT:ITERATIVE-OPTIMIZER)"><code>termination</code></a>, for example). If
-<code>dataset</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE TYPE"><code>sequence</code></a>, then it is reused over and over again.</p>
+<code>dataset</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a>, then it is reused over and over again.</p>
 
 <p>Examples for various optimizers are provided in <a href="#MGL-GD:@MGL-GD%20MGL-PAX:SECTION" title="Gradient Descent">Gradient Descent</a> and
 <a href="#MGL-CG:@MGL-CG%20MGL-PAX:SECTION" title="Conjugate Gradient">Conjugate Gradient</a>.</p></li>
@@ -2425,9 +2425,6 @@ arguments. Specialize this to add to support for new model types.</p></li>
 completely on first derivatives, it does not even evaluate the
 function to be minimized. Let's see how to minimize a numerical lisp
 function with respect to some of its parameters.</p>
-
-<p><a id="x-28MGL-GD-3ASGD-2ELISP-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fmgl-2Fexample-2Fsgd-2Elisp-22-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29"></a>
-<a id="MGL-GD:SGD.LISP%20%28MGL-PAX:INCLUDE%20%23P%22%2Fhome%2Fmelisgl%2Fown%2Fmgl%2Fexample%2Fsgd.lisp%22%20:HEADER-NL%20%22%60%60%60commonlisp%22%20:FOOTER-NL%20%22%60%60%60%22%29"></a></p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">cl:defpackage</span></i> <span class="keyword">:mgl-example-sgd</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:mgl</span></span>)</span></span>)</span>
@@ -3923,9 +3920,6 @@ given name in the fnn being built. Example:</p>
 the concepts involved. If it's too dense despite the comments, then
 read up on <a href="#MGL-DATASET:@MGL-DATASET%20MGL-PAX:SECTION" title="Datasets">Datasets</a>, <a href="#MGL-OPT:@MGL-OPT%20MGL-PAX:SECTION" title="Gradient Based Optimization">Gradient Based Optimization</a> and come back.</p>
 
-<p><a id="x-28MGL-BP-3ADIGIT-FNN-2ELISP-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fmgl-2Fexample-2Fdigit-fnn-2Elisp-22-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29"></a>
-<a id="MGL-BP:DIGIT-FNN.LISP%20%28MGL-PAX:INCLUDE%20%23P%22%2Fhome%2Fmelisgl%2Fown%2Fmgl%2Fexample%2Fdigit-fnn.lisp%22%20:HEADER-NL%20%22%60%60%60commonlisp%22%20:FOOTER-NL%20%22%60%60%60%22%29"></a></p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">cl:defpackage</span></i> <span class="keyword">:mgl-example-digit-fnn</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:mgl</span></span>)</span></span>)</span>
 
@@ -4145,9 +4139,6 @@ read up on <a href="#MGL-DATASET:@MGL-DATASET%20MGL-PAX:SECTION" title="Datasets
 <p>Hopefully this example from <code>example/sum-sign-fnn.lisp</code> illustrates
 the concepts involved. Make sure you are comfortable with
 <a href="#MGL-BP:@MGL-FNN-TUTORIAL%20MGL-PAX:SECTION" title="`fnn` Tutorial"><code>fnn</code> Tutorial</a> before reading this.</p>
-
-<p><a id="x-28MGL-BP-3ASUM-SIG-RNN-2ELISP-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fmgl-2Fexample-2Fsum-sign-rnn-2Elisp-22-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29"></a>
-<a id="MGL-BP:SUM-SIG-RNN.LISP%20%28MGL-PAX:INCLUDE%20%23P%22%2Fhome%2Fmelisgl%2Fown%2Fmgl%2Fexample%2Fsum-sign-rnn.lisp%22%20:HEADER-NL%20%22%60%60%60commonlisp%22%20:FOOTER-NL%20%22%60%60%60%22%29"></a></p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">cl:defpackage</span></i> <span class="keyword">:mgl-example-sum-sign-rnn</span>
   <span class="paren2">(<span class="code"><span class="keyword">:use</span> <span class="keyword">#:common-lisp</span> <span class="keyword">#:mgl</span></span>)</span></span>)</span>

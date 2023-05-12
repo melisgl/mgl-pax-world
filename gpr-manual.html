@@ -517,7 +517,7 @@ weight.</p></li>
 <p>Defines how the symbol <a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" title="MGL-GPR:NAME (MGL-PAX:READER MGL-GPR:OPERATOR)"><code>name</code></a> in the function
 position of a list can be combined arguments: how many and of what
 types. The following defines <code>+</code> as an operator that
-adds two <code>float</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_float.htm" title="FLOAT FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="FLOAT TYPE"><code>1</code></a>)s:</p>
+adds two <code>float</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="FLOAT CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_float.htm" title="FLOAT FUNCTION"><code>1</code></a>)s:</p>
 
 <pre><code>(make-instance 'operator 
                :name '+
@@ -714,7 +714,7 @@ with <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>op
 
 <p>The type of the results produced by individuals.
 If the problem is to find the minimum a 1d real function then this
-may be the symbol <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_real.htm" title="REAL TYPE"><code>real</code></a>. If the problem is to find the shortest
+may be the symbol <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_real.htm" title="REAL CLASS"><code>real</code></a>. If the problem is to find the shortest
 route, then this may be a vector. It all depends on the
 representation of the problem, the operators and the literals.</p></li>
 </ul>

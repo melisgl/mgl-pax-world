@@ -256,9 +256,6 @@ that facet.</p>
 need to add new operations. This is usually best accomplished by
 accessing one of the facets directly, as in the following example:</p>
 
-<p><a id="x-28MGL-MAT-3ALOG-DET-EXAMPLE-20-28MGL-PAX-3AINCLUDE-20-28-3ASTART-20-28MGL-MAT-3ALOGDET-20FUNCTION-29-20-3AEND-20-28MGL-MAT-3A-3AEND-OF-LOGDET-EXAMPLE-20VARIABLE-29-29-20-3AHEADER-NL-20-22-60-60-60commonlisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29"></a>
-<a id="MGL-MAT:LOG-DET-EXAMPLE%20%28MGL-PAX:INCLUDE%20%28:START%20%28MGL-MAT:LOGDET%20FUNCTION%29%20:END%20%28MGL-MAT::END-OF-LOGDET-EXAMPLE%20VARIABLE%29%29%20:HEADER-NL%20%22%60%60%60commonlisp%22%20:FOOTER-NL%20%22%60%60%60%22%29"></a></p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> logdet <span class="paren2">(<span class="code">mat</span>)</span>
   <span class="string">"Logarithm of the determinant of MAT. Return -1, 1 or 0 (or
   equivalent) to correct for the sign, as the second value."</span>
@@ -1585,7 +1582,7 @@ of elements from binary <code>stream</code>. Return <code>mat</code>. Also see
 being broken. This is almost always caused by an operation that
 mispecifies the <code>direction</code> argument of <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a>. For example, the
 matrix argument of <a href="#MGL-MAT:SCAL%21%20FUNCTION" title="MGL-MAT:SCAL! FUNCTION"><code>scal!</code></a> should be accessed with direciton <code>:io</code>. But
-if it's <code>:input</code> instead, then subsequent access to the <code>array</code>(<a href="#ARRAY%20MGL-CUBE:FACET-NAME" title="ARRAY MGL-CUBE:FACET-NAME"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="ARRAY TYPE"><code>1</code></a>) facet
+if it's <code>:input</code> instead, then subsequent access to the <code>array</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="ARRAY CLASS"><code>0</code></a> <a href="#ARRAY%20MGL-CUBE:FACET-NAME" title="ARRAY MGL-CUBE:FACET-NAME"><code>1</code></a>) facet
 will not see the changes made by <a href="#MGL-MAT:AXPY%21%20FUNCTION" title="MGL-MAT:AXPY! FUNCTION"><code>axpy!</code></a>, and if it's <code>:output</code>, then
 any changes made to the <code>array</code> facet since the last update of the
 <a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> facet will not be copied and from the wrong input <code>scal!</code>
@@ -2024,7 +2021,7 @@ unused but cached) is never more than <code>n-pool-bytes</code> as specified in
 <a id="MGL-MAT:CUDA-OUT-OF-MEMORY%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cuda-early.lisp#L445">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-OUT-OF-MEMORY%20CONDITION" >cuda-out-of-memory</a></span></span> <span class="locative-args">storage-condition</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cuda-early.lisp#L445">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-OUT-OF-MEMORY%20CONDITION" >cuda-out-of-memory</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm" title="STORAGE-CONDITION CONDITION">storage-condition</a></span></span></p>
 
 <p>If an allocation request cannot be
 satisfied (either because of <code>n-pool-bytes</code> or physical device memory
@@ -2148,7 +2145,7 @@ the return type is not declared.</p>
 but one function is defined for each ctype in <code>ctypes</code> by transforming
 types, constants and code by substituting them with their ctype
 equivalents. Currently this means that one needs to write only one
-kernel for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="SINGLE-FLOAT TYPE"><code>single-float</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="DOUBLE-FLOAT TYPE"><code>double-float</code></a>. All such functions get the
+kernel for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="SINGLE-FLOAT CLASS"><code>single-float</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="DOUBLE-FLOAT CLASS"><code>double-float</code></a>. All such functions get the
 declaration from <a href="#MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS*%20VARIABLE" title="MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS* VARIABLE"><code>*default-lisp-kernel-declarations*</code></a>.</p>
 
 <p>Finally, a dispatcher function with <code>name</code> is defined which determines
@@ -2339,7 +2336,7 @@ use these at all.</p>
 <a id="MGL-MAT:CUBLAS-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cublas.lisp#L68">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR%20CONDITION" >cublas-error</a></span></span> <span class="locative-args">error</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cublas.lisp#L68">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR%20CONDITION" >cublas-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ACUBLAS-ERROR-FUNCTION-NAME-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACUBLAS-ERROR-29-29"></a>

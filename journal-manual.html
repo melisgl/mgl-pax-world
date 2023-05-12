@@ -320,7 +320,7 @@ signal an error. The default implementation:</p>
 <ul>
 <li><p>returns <code>designator</code> itself if it is of type <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>,</p></li>
 <li><p>returns a new <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a> if <code>designator</code> is <code>t</code>,</p></li>
-<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME TYPE"><code>1</code></a>).</p></li>
+<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME FUNCTION"><code>1</code></a>).</p></li>
 </ul></li>
 </ul>
 
@@ -420,7 +420,7 @@ argument of the enclosing <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" tit
 turned off and <code>journaled</code> imposes minimal overhead.</p>
 
 <ul>
-<li><p><code>name</code> can be of any type except <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm" title="NULL TYPE"><code>null</code></a>, not evaluated. For
+<li><p><code>name</code> can be of any type except <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm" title="NULL CLASS"><code>null</code></a>, not evaluated. For
   names, and for anything that gets written to a journal, a
   non-keyword symbol is a reasonable choice as it can be easily made
   unique. However, it also exposes the package structure, which
@@ -911,7 +911,7 @@ most often used for <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging
 <a id="JOURNAL:JOURNALING-FAILURE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1622">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" >journaling-failure</a></span></span> <span class="locative-args">serious-condition</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1622">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" >journaling-failure</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION CONDITION">serious-condition</a></span></span></p>
 
 <p>Signalled during the dynamic extent of
 <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> when an error threatens to leave the journaling
@@ -991,7 +991,7 @@ is significant because it makes this assumption to hold unlikely.</p>
 <a id="JOURNAL:DATA-EVENT-LOSSAGE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1829">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:DATA-EVENT-LOSSAGE%20CONDITION" >data-event-lossage</a></span></span> <span class="locative-args">journaling-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1829">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:DATA-EVENT-LOSSAGE%20CONDITION" >data-event-lossage</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION">journaling-failure</a></span></span></p>
 
 <p>Signalled when a <a href="#JOURNAL:@DATA-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@DATA-EVENT MGL-PAX:GLOSSARY-TERM">data event</a> is about to be recorded
 in <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:mismatched</code> or <code>:logging</code>. Since the data event will
@@ -1002,7 +1002,7 @@ not be replayed that constitutes data loss.</p></li>
 <a id="JOURNAL:JOURNAL-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1840">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" >journal-error</a></span></span> <span class="locative-args">error</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1840">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" >journal-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></p>
 
 <p>Signalled by <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a>, <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a> and by
 <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`"><code>:log-record</code></a>. It is also signalled by the low-level streamlet
@@ -1013,7 +1013,7 @@ interface (see <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title=
 <a id="JOURNAL:END-OF-JOURNAL%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1853">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:END-OF-JOURNAL%20CONDITION" >end-of-journal</a></span></span> <span class="locative-args">journal-error</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L1853">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:END-OF-JOURNAL%20CONDITION" >end-of-journal</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION">journal-error</a></span></span></p>
 
 <p>This might be signalled by the replay mechanism if
 <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a>'s <code>replay-eoj-error-p</code> is true. Unlike
@@ -1297,7 +1297,7 @@ algorithm to determine the target journal is this:</p>
 <p>If the return value is <code>nil</code>, then the event will not be written
 anywhere, else it is written to the journal returned.</p>
 
-<p>This is reminiscent of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM TYPE"><code>synonym-stream</code></a>s, also in that it is possible
+<p>This is reminiscent of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM CLASS"><code>synonym-stream</code></a>s, also in that it is possible
 end up in cycles in the resolution. For this reason, the algorithm
 stop with a <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a> after 100 iterations.</p>
 
@@ -1525,7 +1525,7 @@ See <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DEC
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L2798">[variable]</a></span> <span class="reference-object"><a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" >*trace-journal*</a></span></span> <span class="locative-args">#&lt;pprint-journal :new&gt;</span></span></p>
 
 <p>The <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a> where <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> writes <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s. By default, it is a
-<a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS"><code>pprint-journal</code></a> that sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM TYPE"><code>synonym-stream</code></a> to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* VARIABLE"><code>*trace-output*</code></a> and
+<a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS"><code>pprint-journal</code></a> that sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM CLASS"><code>synonym-stream</code></a> to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* VARIABLE"><code>*trace-output*</code></a> and
 sends its output there. It pays attention to <a href="#JOURNAL:*TRACE-PRETTY*%20VARIABLE" title="JOURNAL:*TRACE-PRETTY* VARIABLE"><code>*trace-pretty*</code></a>, and its
 log decorator is affected by <a href="#JOURNAL:*TRACE-TIME*%20VARIABLE" title="JOURNAL:*TRACE-TIME* VARIABLE"><code>*trace-time*</code></a> and <a href="#JOURNAL:*TRACE-THREAD*%20VARIABLE" title="JOURNAL:*TRACE-THREAD* VARIABLE"><code>*trace-thread*</code></a>.
 However, by changing <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-LOG-DECORATOR (MGL-PAX:ACCESSOR JOURNAL:JOURNAL)"><code>journal-log-decorator</code></a> and
@@ -1543,9 +1543,6 @@ However, by changing <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESS
 <code>C-c C-t</code> to toggling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a>. To integrate <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> into Slime, add
 the following ELisp snippet to your Emacs initialization file or
 load <code>src/journal.el</code>:</p>
-
-<p><a id="x-28JOURNAL-3AJOURNAL-2EEL-20-28MGL-PAX-3AINCLUDE-20-23P-22-2Fhome-2Fmelisgl-2Fown-2Fjournal-2Fsrc-2Fjournal-2Eel-22-20-3AHEADER-NL-20-22-60-60-60elisp-22-20-3AFOOTER-NL-20-22-60-60-60-22-29-29"></a>
-<a id="JOURNAL:JOURNAL.EL%20%28MGL-PAX:INCLUDE%20%23P%22%2Fhome%2Fmelisgl%2Fown%2Fjournal%2Fsrc%2Fjournal.el%22%20:HEADER-NL%20%22%60%60%60elisp%22%20:FOOTER-NL%20%22%60%60%60%22%29"></a></p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_167.html#IDX483" class="symbol"><i><span class="symbol">defun</span></i></a> slime-toggle-jtrace-fdefinition <span class="paren2">(<span class="code">spec</span>)</span>
   <span class="string">"Toggle JTRACE."</span>
@@ -1699,7 +1696,7 @@ upgrades in combination with <a href="#JOURNAL:WITH-REPLAY-FILTER%20MGL-PAX:MACR
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L238">[type]</a></span> <span class="reference-object"><a href="#JOURNAL:EVENT-VERSION%20TYPE" >event-version</a></span></span></span></p>
 
-<p>An event's version is either <code>nil</code>, a positive <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm" title="FIXNUM TYPE"><code>fixnum</code></a>, or <code>:infinity</code>,
+<p>An event's version is either <code>nil</code>, a positive <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm" title="FIXNUM CLASS"><code>fixnum</code></a>, or <code>:infinity</code>,
 which correspond to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s, <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-EVENT TYPE"><code>versioned-event</code></a>s, and
 <a href="#JOURNAL:EXTERNAL-EVENT%20TYPE" title="JOURNAL:EXTERNAL-EVENT TYPE"><code>external-event</code></a>s, respectively, and have an increasingly strict
 behaviour with regards to <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a>. All <a href="#JOURNAL:EVENT%20TYPE" title="JOURNAL:EVENT TYPE"><code>event</code></a>s have versions. The
@@ -2233,7 +2230,7 @@ process failed hard without unwinding properly, or when an
 <a id="JOURNAL:REPLAY-FAILURE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3849">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" >replay-failure</a></span></span> <span class="locative-args">serious-condition</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3849">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" >replay-failure</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION CONDITION">serious-condition</a></span></span></p>
 
 <p>A abstract superclass (never itself signalled) for
 all kinds of mismatches between the events produced and the replay
@@ -2272,7 +2269,7 @@ uses the <em>insert</em> replay strategy (see <a href="#JOURNAL:@THE-REPLAY-STRA
 <a id="JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3932">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION" >replay-name-mismatch</a></span></span> <span class="locative-args">replay-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3932">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION" >replay-name-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event's and <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s
 <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>event-name</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. The <a href="#JOURNAL:REPLAY-FORCE-INSERT%20RESTART" title="JOURNAL:REPLAY-FORCE-INSERT RESTART"><code>replay-force-insert</code></a>,
@@ -2283,7 +2280,7 @@ uses the <em>insert</em> replay strategy (see <a href="#JOURNAL:@THE-REPLAY-STRA
 <a id="JOURNAL:REPLAY-VERSION-DOWNGRADE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3946">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-VERSION-DOWNGRADE%20CONDITION" >replay-version-downgrade</a></span></span> <span class="locative-args">replay-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3946">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-VERSION-DOWNGRADE%20CONDITION" >replay-version-downgrade</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event and the <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>
 have the same <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>event-name</code></a>, but the new event has a lower version. The
@@ -2294,7 +2291,7 @@ have the same <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME
 <a id="JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3960">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION" >replay-args-mismatch</a></span></span> <span class="locative-args">replay-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3960">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION" >replay-args-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event's and <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s
 <a href="#JOURNAL:EVENT-ARGS%20FUNCTION" title="JOURNAL:EVENT-ARGS FUNCTION"><code>event-args</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. The <a href="#JOURNAL:REPLAY-FORCE-UPGRADE%20RESTART" title="JOURNAL:REPLAY-FORCE-UPGRADE RESTART"><code>replay-force-upgrade</code></a> restart is
@@ -2305,7 +2302,7 @@ provided.</p></li>
 <a id="JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3974">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION" >replay-outcome-mismatch</a></span></span> <span class="locative-args">replay-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3974">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION" >replay-outcome-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event's and <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s
 <code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>) and/or <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. The
@@ -2316,7 +2313,7 @@ provided.</p></li>
 <a id="JOURNAL:REPLAY-UNEXPECTED-OUTCOME%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3988">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-UNEXPECTED-OUTCOME%20CONDITION" >replay-unexpected-outcome</a></span></span> <span class="locative-args">replay-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L3988">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-UNEXPECTED-OUTCOME%20CONDITION" >replay-unexpected-outcome</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event has an
 <a href="#JOURNAL:@UNEXPECTED-OUTCOME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@UNEXPECTED-OUTCOME MGL-PAX:GLOSSARY-TERM">unexpected outcome</a>. Note that the <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a> always has an
@@ -2328,7 +2325,7 @@ restarts are provided.</p></li>
 <a id="JOURNAL:REPLAY-INCOMPLETE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L4003">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-INCOMPLETE%20CONDITION" >replay-incomplete</a></span></span> <span class="locative-args">replay-failure</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L4003">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-INCOMPLETE%20CONDITION" >replay-incomplete</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled if there are unprocessed non-log events in
 <a href="#JOURNAL:REPLAY-JOURNAL%20FUNCTION" title="JOURNAL:REPLAY-JOURNAL FUNCTION"><code>replay-journal</code></a> when <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> finishes and the body of
@@ -3747,7 +3744,7 @@ support reads, so they cannot be used as a <a href="#JOURNAL:REPLAY-JOURNAL%20FU
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L2024">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="locative-args">pprint-journal (:stream = *standard-output*)</span></span></p>
 
 <p>The stream where events are dumped. May be set any
-time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM TYPE"><code>stream</code></a>.</p></li>
+time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM CLASS"><code>stream</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28JOURNAL-3APPRINT-JOURNAL-PRETTY-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3APPRINT-JOURNAL-29-29"></a>
@@ -4039,7 +4036,7 @@ created.</p></li>
 <a id="JOURNAL:STREAMLET-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L736">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" >streamlet-error</a></span></span> <span class="locative-args">error</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L736">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" >streamlet-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_stm_er.htm" title="STREAM-ERROR CONDITION"><code>cl:stream-error:</code></a> failures pertaining to I/O on
 a closed <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a> or of the wrong <code>direction</code>. Actual I/O errors are
@@ -4215,7 +4212,7 @@ arbitrary code, may unwind the stack in the target thread.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/d69c6332e9bd03e49d91dd6c78fd40cadf81d91f/src/journal.lisp#L5835">[glossary-term]</a></span> <span class="reference-object"><a href="#JOURNAL:@BOOLEAN-VALUED-SYMBOL%20MGL-PAX:GLOSSARY-TERM" >boolean-valued symbol</a></span></span></span></p>
 
-<p>Imagine writing two <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM TYPE"><code>stream</code></a>s with a spaghetti of functions and
+<p>Imagine writing two <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM CLASS"><code>stream</code></a>s with a spaghetti of functions and
 wanting to have pretty-printed output on one of them. Unfortunately,
 binding <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_pre.htm" title="*PRINT-PRETTY* VARIABLE"><code>*print-pretty*</code></a> to <code>t</code> will affect writes to both streams.</p>
 
