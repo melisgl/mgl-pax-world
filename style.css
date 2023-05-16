@@ -204,6 +204,7 @@ img {
   display: block;
   text-align: left;
   margin-top: calc(2*var(--parsep));
+  hyphens: none;
 }
 
 .reference {
