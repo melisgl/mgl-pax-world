@@ -147,7 +147,7 @@ tried in the order <code>list-actions</code> returns them: stronger moves</p>
 <p><code>call-with-action</code>, <code>maybe-evaluate-state</code> and <code>list-actions</code> are
 mandatory.</p>
 
-<p><code>record-best</code>, if non-NIL, is a function of (<code>depth</code> <code>score</code> <code>actions</code>). It
+<p><code>record-best</code>, if non-<code>nil</code>, is a function of (<code>depth</code> <code>score</code> <code>actions</code>). It
 is called when at <code>depth</code> a new best action is found. <code>actions</code> is a
 list of all the actions in the principle variant corresonding to the
 newly found best score. <code>record-best</code> is useful for graceful

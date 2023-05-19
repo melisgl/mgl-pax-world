@@ -442,10 +442,10 @@ following is legal:</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L408">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:MREF%20FUNCTION" >mref</a></span></span> <span class="locative-args">mat &amp;rest indices</span></span></p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF FUNCTION"><code>aref</code></a> for arrays. Don't use this if you care about performance
-at all. SETFable. When set, the value is coerced to the ctype of <code>mat</code>
+at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>able. When set, the value is coerced to the ctype of <code>mat</code>
 with <a href="#MGL-MAT:COERCE-TO-CTYPE%20FUNCTION" title="MGL-MAT:COERCE-TO-CTYPE FUNCTION"><code>coerce-to-ctype</code></a>. Note that currently <code>mref</code> always operates on
 the <a href="#MGL-MAT:BACKING-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME"><code>backing-array</code></a> facet so it can trigger copying of facets. When
-it's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>'ed, however, it will update the <a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> if cuda is
+it's <code>setf</code>'ed, however, it will update the <a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> if cuda is
 enabled and it is up-to-date or there are no facets at all.</p></li>
 </ul>
 
@@ -456,10 +456,10 @@ enabled and it is up-to-date or there are no facets at all.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L443">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:ROW-MAJOR-MREF%20FUNCTION" >row-major-mref</a></span></span> <span class="locative-args">mat index</span></span></p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm" title="ROW-MAJOR-AREF FUNCTION"><code>row-major-aref</code></a> for arrays. Don't use this if you care about
-performance at all. SETFable. When set, the value is coerced to the
+performance at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>able. When set, the value is coerced to the
 ctype of <code>mat</code> with <a href="#MGL-MAT:COERCE-TO-CTYPE%20FUNCTION" title="MGL-MAT:COERCE-TO-CTYPE FUNCTION"><code>coerce-to-ctype</code></a>. Note that currently
 <code>row-major-mref</code> always operates on the <a href="#MGL-MAT:BACKING-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME"><code>backing-array</code></a> facet so it can
-trigger copying of facets. When it's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>'ed, however, it will
+trigger copying of facets. When it's <code>setf</code>'ed, however, it will
 update the <a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> if cuda is enabled and it is up-to-date or
 there are no facets at all.</p></li>
 </ul>

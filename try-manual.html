@@ -1509,7 +1509,7 @@ been retried. See <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL F
 
 <p>Either <a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION"><code>unhandled-error</code></a> or <a href="#TRY:NLX%20CONDITION" title="TRY:NLX CONDITION"><code>nlx</code></a>, <code>error*</code> causes or
 represents abnormal termination of a <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>. <a href="#TRY:ABORT-TRIAL%20FUNCTION" title="TRY:ABORT-TRIAL FUNCTION"><code>abort-trial</code></a> can be
-called with ERROR*s, but there is little need for explicitly doing
+called with <code>error*</code>s, but there is little need for explicitly doing
 so as <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a>, which <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> invokes, takes care of this.</p></li>
 </ul>
 
@@ -3471,7 +3471,7 @@ the enclosing trials.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/038ef693c09e0c351ff8a2f392e1366a96e88327/src/trial.lisp#L80">[reader]</a></span> <span class="reference-object"><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" >children</a></span></span> <span class="locative-args">trial (:children = nil)</span></span></p>
 
 <p>A list of immediate child <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a>s, <a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>s, and
-ERROR*s collected in reverse chronological order (see
+<a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a>s collected in reverse chronological order (see
 <a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>). The <code>verdict</code> of this <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> is not among <code>children</code>,
 but the <code>verdict</code>s of child trials' are.</p></li>
 </ul>

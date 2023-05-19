@@ -1487,7 +1487,7 @@ following variables.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2286">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*KEY-ENCODER*%20VARIABLE" >*key-encoder*</a></span></span> <span class="locative-args">nil</span></span></p>
 
-<p>A function designator, <code>nil</code> or an <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a>. If non-NIL, it overrides
+<p>A function designator, <code>nil</code> or an <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a>. If non-<code>nil</code>, it overrides
 the encoding method determined by <code>key-encoding</code> (see <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>). It is
 called with a single argument, the key, when it is to be converted
 to an octet vector.</p></li>
@@ -1499,7 +1499,7 @@ to an octet vector.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2292">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*KEY-DECODER*%20VARIABLE" >*key-decoder*</a></span></span> <span class="locative-args">nil</span></span></p>
 
-<p>A function designator, <code>nil</code> or an <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a>. If non-NIL, it is
+<p>A function designator, <code>nil</code> or an <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a>. If non-<code>nil</code>, it is
 called with a single <code>mdb-val</code> argument (see <a href="#LMDB:WITH-MDB-VAL-SLOTS%20MGL-PAX:MACRO" title="LMDB:WITH-MDB-VAL-SLOTS MGL-PAX:MACRO"><code>with-mdb-val-slots</code></a>), that
 holds a pointer to data to be decoded and its size. This function is
 called whenever a key is to be decoded and overrides the
@@ -2396,7 +2396,7 @@ has been closed (committed, aborted, or reset).</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L580">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BAD-VALSIZE-ERROR%20CONDITION" >lmdb-bad-valsize-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
-<p>Unsupported size of key/DB name/data, or wrong
+<p>Unsupported size of key/<a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a> name/data, or wrong
 <code>dupfixed</code>, <code>integer-key</code> or <code>integer-dup</code>. See <a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" title="LMDB:ENV-MAX-KEY-SIZE FUNCTION"><code>env-max-key-size</code></a>.</p></li>
 </ul>
 

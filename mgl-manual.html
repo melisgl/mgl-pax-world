@@ -2574,7 +2574,7 @@ momentum, but it also uses less memory. Note that with <code>:none</code>,
 <p>An L2 penalty. It discourages large weights, much
 like a zero mean gaussian prior. <code>weight-decay</code> * WEIGHT is added to
 the gradient to penalize large weights. It's as if the function
-whose minimum is sought had WEIGHT-DECAY*sum_i{0.5 * WEIGHT_i^2}
+whose minimum is sought had <code>weight-decay</code>*sum_i{0.5 * WEIGHT_i^2}
 added to it.</p></li>
 </ul>
 
@@ -2587,7 +2587,7 @@ added to it.</p></li>
 <p>An L1 penalty. It encourages sparsity.
 <code>sign</code>(WEIGHT) * <code>weight-penalty</code> is added to the gradient pushing the
 weight towards negative infinity. It's as if the function whose
-minima is sought had WEIGHT-PENALTY*sum_i{abs(WEIGHT_i)} added to
+minima is sought had <code>weight-penalty</code>*sum_i{abs(WEIGHT_i)} added to
 it. Putting it on feature biases consitutes a sparsity constraint
 on the features.</p></li>
 </ul>
@@ -2893,7 +2893,7 @@ this optimizer.</p></li>
 
 <p>Compute the norm of of <code>mats</code> as if they were a single vector. If the
 norm is greater than <code>l2-upper-bound</code>, then scale each matrix
-destructively by the norm divided by <code>l2-upper-bound</code> and if non-NIL
+destructively by the norm divided by <code>l2-upper-bound</code> and if non-<code>nil</code>
 call the function <code>callback</code> with the scaling factor.</p></li>
 </ul>
 
@@ -5399,7 +5399,7 @@ whose value is computed as the sum of nodes in their input lump.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/lumps.lisp#L1867">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:IMPORTANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ELOSS%29" >importance</a></span></span> <span class="locative-args">-&gt;loss (:importance = nil)</span></span></p>
 
 <p>This is to support weighted instances. That is
-when not all training instances are equally important. If non-NIL,
+when not all training instances are equally important. If non-<code>nil</code>,
 a 1d <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> with the importances of stripes of the batch. When
 <code>importance</code> is given (typically in <a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" title="MGL-CORE:SET-INPUT GENERIC-FUNCTION"><code>set-input</code></a>), then instead of
 adding 1 to the derivatives of all stripes, <code>importance</code> is added
@@ -5584,7 +5584,7 @@ automatically.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/lumps.lisp#L341">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EDROPOUT%29" >dropout</a></span></span> <span class="locative-args">-&gt;dropout (:dropout = 0.5)</span></span></p>
 
-<p>If non-NIL, then in the forward pass zero out each
+<p>If non-<code>nil</code>, then in the forward pass zero out each
 node in this chunk with <code>dropout</code> probability.</p></li>
 </ul>
 
@@ -5891,7 +5891,7 @@ some activation is to be calculated based on <code>x_t</code>, it is going to
 be the sum of individual activations. For example, <code>W_ix * x_t</code> is
 really <code>sum_j W_ijx * inputs_j</code>.</p>
 
-<p>If <code>cell-init</code> is non-NIL, then it must be a <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a> of <code>size</code> form which
+<p>If <code>cell-init</code> is non-<code>nil</code>, then it must be a <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a> of <code>size</code> form which
 stands for the initial state of the value cell (<code>c_{-1}</code>). <code>cell-init</code>
 being <code>nil</code> is equivalent to the state of all zeros.</p>
 

@@ -519,7 +519,7 @@ argument of <code>journaled</code>, whose default is <code>#'identity</code>. Al
 
 <p>If the <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@BLOCK MGL-PAX:GLOSSARY-TERM">block</a> unwound due to a condition, and <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a>'s
 <code>condition</code> argument (a function whose default is <code>(constantly nil)</code>)
-returns non-NIL when invoked on it, then <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>event-exit</code></a> is
+returns non-<code>nil</code> when invoked on it, then <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>event-exit</code></a> is
 <code>:condition</code>, and the outcome is this return value:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">journaled <span class="paren2">(<span class="code">foo <span class="keyword">:condition</span> <span class="paren3">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren4">(<span class="code">c</span>)</span> <span class="paren4">(<span class="code">prin1-to-string c</span>)</span></span>)</span></span>)</span>
@@ -1246,7 +1246,7 @@ most often used with <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L463">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="locative-args">journal (:log-decorator = nil)</span></span></p>
 
-<p>If non-NIL, this is a function to add <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@DECORATION MGL-PAX:GLOSSARY-TERM">decoration</a>
+<p>If non-<code>nil</code>, this is a function to add <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@DECORATION MGL-PAX:GLOSSARY-TERM">decoration</a>
 to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s before they are written to a journal. The only
 allowed transformation is to <em>append</em> a plist to the event, which
 is a plist itself. The keys can be anything.</p></li>
@@ -2689,7 +2689,7 @@ replayability. The bundle in question is a <a href="#JOURNAL:FILE-BUNDLE%20CLASS
 start afresh.</p>
 
 <p>Furthermore, if <code>body</code> returns normally, and it is a replay of a
-previous run, and <code>equivalentp</code>, then it is ASSERTed that the record
+previous run, and <code>equivalentp</code>, then it is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT MGL-PAX:MACRO"><code>assert</code></a>ed that the record
 and replay journals are <a href="#JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P%20GENERIC-FUNCTION" title="JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P GENERIC-FUNCTION"><code>equivalent-replay-journals-p</code></a>. If this check
 fails, <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> is discarded when the function returns. In
 addition to the replay consistency, this checks that no inserts or
@@ -2969,7 +2969,7 @@ persist the data.</p>
 
 <p>Unlike <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s, <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a>s do not have any built-in
 persistent storage backing them, but with <code>sync-fn</code>, persistence can
-be tacked on. If non-NIL, <code>sync-fn</code> must be a function of a single
+be tacked on. If non-<code>nil</code>, <code>sync-fn</code> must be a function of a single
 argument, an <code>in-memory-journal</code>. <code>sync-fn</code> is called according to
 <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>, and upon normal return the journal must
 be stored durably.</p>
@@ -3475,11 +3475,11 @@ The changes that are persisted are </p>
 
 <ul>
 <li><p><a href="#JOURNAL:WRITE-EVENT%20GENERIC-FUNCTION" title="JOURNAL:WRITE-EVENT GENERIC-FUNCTION"><code>write-event</code></a>s and <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> changes made in an enclosing
-  WITH-JOURNALING; and</p></li>
+  <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a>; and</p></li>
 <li><p><code>log-record</code>s from any thread. </p></li>
 </ul>
 
-<p>In particular, writes made in a <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> in another thread
+<p>In particular, writes made in a <code>with-journaling</code> in another thread
 are not persisted. <code>sync-journal</code> is a noop if <code>journal-sync</code> is <code>nil</code>. It
 is safe to call from any thread.</p></li>
 </ul>
@@ -3811,7 +3811,7 @@ yet, the replay journal is an empty, completed one.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L5604">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="locative-args">bundle (:max-n-failed = 1)</span></span></p>
 
-<p>If <code>max-n-failed</code> is non-NIL, and the number of
+<p>If <code>max-n-failed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:failed</code> in the bundle exceeds
 its value, then some journals (starting with the oldest) are
 deleted.</p></li>
@@ -3823,7 +3823,7 @@ deleted.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L5610">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="locative-args">bundle (:max-n-completed = 1)</span></span></p>
 
-<p>If <code>max-n-completed</code> is non-NIL, and the number of
+<p>If <code>max-n-completed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:completed</code> in the bundle exceeds
 its value, then some journals (starting with the oldest) are
 deleted.</p></li>
