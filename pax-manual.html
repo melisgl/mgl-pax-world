@@ -121,6 +121,15 @@
 
 <ul>
 <li><a href="#%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/transcribe&quot; ASDF/SYSTEM:SYSTEM">9.1 The mgl-pax/transcribe ASDF System</a></li>
+<li><a href="#MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION" title="Transcribing with Emacs">9.2 Transcribing with Emacs</a></li>
+<li><a href="#MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION" title="Transcript API">9.3 Transcript API</a></li>
+<li><a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">9.4 Transcript Consistency Checking</a>
+
+<ul>
+<li><a href="#MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION" title="Finer-Grained Consistency Checks">9.4.1 Finer-Grained Consistency Checks</a></li>
+<li><a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION" title="Controlling the Dynamic Environment">9.4.2 Controlling the Dynamic Environment</a></li>
+<li><a href="#MGL-PAX:@TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING%20MGL-PAX:SECTION" title="Utilities for Consistency Checking">9.4.3 Utilities for Consistency Checking</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION" title="Writing Extensions">10 Writing Extensions</a>
 
@@ -327,7 +336,7 @@ something like this to your <code>.emacs</code>:</p>
 <span class="paren1">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_333.html#IDX1030" class="symbol">global-set-key</a> <span class="paren2">(<span class="code">kbd <span class="string">"s-x r"</span></span>)</span> 'mgl-pax-retranscribe-region</span>)</span></span></code></pre>
 
 <p>See <a href="#MGL-PAX:@NAVIGATING-IN-EMACS%20MGL-PAX:SECTION" title="Navigating Sources in Emacs">Navigating Sources in Emacs</a>, <a href="#MGL-PAX:@DOCUMENTING-IN-EMACS%20MGL-PAX:SECTION" title="Documenting in Emacs">Documenting in Emacs</a> and
-<code>@transcribing-with-emacs</code> for how to use the relevant features.</p>
+<a href="#MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION" title="Transcribing with Emacs">Transcribing with Emacs</a> for how to use the relevant features.</p>
 
 <p><a id="x-28MGL-PAX-3AINSTALL-PAX-ELISP-20FUNCTION-29"></a>
 <a id="MGL-PAX:INSTALL-PAX-ELISP%20FUNCTION"></a></p>
@@ -3009,28 +3018,635 @@ on Swank to list definitions of symbols (as <a href="#VARIABLE%20MGL-PAX:LOCATIV
 
 <h2><a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION">9 Transcripts</a></h2>
 
-<p>This is a placeholder until <code>mgl-pax/transcribe</code> is loaded.</p>
+<p>What are transcripts for? When writing a tutorial, one often wants
+to include a REPL session with maybe a few defuns and a couple of
+forms whose output or return values are shown. Also, in a function's
+docstring an example call with concrete arguments and return values
+speaks volumes. A transcript is a text that looks like a repl
+session, but which has a light markup for printed output and return
+values, while no markup (i.e. prompt) for Lisp forms. PAX
+transcripts may include output and return values of all forms, or
+only selected ones. In either case, the transcript itself can be
+easily generated from the source code.</p>
+
+<p>The main worry associated with including examples in the
+documentation is that they tend to get out-of-sync with the code.
+This is solved by being able to parse back and update transcripts.
+In fact, this is exactly what happens during documentation
+generation with PAX. Code sections tagged <code>cl-transcript</code> are
+retranscribed and checked for inconsistency (that is, any difference
+in output or return values). If the consistency check fails, an
+error is signalled that includes a reference to the object being
+documented.</p>
+
+<p>Going beyond documentation, transcript consistency checks can be
+used for writing simple tests in a very readable form. For example:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">+ 1 2</span>)</span>
+=&gt; 3
+
+<span class="paren1">(<span class="code">values <span class="paren2">(<span class="code">princ <span class="keyword">:hello</span></span>)</span> <span class="paren2">(<span class="code">list 1 2</span>)</span></span>)</span>
+.. HELLO
+=&gt; :HELLO
+=&gt; <span class="paren1">(<span class="code">1 2</span>)</span></span></code></pre>
+
+<p>All in all, transcripts are a handy tool especially when combined
+with the Emacs support to regenerate them and with
+PYTHONIC-STRING-READER's triple-quoted strings, that allow one to
+work with nested strings with less noise. The triple-quote syntax
+can be enabled with:</p>
+
+<pre><code>(in-readtable pythonic-string-syntax)
+</code></pre>
 
 <p><a id="x-28-22mgl-pax-2Ftranscribe-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8593;</a> <a href="#MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION" title="Writing Extensions">&#8594;</a> <a href="#%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/transcribe&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/mgl-pax.asd#L1">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8593;</a> <a href="#MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION" title="Transcribing with Emacs">&#8594;</a> <a href="#%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/transcribe&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/mgl-pax.asd#L1">&#955;</a></span></span></p>
 
 <h3><a href="#%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM">9.1 The mgl-pax/transcribe ASDF System</a></h3>
 
 <ul>
 <li>Description: Transcription support for MGL-PAX.</li>
-<li>Long Description: Autoloaded by <code>mgl-pax:transcribe</code> and by the Emacs
+<li>Long Description: Autoloaded by <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>mgl-pax:transcribe</code></a> and by the Emacs
   integration (see <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">Transcripts</a>).</li>
 <li>Licence: MIT, see COPYING.</li>
 <li>Author: Gábor Melis</li>
 <li>Mailto: <a href="mailto:mega@retes.hu" >mega@retes.hu</a></li>
 </ul>
 
+<p><a id="x-28MGL-PAX-3A-40TRANSCRIBING-WITH-EMACS-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/transcribe&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8593;</a> <a href="#MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION" title="Transcript API">&#8594;</a> <a href="#MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION" title="Transcribing with Emacs">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1191">&#955;</a></span></span></p>
+
+<h3><a href="#MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION">9.2 Transcribing with Emacs</a></h3>
+
+<p>Typical transcript usage from within Emacs is simple: add a lisp
+form to a docstring or comment at any indentation level. Move the
+cursor right after the end of the form as if you were to evaluate it
+with <code>C-x C-e</code>. The cursor is marked by <code>#\^</code>:</p>
+
+<pre><code>This is part of a docstring.
+
+```cl-transcript
+(values (princ :hello) (list 1 2))^
+```
+</code></pre>
+
+<p>Note that the use of fenced code blocks with the language tag
+<code>cl-transcript</code> is only to tell PAX to perform consistency checks
+at documentation generation time.</p>
+
+<p>Now invoke the elisp function <code>mgl-pax-transcribe</code> where the cursor
+is and the fenced code block from the docstring becomes:</p>
+
+<pre><code>(values (princ :hello) (list 1 2))
+.. HELLO
+=&gt; :HELLO
+=&gt; (1 2)
+^
+</code></pre>
+
+<p>Then you change the printed message and add a comment to the second
+return value:</p>
+
+<pre><code>(values (princ :hello-world) (list 1 2))
+.. HELLO
+=&gt; :HELLO
+=&gt; (1
+    ;; This value is arbitrary.
+    2)
+</code></pre>
+
+<p>When generating the documentation you get a
+<a href="#MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR CONDITION"><code>transcription-consistency-error</code></a> because the printed output and the
+first return value changed so you regenerate the documentation by
+marking the region of bounded by <code>#\|</code> and the cursor at <code>#\^</code> in
+the example:</p>
+
+<pre><code>|(values (princ :hello-world) (list 1 2))
+.. HELLO
+=&gt; :HELLO
+=&gt; (1
+    ;; This value is arbitrary.
+    2)
+^
+</code></pre>
+
+<p>then invoke the elisp function <code>mgl-pax-retranscribe-region</code> to get:</p>
+
+<pre><code>(values (princ :hello-world) (list 1 2))
+.. HELLO-WORLD
+=&gt; :HELLO-WORLD
+=&gt; (1
+    ;; This value is arbitrary.
+    2)
+^
+</code></pre>
+
+<p>Note how the indentation and the comment of <code>(1 2)</code> was left alone
+but the output and the first return value got updated.</p>
+
+<p>Alternatively, <code>C-u 1 mgl-pax-transcribe</code> will emit commented markup:</p>
+
+<pre><code>(values (princ :hello) (list 1 2))
+;.. HELLO
+;=&gt; :HELLO
+;=&gt; (1 2)
+</code></pre>
+
+<p><code>C-u 0 mgl-pax-retranscribe-region</code> will turn commented into
+non-commented markup. In general, the numeric prefix argument is the
+index of the syntax to be used in MGL-PAX:<a href="#MGL-PAX:*TRANSCRIBE-SYNTAXES*%20VARIABLE" title="MGL-PAX:*TRANSCRIBE-SYNTAXES* VARIABLE"><code>*transcribe-syntaxes*</code></a>.
+Without a prefix argument <code>mgl-pax-retranscribe-region</code> will not
+change the markup style.</p>
+
+<p>Finally, not only do both functions work at any indentation level,
+but in comments too:</p>
+
+<pre><code>;;;; (values (princ :hello) (list 1 2))
+;;;; .. HELLO
+;;;; =&gt; :HELLO
+;;;; =&gt; (1 2)
+</code></pre>
+
+<p>The dynamic environment of the transcription is determined by the
+<code>:dynenv</code> argument of the enclosing cl-transcript code block (see
+<a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION" title="Controlling the Dynamic Environment">Controlling the Dynamic Environment</a>).</p>
+
+<p>Transcription support in Emacs can be enabled by loading
+<code>src/mgl-pax.el</code>. See <a href="#MGL-PAX:@EMACS-SETUP%20MGL-PAX:SECTION" title="Emacs Setup">Emacs Setup</a>.</p>
+
+<p><a id="x-28MGL-PAX-3A-40TRANSCRIPT-API-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIBING-WITH-EMACS%20MGL-PAX:SECTION" title="Transcribing with Emacs">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8593;</a> <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">&#8594;</a> <a href="#MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION" title="Transcript API">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L164">&#955;</a></span></span></p>
+
+<h3><a href="#MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION">9.3 Transcript API</a></h3>
+
+<p><a id="x-28MGL-PAX-3ATRANSCRIBE-20FUNCTION-29"></a>
+<a id="MGL-PAX:TRANSCRIBE%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L229">[function]</a></span> <span class="reference-object"><a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" >transcribe</a></span></span> <span class="locative-args">input output &amp;key update-only (include-no-output update-only) (include-no-value update-only) (echo t) (check-consistency *transcribe-check-consistency*) default-syntax (input-syntaxes *transcribe-syntaxes*) (output-syntaxes *transcribe-syntaxes*) dynenv</span></span></p>
+
+<p>Read forms from <code>input</code> and write them (iff <code>echo</code>) to <code>output</code>
+followed by any output and return values produced by calling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm" title="EVAL FUNCTION"><code>eval</code></a> on
+the form. <code>input</code> can be a stream or a string, while <code>output</code> can be a
+stream or <code>nil</code> in which case transcription goes into a string. The
+return value is the <code>output</code> stream or the string that was
+constructed.</p>
+
+<p>A simple example is this:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">transcribe <span class="string">"(princ 42) "</span> nil</span>)</span>
+=&gt; "<span class="paren1">(<span class="code">princ 42</span>)</span>
+.. 42
+=&gt; 42
+"</span></code></pre>
+
+<p>However, the above may be a bit confusing since this documentation
+uses <code>transcribe</code> markup syntax in this very example, so let's do it
+differently. If we have a file with these contents:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values <span class="paren2">(<span class="code">princ 42</span>)</span> <span class="paren2">(<span class="code">list 1 2</span>)</span></span>)</span></span></code></pre>
+
+<p>it is transcribed to:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values <span class="paren2">(<span class="code">princ 42</span>)</span> <span class="paren2">(<span class="code">list 1 2</span>)</span></span>)</span>
+.. 42
+=&gt; 42
+=&gt; <span class="paren1">(<span class="code">1 2</span>)</span></span></code></pre>
+
+<p>Output to all standard streams is captured and printed with
+the <code>:output</code> prefix (<code>&quot;..&quot;</code>). The return values above are printed
+with the <code>:readable</code> prefix (<code>&quot;=&gt;&quot;</code>). Note how these prefixes are
+always printed on a new line to facilitate parsing.</p>
+
+<p><strong>Updating</strong></p>
+
+<p><code>transcribe</code> is able to parse its own output. If we transcribe the
+previous output above, we get it back exactly. However, if we remove
+all output markers, leave only a placeholder value marker and
+pass <code>:update-only</code> <code>t</code> with source:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values <span class="paren2">(<span class="code">princ 42</span>)</span> <span class="paren2">(<span class="code">list 1 2</span>)</span></span>)</span>
+=&gt;</span></code></pre>
+
+<p>we get this:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values <span class="paren2">(<span class="code">princ 42</span>)</span> <span class="paren2">(<span class="code">list 1 2</span>)</span></span>)</span>
+=&gt; 42
+=&gt; <span class="paren1">(<span class="code">1 2</span>)</span></span></code></pre>
+
+<p>With <code>update-only</code>, the printed output of a form is only transcribed
+if there were output markers in the source. Similarly, with
+<code>update-only</code>, return values are only transcribed if there were value
+markers in the source.</p>
+
+<p><strong>No Output/Values</strong></p>
+
+<p>If the form produces no output or returns no values, then whether or
+not output and values are transcribed is controlled by
+<code>include-no-output</code> and <code>include-no-value</code>, respectively. By default,
+neither is on so:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values</span>)</span>
+..
+=&gt;</span></code></pre>
+
+<p>is transcribed to</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values</span>)</span></span></code></pre>
+
+<p>With <code>update-only</code> true, we probably wouldn't like to lose those
+markers since they were put there for a reason. Hence, with
+<code>update-only</code>, <code>include-no-output</code> and <code>include-no-value</code> default to true.
+So with <code>update-only</code> the above example is transcribed to:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">values</span>)</span>
+..
+=&gt; <span class="comment">; No value</span></span></code></pre>
+
+<p>where the last line is the <code>:no-value</code> prefix.</p>
+
+<p><strong>Consistency Checks</strong></p>
+
+<p>If <code>check-consistency</code> is true, then <code>transcribe</code> signals a continuable
+<a href="#MGL-PAX:TRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR CONDITION"><code>transcription-output-consistency-error</code></a> whenever a form's output as a
+string is different from what was in <code>input</code>, provided that <code>input</code>
+contained the output. Similary, for values, a continuable
+<a href="#MGL-PAX:TRANSCRIPTION-VALUES-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-VALUES-CONSISTENCY-ERROR CONDITION"><code>transcription-values-consistency-error</code></a> is signalled if a value read
+from the source does not print as the as the value returned by <code>eval</code>.
+This allows readable values to be hand-indented without failing
+consistency checks:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">list 1 2</span>)</span>
+=&gt; <span class="comment">;; This is commented, too.
+</span>   <span class="paren1">(<span class="code">1
+      <span class="comment">;; Funny indent.
+</span>      2</span>)</span></span></code></pre>
+
+<p>See <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">Transcript Consistency Checking</a> for the full picture.</p>
+
+<p><strong>Unreadable Values</strong></p>
+
+<p>The above scheme involves <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ FUNCTION"><code>read</code></a>, so consistency of unreadable values
+cannot be treated the same. In fact, unreadable values must even be
+printed differently for transcribe to be able to read them back:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defclass</span></i> some-class <span class="paren2">(<span class="code"></span>)</span> <span class="paren2">(<span class="code"></span>)</span></span>)</span>
+
+<span class="paren1">(<span class="code"><i><span class="symbol">defmethod</span></i> print-object <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">obj some-class</span>)</span> stream</span>)</span>
+  <span class="paren2">(<span class="code">print-unreadable-object <span class="paren3">(<span class="code">obj stream <span class="keyword">:type</span> t</span>)</span>
+    <span class="paren3">(<span class="code">format stream \"~%~%end\"</span>)</span></span>)</span></span>)</span>
+
+<span class="paren1">(<span class="code">make-instance 'some-class</span>)</span>
+==&gt; #&lt;SOME-CLASS 
+--&gt;
+--&gt; end&gt;</span></code></pre>
+
+<p>where <code>&quot;==&gt;&quot;</code> is the <code>:unreadable</code> prefix and <code>&quot;--&gt;&quot;</code> is the
+<code>:unreadable-continuation</code> prefix. As with outputs, a consistency
+check between an unreadable value from the source and the value from
+<code>eval</code> is performed with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm" title="STRING= FUNCTION"><code>string=</code></a> by default. That is, the value from
+<code>eval</code> is printed to a string and compared to the source value. Hence,
+any change to unreadable values will break consistency checks. This
+is most troublesome with instances of classes with the default
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pr_obj.htm" title="PRINT-OBJECT GENERIC-FUNCTION"><code>print-object</code></a> method printing the memory address. See @ no remedy for
+that, except for customizing <code>print-object</code> or not transcribing that
+kind of stuff.</p>
+
+<p><strong>Errors</strong></p>
+
+<p>If an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION"><code>error</code></a> condition is signalled, the error is printed to the
+output and no values are returned.</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">progn</span></i>
+  <span class="paren2">(<span class="code">print <span class="string">"hello"</span></span>)</span>
+  <span class="paren2">(<span class="code">error <span class="string">"no greeting"</span></span>)</span></span>)</span>
+..
+.. "hello" 
+.. debugger invoked on SIMPLE-ERROR:
+..   no greeting</span></code></pre>
+
+<p>To keep the textual representation somewhat likely to be portable,
+the printing is done with <code>(format t &quot;#&lt;~S ~S&gt;&quot; (type-of
+error) (princ-to-string error))</code>. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_cn.htm" title="SIMPLE-CONDITION CONDITION"><code>simple-condition</code></a>s are formatted to
+strings with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_cn.htm" title="SIMPLE-CONDITION-FORMAT-CONTROL FUNCTION"><code>simple-condition-format-control</code></a> and
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_cn.htm" title="SIMPLE-CONDITION-FORMAT-ARGUMENTS FUNCTION"><code>simple-condition-format-arguments</code></a>.</p>
+
+<p><strong>Syntaxes</strong></p>
+
+<p>Finally, a transcript may employ different syntaxes for the output
+and values of different forms. When <code>input</code> is read, the syntax for
+each form is determined by trying to match all prefixes from all
+syntaxes in <code>input-syntaxes</code> against a line. If there are no output or
+values for a form in <code>input</code>, then the syntax remains undetermined.</p>
+
+<p>When <code>output</code> is written, the prefixes to be used are looked up in
+<code>default-syntax</code> of <code>output-syntaxes</code>, if <code>default-syntax</code> is not <code>nil</code>. If
+<code>default-syntax</code> is <code>nil</code>, then the syntax used by the same form in the
+<code>input</code> is used or (if that could not be determined) the syntax of the
+previous form. If there was no previous form, then the first syntax
+if <code>output-syntaxes</code> is used.</p>
+
+<p>To produce a transcript that's executable Lisp code,
+use <code>:default-syntax</code> <code>:commented-1:</code></p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">make-instance 'some-class</span>)</span>
+<span class="comment">;==&gt; #&lt;SOME-CLASS
+</span><span class="comment">;--&gt;
+</span><span class="comment">;--&gt; end&gt;
+</span>
+<span class="paren1">(<span class="code">list 1 2</span>)</span>
+<span class="comment">;=&gt; (1
+</span><span class="comment">;-&gt;    2)</span></span></code></pre>
+
+<p>To translate the above to uncommented syntax,
+use <code>:default-syntax</code> <code>:default</code>. If <code>default-syntax</code> is <code>nil</code> (the
+default), the same syntax will be used in the output as in the input
+as much as possible.</p>
+
+<p><strong>Dynamic Environment</strong></p>
+
+<p>If <code>dynenv</code> is non-<code>nil</code>, then it must be a function that establishes
+the dynamic environment in which transcription shall take place. It
+is called with a single argument: a thunk (a function of no
+arguments). See <a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION" title="Controlling the Dynamic Environment">Controlling the Dynamic Environment</a> for an example.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3A-2ATRANSCRIBE-CHECK-CONSISTENCY-2A-20VARIABLE-29"></a>
+<a id="MGL-PAX:*TRANSCRIBE-CHECK-CONSISTENCY*%20VARIABLE"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L226">[variable]</a></span> <span class="reference-object"><a href="#MGL-PAX:*TRANSCRIBE-CHECK-CONSISTENCY*%20VARIABLE" >*transcribe-check-consistency*</a></span></span> <span class="locative-args">nil</span></span></p>
+
+<p>The default value of <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a>'s <code>check-consistency</code> argument.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3A-2ATRANSCRIBE-SYNTAXES-2A-20VARIABLE-29"></a>
+<a id="MGL-PAX:*TRANSCRIBE-SYNTAXES*%20VARIABLE"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L173">[variable]</a></span> <span class="reference-object"><a href="#MGL-PAX:*TRANSCRIBE-SYNTAXES*%20VARIABLE" >*transcribe-syntaxes*</a></span></span> <span class="locative-args">((:default (:output &quot;..&quot;) (:no-value &quot;=&gt; ; No value&quot;) (:readable &quot;=&gt;&quot;)\
+  (:unreadable &quot;==&gt;&quot;) (:unreadable-continuation &quot;--&gt;&quot;))\
+ (:commented-1 (:output &quot;;..&quot;) (:no-value &quot;;=&gt; ; No value&quot;) (:readable &quot;;=&gt;&quot;)\
+  (:readable-continuation &quot;;-&gt;&quot;) (:unreadable &quot;;==&gt;&quot;)\
+  (:unreadable-continuation &quot;;--&gt;&quot;))\
+ (:commented-2 (:output &quot;;;..&quot;) (:no-value &quot;;;=&gt; ; No value&quot;)\
+  (:readable &quot;;;=&gt;&quot;) (:readable-continuation &quot;;;-&gt;&quot;) (:unreadable &quot;;;==&gt;&quot;)\
+  (:unreadable-continuation &quot;;;--&gt;&quot;)))</span></span></p>
+
+<p>The default syntaxes used by <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a> for reading and writing
+lines containing output and values of an evaluated form.</p>
+
+<p>A syntax is a list of of the form <code>(syntax-id &amp;rest prefixes)</code> where
+<code>prefixes</code> is a list of <code>(prefix-id prefix-string)</code> elements. For
+example the syntax <code>:commented-1</code> looks like this:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><span class="keyword">:commented-1</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:output</span> <span class="string">";.."</span></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:no-value</span> <span class="string">";=&gt;  No value"</span></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:readable</span> <span class="string">";=&gt;"</span></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:readable-continuation</span> <span class="string">";-&gt;"</span></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:unreadable</span> <span class="string">";==&gt;"</span></span>)</span>
+ <span class="paren2">(<span class="code"><span class="keyword">:unreadable-continuation</span> <span class="string">";--&gt;"</span></span>)</span></span>)</span></span></code></pre>
+
+<p>All of the above prefixes must be defined for every syntax except
+for <code>:readable-continuation</code>. If that's missing (as in the <code>:default</code>
+syntax), then the following value is read with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ FUNCTION"><code>read</code></a> and printed with
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="PRIN1 FUNCTION"><code>prin1</code></a> (hence no need to mark up the following lines).</p>
+
+<p>When writing, an extra space is added automatically if the line to
+be prefixed is not empty. Similarly, the first space following the
+prefix is discarded when reading.</p>
+
+<p>See <code>transcribe</code> for how the actual syntax to be used is selected.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3ATRANSCRIPTION-ERROR-20CONDITION-29"></a>
+<a id="MGL-PAX:TRANSCRIPTION-ERROR%20CONDITION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1094">[condition]</a></span> <span class="reference-object"><a href="#MGL-PAX:TRANSCRIPTION-ERROR%20CONDITION" >transcription-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></p>
+
+<p>Represents syntactic errors in the <code>source</code> argument
+of <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a> and also serves as the superclass of
+<a href="#MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR CONDITION"><code>transcription-consistency-error</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3ATRANSCRIPTION-CONSISTENCY-ERROR-20CONDITION-29"></a>
+<a id="MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1157">[condition]</a></span> <span class="reference-object"><a href="#MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION" >transcription-consistency-error</a></span></span> <span class="locative-args"><a href="#MGL-PAX:TRANSCRIPTION-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-ERROR CONDITION">transcription-error</a></span></span></p>
+
+<p>A common superclass for
+<a href="#MGL-PAX:TRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR CONDITION"><code>transcription-output-consistency-error</code></a> and
+<a href="#MGL-PAX:TRANSCRIPTION-VALUES-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-VALUES-CONSISTENCY-ERROR CONDITION"><code>transcription-values-consistency-error</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3ATRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR-20CONDITION-29"></a>
+<a id="MGL-PAX:TRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR%20CONDITION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1163">[condition]</a></span> <span class="reference-object"><a href="#MGL-PAX:TRANSCRIPTION-OUTPUT-CONSISTENCY-ERROR%20CONDITION" >transcription-output-consistency-error</a></span></span> <span class="locative-args"><a href="#MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR CONDITION">transcription-consistency-error</a></span></span></p>
+
+<p>Signaled (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cerror.htm" title="CERROR FUNCTION"><code>cerror</code></a>) by <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a> when invoked
+with <code>:check-consistency</code> and the output of a form is not the same as
+what was parsed.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3ATRANSCRIPTION-VALUES-CONSISTENCY-ERROR-20CONDITION-29"></a>
+<a id="MGL-PAX:TRANSCRIPTION-VALUES-CONSISTENCY-ERROR%20CONDITION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1170">[condition]</a></span> <span class="reference-object"><a href="#MGL-PAX:TRANSCRIPTION-VALUES-CONSISTENCY-ERROR%20CONDITION" >transcription-values-consistency-error</a></span></span> <span class="locative-args"><a href="#MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR CONDITION">transcription-consistency-error</a></span></span></p>
+
+<p>Signaled (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cerror.htm" title="CERROR FUNCTION"><code>cerror</code></a>) by <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a> when invoked
+with <code>:check-consistency</code> and the values of a form are inconsistent
+with their parsed representation.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3A-40TRANSCRIPT-CONISTENCY-CHECKING-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION" title="Transcript API">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION" title="Transcripts">&#8593;</a> <a href="#MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION" title="Finer-Grained Consistency Checks">&#8594;</a> <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1310">&#955;</a></span></span></p>
+
+<h3><a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION">9.4 Transcript Consistency Checking</a></h3>
+
+<p>The main use case for consistency checking is detecting
+out-of-date examples in documentation, although using it for writing
+tests is also a possiblity. Here, we focus on the former.</p>
+
+<p>When a markdown code block tagged <code>cl-transcript</code> is processed
+during <a href="#MGL-PAX:@GENERATING-DOCUMENTATION%20MGL-PAX:SECTION" title="Generating Documentation">Generating Documentation</a>, the code in it is replaced with
+the output of with <code>(transcribe &lt;code&gt; nil :update-only t
+:check-consistency t)</code>. Suppose we have the following example of the
+function <code>greet</code>, that prints <code>hello</code> and returns 7.</p>
+
+<pre><code>```cl-transcript
+(greet)
+.. hello
+=&gt; 7
+```
+</code></pre>
+
+<p>Now, if we change <code>greet</code> to print or return something else, a
+<a href="#MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR%20CONDITION" title="MGL-PAX:TRANSCRIPTION-CONSISTENCY-ERROR CONDITION"><code>transcription-consistency-error</code></a> will be signalled during
+documentation generation. Then we may fix the documentation or
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_contin.htm" title="CONTINUE RESTART"><code>continue</code></a> from the error.</p>
+
+<p>By default, comparisons of previous to current ouput, readable and
+unreadable return values are performed with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm" title="STRING= FUNCTION"><code>string=</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>, and
+<code>string=</code>, respectively, which is great in the simple case.
+Non-determinism aside, exact matching becomes brittle as soon as the
+notoriously unportable pretty printer is used or when unreadable
+objects are printed with their <code>#&lt;&gt;</code> syntax, especially when
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_pr_unr.htm" title="PRINT-UNREADABLE-OBJECT MGL-PAX:MACRO"><code>print-unreadable-object</code></a> is used with <code>:identity t</code>.</p>
+
+<p><a id="x-28MGL-PAX-3A-40TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">&#8593;</a> <a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION" title="Controlling the Dynamic Environment">&#8594;</a> <a href="#MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION" title="Finer-Grained Consistency Checks">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1345">&#955;</a></span></span></p>
+
+<h4><a href="#MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION">9.4.1 Finer-Grained Consistency Checks</a></h4>
+
+<p>To get around this problem, consistency checking of output,
+readable and unreadable values can be customized individually by
+supplying <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a> with a <code>check-consistency</code> argument
+like <code>((:output &lt;output-check&gt;) (:readable
+&lt;readable-check&gt;) (:unreadable &lt;unreadable-check&gt;))</code>. In this case,
+<code>&lt;output-check&gt;</code> may be <code>nil</code>, <code>t</code>, or a function designator.</p>
+
+<ul>
+<li><p>If it's <code>nil</code> or there is no <code>:output</code> entry in the list, then the
+  output is not checked for consistency.</p></li>
+<li><p>If it's <code>t</code>, then the outputs are compared with the default,
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm" title="STRING= FUNCTION"><code>string=</code></a>.</p></li>
+<li><p>If it's a function designator, then it's called with two strings
+  and must return whether they are consistent with each other.</p></li>
+</ul>
+
+<p>The case of <code>&lt;readable-check&gt;</code> and <code>&lt;unreadable-check&gt;</code> is similar.</p>
+
+<p>Code blocks tagged <code>cl-transcript</code> can take arguments, which they
+pass on to <code>transcribe</code>. The following shows how to check only the
+output.</p>
+
+<pre><code>```cl-transcript (:check-consistency ((:output t)))
+(error &quot;Oh, no.&quot;)
+.. debugger invoked on SIMPLE-ERROR:
+..   Oh, no.
+
+(make-condition 'simple-error)
+==&gt; #&lt;SIMPLE-ERROR {1008A81533}&gt;
+</code></pre>
+
+<p><a id="x-28MGL-PAX-3A-40TRANSCRIPT-DYNENV-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION" title="Finer-Grained Consistency Checks">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">&#8593;</a> <a href="#MGL-PAX:@TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING%20MGL-PAX:SECTION" title="Utilities for Consistency Checking">&#8594;</a> <a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION" title="Controlling the Dynamic Environment">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1376">&#955;</a></span></span></p>
+
+<h4><a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION">9.4.2 Controlling the Dynamic Environment</a></h4>
+
+<p>The dynamic environment in which forms in the transcript are
+evaluated can be controlled via the <code>:dynenv</code> argument of
+<code>cl-transcript</code>.</p>
+
+<pre><code>```cl-transcript (:dynenv my-transcript)
+...
+```
+</code></pre>
+
+<p>In this case, instead of calling <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a> directly, the call will
+be wrapped in a function of no arguments and passed to the function
+<code>my-transcript</code>, which establishes the desired dynamic environment
+and calls its argument. The following definition of <code>my-transcript</code>
+simply packages up oft-used settings to <code>transcribe</code>.</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> my-transcript <span class="paren2">(<span class="code">fn</span>)</span>
+  <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code"><span class="special">*transcribe-check-consistency*</span>
+          '<span class="paren5">(<span class="code"><span class="paren6">(<span class="code"><span class="keyword">:output</span> my-transcript-output=</span>)</span>
+            <span class="paren6">(<span class="code"><span class="keyword">:readable</span> equal</span>)</span>
+            <span class="paren6">(<span class="code"><span class="keyword">:unreadable</span> nil</span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">funcall fn</span>)</span></span>)</span></span>)</span>
+
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> my-transcript-output= <span class="paren2">(<span class="code">string1 string2</span>)</span>
+  <span class="paren2">(<span class="code">string= <span class="paren3">(<span class="code">my-transcript-normalize-output string1</span>)</span>
+           <span class="paren3">(<span class="code">my-transcript-normalize-output string2</span>)</span></span>)</span></span>)</span>
+
+<span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> my-transcript-normalize-output <span class="paren2">(<span class="code">string</span>)</span>
+  <span class="paren2">(<span class="code">squeeze-whitespace <span class="paren3">(<span class="code">delete-trailing-whitespace <span class="paren4">(<span class="code">delete-comments string</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+
+<p>A more involved solution could rebind global variables set in
+transcripts, unintern symbols created or even create a temporary
+package for evaluation.</p>
+
+<p><a id="x-28MGL-PAX-3A-40TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPT-DYNENV%20MGL-PAX:SECTION" title="Controlling the Dynamic Environment">&#8592;</a> <a href="#MGL-PAX:@TRANSCRIPT-CONISTENCY-CHECKING%20MGL-PAX:SECTION" title="Transcript Consistency Checking">&#8593;</a> <a href="#MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION" title="Writing Extensions">&#8594;</a> <a href="#MGL-PAX:@TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING%20MGL-PAX:SECTION" title="Utilities for Consistency Checking">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1414">&#955;</a></span></span></p>
+
+<h4><a href="#MGL-PAX:@TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING%20MGL-PAX:SECTION">9.4.3 Utilities for Consistency Checking</a></h4>
+
+<p><a id="x-28MGL-PAX-3ASQUEEZE-WHITESPACE-20FUNCTION-29"></a>
+<a id="MGL-PAX:SQUEEZE-WHITESPACE%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1420">[function]</a></span> <span class="reference-object"><a href="#MGL-PAX:SQUEEZE-WHITESPACE%20FUNCTION" >squeeze-whitespace</a></span></span> <span class="locative-args">string</span></span></p>
+
+<p>Replace consecutive whitespace characters with a single space in
+<code>string</code>. This is useful to do undo the effects of pretty printing
+when building comparison functions for <a href="#MGL-PAX:TRANSCRIBE%20FUNCTION" title="MGL-PAX:TRANSCRIBE FUNCTION"><code>transcribe</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3ADELETE-TRAILING-WHITESPACE-20FUNCTION-29"></a>
+<a id="MGL-PAX:DELETE-TRAILING-WHITESPACE%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1435">[function]</a></span> <span class="reference-object"><a href="#MGL-PAX:DELETE-TRAILING-WHITESPACE%20FUNCTION" >delete-trailing-whitespace</a></span></span> <span class="locative-args">string</span></span></p>
+
+<p>Delete whitespace characters after the last non-whitespace
+character in each line in <code>string</code>.</p></li>
+</ul>
+
+<p><a id="x-28MGL-PAX-3ADELETE-COMMENTS-20FUNCTION-29"></a>
+<a id="MGL-PAX:DELETE-COMMENTS%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/transcribe/transcribe.lisp#L1446">[function]</a></span> <span class="reference-object"><a href="#MGL-PAX:DELETE-COMMENTS%20FUNCTION" >delete-comments</a></span></span> <span class="locative-args">string &amp;key (pattern &quot;;&quot;)</span></span></p>
+
+<p>For each line in <code>string</code> delete the rest of the line after and
+including the first occurrence of <code>pattern</code>. On changed lines, delete
+trailing whitespace too. Let's define a comparison function:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> string=/no-comments <span class="paren2">(<span class="code">string1 string2</span>)</span>
+  <span class="paren2">(<span class="code">string= <span class="paren3">(<span class="code">delete-comments string1</span>)</span> <span class="paren3">(<span class="code">delete-comments string2</span>)</span></span>)</span></span>)</span></span></code></pre>
+
+<p>And use it to check consistency of output:</p>
+
+<pre><code>```cl-transcript (:check-consistency ((:output string=/no-comments)))
+(format t &quot;hello~%world&quot;)
+.. hello     ; This is the first line.
+.. world     ; This is the second line.
+```
+</code></pre>
+
+<p>Just to make sure the above example works, here it is without the being
+quoted.</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">format t <span class="string">"hello~%world"</span></span>)</span>
+.. hello     <span class="comment">; This is the first line.
+</span>.. world     <span class="comment">; This is the second line.</span></span></code></pre></li>
+</ul>
+
 <p><a id="x-28MGL-PAX-3A-40EXTENSION-API-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22mgl-pax%2Ftranscribe%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/transcribe&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="pax-manual.html" title="PAX Manual">&#8593;</a> <a href="#MGL-PAX:@NEW-OBJECT-TYPES%20MGL-PAX:SECTION" title="Adding New Object Types">&#8594;</a> <a href="#MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION" title="Writing Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/base/extension-api.lisp#L5">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-PAX:@TRANSCRIPT-UTILITIES-FOR-CONSISTENCY-CHECKING%20MGL-PAX:SECTION" title="Utilities for Consistency Checking">&#8592;</a> <a href="pax-manual.html" title="PAX Manual">&#8593;</a> <a href="#MGL-PAX:@NEW-OBJECT-TYPES%20MGL-PAX:SECTION" title="Adding New Object Types">&#8594;</a> <a href="#MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION" title="Writing Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-pax/blob/88edb1063fdf6f03f0052da8cacec8194c89cc1c/src/base/extension-api.lisp#L5">&#955;</a></span></span></p>
 
 <h2><a href="#MGL-PAX:@EXTENSION-API%20MGL-PAX:SECTION">10 Writing Extensions</a></h2>
 
