@@ -199,7 +199,7 @@ return a string instead of an octet vector.</p>
 <p><code>lmdb</code> treats keys and values as opaque byte arrays to be hung on a B+
 tree, and only requires a comparison function to be defined over
 keys. <code>lmdb</code> knows how to serialize the types <code>(unsigned-byte 64)</code> and
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING CLASS"><code>string</code></a> (which are often used as keys so sorting must work as
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>string</code></a> (which are often used as keys so sorting must work as
 expected). Serialization of the rest of the datatypes is left to the
 client. See <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">Encoding and decoding data</a> for more.</p>
 
@@ -1146,7 +1146,7 @@ opened.</p>
 
 <p>If <code>get-db</code> is called with the same name multiple times, the returned
 <code>db</code> objects will be associated with the same database (although they
-may not be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ FUNCTION"><code>eq</code></a>). The first time <code>get-db</code> is called with any given name
+may not be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a>). The first time <code>get-db</code> is called with any given name
 and environment, it must not be from an open transaction. This is
 because <code>get-db</code> starts a transaction itself to comply with C lmdb's
 requirements on
@@ -1354,7 +1354,7 @@ associated with the same C lmdb database, which declutters the code:</p>
   <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>) must be a 1D byte array. If its element type
   is <code>(unsigned-byte 8)</code>, then the data can be passed to the foreign
   code more efficiently, but declaring the element type is not
-  required. For example, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR CLASS"><code>vector</code></a>s can be used as long as the
+  required. For example, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR (MGL-PAX:CLHS CLASS)"><code>vector</code></a>s can be used as long as the
   actual elements are of type <code>(unsigned-byte 8)</code>. Foreign byte
   arrays to be decoded (e.g. the value returned by <code>g3t</code>) are returned
   as <a href="#LMDB:OCTETS%20TYPE" title="LMDB:OCTETS TYPE"><code>octets</code></a>.</p></li>
@@ -1364,8 +1364,8 @@ associated with the same C lmdb database, which declutters the code:</p>
 <li><p><code>nil</code>: Data is encoded using the default encoding according to its
   Lisp type: strings as <code>:utf-8</code>, vectors as <code>:octets</code>, <code>(unsigned-byte
   64)</code> as <code>:uint64</code>. Decoding is always performed as <code>:octets</code>.</p></li>
-<li><p>A <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm" title="CONS CLASS"><code>cons</code></a>: Data is encoded by the function in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CAR FUNCTION"><code>car</code></a> of the
-  cons and decoded by the function in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CDR FUNCTION"><code>cdr</code></a>. For example, <code>:uint64</code>
+<li><p>A <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm" title="CONS (MGL-PAX:CLHS CLASS)"><code>cons</code></a>: Data is encoded by the function in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CAR (MGL-PAX:CLHS FUNCTION)"><code>car</code></a> of the
+  cons and decoded by the function in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CDR (MGL-PAX:CLHS FUNCTION)"><code>cdr</code></a>. For example, <code>:uint64</code>
   is equivalent to <code>(cons #'uint64-to-octets #'mdb-val-to-uint64)</code>.</p></li>
 </ul></li>
 </ul>
@@ -1391,7 +1391,7 @@ is valid only within the context of current top-level transaction.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2162">[type]</a></span> <span class="reference-object"><a href="#LMDB:OCTETS%20TYPE" >octets</a></span></span> <span class="locative-args">&amp;optional (size '*)</span></span></p>
 
-<p>A 1D <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ar.htm" title="SIMPLE-ARRAY CLASS"><code>simple-array</code></a> of <code>(unsigned-byte 8)</code>.</p></li>
+<p>A 1D <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ar.htm" title="SIMPLE-ARRAY (MGL-PAX:CLHS TYPE)"><code>simple-array</code></a> of <code>(unsigned-byte 8)</code>.</p></li>
 </ul>
 
 <p><a id="x-28LMDB-3AMDB-VAL-TO-OCTETS-20FUNCTION-29"></a>
@@ -1691,7 +1691,7 @@ and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859c
 <a id="LMDB:CURSOR%20CLASS"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2580">[class]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR%20CLASS" >cursor</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT CLASS">structure-object</a></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2580">[class]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR%20CLASS" >cursor</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)">structure-object</a></span></span></li>
 </ul>
 
 <p><a id="x-28LMDB-3ACURSOR-DB-20FUNCTION-29"></a>
@@ -2186,7 +2186,7 @@ element of the list is the largest value.</p></li>
 <a id="LMDB:LMDB-SERIOUS-CONDITION%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L384">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" >lmdb-serious-condition</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION CONDITION">serious-condition</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L384">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" >lmdb-serious-condition</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION (MGL-PAX:CLHS CONDITION)">serious-condition</a></span></span></p>
 
 <p>The base class of all <code>lmdb</code> conditions. Conditions
 that are <code>lmdb-serious-condition</code>s, but not <a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION"><code>lmdb-error</code></a>s are corruption
@@ -2197,7 +2197,7 @@ and internal errors, which are hard to recover from.</p></li>
 <a id="LMDB:LMDB-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L403">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-ERROR%20CONDITION" >lmdb-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L403">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-ERROR%20CONDITION" >lmdb-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></p>
 
 <p>Base class for normal, recoverable <code>lmdb</code> errors.</p></li>
 </ul>

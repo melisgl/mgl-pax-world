@@ -216,7 +216,7 @@ to <code>:double</code>.</p>
   m</span>)</span>
 ==&gt; #&lt;MAT 2x3 AB #2A<span class="paren1">(<span class="code"><span class="paren2">(<span class="code">1.0d0 2.0d0 4.0d0</span>)</span> <span class="paren2">(<span class="code">0.0d0 0.0d0 0.0d0</span>)</span></span>)</span>&gt;</span></code></pre>
 
-<p>Compared to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF FUNCTION"><code>aref</code></a> <code>mref</code> is a very expensive operation and it's best
+<p>Compared to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF (MGL-PAX:CLHS FUNCTION)"><code>aref</code></a> <code>mref</code> is a very expensive operation and it's best
 used sparingly. Instead, typical code relies much more on matrix
 level operations:</p>
 
@@ -326,7 +326,7 @@ is relative to the start of the underlying storage vector.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="locative-args">mat (:dimensions)</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS FUNCTION"><code>array-dimensions</code></a>. It holds a list of
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS (MGL-PAX:CLHS FUNCTION)"><code>array-dimensions</code></a>. It holds a list of
 dimensions, but it is allowed to pass in scalars too.</p></li>
 </ul>
 
@@ -337,7 +337,7 @@ dimensions, but it is allowed to pass in scalars too.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L299">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSION%20FUNCTION" >mat-dimension</a></span></span> <span class="locative-args">mat axis-number</span></span></p>
 
 <p>Return the dimension along <code>axis-number</code>. Similar to
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="ARRAY-DIMENSION FUNCTION"><code>array-dimension</code></a>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="ARRAY-DIMENSION (MGL-PAX:CLHS FUNCTION)"><code>array-dimension</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3AMAT-INITIAL-ELEMENT-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
@@ -359,7 +359,7 @@ type. If <code>nil</code>, then no initialization is performed.</p></li>
 
 <p>The number of elements in the visible portion of
 the array. This is always the product of the elements
-<a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-dimensions</code></a> and is similar to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="ARRAY-TOTAL-SIZE FUNCTION"><code>array-total-size</code></a>.</p></li>
+<a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-dimensions</code></a> and is similar to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="ARRAY-TOTAL-SIZE (MGL-PAX:CLHS FUNCTION)"><code>array-total-size</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3AMAT-MAX-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
@@ -382,8 +382,8 @@ is the number of trailing invisible elements.</p></li>
 <p>Return a new <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> object. If <code>initial-contents</code> is given then the
 matrix contents are initialized with <a href="#MGL-MAT:REPLACE%21%20FUNCTION" title="MGL-MAT:REPLACE! FUNCTION"><code>replace!</code></a>. See class <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> for the
 description of the rest of the parameters. This is exactly
-what (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm" title="MAKE-INSTANCE GENERIC-FUNCTION"><code>make-instance</code></a> '<code>mat</code> ...) does except <code>dimensions</code> is not a
-keyword argument so that <code>make-mat</code> looks more like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY FUNCTION"><code>make-array</code></a>. The
+what (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm" title="MAKE-INSTANCE (MGL-PAX:CLHS GENERIC-FUNCTION)"><code>make-instance</code></a> '<code>mat</code> ...) does except <code>dimensions</code> is not a
+keyword argument so that <code>make-mat</code> looks more like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"><code>make-array</code></a>. The
 semantics of <code>synchronization</code> are desribed in the
 <a href="cube-manual.html#MGL-CUBE:@CUBE-SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization">Synchronization</a> section.</p>
 
@@ -402,7 +402,7 @@ and <code>initial-contents</code> must not be supplied together with
 
 <p>Create a <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> that's equivalent to <code>array</code>. Displacement of the
 created array will be 0 and the size will be equal to
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="ARRAY-TOTAL-SIZE FUNCTION"><code>array-total-size</code></a>. If <code>ctype</code> is non-nil, then it will be the ctype of
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm" title="ARRAY-TOTAL-SIZE (MGL-PAX:CLHS FUNCTION)"><code>array-total-size</code></a>. If <code>ctype</code> is non-nil, then it will be the ctype of
 the new matrix. Else <code>array</code>'s type is converted to a ctype. If there
 is no corresponding ctype, then <a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE"><code>*default-mat-ctype*</code></a> is used.
 Elements of <code>array</code> are coerced to <code>ctype</code>.</p>
@@ -425,7 +425,7 @@ Elements of <code>array</code> are coerced to <code>ctype</code>.</p>
 
 <p>Replace the contents of <code>mat</code> with the elements of <code>seq-of-seqs</code>.
 <code>seq-of-seqs</code> is a nested sequence of sequences similar to the
-<code>initial-contents</code> argument of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY FUNCTION"><code>make-array</code></a>. The total number of
+<code>initial-contents</code> argument of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"><code>make-array</code></a>. The total number of
 elements must match the size of <code>mat</code>. Returns <code>mat</code>.</p>
 
 <p><code>seq-of-seqs</code> may contain multi-dimensional arrays as <em>leafs</em>, so the
@@ -441,8 +441,8 @@ following is legal:</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L408">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:MREF%20FUNCTION" >mref</a></span></span> <span class="locative-args">mat &amp;rest indices</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF FUNCTION"><code>aref</code></a> for arrays. Don't use this if you care about performance
-at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>able. When set, the value is coerced to the ctype of <code>mat</code>
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF (MGL-PAX:CLHS FUNCTION)"><code>aref</code></a> for arrays. Don't use this if you care about performance
+at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>able. When set, the value is coerced to the ctype of <code>mat</code>
 with <a href="#MGL-MAT:COERCE-TO-CTYPE%20FUNCTION" title="MGL-MAT:COERCE-TO-CTYPE FUNCTION"><code>coerce-to-ctype</code></a>. Note that currently <code>mref</code> always operates on
 the <a href="#MGL-MAT:BACKING-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME"><code>backing-array</code></a> facet so it can trigger copying of facets. When
 it's <code>setf</code>'ed, however, it will update the <a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> if cuda is
@@ -455,8 +455,8 @@ enabled and it is up-to-date or there are no facets at all.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L443">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:ROW-MAJOR-MREF%20FUNCTION" >row-major-mref</a></span></span> <span class="locative-args">mat index</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm" title="ROW-MAJOR-AREF FUNCTION"><code>row-major-aref</code></a> for arrays. Don't use this if you care about
-performance at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>able. When set, the value is coerced to the
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm" title="ROW-MAJOR-AREF (MGL-PAX:CLHS FUNCTION)"><code>row-major-aref</code></a> for arrays. Don't use this if you care about
+performance at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>able. When set, the value is coerced to the
 ctype of <code>mat</code> with <a href="#MGL-MAT:COERCE-TO-CTYPE%20FUNCTION" title="MGL-MAT:COERCE-TO-CTYPE FUNCTION"><code>coerce-to-ctype</code></a>. Note that currently
 <code>row-major-mref</code> always operates on the <a href="#MGL-MAT:BACKING-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME"><code>backing-array</code></a> facet so it can
 trigger copying of facets. When it's <code>setf</code>'ed, however, it will
@@ -470,7 +470,7 @@ there are no facets at all.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L472">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-ROW-MAJOR-INDEX%20FUNCTION" >mat-row-major-index</a></span></span> <span class="locative-args">mat &amp;rest subscripts</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_row.htm" title="ARRAY-ROW-MAJOR-INDEX FUNCTION"><code>array-row-major-index</code></a> for arrays.</p></li>
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_row.htm" title="ARRAY-ROW-MAJOR-INDEX (MGL-PAX:CLHS FUNCTION)"><code>array-row-major-index</code></a> for arrays.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-40MAT-CTYPES-20MGL-PAX-3ASECTION-29"></a>
@@ -581,7 +581,7 @@ the matrices that share the same underlying vector.</p>
 
 <p>One way to reshape and displace <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects is with <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a> and
 its <code>displaced-to</code> argument whose semantics are similar to that of
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY FUNCTION"><code>make-array</code></a> in that the displacement is <em>relative</em> to the
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"><code>make-array</code></a> in that the displacement is <em>relative</em> to the
 displacement of <code>displaced-to</code>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let*</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">base <span class="paren4">(<span class="code">make-mat 10 <span class="keyword">:initial-element</span> 5 <span class="keyword">:displacement</span> 1</span>)</span></span>)</span>
@@ -605,7 +605,7 @@ underlying conceptual non-displaced vector.</p>
   the adjusted displacement is non-negative.</p></li>
 <li><p>Further shaping operations can make invisible portions of the
   <code>displaced-to</code> matrix visible by changing the displacement.</p></li>
-<li><p>In contrast to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dis.htm" title="ARRAY-DISPLACEMENT FUNCTION"><code>array-displacement</code></a>, <a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-displacement</code></a> only returns
+<li><p>In contrast to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dis.htm" title="ARRAY-DISPLACEMENT (MGL-PAX:CLHS FUNCTION)"><code>array-displacement</code></a>, <a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-displacement</code></a> only returns
   an offset into the underlying storage vector.</p></li>
 </ul>
 
@@ -807,7 +807,7 @@ cached object is updated with the binding of <code>var</code> which <code>body</
 change.</p>
 
 <p>There is a separate cache for each thread and each <code>place</code> (under
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ FUNCTION"><code>eq</code></a>). Since every cache holds exactly one <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> per <code>ctype</code>, nested
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a>). Since every cache holds exactly one <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> per <code>ctype</code>, nested
 <code>with-thread-cached-mat</code> often want to use different <code>place</code>s. By
 convention, these places are called <code>:scratch-1</code>, <code>:scratch-2</code>,
 etc.</p></li>
@@ -989,7 +989,7 @@ M --A--+  -C++
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L980">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.EXP%21%20FUNCTION" >.exp!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm" title="EXP FUNCTION"><code>exp</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm" title="EXP (MGL-PAX:CLHS FUNCTION)"><code>exp</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2EEXPT-21-20FUNCTION-29"></a>
@@ -1001,7 +1001,7 @@ M --A--+  -C++
 <p>Raise matrix <code>x</code> to <code>power</code> in an elementwise manner. Return <code>x</code>. Note
 that CUDA and non-CUDA implementations may disagree on the treatment
 of NaNs, infinities and complex results. In particular, the lisp
-implementation always computes the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realpa.htm" title="REALPART FUNCTION"><code>realpart</code></a> of the results while
+implementation always computes the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realpa.htm" title="REALPART (MGL-PAX:CLHS FUNCTION)"><code>realpart</code></a> of the results while
 CUDA's pow() returns NaNs instead of complex numbers.</p></li>
 </ul>
 
@@ -1151,7 +1151,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1431">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.SIN%21%20FUNCTION" >.sin!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="SIN FUNCTION"><code>sin</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="SIN (MGL-PAX:CLHS FUNCTION)"><code>sin</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2ECOS-21-20FUNCTION-29"></a>
@@ -1160,7 +1160,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1436">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.COS%21%20FUNCTION" >.cos!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="COS FUNCTION"><code>cos</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="COS (MGL-PAX:CLHS FUNCTION)"><code>cos</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2ETAN-21-20FUNCTION-29"></a>
@@ -1169,7 +1169,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1441">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.TAN%21%20FUNCTION" >.tan!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="TAN FUNCTION"><code>tan</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="TAN (MGL-PAX:CLHS FUNCTION)"><code>tan</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2ESINH-21-20FUNCTION-29"></a>
@@ -1178,7 +1178,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1446">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.SINH%21%20FUNCTION" >.sinh!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="SINH FUNCTION"><code>sinh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="SINH (MGL-PAX:CLHS FUNCTION)"><code>sinh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2ECOSH-21-20FUNCTION-29"></a>
@@ -1187,7 +1187,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1451">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.COSH%21%20FUNCTION" >.cosh!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="COSH FUNCTION"><code>cosh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="COSH (MGL-PAX:CLHS FUNCTION)"><code>cosh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-2ETANH-21-20FUNCTION-29"></a>
@@ -1196,7 +1196,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</p></l
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1456">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:.TANH%21%20FUNCTION" >.tanh!</a></span></span> <span class="locative-args">x &amp;key (n (mat-size x))</span></span></p>
 
-<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH FUNCTION"><code>tanh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
+<p>Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH (MGL-PAX:CLHS FUNCTION)"><code>tanh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</p></li>
 </ul>
 
 <p>Finally, some neural network operations.</p>
@@ -1214,8 +1214,8 @@ input (<code>x</code>) and output (Y} N dimensional feature maps. <code>start</c
 and <code>anchor</code> are lists of length N. <code>start</code> is the multi-dimensional
 index of the first element of the input feature map (for each
 element in the batch) for which the convolution must be computed.
-Then (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_elt.htm" title="ELT FUNCTION"><code>elt</code></a> <code>stride</code> (- N 1)) is added to the last element of <code>start</code> and
-so on until (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="ARRAY-DIMENSION FUNCTION"><code>array-dimension</code></a> <code>x</code> 1) is reached. Then the last element
+Then (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_elt.htm" title="ELT (MGL-PAX:CLHS FUNCTION)"><code>elt</code></a> <code>stride</code> (- N 1)) is added to the last element of <code>start</code> and
+so on until (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm" title="ARRAY-DIMENSION (MGL-PAX:CLHS FUNCTION)"><code>array-dimension</code></a> <code>x</code> 1) is reached. Then the last element
 of <code>start</code> is reset, (<code>elt</code> <code>stride</code> (- N 2)) is added to the first but
 last element of <code>start</code> and we scan the last dimension again. Take a
 2d example, <code>start</code> is (0 0), <code>stride</code> is (1 2), and <code>x</code> is a B*2x7
@@ -1465,7 +1465,7 @@ current displacement. Returns <code>mat</code>.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/mat.lisp#L1805">[function]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAP-MATS-INTO%20FUNCTION" >map-mats-into</a></span></span> <span class="locative-args">result-mat fn &amp;rest mats</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" title="MAP-INTO FUNCTION"><code>cl:map-into</code></a> but for <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects. Destructively modifies
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" title="MAP-INTO (MGL-PAX:CLHS FUNCTION)"><code>cl:map-into</code></a> but for <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects. Destructively modifies
 <code>result-mat</code> to contain the results of applying <code>fn</code> to each element in
 the argument <code>mats</code> in turn.</p></li>
 </ul>
@@ -1582,7 +1582,7 @@ of elements from binary <code>stream</code>. Return <code>mat</code>. Also see
 being broken. This is almost always caused by an operation that
 mispecifies the <code>direction</code> argument of <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a>. For example, the
 matrix argument of <a href="#MGL-MAT:SCAL%21%20FUNCTION" title="MGL-MAT:SCAL! FUNCTION"><code>scal!</code></a> should be accessed with direciton <code>:io</code>. But
-if it's <code>:input</code> instead, then subsequent access to the <code>array</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="ARRAY CLASS"><code>0</code></a> <a href="#ARRAY%20MGL-CUBE:FACET-NAME" title="ARRAY MGL-CUBE:FACET-NAME"><code>1</code></a>) facet
+if it's <code>:input</code> instead, then subsequent access to the <code>array</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm" title="ARRAY (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="#ARRAY%20MGL-CUBE:FACET-NAME" title="ARRAY MGL-CUBE:FACET-NAME"><code>1</code></a>) facet
 will not see the changes made by <a href="#MGL-MAT:AXPY%21%20FUNCTION" title="MGL-MAT:AXPY! FUNCTION"><code>axpy!</code></a>, and if it's <code>:output</code>, then
 any changes made to the <code>array</code> facet since the last update of the
 <a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> facet will not be copied and from the wrong input <code>scal!</code>
@@ -2021,7 +2021,7 @@ unused but cached) is never more than <code>n-pool-bytes</code> as specified in
 <a id="MGL-MAT:CUDA-OUT-OF-MEMORY%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cuda-early.lisp#L445">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-OUT-OF-MEMORY%20CONDITION" >cuda-out-of-memory</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm" title="STORAGE-CONDITION CONDITION">storage-condition</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cuda-early.lisp#L445">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-OUT-OF-MEMORY%20CONDITION" >cuda-out-of-memory</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm" title="STORAGE-CONDITION (MGL-PAX:CLHS CONDITION)">storage-condition</a></span></span></p>
 
 <p>If an allocation request cannot be
 satisfied (either because of <code>n-pool-bytes</code> or physical device memory
@@ -2145,7 +2145,7 @@ the return type is not declared.</p>
 but one function is defined for each ctype in <code>ctypes</code> by transforming
 types, constants and code by substituting them with their ctype
 equivalents. Currently this means that one needs to write only one
-kernel for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="SINGLE-FLOAT CLASS"><code>single-float</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="DOUBLE-FLOAT CLASS"><code>double-float</code></a>. All such functions get the
+kernel for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="SINGLE-FLOAT (MGL-PAX:CLHS TYPE)"><code>single-float</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm" title="DOUBLE-FLOAT (MGL-PAX:CLHS TYPE)"><code>double-float</code></a>. All such functions get the
 declaration from <a href="#MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS*%20VARIABLE" title="MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS* VARIABLE"><code>*default-lisp-kernel-declarations*</code></a>.</p>
 
 <p>Finally, a dispatcher function with <code>name</code> is defined which determines
@@ -2336,7 +2336,7 @@ use these at all.</p>
 <a id="MGL-MAT:CUBLAS-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cublas.lisp#L68">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR%20CONDITION" >cublas-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cublas.lisp#L68">[condition]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR%20CONDITION" >cublas-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ACUBLAS-ERROR-FUNCTION-NAME-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACUBLAS-ERROR-29-29"></a>

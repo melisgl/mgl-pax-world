@@ -72,7 +72,7 @@
 
 <p>Trivial UTF-8 is a small library for doing UTF-8-based in- and
 output on a Lisp implementation that already supports Unicode -
-meaning <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_char_c.htm" title="CHAR-CODE FUNCTION"><code>char-code</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_code_c.htm" title="CODE-CHAR FUNCTION"><code>code-char</code></a> deal with Unicode character codes.</p>
+meaning <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_char_c.htm" title="CHAR-CODE (MGL-PAX:CLHS FUNCTION)"><code>char-code</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_code_c.htm" title="CODE-CHAR (MGL-PAX:CLHS FUNCTION)"><code>code-char</code></a> deal with Unicode character codes.</p>
 
 <p>The rationale for the existence of this library is that while
 Unicode-enabled implementations usually do provide some kind of
@@ -138,8 +138,8 @@ encoding starts with <code>byte</code>. May signal <a href="#TRIVIAL-UTF-8:UTF-8
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8/-//blob/6ca9943588cbc61ad22a3c1ff81beb371e122394/trivial-utf-8.lisp#L176">[function]</a></span> <span class="reference-object"><a href="#TRIVIAL-UTF-8:UTF-8-BYTES-TO-STRING%20FUNCTION" >utf-8-bytes-to-string</a></span></span> <span class="locative-args">bytes &amp;key (start 0) (end (length bytes))</span></span></p>
 
 <p>Convert the <code>start</code>, <code>end</code> subsequence of the array of <code>bytes</code> containing
-UTF-8 encoded characters to a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING CLASS"><code>string</code></a>. The element type of
-<code>bytes</code> may be anything as long as it can be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_coerce.htm" title="COERCE FUNCTION"><code>coerce</code></a>d into
+UTF-8 encoded characters to a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>string</code></a>. The element type of
+<code>bytes</code> may be anything as long as it can be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_coerce.htm" title="COERCE (MGL-PAX:CLHS FUNCTION)"><code>coerce</code></a>d into
 an <code>(unsigned-bytes 8)</code> array. May signal <a href="#TRIVIAL-UTF-8:UTF-8-DECODING-ERROR%20CONDITION" title="TRIVIAL-UTF-8:UTF-8-DECODING-ERROR CONDITION"><code>utf-8-decoding-error</code></a>.</p></li>
 </ul>
 
@@ -152,7 +152,7 @@ an <code>(unsigned-bytes 8)</code> array. May signal <a href="#TRIVIAL-UTF-8:UTF
 <p>Read UTF-8 encoded data from <code>input</code>, a byte stream, and construct a
 string with the characters found. When <code>null-terminated</code> is given,
 stop reading at a null character. If <code>stop-at-eof</code>, then stop at
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_end_of.htm" title="END-OF-FILE CONDITION"><code>end-of-file</code></a> without raising an error. The <code>char-length</code> and
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_end_of.htm" title="END-OF-FILE (MGL-PAX:CLHS CONDITION)"><code>end-of-file</code></a> without raising an error. The <code>char-length</code> and
 <code>byte-length</code> parameters can be used to specify the max amount of
 characters or bytes to read, where -1 means no limit. May signal
 <a href="#TRIVIAL-UTF-8:UTF-8-DECODING-ERROR%20CONDITION" title="TRIVIAL-UTF-8:UTF-8-DECODING-ERROR CONDITION"><code>utf-8-decoding-error</code></a>.</p></li>
@@ -162,7 +162,7 @@ characters or bytes to read, where -1 means no limit. May signal
 <a id="TRIVIAL-UTF-8:UTF-8-DECODING-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8/-//blob/6ca9943588cbc61ad22a3c1ff81beb371e122394/trivial-utf-8.lisp#L104">[condition]</a></span> <span class="reference-object"><a href="#TRIVIAL-UTF-8:UTF-8-DECODING-ERROR%20CONDITION" >utf-8-decoding-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_er.htm" title="SIMPLE-ERROR CONDITION">simple-error</a></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8/-//blob/6ca9943588cbc61ad22a3c1ff81beb371e122394/trivial-utf-8.lisp#L104">[condition]</a></span> <span class="reference-object"><a href="#TRIVIAL-UTF-8:UTF-8-DECODING-ERROR%20CONDITION" >utf-8-decoding-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_er.htm" title="SIMPLE-ERROR (MGL-PAX:CLHS CONDITION)">simple-error</a></span></span></li>
 </ul>
   </div>
 </div>

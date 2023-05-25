@@ -222,9 +222,9 @@ Sbcl, ClozureCL, and AllegroCL at the moment. Patches for your
 implementation of choice are welcome, of course.)</p></li>
 <li><p><a href="#EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE%20MGL-PAX:MACRO" title="EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO"><code>defreadtable</code></a> does not have compile-time effects.</p>
 
-<p>If you define a package via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm" title="DEFPACKAGE MGL-PAX:MACRO"><code>defpackage</code></a>, you can make that
+<p>If you define a package via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm" title="DEFPACKAGE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defpackage</code></a>, you can make that
 package the currently active package for the subsequent
-compilation of the same file via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_in_pkg.htm" title="IN-PACKAGE MGL-PAX:MACRO"><code>in-package</code></a>. The same is,
+compilation of the same file via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_in_pkg.htm" title="IN-PACKAGE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>in-package</code></a>. The same is,
 however, not true for <code>defreadtable</code> and <a href="#EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE%20MGL-PAX:MACRO" title="EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE MGL-PAX:MACRO"><code>in-readtable</code></a> for the
 following reason:</p>
 
@@ -234,7 +234,7 @@ you're going to define the reader macro functions, and set up
 the corresponding readtable in an extra file.</p>
 
 <p>If <code>defreadtable</code> had compile-time effects, you'd have to wrap
-each definition of a reader-macro function in an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="EVAL-WHEN MGL-PAX:MACRO"><code>eval-when</code></a> to
+each definition of a reader-macro function in an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="EVAL-WHEN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>eval-when</code></a> to
 make its definition available at compile-time. Because that's
 simply not the common case, <code>defreadtable</code> does not have a
 compile-time effect.</p>
@@ -319,7 +319,7 @@ that one.</p>
 designated into the new readtable being defined as per
 <a href="#EDITOR-HINTS.NAMED-READTABLES:MERGE-READTABLES-INTO%20FUNCTION" title="EDITOR-HINTS.NAMED-READTABLES:MERGE-READTABLES-INTO FUNCTION"><code>merge-readtables-into</code></a>. The copied options are
 <code>:dispatch-macro-char</code>, <code>:macro-char</code> and <code>:syntax-from</code>, but not
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="READTABLE-CASE FUNCTION"><code>readtable-case</code></a>.</p>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="READTABLE-CASE (MGL-PAX:CLHS FUNCTION)"><code>readtable-case</code></a>.</p>
 
 <p>If no <code>:merge</code> clause is given, an empty readtable is used. See
 <a href="#EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION" title="EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE FUNCTION"><code>make-readtable</code></a>.</p></li>
@@ -335,20 +335,20 @@ accepted as an alias of <code>:fuse</code>.</p></li>
 <li><p><code>(:dispatch-macro-char macro-char sub-char function)</code></p>
 
 <p>Define a new sub character <code>sub-char</code> for the dispatching macro
-character <code>macro-char</code>, per <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set__1.htm" title="SET-DISPATCH-MACRO-CHARACTER FUNCTION"><code>set-dispatch-macro-character</code></a>. You
+character <code>macro-char</code>, per <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set__1.htm" title="SET-DISPATCH-MACRO-CHARACTER (MGL-PAX:CLHS FUNCTION)"><code>set-dispatch-macro-character</code></a>. You
 probably have to define <code>macro-char</code> as a dispatching macro
 character by the following option first.</p></li>
 <li><p><code>(:macro-char macro-char function [non-terminating-p])</code></p>
 
 <p>Define a new macro character in the readtable, per
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_ma.htm" title="SET-MACRO-CHARACTER FUNCTION"><code>set-macro-character</code></a>. If <code>function</code> is the keyword
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_ma.htm" title="SET-MACRO-CHARACTER (MGL-PAX:CLHS FUNCTION)"><code>set-macro-character</code></a>. If <code>function</code> is the keyword
 <code>:dispatch</code>, <code>macro-char</code> is made a dispatching macro character,
-per <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_dis.htm" title="MAKE-DISPATCH-MACRO-CHARACTER FUNCTION"><code>make-dispatch-macro-character</code></a>.</p></li>
+per <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_dis.htm" title="MAKE-DISPATCH-MACRO-CHARACTER (MGL-PAX:CLHS FUNCTION)"><code>make-dispatch-macro-character</code></a>.</p></li>
 <li><p><code>(:syntax-from from-readtable-designator from-char to-char)</code></p>
 
 <p>Set the character syntax of <code>to-char</code> in the readtable being
 defined to the same syntax as <code>from-char</code> as per
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_sy.htm" title="SET-SYNTAX-FROM-CHAR FUNCTION"><code>set-syntax-from-char</code></a>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_sy.htm" title="SET-SYNTAX-FROM-CHAR (MGL-PAX:CLHS FUNCTION)"><code>set-syntax-from-char</code></a>.</p></li>
 <li><p><code>(:case case-mode)</code></p>
 
 <p>Defines the <em>case sensitivity mode</em> of the resulting readtable.</p></li>
@@ -366,7 +366,7 @@ in the following order: <code>:merge</code> and <code>:fuse</code> (one group), 
 <p>The readtable is defined at load-time. If you want to have it
 available at compilation time -- say to use its reader-macros in the
 same file as its definition -- you have to wrap the <code>defreadtable</code>
-form in an explicit <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="EVAL-WHEN MGL-PAX:MACRO"><code>eval-when</code></a>.</p>
+form in an explicit <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm" title="EVAL-WHEN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>eval-when</code></a>.</p>
 
 <p>On redefinition, the target readtable is made empty first before
 it's refilled according to the clauses.</p>
@@ -381,7 +381,7 @@ preregistered readtable names.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L170">[macro]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE%20MGL-PAX:MACRO" >in-readtable</a></span></span> <span class="locative-args">name</span></span></p>
 
-<p>Set <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm" title="*READTABLE* VARIABLE"><code>*readtable*</code></a> to the readtable referred to by the symbol <code>name</code>.
+<p>Set <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm" title="*READTABLE* (MGL-PAX:CLHS VARIABLE)"><code>*readtable*</code></a> to the readtable referred to by the symbol <code>name</code>.
 Return the readtable.</p></li>
 </ul>
 
@@ -424,7 +424,7 @@ i.e. if a conflict is discovered during the merge, an error of type
 <a href="#EDITOR-HINTS.NAMED-READTABLES:READER-MACRO-CONFLICT%20CONDITION" title="EDITOR-HINTS.NAMED-READTABLES:READER-MACRO-CONFLICT CONDITION"><code>reader-macro-conflict</code></a> is signaled.</p>
 
 <p>The copied options are <code>:dispatch-macro-char</code>, <code>:macro-char</code> and
-<code>:syntax-from</code>, but not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="READTABLE-CASE FUNCTION"><code>readtable-case</code></a>.</p></li>
+<code>:syntax-from</code>, but not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="READTABLE-CASE (MGL-PAX:CLHS FUNCTION)"><code>readtable-case</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AFIND-READTABLE-20FUNCTION-29"></a>
@@ -497,7 +497,7 @@ or <code>nil</code>.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L353">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:COPY-NAMED-READTABLE%20FUNCTION" >copy-named-readtable</a></span></span> <span class="locative-args">named-readtable</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm" title="COPY-READTABLE FUNCTION"><code>copy-readtable</code></a> but takes a <a href="#EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR%20TYPE" title="EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR TYPE"><code>named-readtable-designator</code></a> as argument.</p></li>
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm" title="COPY-READTABLE (MGL-PAX:CLHS FUNCTION)"><code>copy-readtable</code></a> but takes a <a href="#EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR%20TYPE" title="EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR TYPE"><code>named-readtable-designator</code></a> as argument.</p></li>
 </ul>
 
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29"></a>
@@ -523,7 +523,7 @@ guaranteed to be fresh, but may contain duplicates.</p></li>
 <a id="EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L365">[condition]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION" >readtable-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L365">[condition]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION" >readtable-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></li>
 </ul>
 
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29"></a>

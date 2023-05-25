@@ -238,7 +238,7 @@ Journal library is this idea taken to its logical conclusion.</p>
 
 <p>See <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">Logging</a> for a complete example.</p>
 
-<h5>Compared to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a></h5>
+<h5>Compared to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:trace</code></a></h5>
 
 <ul>
 <li><p>Ability to handle <a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM">non-local exit</a>s</p></li>
@@ -320,7 +320,7 @@ signal an error. The default implementation:</p>
 <ul>
 <li><p>returns <code>designator</code> itself if it is of type <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>,</p></li>
 <li><p>returns a new <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a> if <code>designator</code> is <code>t</code>,</p></li>
-<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME FUNCTION"><code>1</code></a>).</p></li>
+<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).</p></li>
 </ul></li>
 </ul>
 
@@ -420,7 +420,7 @@ argument of the enclosing <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" tit
 turned off and <code>journaled</code> imposes minimal overhead.</p>
 
 <ul>
-<li><p><code>name</code> can be of any type except <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm" title="NULL CLASS"><code>null</code></a>, not evaluated. For
+<li><p><code>name</code> can be of any type except <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm" title="NULL (MGL-PAX:CLHS TYPE)"><code>null</code></a>, not evaluated. For
   names, and for anything that gets written to a journal, a
   non-keyword symbol is a reasonable choice as it can be easily made
   unique. However, it also exposes the package structure, which
@@ -551,10 +551,10 @@ itself.</p>
 <span class="comment">;; generates this out-event:
 </span><span class="comment">;; (:out foo :error ("simple-error" "xxx"))</span></span></code></pre>
 
-<p>The conversion to string is performed with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="PRINC FUNCTION"><code>princ</code></a> in
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_std_.htm" title="WITH-STANDARD-IO-SYNTAX MGL-PAX:MACRO"><code>with-standard-io-syntax</code></a>. This scheme is intended to avoid leaking
+<p>The conversion to string is performed with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="PRINC (MGL-PAX:CLHS FUNCTION)"><code>princ</code></a> in
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_std_.htm" title="WITH-STANDARD-IO-SYNTAX (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>with-standard-io-syntax</code></a>. This scheme is intended to avoid leaking
 random implementation details into the journal, which would make
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ FUNCTION"><code>read</code></a>ing it back difficult.</p>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a>ing it back difficult.</p>
 
 <p>In contrast with <a href="#JOURNAL:@CONDITION-OUTCOME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@CONDITION-OUTCOME MGL-PAX:GLOSSARY-TERM">condition outcome</a>s, error outcomes are what the
 code is not prepared to handle or replay in a meaningful way.</p></li>
@@ -694,7 +694,7 @@ returned along with <code>&quot;hello&quot;</code>.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L1489">[function]</a></span> <span class="reference-object"><a href="#JOURNAL:VALUES-%3E%20FUNCTION" >values-&gt;</a></span></span> <span class="locative-args">&amp;rest fns</span></span></p>
 
 <p>A utility to create a function suitable as the <code>values</code>
-argument of <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a>. The <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES FUNCTION"><code>values</code></a> function is called with the list
+argument of <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a>. The <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>values</code></a> function is called with the list
 of values returned by the <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@BLOCK MGL-PAX:GLOSSARY-TERM">block</a> and returns a transformed set of
 values that may be recorded in a journal. While arbitrary
 transformations are allowed, <code>values-&gt;</code> handles the common case of
@@ -708,7 +708,7 @@ position.</p>
 <p>Note how <code>#'1+</code> is applied only to the first element of the values
 list. The list of functions is shorter than the values list, so
 <code>:something</code> is not transformed. A value can be left explicitly
-untransformed by specifying #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY FUNCTION"><code>identity</code></a> or <code>nil</code> as the function:</p>
+untransformed by specifying #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)"><code>identity</code></a> or <code>nil</code> as the function:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">funcall <span class="paren2">(<span class="code">values-&gt; #'1+ nil #'symbol-name</span>)</span>
          '<span class="paren2">(<span class="code">7 <span class="keyword">:something</span> <span class="keyword">:another</span></span>)</span></span>)</span>
@@ -911,14 +911,14 @@ most often used for <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging
 <a id="JOURNAL:JOURNALING-FAILURE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L1622">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" >journaling-failure</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION CONDITION">serious-condition</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L1622">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" >journaling-failure</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION (MGL-PAX:CLHS CONDITION)">serious-condition</a></span></span></p>
 
 <p>Signalled during the dynamic extent of
 <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> when an error threatens to leave the journaling
 mechanism in an inconsistent state. These include I/O errors
 encountered reading or writing journals by <code>with-journaling</code>,
 <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a>, <a href="#JOURNAL:LOGGED%20MGL-PAX:MACRO" title="JOURNAL:LOGGED MGL-PAX:MACRO"><code>logged</code></a>, <a href="#JOURNAL:WITH-REPLAY-FILTER%20MGL-PAX:MACRO" title="JOURNAL:WITH-REPLAY-FILTER MGL-PAX:MACRO"><code>with-replay-filter</code></a>, <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a>, and also
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm" title="STORAGE-CONDITION CONDITION"><code>storage-condition</code></a>s, assertion failures, errors calling <code>journaled</code>'s
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm" title="STORAGE-CONDITION (MGL-PAX:CLHS CONDITION)"><code>storage-condition</code></a>s, assertion failures, errors calling <code>journaled</code>'s
 <code>values</code> and <code>condition</code> function arguments.
 Crucially, this does not apply to <a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM">non-local exit</a>s from other code,
 such as <code>journaled</code> <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@BLOCK MGL-PAX:GLOSSARY-TERM">block</a>s, whose error handling is largely
@@ -928,7 +928,7 @@ unaltered (see <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-event
 turned into a <code>journaling-failure</code> to protect the integrity of the
 <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a>. The condition that caused the unwinding is in
 <a href="#JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29" title="JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION (MGL-PAX:READER JOURNAL:JOURNALING-FAILURE)"><code>journaling-failure-embedded-condition</code></a>, or <code>nil</code> if it was a pure
-<a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM">non-local exit</a> like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW MGL-PAX:MACRO"><code>throw</code></a>. This is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION CONDITION"><code>serious-condition</code></a>, not to be
+<a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM">non-local exit</a> like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>. This is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION (MGL-PAX:CLHS CONDITION)"><code>serious-condition</code></a>, not to be
 handled within <code>with-journaling</code>.</p>
 
 <p>After a <code>journaling-failure</code>, the journaling mechanism cannot be
@@ -956,7 +956,7 @@ to the record journal.</p>
 <p>Note that in contrast with <code>journaling-failure</code> and <a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION"><code>replay-failure</code></a>,
 which necessitate leaving <code>with-journaling</code> to recover from, the other
 conditions – <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a>, and <a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" title="JOURNAL:STREAMLET-ERROR CONDITION"><code>streamlet-error</code></a> – are subclasses of
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION"><code>error</code></a> as the their handling need not be so
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>error</code></a> as the their handling need not be so
 heavy-handed.</p></li>
 </ul>
 
@@ -973,8 +973,8 @@ heavy-handed.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L1806">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:RECORD-UNEXPECTED-OUTCOME%20CONDITION" >record-unexpected-outcome</a></span></span></span></p>
 
-<p>Signalled (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL FUNCTION"><code>signal</code></a>: this is not an
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION"><code>error</code></a>) by <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> when a <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-EVENT TYPE"><code>versioned-event</code></a> or an
+<p>Signalled (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL (MGL-PAX:CLHS FUNCTION)"><code>signal</code></a>: this is not an
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>error</code></a>) by <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> when a <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-EVENT TYPE"><code>versioned-event</code></a> or an
 <a href="#JOURNAL:EXTERNAL-EVENT%20TYPE" title="JOURNAL:EXTERNAL-EVENT TYPE"><code>external-event</code></a> had an UNEXPECTED-OUTCOME while in <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a>
 <code>:recording</code>. Upon signalling this condition, <code>journal-state</code> is set to
 <code>:logging</code>, thus no more events can be recorded that will affect
@@ -1002,7 +1002,7 @@ not be replayed that constitutes data loss.</p></li>
 <a id="JOURNAL:JOURNAL-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L1840">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" >journal-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L1840">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" >journal-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></p>
 
 <p>Signalled by <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a>, <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a> and by
 <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`"><code>:log-record</code></a>. It is also signalled by the low-level streamlet
@@ -1290,14 +1290,14 @@ algorithm to determine the target journal is this:</p>
 <li><p>If <code>log-record</code> is <code>:record</code>, then the <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> is returned.</p></li>
 <li><p>If <code>log-record</code> is <code>nil</code>, then it is returned.</p></li>
 <li><p>If <code>log-record</code> is a <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>, then it is returned.</p></li>
-<li><p>If <code>log-record</code> is a symbol (other than <code>nil</code>), then the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm" title="SYMBOL-VALUE FUNCTION"><code>symbol-value</code></a>
+<li><p>If <code>log-record</code> is a symbol (other than <code>nil</code>), then the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm" title="SYMBOL-VALUE (MGL-PAX:CLHS FUNCTION)"><code>symbol-value</code></a>
    of that symbol is assigned to <code>log-record</code>, and we go to step 1.</p></li>
 </ol>
 
 <p>If the return value is <code>nil</code>, then the event will not be written
 anywhere, else it is written to the journal returned.</p>
 
-<p>This is reminiscent of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM CLASS"><code>synonym-stream</code></a>s, also in that it is possible
+<p>This is reminiscent of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM (MGL-PAX:CLHS CLASS)"><code>synonym-stream</code></a>s, also in that it is possible
 end up in cycles in the resolution. For this reason, the algorithm
 stop with a <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a> after 100 iterations.</p>
 
@@ -1329,7 +1329,7 @@ name of thread may be added to the events as <a href="#JOURNAL:@DECORATION%20MGL
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L2413">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:LOGGED%20MGL-PAX:MACRO" >logged</a></span></span> <span class="locative-args">(&amp;optional (log-record :record)) format-control &amp;rest format-args</span></span></p>
 
 <p><code>logged</code> creates a single <a href="#JOURNAL:LEAF-EVENT%20TYPE" title="JOURNAL:LEAF-EVENT TYPE"><code>leaf-event</code></a>, whose name is the string
-constructed by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm" title="FORMAT FUNCTION"><code>format</code></a>. For example:</p>
+constructed by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm" title="FORMAT (MGL-PAX:CLHS FUNCTION)"><code>format</code></a>. For example:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-journaling</span></i> <span class="paren2">(<span class="code"><span class="keyword">:record</span> t</span>)</span>
   <span class="paren2">(<span class="code">logged <span class="paren3">(<span class="code"></span>)</span> <span class="string">"Hello, ~A."</span> <span class="string">"world"</span></span>)</span>
@@ -1351,7 +1351,7 @@ point-in-time textual log messages, and <a href="#JOURNAL:JOURNALED%20MGL-PAX:MA
 
 <h2><a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION">8 Tracing</a></h2>
 
-<p><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> behaves similarly to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a> but deals <a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM">non-local exit</a>s
+<p><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> behaves similarly to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:trace</code></a> but deals <a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@NON-LOCAL-EXIT MGL-PAX:GLOSSARY-TERM">non-local exit</a>s
 gracefully.</p>
 
 <h5>Basic tracing</h5>
@@ -1420,7 +1420,7 @@ trace can be customized:</p>
 
 <p>In the above, <a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" title="JOURNAL:*TRACE-JOURNAL* VARIABLE"><code>*trace-journal*</code></a> was bound locally to keep the example
 from wrecking the global default, but the same effect could be
-achieved by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>ing <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a>,
+achieved by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>ing <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a>,
 <a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-STREAM (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-stream</code></a> and <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-LOG-DECORATOR (MGL-PAX:ACCESSOR JOURNAL:JOURNAL)"><code>journal-log-decorator</code></a>.</p>
 
 <p><a id="x-28JOURNAL-3AJTRACE-20MGL-PAX-3AMACRO-29"></a>
@@ -1429,9 +1429,9 @@ achieved by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_set
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L2573">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" >jtrace</a></span></span> <span class="locative-args">&amp;rest names</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a>, <code>jtrace</code> takes a list of symbols. When functions
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:trace</code></a>, <code>jtrace</code> takes a list of symbols. When functions
 denoted by those <code>names</code> are invoked, their names, arguments and
-outcomes are printed in human readable form to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* VARIABLE"><code>*trace-output*</code></a>. These
+outcomes are printed in human readable form to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* (MGL-PAX:CLHS VARIABLE)"><code>*trace-output*</code></a>. These
 values may not be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>, <code>jtrace</code> does not care.</p>
 
 <p>The format of the output is the same as that of <a href="#JOURNAL:PPRINT-EVENTS%20FUNCTION" title="JOURNAL:PPRINT-EVENTS FUNCTION"><code>pprint-events</code></a>.
@@ -1448,13 +1448,13 @@ symbols currently traced.</p>
 
 <p>On Lisps other than SBCL, where a function encapsulation facility is
 not available or it is not used by Journal, <code>jtrace</code> simply sets
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_1.htm" title="SYMBOL-FUNCTION FUNCTION"><code>symbol-function</code></a>. This solution loses the tracing encapsulation when
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_1.htm" title="SYMBOL-FUNCTION (MGL-PAX:CLHS FUNCTION)"><code>symbol-function</code></a>. This solution loses the tracing encapsulation when
 the function is recompiled. On these platforms, <code>(jtrace)</code> also
 retraces all functions that should be traced but aren't.</p>
 
 <p>The main advantage of <code>jtrace</code> over <code>cl:trace</code> is the ability to trace
 errors, not just normal return values. As it is built on <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a>,
-it can also detect – somewhat heuristically – <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW MGL-PAX:MACRO"><code>throw</code></a>s and similar.</p></li>
+it can also detect – somewhat heuristically – <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>s and similar.</p></li>
 </ul>
 
 <p><a id="x-28JOURNAL-3AJUNTRACE-20MGL-PAX-3AMACRO-29"></a>
@@ -1463,7 +1463,7 @@ it can also detect – somewhat heuristically – <a href="http://www.lispworks.
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L2669">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:JUNTRACE%20MGL-PAX:MACRO" >juntrace</a></span></span> <span class="locative-args">&amp;rest names</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="UNTRACE MGL-PAX:MACRO"><code>cl:untrace</code></a>, <code>juntrace</code> makes it so that the global functions
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="UNTRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:untrace</code></a>, <code>juntrace</code> makes it so that the global functions
 denoted by the symbols <code>names</code> are no longer traced by <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a>. When
 invoked with no arguments, it untraces all traced functions.</p></li>
 </ul>
@@ -1525,7 +1525,7 @@ See <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DEC
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L2839">[variable]</a></span> <span class="reference-object"><a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" >*trace-journal*</a></span></span> <span class="locative-args">#&lt;pprint-journal :new&gt;</span></span></p>
 
 <p>The <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a> where <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> writes <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s. By default, it is a
-<a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS"><code>pprint-journal</code></a> that sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM CLASS"><code>synonym-stream</code></a> to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* VARIABLE"><code>*trace-output*</code></a> and
+<a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS"><code>pprint-journal</code></a> that sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm" title="SYNONYM-STREAM (MGL-PAX:CLHS CLASS)"><code>synonym-stream</code></a> to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* (MGL-PAX:CLHS VARIABLE)"><code>*trace-output*</code></a> and
 sends its output there. It pays attention to <a href="#JOURNAL:*TRACE-PRETTY*%20VARIABLE" title="JOURNAL:*TRACE-PRETTY* VARIABLE"><code>*trace-pretty*</code></a>, and its
 log decorator is affected by <a href="#JOURNAL:*TRACE-TIME*%20VARIABLE" title="JOURNAL:*TRACE-TIME* VARIABLE"><code>*trace-time*</code></a> and <a href="#JOURNAL:*TRACE-THREAD*%20VARIABLE" title="JOURNAL:*TRACE-THREAD* VARIABLE"><code>*trace-thread*</code></a>.
 However, by changing <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-LOG-DECORATOR (MGL-PAX:ACCESSOR JOURNAL:JOURNAL)"><code>journal-log-decorator</code></a> and
@@ -1540,7 +1540,7 @@ However, by changing <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESS
 <h3><a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION">8.1 Slime integration</a></h3>
 
 <p><a href="https://common-lisp.net/project/slime/" >Slime</a>, by default,
-binds <code>C-c C-t</code> to toggling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a>. To integrate <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> into
+binds <code>C-c C-t</code> to toggling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:trace</code></a>. To integrate <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> into
 Slime, load <code>src/mgl-jrn.el</code> into Emacs.</p>
 
 <ul>
@@ -1673,11 +1673,11 @@ only possible terminal state is <code>:completed</code>.</p></li>
   example on how to properly insert these kinds of <code>external-event</code>s.</p></li>
 <li><p><code>replay-values</code>, a function or <code>nil</code>, may be called with <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a>
   when replaying and <code>:version</code> <code>:infinity</code>. <code>nil</code> is equivalent to
-  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vals_l.htm" title="VALUES-LIST FUNCTION"><code>values-list</code></a>. See <a href="#JOURNAL:VALUES%3C-%20FUNCTION" title="JOURNAL:VALUES&lt;- FUNCTION"><code>values&lt;-</code></a> for an example.</p></li>
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vals_l.htm" title="VALUES-LIST (MGL-PAX:CLHS FUNCTION)"><code>values-list</code></a>. See <a href="#JOURNAL:VALUES%3C-%20FUNCTION" title="JOURNAL:VALUES&lt;- FUNCTION"><code>values&lt;-</code></a> for an example.</p></li>
 <li><p><code>replay-condition</code>, a function or <code>nil</code>, may be called with
   <code>event-outcome</code> (the return value of the function provided as
   <code>:condition</code>) when replaying and <code>:version</code> is <code>:infinity</code>. <code>nil</code> is
-  equivalent to the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR FUNCTION"><code>error</code></a> function. Replaying conditions is
+  equivalent to the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>error</code></a> function. Replaying conditions is
   cumbersome and best avoided.</p></li>
 </ul>
 
@@ -1699,7 +1699,7 @@ upgrades in combination with <a href="#JOURNAL:WITH-REPLAY-FILTER%20MGL-PAX:MACR
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L238">[type]</a></span> <span class="reference-object"><a href="#JOURNAL:EVENT-VERSION%20TYPE" >event-version</a></span></span></span></p>
 
-<p>An event's version is either <code>nil</code>, a positive <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm" title="FIXNUM CLASS"><code>fixnum</code></a>, or <code>:infinity</code>,
+<p>An event's version is either <code>nil</code>, a positive <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm" title="FIXNUM (MGL-PAX:CLHS TYPE)"><code>fixnum</code></a>, or <code>:infinity</code>,
 which correspond to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s, <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-EVENT TYPE"><code>versioned-event</code></a>s, and
 <a href="#JOURNAL:EXTERNAL-EVENT%20TYPE" title="JOURNAL:EXTERNAL-EVENT TYPE"><code>external-event</code></a>s, respectively, and have an increasingly strict
 behaviour with regards to <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a>. All <a href="#JOURNAL:EVENT%20TYPE" title="JOURNAL:EVENT TYPE"><code>event</code></a>s have versions. The
@@ -1870,7 +1870,7 @@ that records <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-
 At replay, it is invoked whenever the recorded <a href="#JOURNAL:IN-EVENT%20TYPE" title="JOURNAL:IN-EVENT TYPE"><code>in-event</code></a> becomes the
 <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>.</p>
 
-<p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN MGL-PAX:MACRO"><code>defun</code></a> and <a href="#JOURNAL:CHECKED%20MGL-PAX:MACRO" title="JOURNAL:CHECKED MGL-PAX:MACRO"><code>checked</code></a> rolled into one, <code>define-invoked</code> defines a
+<p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a> and <a href="#JOURNAL:CHECKED%20MGL-PAX:MACRO" title="JOURNAL:CHECKED MGL-PAX:MACRO"><code>checked</code></a> rolled into one, <code>define-invoked</code> defines a
 top-level function with <code>function-name</code> and <code>args</code> (only simple
 positional arguments are allowed) and wraps <code>checked</code> with <code>name</code>, the
 same <code>args</code> and <code>insertable</code> around <code>body</code>. Whenever an <code>in-event</code> becomes
@@ -1911,7 +1911,7 @@ encapsulating the non-determinism:</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L3092">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:FLET-INVOKED%20MGL-PAX:MACRO" >flet-invoked</a></span></span> <span class="locative-args">definitions &amp;body body</span></span></p>
 
-<p>Like <a href="#JOURNAL:DEFINE-INVOKED%20MGL-PAX:MACRO" title="JOURNAL:DEFINE-INVOKED MGL-PAX:MACRO"><code>define-invoked</code></a>, but with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm" title="FLET MGL-PAX:MACRO"><code>flet</code></a> instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN MGL-PAX:MACRO"><code>defun</code></a>. The event
+<p>Like <a href="#JOURNAL:DEFINE-INVOKED%20MGL-PAX:MACRO" title="JOURNAL:DEFINE-INVOKED MGL-PAX:MACRO"><code>define-invoked</code></a>, but with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm" title="FLET (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>flet</code></a> instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>. The event
 name and the function are associated in the dynamic extent of <code>body</code>.
 <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> does not change the bindings. The example in
 <code>define-invoked</code> can be rewritten as:</p>
@@ -2044,7 +2044,7 @@ whenever an event is generated by a journaled <a href="#JOURNAL:@BLOCK%20MGL-PAX
   is signalled.</p></li>
 </ul></li>
 <li><p><strong>mismatched name</strong>: Else, if the next unread replay event's
-  name is not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> to the name of the new event, then:</p>
+  name is not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> to the name of the new event, then:</p>
 
 <ul>
 <li><p>For <code>versioned-event</code>s, <strong><code>replay-name-mismatch</code></strong> is
@@ -2121,7 +2121,7 @@ defined with the same name as the replay event.</p>
 matching process continues like this:</p>
 
 <ul>
-<li><p>If the <a href="#JOURNAL:EVENT-ARGS%20FUNCTION" title="JOURNAL:EVENT-ARGS FUNCTION"><code>event-args</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>, then <strong><a href="#JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-ARGS-MISMATCH CONDITION"><code>replay-args-mismatch</code></a></strong>
+<li><p>If the <a href="#JOURNAL:EVENT-ARGS%20FUNCTION" title="JOURNAL:EVENT-ARGS FUNCTION"><code>event-args</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>, then <strong><a href="#JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-ARGS-MISMATCH CONDITION"><code>replay-args-mismatch</code></a></strong>
   signalled.</p></li>
 <li><p>At this point, two things might happen:</p>
 
@@ -2169,13 +2169,13 @@ assistance may be required from <code>replay-values</code> and <code>replay-cond
 <li><p>If the <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a> has a normal return (i.e. <code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>) <code>:values</code>),
   then the recorded return values (in <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a>) are returned
   immediately as in <code>(values-list (event-outcome replay-event))</code>. If
-  <code>replay-values</code> is specified, it is called instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vals_l.htm" title="VALUES-LIST FUNCTION"><code>values-list</code></a>.
+  <code>replay-values</code> is specified, it is called instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vals_l.htm" title="VALUES-LIST (MGL-PAX:CLHS FUNCTION)"><code>values-list</code></a>.
   See <a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION" title="Working with unreadable values">Working with unreadable values</a> for an example.</p></li>
 <li><p>Similarly, if the replay event has unwound with an expected
   condition (has <code>event-exit</code> <code>:condition</code>), then the recorded
   condition (in <code>event-outcome</code>) is signalled as
   IN <code>(error (event-outcome replay-event))</code>. If <code>replay-condition</code> is
-  specified, it is called instead of <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR FUNCTION"><code>1</code></a>). <code>replay-condition</code> must
+  specified, it is called instead of <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>). <code>replay-condition</code> must
   not return normally, and it's a <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a> if it does.</p></li>
 </ul>
 
@@ -2209,8 +2209,8 @@ name from the <a href="#JOURNAL:REPLAY-JOURNAL%20FUNCTION" title="JOURNAL:REPLAY
   event always has an <a href="#JOURNAL:@EXPECTED-OUTCOME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@EXPECTED-OUTCOME MGL-PAX:GLOSSARY-TERM">expected outcome</a> due to the handling of
   <a href="#JOURNAL:RECORD-UNEXPECTED-OUTCOME%20CONDITION" title="JOURNAL:RECORD-UNEXPECTED-OUTCOME CONDITION"><code>record-unexpected-outcome</code></a>.</p></li>
 <li><p>If the new event has an <a href="#JOURNAL:@EXPECTED-OUTCOME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@EXPECTED-OUTCOME MGL-PAX:GLOSSARY-TERM">expected outcome</a>, then unless the new and
-  <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s <code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>)s are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ FUNCTION"><code>eq</code></a> and their <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a>s are
-  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>, <strong><a href="#JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-OUTCOME-MISMATCH CONDITION"><code>replay-outcome-mismatch</code></a></strong> is signalled.</p></li>
+  <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s <code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>)s are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a> and their <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a>s are
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>, <strong><a href="#JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-OUTCOME-MISMATCH CONDITION"><code>replay-outcome-mismatch</code></a></strong> is signalled.</p></li>
 <li><p>Else, the replay event is consumed and the new event is written
   the <code>record-journal</code>.</p></li>
 </ul>
@@ -2233,7 +2233,7 @@ process failed hard without unwinding properly, or when an
 <a id="JOURNAL:REPLAY-FAILURE%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L3890">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" >replay-failure</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION CONDITION">serious-condition</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L3890">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" >replay-failure</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION (MGL-PAX:CLHS CONDITION)">serious-condition</a></span></span></p>
 
 <p>A abstract superclass (never itself signalled) for
 all kinds of mismatches between the events produced and the replay
@@ -2275,7 +2275,7 @@ uses the <em>insert</em> replay strategy (see <a href="#JOURNAL:@THE-REPLAY-STRA
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L3973">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION" >replay-name-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event's and <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s
-<a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>event-name</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. The <a href="#JOURNAL:REPLAY-FORCE-INSERT%20RESTART" title="JOURNAL:REPLAY-FORCE-INSERT RESTART"><code>replay-force-insert</code></a>,
+<a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>event-name</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. The <a href="#JOURNAL:REPLAY-FORCE-INSERT%20RESTART" title="JOURNAL:REPLAY-FORCE-INSERT RESTART"><code>replay-force-insert</code></a>,
 <a href="#JOURNAL:REPLAY-FORCE-UPGRADE%20RESTART" title="JOURNAL:REPLAY-FORCE-UPGRADE RESTART"><code>replay-force-upgrade</code></a> restarts are provided.</p></li>
 </ul>
 
@@ -2297,7 +2297,7 @@ have the same <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L4001">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION" >replay-args-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event's and <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s
-<a href="#JOURNAL:EVENT-ARGS%20FUNCTION" title="JOURNAL:EVENT-ARGS FUNCTION"><code>event-args</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. The <a href="#JOURNAL:REPLAY-FORCE-UPGRADE%20RESTART" title="JOURNAL:REPLAY-FORCE-UPGRADE RESTART"><code>replay-force-upgrade</code></a> restart is
+<a href="#JOURNAL:EVENT-ARGS%20FUNCTION" title="JOURNAL:EVENT-ARGS FUNCTION"><code>event-args</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. The <a href="#JOURNAL:REPLAY-FORCE-UPGRADE%20RESTART" title="JOURNAL:REPLAY-FORCE-UPGRADE RESTART"><code>replay-force-upgrade</code></a> restart is
 provided.</p></li>
 </ul>
 
@@ -2308,7 +2308,7 @@ provided.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L4015">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION" >replay-outcome-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a></span></span></p>
 
 <p>Signalled when the new event's and <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a>'s
-<code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>) and/or <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. The
+<code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>) and/or <a href="#JOURNAL:EVENT-OUTCOME%20FUNCTION" title="JOURNAL:EVENT-OUTCOME FUNCTION"><code>event-outcome</code></a> are not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. The
 <a href="#JOURNAL:REPLAY-FORCE-UPGRADE%20RESTART" title="JOURNAL:REPLAY-FORCE-UPGRADE RESTART"><code>replay-force-upgrade</code></a> restart is provided.</p></li>
 </ul>
 
@@ -2511,14 +2511,14 @@ which would render replaying previously recorded journals
 impossible. Note that, for reasons of safety, it is not possible
 to filter <a href="#JOURNAL:EXTERNAL-EVENT%20TYPE" title="JOURNAL:EXTERNAL-EVENT TYPE"><code>external-event</code></a>s.</p></li>
 <li><p><code>no-replay-outcome</code> is a list of <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JOURNAL:EVENT-NAME FUNCTION"><code>event-name</code></a>s. <a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">Replaying the outcome</a>
-  is prevented for frames with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> names. See
+  is prevented for frames with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> names. See
   <a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION" title="Testing on multiple levels">Testing on multiple levels</a> for an example.</p></li>
 </ul>
 
 <p><code>with-replay-filter</code> affects only the immediately enclosing
 <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a>. A <code>with-replay-filter</code> nested within another in the
 same <code>with-journaling</code> inherits the <code>skip</code> patterns of its parent, to
-which it adds its own. The <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm" title="MAP FUNCTION"><code>map</code></a> function is applied to before the
+which it adds its own. The <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm" title="MAP (MGL-PAX:CLHS FUNCTION)"><code>map</code></a> function is applied to before the
 parent's <code>map</code>.</p>
 
 <p>Examples of <code>skip</code> patterns:</p>
@@ -2668,7 +2668,7 @@ required to match the replay. So, after the original recording, we
 can check by eyeballing that the record represents a correct
 execution. Then on subsequent replays, even though
 <code>maybe-win-the-grand-prize</code> sits behind <code>register-user</code> and is hard
-to test with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT MGL-PAX:MACRO"><code>assert</code></a>s, the replay mechanism verifies that it is
+to test with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>assert</code></a>s, the replay mechanism verifies that it is
 called only for new users.</p>
 
 <p>This record-and-replay style of testing is not the only possibility:
@@ -2689,7 +2689,7 @@ replayability. The bundle in question is a <a href="#JOURNAL:FILE-BUNDLE%20CLASS
 start afresh.</p>
 
 <p>Furthermore, if <code>body</code> returns normally, and it is a replay of a
-previous run, and <code>equivalentp</code>, then it is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT MGL-PAX:MACRO"><code>assert</code></a>ed that the record
+previous run, and <code>equivalentp</code>, then it is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>assert</code></a>ed that the record
 and replay journals are <a href="#JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P%20GENERIC-FUNCTION" title="JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P GENERIC-FUNCTION"><code>equivalent-replay-journals-p</code></a>. If this check
 fails, <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> is discarded when the function returns. In
 addition to the replay consistency, this checks that no inserts or
@@ -2711,15 +2711,15 @@ outer, the inner will be replayed.</p>
 
 <p>This is useful for testing layered communication. For example, we
 might have written code that takes input from an external
-system (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_lin.htm" title="READ-LINE FUNCTION"><code>read-line</code></a>) and does some complicated
-processing (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_fro.htm" title="READ-FROM-STRING FUNCTION"><code>read-from-string</code></a>) before returning the input in a form
+system (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_lin.htm" title="READ-LINE (MGL-PAX:CLHS FUNCTION)"><code>read-line</code></a>) and does some complicated
+processing (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_fro.htm" title="READ-FROM-STRING (MGL-PAX:CLHS FUNCTION)"><code>read-from-string</code></a>) before returning the input in a form
 suitable for further processing. Suppose we wrap <code>replayed</code> around
 <code>read-from-string</code> for <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">Persistence</a> because putting it around
 <code>read-line</code> would expose low-level protocol details in the journal,
 making protocol changes difficult.</p>
 
 <p>However, upon realizing that <code>read-from-string</code> was not the best tool
-for the job and switching to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_parse_.htm" title="PARSE-INTEGER FUNCTION"><code>parse-integer</code></a>, we want to test by
+for the job and switching to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_parse_.htm" title="PARSE-INTEGER (MGL-PAX:CLHS FUNCTION)"><code>parse-integer</code></a>, we want to test by
 replaying all previously recorded journals. For this, we prevent the
 outer <code>replayed</code> from being replayed by outcome with
 <a href="#JOURNAL:WITH-REPLAY-FILTER%20MGL-PAX:MACRO" title="JOURNAL:WITH-REPLAY-FILTER MGL-PAX:MACRO"><code>with-replay-filter</code></a>:</p>
@@ -2779,7 +2779,7 @@ checked as if it was a <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:
 <h5>Original recording</h5>
 
 <p>Unfortunately, the implementation is lacking in the input validation
-department. In the transcript below, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_parse_.htm" title="PARSE-INTEGER FUNCTION"><code>parse-integer</code></a> fails with <code>junk
+department. In the transcript below, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_parse_.htm" title="PARSE-INTEGER (MGL-PAX:CLHS FUNCTION)"><code>parse-integer</code></a> fails with <code>junk
 in string</code> when the user enters <code>not a number</code>:</p>
 
 <pre><code><span class="code">CL-USER&gt; <span class="paren1">(<span class="code">handler-case
@@ -3207,7 +3207,7 @@ representations. This function is useful in conjunction with
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L209">[function]</a></span> <span class="reference-object"><a href="#JOURNAL:EVENT-NAME%20FUNCTION" >event-name</a></span></span> <span class="locative-args">event</span></span></p>
 
 <p>The name of an event can be of any type. It is often a symbol or a
-string. When replaying, names are compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. All <code>event</code>s
+string. When replaying, names are compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. All <code>event</code>s
 have names. The names of the in- and out-events belonging to the
 same <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@FRAME MGL-PAX:GLOSSARY-TERM">frame</a> are the same.</p></li>
 </ul>
@@ -3503,7 +3503,7 @@ elements: the <a href="#JOURNAL:READ-POSITION%20GENERIC-FUNCTION" title="JOURNAL
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L487">[function]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" >journal-divergent-p</a></span></span> <span class="locative-args">journal</span></span></p>
 
 <p>See if <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> recorded any event so far in this journal
-that was not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> to its <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a> or it had no corresponding
+that was not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> to its <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@REPLAY-EVENT MGL-PAX:GLOSSARY-TERM">replay event</a> or it had no corresponding
 replay event. This completely ignores <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s in both journals
 being compared and can be called any time during <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a>. It plays a
 role in <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a> deciding when a journal is important enough to
@@ -3535,7 +3535,7 @@ functionally by <a href="#JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P%20GENERIC-FUNCTIO
 
 <p>Compare two journals in a strict sense: whether
 they have the same <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> and the lists of their events (as
-in <a href="#JOURNAL:LIST-EVENTS%20FUNCTION" title="JOURNAL:LIST-EVENTS FUNCTION"><code>list-events</code></a>) are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>.</p></li>
+in <a href="#JOURNAL:LIST-EVENTS%20FUNCTION" title="JOURNAL:LIST-EVENTS FUNCTION"><code>list-events</code></a>) are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28JOURNAL-3AEQUIVALENT-REPLAY-JOURNALS-P-20GENERIC-FUNCTION-29"></a>
@@ -3577,12 +3577,12 @@ ideal for smallish journals persisted manually (see
 generated. They differ from <code>file-journal</code>s in that events written to
 <code>in-memory-journal</code>s are not serialized (and deserialized on replay)
 with the following consequences for the objects recorded by
-<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES TYPE"><code>1</code></a>)
-of the block, or the value returned by <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION CONDITION"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)):</p>
+<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>)
+of the block, or the value returned by <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)):</p>
 
 <ul>
 <li><p>These objects need not be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p></li>
-<li><p>Their identity (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ FUNCTION"><code>eq</code></a>ness) is not lost.</p></li>
+<li><p>Their identity (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a>ness) is not lost.</p></li>
 <li><p>They must <strong>must not be mutated</strong> in any way.</p></li>
 </ul></li>
 </ul>
@@ -3649,10 +3649,10 @@ most recent invocation of <code>sync-fn</code>.</p></li>
 subclass with out-of-the-box persistence, but see <a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION" title="File bundles">File bundles</a> for
 a more full-featured solution for repeated <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a>s.</p>
 
-<p>Since serialization in <code>file-journal</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ FUNCTION"><code>read</code></a>
-and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE FUNCTION"><code>write</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> records in events (i.e. its
-<code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES TYPE"><code>1</code></a>) of the block, or
-the value returned by <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION CONDITION"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p>
+<p>Since serialization in <code>file-journal</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a>
+and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE (MGL-PAX:CLHS FUNCTION)"><code>write</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> records in events (i.e. its
+<code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>) of the block, or
+the value returned by <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p>
 
 <p>File journals are human-readable and editable by hand with some
 care. When editing, the following needs to be remembered:</p>
@@ -3664,7 +3664,7 @@ care. When editing, the following needs to be remembered:</p>
   <code>:completed</code>).</p></li>
 <li><p>If the journal has <code>sync</code> (see <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>), then
   between two events, there may be <code>#\Del</code> (also called <code>#\Rubout</code>)
-  or <code>#\Ack</code> characters (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_char_c.htm" title="CHAR-CODE FUNCTION"><code>char-code</code></a> 127 and 6). <code>#\Del</code> marks the end
+  or <code>#\Ack</code> characters (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_char_c.htm" title="CHAR-CODE (MGL-PAX:CLHS FUNCTION)"><code>char-code</code></a> 127 and 6). <code>#\Del</code> marks the end
   of the journal contents that may be read back: it's kind of an
   uncommitted-transaction marker for the events that follow it.
   <code>#\Ack</code> characters, of which there may be many in the file, mark
@@ -3747,7 +3747,7 @@ support reads, so they cannot be used as a <a href="#JOURNAL:REPLAY-JOURNAL%20FU
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L2024">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="locative-args">pprint-journal (:stream = *standard-output*)</span></span></p>
 
 <p>The stream where events are dumped. May be set any
-time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM CLASS"><code>stream</code></a>.</p></li>
+time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM (MGL-PAX:CLHS CLASS)"><code>stream</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28JOURNAL-3APPRINT-JOURNAL-PRETTY-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3APPRINT-JOURNAL-29-29"></a>
@@ -3899,7 +3899,7 @@ See <a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" ti
 <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>.</p>
 
 <p>If there is already a <code>file-bundle</code> with the same directory (according
-to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tn.htm" title="TRUENAME FUNCTION"><code>truename</code></a>), return that object is returned if it has the same
+to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tn.htm" title="TRUENAME (MGL-PAX:CLHS FUNCTION)"><code>truename</code></a>), return that object is returned if it has the same
 <code>max-n-failed</code>, <code>max-n-completed</code> and <code>sync</code> options, else <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a>
 is signalled.</p></li>
 </ul>
@@ -3964,7 +3964,7 @@ This is the journal <code>streamlet</code> operates on.</p></li>
 <p>Return a <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a> suitable for performing I/O on
 <code>journal</code>. <code>direction</code> (defaults to <code>:input</code>) is one of <code>:input</code>, <code>:output</code>,
 <code>:io</code>, and it has the same purpose as the similarly named argument of
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm" title="OPEN FUNCTION"><code>cl:open</code></a>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm" title="OPEN (MGL-PAX:CLHS FUNCTION)"><code>cl:open</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28JOURNAL-3ACLOSE-STREAMLET-20GENERIC-FUNCTION-29"></a>
@@ -4027,7 +4027,7 @@ open until they have been explicitly closed with <a href="#JOURNAL:CLOSE-STREAML
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L707">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:WITH-OPEN-JOURNAL%20MGL-PAX:MACRO" >with-open-journal</a></span></span> <span class="locative-args">(var journal &amp;key (direction :input)) &amp;body body</span></span></p>
 
-<p>This is like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_open.htm" title="WITH-OPEN-FILE MGL-PAX:MACRO"><code>with-open-file</code></a> but for <code>journal</code>s.
+<p>This is like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_open.htm" title="WITH-OPEN-FILE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>with-open-file</code></a> but for <code>journal</code>s.
 Open the journal designated by <code>journal</code> (see <a href="#JOURNAL:TO-JOURNAL%20GENERIC-FUNCTION" title="JOURNAL:TO-JOURNAL GENERIC-FUNCTION"><code>to-journal</code></a>) with
 <a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a>, passing <code>direction</code> along, and bind <code>var</code> to the
 resulting <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a>. Call <a href="#JOURNAL:CLOSE-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:CLOSE-STREAMLET GENERIC-FUNCTION"><code>close-streamlet</code></a> after <code>body</code> finishes. If
@@ -4039,9 +4039,9 @@ created.</p></li>
 <a id="JOURNAL:STREAMLET-ERROR%20CONDITION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L736">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" >streamlet-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR CONDITION">error</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L736">[condition]</a></span> <span class="reference-object"><a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" >streamlet-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_stm_er.htm" title="STREAM-ERROR CONDITION"><code>cl:stream-error:</code></a> failures pertaining to I/O on
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_stm_er.htm" title="STREAM-ERROR (MGL-PAX:CLHS CONDITION)"><code>cl:stream-error:</code></a> failures pertaining to I/O on
 a closed <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a> or of the wrong <code>direction</code>. Actual I/O errors are
 <em>not</em> encapsulated in <code>streamlet-error</code>.</p></li>
 </ul>
@@ -4073,7 +4073,7 @@ are no more events, signal <a href="#JOURNAL:END-OF-JOURNAL%20CONDITION" title="
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L788">[generic-function]</a></span> <span class="reference-object"><a href="#JOURNAL:READ-POSITION%20GENERIC-FUNCTION" >read-position</a></span></span> <span class="locative-args">streamlet</span></span></p>
 
 <p>Return an integer that identifies the position of
-the next event to be read from <code>streamlet</code>. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>able, see
+the next event to be read from <code>streamlet</code>. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>able, see
 <a href="#JOURNAL:SET-READ-POSITION%20GENERIC-FUNCTION" title="JOURNAL:SET-READ-POSITION GENERIC-FUNCTION"><code>set-read-position</code></a>.</p></li>
 </ul>
 
@@ -4215,9 +4215,9 @@ arbitrary code, may unwind the stack in the target thread.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L5876">[glossary-term]</a></span> <span class="reference-object"><a href="#JOURNAL:@BOOLEAN-VALUED-SYMBOL%20MGL-PAX:GLOSSARY-TERM" >boolean-valued symbol</a></span></span></span></p>
 
-<p>Imagine writing two <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM CLASS"><code>stream</code></a>s with a spaghetti of functions and
+<p>Imagine writing two <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM (MGL-PAX:CLHS CLASS)"><code>stream</code></a>s with a spaghetti of functions and
 wanting to have pretty-printed output on one of them. Unfortunately,
-binding <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_pre.htm" title="*PRINT-PRETTY* VARIABLE"><code>*print-pretty*</code></a> to <code>t</code> will affect writes to both streams.</p>
+binding <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_pre.htm" title="*PRINT-PRETTY* (MGL-PAX:CLHS VARIABLE)"><code>*print-pretty*</code></a> to <code>t</code> will affect writes to both streams.</p>
 
 <p>One solution would be to have streams look up their own print-pretty
 flag with <code>(symbol-value (stream-pretty-print stream))</code> and have the
@@ -4245,8 +4245,8 @@ boolean-valued symbols on <code>cl:stream</code>s. In Journal, they are used by
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/dde71fefedde9ecefc77f4f5f038d370a30ce121/src/journal.lisp#L5901">[glossary-term]</a></span> <span class="reference-object"><a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" >non-local exit</a></span></span></span></p>
 
 <p>This is a term from the Common Lisp ANSI standard. If a form does
-not return normally, but control is transferred via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO MGL-PAX:MACRO"><code>go</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN MGL-PAX:MACRO"><code>return</code></a>,
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="RETURN-FROM MGL-PAX:MACRO"><code>return-from</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW MGL-PAX:MACRO"><code>throw</code></a>, then it is said to have performed a non-local
+not return normally, but control is transferred via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>go</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="RETURN-FROM (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return-from</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>, then it is said to have performed a non-local
 exit. This definition of a non-local exit includes <code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>)
 <code>:condition</code>, <code>:error</code> and <code>:nlx</code>.</p></li>
 </ul>

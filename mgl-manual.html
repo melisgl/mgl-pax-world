@@ -303,7 +303,7 @@ instances are simply called <strong>results</strong>.</p>
 <p>An instance can often be any kind of object of the user's choice.
 It is typically represented by a set of numbers which is called a
 feature vector or by a structure holding the feature vector, the
-label, etc. A dataset is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a> of such instances or a
+label, etc. A dataset is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE (MGL-PAX:CLHS CLASS)"><code>sequence</code></a> of such instances or a
 <a href="#MGL-DATASET:@MGL-SAMPLER%20MGL-PAX:SECTION" title="Samplers">Samplers</a> object that produces instances.</p>
 
 <p><a id="x-28MGL-DATASET-3AMAP-DATASET-20FUNCTION-29"></a>
@@ -505,7 +505,7 @@ tend to be used together with resampling.</p>
 <h3><a href="#MGL-RESAMPLE:@MGL-RESAMPLE-PARTITIONS%20MGL-PAX:SECTION">4.1 Partitions</a></h3>
 
 <p>The following functions partition a dataset (currently only
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a>s are supported) into a number of partitions. For each
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE (MGL-PAX:CLHS CLASS)"><code>sequence</code></a>s are supported) into a number of partitions. For each
 element in the original dataset there is exactly one partition that
 contains it.</p>
 
@@ -807,7 +807,7 @@ evenly:</p>
 <p>Make a single sequence out of the sequences in <code>seqs</code> so that in the
 returned sequence indices of elements belonging to the same source
 sequence are spread evenly across the whole range. The result is a
-list is <code>result-type</code> is <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST FUNCTION"><code>1</code></a>), it's a vector if <code>result-type</code> is <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR CLASS"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR FUNCTION"><code>1</code></a>).
+list is <code>result-type</code> is <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), it's a vector if <code>result-type</code> is <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).
 If <code>result-type</code> is <code>nil</code>, then it's determined by the type of the first
 sequence in <code>seqs</code>.</p>
 
@@ -847,8 +847,8 @@ sequence in <code>seqs</code>.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/core.lisp#L27">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:SAVE-STATE%20FUNCTION" >save-state</a></span></span> <span class="locative-args">filename object &amp;key (if-exists :error) (ensure t)</span></span></p>
 
 <p>Save weights of <code>object</code> to <code>filename</code>. If <code>ensure</code>, then
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ensu_1.htm" title="ENSURE-DIRECTORIES-EXIST FUNCTION"><code>ensure-directories-exist</code></a> is called on <code>filename</code>. <code>if-exists</code> is passed
-on to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm" title="OPEN FUNCTION"><code>open</code></a>. Return <code>object</code>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ensu_1.htm" title="ENSURE-DIRECTORIES-EXIST (MGL-PAX:CLHS FUNCTION)"><code>ensure-directories-exist</code></a> is called on <code>filename</code>. <code>if-exists</code> is passed
+on to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm" title="OPEN (MGL-PAX:CLHS FUNCTION)"><code>open</code></a>. Return <code>object</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3AREAD-STATE-20FUNCTION-29"></a>
@@ -880,7 +880,7 @@ the serialization format. Return <code>object</code>.</p></li>
 
 <p>This is the extension point for <a href="#MGL-CORE:READ-STATE%20FUNCTION" title="MGL-CORE:READ-STATE FUNCTION"><code>read-state</code></a>. It is
 guaranteed that primary <code>read-state*</code> methods will be called only once
-for each <code>object</code> (under <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ FUNCTION"><code>eq</code></a>). <code>context</code> is an opaque object and must be
+for each <code>object</code> (under <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a>). <code>context</code> is an opaque object and must be
 passed on to any recursive <code>read-state*</code> calls.</p></li>
 </ul>
 
@@ -892,7 +892,7 @@ passed on to any recursive <code>read-state*</code> calls.</p></li>
 
 <p>This is the extension point for <a href="#MGL-CORE:WRITE-STATE%20FUNCTION" title="MGL-CORE:WRITE-STATE FUNCTION"><code>write-state</code></a>. It is
 guaranteed that primary <code>write-state*</code> methods will be called only
-once for each <code>object</code> (under <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ FUNCTION"><code>eq</code></a>). <code>context</code> is an opaque object and must
+once for each <code>object</code> (under <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a>). <code>context</code> is an opaque object and must
 be passed on to any recursive <code>write-state*</code> calls.</p></li>
 </ul>
 
@@ -941,7 +941,7 @@ capable of dealing simultaneously. </p></li>
 
 <p>Allocate the necessary stuff to allow for
 <code>max-n-stripes</code> number of stripes to be worked with simultaneously in
-<code>object</code>. This is called when <code>max-n-stripes</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>'ed.</p></li>
+<code>object</code>. This is called when <code>max-n-stripes</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>'ed.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29"></a>
@@ -962,7 +962,7 @@ This is at most <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-
 
 <p>Set the number of stripes (out of <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a>)
 that are in use in <code>object</code>. This is called when <code>n-stripes</code> is
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a>'ed.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>'ed.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3AWITH-STRIPES-20MGL-PAX-3AMACRO-29"></a>
@@ -1020,8 +1020,8 @@ array or matrix of <code>object</code>.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/core.lisp#L168">[generic-function]</a></span> <span class="reference-object"><a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" >set-input</a></span></span> <span class="locative-args">instances model</span></span></p>
 
 <p>Set <code>instances</code> as inputs in <code>model</code>. <code>instances</code> is
-always a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a> of instances even for models not capable of batch
-operation. It sets <a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a> to (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm" title="LENGTH FUNCTION"><code>length</code></a> <code>instances</code>) in a <code>:before</code>
+always a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE (MGL-PAX:CLHS CLASS)"><code>sequence</code></a> of instances even for models not capable of batch
+operation. It sets <a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a> to (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm" title="LENGTH (MGL-PAX:CLHS FUNCTION)"><code>length</code></a> <code>instances</code>) in a <code>:before</code>
 method.</p></li>
 </ul>
 
@@ -1136,7 +1136,7 @@ example, <code>parameters</code> would be a list of input dimensions.</p></li>
 <p>Return the parameters for an executor able to
 handle <code>instance</code>. Called by <a href="#MGL-CORE:MAP-OVER-EXECUTORS%20GENERIC-FUNCTION" title="MGL-CORE:MAP-OVER-EXECUTORS GENERIC-FUNCTION"><code>map-over-executors</code></a> on <code>cache</code> (that's a
 <a href="#MGL-CORE:PARAMETERIZED-EXECUTOR-CACHE-MIXIN%20CLASS" title="MGL-CORE:PARAMETERIZED-EXECUTOR-CACHE-MIXIN CLASS"><code>parameterized-executor-cache-mixin</code></a>). The returned parameters are
-keys in an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> parameters-&gt;executor hash table.</p></li>
+keys in an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> parameters-&gt;executor hash table.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3A-40MGL-MONITORING-20MGL-PAX-3ASECTION-29"></a>
@@ -1197,7 +1197,7 @@ accessor:</p>
 
 <p>Note that the monitor we push can be anything as long as
 <a href="#MGL-CORE:APPLY-MONITOR%20GENERIC-FUNCTION" title="MGL-CORE:APPLY-MONITOR GENERIC-FUNCTION"><code>apply-monitor</code></a> is implemented on it with the appropriate signature.
-Also note that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm" title="ZEROP FUNCTION"><code>zerop</code></a> + <code>mod</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mod_r.htm" title="MOD FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_mod.htm" title="MOD TYPE"><code>1</code></a>) logic is fragile, so you will likely
+Also note that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm" title="ZEROP (MGL-PAX:CLHS FUNCTION)"><code>zerop</code></a> + <code>mod</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mod_r.htm" title="MOD (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_mod.htm" title="MOD (MGL-PAX:CLHS TYPE)"><code>1</code></a>) logic is fragile, so you will likely
 want to use <a href="#MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY%20FUNCTION" title="MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY FUNCTION"><code>mgl-opt:monitor-optimization-periodically</code></a> instead of
 doing the above.</p>
 
@@ -1224,7 +1224,7 @@ is how an event is fired.</p></li>
 
 <p>Apply <code>monitor</code> to <code>arguments</code>. This sound fairly
 generic, because it is. <code>monitor</code> can be anything, even a simple
-function or symbol, in which case this is just <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm" title="APPLY FUNCTION"><code>cl:apply</code></a>. See
+function or symbol, in which case this is just <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm" title="APPLY (MGL-PAX:CLHS FUNCTION)"><code>cl:apply</code></a>. See
 <a href="#MGL-CORE:@MGL-MONITOR%20MGL-PAX:SECTION" title="Monitors">Monitors</a> for more.</p></li>
 </ul>
 
@@ -1465,7 +1465,7 @@ they are printed near together.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/counter.lisp#L83">[macro]</a></span> <span class="reference-object"><a href="#MGL-CORE:WITH-PADDED-ATTRIBUTE-PRINTING%20MGL-PAX:MACRO" >with-padded-attribute-printing</a></span></span> <span class="locative-args">(attributeds) &amp;body body</span></span></p>
 
 <p>Note the width of values for each attribute key which is the number
-of characters in the value's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm" title="PRINC-TO-STRING FUNCTION"><code>princ-to-string</code></a>'ed representation. In
+of characters in the value's <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm" title="PRINC-TO-STRING (MGL-PAX:CLHS FUNCTION)"><code>princ-to-string</code></a>'ed representation. In
 <code>body</code>, if attributes with they same key are printed they are forced
 to be at least this wide. This allows for nice, table-like output:</p>
 
@@ -1489,7 +1489,7 @@ to be at least this wide. This allows for nice, table-like output:</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/counter.lisp#L160">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:LOG-PADDED%20FUNCTION" >log-padded</a></span></span> <span class="locative-args">attributeds</span></span></p>
 
-<p>Log (see <code>log-msg</code>) <code>attributeds</code> non-escaped (as in <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="PRINC FUNCTION"><code>princ</code></a> or ~A) with
+<p>Log (see <code>log-msg</code>) <code>attributeds</code> non-escaped (as in <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="PRINC (MGL-PAX:CLHS FUNCTION)"><code>princ</code></a> or ~A) with
 the output being as table-like as possible.</p></li>
 </ul>
 
@@ -1511,7 +1511,7 @@ the output being as table-like as possible.</p></li>
 
 <p>A simple counter whose <a href="#MGL-CORE:ADD-TO-COUNTER%20GENERIC-FUNCTION" title="MGL-CORE:ADD-TO-COUNTER GENERIC-FUNCTION"><code>add-to-counter</code></a> takes two
 additional parameters: an increment to the internal sums of called
-the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm" title="NUMERATOR FUNCTION"><code>numerator</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm" title="DENOMINATOR FUNCTION"><code>denominator</code></a>. <a href="#MGL-CORE:COUNTER-VALUES%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER-VALUES GENERIC-FUNCTION"><code>counter-values</code></a> returns two
+the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm" title="NUMERATOR (MGL-PAX:CLHS FUNCTION)"><code>numerator</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm" title="DENOMINATOR (MGL-PAX:CLHS FUNCTION)"><code>denominator</code></a>. <a href="#MGL-CORE:COUNTER-VALUES%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER-VALUES GENERIC-FUNCTION"><code>counter-values</code></a> returns two
 values:</p>
 
 <ul>
@@ -1573,7 +1573,7 @@ sequences.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/counter.lisp#L250">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:CONCATENATION-TYPE%20%28MGL-PAX:READER%20MGL-CORE:CONCAT-COUNTER%29" >concatenation-type</a></span></span> <span class="locative-args">concat-counter (:concatenation-type = 'list)</span></span></p>
 
 <p>A type designator suitable as the RESULT-TYPE
-argument to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm" title="CONCATENATE FUNCTION"><code>concatenate</code></a>.</p></li>
+argument to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm" title="CONCATENATE (MGL-PAX:CLHS FUNCTION)"><code>concatenate</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3A-40MGL-CLASSIFICATION-20MGL-PAX-3ASECTION-29"></a>
@@ -1750,7 +1750,7 @@ element of <code>truths</code>. Weighted cases add their weight to both
 counts (returned as the first and second values) instead of 1 as in
 the non-weighted case.</p>
 
-<p>Note how the returned values are suitable for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm" title="MULTIPLE-VALUE-CALL MGL-PAX:MACRO"><code>multiple-value-call</code></a>
+<p>Note how the returned values are suitable for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm" title="MULTIPLE-VALUE-CALL (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>multiple-value-call</code></a>
 with #'<a href="#MGL-CORE:ADD-TO-COUNTER%20GENERIC-FUNCTION" title="MGL-CORE:ADD-TO-COUNTER GENERIC-FUNCTION"><code>add-to-counter</code></a> and a <a href="#MGL-CORE:CLASSIFICATION-ACCURACY-COUNTER%20CLASS" title="MGL-CORE:CLASSIFICATION-ACCURACY-COUNTER CLASS"><code>classification-accuracy-counter</code></a>.</p></li>
 </ul>
 
@@ -1765,7 +1765,7 @@ the same index of <code>truths</code> and <code>predictions</code>. <code>truth-
 that's when applied to an element of <code>truths</code> returns a sequence
 representing some kind of discrete target distribution (P in the
 definition below). <code>truth-key</code> may be <code>nil</code> which is equivalent to the
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY FUNCTION"><code>identity</code></a> function. <code>prediction-key</code> is the same kind of key for
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)"><code>identity</code></a> function. <code>prediction-key</code> is the same kind of key for
 <code>predictions</code>, but the sequence it returns represents a distribution
 that approximates (Q below) the true one.</p>
 
@@ -1809,7 +1809,7 @@ in the distribution sequences to a list of two elements:</p>
     0 (0.0 0))
 </code></pre>
 
-<p>Note how the returned values are suitable for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm" title="MULTIPLE-VALUE-CALL MGL-PAX:MACRO"><code>multiple-value-call</code></a>
+<p>Note how the returned values are suitable for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm" title="MULTIPLE-VALUE-CALL (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>multiple-value-call</code></a>
 with #'<a href="#MGL-CORE:ADD-TO-COUNTER%20GENERIC-FUNCTION" title="MGL-CORE:ADD-TO-COUNTER GENERIC-FUNCTION"><code>add-to-counter</code></a> and a <a href="#MGL-CORE:CROSS-ENTROPY-COUNTER%20CLASS" title="MGL-CORE:CROSS-ENTROPY-COUNTER CLASS"><code>cross-entropy-counter</code></a>.</p></li>
 </ul>
 
@@ -1874,7 +1874,7 @@ weight to both counts (returned as the first and second values).</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/classification.lisp#L353">[class]</a></span> <span class="reference-object"><a href="#MGL-CORE:CLASSIFICATION-ACCURACY-COUNTER%20CLASS" >classification-accuracy-counter</a></span></span> <span class="locative-args"><a href="#MGL-CORE:BASIC-COUNTER%20CLASS" title="MGL-CORE:BASIC-COUNTER CLASS">basic-counter</a></span></span></p>
 
 <p>A <a href="#MGL-CORE:BASIC-COUNTER%20CLASS" title="MGL-CORE:BASIC-COUNTER CLASS"><code>basic-counter</code></a> with &quot;acc.&quot; as its <code>:type</code>
-attribute and a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pr_obj.htm" title="PRINT-OBJECT GENERIC-FUNCTION"><code>print-object</code></a> method that prints percentages.</p></li>
+attribute and a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pr_obj.htm" title="PRINT-OBJECT (MGL-PAX:CLHS GENERIC-FUNCTION)"><code>print-object</code></a> method that prints percentages.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3ACROSS-ENTROPY-COUNTER-20CLASS-29"></a>
@@ -1947,7 +1947,7 @@ purposes.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/classification.lisp#L464">[generic-function]</a></span> <span class="reference-object"><a href="#MGL-CORE:MAP-CONFUSION-MATRIX%20GENERIC-FUNCTION" >map-confusion-matrix</a></span></span> <span class="locative-args">fn matrix</span></span></p>
 
 <p>Call <code>fn</code> with <code>target</code>, <code>prediction</code>,
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_countc.htm" title="COUNT FUNCTION"><code>count</code></a> paramaters for each cell in the confusion matrix. Cells with a
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_countc.htm" title="COUNT (MGL-PAX:CLHS FUNCTION)"><code>count</code></a> paramaters for each cell in the confusion matrix. Cells with a
 zero count may be ommitted.</p></li>
 </ul>
 
@@ -2025,7 +2025,7 @@ functions.</p></li>
 
 <h3><a href="#MGL-CORE:@MGL-FEATURE-SELECTION%20MGL-PAX:SECTION">8.1 Feature Selection</a></h3>
 
-<p>The following <em>scoring functions</em> all return an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> hash table
+<p>The following <em>scoring functions</em> all return an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table
 that maps features to scores.</p>
 
 <p><a id="x-28MGL-CORE-3ACOUNT-FEATURES-20FUNCTION-29"></a>
@@ -2034,7 +2034,7 @@ that maps features to scores.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/feature.lisp#L17">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:COUNT-FEATURES%20FUNCTION" >count-features</a></span></span> <span class="locative-args">documents mapper &amp;key (key #'identity)</span></span></p>
 
-<p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> hash table whose keys are
+<p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table whose keys are
 features of <code>documents</code> and values are counts of occurrences of
 features. <code>mapper</code> takes a function and a document and calls function
 with features of the document.</p>
@@ -2054,7 +2054,7 @@ with features of the document.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/feature.lisp#L59">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:FEATURE-LLRS%20FUNCTION" >feature-llrs</a></span></span> <span class="locative-args">documents mapper class-fn &amp;key (classes (all-document-classes documents class-fn))</span></span></p>
 
-<p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> hash table whose keys are
+<p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table whose keys are
 features of <code>documents</code> and values are their log likelihood ratios.
 <code>mapper</code> takes a function and a document and calls function with
 features of the document.</p>
@@ -2076,7 +2076,7 @@ features of the document.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/feature.lisp#L122">[function]</a></span> <span class="reference-object"><a href="#MGL-CORE:FEATURE-DISAMBIGUITIES%20FUNCTION" >feature-disambiguities</a></span></span> <span class="locative-args">documents mapper class-fn &amp;key (classes (all-document-classes documents class-fn))</span></span></p>
 
-<p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> hash table whose keys are
+<p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table whose keys are
 features of <code>documents</code> and values are their <em>disambiguities</em>. <code>mapper</code>
 takes a function and a document and calls function with features of
 the document.</p>
@@ -2116,7 +2116,7 @@ generic enough to be almost meaningless. See <a href="#MGL-CORE:ENCODER%2FDECODE
 simple, <a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS"><code>mgl-nlp:bag-of-words-encoder</code></a> for a slightly more involved
 example.</p>
 
-<p>If <code>encoder</code> is a function designator, then it's simply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="FUNCALL FUNCTION"><code>funcall</code></a>ed
+<p>If <code>encoder</code> is a function designator, then it's simply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="FUNCALL (MGL-PAX:CLHS FUNCTION)"><code>funcall</code></a>ed
 with <code>decoded</code>.</p></li>
 </ul>
 
@@ -2130,7 +2130,7 @@ with <code>decoded</code>.</p></li>
 <code>encoder</code> pair, <code>(decode decoder (encode encoder object))</code> must be
 equal in some sense to <code>object</code>.</p>
 
-<p>If <code>decoder</code> is a function designator, then it's simply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="FUNCALL FUNCTION"><code>funcall</code></a>ed
+<p>If <code>decoder</code> is a function designator, then it's simply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="FUNCALL (MGL-PAX:CLHS FUNCTION)"><code>funcall</code></a>ed
 with <code>encoded</code>.</p></li>
 </ul>
 
@@ -2141,7 +2141,7 @@ with <code>encoded</code>.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/feature.lisp#L231">[class]</a></span> <span class="reference-object"><a href="#MGL-CORE:ENCODER%2FDECODER%20CLASS" >encoder/decoder</a></span></span></span></p>
 
 <p>Implements O(1) <a href="#MGL-CORE:ENCODE%20GENERIC-FUNCTION" title="MGL-CORE:ENCODE GENERIC-FUNCTION"><code>encode</code></a> and <a href="#MGL-CORE:DECODE%20GENERIC-FUNCTION" title="MGL-CORE:DECODE GENERIC-FUNCTION"><code>decode</code></a> by having an
-internal decoded-to-encoded and an encoded-to-decoded <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a> hash
+internal decoded-to-encoded and an encoded-to-decoded <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash
 table. <code>encoder/decoder</code> objects can be saved and loaded (see
 <a href="#MGL-CORE:@MGL-PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">Persistence</a>) as long as the elements in the hash tables have
 read/write consitency.</p>
@@ -2221,7 +2221,7 @@ environment.</p>
 
 <p>Optimization terminates if <code>dataset</code> is a sampler and it runs out or
 when some other condition met (see <a href="#MGL-OPT:TERMINATION%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" title="MGL-OPT:TERMINATION (MGL-PAX:ACCESSOR MGL-OPT:ITERATIVE-OPTIMIZER)"><code>termination</code></a>, for example). If
-<code>dataset</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE CLASS"><code>sequence</code></a>, then it is reused over and over again.</p>
+<code>dataset</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE (MGL-PAX:CLHS CLASS)"><code>sequence</code></a>, then it is reused over and over again.</p>
 
 <p>Examples for various optimizers are provided in <a href="#MGL-GD:@MGL-GD%20MGL-PAX:SECTION" title="Gradient Descent">Gradient Descent</a> and
 <a href="#MGL-CG:@MGL-CG%20MGL-PAX:SECTION" title="Conjugate Gradient">Conjugate Gradient</a>.</p></li>
@@ -2366,7 +2366,7 @@ and reset them.</p></li>
 <p>A utility that's often called at the start of
 optimization (from <a href="#MGL-OPT:ON-OPTIMIZATION-STARTED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" title="MGL-OPT:ON-OPTIMIZATION-STARTED (MGL-PAX:ACCESSOR MGL-OPT:ITERATIVE-OPTIMIZER)"><code>on-optimization-started</code></a>). The default
 implementation logs the description of <code>gradient-source</code> (as in
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm" title="DESCRIBE FUNCTION"><code>describe</code></a>) and <code>optimizer</code> and calls <code>log-mat-room</code>.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm" title="DESCRIBE (MGL-PAX:CLHS FUNCTION)"><code>describe</code></a>) and <code>optimizer</code> and calls <code>log-mat-room</code>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-OPT-3A-40MGL-OPT-COST-20MGL-PAX-3ASECTION-29"></a>
@@ -2477,7 +2477,7 @@ function with respect to some of its parameters.</p>
 <span class="comment">;;; =&gt; A MAT with a single value of about 2.5.</span></span></code></pre>
 
 <p>We are going to see a number of accessors for optimizer paramaters.
-In general, it's allowed to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a> real slot accessors (as opposed to
+In general, it's allowed to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a> real slot accessors (as opposed to
 readers and writers) at any time during optimization and so is
 defining a method on an optimizer subclass that computes the value
 in any way. For example, to decay the learning rate on a per
@@ -3686,7 +3686,7 @@ sigmoid so it only needs to calculate the second term.</p></li>
 </ul>
 
 <p>In addition to the above, clumps also have to support <code>size</code>(<a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" title="MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP)"><code>0</code></a> <a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" title="MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET)"><code>1</code></a>),
-<a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a>, <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a> (and the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF MGL-PAX:MACRO"><code>setf</code></a> methods of the latter two)
+<a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a>, <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a> (and the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a> methods of the latter two)
 which can be accomplished just by inheriting from <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>, <a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>fnn</code></a>, <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>rnn</code></a>, or
 a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>lump</code></a>.</p>
 
@@ -3751,7 +3751,7 @@ most uses.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/backprop.lisp#L237">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:FIND-CLUMP%20FUNCTION" >find-clump</a></span></span> <span class="locative-args">name bpn &amp;key (errorp t)</span></span></p>
 
 <p>Find the clump with <code>name</code> among <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>clumps</code></a> of <code>bpn</code>. As always, names are
-compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>. If not found, then return <code>nil</code> or signal and
+compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. If not found, then return <code>nil</code> or signal and
 error depending on <code>errorp</code>.</p></li>
 </ul>
 
@@ -3892,7 +3892,7 @@ recurrent one, see <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/backprop.lisp#L361">[macro]</a></span> <span class="reference-object"><a href="#MGL-BP:BUILD-FNN%20MGL-PAX:MACRO" >build-fnn</a></span></span> <span class="locative-args">(&amp;key fnn (class ''fnn) initargs max-n-stripes name) &amp;body clumps</span></span></p>
 
-<p>Syntactic sugar to assemble <code>fnn</code>s from <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a>s. Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm" title="LET* MGL-PAX:MACRO"><code>let*</code></a>, it is a
+<p>Syntactic sugar to assemble <code>fnn</code>s from <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a>s. Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm" title="LET* (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>let*</code></a>, it is a
 sequence of bindings (of symbols to <code>clump</code>s). The names of the clumps
 created default to the symbol of the binding. In case a clump is not
 bound to a symbol (because it was created in a nested expression),
@@ -4661,7 +4661,7 @@ applied to the <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>rnn<
 during training or prediction. To be able to easily switch between
 sets of monitors, in addition to a list of monitors this can be a
 symbol or a function, too. If it's a symbol, then its a designator
-for its <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm" title="SYMBOL-VALUE FUNCTION"><code>symbol-value</code></a>. If it's a function, then it must have no
+for its <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm" title="SYMBOL-VALUE (MGL-PAX:CLHS FUNCTION)"><code>symbol-value</code></a>. If it's a function, then it must have no
 arguments and it's a designator for its return value.</p></li>
 </ul>
 
@@ -5214,7 +5214,7 @@ automatically.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/lumps.lisp#L1187">[class]</a></span> <span class="reference-object"><a href="#MGL-BP:-%3ETANH%20CLASS" >-&gt;tanh</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a></span></span></p>
 
-<p>Applies the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH FUNCTION"><code>tanh</code></a> function to its input in an
+<p>Applies the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH (MGL-PAX:CLHS FUNCTION)"><code>tanh</code></a> function to its input in an
 elementwise manner. The <code>size</code>(<a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" title="MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP)"><code>0</code></a> <a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" title="MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET)"><code>1</code></a>) of this lump is the size of its input
 which is determined automatically.</p></li>
 </ul>
@@ -5232,7 +5232,7 @@ which is determined automatically.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/lumps.lisp#L1278">[class]</a></span> <span class="reference-object"><a href="#MGL-BP:-%3ESCALED-TANH%20CLASS" >-&gt;scaled-tanh</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a></span></span></p>
 
-<p>Pretty much like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH FUNCTION"><code>tanh</code></a> but its input and output is
+<p>Pretty much like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH (MGL-PAX:CLHS FUNCTION)"><code>tanh</code></a> but its input and output is
 scaled in such a way that the variance of its output is close to 1
 if the variance of its input is close to 1 which is a nice property
 to combat vanishing gradients. The actual function is <code>1.7159 *
@@ -5313,7 +5313,7 @@ state.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/46d47949278e163463834aca572649b996f28419/src/lumps.lisp#L1581">[class]</a></span> <span class="reference-object"><a href="#MGL-BP:-%3EMIN%20CLASS" >-&gt;min</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a></span></span></p>
 
-<p>Same as <a href="#MGL-BP:-%3EMAX%20CLASS" title="MGL-BP:-&gt;MAX CLASS"><code>-&gt;max</code></a>, but it computes the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_max_m.htm" title="MIN FUNCTION"><code>min</code></a> of groups.
+<p>Same as <a href="#MGL-BP:-%3EMAX%20CLASS" title="MGL-BP:-&gt;MAX CLASS"><code>-&gt;max</code></a>, but it computes the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_max_m.htm" title="MIN (MGL-PAX:CLHS FUNCTION)"><code>min</code></a> of groups.
 Rarely useful.</p></li>
 </ul>
 
@@ -5472,7 +5472,7 @@ s_i = {softmax}(x_1, x_2, ..., x_g) =
 $$</p>
 
 <p>In other words, in the forward phase this lump takes input <code>x</code>,
-computes its elementwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm" title="EXP FUNCTION"><code>exp</code></a>, normalizes each group of
+computes its elementwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm" title="EXP (MGL-PAX:CLHS FUNCTION)"><code>exp</code></a>, normalizes each group of
 <a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29" title="MGL-COMMON:GROUP-SIZE (MGL-PAX:READER MGL-BP:-&gt;SOFTMAX-XE-LOSS)"><code>group-size</code></a> elements to sum to 1 to get
 the softmax which is the result that goes into <a href="#MGL-COMMON:NODES%20GENERIC-FUNCTION" title="MGL-COMMON:NODES GENERIC-FUNCTION"><code>nodes</code></a>. In the
 backward phase, there are two sources of gradients: the lumps that
@@ -6045,7 +6045,7 @@ to human reference translations.</p>
 
 <p><code>candidates</code> (keyed by <code>candidate-key</code>) and <code>references</code> (keyed by
 <code>reference-key</code>) are sequences of sentences. A sentence is a sequence
-of words. Words are compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL FUNCTION"><code>equal</code></a>, and may be any kind of
+of words. Words are compared with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>, and may be any kind of
 object (not necessarily strings).</p>
 
 <p>Currently there is no support for multiple reference translations. <code>n</code>

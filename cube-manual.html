@@ -286,7 +286,7 @@ such facet exists.</p></li>
 <a id="MGL-CUBE:FACET%20CLASS"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[class]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET%20CLASS" >facet</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT CLASS">structure-object</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[class]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET%20CLASS" >facet</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)">structure-object</a></span></span></p>
 
 <p>A cube has facets, as we discussed in <a href="#MGL-CUBE:@CUBE-BASICS%20MGL-PAX:SECTION" title="Basics">Basics</a>. Facets holds
 the data in a particular representation, this is called the <em>value</em>
@@ -378,7 +378,7 @@ able to add specialized methods, the name of the
 facet (<a href="#MGL-CUBE:FACET-NAME%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-NAME MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-name</code></a>) is also passed as the
 argument right in front of the corresponding facet argument.</p>
 
-<p>In summary, define <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL FUNCTION"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL TYPE"><code>1</code></a>) specializers on facet name arguments, and use
+<p>In summary, define <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) specializers on facet name arguments, and use
 <a href="#MGL-CUBE:FACET-DESCRIPTION%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-DESCRIPTION MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-description</code></a> to associate arbitrary information with facets.</p>
 
 <p><a id="x-28MGL-CUBE-3AMAKE-FACET-2A-20GENERIC-FUNCTION-29"></a>
@@ -433,7 +433,7 @@ of this function. See <a href="#MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET*%20MGL-PA
 details.</p>
 
 <p>Specializations will most likely want to call the default
-implementation (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_call_n.htm" title="CALL-NEXT-METHOD FUNCTION"><code>call-next-method</code></a>) but with a lambda that
+implementation (with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_call_n.htm" title="CALL-NEXT-METHOD (MGL-PAX:CLHS FUNCTION)"><code>call-next-method</code></a>) but with a lambda that
 transforms <code>facet-value</code> before passing it on to <code>fn</code>.</p></li>
 </ul>
 
