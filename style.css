@@ -154,6 +154,7 @@ code {
   font-family: var(--font-family-monospace);
   font-size: var(--font-size-monospace);
   color: #111;
+  hyphens: none;
 }
 
 hr {
