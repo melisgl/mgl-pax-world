@@ -2713,7 +2713,7 @@ to specify non-symbols for <code>trial-var</code>, one can also write:</p>
 </ul>
 
 <p>Lambda tests can be thought of as analogous to <code>(funcall (lambda ()
-body))</code>. The presence of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>lambda</code></a> is important because it is
+body))</code>. The presence of the <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) is important because it is
 stored in the <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> object to support <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">Rerunning Trials</a>.</p></li>
 </ul>
 
@@ -2899,7 +2899,7 @@ run by invoking the <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-TEST</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
 
 <p>The situation is similar with a <a href="#TRY:WITH-TEST%20MGL-PAX:MACRO" title="TRY:WITH-TEST MGL-PAX:MACRO"><code>with-test</code></a>, only that <code>try</code> wraps an
-extra <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> around the execution of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>lambda</code></a> to ensure that all
+extra <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> around the execution of the <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) to ensure that all
 <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a>s are signalled within a trial.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code"></span>)</span>
@@ -3628,7 +3628,7 @@ is like a normal instance, but it can also be <a href="http://www.lispworks.com/
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/17389922f33fb4d774aba7397c24f95dbafa89fb/src/manual.lisp#L451">[glossary-term]</a></span> <span class="reference-object"><a href="#TRY:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" >non-local exit</a></span></span></span></p>
 
 <p>This is a term from the Common Lisp ANSI standard. If a form does
-not return normally, but control is transferred via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>go</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
+not return normally, but control is transferred via <code>go</code>(<a href="pax-manual.html#GO%20MGL-PAX:LOCATIVE" title="GO MGL-PAX:LOCATIVE"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="RETURN-FROM (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return-from</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>, then it is said to have performed a non-local
 exit.</p></li>
 </ul>
