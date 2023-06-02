@@ -3609,7 +3609,7 @@ generated. They differ from <code>file-journal</code>s in that events written to
 <code>in-memory-journal</code>s are not serialized (and deserialized on replay)
 with the following consequences for the objects recorded by
 <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>)
-of the block, or the value returned by <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)):</p>
+of the block, or the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>):</p>
 
 <ul>
 <li><p>These objects need not be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p></li>
@@ -3683,7 +3683,7 @@ a more full-featured solution for repeated <a href="#JOURNAL:@REPLAY%20MGL-PAX:S
 <p>Since serialization in <code>file-journal</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a>
 and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE (MGL-PAX:CLHS FUNCTION)"><code>write</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> records in events (i.e. its
 <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>) of the block, or
-the value returned by <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p>
+the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="JOURNAL:@READABLE MGL-PAX:GLOSSARY-TERM">readable</a>.</p>
 
 <p>File journals are human-readable and editable by hand with some
 care. When editing, the following needs to be remembered:</p>
@@ -4276,7 +4276,7 @@ boolean-valued symbols on <code>cl:stream</code>s. In Journal, they are used by
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/84ab82f42b95a2d15789e3c5dff77022bdd1ea03/src/journal.lisp#L5933">[glossary-term]</a></span> <span class="reference-object"><a href="#JOURNAL:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" >non-local exit</a></span></span></span></p>
 
 <p>This is a term from the Common Lisp ANSI standard. If a form does
-not return normally, but control is transferred via <code>go</code>(<a href="pax-manual.html#GO%20MGL-PAX:LOCATIVE" title="GO MGL-PAX:LOCATIVE"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
+not return normally, but control is transferred via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>go</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="RETURN-FROM (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return-from</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>, then it is said to have performed a non-local
 exit. This definition of a non-local exit includes <code>event-exit</code>(<a href="#JOURNAL:EVENT-EXIT%20FUNCTION" title="JOURNAL:EVENT-EXIT FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-EXIT%20TYPE" title="JOURNAL:EVENT-EXIT TYPE"><code>1</code></a>)
 <code>:condition</code>, <code>:error</code> and <code>:nlx</code>.</p></li>

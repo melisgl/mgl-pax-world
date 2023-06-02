@@ -512,7 +512,7 @@ environment necessary for lower level tests.</p>
 
 <h2><a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION">4 Events</a></h2>
 
-<p>Try is built around events implemented as <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>)s.
+<p>Try is built around events implemented as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>s.
 Matching the types of events to <a href="#TRY:*DEBUG*%20VARIABLE" title="TRY:*DEBUG* VARIABLE"><code>*debug*</code></a>, <a href="#TRY:*COUNT*%20VARIABLE" title="TRY:*COUNT* VARIABLE"><code>*count*</code></a>, <a href="#TRY:*COLLECT*%20VARIABLE" title="TRY:*COLLECT* VARIABLE"><code>*collect*</code></a>, <a href="#TRY:*RERUN*%20VARIABLE" title="TRY:*RERUN* VARIABLE"><code>*rerun*</code></a>,
 <a href="#TRY:*PRINT*%20VARIABLE" title="TRY:*PRINT* VARIABLE"><code>*print*</code></a>, and <a href="#TRY:*DESCRIBE*%20VARIABLE" title="TRY:*DESCRIBE* VARIABLE"><code>*describe*</code></a> is what gives Try its flexibility.</p>
 
@@ -2140,7 +2140,7 @@ Else, it is the most recent condition that matched
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/17389922f33fb4d774aba7397c24f95dbafa89fb/src/checks.lisp#L152">[macro]</a></span> <span class="reference-object"><a href="#TRY:SIGNALS%20MGL-PAX:MACRO" >signals</a></span></span> <span class="locative-args">(condition-type &amp;key pred (handler t) (on-return t) (on-nlx t) name msg ctx) &amp;body body</span></span></p>
 
-<p>Check that <code>body</code> signals a <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>) of <code>condition-type</code> (not
+<p>Check that <code>body</code> signals a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a> of <code>condition-type</code> (not
 evaluated) that matches <code>pred</code>. To detect matching conditions, <code>signals</code>
 sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_handle.htm" title="HANDLER-BIND (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>handler-bind</code></a>. Thus it can only see what <code>body</code> does not
 handle. The arguments are described in <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">Checking Conditions</a>.</p>
@@ -2167,7 +2167,7 @@ but <code>pred</code> does not.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/17389922f33fb4d774aba7397c24f95dbafa89fb/src/checks.lisp#L207">[macro]</a></span> <span class="reference-object"><a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" >signals-not</a></span></span> <span class="locative-args">(condition-type &amp;key pred (handler t) (on-return t) (on-nlx t) name msg ctx) &amp;body body</span></span></p>
 
-<p>Check that <code>body</code> does not signal a <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>) of <code>condition-type</code> (not
+<p>Check that <code>body</code> does not signal a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a> of <code>condition-type</code> (not
 evaluated) that matches <code>pred</code>. To detect matching conditions,
 <code>signals-not</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_handle.htm" title="HANDLER-BIND (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>handler-bind</code></a>. Thus, it can only see what <code>body</code>
 does not handle. The arguments are described in
@@ -2180,7 +2180,7 @@ does not handle. The arguments are described in
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/17389922f33fb4d774aba7397c24f95dbafa89fb/src/checks.lisp#L238">[macro]</a></span> <span class="reference-object"><a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" >invokes-debugger</a></span></span> <span class="locative-args">(condition-type &amp;key pred (handler t) (on-return t) (on-nlx t) name msg ctx) &amp;body body</span></span></p>
 
-<p>Check that <code>body</code> enters the debugger with a <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>) of
+<p>Check that <code>body</code> enters the debugger with a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a> of
 <code>condition-type</code> (not evaluated) that matches <code>pred</code>. To detect matching
 conditions, <code>invokes-debugger</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debugg.htm" title="*DEBUGGER-HOOK* (MGL-PAX:CLHS VARIABLE)"><code>*debugger-hook*</code></a>. Thus, if
 <code>*debugger-hook*</code> is changed by <code>body</code>, it may not detect the condition.
@@ -2202,7 +2202,7 @@ invoking debugger would normally cause the trial to abort.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/17389922f33fb4d774aba7397c24f95dbafa89fb/src/checks.lisp#L291">[macro]</a></span> <span class="reference-object"><a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" >invokes-debugger-not</a></span></span> <span class="locative-args">(condition-type &amp;key pred (handler t) (on-return t) (on-nlx t) name msg ctx) &amp;body body</span></span></p>
 
-<p>Check that <code>body</code> does not enter the debugger with a <code>condition</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="pax-manual.html#CONDITION%20MGL-PAX:LOCATIVE" title="CONDITION MGL-PAX:LOCATIVE"><code>1</code></a>) of
+<p>Check that <code>body</code> does not enter the debugger with a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a> of
 <code>condition-type</code> (not evaluated) that matches <code>pred</code>. To detect matching
 conditions, <code>invokes-debugger-not</code> sets up a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debugg.htm" title="*DEBUGGER-HOOK* (MGL-PAX:CLHS VARIABLE)"><code>*debugger-hook*</code></a>. Thus, if
 <code>*debugger-hook*</code> is changed by <code>body</code>, it may not detect the condition.
@@ -3130,7 +3130,7 @@ be:</p>
 <li><p>a trial</p></li>
 </ul></li>
 <li><p>a list of testables</p></li>
-<li><p>a <code>package</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="pax-manual.html#PACKAGE%20MGL-PAX:LOCATIVE" title="PACKAGE MGL-PAX:LOCATIVE"><code>1</code></a>)</p></li>
+<li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>package</code></a></p></li>
 </ul>
 
 <p>In the function designator cases, <code>try</code> calls the designated function.
@@ -3628,7 +3628,7 @@ is like a normal instance, but it can also be <a href="http://www.lispworks.com/
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/17389922f33fb4d774aba7397c24f95dbafa89fb/src/manual.lisp#L451">[glossary-term]</a></span> <span class="reference-object"><a href="#TRY:@NON-LOCAL-EXIT%20MGL-PAX:GLOSSARY-TERM" >non-local exit</a></span></span></span></p>
 
 <p>This is a term from the Common Lisp ANSI standard. If a form does
-not return normally, but control is transferred via <code>go</code>(<a href="pax-manual.html#GO%20MGL-PAX:LOCATIVE" title="GO MGL-PAX:LOCATIVE"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
+not return normally, but control is transferred via <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm" title="GO (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>go</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm" title="RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return</code></a>,
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm" title="RETURN-FROM (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>return-from</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>, then it is said to have performed a non-local
 exit.</p></li>
 </ul>
