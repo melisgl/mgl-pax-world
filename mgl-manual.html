@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
 <head>
-<title>\MGL Manual</title>
+<title>MGL Manual
+</title>
 <link type='text/css' href='style.css' rel='stylesheet'>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -941,7 +942,7 @@ capable of dealing simultaneously. </p></li>
 
 <p>Allocate the necessary stuff to allow for
 <code>max-n-stripes</code> number of stripes to be worked with simultaneously in
-<code>object</code>. This is called when <code>max-n-stripes</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>'ed.</p></li>
+<code>object</code>. This is called when <code>max-n-stripes</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>'ed.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3AN-STRIPES-20GENERIC-FUNCTION-29"></a>
@@ -962,7 +963,7 @@ This is at most <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-
 
 <p>Set the number of stripes (out of <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a>)
 that are in use in <code>object</code>. This is called when <code>n-stripes</code> is
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>'ed.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>'ed.</p></li>
 </ul>
 
 <p><a id="x-28MGL-CORE-3AWITH-STRIPES-20MGL-PAX-3AMACRO-29"></a>
@@ -2477,7 +2478,7 @@ function with respect to some of its parameters.</p>
 <span class="comment">;;; =&gt; A MAT with a single value of about 2.5.</span></span></code></pre>
 
 <p>We are going to see a number of accessors for optimizer paramaters.
-In general, it's allowed to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a> real slot accessors (as opposed to
+In general, it's allowed to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a> real slot accessors (as opposed to
 readers and writers) at any time during optimization and so is
 defining a method on an optimizer subclass that computes the value
 in any way. For example, to decay the learning rate on a per
@@ -3686,7 +3687,7 @@ sigmoid so it only needs to calculate the second term.</p></li>
 </ul>
 
 <p>In addition to the above, clumps also have to support <code>size</code>(<a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" title="MGL-COMMON:SIZE (MGL-PAX:READER MGL-BP:LUMP)"><code>0</code></a> <a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" title="MGL-COMMON:SIZE (MGL-PAX:READER MGL-OPT:SEGMENT-SET)"><code>1</code></a>),
-<a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a>, <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a> (and the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a> methods of the latter two)
+<a href="#MGL-CORE:N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:N-STRIPES GENERIC-FUNCTION"><code>n-stripes</code></a>, <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a> (and the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a> methods of the latter two)
 which can be accomplished just by inheriting from <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>, <a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>fnn</code></a>, <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>rnn</code></a>, or
 a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>lump</code></a>.</p>
 
