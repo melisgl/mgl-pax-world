@@ -292,76 +292,76 @@ such facet exists.</p></li>
 <p>A cube has facets, as we discussed in <a href="#MGL-CUBE:@CUBE-BASICS%20MGL-PAX:SECTION" title="Basics">Basics</a>. Facets holds
 the data in a particular representation, this is called the <em>value</em>
 of the facet. A facet holds one such value and some metadata
-pertaining to it: its <a href="#MGL-CUBE:FACET-NAME%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-NAME MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-name</code></a>, whether it's
-up-to-date (<a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-UP-TO-DATE-P MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-up-to-date-p</code></a>), etc. <code>facet</code> objects are never seen
+pertaining to it: its <a href="#MGL-CUBE:FACET-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-NAME (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-name</code></a>, whether it's
+up-to-date (<a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-UP-TO-DATE-P (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-up-to-date-p</code></a>), etc. <code>facet</code> objects are never seen
 when simply using a cube, they are for implementing the
 <a href="#MGL-CUBE:@CUBE-FACET-EXTENSION-API%20MGL-PAX:SECTION" title="Facet Extension API">Facet Extension API</a>.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-NAME-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-NAME%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L266">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-NAME%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-name</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L266">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-name</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>A symbol that uniquely identifies the facet within a cube.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-VALUE-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-VALUE%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-VALUE-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-VALUE%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-VALUE%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-value</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-VALUE%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-value</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>This is what's normally exposed by <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a>.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-DESCRIPTION-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-DESCRIPTION%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-DESCRIPTION-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-DESCRIPTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-DESCRIPTION%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-description</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-DESCRIPTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-description</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>Returned by <a href="#MGL-CUBE:MAKE-FACET*%20GENERIC-FUNCTION" title="MGL-CUBE:MAKE-FACET* GENERIC-FUNCTION"><code>make-facet*</code></a> as its second value, this is an
 arbitrary object in which additional information can be
 stored.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-UP-TO-DATE-P%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-UP-TO-DATE-P-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-UP-TO-DATE-P%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-up-to-date-p</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L258">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-up-to-date-p</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>Whether the cube has changed since this facet has been last
 updated. See <a href="#MGL-CUBE:FACET-UP-TO-DATE-P*%20GENERIC-FUNCTION" title="MGL-CUBE:FACET-UP-TO-DATE-P* GENERIC-FUNCTION"><code>facet-up-to-date-p*</code></a>.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-N-WATCHERS-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-N-WATCHERS%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-N-WATCHERS-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-N-WATCHERS%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L270">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-N-WATCHERS%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-n-watchers</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L270">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-N-WATCHERS%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-n-watchers</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>The number of active <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a>s. Updated by <a href="#MGL-CUBE:WATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:WATCH-FACET GENERIC-FUNCTION"><code>watch-facet</code></a> and
 <a href="#MGL-CUBE:UNWATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:UNWATCH-FACET GENERIC-FUNCTION"><code>unwatch-facet</code></a>.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-WATCHER-THREADS-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-WATCHER-THREADS%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-WATCHER-THREADS-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-WATCHER-THREADS%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L271">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-WATCHER-THREADS%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-watcher-threads</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L271">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-WATCHER-THREADS%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-watcher-threads</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>The threads (one for each watcher) that have active
 <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a>s.</p></li>
 </ul>
 
-<p><a id="x-28MGL-CUBE-3AFACET-DIRECTION-20MGL-PAX-3ASTRUCTURE-ACCESSOR-29"></a>
-<a id="MGL-CUBE:FACET-DIRECTION%20MGL-PAX:STRUCTURE-ACCESSOR"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-DIRECTION-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20MGL-CUBE-3AFACET-29-29"></a>
+<a id="MGL-CUBE:FACET-DIRECTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L272">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-DIRECTION%20MGL-PAX:STRUCTURE-ACCESSOR" >facet-direction</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L272">[structure-accessor]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET-DIRECTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" >facet-direction</a></span></span> <span class="locative-args">facet</span></span></p>
 
 <p>The direction of the last <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a> on this facet.</p></li>
 </ul>
@@ -376,11 +376,11 @@ updated. See <a href="#MGL-CUBE:FACET-UP-TO-DATE-P*%20GENERIC-FUNCTION" title="M
 <p>Many of the generic functions in this section take <a href="#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>facet</code></a> arguments.
 <code>facet</code> is a structure and is not intended to be subclassed. To be
 able to add specialized methods, the name of the
-facet (<a href="#MGL-CUBE:FACET-NAME%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-NAME MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-name</code></a>) is also passed as the
+facet (<a href="#MGL-CUBE:FACET-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-NAME (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-name</code></a>) is also passed as the
 argument right in front of the corresponding facet argument.</p>
 
 <p>In summary, define <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) specializers on facet name arguments, and use
-<a href="#MGL-CUBE:FACET-DESCRIPTION%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-DESCRIPTION MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-description</code></a> to associate arbitrary information with facets.</p>
+<a href="#MGL-CUBE:FACET-DESCRIPTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-DESCRIPTION (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-description</code></a> to associate arbitrary information with facets.</p>
 
 <p><a id="x-28MGL-CUBE-3AMAKE-FACET-2A-20GENERIC-FUNCTION-29"></a>
 <a id="MGL-CUBE:MAKE-FACET*%20GENERIC-FUNCTION"></a></p>
@@ -392,7 +392,7 @@ argument right in front of the corresponding facet argument.</p>
 when there is no facet with <code>facet-name</code>. As the first value, return a
 new object capable of storing <code>cube</code>'s data in the facet with
 <code>facet-name</code>. As the second value, return a facet description which
-will be available as <a href="#MGL-CUBE:FACET-DESCRIPTION%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-DESCRIPTION MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-description</code></a>. As the third value, return a
+will be available as <a href="#MGL-CUBE:FACET-DESCRIPTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-DESCRIPTION (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-description</code></a>. As the third value, return a
 generalized boolean indicating whether this facet must be explicitly
 destroyed (in which case a finalizer will be added to <code>cube</code>).</p></li>
 </ul>
@@ -428,7 +428,7 @@ is what <a href="#MGL-CUBE:SELECT-COPY-SOURCE-FOR-FACET*%20GENERIC-FUNCTION" tit
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/cube.lisp#L382">[generic-function]</a></span> <span class="reference-object"><a href="#MGL-CUBE:CALL-WITH-FACET*%20GENERIC-FUNCTION" >call-with-facet*</a></span></span> <span class="locative-args">cube facet-name direction fn</span></span></p>
 
-<p>Call <code>fn</code> with an up-to-date <a href="#MGL-CUBE:FACET-VALUE%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-VALUE MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-value</code></a> that belongs
+<p>Call <code>fn</code> with an up-to-date <a href="#MGL-CUBE:FACET-VALUE%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-VALUE (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-value</code></a> that belongs
 to <code>facet-name</code> of <code>cube</code>. <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a> is directly implemented in terms
 of this function. See <a href="#MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET*%20MGL-PAX:SECTION" title="The Default Implementation of `call-with-facet*`">The Default Implementation of <code>call-with-facet*</code></a> for the gory
 details.</p>
@@ -447,7 +447,7 @@ transforms <code>facet-value</code> before passing it on to <code>fn</code>.</p>
 <p>Check if <code>facet</code> with <code>facet-name</code> has been updated
 since the latest change to <code>cube</code> (that is, since the access to other
 facets with <a href="#MGL-CUBE:DIRECTION%20TYPE" title="MGL-CUBE:DIRECTION TYPE"><code>direction</code></a> of <code>:io</code> or <code>:output</code>). The default method simply
-calls <a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-UP-TO-DATE-P MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-up-to-date-p</code></a> on <code>facet</code>.</p>
+calls <a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-UP-TO-DATE-P (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-up-to-date-p</code></a> on <code>facet</code>.</p>
 
 <p>One reason to specialize this is when some facets actually share
 common storage, so updating one make the other up-to-date as well.</p></li>
@@ -462,7 +462,7 @@ common storage, so updating one make the other up-to-date as well.</p></li>
 <p>Called when <code>to-facet</code> with <code>to-name</code> is about to be
 updated by copying data from an up-to-date facet. Return the
 facet (or its name) from which data shall be copied. Note that if
-the returned facet is not <a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20MGL-PAX:STRUCTURE-ACCESSOR" title="MGL-CUBE:FACET-UP-TO-DATE-P MGL-PAX:STRUCTURE-ACCESSOR"><code>facet-up-to-date-p</code></a><em>, then it will be
+the returned facet is not <a href="#MGL-CUBE:FACET-UP-TO-DATE-P%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-UP-TO-DATE-P (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-up-to-date-p</code></a><em>, then it will be
 updated first and another SELECT-COPY-SOURCE-FOR-FACET</em> will take
 place, so be careful not to get into endless recursion. The default
 method simply returns the first up-to-date facet.</p></li>

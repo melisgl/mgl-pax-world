@@ -1663,7 +1663,7 @@ accessed with <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" ti
 
 <p>The corresponding facet's value is a one dimensional lisp array or
 a static vector that also looks exactly like a lisp array but is
-allocated in foreign memory. See <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* (VARIABLE &quot;-see below-&quot;)"><code>*foreign-array-strategy*</code></a>.</p></li>
+allocated in foreign memory. See <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28ARRAY-20MGL-CUBE-3AFACET-NAME-29"></a>
@@ -1685,7 +1685,7 @@ displaced to the backing array.</p></li>
 
 <p>The facet's value is a <a href="#MGL-MAT:FOREIGN-ARRAY%20CLASS" title="MGL-MAT:FOREIGN-ARRAY CLASS"><code>foreign-array</code></a> which is an
 <code>offset-pointer</code> wrapping a CFFI pointer. See
-<a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* (VARIABLE &quot;-see below-&quot;)"><code>*foreign-array-strategy*</code></a>.</p></li>
+<a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a>.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3ACUDA-HOST-ARRAY-20MGL-CUBE-3AFACET-NAME-29"></a>
@@ -1776,7 +1776,7 @@ and initialized. See <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MA
 
 <p>One facet of <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects is <a href="#MGL-MAT:FOREIGN-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:FOREIGN-ARRAY MGL-CUBE:FACET-NAME"><code>foreign-array</code></a> which is
 backed by a memory area that can be a pinned lisp array or is
-allocated in foreign memory depending on <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* (VARIABLE &quot;-see below-&quot;)"><code>*foreign-array-strategy*</code></a>.</p>
+allocated in foreign memory depending on <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a>.</p>
 
 <p><a id="x-28MGL-MAT-3AFOREIGN-ARRAY-20CLASS-29"></a>
 <a id="MGL-MAT:FOREIGN-ARRAY%20CLASS"></a></p>
@@ -1791,11 +1791,11 @@ operations that work with <a href="#MGL-MAT:FOREIGN-ARRAY%20CLASS" title="MGL-MA
 purpose is represent facets of <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects.</p></li>
 </ul>
 
-<p><a id="x-28MGL-MAT-3A-2AFOREIGN-ARRAY-STRATEGY-2A-20-28VARIABLE-20-22-see-20below--22-29-29"></a>
-<a id="MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29"></a></p>
+<p><a id="x-28MGL-MAT-3A-2AFOREIGN-ARRAY-STRATEGY-2A-20VARIABLE-29"></a>
+<a id="MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/foreign.lisp#L107">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29" >*foreign-array-strategy*</a></span></span> <span class="locative-args">&quot;-see below-&quot;</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/foreign.lisp#L107">[variable]</a></span> <span class="reference-object"><a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" >*foreign-array-strategy*</a></span></span> <span class="locative-args">&quot;-see below-&quot;</span></span></p>
 
 <p>One of <code>:pinned</code>, <code>:static</code> and <code>:cuda-host</code> (see type
 <a href="#MGL-MAT:FOREIGN-ARRAY-STRATEGY%20TYPE" title="MGL-MAT:FOREIGN-ARRAY-STRATEGY TYPE"><code>foreign-array-strategy</code></a>). This variable controls how foreign arrays
@@ -1828,7 +1828,7 @@ efficient. If pinning is not available, then it's <code>:static</code>.</p></li>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/37e5d93f7b55d49b039ecd711bdb512994f607fb/src/foreign.lisp#L94">[type]</a></span> <span class="reference-object"><a href="#MGL-MAT:FOREIGN-ARRAY-STRATEGY%20TYPE" >foreign-array-strategy</a></span></span></span></p>
 
 <p>One of <code>:pinned</code>, <code>:static</code> and <code>:cuda-host</code>. See
-<a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20%28VARIABLE%20%22-see%20below-%22%29" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* (VARIABLE &quot;-see below-&quot;)"><code>*foreign-array-strategy*</code></a> for their semantics.</p></li>
+<a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a> for their semantics.</p></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3APINNING-SUPPORTED-P-20FUNCTION-29"></a>

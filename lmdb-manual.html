@@ -1695,11 +1695,11 @@ and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859c
 <li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2580">[class]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR%20CLASS" >cursor</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)">structure-object</a></span></span></li>
 </ul>
 
-<p><a id="x-28LMDB-3ACURSOR-DB-20FUNCTION-29"></a>
-<a id="LMDB:CURSOR-DB%20FUNCTION"></a></p>
+<p><a id="x-28LMDB-3ACURSOR-DB-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20LMDB-3ACURSOR-29-29"></a>
+<a id="LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2584">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-DB%20FUNCTION" >cursor-db</a></span></span> <span class="locative-args">instance</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2584">[structure-accessor]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" >cursor-db</a></span></span> <span class="locative-args">cursor</span></span></li>
 </ul>
 
 <p><a id="x-28LMDB-3A-40DEFAULT-CURSOR-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
@@ -2004,7 +2004,7 @@ Return <code>value</code>.</p>
   the old. Otherwise it will simply perform a delete of the old
   record followed by an insert.</p></li>
 <li><p><code>overwrite</code>: If <code>nil</code>, signal <a href="#LMDB:LMDB-KEY-EXISTS-ERROR%20CONDITION" title="LMDB:LMDB-KEY-EXISTS-ERROR CONDITION"><code>lmdb-key-exists-error</code></a> if <code>key</code> already
-  appears in <a href="#LMDB:CURSOR-DB%20FUNCTION" title="LMDB:CURSOR-DB FUNCTION"><code>cursor-db</code></a>.</p></li>
+  appears in <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" title="LMDB:CURSOR-DB (MGL-PAX:STRUCTURE-ACCESSOR LMDB:CURSOR)"><code>cursor-db</code></a>.</p></li>
 <li><p><code>dupdata</code>: If <code>nil</code>, signal <code>lmdb-key-exists-error</code> if the <code>key</code>, <code>value</code>
   pair already appears in <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a>. Has no effect if <code>cursor-db</code> doesn't
   have <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>.</p></li>
@@ -2038,7 +2038,7 @@ initialized, <a href="#LMDB:LMDB-CURSOR-UNINITIALIZED-ERROR%20CONDITION" title="
 no values.</p>
 
 <p>If <code>delete-dups</code>, delete all duplicate values that belong to the
-current key. With <code>delete-dups</code>, <a href="#LMDB:CURSOR-DB%20FUNCTION" title="LMDB:CURSOR-DB FUNCTION"><code>cursor-db</code></a> must have <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>, else
+current key. With <code>delete-dups</code>, <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" title="LMDB:CURSOR-DB (MGL-PAX:STRUCTURE-ACCESSOR LMDB:CURSOR)"><code>cursor-db</code></a> must have <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>, else
 <a href="#LMDB:LMDB-INCOMPATIBLE-ERROR%20CONDITION" title="LMDB:LMDB-INCOMPATIBLE-ERROR CONDITION"><code>lmdb-incompatible-error</code></a> is signalled.</p>
 
 <p>May signal <code>lmdb-cursor-uninitialized-error</code>,
@@ -2062,7 +2062,7 @@ current key. With <code>delete-dups</code>, <a href="#LMDB:CURSOR-DB%20FUNCTION"
 
 <p>Associate <code>cursor</code> with the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a> (which must be
 read-only) as if it had been created with that transaction to begin
-with to avoid allocation overhead. <a href="#LMDB:CURSOR-DB%20FUNCTION" title="LMDB:CURSOR-DB FUNCTION"><code>cursor-db</code></a> stays the same. This
+with to avoid allocation overhead. <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" title="LMDB:CURSOR-DB (MGL-PAX:STRUCTURE-ACCESSOR LMDB:CURSOR)"><code>cursor-db</code></a> stays the same. This
 may be done whether the previous transaction is open or closed (see
 <a href="#LMDB:OPEN-TXN-P%20FUNCTION" title="LMDB:OPEN-TXN-P FUNCTION"><code>open-txn-p</code></a>). No values are returned.</p>
 
@@ -2076,7 +2076,7 @@ may be done whether the previous transaction is open or closed (see
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3215">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-COUNT%20FUNCTION" >cursor-count</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
 <p>Return the number of duplicate values for the current key of
-<code>cursor</code>. If <a href="#LMDB:CURSOR-DB%20FUNCTION" title="LMDB:CURSOR-DB FUNCTION"><code>cursor-db</code></a> doesn't have <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>, <a href="#LMDB:LMDB-INCOMPATIBLE-ERROR%20CONDITION" title="LMDB:LMDB-INCOMPATIBLE-ERROR CONDITION"><code>lmdb-incompatible-error</code></a>
+<code>cursor</code>. If <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" title="LMDB:CURSOR-DB (MGL-PAX:STRUCTURE-ACCESSOR LMDB:CURSOR)"><code>cursor-db</code></a> doesn't have <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>, <a href="#LMDB:LMDB-INCOMPATIBLE-ERROR%20CONDITION" title="LMDB:LMDB-INCOMPATIBLE-ERROR CONDITION"><code>lmdb-incompatible-error</code></a>
 is signalled. If <code>cursor</code> is not initialized,
 <a href="#LMDB:LMDB-CURSOR-UNINITIALIZED-ERROR%20CONDITION" title="LMDB:LMDB-CURSOR-UNINITIALIZED-ERROR CONDITION"><code>lmdb-cursor-uninitialized-error</code></a> is signalled.</p>
 

@@ -170,6 +170,11 @@ blockquote, table, pre {
   margin: var(--parsep) 0 0 0;
 }
 
+blockquote {
+  border-left: calc(0.3*var(--line-height)) solid #ccc;
+  padding-left: calc(0.3*var(--line-height));
+}
+
 pre {
   background-color: #F5F3ED;
   color: #333;
