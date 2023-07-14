@@ -31,13 +31,9 @@
 <div id="content">
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-MANUAL%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;named-readtables&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="named-readtables-manual.html" title="Named Readtables Manual">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L3">&#955;</a></span></span></p>
-
 <h1><a href="named-readtables-manual.html">Named Readtables Manual</a></h1>
-
 <h2>Table of Contents</h2>
-
 <ul>
 <li><a href="#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;named-readtables&quot; ASDF/SYSTEM:SYSTEM">1 The named-readtables ASDF System</a></li>
 <li><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">2 Introduction</a>
@@ -56,16 +52,11 @@
 </ul></li>
 <li><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-REFERENCE%20MGL-PAX:SECTION" title="Reference">4 Reference</a></li>
 </ul>
-
 <h6>[in package EDITOR-HINTS.NAMED-READTABLES with nicknames NAMED-READTABLES]</h6>
-
 <p><a id="x-28-22named-readtables-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="named-readtables-manual.html" title="Named Readtables Manual">&#8592;</a> <a href="named-readtables-manual.html" title="Named Readtables Manual">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;named-readtables&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/named-readtables.asd#L1">&#955;</a></span></span></p>
-
 <h2><a href="#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM">1 The named-readtables ASDF System</a></h2>
-
 <ul>
 <li>Version: 0.9</li>
 <li>Description: Library that creates a namespace for readtables akin
@@ -78,18 +69,13 @@
 <li>Bug tracker: <a href="https://github.com/melisgl/named-readtables/issues" >https://github.com/melisgl/named-readtables/issues</a></li>
 <li>Source control: <a href="https://github.com/melisgl/named-readtables.git" >GIT</a></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;named-readtables&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="named-readtables-manual.html" title="Named Readtables Manual">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L9">&#955;</a></span></span></p>
-
 <h2><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION">2 Introduction</a></h2>
-
 <p>Named-Readtables is a library that provides a namespace for
 readtables akin to the already-existing namespace of packages. In
 particular:</p>
-
 <ul>
 <li><p>you can associate readtables with names, and retrieve
   readtables by names;</p></li>
@@ -101,60 +87,40 @@ particular:</p>
   processing source forms on interactive commands. (E.g. think of
   <code>C-c C-c</code> in Slime (yet to be done))</p></li>
 </ul>
-
 <p>It follows that Named-Readtables is a facility for using readtables in
 a localized way.</p>
-
 <p>Additionally, it also attempts to become a facility for using
 readtables in a <em>modular</em> way. In particular:</p>
-
 <ul>
 <li><p>it provides a macro to specify the content of a readtable at a
  glance;</p></li>
 <li><p>it makes it possible to use multiple inheritance between readtables.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-LINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-LINKS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8592;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-ACKNOWLEDGEMENTS%20MGL-PAX:SECTION" title="Acknowledgements">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L39">&#955;</a></span></span></p>
-
 <h3><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-LINKS%20MGL-PAX:SECTION">2.1 Links</a></h3>
-
-<p>Here is the <a href="https://github.com/melisgl/named-readtables" >official repository</a> and the
-<a href="http://melisgl.github.io/mgl-pax-world/named-readtables-manual.html" >HTML documentation</a> for the latest version.</p>
-
+<p>Here is the [official repository][named-readtables-repo] and the
+[HTML documentation][named-readtables-doc] for the latest version.</p>
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-ACKNOWLEDGEMENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-ACKNOWLEDGEMENTS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-LINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-ACKNOWLEDGEMENTS%20MGL-PAX:SECTION" title="Acknowledgements">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L46">&#955;</a></span></span></p>
-
 <h3><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-ACKNOWLEDGEMENTS%20MGL-PAX:SECTION">2.2 Acknowledgements</a></h3>
-
 <p>Thanks to Robert Goldman for making me want to write this library.</p>
-
 <p>Thanks to Stephen Compall, Ariel Badichi, David Lichteblau, Bart
 Botta, David Crawford, and Pascal Costanza for being early adopters,
 providing comments and bugfixes.</p>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-OVERVIEW-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-ACKNOWLEDGEMENTS%20MGL-PAX:SECTION" title="Acknowledgements">&#8592;</a> <a href="named-readtables-manual.html" title="Named Readtables Manual">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-NOTES%20MGL-PAX:SECTION" title="Notes on the API">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L53">&#955;</a></span></span></p>
-
 <h2><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION">3 Overview</a></h2>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-API-NOTES-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-NOTES%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8592;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-IDIOSYNCRASIES%20MGL-PAX:SECTION" title="Important API idiosyncrasies">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-NOTES%20MGL-PAX:SECTION" title="Notes on the API">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L59">&#955;</a></span></span></p>
-
 <h3><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-NOTES%20MGL-PAX:SECTION">3.1 Notes on the API</a></h3>
-
 <p>The API heavily imitates the API of packages. This has the nice
 property that any experienced Common Lisper will take it up without
 effort.</p>
-
 <pre><code>DEFREADTABLE              -   DEFPACKAGE
 
 IN-READTABLE              -   IN-PACKAGE
@@ -173,17 +139,12 @@ READTABLE-NAME            -   PACKAGE-NAME
 
 LIST-ALL-NAMED-READTABLES -   LIST-ALL-PACKAGES
 </code></pre>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-API-IDIOSYNCRASIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-IDIOSYNCRASIES%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-NOTES%20MGL-PAX:SECTION" title="Notes on the API">&#8592;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-PREREGISTERED%20MGL-PAX:SECTION" title="Preregistered Readtables">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-IDIOSYNCRASIES%20MGL-PAX:SECTION" title="Important API idiosyncrasies">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L83">&#955;</a></span></span></p>
-
 <h3><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-IDIOSYNCRASIES%20MGL-PAX:SECTION">3.2 Important API idiosyncrasies</a></h3>
-
 <p>There are three major differences between the API of Named-Readtables,
 and the API of packages.</p>
-
 <ol>
 <li><p>Readtable names are symbols not strings.</p>
 
@@ -244,28 +205,20 @@ compile-time effect.</p>
 definition, wrap the <code>defreadtable</code> and the reader-macro function
 definitions in an explicit <code>eval-when</code>.</p></li>
 </ol>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-PREREGISTERED-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-PREREGISTERED%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-API-IDIOSYNCRASIES%20MGL-PAX:SECTION" title="Important API idiosyncrasies">&#8592;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-EXAMPLES%20MGL-PAX:SECTION" title="Examples">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-PREREGISTERED%20MGL-PAX:SECTION" title="Preregistered Readtables">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L149">&#955;</a></span></span></p>
-
 <h3><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-PREREGISTERED%20MGL-PAX:SECTION">3.3 Preregistered Readtables</a></h3>
-
 <ul>
 <li><p><code>nil</code>, <code>:standard</code>, and <code>:common-lisp</code> designate the
 <em>standard readtable</em>.</p></li>
 <li><p><code>:modern</code> designates a <em>case-preserving</em> <em>standard-readtable</em>.</p></li>
 <li><p><code>:current</code> designates the <em>current readtable</em>.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-EXAMPLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-EXAMPLES%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-PREREGISTERED%20MGL-PAX:SECTION" title="Preregistered Readtables">&#8592;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-REFERENCE%20MGL-PAX:SECTION" title="Reference">&#8594;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-EXAMPLES%20MGL-PAX:SECTION" title="Examples">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L158">&#955;</a></span></span></p>
-
 <h3><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-EXAMPLES%20MGL-PAX:SECTION">3.4 Examples</a></h3>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defreadtable</span></i> elisp:syntax
    <span class="paren2">(<span class="code"><span class="keyword">:merge</span> <span class="keyword">:standard</span></span>)</span>
    <span class="paren2">(<span class="code"><span class="keyword">:macro-char</span> <span class="character">#\?</span> #'elisp::read-character-literal t</span>)</span>
@@ -290,17 +243,12 @@ definitions in an explicit <code>eval-when</code>.</p></li>
 <span class="paren1">(<span class="code">in-readtable scheme:syntax</span>)</span>
 
 ...</span></code></pre>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3A-40NAMED-READTABLES-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-REFERENCE%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-EXAMPLES%20MGL-PAX:SECTION" title="Examples">&#8592;</a> <a href="named-readtables-manual.html" title="Named Readtables Manual">&#8593;</a> <a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-REFERENCE%20MGL-PAX:SECTION" title="Reference">&#8634;</a> <a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/doc.lisp#L186">&#955;</a></span></span></p>
-
 <h2><a href="#EDITOR-HINTS.NAMED-READTABLES:@NAMED-READTABLES-REFERENCE%20MGL-PAX:SECTION">4 Reference</a></h2>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ADEFREADTABLE-20MGL-PAX-3AMACRO-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L22">[macro]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE%20MGL-PAX:MACRO" >defreadtable</a></span></span> <span class="locative-args">name &amp;body options</span></span></p>
 
@@ -375,20 +323,16 @@ it's refilled according to the clauses.</p>
 <p><code>nil</code>, <code>:standard</code>, <code>:common-lisp</code>, <code>:modern</code>, and <code>:current</code> are
 preregistered readtable names.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AIN-READTABLE-20MGL-PAX-3AMACRO-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L170">[macro]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:IN-READTABLE%20MGL-PAX:MACRO" >in-readtable</a></span></span> <span class="locative-args">name</span></span></p>
 
 <p>Set <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm" title="*READTABLE* (MGL-PAX:CLHS VARIABLE)"><code>*readtable*</code></a> to the readtable referred to by the symbol <code>name</code>.
 Return the readtable.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L250">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION" >make-readtable</a></span></span> <span class="locative-args">&amp;optional (name nil name-supplied-p) &amp;key merge</span></span></p>
 
@@ -410,10 +354,8 @@ the same as in the <em>standard readtable</em> except that each macro
 character has been made a constituent. Basically: whitespace stays
 whitespace, everything else is constituent.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMERGE-READTABLES-INTO-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:MERGE-READTABLES-INTO%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L318">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:MERGE-READTABLES-INTO%20FUNCTION" >merge-readtables-into</a></span></span> <span class="locative-args">result-readtable &amp;rest named-readtables</span></span></p>
 
@@ -427,20 +369,16 @@ i.e. if a conflict is discovered during the merge, an error of type
 <p>The copied options are <code>:dispatch-macro-char</code>, <code>:macro-char</code> and
 <code>:syntax-from</code>, but not <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm" title="READTABLE-CASE (MGL-PAX:CLHS FUNCTION)"><code>readtable-case</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AFIND-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:FIND-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L490">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:FIND-READTABLE%20FUNCTION" >find-readtable</a></span></span> <span class="locative-args">name</span></span></p>
 
 <p>Looks for the readtable specified by <code>name</code> and returns it if it is
 found. Returns <code>nil</code> otherwise.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AENSURE-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:ENSURE-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L505">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:ENSURE-READTABLE%20FUNCTION" >ensure-readtable</a></span></span> <span class="locative-args">name &amp;optional (default nil default-p)</span></span></p>
 
@@ -450,10 +388,8 @@ under the name represented by <code>name</code>; or if no default argument is
 given, it signals an error of type <a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-NOT-EXIST%20CONDITION" title="EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-NOT-EXIST CONDITION"><code>readtable-does-not-exist</code></a>
 instead.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ARENAME-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:RENAME-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L296">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:RENAME-READTABLE%20FUNCTION" >rename-readtable</a></span></span> <span class="locative-args">old-name new-name</span></span></p>
 
@@ -462,74 +398,58 @@ instead.</p></li>
 <code>new-name</code>, an error of type <a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-ALREADY-EXIST%20CONDITION" title="EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-ALREADY-EXIST CONDITION"><code>readtable-does-already-exist</code></a> is
 signaled.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-NAME-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:READTABLE-NAME%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L545">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-NAME%20FUNCTION" >readtable-name</a></span></span> <span class="locative-args">named-readtable</span></span></p>
 
 <p>Returns the name of the readtable designated by <code>named-readtable</code>,
 or <code>nil</code>.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREGISTER-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:REGISTER-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L520">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:REGISTER-READTABLE%20FUNCTION" >register-readtable</a></span></span> <span class="locative-args">name readtable</span></span></p>
 
 <p>Associate <code>readtable</code> with <code>name</code>. Returns the readtable.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AUNREGISTER-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:UNREGISTER-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L529">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:UNREGISTER-READTABLE%20FUNCTION" >unregister-readtable</a></span></span> <span class="locative-args">named-readtable</span></span></p>
 
 <p>Remove the association of <code>named-readtable</code>. Returns <code>t</code> if successfull,
 <code>nil</code> otherwise.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ACOPY-NAMED-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:COPY-NAMED-READTABLE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L353">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:COPY-NAMED-READTABLE%20FUNCTION" >copy-named-readtable</a></span></span> <span class="locative-args">named-readtable</span></span></p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm" title="COPY-READTABLE (MGL-PAX:CLHS FUNCTION)"><code>copy-readtable</code></a> but takes a <a href="#EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR%20TYPE" title="EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR TYPE"><code>named-readtable-designator</code></a> as argument.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:LIST-ALL-NAMED-READTABLES%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L359">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:LIST-ALL-NAMED-READTABLES%20FUNCTION" >list-all-named-readtables</a></span></span></span></p>
 
 <p>Returns a list of all registered readtables. The returned list is
 guaranteed to be fresh, but may contain duplicates.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ANAMED-READTABLE-DESIGNATOR-20TYPE-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR%20TYPE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L202">[type]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR%20TYPE" >named-readtable-designator</a></span></span></span></p>
 
 <p>Either a symbol or a readtable itself.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-ERROR-20CONDITION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L365">[condition]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION" >readtable-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADER-MACRO-CONFLICT-20CONDITION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:READER-MACRO-CONFLICT%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L386">[condition]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READER-MACRO-CONFLICT%20CONDITION" >reader-macro-conflict</a></span></span> <span class="locative-args"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION" title="EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR CONDITION">readtable-error</a></span></span></p>
 
@@ -540,19 +460,15 @@ macro (be it a macro character or the sub character of a dispatch
 macro character) is present in the both source and the target
 readtable and the two respective reader macro functions differ.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-ALREADY-EXIST-20CONDITION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-ALREADY-EXIST%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L376">[condition]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-ALREADY-EXIST%20CONDITION" >readtable-does-already-exist</a></span></span> <span class="locative-args"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION" title="EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR CONDITION">readtable-error</a></span></span></p>
 
 <p>Continuable.</p></li>
 </ul>
-
 <p><a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AREADTABLE-DOES-NOT-EXIST-20CONDITION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-NOT-EXIST%20CONDITION"></a></p>
-
 <ul>
 <li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/a2cb9db06e11277693e26ac104bbc2d6eb19e433/src/named-readtables.lisp#L367">[condition]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-NOT-EXIST%20CONDITION" >readtable-does-not-exist</a></span></span> <span class="locative-args"><a href="#EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR%20CONDITION" title="EDITOR-HINTS.NAMED-READTABLES:READTABLE-ERROR CONDITION">readtable-error</a></span></span></li>
 </ul>

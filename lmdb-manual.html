@@ -31,13 +31,9 @@
 <div id="content">
 <p><a id="x-28LMDB-3A-40LMDB-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB-MANUAL%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L134">&#955;</a></span></span></p>
-
 <h1><a href="lmdb-manual.html">LMDB Manual</a></h1>
-
 <h2>Table of Contents</h2>
-
 <ul>
 <li><a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM">1 The lmdb ASDF System</a></li>
 <li><a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION" title="Links">2 Links</a></li>
@@ -88,16 +84,11 @@
 <li><a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">12.2 Additional conditions</a></li>
 </ul></li>
 </ul>
-
 <h6>[in package LMDB]</h6>
-
 <p><a id="x-28-22lmdb-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="lmdb-manual.html" title="LMDB Manual">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/lmdb.asd#L1">&#955;</a></span></span></p>
-
 <h2><a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM">1 The lmdb ASDF System</a></h2>
-
 <ul>
 <li>Version: 0.1</li>
 <li>Description: Bindings to <code>lmdb</code>, the Lightning Memory-mapped Database.</li>
@@ -108,26 +99,18 @@
 <li>Bug tracker: <a href="https://github.com/antimer/lmdb/issues" >https://github.com/antimer/lmdb/issues</a></li>
 <li>Source control: <a href="git@github.com:antimer/lmdb.git" >GIT</a></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FLINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L148">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION">2 Links</a></h2>
-
 <p>Here is the <a href="https://github.com/antimer/lmdb" >official repository</a>
 and the <a href="http://melisgl.github.io/mgl-pax-world/lmdb-manual.html" >HTML
 documentation</a>
 for the latest version.</p>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FINTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION" title="Design and implementation">&#8594;</a> <a href="#LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L154">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION">3 Introduction</a></h2>
-
 <p><a href="http://www.lmdb.tech/doc/" >LMDB</a>, the Lightning Memory-mapped
 Database, is an <a href="https://en.wikipedia.org/wiki/ACID" >ACID</a> key-value
 database with
@@ -136,10 +119,8 @@ It is a small C library (&quot;C lmdb&quot; from now on), around which <code>lmd
 a Common Lisp wrapper. <code>lmdb</code> covers most of C lmdb's functionality,
 has a simplified API, much needed <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">Safety</a> checks, and
 comprehensive documentation.</p>
-
 <p>Compared to other key-value stores, <code>lmdb</code>'s distuingishing features
 are:</p>
-
 <ul>
 <li><p>Transactions span multiple keys.</p></li>
 <li><p>Embedded. It has no server but can be used concurrently not only
@@ -148,9 +129,7 @@ are:</p>
   second.</p></li>
 <li><p>Very low maintenance.</p></li>
 </ul>
-
 <p>Other notable things:</p>
-
 <ul>
 <li><p>With its default - the most durable - settings, it has average
   write performance, which is bottlenecked by <code>fsync()</code>.</p></li>
@@ -166,23 +145,18 @@ are:</p>
   DB</a> done right, without
   the fluff and much improved administration.</p></li>
 </ul>
-
 <p>Do read the <a href="http://www.lmdb.tech/doc/" >Caveats</a>, though. On the
 Lisp side, this library <strong>will not work with virtual threads</strong>
 because <code>lmdb</code>'s write locking is tied to native threads.</p>
-
 <p>Using <code>lmdb</code> is easy:</p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
       <span class="paren4">(<span class="code">put db <span class="string">"k1"</span> #<span class="paren5">(<span class="code">2 3</span>)</span></span>)</span>
       <span class="paren4">(<span class="code">print <span class="paren5">(<span class="code">g3t db <span class="string">"k1"</span></span>)</span></span>)</span> <span class="comment">; =&gt; #(2 3)
 </span>      <span class="paren4">(<span class="code">del db <span class="string">"k1"</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
-
 <p>More typically, the environment and databases are opened once so
 that multiple threads and transactions can access them:</p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*test-db*</span></span>)</span>
 
 <span class="paren1">(<span class="code">unless <span class="special">*env*</span>
@@ -193,40 +167,29 @@ that multiple threads and transactions can access them:</p>
   <span class="paren2">(<span class="code">put <span class="special">*test-db*</span> 1 <span class="string">"hello"</span></span>)</span>
   <span class="paren2">(<span class="code">print <span class="paren3">(<span class="code">g3t <span class="special">*test-db*</span> 1</span>)</span></span>)</span> <span class="comment">; =&gt; "hello"
 </span>  <span class="paren2">(<span class="code">del <span class="special">*test-db*</span> 1</span>)</span></span>)</span></span></code></pre>
-
 <p>Note how <code>:value-encoding</code> sneaked in above. This was so to make <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>
 return a string instead of an octet vector.</p>
-
 <p><code>lmdb</code> treats keys and values as opaque byte arrays to be hung on a B+
 tree, and only requires a comparison function to be defined over
 keys. <code>lmdb</code> knows how to serialize the types <code>(unsigned-byte 64)</code> and
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>string</code></a> (which are often used as keys so sorting must work as
 expected). Serialization of the rest of the datatypes is left to the
 client. See <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">Encoding and decoding data</a> for more.</p>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FDESIGN-AND-IMPLEMENTATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">&#8594;</a> <a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION" title="Design and implementation">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L240">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION">4 Design and implementation</a></h2>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FSAFETY-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION" title="Design and implementation">&#8592;</a> <a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION" title="Design and implementation">&#8593;</a> <a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION" title="Deviations from the C lmdb API">&#8594;</a> <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L244">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION">4.1 Safety</a></h3>
-
 <p>The lmdb C API trusts client code to respect its rules. Being C,
 managing object lifetimes is the biggest burden. There are also
 rules that are documented, but not enforced. This Lisp wrapper tries
 to enforce these rules itself and manage object lifetimes in a safe
 way to avoid data corruption. How and what it does is described in
 the following.</p>
-
 <h5>Environments</h5>
-
 <ul>
 <li><p><a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a> checks that the same path is not used in multiple open
   environments to prevent locking issues documented in
@@ -237,9 +200,7 @@ the following.</p>
   synchronization, the environment is closed only when garbage
   collected.</p></li>
 </ul>
-
 <h5>Transactions</h5>
-
 <ul>
 <li><p>Checks are made to detect illegal operations on parent
   transactions (see <a href="#LMDB:LMDB-ILLEGAL-ACCESS-TO-PARENT-TXN-ERROR%20CONDITION" title="LMDB:LMDB-ILLEGAL-ACCESS-TO-PARENT-TXN-ERROR CONDITION"><code>lmdb-illegal-access-to-parent-txn-error</code></a>).</p></li>
@@ -249,9 +210,7 @@ the following.</p>
   risking access to closed and freed transaction objects) is
   significant so this is not supported.</p></li>
 </ul>
-
 <h5>Databases</h5>
-
 <ul>
 <li><p><a href="http://www.lmdb.tech/doc/group__mdb.html#gac08cad5b096925642ca359a6d6f0562a" >mdb_dbi_open()</a>
   is wrapped by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a> in a transaction and is protected by a mutex
@@ -272,9 +231,7 @@ the following.</p>
   are only available through <code>open-env</code> because they either require that
   there are no write transactions or do not work on open environments.</p></li>
 </ul>
-
 <h5>Cursors</h5>
-
 <ul>
 <li>As even read transactions are restricted to a single thread, so
   are cursors. Using a cursor from a thread other than the one in
@@ -282,9 +239,7 @@ the following.</p>
   <a href="#LMDB:LMDB-CURSOR-THREAD-ERROR%20CONDITION" title="LMDB:LMDB-CURSOR-THREAD-ERROR CONDITION"><code>lmdb-cursor-thread-error</code></a>. In return for this restriction, access
   to cursors belonging to closed transactions is reliably detected.</li>
 </ul>
-
 <h5>Signal handling</h5>
-
 <p>The C lmdb library handles system calls being interrupted (<code>eintr</code>
 and <code>eagain</code>), but unwinding the stack from interrupts in the middle
 of <code>lmdb</code> calls can leave the in-memory data structures such as
@@ -296,42 +251,30 @@ found in the Lisp implementation. A warning is signalled if no
 substitute is found for <code>sb-sys:with-interrupts</code> because this makes
 the body of <code>with-env</code>, <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a>, <a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-CURSOR MGL-PAX:MACRO"><code>with-cursor</code></a> and similar
 uninterruptible.</p>
-
 <p>Operations that do not modify the database (<a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>, <a href="#LMDB:CURSOR-FIRST%20FUNCTION" title="LMDB:CURSOR-FIRST FUNCTION"><code>cursor-first</code></a>,
 <a href="#LMDB:CURSOR-VALUE%20FUNCTION" title="LMDB:CURSOR-VALUE FUNCTION"><code>cursor-value</code></a>, etc) are async unwind safe, and for performance they
 are called without the above provisions.</p>
-
 <p>Note that the library is not reentrant, so don't call <code>lmdb</code> from
 signal handlers.</p>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FDEVIATIONS-FROM-THE-LMDB-API-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">&#8592;</a> <a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION" title="Design and implementation">&#8593;</a> <a href="#LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION" title="Library versions">&#8594;</a> <a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION" title="Deviations from the C lmdb API">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L328">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION">4.2 Deviations from the C lmdb API</a></h3>
-
 <p>The following are the most prominent deviations and omissions from
 the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">Safety</a>.</p>
-
 <h5>Environments</h5>
-
 <ul>
 <li><p><a href="http://www.lmdb.tech/doc/group__mdb.html#ga8550000cd0501a44f57ee6dff0188744" >mdb_reader_list()</a>
   is not implemented.</p></li>
 <li><p><a href="http://www.lmdb.tech/doc/group__mdb.html#ga5d51d6130325f7353db0955dbedbc378" >mdb_env_copy()</a>
   and its close kin are not yet implemented.</p></li>
 </ul>
-
 <h5>Transactions</h5>
-
 <ul>
 <li>Read-only <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a>s are turned into noops when &quot;nested&quot; (unless
   <code>ignore-parent</code>).</li>
 </ul>
-
 <h5>Databases</h5>
-
 <ul>
 <li><p><a href="http://www.lmdb.tech/doc/group__mdb.html#ga68e47ffcf72eceec553c72b1784ee0fe" >mdb_set_compare()</a>
   and <a href="http://www.lmdb.tech/doc/group__mdb.html#gacef4ec3dab0bbd9bc978b73c19c879ae" >mdb_set_dupsort()</a>
@@ -345,17 +288,12 @@ the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MG
   <a href="http://www.lmdb.tech/doc/group__mdb__put.html#gac0545c6aea719991e3eae6ccc686efcc" ><code>RESERVE</code></a>
   flag.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FVERSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION" title="Deviations from the C lmdb API">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">&#8594;</a> <a href="#LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION" title="Library versions">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L638">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION">5 Library versions</a></h2>
-
 <p><a id="x-28LMDB-3ALMDB-FOREIGN-VERSION-20FUNCTION-29"></a>
 <a id="LMDB:LMDB-FOREIGN-VERSION%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L642">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-FOREIGN-VERSION%20FUNCTION" >lmdb-foreign-version</a></span></span></span></p>
 
@@ -363,10 +301,8 @@ the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MG
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga0e5d7298fc39b3c187fffbe30264c968" >mdb_version()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-BINDING-VERSION-20FUNCTION-29"></a>
 <a id="LMDB:LMDB-BINDING-VERSION%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L652">[function]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BINDING-VERSION%20FUNCTION" >lmdb-binding-version</a></span></span></span></p>
 
@@ -374,14 +310,10 @@ the C lmdb API in addition to those listed in <a href="#LMDB:@LMDB%2FSAFETY%20MG
 the CFFI bindings were created. The version string has the same
 format as <a href="#LMDB:LMDB-FOREIGN-VERSION%20FUNCTION" title="LMDB:LMDB-FOREIGN-VERSION FUNCTION"><code>lmdb-foreign-version</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FENVIRONMENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION" title="Library versions">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION" title="Environments reference">&#8594;</a> <a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L662">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION">6 Environments</a></h2>
-
 <p>An environment (class <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a>) is basically a single memory-mapped file
 holding all the data, plus some flags determining how we interact
 it. An environment can have multiple databases (class <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a>), each of
@@ -389,37 +321,28 @@ which is a B+ tree within the same file. An environment is like a
 database in a relational db, and the databases in it are like tables
 and indices. The terminology comes from <a href="https://docs.oracle.com/cd/E17276_01/html/programmer_reference/env.html" >Berkeley
 DB</a>.</p>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FENV-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">&#8592;</a> <a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">&#8593;</a> <a href="#LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION" title="Opening and closing environments">&#8594;</a> <a href="#LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION" title="Environments reference">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L674">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION">6.1 Environments reference</a></h3>
-
 <p><a id="x-28LMDB-3AENV-20CLASS-29"></a>
 <a id="LMDB:ENV%20CLASS"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L684">[class]</a></span> <span class="reference-object"><a href="#LMDB:ENV%20CLASS" >env</a></span></span></span></p>
 
 <p>An environment object through which a memory-mapped
 data file can be accessed. Always to be created by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-PATH-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L687">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="locative-args">env (:path)</span></span></p>
 
 <p>The location of the memory-mapped file and the
 environment lock file.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-MAX-DBS-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L691">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="locative-args">env (:max-dbs)</span></span></p>
 
@@ -428,10 +351,8 @@ environment. Currently a moderate number is cheap, but a huge
 number gets expensive: 7-120 words per transaction, and every
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a> does a linear search of the opened database.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-MAX-READERS-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L697">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="locative-args">env (:max-readers)</span></span></p>
 
@@ -439,43 +360,32 @@ number gets expensive: 7-120 words per transaction, and every
 the documentation of the <a href="http://lmdb.tech/doc/group__readers.html" >reader lock
 table</a> for more.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-MAP-SIZE-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L702">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="locative-args">env (:map-size)</span></span></p>
 
 <p>Specifies the size of the data file in bytes.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-MODE-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
-
 <ul>
 <li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L711">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="locative-args">env (:mode)</span></span></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-FLAGS-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L707">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="locative-args">env (:flags)</span></span></p>
 
 <p>A plist of the options as captured by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.
 For example, <code>(:fixed-map nil :subdir t ...)</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FOPENING-AND-CLOSING-ENV-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION" title="Environments reference">&#8592;</a> <a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">&#8593;</a> <a href="#LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION" title="Miscellaneous environment functions">&#8594;</a> <a href="#LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION" title="Opening and closing environments">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L726">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION">6.2 Opening and closing environments</a></h3>
-
 <p><a id="x-28LMDB-3A-2AENV-CLASS-2A-20VARIABLE-29"></a>
 <a id="LMDB:*ENV-CLASS*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L822">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*ENV-CLASS*%20VARIABLE" >*env-class*</a></span></span> <span class="locative-args">env</span></span></p>
 
@@ -483,10 +393,8 @@ For example, <code>(:fixed-map nil :subdir t ...)</code>.</p></li>
 This provides a way to associate application specific data with <code>env</code>
 objects.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AOPEN-ENV-20FUNCTION-29"></a>
 <a id="LMDB:OPEN-ENV%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L827">[function]</a></span> <span class="reference-object"><a href="#LMDB:OPEN-ENV%20FUNCTION" >open-env</a></span></span> <span class="locative-args">path &amp;key (class *env-class*) (if-does-not-exist :error) (synchronized t) (max-dbs 1) (max-readers 126) (map-size (* 1024 1024)) (mode 436) (subdir t) (sync t) (meta-sync t) read-only (tls t) (read-ahead t) (lock t) (mem-init t) fixed-map write-map map-async</span></span></p>
 
@@ -634,10 +542,8 @@ which does not mesh with threads anyway.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gaad6be3d8dcd4ea01f8df436f41d158d4" >mdb_env_create()</a>
 and <a href="http://www.lmdb.tech/doc/group__mdb.html#ga32a193c6bf4d7d5c5d579e71f22e9340" >mdb_env_open()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACLOSE-ENV-20FUNCTION-29"></a>
 <a id="LMDB:CLOSE-ENV%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1081">[function]</a></span> <span class="reference-object"><a href="#LMDB:CLOSE-ENV%20FUNCTION" >close-env</a></span></span> <span class="locative-args">env &amp;key force</span></span></p>
 
@@ -666,20 +572,16 @@ two ways this can happen:</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga4366c43ada8874588b6a62fbda2d1e95" >mdb_env_close()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-2AENV-2A-20VARIABLE-29"></a>
 <a id="LMDB:*ENV*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1123">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*ENV*%20VARIABLE" >*env*</a></span></span> <span class="locative-args">nil</span></span></p>
 
 <p>The default <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a> for macros and function that take an environment
 argument.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AWITH-ENV-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:WITH-ENV%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1127">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-ENV%20MGL-PAX:MACRO" >with-env</a></span></span> <span class="locative-args">(env path &amp;rest open-env-args) &amp;body body</span></span></p>
 
@@ -690,27 +592,20 @@ following example binds the default environment:</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span> <span class="string">"/tmp/lmdb-test"</span> <span class="keyword">:if-does-not-exist</span> <span class="keyword">:create</span></span>)</span>
   ...</span>)</span></span></code></pre></li>
 </ul>
-
 <p><a id="x-28LMDB-3AOPEN-ENV-P-20FUNCTION-29"></a>
 <a id="LMDB:OPEN-ENV-P%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L758">[function]</a></span> <span class="reference-object"><a href="#LMDB:OPEN-ENV-P%20FUNCTION" >open-env-p</a></span></span> <span class="locative-args">env</span></span></p>
 
 <p>See if <code>env</code> is open, i.e. <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a> has been called on it without a
 corresponding <a href="#LMDB:CLOSE-ENV%20FUNCTION" title="LMDB:CLOSE-ENV FUNCTION"><code>close-env</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FMISC-ENV-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION" title="Opening and closing environments">&#8592;</a> <a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">&#8593;</a> <a href="#LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION" title="Transactions">&#8594;</a> <a href="#LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION" title="Miscellaneous environment functions">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1142">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION">6.3 Miscellaneous environment functions</a></h3>
-
 <p><a id="x-28LMDB-3ACHECK-FOR-STALE-READERS-20FUNCTION-29"></a>
 <a id="LMDB:CHECK-FOR-STALE-READERS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1150">[function]</a></span> <span class="reference-object"><a href="#LMDB:CHECK-FOR-STALE-READERS%20FUNCTION" >check-for-stale-readers</a></span></span> <span class="locative-args">&amp;optional (env *env*)</span></span></p>
 
@@ -723,10 +618,8 @@ environments accessing the data file.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga366923d08bb384b3d9580a98edf5d668" >mdb_reader_check()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-STATISTICS-20FUNCTION-29"></a>
 <a id="LMDB:ENV-STATISTICS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1166">[function]</a></span> <span class="reference-object"><a href="#LMDB:ENV-STATISTICS%20FUNCTION" >env-statistics</a></span></span> <span class="locative-args">&amp;optional (env *env*)</span></span></p>
 
@@ -743,10 +636,8 @@ environments accessing the data file.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gaf881dca452050efbd434cd16e4bae255" >mdb_env_stat()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-INFO-20FUNCTION-29"></a>
 <a id="LMDB:ENV-INFO%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1196">[function]</a></span> <span class="reference-object"><a href="#LMDB:ENV-INFO%20FUNCTION" >env-info</a></span></span> <span class="locative-args">&amp;optional (env *env*)</span></span></p>
 
@@ -764,10 +655,8 @@ environments accessing the data file.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga18769362c7e7d6cf91889a028a5c5947" >mdb_env_info()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ASYNC-ENV-20FUNCTION-29"></a>
 <a id="LMDB:SYNC-ENV%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1227">[function]</a></span> <span class="reference-object"><a href="#LMDB:SYNC-ENV%20FUNCTION" >sync-env</a></span></span> <span class="locative-args">&amp;optional (env *env*)</span></span></p>
 
@@ -778,10 +667,8 @@ durability and integrity issues.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga85e61f05aa68b520cc6c3b981dba5037" >mdb_env_sync()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AENV-MAX-KEY-SIZE-20FUNCTION-29"></a>
 <a id="LMDB:ENV-MAX-KEY-SIZE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1237">[function]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" >env-max-key-size</a></span></span> <span class="locative-args">&amp;optional (env *env*)</span></span></p>
 
@@ -792,10 +679,8 @@ signalled.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gaaf0be004f33828bf2fb09d77eb3cef94" >mdb_env_get_maxkeysize()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AWITH-TEMPORARY-ENV-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:WITH-TEMPORARY-ENV%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1247">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-TEMPORARY-ENV%20MGL-PAX:MACRO" >with-temporary-env</a></span></span> <span class="locative-args">(env &amp;rest open-env-args) &amp;body body</span></span></p>
 
@@ -817,14 +702,10 @@ unlike <a href="#LMDB:WITH-ENV%20MGL-PAX:MACRO" title="LMDB:WITH-ENV MGL-PAX:MAC
 it was opened with <code>:synchronized</code> <code>nil</code> (see <code>open-env</code> and
 <a href="#LMDB:CLOSE-ENV%20FUNCTION" title="LMDB:CLOSE-ENV FUNCTION"><code>close-env</code></a>).</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FTRANSACTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION" title="Miscellaneous environment functions">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FNESTING-TRANSACTIONS%20MGL-PAX:SECTION" title="Nesting transactions">&#8594;</a> <a href="#LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION" title="Transactions">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1296">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION">7 Transactions</a></h2>
-
 <p>The <code>lmdb</code> environment supports transactional reads and writes. By
 default, these provide the standard ACID (atomicity, consistency,
 isolation, durability) guarantees. Writes from a transaction are not
@@ -832,22 +713,18 @@ immediately visible to other transactions. When the transaction is
 committed, all its writes become visible atomically for future
 transactions even if Lisp crashes or there is power failure. If the
 transaction is aborted, its writes are discarded.</p>
-
 <p>Transactions span the entire environment (see <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a>). All the updates
 made in the course of an update transaction - writing records across
 all databases, creating databases, and destroying databases - are
 either completed atomically or rolled back.</p>
-
 <p>Write transactions can be nested. Child transactions see the
 uncommitted writes of their parent. The child transaction can commit
 or abort, at which point its writes become visible to the parent
 transaction or are discarded. If the parent aborts, all of the
 writes performed in the context of the parent, including those from
 committed child transactions, are discarded.</p>
-
 <p><a id="x-28LMDB-3AWITH-TXN-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:WITH-TXN%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1444">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" >with-txn</a></span></span> <span class="locative-args">(&amp;key (env '*env*) write ignore-parent (sync t) (meta-sync t)) &amp;body body</span></span></p>
 
@@ -883,10 +760,8 @@ individual <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a>.
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gad7ea55da06b77513609efebd44b26920" >mdb_txn_begin()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40ACTIVE-TRANSACTION-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
 <a id="LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1343">[glossary-term]</a></span> <span class="reference-object"><a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" >active transaction</a></span></span></span></p>
 
@@ -911,10 +786,8 @@ the innermost in <code>env</code>.</p>
 <p>Operations that require a transaction always attempt to use the
 active transaction even if it is not open (see <a href="#LMDB:OPEN-TXN-P%20FUNCTION" title="LMDB:OPEN-TXN-P FUNCTION"><code>open-txn-p</code></a>).</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AOPEN-TXN-P-20FUNCTION-29"></a>
 <a id="LMDB:OPEN-TXN-P%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1421">[function]</a></span> <span class="reference-object"><a href="#LMDB:OPEN-TXN-P%20FUNCTION" >open-txn-p</a></span></span> <span class="locative-args">&amp;optional env</span></span></p>
 
@@ -922,10 +795,8 @@ active transaction even if it is not open (see <a href="#LMDB:OPEN-TXN-P%20FUNCT
 <a href="#LMDB:COMMIT-TXN%20FUNCTION" title="LMDB:COMMIT-TXN FUNCTION"><code>commit-txn</code></a> or <a href="#LMDB:ABORT-TXN%20FUNCTION" title="LMDB:ABORT-TXN FUNCTION"><code>abort-txn</code></a> have not been called on it. Also, <a href="#LMDB:RESET-TXN%20FUNCTION" title="LMDB:RESET-TXN FUNCTION"><code>reset-txn</code></a>
 without a corresponding <a href="#LMDB:RENEW-TXN%20FUNCTION" title="LMDB:RENEW-TXN FUNCTION"><code>renew-txn</code></a> closes the transaction.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ATXN-ID-20FUNCTION-29"></a>
 <a id="LMDB:TXN-ID%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1436">[function]</a></span> <span class="reference-object"><a href="#LMDB:TXN-ID%20FUNCTION" >txn-id</a></span></span></span></p>
 
@@ -935,10 +806,8 @@ concurrent readers will frequently have the same transaction ID.
 Only committed write transactions increment the ID. If a transaction
 aborts, the ID may be re-used by the next writer.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACOMMIT-TXN-20FUNCTION-29"></a>
 <a id="LMDB:COMMIT-TXN%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1641">[function]</a></span> <span class="reference-object"><a href="#LMDB:COMMIT-TXN%20FUNCTION" >commit-txn</a></span></span> <span class="locative-args">&amp;optional env</span></span></p>
 
@@ -953,10 +822,8 @@ pages replaced since.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga846fbd6f46105617ac9f4d76476f6597" >mdb_txn_commit()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AABORT-TXN-20FUNCTION-29"></a>
 <a id="LMDB:ABORT-TXN%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1659">[function]</a></span> <span class="reference-object"><a href="#LMDB:ABORT-TXN%20FUNCTION" >abort-txn</a></span></span> <span class="locative-args">&amp;optional env</span></span></p>
 
@@ -966,10 +833,8 @@ already closed transaction is a noop. Always succeeds.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga73a5938ae4c3239ee11efa07eb22b882" >mdb_txn_abort()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ARENEW-TXN-20FUNCTION-29"></a>
 <a id="LMDB:RENEW-TXN%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1688">[function]</a></span> <span class="reference-object"><a href="#LMDB:RENEW-TXN%20FUNCTION" >renew-txn</a></span></span> <span class="locative-args">&amp;optional env</span></span></p>
 
@@ -979,10 +844,8 @@ lock that had been released by <code>reset-txn</code>. After renewal, it is as i
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga6c6f917959517ede1c504cf7c720ce6d" >mdb_txn_renew()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ARESET-TXN-20FUNCTION-29"></a>
 <a id="LMDB:RESET-TXN%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1671">[function]</a></span> <span class="reference-object"><a href="#LMDB:RESET-TXN%20FUNCTION" >reset-txn</a></span></span> <span class="locative-args">&amp;optional env</span></span></p>
 
@@ -996,14 +859,10 @@ read-only transaction, this function always succeeds.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga02b06706f8a66249769503c4e88c56cd" >mdb_txn_reset()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FNESTING-TRANSACTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FNESTING-TRANSACTIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION" title="Transactions">&#8592;</a> <a href="#LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION" title="Transactions">&#8593;</a> <a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">&#8594;</a> <a href="#LMDB:@LMDB%2FNESTING-TRANSACTIONS%20MGL-PAX:SECTION" title="Nesting transactions">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1705">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FNESTING-TRANSACTIONS%20MGL-PAX:SECTION">7.1 Nesting transactions</a></h3>
-
 <p>When <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a>s are nested (i.e. one is executed in the dynamic
 extent of another), we speak of nested transactions. Transaction can
 be nested to arbitrary levels. Child transactions may be committed
@@ -1013,11 +872,9 @@ makes the updates made by it visible to the parent. If the parent
 then aborts, the child's updates are aborted too. If the parent
 commits, all child transactions that were not aborted are committed,
 too.</p>
-
 <p>Actually, the C lmdb library only supports nesting write
 transactions. To simplify usage, the Lisp side turns read-only
 <code>with-txn</code>s nested in another <code>with-txn</code>s into noops.</p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span> <span class="keyword">:value-encoding</span> <span class="keyword">:uint64</span></span>)</span></span>)</span></span>)</span>
     <span class="comment">;; Create a top-level write transaction.
@@ -1044,25 +901,21 @@ transactions. To simplify usage, the Lisp side turns read-only
 </span>      <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"p"</span></span>)</span> 0</span>)</span></span>)</span>
       <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
       <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">null <span class="paren6">(<span class="code">g3t db <span class="string">"c2"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
-
 <p><a href="#LMDB:COMMIT-TXN%20FUNCTION" title="LMDB:COMMIT-TXN FUNCTION"><code>commit-txn</code></a>, <a href="#LMDB:ABORT-TXN%20FUNCTION" title="LMDB:ABORT-TXN FUNCTION"><code>abort-txn</code></a>, and <a href="#LMDB:RESET-TXN%20FUNCTION" title="LMDB:RESET-TXN FUNCTION"><code>reset-txn</code></a> all close the
 <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a> (see <a href="#LMDB:OPEN-TXN-P%20FUNCTION" title="LMDB:OPEN-TXN-P FUNCTION"><code>open-txn-p</code></a>). When the active transaction is
 not open, database operations such as <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>, <a href="#LMDB:PUT%20FUNCTION" title="LMDB:PUT FUNCTION"><code>put</code></a>, <a href="#LMDB:DEL%20FUNCTION" title="LMDB:DEL FUNCTION"><code>del</code></a> signal
 <a href="#LMDB:LMDB-BAD-TXN-ERROR%20CONDITION" title="LMDB:LMDB-BAD-TXN-ERROR CONDITION"><code>lmdb-bad-txn-error</code></a>. Furthermore, any <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">Cursors</a> created in the
 context of the transaction will no longer be valid (but see
 <a href="#LMDB:CURSOR-RENEW%20FUNCTION" title="LMDB:CURSOR-RENEW FUNCTION"><code>cursor-renew</code></a>).</p>
-
 <p>An <code>lmdb</code> parent transaction and its cursors must not issue operations
 other than <code>commit-txn</code> and <code>abort-txn</code> while there are active child
 transactions. As the Lisp side does not expose transaction objects
 directly, performing <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">Basic operations</a> in the parent
 transaction is not possible, but it is possible with <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">Cursors</a>
 as they are tied to the transaction in which they were created.</p>
-
 <p><code>ignore-parent</code> true overrides the default nesting semantics of
 <code>with-txn</code> and creates a new top-level transaction, which is not a
 child of the enclosing <code>with-txn</code>.</p>
-
 <ul>
 <li><p>Since <code>lmdb</code> is single-writer, on nesting an <code>ignore-parent</code> write
   transaction in another write transaction, <code>lmdb-bad-txn-error</code> is
@@ -1072,39 +925,27 @@ child of the enclosing <code>with-txn</code>.</p>
   option because it would create two read-only transactions in the
   same thread.</p></li>
 </ul>
-
 <p>Nesting a read transaction in another transaction would be an
 <code>lmdb-bad-rslot-error</code> according to the C lmdb library, but a
 read-only <code>with-txn</code> with <code>ignore-parent</code> <code>nil</code> nested in another <code>with-txn</code>
 is turned into a noop so this edge case is papered over.</p>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FDATABASES-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FNESTING-TRANSACTIONS%20MGL-PAX:SECTION" title="Nesting transactions">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">&#8594;</a> <a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1783">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION">8 Databases</a></h2>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FTHE-UNNAMED-DATABASE-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">&#8592;</a> <a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">&#8593;</a> <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`">&#8594;</a> <a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1788">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION">8.1 The unnamed database</a></h3>
-
 <p><code>lmdb</code> has a default, unnamed database backed by a B+ tree. This db
 can hold normal key-value pairs and named databases. The unnamed
 database can be accessed by passing <code>nil</code> as the database name to
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>. There are some restrictions on the flags of the unnamed
 database, see <a href="#LMDB:LMDB-INCOMPATIBLE-ERROR%20CONDITION" title="LMDB:LMDB-INCOMPATIBLE-ERROR CONDITION"><code>lmdb-incompatible-error</code></a>.</p>
-
 <p><a id="x-28LMDB-3A-40DUPSORT-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@DUPSORT%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">&#8592;</a> <a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">&#8593;</a> <a href="#LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION" title="Database API">&#8594;</a> <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1795">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION">8.2 <code>dupsort</code></a></h3>
-
 <p>A prominent feature of <code>lmdb</code> is the ability to associate multiple
 sorted values with keys, which is enabled by the <code>dupsort</code> argument of
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>. Just as a named database is a B+ tree associated with a
@@ -1113,20 +954,14 @@ sorted duplicates form a B+ tree under a key in a named or the
 unnamed database. Among the <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">Basic operations</a>, <a href="#LMDB:PUT%20FUNCTION" title="LMDB:PUT FUNCTION"><code>put</code></a> and <a href="#LMDB:DEL%20FUNCTION" title="LMDB:DEL FUNCTION"><code>del</code></a> are
 equipped to deal with duplicate values, but <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a> is too limited, and
 <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">Cursors</a> are needed to make full use of <code>dupsort</code>.</p>
-
 <p>When using this feature the limit on the maximum key size applies to
 duplicate data, as well. See <a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" title="LMDB:ENV-MAX-KEY-SIZE FUNCTION"><code>env-max-key-size</code></a>.</p>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FDATABASE-API-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`">&#8592;</a> <a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">&#8593;</a> <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">&#8594;</a> <a href="#LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION" title="Database API">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1808">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION">8.3 Database API</a></h3>
-
 <p><a id="x-28LMDB-3A-2ADB-CLASS-2A-20VARIABLE-29"></a>
 <a id="LMDB:*DB-CLASS*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1883">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*DB-CLASS*%20VARIABLE" >*db-class*</a></span></span> <span class="locative-args">db</span></span></p>
 
@@ -1134,10 +969,8 @@ duplicate data, as well. See <a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" title="
 This provides a way to associate application specific data with <code>db</code>
 objects.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AGET-DB-20FUNCTION-29"></a>
 <a id="LMDB:GET-DB%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1888">[function]</a></span> <span class="reference-object"><a href="#LMDB:GET-DB%20FUNCTION" >get-db</a></span></span> <span class="locative-args">name &amp;key (class *db-class*) (env *env*) (if-does-not-exist :create) key-encoding value-encoding integer-key reverse-key dupsort integer-dup reverse-dup dupfixed</span></span></p>
 
@@ -1209,49 +1042,39 @@ subsequent open to another named database.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gac08cad5b096925642ca359a6d6f0562a" >mdb_dbi_open()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADB-20CLASS-29"></a>
 <a id="LMDB:DB%20CLASS"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1819">[class]</a></span> <span class="reference-object"><a href="#LMDB:DB%20CLASS" >db</a></span></span></span></p>
 
 <p>A database in an environment (class <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a>). Always to
 be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADB-NAME-20-28MGL-PAX-3AREADER-20LMDB-3ADB-29-29"></a>
 <a id="LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1822">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="locative-args">db (:name)</span></span></p>
 
 <p>The name of the database.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADB-KEY-ENCODING-20-28MGL-PAX-3AREADER-20LMDB-3ADB-29-29"></a>
 <a id="LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1828">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="locative-args">db (:key-encoding)</span></span></p>
 
 <p>The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>key-encoding</code> to
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADB-VALUE-ENCODING-20-28MGL-PAX-3AREADER-20LMDB-3ADB-29-29"></a>
 <a id="LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1834">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="locative-args">db (:value-encoding)</span></span></p>
 
 <p>The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>value-encoding</code>
 to <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADROP-DB-20FUNCTION-29"></a>
 <a id="LMDB:DROP-DB%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2031">[function]</a></span> <span class="reference-object"><a href="#LMDB:DROP-DB%20FUNCTION" >drop-db</a></span></span> <span class="locative-args">name path &amp;key open-env-args (delete t)</span></span></p>
 
@@ -1262,10 +1085,8 @@ itself.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gab966fab3840fc54a6571dfb32b00f2db" >mdb_drop()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADB-STATISTICS-20FUNCTION-29"></a>
 <a id="LMDB:DB-STATISTICS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2046">[function]</a></span> <span class="reference-object"><a href="#LMDB:DB-STATISTICS%20FUNCTION" >db-statistics</a></span></span> <span class="locative-args">db</span></span></p>
 
@@ -1273,26 +1094,20 @@ itself.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gae6c1069febe94299769dbdd032fadef6" >mdb_stat()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FENCODINGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION" title="Database API">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FOVERRIDING-ENCODINGS%20MGL-PAX:SECTION" title="Overriding encodings">&#8594;</a> <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2070">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION">9 Encoding and decoding data</a></h2>
-
 <p>In the C lmdb library, keys and values are opaque byte vectors
 only ever inspected internally to maintain the sort order (of keys
 and also duplicate values if <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>). The client is given the
 freedom and the responsibility to choose how to perform conversion
 to and from byte vectors.</p>
-
 <p><code>lmdb</code> exposes this full flexibility while at the same time providing
 reasonable defaults for the common cases. In particular, with the
 <code>key-encoding</code> and <code>value-encoding</code> arguments of <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>, the
 data (meaning the key or value here) encoding can be declared
 explicitly.</p>
-
 <p>Even if the encoding is undeclared, it is recommended to use a
 single type for keys (and duplicate values) to avoid unexpected
 conflicts that could arise, for example, when the UTF-8 encoding of
@@ -1300,7 +1115,6 @@ a string and the <code>:uint64</code> encoding of an integer coincide. The same
 consideration doubly applies to named databases, which share the key
 space with normal key-value pairs in the default database (see
 <a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">The unnamed database</a>).</p>
-
 <p>Together, <code>:uint64</code> and <code>:utf-8</code> cover the common cases for keys. They
 trade off dynamic typing for easy sortability (using the default C
 lmdb behaviour). On the other hand, when sorting is not
@@ -1310,17 +1124,14 @@ freely. For this purpose, using an encoding of <code>:octets</code> or <code>nil
 recommended because it works with complex objects, it encodes object
 types, it is fast and space-efficient, has a stable specification
 and an alternative implementation in C. For example:</p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">db <span class="paren5">(<span class="code">get-db <span class="string">"test"</span></span>)</span></span>)</span></span>)</span>
     <span class="paren3">(<span class="code"><i><span class="symbol">with-txn</span></i> <span class="paren4">(<span class="code"><span class="keyword">:write</span> t</span>)</span>
       <span class="paren4">(<span class="code">put db <span class="string">"key1"</span> <span class="paren5">(<span class="code">cpk:encode <span class="paren6">(<span class="code">list <span class="keyword">:some</span> <span class="string">"stuff"</span> 42</span>)</span></span>)</span></span>)</span>
       <span class="paren4">(<span class="code">cpk:decode <span class="paren5">(<span class="code">g3t db <span class="string">"key1"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="keyword">:SOME</span> <span class="string">"stuff"</span> 42</span>)</span></span></code></pre>
-
 <p>Note that multiple <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a> objects with different encodings can be
 associated with the same C lmdb database, which declutters the code:</p>
-
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*cpk-encoding*</span>
   <span class="paren2">(<span class="code">cons #'cpk:encode <span class="paren3">(<span class="code">alexandria:compose #'cpk:decode #'mdb-val-to-octets</span>)</span></span>)</span></span>)</span>
 
@@ -1336,10 +1147,8 @@ associated with the same C lmdb database, which declutters the code:</p>
         <span class="paren5">(<span class="code">g3t db id</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
 =&gt; <span class="paren1">(<span class="code"><span class="keyword">:SOME</span> <span class="string">"stuff"</span> 42</span>)</span>
 =&gt; T</span></code></pre>
-
 <p><a id="x-28LMDB-3AENCODING-20TYPE-29"></a>
 <a id="LMDB:ENCODING%20TYPE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1850">[type]</a></span> <span class="reference-object"><a href="#LMDB:ENCODING%20TYPE" >encoding</a></span></span></span></p>
 
@@ -1370,10 +1179,8 @@ associated with the same C lmdb database, which declutters the code:</p>
   is equivalent to <code>(cons #'uint64-to-octets #'mdb-val-to-uint64)</code>.</p></li>
 </ul></li>
 </ul>
-
 <p><a id="x-28LMDB-3AWITH-MDB-VAL-SLOTS-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:WITH-MDB-VAL-SLOTS%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2143">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-MDB-VAL-SLOTS%20MGL-PAX:MACRO" >with-mdb-val-slots</a></span></span> <span class="locative-args">(%bytes size mdb-val) &amp;body body</span></span></p>
 
@@ -1385,19 +1192,15 @@ used as <a href="#LMDB:*KEY-DECODER*%20VARIABLE" title="LMDB:*KEY-DECODER* VARIA
 so don't hold on to it. Also, the pointer to which <code>%bytes</code> is bound
 is valid only within the context of current top-level transaction.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AOCTETS-20TYPE-29"></a>
 <a id="LMDB:OCTETS%20TYPE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2162">[type]</a></span> <span class="reference-object"><a href="#LMDB:OCTETS%20TYPE" >octets</a></span></span> <span class="locative-args">&amp;optional (size '*)</span></span></p>
 
 <p>A 1D <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ar.htm" title="SIMPLE-ARRAY (MGL-PAX:CLHS TYPE)"><code>simple-array</code></a> of <code>(unsigned-byte 8)</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AMDB-VAL-TO-OCTETS-20FUNCTION-29"></a>
 <a id="LMDB:MDB-VAL-TO-OCTETS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2171">[function]</a></span> <span class="reference-object"><a href="#LMDB:MDB-VAL-TO-OCTETS%20FUNCTION" >mdb-val-to-octets</a></span></span> <span class="locative-args">mdb-val</span></span></p>
 
@@ -1405,10 +1208,8 @@ is valid only within the context of current top-level transaction.</p></li>
 <a href="#LMDB:*VALUE-DECODER*%20VARIABLE" title="LMDB:*VALUE-DECODER* VARIABLE"><code>*value-decoder*</code></a> functions. It returns a Lisp octet vector that holds
 the same bytes as <code>mdb-val</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AUINT64-TO-OCTETS-20FUNCTION-29"></a>
 <a id="LMDB:UINT64-TO-OCTETS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2195">[function]</a></span> <span class="reference-object"><a href="#LMDB:UINT64-TO-OCTETS%20FUNCTION" >uint64-to-octets</a></span></span> <span class="locative-args">n</span></span></p>
 
@@ -1416,20 +1217,16 @@ the same bytes as <code>mdb-val</code>.</p></li>
 native byte order representation of <code>n</code>. Suitable as a <a href="#LMDB:*KEY-ENCODER*%20VARIABLE" title="LMDB:*KEY-ENCODER* VARIABLE"><code>*key-encoder*</code></a>
 or <a href="#LMDB:*VALUE-ENCODER*%20VARIABLE" title="LMDB:*VALUE-ENCODER* VARIABLE"><code>*value-encoder*</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AOCTETS-TO-UINT64-20FUNCTION-29"></a>
 <a id="LMDB:OCTETS-TO-UINT64%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2224">[function]</a></span> <span class="reference-object"><a href="#LMDB:OCTETS-TO-UINT64%20FUNCTION" >octets-to-uint64</a></span></span> <span class="locative-args">octets</span></span></p>
 
 <p>The inverse of <a href="#LMDB:UINT64-TO-OCTETS%20FUNCTION" title="LMDB:UINT64-TO-OCTETS FUNCTION"><code>uint64-to-octets</code></a>. Use <a href="#LMDB:MDB-VAL-TO-UINT64%20FUNCTION" title="LMDB:MDB-VAL-TO-UINT64 FUNCTION"><code>mdb-val-to-uint64</code></a> as a
 <a href="#LMDB:*KEY-DECODER*%20VARIABLE" title="LMDB:*KEY-DECODER* VARIABLE"><code>*key-decoder*</code></a> or <a href="#LMDB:*VALUE-DECODER*%20VARIABLE" title="LMDB:*VALUE-DECODER* VARIABLE"><code>*value-decoder*</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AMDB-VAL-TO-UINT64-20FUNCTION-29"></a>
 <a id="LMDB:MDB-VAL-TO-UINT64%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2238">[function]</a></span> <span class="reference-object"><a href="#LMDB:MDB-VAL-TO-UINT64%20FUNCTION" >mdb-val-to-uint64</a></span></span> <span class="locative-args">mdb-val</span></span></p>
 
@@ -1439,52 +1236,40 @@ order. This function is called automatically when the encoding is
 known to require it (see <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>'s <code>integer-key</code>, <code>:value-encoding</code>,
 etc).</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ASTRING-TO-OCTETS-20FUNCTION-29"></a>
 <a id="LMDB:STRING-TO-OCTETS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2259">[function]</a></span> <span class="reference-object"><a href="#LMDB:STRING-TO-OCTETS%20FUNCTION" >string-to-octets</a></span></span> <span class="locative-args">string</span></span></p>
 
 <p>Convert <code>string</code> to <a href="#LMDB:OCTETS%20TYPE" title="LMDB:OCTETS TYPE"><code>octets</code></a> by encoding it as UTF-8 with null
 termination. Suitable as a <a href="#LMDB:*KEY-ENCODER*%20VARIABLE" title="LMDB:*KEY-ENCODER* VARIABLE"><code>*key-encoder*</code></a> or <a href="#LMDB:*VALUE-ENCODER*%20VARIABLE" title="LMDB:*VALUE-ENCODER* VARIABLE"><code>*value-encoder*</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AOCTETS-TO-STRING-20FUNCTION-29"></a>
 <a id="LMDB:OCTETS-TO-STRING%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2264">[function]</a></span> <span class="reference-object"><a href="#LMDB:OCTETS-TO-STRING%20FUNCTION" >octets-to-string</a></span></span> <span class="locative-args">octets</span></span></p>
 
 <p>The inverse of <a href="#LMDB:STRING-TO-OCTETS%20FUNCTION" title="LMDB:STRING-TO-OCTETS FUNCTION"><code>string-to-octets</code></a>. Use <a href="#LMDB:MDB-VAL-TO-STRING%20FUNCTION" title="LMDB:MDB-VAL-TO-STRING FUNCTION"><code>mdb-val-to-string</code></a> as a
 <a href="#LMDB:*KEY-DECODER*%20VARIABLE" title="LMDB:*KEY-DECODER* VARIABLE"><code>*key-decoder*</code></a> or <a href="#LMDB:*VALUE-DECODER*%20VARIABLE" title="LMDB:*VALUE-DECODER* VARIABLE"><code>*value-decoder*</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AMDB-VAL-TO-STRING-20FUNCTION-29"></a>
 <a id="LMDB:MDB-VAL-TO-STRING%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2269">[function]</a></span> <span class="reference-object"><a href="#LMDB:MDB-VAL-TO-STRING%20FUNCTION" >mdb-val-to-string</a></span></span> <span class="locative-args">mdb-val</span></span></p>
 
 <p>Like <a href="#LMDB:OCTETS-TO-STRING%20FUNCTION" title="LMDB:OCTETS-TO-STRING FUNCTION"><code>octets-to-string</code></a>, but suitable as a <a href="#LMDB:*KEY-DECODER*%20VARIABLE" title="LMDB:*KEY-DECODER* VARIABLE"><code>*key-decoder*</code></a> or
 <a href="#LMDB:*VALUE-DECODER*%20VARIABLE" title="LMDB:*VALUE-DECODER* VARIABLE"><code>*value-decoder*</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FOVERRIDING-ENCODINGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FOVERRIDING-ENCODINGS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">&#8592;</a> <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">&#8593;</a> <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">&#8594;</a> <a href="#LMDB:@LMDB%2FOVERRIDING-ENCODINGS%20MGL-PAX:SECTION" title="Overriding encodings">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2276">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FOVERRIDING-ENCODINGS%20MGL-PAX:SECTION">9.1 Overriding encodings</a></h3>
-
 <p>Using multiple <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a> objects with different encodings is the
 recommended practice (see the example in <a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">Encoding and decoding data</a>), but when
 that is inconvenient, one can override the encodings with the
 following variables.</p>
-
 <p><a id="x-28LMDB-3A-2AKEY-ENCODER-2A-20VARIABLE-29"></a>
 <a id="LMDB:*KEY-ENCODER*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2286">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*KEY-ENCODER*%20VARIABLE" >*key-encoder*</a></span></span> <span class="locative-args">nil</span></span></p>
 
@@ -1493,10 +1278,8 @@ the encoding method determined by <code>key-encoding</code> (see <a href="#LMDB:
 called with a single argument, the key, when it is to be converted
 to an octet vector.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-2AKEY-DECODER-2A-20VARIABLE-29"></a>
 <a id="LMDB:*KEY-DECODER*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2292">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*KEY-DECODER*%20VARIABLE" >*key-decoder*</a></span></span> <span class="locative-args">nil</span></span></p>
 
@@ -1523,19 +1306,15 @@ this:</p>
 =&gt; 3
 =&gt; T</span></code></pre></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-2AVALUE-ENCODER-2A-20VARIABLE-29"></a>
 <a id="LMDB:*VALUE-ENCODER*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2319">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*VALUE-ENCODER*%20VARIABLE" >*value-encoder*</a></span></span> <span class="locative-args">nil</span></span></p>
 
 <p>Like <a href="#LMDB:*KEY-ENCODER*%20VARIABLE" title="LMDB:*KEY-ENCODER* VARIABLE"><code>*key-encoder*</code></a>, but for values.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-2AVALUE-DECODER-2A-20VARIABLE-29"></a>
 <a id="LMDB:*VALUE-DECODER*%20VARIABLE"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2322">[variable]</a></span> <span class="reference-object"><a href="#LMDB:*VALUE-DECODER*%20VARIABLE" >*value-decoder*</a></span></span> <span class="locative-args">nil</span></span></p>
 
@@ -1546,17 +1325,12 @@ this:</p>
 foreign functions such as <code>write()</code> directly from the decoder
 function and returning a constant such as <code>t</code> to avoid consing.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FBASIC-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FOVERRIDING-ENCODINGS%20MGL-PAX:SECTION" title="Overriding encodings">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">&#8594;</a> <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2446">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION">10 Basic operations</a></h2>
-
 <p><a id="x-28LMDB-3AG3T-20FUNCTION-29"></a>
 <a id="LMDB:G3T%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2451">[function]</a></span> <span class="reference-object"><a href="#LMDB:G3T%20FUNCTION" >g3t</a></span></span> <span class="locative-args">db key</span></span></p>
 
@@ -1580,10 +1354,8 @@ with <code>cl:get:</code></p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga8bf10cd91d3f3a83a34d04ce6b07992d" >mdb_get()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3APUT-20FUNCTION-29"></a>
 <a id="LMDB:PUT%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2495">[function]</a></span> <span class="reference-object"><a href="#LMDB:PUT%20FUNCTION" >put</a></span></span> <span class="locative-args">db key value &amp;key (overwrite t) (dupdata t) append append-dup (key-exists-error-p t)</span></span></p>
 
@@ -1613,10 +1385,8 @@ Returns <code>t</code> on success.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga4fa8573d9236d54687c61827ebf8cac0" >mdb_put()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADEL-20FUNCTION-29"></a>
 <a id="LMDB:DEL%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2542">[function]</a></span> <span class="reference-object"><a href="#LMDB:DEL%20FUNCTION" >del</a></span></span> <span class="locative-args">db key &amp;key value</span></span></p>
 
@@ -1628,17 +1398,12 @@ deleted, if it's not <code>nil</code>, then only the matching value. May signal
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gab8182f9360ea69ac0afd4a4eaab1ddb0" >mdb_del()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FCURSORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION" title="Positioning cursors">&#8594;</a> <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2569">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION">11 Cursors</a></h2>
-
 <p><a id="x-28LMDB-3AWITH-CURSOR-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:WITH-CURSOR%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2628">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" >with-cursor</a></span></span> <span class="locative-args">(var db) &amp;body body</span></span></p>
 
@@ -1652,10 +1417,8 @@ threads other than the one in which it was created.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga9ff5d7bd42557fd5ee235dc1d62613aa" >mdb_cursor_open()</a>
 and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859cc4c05188" >mdb_cursor_close()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3AWITH-IMPLICIT-CURSOR-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2661">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO" >with-implicit-cursor</a></span></span> <span class="locative-args">(db) &amp;body body</span></span></p>
 
@@ -1687,24 +1450,18 @@ cursor is needed. That is, use</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga9ff5d7bd42557fd5ee235dc1d62613aa" >mdb_cursor_open()</a>
 and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859cc4c05188" >mdb_cursor_close()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-20CLASS-29"></a>
 <a id="LMDB:CURSOR%20CLASS"></a></p>
-
 <ul>
 <li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2580">[class]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR%20CLASS" >cursor</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)">structure-object</a></span></span></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-DB-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20LMDB-3ACURSOR-29-29"></a>
 <a id="LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29"></a></p>
-
 <ul>
 <li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2584">[structure-accessor]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" >cursor-db</a></span></span> <span class="locative-args">cursor</span></span></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40DEFAULT-CURSOR-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
 <a id="LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2714">[glossary-term]</a></span> <span class="reference-object"><a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" >default cursor</a></span></span></span></p>
 
@@ -1718,23 +1475,17 @@ arguments <a href="http://www.lispworks.com/documentation/HyperSpec/Body/03_da.h
 keyword arguments as well - the cursor may be a required argument as
 in <a href="#LMDB:CURSOR-PUT%20FUNCTION" title="LMDB:CURSOR-PUT FUNCTION"><code>cursor-put</code></a>. Still <code>nil</code> can be passed explicitly.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FPOSITIONING-CURSORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">&#8592;</a> <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">&#8593;</a> <a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">&#8594;</a> <a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION" title="Positioning cursors">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2725">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION">11.1 Positioning cursors</a></h3>
-
 <p>The following functions <em>position</em> or <em>initialize</em> a cursor while
 returning the value (<em>a</em> value with <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>) associated with a key,
 or both the key and the value. Initialization is successful if there
 is the cursor points to a key-value pair, which is indicated by the
 last return value being <code>t</code>.</p>
-
 <p><a id="x-28LMDB-3ACURSOR-FIRST-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-FIRST%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2746">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-FIRST%20FUNCTION" >cursor-first</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1745,10 +1496,8 @@ value and <code>t</code>, or <code>nil</code> if the database is empty. If <a hr
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_FIRST</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-FIRST-DUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-FIRST-DUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2767">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-FIRST-DUP%20FUNCTION" >cursor-first-dup</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1758,10 +1507,8 @@ the value and <code>t</code>. Return <code>nil</code> if <code>cursor</code> is 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_FIRST_DUP</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-LAST-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-LAST%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2786">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-LAST%20FUNCTION" >cursor-last</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1772,10 +1519,8 @@ value and <code>t</code>, or <code>nil</code> if the database is empty. If <a hr
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_LAST</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-LAST-DUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-LAST-DUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2807">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-LAST-DUP%20FUNCTION" >cursor-last-dup</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1785,10 +1530,8 @@ the value and <code>t</code>. Return <code>nil</code> if <code>cursor</code> is 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_LAST_DUP</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-NEXT-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-NEXT%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2825">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-NEXT%20FUNCTION" >cursor-next</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1801,10 +1544,8 @@ uninitialized, then <a href="#LMDB:CURSOR-FIRST%20FUNCTION" title="LMDB:CURSOR-F
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_NEXT</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-NEXT-NODUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-NEXT-NODUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2848">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-NEXT-NODUP%20FUNCTION" >cursor-next-nodup</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1816,10 +1557,8 @@ the key, the value and <code>t</code>. Return <code>nil</code> if there is no ne
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_NEXT_NODUP</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-NEXT-DUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-NEXT-DUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2870">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-NEXT-DUP%20FUNCTION" >cursor-next-dup</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1830,10 +1569,8 @@ Return the value and <code>t</code>. Return <code>nil</code> if there is no next
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_NEXT_DUP</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-PREV-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-PREV%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2889">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-PREV%20FUNCTION" >cursor-prev</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1846,10 +1583,8 @@ current key if exists, else the last value of previous key. If
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_PREV</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-PREV-NODUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-PREV-NODUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2912">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-PREV-NODUP%20FUNCTION" >cursor-prev-nodup</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1862,10 +1597,8 @@ is called on it first.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_PREV_NODUP</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-PREV-DUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-PREV-DUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2935">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-PREV-DUP%20FUNCTION" >cursor-prev-dup</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1877,10 +1610,8 @@ first.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_PREV_DUP</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-SET-KEY-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-SET-KEY%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2955">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-SET-KEY%20FUNCTION" >cursor-set-key</a></span></span> <span class="locative-args">key &amp;optional cursor</span></span></p>
 
@@ -1891,10 +1622,8 @@ on the first value of <code>key</code>.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_SET_KEY</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-SET-KEY-DUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-SET-KEY-DUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2976">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-SET-KEY-DUP%20FUNCTION" >cursor-set-key-dup</a></span></span> <span class="locative-args">key value &amp;optional cursor</span></span></p>
 
@@ -1904,10 +1633,8 @@ success. Return <code>nil</code> if the pair was not found.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_GET_BOTH</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-SET-RANGE-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-SET-RANGE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2994">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-SET-RANGE%20FUNCTION" >cursor-set-range</a></span></span> <span class="locative-args">key &amp;optional cursor</span></span></p>
 
@@ -1919,10 +1646,8 @@ key.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_SET_RANGE</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-SET-RANGE-DUP-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-SET-RANGE-DUP%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3016">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-SET-RANGE-DUP%20FUNCTION" >cursor-set-range-dup</a></span></span> <span class="locative-args">key value &amp;optional cursor</span></span></p>
 
@@ -1933,23 +1658,17 @@ or <code>nil</code> if there is no such value associated with <code>key</code>.<
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_GET_BOTH_RANGE</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FBASIC-CURSOR-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION" title="Positioning cursors">&#8592;</a> <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">&#8593;</a> <a href="#LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION" title="Miscellaneous cursor operations">&#8594;</a> <a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3035">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION">11.2 Basic cursor operations</a></h3>
-
 <p>The following operations are similar to <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>, <a href="#LMDB:PUT%20FUNCTION" title="LMDB:PUT FUNCTION"><code>put</code></a>, <a href="#LMDB:DEL%20FUNCTION" title="LMDB:DEL FUNCTION"><code>del</code></a> (the
 <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">Basic operations</a>), but <code>g3t</code> has three variants
 (<a href="#LMDB:CURSOR-KEY-VALUE%20FUNCTION" title="LMDB:CURSOR-KEY-VALUE FUNCTION"><code>cursor-key-value</code></a>, <a href="#LMDB:CURSOR-KEY%20FUNCTION" title="LMDB:CURSOR-KEY FUNCTION"><code>cursor-key</code></a>, and <a href="#LMDB:CURSOR-VALUE%20FUNCTION" title="LMDB:CURSOR-VALUE FUNCTION"><code>cursor-value</code></a>). All of them
 require the cursor to be positioned (see
 <a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION" title="Positioning cursors">Positioning cursors</a>).</p>
-
 <p><a id="x-28LMDB-3ACURSOR-KEY-VALUE-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-KEY-VALUE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3047">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-KEY-VALUE%20FUNCTION" >cursor-key-value</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1959,10 +1678,8 @@ if <code>cursor</code> is uninitialized.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_GET_CURRENT</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-KEY-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-KEY%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3067">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-KEY%20FUNCTION" >cursor-key</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1972,10 +1689,8 @@ is uninitialized.</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_GET_CURRENT</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-VALUE-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-VALUE%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3085">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-VALUE%20FUNCTION" >cursor-value</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -1985,10 +1700,8 @@ with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b2
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga48df35fb102536b32dfbb801a47b4cb0" >mdb_cursor_get()</a>
 with <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1206b2af8b95e7f6b0ef6b28708c9127" >MDB_GET_CURRENT</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-PUT-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-PUT%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3103">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-PUT%20FUNCTION" >cursor-put</a></span></span> <span class="locative-args">key value cursor &amp;key current (overwrite t) (dupdata t) append append-dup</span></span></p>
 
@@ -2023,10 +1736,8 @@ Return <code>value</code>.</p>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga1f83ccb40011837ff37cc32be01ad91e" >mdb_cursor_put()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-DEL-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-DEL%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3155">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-DEL%20FUNCTION" >cursor-del</a></span></span> <span class="locative-args">cursor &amp;key delete-dups</span></span></p>
 
@@ -2046,17 +1757,12 @@ current key. With <code>delete-dups</code>, <a href="#LMDB:CURSOR-DB%20%28MGL-PA
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga26a52d3efcfd72e5bf6bd6960bf75f95" >mdb_cursor_del()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FMISC-CURSOR-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">&#8592;</a> <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">&#8593;</a> <a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8594;</a> <a href="#LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION" title="Miscellaneous cursor operations">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3186">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION">11.3 Miscellaneous cursor operations</a></h3>
-
 <p><a id="x-28LMDB-3ACURSOR-RENEW-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-RENEW%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3195">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-RENEW%20FUNCTION" >cursor-renew</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -2068,10 +1774,8 @@ may be done whether the previous transaction is open or closed (see
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gac8b57befb68793070c85ea813df481af" >mdb_cursor_renew()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ACURSOR-COUNT-20FUNCTION-29"></a>
 <a id="LMDB:CURSOR-COUNT%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3215">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-COUNT%20FUNCTION" >cursor-count</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
@@ -2082,10 +1786,8 @@ is signalled. If <code>cursor</code> is not initialized,
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga4041fd1e1862c6b7d5f10590b86ffbe2" >mdb_cursor_count()</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADO-CURSOR-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:DO-CURSOR%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3234">[macro]</a></span> <span class="reference-object"><a href="#LMDB:DO-CURSOR%20MGL-PAX:MACRO" >do-cursor</a></span></span> <span class="locative-args">(key-var value-var cursor &amp;key from-end nodup) &amp;body body</span></span></p>
 
@@ -2107,10 +1809,8 @@ will be seen.</p>
   <span class="paren2">(<span class="code">do-cursor <span class="paren3">(<span class="code">key value cursor</span>)</span>
     <span class="paren3">(<span class="code">print <span class="paren4">(<span class="code">cons key value</span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADO-CURSOR-DUP-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:DO-CURSOR-DUP%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3270">[macro]</a></span> <span class="reference-object"><a href="#LMDB:DO-CURSOR-DUP%20MGL-PAX:MACRO" >do-cursor-dup</a></span></span> <span class="locative-args">(value-var cursor &amp;key from-end) &amp;body body</span></span></p>
 
@@ -2129,10 +1829,8 @@ associated with the key 7:</p>
   <span class="paren2">(<span class="code">do-cursor-dup <span class="paren3">(<span class="code">value cursor</span>)</span>
     <span class="paren3">(<span class="code">print value</span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADO-DB-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:DO-DB%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3297">[macro]</a></span> <span class="reference-object"><a href="#LMDB:DO-DB%20MGL-PAX:MACRO" >do-db</a></span></span> <span class="locative-args">(key-var value-var db &amp;key from-end nodup) &amp;body body</span></span></p>
 
@@ -2147,10 +1845,8 @@ first (or last if <code>from-end</code>) value for each key are skipped. If
 
 <p>This macro establishes a <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ADO-DB-DUP-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:DO-DB-DUP%20MGL-PAX:MACRO"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3318">[macro]</a></span> <span class="reference-object"><a href="#LMDB:DO-DB-DUP%20MGL-PAX:MACRO" >do-db-dup</a></span></span> <span class="locative-args">(value-var db key &amp;key from-end) &amp;body body</span></span></p>
 
@@ -2164,10 +1860,8 @@ then iteration starts at the largest value.</p>
 
 <p>This macro establishes a <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALIST-DUPS-20FUNCTION-29"></a>
 <a id="LMDB:LIST-DUPS%20FUNCTION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3338">[function]</a></span> <span class="reference-object"><a href="#LMDB:LIST-DUPS%20FUNCTION" >list-dups</a></span></span> <span class="locative-args">db key &amp;key from-end</span></span></p>
 
@@ -2175,17 +1869,12 @@ then iteration starts at the largest value.</p>
 associated with <code>key</code> in <code>db</code> as a list. If <code>from-end</code>, then the first
 element of the list is the largest value.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FCONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION" title="Miscellaneous cursor operations">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="#LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION" title="Conditions for C lmdb error codes">&#8594;</a> <a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L363">&#955;</a></span></span></p>
-
 <h2><a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION">12 Conditions</a></h2>
-
 <p><a id="x-28LMDB-3ALMDB-SERIOUS-CONDITION-20CONDITION-29"></a>
 <a id="LMDB:LMDB-SERIOUS-CONDITION%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L384">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" >lmdb-serious-condition</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_seriou.htm" title="SERIOUS-CONDITION (MGL-PAX:CLHS CONDITION)">serious-condition</a></span></span></p>
 
@@ -2193,39 +1882,29 @@ element of the list is the largest value.</p></li>
 that are <code>lmdb-serious-condition</code>s, but not <a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION"><code>lmdb-error</code></a>s are corruption
 and internal errors, which are hard to recover from.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L403">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-ERROR%20CONDITION" >lmdb-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></p>
 
 <p>Base class for normal, recoverable <code>lmdb</code> errors.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FERROR-CODE-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8592;</a> <a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8593;</a> <a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">&#8594;</a> <a href="#LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION" title="Conditions for C lmdb error codes">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L462">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION">12.1 Conditions for C lmdb error codes</a></h3>
-
 <p>The following conditions correspond to <a href="http://www.lmdb.tech/doc/group__errors.html" >C lmdb error
 codes</a>.</p>
-
 <p><a id="x-28LMDB-3ALMDB-KEY-EXISTS-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-KEY-EXISTS-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L486">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-KEY-EXISTS-ERROR%20CONDITION" >lmdb-key-exists-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p>Key-value pair already exists. Signalled by <a href="#LMDB:PUT%20FUNCTION" title="LMDB:PUT FUNCTION"><code>put</code></a>
 and <a href="#LMDB:CURSOR-PUT%20FUNCTION" title="LMDB:CURSOR-PUT FUNCTION"><code>cursor-put</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-NOT-FOUND-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-NOT-FOUND-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L491">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-NOT-FOUND-ERROR%20CONDITION" >lmdb-not-found-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2233,87 +1912,69 @@ and <a href="#LMDB:CURSOR-PUT%20FUNCTION" title="LMDB:CURSOR-PUT FUNCTION"><code
 <a href="#LMDB:CURSOR-NEXT%20FUNCTION" title="LMDB:CURSOR-NEXT FUNCTION"><code>cursor-next</code></a>, ...) should return <code>nil</code> instead of signalling this
 error. If it is signalled, that's a bug.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-PAGE-NOT-FOUND-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-PAGE-NOT-FOUND-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L497">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-PAGE-NOT-FOUND-ERROR%20CONDITION" >lmdb-page-not-found-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a></span></span></p>
 
 <p>Requested page not found - this usually indicates
 corruption.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-CORRUPTED-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-CORRUPTED-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L502">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-CORRUPTED-ERROR%20CONDITION" >lmdb-corrupted-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a></span></span></p>
 
 <p>Located page was wrong type.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-PANIC-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-PANIC-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L506">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-PANIC-ERROR%20CONDITION" >lmdb-panic-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a></span></span></p>
 
 <p>Update of meta page failed or environment had fatal
 error.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-VERSION-MISMATCH-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-VERSION-MISMATCH-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L511">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-VERSION-MISMATCH-ERROR%20CONDITION" >lmdb-version-mismatch-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p>Environment version mismatch.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-INVALID-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-INVALID-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L515">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-INVALID-ERROR%20CONDITION" >lmdb-invalid-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a></span></span></p>
 
 <p>File is not a valid <code>lmdb</code> file.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-MAP-FULL-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-MAP-FULL-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L519">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-MAP-FULL-ERROR%20CONDITION" >lmdb-map-full-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAP-SIZE (MGL-PAX:READER LMDB:ENV)"><code>env-map-size</code></a> reached. Reopen the environment with a
 larger <code>:map-size</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-DBS-FULL-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-DBS-FULL-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L524">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-DBS-FULL-ERROR%20CONDITION" >lmdb-dbs-full-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAX-DBS (MGL-PAX:READER LMDB:ENV)"><code>env-max-dbs</code></a> reached. Reopen the environment with a
 higher <code>:max-dbs</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-READERS-FULL-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-READERS-FULL-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L529">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-READERS-FULL-ERROR%20CONDITION" >lmdb-readers-full-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAX-READERS (MGL-PAX:READER LMDB:ENV)"><code>env-max-readers</code></a> reached. Reopen the environment
 with a higher <code>:max-readers</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-TXN-FULL-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-TXN-FULL-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L534">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-TXN-FULL-ERROR%20CONDITION" >lmdb-txn-full-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2322,28 +1983,22 @@ expected to occur only when using nested read-write transactions or
 operations multiple items (currently not supported by this
 wrapper).</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-CURSOR-FULL-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-CURSOR-FULL-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L541">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-CURSOR-FULL-ERROR%20CONDITION" >lmdb-cursor-full-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a></span></span></p>
 
 <p>Cursor stack too deep - internal error.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-PAGE-FULL-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-PAGE-FULL-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L545">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-PAGE-FULL-ERROR%20CONDITION" >lmdb-page-full-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-SERIOUS-CONDITION%20CONDITION" title="LMDB:LMDB-SERIOUS-CONDITION CONDITION">lmdb-serious-condition</a></span></span></p>
 
 <p>Page has not enough space - internal error.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-MAP-RESIZED-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-MAP-RESIZED-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L549">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-MAP-RESIZED-ERROR%20CONDITION" >lmdb-map-resized-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2351,10 +2006,8 @@ wrapper).</p></li>
 can happen if another OS process using the same environment path set
 a larger map size than this process did.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-INCOMPATIBLE-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-INCOMPATIBLE-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L555">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-INCOMPATIBLE-ERROR%20CONDITION" >lmdb-incompatible-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2368,20 +2021,16 @@ This can mean:</p>
 <li><p>The database was dropped and recreated with different flags.</p></li>
 </ul></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-BAD-RSLOT-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-BAD-RSLOT-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L568">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BAD-RSLOT-ERROR%20CONDITION" >lmdb-bad-rslot-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p>Invalid reuse of reader locktable slot. May be
 signalled by <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-BAD-TXN-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-BAD-TXN-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L573">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BAD-TXN-ERROR%20CONDITION" >lmdb-bad-txn-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2390,39 +2039,29 @@ Signalled, for example, when a read-only transaction is nested in a
 read-write transaction, or when a cursor is used whose transaction
 has been closed (committed, aborted, or reset).</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-BAD-VALSIZE-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-BAD-VALSIZE-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L580">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BAD-VALSIZE-ERROR%20CONDITION" >lmdb-bad-valsize-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p>Unsupported size of key/<a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a> name/data, or wrong
 <code>dupfixed</code>, <code>integer-key</code> or <code>integer-dup</code>. See <a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" title="LMDB:ENV-MAX-KEY-SIZE FUNCTION"><code>env-max-key-size</code></a>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-BAD-DBI-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-BAD-DBI-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L585">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-BAD-DBI-ERROR%20CONDITION" >lmdb-bad-dbi-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
 <p>The specified <code>dbi</code> was changed unexpectedly.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3A-40LMDB-2FADDITIONAL-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION"></a></p>
-
 <p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION" title="Conditions for C lmdb error codes">&#8592;</a> <a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8593;</a> <a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">&#8634;</a> <a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L589">&#955;</a></span></span></p>
-
 <h3><a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION">12.2 Additional conditions</a></h3>
-
 <p>The following conditions do not have a dedicated C lmdb error
 code.</p>
-
 <p><a id="x-28LMDB-3ALMDB-CURSOR-UNINITIALIZED-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-CURSOR-UNINITIALIZED-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L597">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-CURSOR-UNINITIALIZED-ERROR%20CONDITION" >lmdb-cursor-uninitialized-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2431,10 +2070,8 @@ a key-value pair with a function like <a href="#LMDB:CURSOR-FIRST%20FUNCTION" ti
 <a href="#LMDB:CURSOR-SET-KEY%20FUNCTION" title="LMDB:CURSOR-SET-KEY FUNCTION"><code>cursor-set-key</code></a>. Signalled when some functions return the C error
 code <code>einval</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-CURSOR-THREAD-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-CURSOR-THREAD-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L604">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-CURSOR-THREAD-ERROR%20CONDITION" >lmdb-cursor-thread-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2444,10 +2081,8 @@ lifetime is tied to the dynamic extent of its <a href="#LMDB:WITH-CURSOR%20MGL-P
 might mean accessing garbage in foreign memory with unpredictable
 consequences.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-TXN-READ-ONLY-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-TXN-READ-ONLY-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L612">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-TXN-READ-ONLY-ERROR%20CONDITION" >lmdb-txn-read-only-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
@@ -2455,10 +2090,8 @@ consequences.</p></li>
 transaction. Signalled when some functions return the C error code
 <code>eaccess</code>.</p></li>
 </ul>
-
 <p><a id="x-28LMDB-3ALMDB-ILLEGAL-ACCESS-TO-PARENT-TXN-ERROR-20CONDITION-29"></a>
 <a id="LMDB:LMDB-ILLEGAL-ACCESS-TO-PARENT-TXN-ERROR%20CONDITION"></a></p>
-
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L618">[condition]</a></span> <span class="reference-object"><a href="#LMDB:LMDB-ILLEGAL-ACCESS-TO-PARENT-TXN-ERROR%20CONDITION" >lmdb-illegal-access-to-parent-txn-error</a></span></span> <span class="locative-args"><a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION">lmdb-error</a></span></span></p>
 
