@@ -879,7 +879,7 @@ wrapped by the check without signalling an <a href="#TRY:OUTCOME%20CONDITION" ti
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/70fc8a655ba6146a9397a8e5fddd4d3167adb56c/src/trial.lisp#L14">[class]</a></span> <span class="reference-object"><a href="#TRY:TRIAL%20CLASS" >trial</a></span></span> <span class="locative-args">sb-mop:funcallable-standard-object</span></span></p>
 
 <p>Trials are records of calls to tests (see
-<a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">Counting Events</a>, <a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>). Their behaviour as <a href="#TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM" title="TRY:@FUNCALLABLE-INSTANCE MGL-PAX:GLOSSARY-TERM">funcallable instance</a>s
+<a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">Counting Events</a>, <a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>). Their behaviour as <a href="#TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM" title="funcallable instance">funcallable instance</a>s
 is explained in <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">Rerunning Trials</a>.</p>
 
 <p>There are three ways to acquire a <code>trial</code> object: by calling
@@ -1118,7 +1118,7 @@ that case, any intervening trials are skipped.</p>
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">OUTER</span>)</span></span>)</span> SKIP 0.000s ⋅1&gt;</span></code></pre>
 <p>Furthermore, all three restarts initiate a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a> to
 return from the trial. If during the unwinding of the stack, the
-non-local-exit is cancelled (see <a href="#TRY:@CANCELLED-NLX%20MGL-PAX:GLOSSARY-TERM" title="TRY:@CANCELLED-NLX MGL-PAX:GLOSSARY-TERM">cancelled non-local exit</a>), the appropriate
+non-local-exit is cancelled (see <a href="#TRY:@CANCELLED-NLX%20MGL-PAX:GLOSSARY-TERM" title="cancelled non-local exit">cancelled non-local exit</a>), the appropriate
 restart will be invoked upon returning from the trial. In the
 following example, the non-local exit from a skip is cancelled by a
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm" title="THROW (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>throw</code></a>.</p>
@@ -1830,7 +1830,7 @@ The arguments are described in <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PA
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/70fc8a655ba6146a9397a8e5fddd4d3167adb56c/src/checks.lisp#L328">[macro]</a></span> <span class="reference-object"><a href="#TRY:FAILS%20MGL-PAX:MACRO" >fails</a></span></span> <span class="locative-args">(&amp;key name msg ctx) &amp;body body</span></span></p>
 
 <p>Check that <code>body</code> performs a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a> but do not
-cancel it (see <a href="#TRY:@CANCELLED-NLX%20MGL-PAX:GLOSSARY-TERM" title="TRY:@CANCELLED-NLX MGL-PAX:GLOSSARY-TERM">cancelled non-local exit</a>). See <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">Check Library</a> for the
+cancel it (see <a href="#TRY:@CANCELLED-NLX%20MGL-PAX:GLOSSARY-TERM" title="cancelled non-local exit">cancelled non-local exit</a>). See <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">Check Library</a> for the
 descriptions of the other arguments.</p>
 
 <p>In the following example, <code>fails</code> signals a <a href="#TRY:SUCCESS%20CONDITION" title="TRY:SUCCESS CONDITION"><code>success</code></a>.</p>
@@ -2616,7 +2616,7 @@ be:</p>
 <li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>package</code></a></p></li>
 </ul>
 <p>In the function designator cases, <code>try</code> calls the designated function.
-<a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>s, being <a href="#TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM" title="TRY:@FUNCALLABLE-INSTANCE MGL-PAX:GLOSSARY-TERM">funcallable instance</a>s, designate themselves. If the
+<a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>s, being <a href="#TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM" title="funcallable instance">funcallable instance</a>s, designate themselves. If the
 trial is not <a href="#TRY:RUNNINGP%20FUNCTION" title="TRY:RUNNINGP FUNCTION"><code>runningp</code></a>, then it will be rerun (see <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">Rerunning Trials</a>). Don't
 invoke <code>try</code> with <code>runningp</code> trials (but see
 <a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">Implementation of Implicit <code>try</code></a> for discussion).</p>

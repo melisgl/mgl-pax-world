@@ -194,7 +194,7 @@ the following.</p>
 <li><p><a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a> checks that the same path is not used in multiple open
   environments to prevent locking issues documented in
   <a href="http://www.lmdb.tech/doc/" >Caveats</a>.</p></li>
-<li><p><a href="#LMDB:CLOSE-ENV%20FUNCTION" title="LMDB:CLOSE-ENV FUNCTION"><code>close-env</code></a> waits until all <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a>s are finished before
+<li><p><a href="#LMDB:CLOSE-ENV%20FUNCTION" title="LMDB:CLOSE-ENV FUNCTION"><code>close-env</code></a> waits until all <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a>s are finished before
   actually closing the environment. Alternatively, if <code>open-env</code> was
   called with <code>:synchronized</code> <code>nil</code>, to avoid the overhead of
   synchronization, the environment is closed only when garbage
@@ -556,7 +556,7 @@ two ways this can happen:</p>
 
 <ul>
 <li><p>If <code>env</code> was opened <code>:synchronized</code> (see <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>), then <code>close-env</code>
-  waits until there are no <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a>s in <code>env</code> before
+  waits until there are no <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a>s in <code>env</code> before
   closing it. This requires synchronization and introduces some
   overhead, which might be noticable for workloads involving lots of
   quick read transactions. It is an <a href="#LMDB:LMDB-ERROR%20CONDITION" title="LMDB:LMDB-ERROR CONDITION"><code>lmdb-error</code></a> to attempt to close
@@ -811,7 +811,7 @@ aborts, the ID may be re-used by the next writer.</p></li>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L1641">[function]</a></span> <span class="reference-object"><a href="#LMDB:COMMIT-TXN%20FUNCTION" >commit-txn</a></span></span> <span class="locative-args">&amp;optional env</span></span></p>
 
-<p>Commit the innermost enclosig transaction (or <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a>
+<p>Commit the innermost enclosig transaction (or <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a>
 belonging to <code>env</code> if <code>env</code> is specified) or signal an error if it is
 not open. If <code>txn</code> is not nested in another transaction, committing
 makes updates performed visible to future transactions. If <code>txn</code> is a
@@ -902,7 +902,7 @@ transactions. To simplify usage, the Lisp side turns read-only
       <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">= <span class="paren6">(<span class="code">g3t db <span class="string">"c1"</span></span>)</span> 1</span>)</span></span>)</span>
       <span class="paren4">(<span class="code">assert <span class="paren5">(<span class="code">null <span class="paren6">(<span class="code">g3t db <span class="string">"c2"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 <p><a href="#LMDB:COMMIT-TXN%20FUNCTION" title="LMDB:COMMIT-TXN FUNCTION"><code>commit-txn</code></a>, <a href="#LMDB:ABORT-TXN%20FUNCTION" title="LMDB:ABORT-TXN FUNCTION"><code>abort-txn</code></a>, and <a href="#LMDB:RESET-TXN%20FUNCTION" title="LMDB:RESET-TXN FUNCTION"><code>reset-txn</code></a> all close the
-<a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a> (see <a href="#LMDB:OPEN-TXN-P%20FUNCTION" title="LMDB:OPEN-TXN-P FUNCTION"><code>open-txn-p</code></a>). When the active transaction is
+<a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a> (see <a href="#LMDB:OPEN-TXN-P%20FUNCTION" title="LMDB:OPEN-TXN-P FUNCTION"><code>open-txn-p</code></a>). When the active transaction is
 not open, database operations such as <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>, <a href="#LMDB:PUT%20FUNCTION" title="LMDB:PUT FUNCTION"><code>put</code></a>, <a href="#LMDB:DEL%20FUNCTION" title="LMDB:DEL FUNCTION"><code>del</code></a> signal
 <a href="#LMDB:LMDB-BAD-TXN-ERROR%20CONDITION" title="LMDB:LMDB-BAD-TXN-ERROR CONDITION"><code>lmdb-bad-txn-error</code></a>. Furthermore, any <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">Cursors</a> created in the
 context of the transaction will no longer be valid (but see
@@ -1409,7 +1409,7 @@ deleted, if it's not <code>nil</code>, then only the matching value. May signal
 
 <p>Bind <code>var</code> to a fresh <a href="#LMDB:CURSOR%20CLASS" title="LMDB:CURSOR CLASS"><code>cursor</code></a> on <code>db</code>. Execute <code>body</code>, then close the
 cursor. Within the dynamic extent of <code>body</code>, this will be the
-<a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a>. The cursor is tied to the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a>.</p>
+<a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a>. The cursor is tied to the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a>.</p>
 
 <p><a href="#LMDB:LMDB-CURSOR-THREAD-ERROR%20CONDITION" title="LMDB:LMDB-CURSOR-THREAD-ERROR CONDITION"><code>lmdb-cursor-thread-error</code></a> is signalled if the cursor is accessed from
 threads other than the one in which it was created.</p>
@@ -1423,7 +1423,7 @@ and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859c
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L2661">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO" >with-implicit-cursor</a></span></span> <span class="locative-args">(db) &amp;body body</span></span></p>
 
 <p>Like <a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-CURSOR MGL-PAX:MACRO"><code>with-cursor</code></a> but the cursor object is not accessible directly,
-only through the <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a> mechanism. The cursor is
+only through the <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a> mechanism. The cursor is
 stack-allocated, which eliminates the consing of <code>with-cursor</code>. Note
 that stack allocation of cursors in <code>with-cursor</code> would risk data
 corruption if the cursor were accessed beyond its dynamic extent.</p>
@@ -1766,7 +1766,7 @@ current key. With <code>delete-dups</code>, <a href="#LMDB:CURSOR-DB%20%28MGL-PA
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/e0f9468a2ef498aeaf0a6916ab719ffdf2e32292/src/lmdb.lisp#L3195">[function]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-RENEW%20FUNCTION" >cursor-renew</a></span></span> <span class="locative-args">&amp;optional cursor</span></span></p>
 
-<p>Associate <code>cursor</code> with the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a> (which must be
+<p>Associate <code>cursor</code> with the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a> (which must be
 read-only) as if it had been created with that transaction to begin
 with to avoid allocation overhead. <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" title="LMDB:CURSOR-DB (MGL-PAX:STRUCTURE-ACCESSOR LMDB:CURSOR)"><code>cursor-db</code></a> stays the same. This
 may be done whether the previous transaction is open or closed (see
@@ -1796,7 +1796,7 @@ If <code>cursor</code> is not positioned then no key-value pairs will be seen. I
 <code>from-end</code>, then iterate with <a href="#LMDB:CURSOR-PREV%20FUNCTION" title="LMDB:CURSOR-PREV FUNCTION"><code>cursor-prev</code></a> instead of <a href="#LMDB:CURSOR-NEXT%20FUNCTION" title="LMDB:CURSOR-NEXT FUNCTION"><code>cursor-next</code></a>. If
 <code>nodup</code>, then make that <a href="#LMDB:CURSOR-PREV-NODUP%20FUNCTION" title="LMDB:CURSOR-PREV-NODUP FUNCTION"><code>cursor-prev-nodup</code></a> and <a href="#LMDB:CURSOR-NEXT-NODUP%20FUNCTION" title="LMDB:CURSOR-NEXT-NODUP FUNCTION"><code>cursor-next-nodup</code></a>.</p>
 
-<p>If <code>cursor</code> is <code>nil</code>, the <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a> is used.</p>
+<p>If <code>cursor</code> is <code>nil</code>, the <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a> is used.</p>
 
 <p>If <code>nodup</code> and not <code>from-end</code>, then the first duplicate of each key will
 be seen. If <code>nodup</code> and <code>from-end</code>, then the last duplicate of each key
@@ -1819,7 +1819,7 @@ will be seen.</p>
 <code>from-end</code>, then iterate with <a href="#LMDB:CURSOR-PREV-DUP%20FUNCTION" title="LMDB:CURSOR-PREV-DUP FUNCTION"><code>cursor-prev-dup</code></a> instead of
 <a href="#LMDB:CURSOR-NEXT-DUP%20FUNCTION" title="LMDB:CURSOR-NEXT-DUP FUNCTION"><code>cursor-next-dup</code></a>.</p>
 
-<p>If <code>cursor</code> is <code>nil</code>, the <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a> is used.</p>
+<p>If <code>cursor</code> is <code>nil</code>, the <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a> is used.</p>
 
 <p>To iterate over all values that not smaller than #(3 4 5),
 associated with the key 7:</p>
@@ -1843,7 +1843,7 @@ first (or last if <code>from-end</code>) value for each key are skipped. If
 <pre><code><span class="code"><span class="paren1">(<span class="code">do-db <span class="paren2">(<span class="code">key value db</span>)</span>
   <span class="paren2">(<span class="code">print <span class="paren3">(<span class="code">cons key value</span>)</span></span>)</span></span>)</span></span></code></pre>
 
-<p>This macro establishes a <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a>.</p></li>
+<p>This macro establishes a <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a>.</p></li>
 </ul>
 <p><a id="x-28LMDB-3ADO-DB-DUP-20MGL-PAX-3AMACRO-29"></a>
 <a id="LMDB:DO-DB-DUP%20MGL-PAX:MACRO"></a></p>
@@ -1858,7 +1858,7 @@ then iteration starts at the largest value.</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code">do-db-dup <span class="paren2">(<span class="code">value db 7</span>)</span>
   <span class="paren2">(<span class="code">print value</span>)</span></span>)</span></span></code></pre>
 
-<p>This macro establishes a <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@DEFAULT-CURSOR MGL-PAX:GLOSSARY-TERM">default cursor</a>.</p></li>
+<p>This macro establishes a <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a>.</p></li>
 </ul>
 <p><a id="x-28LMDB-3ALIST-DUPS-20FUNCTION-29"></a>
 <a id="LMDB:LIST-DUPS%20FUNCTION"></a></p>
@@ -2098,7 +2098,7 @@ transaction. Signalled when some functions return the C error code
 <p>A parent transaction and its cursors may not
 issue any other operations than <a href="#LMDB:COMMIT-TXN%20FUNCTION" title="LMDB:COMMIT-TXN FUNCTION"><code>commit-txn</code></a> and <a href="#LMDB:ABORT-TXN%20FUNCTION" title="LMDB:ABORT-TXN FUNCTION"><code>abort-txn</code></a> while it
 has active child transactions. In <code>lmdb</code>, <a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">Basic operations</a> are
-always executed in the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="LMDB:@ACTIVE-TRANSACTION MGL-PAX:GLOSSARY-TERM">active transaction</a>, but <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">Cursors</a> can
+always executed in the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a>, but <a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">Cursors</a> can
 refer to the parent transaction:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">with-temporary-env</span></i> <span class="paren2">(<span class="code"><span class="special">*env*</span></span>)</span>
