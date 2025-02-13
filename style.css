@@ -89,12 +89,11 @@ h1 {
   font-feature-settings: var(--font-feature-settings-heading);
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  /* text-shadow: 0.05em 0.05em 0.02em #DDD; */
+  letter-spacing: 0.08em;
+  word-spacing: 0.08em;
   line-height: calc(2*var(--line-height));
   font-size: 2.0rem;
   margin: calc(2*var(--line-height)) 0;
-  /* margin: calc(3*var(--line-height)) 0 calc(2*var(--line-height)) 0; */
   text-align: center;
 }
 
