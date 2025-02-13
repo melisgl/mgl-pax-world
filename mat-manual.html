@@ -6,7 +6,7 @@
 <link type='text/css' href='style.css' rel='stylesheet'>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-   <script src="jquery.min.js"></script>
+<script src="jquery.min.js"></script>
 <script src="toc.min.js"></script>
 <script type="text/x-mathjax-config">
      MathJax.Hub.Config({
@@ -16,8 +16,7 @@
        }
      });
    </script>
-   <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-   </script>
+   <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
    
 </head>
 <body>
@@ -1451,9 +1450,9 @@ purpose is represent facets of <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT
 
 <p>One of <code>:pinned</code>, <code>:static</code> and <code>:cuda-host</code> (see type
 <a href="#MGL-MAT:FOREIGN-ARRAY-STRATEGY%20TYPE" title="MGL-MAT:FOREIGN-ARRAY-STRATEGY TYPE"><code>foreign-array-strategy</code></a>). This variable controls how foreign arrays
-are handled and it can be changed at any time.</p>
+are handled, and it can be changed at any time.</p>
 
-<p>If it's <code>:pinned</code> (only supported if (<a href="#MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION" title="MGL-MAT:PINNING-SUPPORTED-P FUNCTION"><code>pinning-supported-p</code></a>), then no
+<p>If it's <code>:pinned</code> (only supported if <a href="#MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION" title="MGL-MAT:PINNING-SUPPORTED-P FUNCTION"><code>pinning-supported-p</code></a>), then no
 separate storage is allocated for the foreign array. Instead, it
 aliases the lisp array (via the <a href="#MGL-MAT:BACKING-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME"><code>backing-array</code></a> facet).</p>
 
