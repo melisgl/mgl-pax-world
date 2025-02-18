@@ -418,8 +418,8 @@ programs on different hosts.</p>
 exists:</p>
 
 <ul>
-<li><p><code>:error:</code> An error is signalled.</p></li>
-<li><p><code>:create:</code> A new memory-mapped file is created ensuring that all
+<li><p><code>:error</code>: An error is signalled.</p></li>
+<li><p><code>:create</code>: A new memory-mapped file is created ensuring that all
   containing directories exist.</p></li>
 <li><p><code>nil</code>: Return <code>nil</code> without doing anything.</p></li>
 </ul>
@@ -625,12 +625,12 @@ environments accessing the data file.</p>
 <p>Return statistics about <code>env</code> as a plist.</p>
 
 <ul>
-<li><p><code>:page-size:</code> The size of a database page in bytes.</p></li>
-<li><p><code>:depth:</code> The height of the B-tree.</p></li>
-<li><p><code>:branch-pages:</code> The number of internal (non-leaf) pages.</p></li>
-<li><p><code>:leaf-pages:</code> The number of leaf pages.</p></li>
-<li><p><code>:overflow-pages:</code> The number of overflow pages.</p></li>
-<li><p><code>:entries:</code> The number of data items.</p></li>
+<li><p><code>:page-size</code>: The size of a database page in bytes.</p></li>
+<li><p><code>:depth</code>: The height of the B-tree.</p></li>
+<li><p><code>:branch-pages</code>: The number of internal (non-leaf) pages.</p></li>
+<li><p><code>:leaf-pages</code>: The number of leaf pages.</p></li>
+<li><p><code>:overflow-pages</code>: The number of overflow pages.</p></li>
+<li><p><code>:entries</code>: The number of data items.</p></li>
 </ul>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gaf881dca452050efbd434cd16e4bae255" >mdb_env_stat()</a>.</p></li>
@@ -643,13 +643,13 @@ environments accessing the data file.</p>
 <p>Return information about <code>env</code> as a plist.</p>
 
 <ul>
-<li><p><code>:map-address:</code> Address of memory map, if fixed (see <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>'s
+<li><p><code>:map-address</code>: Address of memory map, if fixed (see <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>'s
   <code>fixed-map</code>).</p></li>
-<li><p><code>:map-size:</code> Size of the memory map in bytes.</p></li>
-<li><p><code>:last-page-number:</code> Id of the last used page.</p></li>
-<li><p><code>:last-txn-id:</code> Id of the last committed transaction.</p></li>
-<li><p><code>:maximum-readers:</code> The number of reader slots.</p></li>
-<li><p><code>:n-readers:</code> The number of reader slots current used.</p></li>
+<li><p><code>:map-size</code>: Size of the memory map in bytes.</p></li>
+<li><p><code>:last-page-number</code>: Id of the last used page.</p></li>
+<li><p><code>:last-txn-id</code>: Id of the last committed transaction.</p></li>
+<li><p><code>:maximum-readers</code>: The number of reader slots.</p></li>
+<li><p><code>:n-readers</code>: The number of reader slots current used.</p></li>
 </ul>
 
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga18769362c7e7d6cf91889a028a5c5947" >mdb_env_info()</a>.</p></li>
@@ -1154,12 +1154,12 @@ associated with the same C lmdb database, which declutters the code:</p>
 <p>The following values are supported:</p>
 
 <ul>
-<li><p><code>:uint64:</code> Data to be encoded must be of type <code>(unsigned-byte 64)</code>,
+<li><p><code>:uint64</code>: Data to be encoded must be of type <code>(unsigned-byte 64)</code>,
   which is then encoded as an 8 byte array in <em>native</em> byte order
   with <a href="#LMDB:UINT64-TO-OCTETS%20FUNCTION" title="LMDB:UINT64-TO-OCTETS FUNCTION"><code>uint64-to-octets</code></a>. The reverse transformation takes place when
   returning values. This is the encoding used for <code>integer-key</code> and
   <code>integer-dup</code> <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a>s.</p></li>
-<li><p><code>:octets:</code> Note the plural. Data to be encoded (e.g. <code>key</code> argument of
+<li><p><code>:octets</code>: Note the plural. Data to be encoded (e.g. <code>key</code> argument of
   <a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a>) must be a 1D byte array. If its element type
   is <code>(unsigned-byte 8)</code>, then the data can be passed to the foreign
   code more efficiently, but declaring the element type is not
@@ -1167,7 +1167,7 @@ associated with the same C lmdb database, which declutters the code:</p>
   actual elements are of type <code>(unsigned-byte 8)</code>. Foreign byte
   arrays to be decoded (e.g. the value returned by <code>g3t</code>) are returned
   as <a href="#LMDB:OCTETS%20TYPE" title="LMDB:OCTETS TYPE"><code>octets</code></a>.</p></li>
-<li><p><code>:utf-8:</code> Data to be encoded must be a string, which is converted to
+<li><p><code>:utf-8</code>: Data to be encoded must be a string, which is converted to
   octets by TRIVIAL-UTF-8. Null-terminated. Foreign byte arrays are
   decoded the same way.</p></li>
 <li><p><code>nil</code>: Data is encoded using the default encoding according to its
@@ -1345,7 +1345,7 @@ exported, requires some shadowing.</p>
 
 <p>The LMDB+ package is like the <code>lmdb</code> package, but it has <code>#'lmdb:g3t</code>
 fbound to <code>lmdb+:g3t</code> so it probably needs shadowing to avoid conflict
-with <code>cl:get:</code></p>
+with <code>cl:get</code>:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defpackage</span></i> lmdb/test
   <span class="paren2">(<span class="code"><span class="keyword">:shadow</span> <span class="keyword">#:get</span></span>)</span>

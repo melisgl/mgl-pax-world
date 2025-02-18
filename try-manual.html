@@ -2034,7 +2034,7 @@ always returns <code>nil</code>.</p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mismat.htm" title="MISMATCH (MGL-PAX:CLHS FUNCTION)"><code>cl:mismatch</code></a> but <a href="#TRY:CAPTURE%20MGL-PAX:MACRO" title="TRY:CAPTURE MGL-PAX:MACRO"><code>capture</code></a>s and returns the common prefix and
 the mismatched suffixes. The <code>test-not</code> argument is deprecated by
-the <a href="pax-manual.html#MGL-PAX:CLHS%20MGL-PAX:LOCATIVE" title="MGL-PAX:CLHS MGL-PAX:LOCATIVE"><code>clhs</code></a> and is not supported. In addition, if <code>max-prefix-length</code> and
+the <code>clhs</code> and is not supported. In addition, if <code>max-prefix-length</code> and
 <code>max-suffix-length</code> are non-<code>nil</code>, they must be non-negative integers,
 and they limit the number of elements in the prefix and the
 suffixes.</p>
@@ -2686,7 +2686,7 @@ be:</p>
 <li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>package</code></a></p></li>
 </ul>
 <p>In the function designator cases, <code>try</code> calls the designated function.
-<a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>s, being <a href="#TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM" title="funcallable instance">funcallable instance</a>s, designate themselves. If the
+<code>trial</code>s, being <a href="#TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM" title="funcallable instance">funcallable instance</a>s, designate themselves. If the
 trial is not <a href="#TRY:RUNNINGP%20FUNCTION" title="TRY:RUNNINGP FUNCTION"><code>runningp</code></a>, then it will be rerun (see <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">Rerunning Trials</a>). Don't
 invoke <code>try</code> with <code>runningp</code> trials (but see
 <a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">Implementation of Implicit <code>try</code></a> for discussion).</p>

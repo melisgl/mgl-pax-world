@@ -513,7 +513,7 @@ literal that belongs to its literal class.</p></li>
 evaluates to values of <code>type</code>. <code>terminate-fn</code> is a function of one
 argument: the level of the root of the subexpression to be generated
 in the context of the entire expression. If it returns <code>t</code> then a
-<a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a> will be inserted (by calling its <a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" title="MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL)"><code>builder</code></a> function),
+<a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a> will be inserted (by calling its <code>builder</code> function),
 else an <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a> with all its necessary arguments.</p>
 
 <p>The algorithm recursively generates the expression starting from
@@ -555,7 +555,7 @@ themselves.</p></li>
 convenience function calls <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a> to create a random
 individual that produces <code>gp</code>'s <a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:TOPLEVEL-TYPE (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>toplevel-type</code></a>. By passing in another
 <code>type</code> one can create expressions that fit somewhere else in a larger
-expression which is useful in a <a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>randomizer</code></a> function.</p></li>
+expression, which is useful in a <a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>randomizer</code></a> function.</p></li>
 </ul>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-SEARCH-SPACE-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION"></a></p>
@@ -682,8 +682,8 @@ also have other offsprings.</p></li>
 <a id="MGL-GPR:@GPR-DE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION" title="SANSDE">&#8594;</a> <a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/051a60167eb3bf36cf790f965e328dcbd7ab89d1/src/differential-evolution.lisp#L3">&#955;</a></span></span></p>
 <h2><a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION">6 Differential Evolution</a></h2>
-<p>The concepts in this section are covered by Differential
-Evolution: A Survey of the State-of-the-Art.</p>
+<p>The concepts in this section are covered by <a href="http://107.167.189.191/~piak/teaching/ec/ec2012/das-de-sota-2011.pdf" >Differential
+Evolution: A Survey of the State-of-the-Art</a>.</p>
 <p><a id="x-28MGL-GPR-3ADIFFERENTIAL-EVOLUTION-20CLASS-29"></a>
 <a id="MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS"></a></p>
 <ul>
