@@ -30,120 +30,122 @@
 <div id="content">
 <p><a id="x-28JOURNAL-3A-40JOURNAL-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-MANUAL%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;journal&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="journal-manual.html" title="Journal manual">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="journal-manual.html" title="Journal manual">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5">&#955;</a></span></span></p>
 <h1><a href="journal-manual.html">Journal manual</a></h1>
 <h2>Table of Contents</h2>
 <ul>
-<li><a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;journal&quot; ASDF/SYSTEM:SYSTEM">1 The journal ASDF System</a></li>
-<li><a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">2 Links</a></li>
-<li><a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION" title="Portability">3 Portability</a></li>
-<li><a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION" title="Background">4 Background</a></li>
-<li><a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION" title="Distinguishing features">5 Distinguishing features</a></li>
-<li><a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">6 Basics</a>
+<li><a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">1 Links</a></li>
+<li><a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION" title="Portability">2 Portability</a></li>
+<li><a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION" title="Background">3 Background</a></li>
+<li><a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION" title="Distinguishing features">4 Distinguishing features</a></li>
+<li><a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">5 Basics</a>
 
 <ul>
-<li><a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">6.1 In-events</a></li>
-<li><a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">6.2 Out-events</a></li>
-<li><a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION" title="Working with unreadable values">6.3 Working with unreadable values</a></li>
-<li><a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION" title="Utilities">6.4 Utilities</a></li>
-<li><a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title="Pretty-printing">6.5 Pretty-printing</a></li>
-<li><a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION" title="Error handling">6.6 Error handling</a></li>
+<li><a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">5.1 In-events</a></li>
+<li><a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">5.2 Out-events</a></li>
+<li><a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION" title="Working with unreadable values">5.3 Working with unreadable values</a></li>
+<li><a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION" title="Utilities">5.4 Utilities</a></li>
+<li><a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title="Pretty-printing">5.5 Pretty-printing</a></li>
+<li><a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION" title="Error handling">5.6 Error handling</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">7 Logging</a>
+<li><a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">6 Logging</a>
 
 <ul>
-<li><a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION" title="Customizing logs">7.1 Customizing logs</a></li>
-<li><a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`">7.2 <code>:log-record</code></a></li>
-<li><a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION" title="Logging with `leaf-event`s">7.3 Logging with <code>leaf-event</code>s</a></li>
+<li><a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION" title="Customizing logs">6.1 Customizing logs</a></li>
+<li><a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`">6.2 <code>:log-record</code></a></li>
+<li><a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION" title="Logging with `leaf-event`s">6.3 Logging with <code>leaf-event</code>s</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">8 Tracing</a>
+<li><a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">7 Tracing</a>
 
 <ul>
-<li><a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION" title="Slime integration">8.1 Slime integration</a></li>
+<li><a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION" title="Slime integration">7.1 Slime integration</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">9 Replay</a>
+<li><a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">8 Replay</a>
 
 <ul>
-<li><a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION" title="Journaled for replay">9.1 Journaled for replay</a></li>
-<li><a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION" title="Bundles">9.2 Bundles</a></li>
-<li><a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION" title="The replay strategy">9.3 The replay strategy</a></li>
-<li><a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION" title="Matching in-events">9.4 Matching in-events</a>
+<li><a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION" title="Journaled for replay">8.1 Journaled for replay</a></li>
+<li><a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION" title="Bundles">8.2 Bundles</a></li>
+<li><a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION" title="The replay strategy">8.3 The replay strategy</a></li>
+<li><a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION" title="Matching in-events">8.4 Matching in-events</a>
 
 <ul>
-<li><a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">9.4.1 Replaying the outcome</a></li>
+<li><a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">8.4.1 Replaying the outcome</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION" title="Matching out-events">9.5 Matching out-events</a></li>
-<li><a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION" title="Replay failures">9.6 Replay failures</a></li>
-<li><a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION" title="Upgrades and replay">9.7 Upgrades and replay</a></li>
+<li><a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION" title="Matching out-events">8.5 Matching out-events</a></li>
+<li><a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION" title="Replay failures">8.6 Replay failures</a></li>
+<li><a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION" title="Upgrades and replay">8.7 Upgrades and replay</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">10 Testing</a>
+<li><a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">9 Testing</a>
 
 <ul>
-<li><a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION" title="Testing on multiple levels">10.1 Testing on multiple levels</a></li>
+<li><a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION" title="Testing on multiple levels">9.1 Testing on multiple levels</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">11 Persistence</a>
+<li><a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">10 Persistence</a>
 
 <ul>
-<li><a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION" title="Persistence tutorial">11.1 Persistence tutorial</a></li>
-<li><a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">11.2 Synchronization to storage</a>
+<li><a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION" title="Persistence tutorial">10.1 Persistence tutorial</a></li>
+<li><a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">10.2 Synchronization to storage</a>
 
 <ul>
-<li><a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">11.2.1 Synchronization strategies</a></li>
-<li><a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">11.2.2 Synchronization with in-memory journals</a></li>
-<li><a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with file journals">11.2.3 Synchronization with file journals</a></li>
+<li><a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">10.2.1 Synchronization strategies</a></li>
+<li><a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">10.2.2 Synchronization with in-memory journals</a></li>
+<li><a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with file journals">10.2.3 Synchronization with file journals</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION" title="Safety">12 Safety</a></li>
-<li><a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">13 Events reference</a>
+<li><a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION" title="Safety">11 Safety</a></li>
+<li><a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">12 Events reference</a>
 
 <ul>
-<li><a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION" title="Event versions">13.1 Event versions</a></li>
-<li><a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="In-events">13.2 In-events</a></li>
-<li><a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Out-events">13.3 Out-events</a></li>
-<li><a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Leaf-events">13.4 Leaf-events</a></li>
+<li><a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION" title="Event versions">12.1 Event versions</a></li>
+<li><a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="In-events">12.2 In-events</a></li>
+<li><a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Out-events">12.3 Out-events</a></li>
+<li><a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Leaf-events">12.4 Leaf-events</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">14 Journals reference</a>
+<li><a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">13 Journals reference</a>
 
 <ul>
-<li><a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION" title="Comparing journals">14.1 Comparing journals</a></li>
-<li><a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="In-memory journals">14.2 In-memory journals</a></li>
-<li><a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION" title="File journals">14.3 File journals</a></li>
-<li><a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION" title="Pretty-printing journals">14.4 Pretty-printing journals</a></li>
+<li><a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION" title="Comparing journals">13.1 Comparing journals</a></li>
+<li><a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="In-memory journals">13.2 In-memory journals</a></li>
+<li><a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION" title="File journals">13.3 File journals</a></li>
+<li><a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION" title="Pretty-printing journals">13.4 Pretty-printing journals</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">15 Bundles reference</a>
+<li><a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">14 Bundles reference</a>
 
 <ul>
-<li><a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION" title="In-memory bundles">15.1 In-memory bundles</a></li>
-<li><a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION" title="File bundles">15.2 File bundles</a></li>
+<li><a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION" title="In-memory bundles">14.1 In-memory bundles</a></li>
+<li><a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION" title="File bundles">14.2 File bundles</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">16 Streamlets reference</a>
+<li><a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">15 Streamlets reference</a>
 
 <ul>
-<li><a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION" title="Opening and closing">16.1 Opening and closing</a></li>
-<li><a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION" title="Reading from streamlets">16.2 Reading from streamlets</a></li>
-<li><a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION" title="Writing to streamlets">16.3 Writing to streamlets</a></li>
+<li><a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION" title="Opening and closing">15.1 Opening and closing</a></li>
+<li><a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION" title="Reading from streamlets">15.2 Reading from streamlets</a></li>
+<li><a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION" title="Writing to streamlets">15.3 Writing to streamlets</a></li>
 </ul></li>
-<li><a href="#JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">17 Glossary</a></li>
+<li><a href="#JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">16 Glossary</a></li>
 </ul>
 <h6>[in package JOURNAL with nicknames JRN]</h6>
 <p><a id="x-28-22journal-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22journal%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="journal-manual.html" title="Journal manual">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;journal&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/journal.asd#L1">&#955;</a></span></span></p>
-<h2><a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM">1 The journal ASDF System</a></h2>
+<ul>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/journal.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;journal&quot;</a></span></span></span>
+
 <ul>
 <li>Version: 0.1.0</li>
 <li>Description: A library built around explicit execution traces for
-  logging, tracing, testing and persistence.</li>
+logging, tracing, testing and persistence.</li>
 <li>Licence: MIT, see COPYING.</li>
 <li>Author: Gábor Melis <a href="m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;">m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;</a></li>
 <li>Homepage: <a href="http://github.com/melisgl/journal" >http://github.com/melisgl/journal</a></li>
 <li>Bug tracker: <a href="http://github.com/melisgl/journal/issues" >http://github.com/melisgl/journal/issues</a></li>
 <li>Source control: <a href="https://github.com/melisgl/journal.git" >GIT</a></li>
+<li>Depends on: alexandria, bordeaux-threads, local-time, <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a>, osicat(?), sb-posix(?), trivial-features, trivial-garbage</li>
+</ul></li>
 </ul>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-LINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;journal&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION" title="Portability">&#8594;</a> <a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L25">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION">2 Links</a></h2>
+<p><span class="outer-navigation"><span class="navigation"> <a href="journal-manual.html" title="Journal manual">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION" title="Portability">&#8594;</a> <a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L25">&#955;</a></span></span></p>
+<h2><a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION">1 Links</a></h2>
 <p>Here is the <a href="https://github.com/melisgl/journal" >official repository</a>
 and the <a href="http://melisgl.github.io/mgl-pax-world/journal-manual.html" >HTML
 documentation</a>
@@ -151,7 +153,7 @@ for the latest version.</p>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-PORTABILITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-LINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8594;</a> <a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION" title="Portability">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L31">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION">3 Portability</a></h2>
+<h2><a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION">2 Portability</a></h2>
 <p>Tested on ABCL, CCL, CLISP, CMUCL, ECL, and SBCL. AllegroCL Express
 edition runs out of heap while running the tests. On Lisps that seem
 to lack support for disabling and enabling of interrupts, such as
@@ -161,7 +163,7 @@ runtime error.</p>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-BACKGROUND-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-PORTABILITY%20MGL-PAX:SECTION" title="Portability">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION" title="Distinguishing features">&#8594;</a> <a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L59">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION">4 Background</a></h2>
+<h2><a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION">3 Background</a></h2>
 <p>Logging, tracing, testing, and persistence are about what happened
 during code execution. Recording machine-readable logs and traces
 can be repurposed for white-box testing. More, when the code is
@@ -193,7 +195,7 @@ Journal library is this idea taken to its logical conclusion.</p>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-FEATURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8594;</a> <a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION" title="Distinguishing features">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L95">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION">5 Distinguishing features</a></h2>
+<h2><a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION">4 Distinguishing features</a></h2>
 <h5>As a logging facility</h5>
 <ul>
 <li><p>Nested contexts and single messages</p></li>
@@ -241,7 +243,7 @@ Journal library is this idea taken to its logical conclusion.</p>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-BASICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-FEATURES%20MGL-PAX:SECTION" title="Distinguishing features">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">&#8594;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L909">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION">6 Basics</a></h2>
+<h2><a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION">5 Basics</a></h2>
 <p>The <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> macro does both recording and replaying of events,
 possibly at the same time. Recording is easy: events generated by
 <code>journaled</code> are simply written to a journal, which is a sequence of
@@ -371,7 +373,7 @@ turned off and <code>journaled</code> imposes minimal overhead.</p>
 <p><a id="x-28JOURNAL-3A-40IN-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8592;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">&#8594;</a> <a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1274">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION">6.1 In-events</a></h3>
+<h3><a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION">5.1 In-events</a></h3>
 <p>Upon entering a <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="block">block</a>, <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> generates an <a href="#JOURNAL:IN-EVENT%20TYPE" title="JOURNAL:IN-EVENT TYPE"><code>in-event</code></a>,
 which conceptually opens a new <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="frame">frame</a>. These in-events are created
 from the <code>name</code>, <code>version</code> and <code>args</code> arguments of <code>journaled</code>. For example,</p>
@@ -383,7 +385,7 @@ are used for <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay<
 <p><a id="x-28JOURNAL-3A-40OUT-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">&#8592;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION" title="Working with unreadable values">&#8594;</a> <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1294">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION">6.2 Out-events</a></h3>
+<h3><a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION">5.2 Out-events</a></h3>
 <p>Upon leaving a <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="block">block</a>, <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> generates an <a href="#JOURNAL:OUT-EVENT%20TYPE" title="JOURNAL:OUT-EVENT TYPE"><code>out-event</code></a>, closing
 the <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="frame">frame</a> opened by the corresponding <a href="#JOURNAL:IN-EVENT%20TYPE" title="JOURNAL:IN-EVENT TYPE"><code>in-event</code></a>. These out-events
 are property lists like this:</p>
@@ -516,7 +518,7 @@ stack.</p></li>
 <p><a id="x-28JOURNAL-3A-40WORKING-WITH-UNREADABLE-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">&#8592;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION" title="Utilities">&#8594;</a> <a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION" title="Working with unreadable values">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1421">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION">6.3 Working with unreadable values</a></h3>
+<h3><a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION">5.3 Working with unreadable values</a></h3>
 <p>The events recorded often need to be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="readable">readable</a>. This is always
 required with <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s, often with <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a>s, but
 never with <a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS"><code>pprint-journal</code></a>s. By choosing an appropriate identifier or
@@ -624,7 +626,7 @@ list as multiple values instead of as a list.</p>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-UTILITIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@WORKING-WITH-UNREADABLE-VALUES%20MGL-PAX:SECTION" title="Working with unreadable values">&#8592;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title="Pretty-printing">&#8594;</a> <a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION" title="Utilities">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1549">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION">6.4 Utilities</a></h3>
+<h3><a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION">5.4 Utilities</a></h3>
 <p><a id="x-28JOURNAL-3ALIST-EVENTS-20FUNCTION-29"></a>
 <a id="JOURNAL:LIST-EVENTS%20FUNCTION"></a></p>
 <ul>
@@ -673,7 +675,7 @@ of <code>type</code>, else <code>nil</code>.</p></li>
 <p><a id="x-28JOURNAL-3A-40PRETTY-PRINTING-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-UTILITIES%20MGL-PAX:SECTION" title="Utilities">&#8592;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION" title="Error handling">&#8594;</a> <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title="Pretty-printing">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1878">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION">6.5 Pretty-printing</a></h3>
+<h3><a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION">5.5 Pretty-printing</a></h3>
 <p><a id="x-28JOURNAL-3APRINT-EVENTS-20FUNCTION-29"></a>
 <a id="JOURNAL:PRINT-EVENTS%20FUNCTION"></a></p>
 <ul>
@@ -772,7 +774,7 @@ most often used for <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging
 <p><a id="x-28JOURNAL-3A-40JOURNAL-ERROR-HANDLING-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title="Pretty-printing">&#8592;</a> <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">&#8594;</a> <a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION" title="Error handling">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1627">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION">6.6 Error handling</a></h3>
+<h3><a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION">5.6 Error handling</a></h3>
 <p><a id="x-28JOURNAL-3AJOURNALING-FAILURE-20CONDITION-29"></a>
 <a id="JOURNAL:JOURNALING-FAILURE%20CONDITION"></a></p>
 <ul>
@@ -827,7 +829,7 @@ heavy-handed.</p></li>
 <p><a id="x-28JOURNAL-3AJOURNALING-FAILURE-EMBEDDED-CONDITION-20-28MGL-PAX-3AREADER-20JOURNAL-3AJOURNALING-FAILURE-29-29"></a>
 <a id="JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1635">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29" >journaling-failure-embedded-condition</a></span></span> <span class="locative-args">journaling-failure (:embedded-condition)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L1635">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29" >journaling-failure-embedded-condition</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION">journaling-failure</a> (:embedded-condition)</span></span></li>
 </ul>
 <p><a id="x-28JOURNAL-3ARECORD-UNEXPECTED-OUTCOME-20CONDITION-29"></a>
 <a id="JOURNAL:RECORD-UNEXPECTED-OUTCOME%20CONDITION"></a></p>
@@ -879,7 +881,7 @@ reading past the end of the <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JO
 <p><a id="x-28JOURNAL-3A-40LOGGING-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@LOGGING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-ERROR-HANDLING%20MGL-PAX:SECTION" title="Error handling">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION" title="Customizing logs">&#8594;</a> <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2114">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION">7 Logging</a></h2>
+<h2><a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION">6 Logging</a></h2>
 <p>Before we get into the details, here is a self-contained example
 that demonstrates typical use.</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defvar</span></i> <span class="special">*communication-log*</span> nil</span>)</span>
@@ -1040,7 +1042,7 @@ can provide nested context:</p>
 <p><a id="x-28JOURNAL-3A-40CUSTOMIZING-LOGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">&#8592;</a> <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">&#8593;</a> <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`">&#8594;</a> <a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION" title="Customizing logs">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2322">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION">7.1 Customizing logs</a></h3>
+<h3><a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION">6.1 Customizing logs</a></h3>
 <p>Customizing the output format is possible if we don't necessarily
 expect to be able to read the logs back programmatically. There is
 an example in <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a>, which is built on <a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION" title="Pretty-printing journals">Pretty-printing journals</a>.</p>
@@ -1060,7 +1062,7 @@ most often used with <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title
 <p><a id="x-28JOURNAL-3AJOURNAL-LOG-DECORATOR-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3AJOURNAL-29-29"></a>
 <a id="JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L476">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="locative-args">journal (:log-decorator = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L476">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:log-decorator = nil)</span></span></p>
 
 <p>If non-<code>nil</code>, this is a function to add <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="decoration">decoration</a>
 to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s before they are written to a journal. The only
@@ -1091,7 +1093,7 @@ will print the name of <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="O
 <p><a id="x-28JOURNAL-3A-40LOG-RECORD-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@CUSTOMIZING-LOGS%20MGL-PAX:SECTION" title="Customizing logs">&#8592;</a> <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">&#8593;</a> <a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION" title="Logging with `leaf-event`s">&#8594;</a> <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2382">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION">7.2 <code>:log-record</code></a></h3>
+<h3><a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION">6.2 <code>:log-record</code></a></h3>
 <p><a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> and <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a> control replaying and recording
 within their dynamic extent, which is rather a necessity because
 <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a> needs to read the events in the same order as the <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a>
@@ -1125,7 +1127,7 @@ name of thread may be added to the events as <a href="#JOURNAL:@DECORATION%20MGL
 <p><a id="x-28JOURNAL-3A-40LOGGING-WITH-LEAVES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`">&#8592;</a> <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">&#8593;</a> <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">&#8594;</a> <a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION" title="Logging with `leaf-event`s">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2438">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION">7.3 Logging with <code>leaf-event</code>s</a></h3>
+<h3><a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION">6.3 Logging with <code>leaf-event</code>s</a></h3>
 <p><a id="x-28JOURNAL-3ALOGGED-20MGL-PAX-3AMACRO-29"></a>
 <a id="JOURNAL:LOGGED%20MGL-PAX:MACRO"></a></p>
 <ul>
@@ -1149,7 +1151,7 @@ point-in-time textual log messages, and <a href="#JOURNAL:JOURNALED%20MGL-PAX:MA
 <p><a id="x-28JOURNAL-3A-40TRACING-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@TRACING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@LOGGING-WITH-LEAVES%20MGL-PAX:SECTION" title="Logging with `leaf-event`s">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION" title="Slime integration">&#8594;</a> <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2476">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION">8 Tracing</a></h2>
+<h2><a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION">7 Tracing</a></h2>
 <p><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> behaves similarly to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:trace</code></a> but deals with
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a>s gracefully.</p>
 <h5>Basic tracing</h5>
@@ -1327,7 +1329,7 @@ However, by changing <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESS
 <p><a id="x-28JOURNAL-3A-40JOURNAL-SLIME-INTEGRATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">&#8592;</a> <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">&#8593;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8594;</a> <a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION" title="Slime integration">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2739">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION">8.1 Slime integration</a></h3>
+<h3><a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION">7.1 Slime integration</a></h3>
 <p><a href="https://common-lisp.net/project/slime/" >Slime</a>, by default,
 binds <code>C-c C-t</code> to toggling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:trace</code></a>. To integrate <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> into
 Slime, load <code>src/mgl-jrn.el</code> into Emacs.</p>
@@ -1354,7 +1356,7 @@ tracing non-global functions, it is assigned a separate binding,
 <p><a id="x-28JOURNAL-3A-40REPLAY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@REPLAY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION" title="Slime integration">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION" title="Journaled for replay">&#8594;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2797">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION">9 Replay</a></h2>
+<h2><a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION">8 Replay</a></h2>
 <p>During replay, code is executed normally with special rules for
 <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="block">block</a>s. There are two modes for dealing with blocks: replaying the
 code and replaying the outcome. When code is replayed, upon entering
@@ -1430,7 +1432,7 @@ only possible terminal state is <code>:completed</code>.</p></li>
 <p><a id="x-28JOURNAL-3A-40JOURNALED-FOR-REPLAY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION" title="Bundles">&#8594;</a> <a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION" title="Journaled for replay">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2899">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION">9.1 Journaled for replay</a></h3>
+<h3><a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION">8.1 Journaled for replay</a></h3>
 <p>The following arguments of <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> control behaviour under replay.</p>
 <ul>
 <li><p><code>version</code>: see <a href="#JOURNAL:EVENT-VERSION%20TYPE" title="JOURNAL:EVENT-VERSION TYPE"><code>event-version</code></a> below.</p></li>
@@ -1673,7 +1675,7 @@ name and the function are associated in the dynamic extent of <code>body</code>.
 <p><a id="x-28JOURNAL-3A-40BUNDLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@BUNDLES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION" title="Journaled for replay">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION" title="The replay strategy">&#8594;</a> <a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION" title="Bundles">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3194">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION">9.2 Bundles</a></h3>
+<h3><a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION">8.2 Bundles</a></h3>
 <p>Consider replaying the same code repeatedly, hoping to make
 progress in the processing. Maybe based on the availability of
 external input, the code may error out. After each run, one has to
@@ -1723,7 +1725,7 @@ the same bundle.</p></li>
 <p><a id="x-28JOURNAL-3A-40THE-REPLAY-STRATEGY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION" title="Bundles">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION" title="Matching in-events">&#8594;</a> <a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION" title="The replay strategy">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3266">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION">9.3 The replay strategy</a></h3>
+<h3><a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION">8.3 The replay strategy</a></h3>
 <p>The replay process for both <a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">In-events</a> and <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">Out-events</a> starts by
 determining how the generated event (the <em>new</em> event from now on)
 shall be replayed. Roughly, the decision is based on the <code>name</code> and
@@ -1834,7 +1836,7 @@ defined with the same name as the replay event.</p>
 <p><a id="x-28JOURNAL-3A-40MATCHING-IN-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION" title="The replay strategy">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">&#8594;</a> <a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION" title="Matching in-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3412">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION">9.4 Matching in-events</a></h3>
+<h3><a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION">8.4 Matching in-events</a></h3>
 <p>If the replay strategy is <em>match</em>, then, for in-events, the
 matching process continues like this:</p>
 <ul>
@@ -1857,7 +1859,7 @@ matching process continues like this:</p>
 <p><a id="x-28JOURNAL-3A-40REPLAYING-THE-OUTCOME-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION" title="Matching in-events">&#8592;</a> <a href="#JOURNAL:@MATCHING-IN-EVENTS%20MGL-PAX:SECTION" title="Matching in-events">&#8593;</a> <a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION" title="Matching out-events">&#8594;</a> <a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3621">&#955;</a></span></span></p>
-<h4><a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION">9.4.1 Replaying the outcome</a></h4>
+<h4><a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION">8.4.1 Replaying the outcome</a></h4>
 <p>So, if an in-event is triggered that matches the replay,
 <code>event-version</code>(<a href="#JOURNAL:EVENT-VERSION%20FUNCTION" title="JOURNAL:EVENT-VERSION FUNCTION"><code>0</code></a> <a href="#JOURNAL:EVENT-VERSION%20TYPE" title="JOURNAL:EVENT-VERSION TYPE"><code>1</code></a>) is <code>:infinity</code>, then normal execution is altered in the
 following manner:</p>
@@ -1894,7 +1896,7 @@ example.</p>
 <p><a id="x-28JOURNAL-3A-40MATCHING-OUT-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION" title="Replay failures">&#8594;</a> <a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION" title="Matching out-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3709">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION">9.5 Matching out-events</a></h3>
+<h3><a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION">8.5 Matching out-events</a></h3>
 <p>If there were no <a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION" title="Replay failures">Replay failures</a> during the matching of the
 <a href="#JOURNAL:IN-EVENT%20TYPE" title="JOURNAL:IN-EVENT TYPE"><code>in-event</code></a>, and the conditions for <a href="#JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION" title="Replaying the outcome">Replaying the outcome</a> were not
 met, then the <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="block">block</a> is executed. When the outcome of the block is
@@ -1926,7 +1928,7 @@ process failed hard without unwinding properly, or when an
 <p><a id="x-28JOURNAL-3A-40REPLAY-FAILURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION" title="Matching out-events">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION" title="Upgrades and replay">&#8594;</a> <a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION" title="Replay failures">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3921">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION">9.6 Replay failures</a></h3>
+<h3><a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION">8.6 Replay failures</a></h3>
 <p><a id="x-28JOURNAL-3AREPLAY-FAILURE-20CONDITION-29"></a>
 <a id="JOURNAL:REPLAY-FAILURE%20CONDITION"></a></p>
 <ul>
@@ -1946,17 +1948,17 @@ uses the <em>insert</em> replay strategy (see <a href="#JOURNAL:@THE-REPLAY-STRA
 <p><a id="x-28JOURNAL-3AREPLAY-FAILURE-NEW-EVENT-20-28MGL-PAX-3AREADER-20JOURNAL-3AREPLAY-FAILURE-29-29"></a>
 <a id="JOURNAL:REPLAY-FAILURE-NEW-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3935">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE-NEW-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" >replay-failure-new-event</a></span></span> <span class="locative-args">replay-failure (:new-event)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3935">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE-NEW-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" >replay-failure-new-event</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a> (:new-event)</span></span></li>
 </ul>
 <p><a id="x-28JOURNAL-3AREPLAY-FAILURE-REPLAY-EVENT-20-28MGL-PAX-3AREADER-20JOURNAL-3AREPLAY-FAILURE-29-29"></a>
 <a id="JOURNAL:REPLAY-FAILURE-REPLAY-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3935">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" >replay-failure-replay-event</a></span></span> <span class="locative-args">replay-failure (:replay-event)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3935">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" >replay-failure-replay-event</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a> (:replay-event)</span></span></li>
 </ul>
 <p><a id="x-28JOURNAL-3AREPLAY-FAILURE-REPLAY-JOURNAL-20-28MGL-PAX-3AREADER-20JOURNAL-3AREPLAY-FAILURE-29-29"></a>
 <a id="JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3935">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" >replay-failure-replay-journal</a></span></span> <span class="locative-args">replay-failure (= '(replay-journal))</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L3935">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" >replay-failure-replay-journal</a></span></span> <span class="locative-args"><a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION">replay-failure</a> (= '(replay-journal))</span></span></li>
 </ul>
 <p><a id="x-28JOURNAL-3AREPLAY-NAME-MISMATCH-20CONDITION-29"></a>
 <a id="JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION"></a></p>
@@ -2036,7 +2038,7 @@ upgrades, and extreme care must be taken not to lose data.</p></li>
 <p><a id="x-28JOURNAL-3A-40UPGRADES-AND-REPLAY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@REPLAY-FAILURES%20MGL-PAX:SECTION" title="Replay failures">&#8592;</a> <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">&#8593;</a> <a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">&#8594;</a> <a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION" title="Upgrades and replay">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4115">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION">9.7 Upgrades and replay</a></h3>
+<h3><a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION">8.7 Upgrades and replay</a></h3>
 <p>The replay mechanism is built on the assumption that the tree of
 <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="frame">frame</a>s is the same when the code is replayed as it was when the
 replay journal was originally recorded. Thus, non-deterministic
@@ -2222,7 +2224,7 @@ frames <code>j1</code> and <code>j2</code> from around <code>j3</code>, the <cod
 <p><a id="x-28JOURNAL-3A-40TESTING-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@TESTING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION" title="Upgrades and replay">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION" title="Testing on multiple levels">&#8594;</a> <a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4445">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION">10 Testing</a></h2>
+<h2><a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION">9 Testing</a></h2>
 <p>Having discussed the <a href="#JOURNAL:@REPLAY%20MGL-PAX:SECTION" title="Replay">Replay</a> mechanism, next are <a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">Testing</a> and
 <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">Persistence</a>, which rely heavily on replay. Suppose we want to unit
 test user registration. Unfortunately, the code communicates with a
@@ -2343,7 +2345,7 @@ upgrades were performed (see <a href="#JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SE
 <p><a id="x-28JOURNAL-3A-40TESTING-ON-MULTIPLE-LEVELS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">&#8592;</a> <a href="#JOURNAL:@TESTING%20MGL-PAX:SECTION" title="Testing">&#8593;</a> <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">&#8594;</a> <a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION" title="Testing on multiple levels">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4609">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION">10.1 Testing on multiple levels</a></h3>
+<h3><a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION">9.1 Testing on multiple levels</a></h3>
 <p>Nesting <a href="#JOURNAL:REPLAYED%20MGL-PAX:MACRO" title="JOURNAL:REPLAYED MGL-PAX:MACRO"><code>replayed</code></a>s (that is, <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="frame">frame</a>s of <a href="#JOURNAL:EXTERNAL-EVENT%20TYPE" title="JOURNAL:EXTERNAL-EVENT TYPE"><code>external-event</code></a>s) is not
 obviously useful since the outer <code>replayed</code> will be replayed by
 outcome, and the inner one will be just echoed to the record
@@ -2383,11 +2385,11 @@ checked as if it was a <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:
 <p><a id="x-28JOURNAL-3A-40PERSISTENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@TESTING-ON-MULTIPLE-LEVELS%20MGL-PAX:SECTION" title="Testing on multiple levels">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION" title="Persistence tutorial">&#8594;</a> <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4655">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION">11 Persistence</a></h2>
+<h2><a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION">10 Persistence</a></h2>
 <p><a id="x-28JOURNAL-3A-40PERSISTENCE-TUTORIAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">&#8592;</a> <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">&#8593;</a> <a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">&#8594;</a> <a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION" title="Persistence tutorial">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4659">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION">11.1 Persistence tutorial</a></h3>
+<h3><a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION">10.1 Persistence tutorial</a></h3>
 <p>Let's write a simple game.</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> play-guess-my-number <span class="paren2">(<span class="code"></span>)</span>
   <span class="paren2">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren3">(<span class="code"><span class="paren4">(<span class="code">my-number <span class="paren5">(<span class="code">replayed <span class="paren6">(<span class="code">think-of-a-number</span>)</span>
@@ -2494,7 +2496,7 @@ resume from there.</p>
 <p><a id="x-28JOURNAL-3A-40SYNCHRONIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@PERSISTENCE-TUTORIAL%20MGL-PAX:SECTION" title="Persistence tutorial">&#8592;</a> <a href="#JOURNAL:@PERSISTENCE%20MGL-PAX:SECTION" title="Persistence">&#8593;</a> <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">&#8594;</a> <a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4793">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION">11.2 Synchronization to storage</a></h3>
+<h3><a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION">10.2 Synchronization to storage</a></h3>
 <p>In the following, we explore how journals can serve as a
 persistence mechanism and the guarantees they offer. The high-level
 summary is that journals with <code>sync</code> can serve as a durable and
@@ -2537,7 +2539,7 @@ events:</p>
 <p><a id="x-28JOURNAL-3A-40SYNCHRONIZATION-STRATEGIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">&#8592;</a> <a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">&#8593;</a> <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">&#8594;</a> <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4847">&#955;</a></span></span></p>
-<h4><a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION">11.2.1 Synchronization strategies</a></h4>
+<h4><a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION">10.2.1 Synchronization strategies</a></h4>
 <p>When a journal or bundle is created (see <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-JOURNAL FUNCTION"><code>make-in-memory-journal</code></a>,
 <a href="#JOURNAL:MAKE-FILE-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-FILE-JOURNAL FUNCTION"><code>make-file-journal</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-BUNDLE FUNCTION"><code>make-in-memory-bundle</code></a>, <a href="#JOURNAL:MAKE-FILE-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-FILE-BUNDLE FUNCTION"><code>make-file-bundle</code></a>), the
 <code>sync</code> option determines when – as a <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> – the recorded
@@ -2561,7 +2563,7 @@ persist the data.</p>
 <p><a id="x-28JOURNAL-3A-40SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">&#8592;</a> <a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">&#8593;</a> <a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with file journals">&#8594;</a> <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L4911">&#955;</a></span></span></p>
-<h4><a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION">11.2.2 Synchronization with in-memory journals</a></h4>
+<h4><a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION">10.2.2 Synchronization with in-memory journals</a></h4>
 <p>Unlike <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s, <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a>s do not have any built-in
 persistent storage backing them, but with <code>sync-fn</code>, persistence can
 be tacked on. If non-<code>nil</code>, <code>sync-fn</code> must be a function of a single
@@ -2646,7 +2648,7 @@ divergence.</p>
 <p><a id="x-28JOURNAL-3A-40SYNCHRONIZATION-WITH-FILE-JOURNALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">&#8592;</a> <a href="#JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization to storage">&#8593;</a> <a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION" title="Safety">&#8594;</a> <a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with file journals">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5395">&#955;</a></span></span></p>
-<h4><a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION">11.2.3 Synchronization with file journals</a></h4>
+<h4><a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION">10.2.3 Synchronization with file journals</a></h4>
 <p>For <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s, <code>sync</code> determines when the events written to the
 <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> and its <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> will be persisted durably in
 the file. Syncing to the file involves two calls to <code>fsync</code> and is
@@ -2676,7 +2678,7 @@ around</a>.</p>
 <p><a id="x-28JOURNAL-3A-40SAFETY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@SAFETY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with file journals">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8594;</a> <a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION" title="Safety">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5582">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION">12 Safety</a></h2>
+<h2><a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION">11 Safety</a></h2>
 <h5>Thread safety</h5>
 <p>Changes to journals come in two varieties: adding an event and
 changing the <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a>. Both are performed by <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> only
@@ -2717,7 +2719,7 @@ the Lisp should probably be restarted.</p>
 <p><a id="x-28JOURNAL-3A-40EVENTS-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION" title="Safety">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION" title="Event versions">&#8594;</a> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L182">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION">13 Events reference</a></h2>
+<h2><a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION">12 Events reference</a></h2>
 <p>Events are normally triggered upon entering and leaving the
 dynamic extent of a <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> <a href="#JOURNAL:@BLOCK%20MGL-PAX:GLOSSARY-TERM" title="block">block</a> (see <a href="#JOURNAL:@IN-EVENTS%20MGL-PAX:SECTION" title="In-events">In-events</a> and
 <a href="#JOURNAL:@OUT-EVENTS%20MGL-PAX:SECTION" title="Out-events">Out-events</a>) and also by <a href="#JOURNAL:LOGGED%20MGL-PAX:MACRO" title="JOURNAL:LOGGED MGL-PAX:MACRO"><code>logged</code></a>. Apart from being part of the
@@ -2771,7 +2773,7 @@ same <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="frame">frame</a> a
 <p><a id="x-28JOURNAL-3A-40EVENT-VERSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8592;</a> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8593;</a> <a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="In-events">&#8594;</a> <a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION" title="Event versions">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L230">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION">13.1 Event versions</a></h3>
+<h3><a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION">12.1 Event versions</a></h3>
 <p><a id="x-28JOURNAL-3AEVENT-VERSION-20FUNCTION-29"></a>
 <a id="JOURNAL:EVENT-VERSION%20FUNCTION"></a></p>
 <ul>
@@ -2803,7 +2805,7 @@ same <a href="#JOURNAL:@FRAME%20MGL-PAX:GLOSSARY-TERM" title="frame">frame</a> a
 <p><a id="x-28JOURNAL-3A-40IN-EVENTS-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@EVENT-VERSIONS%20MGL-PAX:SECTION" title="Event versions">&#8592;</a> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8593;</a> <a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Out-events">&#8594;</a> <a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="In-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L289">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION">13.2 In-events</a></h3>
+<h3><a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION">12.2 In-events</a></h3>
 <p><a id="x-28JOURNAL-3AIN-EVENT-20TYPE-29"></a>
 <a id="JOURNAL:IN-EVENT%20TYPE"></a></p>
 <ul>
@@ -2840,7 +2842,7 @@ form in <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MG
 <p><a id="x-28JOURNAL-3A-40OUT-EVENTS-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@IN-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="In-events">&#8592;</a> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8593;</a> <a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Leaf-events">&#8594;</a> <a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Out-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L332">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION">13.3 Out-events</a></h3>
+<h3><a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION">12.3 Out-events</a></h3>
 <p><a id="x-28JOURNAL-3AOUT-EVENT-20TYPE-29"></a>
 <a id="JOURNAL:OUT-EVENT%20TYPE"></a></p>
 <ul>
@@ -2900,7 +2902,7 @@ to which <code>out-event</code> belongs.</p></li>
 <p><a id="x-28JOURNAL-3A-40LEAF-EVENTS-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@OUT-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Out-events">&#8592;</a> <a href="#JOURNAL:@EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Events reference">&#8593;</a> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8594;</a> <a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Leaf-events">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L414">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION">13.4 Leaf-events</a></h3>
+<h3><a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION">12.4 Leaf-events</a></h3>
 <p><a id="x-28JOURNAL-3ALEAF-EVENT-20TYPE-29"></a>
 <a id="JOURNAL:LEAF-EVENT%20TYPE"></a></p>
 <ul>
@@ -2929,7 +2931,7 @@ their kind: they only have an <a href="#JOURNAL:EVENT-NAME%20FUNCTION" title="JO
 <p><a id="x-28JOURNAL-3A-40JOURNALS-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@LEAF-EVENTS-REFERENCE%20MGL-PAX:SECTION" title="Leaf-events">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION" title="Comparing journals">&#8594;</a> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L451">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION">14 Journals reference</a></h2>
+<h2><a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION">13 Journals reference</a></h2>
 <p>In <a href="#JOURNAL:@JOURNAL-BASICS%20MGL-PAX:SECTION" title="Basics">Basics</a>, we covered the bare minimum needed to work with
 journals. Here, we go into the details.</p>
 <p><a id="x-28JOURNAL-3AJOURNAL-20CLASS-29"></a>
@@ -2949,7 +2951,7 @@ journals normally only consists of creating and using them in
 <p><a id="x-28JOURNAL-3AJOURNAL-STATE-20-28MGL-PAX-3AREADER-20JOURNAL-3AJOURNAL-29-29"></a>
 <a id="JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L467">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-state</a></span></span> <span class="locative-args">journal (:state)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L467">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-state</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:state)</span></span></p>
 
 <p>Return the state of <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>, which is of type
 <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a>.</p></li>
@@ -2957,7 +2959,7 @@ journals normally only consists of creating and using them in
 <p><a id="x-28JOURNAL-3AJOURNAL-SYNC-20-28MGL-PAX-3AREADER-20JOURNAL-3AJOURNAL-29-29"></a>
 <a id="JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L471">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-sync</a></span></span> <span class="locative-args">journal (:sync = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L471">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-sync</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:sync = nil)</span></span></p>
 
 <p>The <code>sync</code> argument specified at instantiation. See
 <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>.</p></li>
@@ -2983,7 +2985,7 @@ is safe to call from any thread.</p></li>
 <p><a id="x-28JOURNAL-3AJOURNAL-REPLAY-MISMATCH-20-28MGL-PAX-3AREADER-20JOURNAL-3AJOURNAL-29-29"></a>
 <a id="JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L485">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-replay-mismatch</a></span></span> <span class="locative-args">journal (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L485">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-replay-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (= nil)</span></span></p>
 
 <p>If <a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" title="JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"><code>journal-divergent-p</code></a>, then this is a list of two
 elements: the <a href="#JOURNAL:READ-POSITION%20GENERIC-FUNCTION" title="JOURNAL:READ-POSITION GENERIC-FUNCTION"><code>read-position</code></a>s in the <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> and
@@ -3008,7 +3010,7 @@ keep and also in <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MG
 <p><a id="x-28JOURNAL-3A-40COMPARING-JOURNALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8592;</a> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8593;</a> <a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="In-memory journals">&#8594;</a> <a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION" title="Comparing journals">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L529">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION">14.1 Comparing journals</a></h3>
+<h3><a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION">13.1 Comparing journals</a></h3>
 <p>After replay finished (i.e. <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a> completed), we can ask
 whether there were any changes produced. This is answered in the
 strictest sense by <a href="#JOURNAL:IDENTICAL-JOURNALS-P%20GENERIC-FUNCTION" title="JOURNAL:IDENTICAL-JOURNALS-P GENERIC-FUNCTION"><code>identical-journals-p</code></a> and somewhat more
@@ -3040,7 +3042,7 @@ vs <code>:recording</code>, <code>:logging</code>, COMPLETED.</p></li>
 <p><a id="x-28JOURNAL-3A-40IN-MEMORY-JOURNALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION" title="Comparing journals">&#8592;</a> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8593;</a> <a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION" title="File journals">&#8594;</a> <a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="In-memory journals">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5011">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION">14.2 In-memory journals</a></h3>
+<h3><a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION">13.2 In-memory journals</a></h3>
 <p><a id="x-28JOURNAL-3AIN-MEMORY-JOURNAL-20CLASS-29"></a>
 <a id="JOURNAL:IN-MEMORY-JOURNAL%20CLASS"></a></p>
 <ul>
@@ -3089,7 +3091,7 @@ discussion, see <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL
 <p><a id="x-28JOURNAL-3AJOURNAL-EVENTS-20-28MGL-PAX-3AREADER-20JOURNAL-3AIN-MEMORY-JOURNAL-29-29"></a>
 <a id="JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5018">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-events</a></span></span> <span class="locative-args">in-memory-journal (:events)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5018">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-events</a></span></span> <span class="locative-args"><a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (:events)</span></span></p>
 
 <p>A sequence of events in the journal. Not to be
 mutated by client code.</p></li>
@@ -3097,7 +3099,7 @@ mutated by client code.</p></li>
 <p><a id="x-28JOURNAL-3AJOURNAL-PREVIOUS-SYNC-POSITION-20-28MGL-PAX-3AREADER-20JOURNAL-3AIN-MEMORY-JOURNAL-29-29"></a>
 <a id="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5023">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-previous-sync-position</a></span></span> <span class="locative-args">in-memory-journal (= 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5023">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-previous-sync-position</a></span></span> <span class="locative-args"><a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (= 0)</span></span></p>
 
 <p>The length of <a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-EVENTS (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-events</code></a> at the time of the
 most recent invocation of <code>sync-fn</code>.</p></li>
@@ -3105,7 +3107,7 @@ most recent invocation of <code>sync-fn</code>.</p></li>
 <p><a id="x-28JOURNAL-3A-40FILE-JOURNALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="In-memory journals">&#8592;</a> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8593;</a> <a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION" title="Pretty-printing journals">&#8594;</a> <a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION" title="File journals">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5151">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION">14.3 File journals</a></h3>
+<h3><a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION">13.3 File journals</a></h3>
 <p><a id="x-28JOURNAL-3AFILE-JOURNAL-20CLASS-29"></a>
 <a id="JOURNAL:FILE-JOURNAL%20CLASS"></a></p>
 <ul>
@@ -3168,14 +3170,14 @@ invalidation, a new <code>file-journal</code> object is created.</p></li>
 <p><a id="x-28JOURNAL-3APATHNAME-OF-20-28MGL-PAX-3AREADER-20JOURNAL-3AFILE-JOURNAL-29-29"></a>
 <a id="JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5157">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" >pathname-of</a></span></span> <span class="locative-args">file-journal (:pathname)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5157">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" >pathname-of</a></span></span> <span class="locative-args"><a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS">file-journal</a> (:pathname)</span></span></p>
 
 <p>The pathname of the file backing the journal.</p></li>
 </ul>
 <p><a id="x-28JOURNAL-3A-40PPRINT-JOURNALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@FILE-JOURNALS%20MGL-PAX:SECTION" title="File journals">&#8592;</a> <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">&#8593;</a> <a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">&#8594;</a> <a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION" title="Pretty-printing journals">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2034">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION">14.4 Pretty-printing journals</a></h3>
+<h3><a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION">13.4 Pretty-printing journals</a></h3>
 <p><a id="x-28JOURNAL-3APPRINT-JOURNAL-20CLASS-29"></a>
 <a id="JOURNAL:PPRINT-JOURNAL%20CLASS"></a></p>
 <ul>
@@ -3198,7 +3200,7 @@ support reads, so they cannot be used as a <a href="#JOURNAL:REPLAY-JOURNAL%20FU
 <p><a id="x-28JOURNAL-3APPRINT-JOURNAL-STREAM-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3APPRINT-JOURNAL-29-29"></a>
 <a id="JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2042">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="locative-args">pprint-journal (:stream = *standard-output*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2042">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:stream = *standard-output*)</span></span></p>
 
 <p>The stream where events are dumped. May be set any
 time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM (MGL-PAX:CLHS CLASS)"><code>stream</code></a>.</p></li>
@@ -3206,7 +3208,7 @@ time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t
 <p><a id="x-28JOURNAL-3APPRINT-JOURNAL-PRETTY-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3APPRINT-JOURNAL-29-29"></a>
 <a id="JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2047">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-pretty</a></span></span> <span class="locative-args">pprint-journal (:pretty = t)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2047">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-pretty</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:pretty = t)</span></span></p>
 
 <p>Whether to use <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a> or write
 events in as the property lists they are. A
@@ -3215,7 +3217,7 @@ events in as the property lists they are. A
 <p><a id="x-28JOURNAL-3APPRINT-JOURNAL-PRETTIFIER-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3APPRINT-JOURNAL-29-29"></a>
 <a id="JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2053">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-prettifier</a></span></span> <span class="locative-args">pprint-journal (:prettifier = 'prettify-event)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L2053">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-prettifier</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:prettifier = 'prettify-event)</span></span></p>
 
 <p>A function like <a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a> that writes an
 event to a stream. Only used when <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a>, this is
@@ -3224,7 +3226,7 @@ the output format customization knob. Also see <a href="#JOURNAL:@DECORATION%20M
 <p><a id="x-28JOURNAL-3A-40BUNDLES-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@PPRINT-JOURNALS%20MGL-PAX:SECTION" title="Pretty-printing journals">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION" title="In-memory bundles">&#8594;</a> <a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5632">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION">15 Bundles reference</a></h2>
+<h2><a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION">14 Bundles reference</a></h2>
 <p>In <a href="#JOURNAL:@BUNDLES%20MGL-PAX:SECTION" title="Bundles">Bundles</a>, we covered the repeated replay problem that
 <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a> automates. Here, we provide a reference for the bundle
 classes.</p>
@@ -3251,7 +3253,7 @@ yet, the replay journal is an empty, completed one.</p>
 <p><a id="x-28JOURNAL-3AMAX-N-FAILED-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3ABUNDLE-29-29"></a>
 <a id="JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5645">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="locative-args">bundle (:max-n-failed = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5645">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="locative-args"><a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-failed = 1)</span></span></p>
 
 <p>If <code>max-n-failed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:failed</code> in the bundle exceeds
@@ -3261,7 +3263,7 @@ deleted.</p></li>
 <p><a id="x-28JOURNAL-3AMAX-N-COMPLETED-20-28MGL-PAX-3AACCESSOR-20JOURNAL-3ABUNDLE-29-29"></a>
 <a id="JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5651">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="locative-args">bundle (:max-n-completed = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5651">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="locative-args"><a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-completed = 1)</span></span></p>
 
 <p>If <code>max-n-completed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:completed</code> in the bundle exceeds
@@ -3271,7 +3273,7 @@ deleted.</p></li>
 <p><a id="x-28JOURNAL-3A-40IN-MEMORY-BUNDLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">&#8592;</a> <a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">&#8593;</a> <a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION" title="File bundles">&#8594;</a> <a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION" title="In-memory bundles">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5750">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION">15.1 In-memory bundles</a></h3>
+<h3><a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION">14.1 In-memory bundles</a></h3>
 <p><a id="x-28JOURNAL-3AIN-MEMORY-BUNDLE-20CLASS-29"></a>
 <a id="JOURNAL:IN-MEMORY-BUNDLE%20CLASS"></a></p>
 <ul>
@@ -3295,7 +3297,7 @@ are passed on to <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOU
 <p><a id="x-28JOURNAL-3A-40FILE-BUNDLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@IN-MEMORY-BUNDLES%20MGL-PAX:SECTION" title="In-memory bundles">&#8592;</a> <a href="#JOURNAL:@BUNDLES-REFERENCE%20MGL-PAX:SECTION" title="Bundles reference">&#8593;</a> <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">&#8594;</a> <a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION" title="File bundles">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5784">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION">15.2 File bundles</a></h3>
+<h3><a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION">14.2 File bundles</a></h3>
 <p><a id="x-28JOURNAL-3AFILE-BUNDLE-20CLASS-29"></a>
 <a id="JOURNAL:FILE-BUNDLE%20CLASS"></a></p>
 <ul>
@@ -3307,7 +3309,7 @@ are passed on to <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOU
 <p><a id="x-28JOURNAL-3ADIRECTORY-OF-20-28MGL-PAX-3AREADER-20JOURNAL-3AFILE-BUNDLE-29-29"></a>
 <a id="JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5791">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" >directory-of</a></span></span> <span class="locative-args">file-bundle (:directory)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5791">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" >directory-of</a></span></span> <span class="locative-args"><a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS">file-bundle</a> (:directory)</span></span></p>
 
 <p>The directory where the files backing the
 <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s in the <a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS"><code>file-bundle</code></a> are kept.</p></li>
@@ -3340,14 +3342,14 @@ an error. Existing <a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BU
 <p><a id="x-28JOURNAL-3A-40STREAMLETS-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@FILE-BUNDLES%20MGL-PAX:SECTION" title="File bundles">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION" title="Opening and closing">&#8594;</a> <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L581">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION">16 Streamlets reference</a></h2>
+<h2><a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION">15 Streamlets reference</a></h2>
 <p>This section is relevant mostly for implementing new kinds of
 <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>s in addition to <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s and <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a>s. In
 normal operation, <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a>s are not worked with directly.</p>
 <p><a id="x-28JOURNAL-3A-40OPENING-AND-CLOSING-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">&#8592;</a> <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">&#8593;</a> <a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION" title="Reading from streamlets">&#8594;</a> <a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION" title="Opening and closing">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L589">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION">16.1 Opening and closing</a></h3>
+<h3><a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION">15.1 Opening and closing</a></h3>
 <p><a id="x-28JOURNAL-3ASTREAMLET-20CLASS-29"></a>
 <a id="JOURNAL:STREAMLET%20CLASS"></a></p>
 <ul>
@@ -3360,7 +3362,7 @@ built on top of streamlets.</p></li>
 <p><a id="x-28JOURNAL-3AJOURNAL-20-28MGL-PAX-3AREADER-20JOURNAL-3ASTREAMLET-29-29"></a>
 <a id="JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L602">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" >journal</a></span></span> <span class="locative-args">streamlet (:journal)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L602">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" >journal</a></span></span> <span class="locative-args"><a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS">streamlet</a> (:journal)</span></span></p>
 
 <p>The <code>journal</code> that was passed to <a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a>.
 This is the journal <code>streamlet</code> operates on.</p></li>
@@ -3443,7 +3445,7 @@ a closed <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><c
 <p><a id="x-28JOURNAL-3A-40READING-FROM-STREAMLETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@OPENING-AND-CLOSING%20MGL-PAX:SECTION" title="Opening and closing">&#8592;</a> <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">&#8593;</a> <a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION" title="Writing to streamlets">&#8594;</a> <a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION" title="Reading from streamlets">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L773">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION">16.2 Reading from streamlets</a></h3>
+<h3><a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION">15.2 Reading from streamlets</a></h3>
 <p><a id="x-28JOURNAL-3AREAD-EVENT-20GENERIC-FUNCTION-29"></a>
 <a id="JOURNAL:READ-EVENT%20GENERIC-FUNCTION"></a></p>
 <ul>
@@ -3499,7 +3501,7 @@ the read position, or return <code>nil</code> if there is no event to be read.</
 <p><a id="x-28JOURNAL-3A-40WRITING-TO-STREAMLETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@READING-FROM-STREAMLETS%20MGL-PAX:SECTION" title="Reading from streamlets">&#8592;</a> <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">&#8593;</a> <a href="#JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">&#8594;</a> <a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION" title="Writing to streamlets">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L834">&#955;</a></span></span></p>
-<h3><a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION">16.3 Writing to streamlets</a></h3>
+<h3><a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION">15.3 Writing to streamlets</a></h3>
 <p><a id="x-28JOURNAL-3AWRITE-EVENT-20GENERIC-FUNCTION-29"></a>
 <a id="JOURNAL:WRITE-EVENT%20GENERIC-FUNCTION"></a></p>
 <ul>
@@ -3557,7 +3559,7 @@ it was deferred, return <code>nil</code>.</p></li>
 <p><a id="x-28JOURNAL-3A-40JOURNAL-2FGLOSSARY-20MGL-PAX-3ASECTION-29"></a>
 <a id="JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#JOURNAL:@WRITING-TO-STREAMLETS%20MGL-PAX:SECTION" title="Writing to streamlets">&#8592;</a> <a href="journal-manual.html" title="Journal manual">&#8593;</a> <a href="#JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">&#8634;</a> <a href="https://github.com/melisgl/journal/blob/e568a00ba4b2a5a20eaf4048983a2e74801faf56/src/journal.lisp#L5903">&#955;</a></span></span></p>
-<h2><a href="#JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION">17 Glossary</a></h2>
+<h2><a href="#JOURNAL:@JOURNAL%2FGLOSSARY%20MGL-PAX:SECTION">16 Glossary</a></h2>
 <p><a id="x-28JOURNAL-3A-40ASYNC-UNWIND-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
 <a id="JOURNAL:@ASYNC-UNWIND%20MGL-PAX:GLOSSARY-TERM"></a></p>
 <ul>

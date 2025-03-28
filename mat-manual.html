@@ -30,83 +30,85 @@
 <div id="content">
 <p><a id="x-28MGL-MAT-3A-40MAT-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-MANUAL%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="mat-manual.html" title="MAT Manual">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L14">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="mat-manual.html" title="MAT Manual">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L14">&#955;</a></span></span></p>
 <h1><a href="mat-manual.html">MAT Manual</a></h1>
 <h2>Table of Contents</h2>
 <ul>
-<li><a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM">1 The mgl-mat ASDF System</a></li>
-<li><a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">2 Links</a></li>
-<li><a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">3 Introduction</a>
+<li><a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">1 Links</a></li>
+<li><a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">2 Introduction</a>
 
 <ul>
-<li><a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION" title="What's MGL-MAT?">3.1 What's MGL-MAT?</a></li>
-<li><a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION" title="What kind of matrices are supported?">3.2 What kind of matrices are supported?</a></li>
-<li><a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION" title="Where to Get it?">3.3 Where to Get it?</a></li>
+<li><a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION" title="What's MGL-MAT?">2.1 What's MGL-MAT?</a></li>
+<li><a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION" title="What kind of matrices are supported?">2.2 What kind of matrices are supported?</a></li>
+<li><a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION" title="Where to Get it?">2.3 Where to Get it?</a></li>
 </ul></li>
-<li><a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">4 Tutorial</a></li>
-<li><a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION" title="Basics">5 Basics</a></li>
-<li><a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION" title="Element types">6 Element types</a></li>
-<li><a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION" title="Printing">7 Printing</a></li>
-<li><a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">8 Shaping</a>
+<li><a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">3 Tutorial</a></li>
+<li><a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION" title="Basics">4 Basics</a></li>
+<li><a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION" title="Element types">5 Element types</a></li>
+<li><a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION" title="Printing">6 Printing</a></li>
+<li><a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">7 Shaping</a>
 
 <ul>
-<li><a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">8.1 Comparison to Lisp Arrays</a></li>
-<li><a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION" title="Functional Shaping">8.2 Functional Shaping</a></li>
-<li><a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION" title="Destructive Shaping">8.3 Destructive Shaping</a></li>
+<li><a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">7.1 Comparison to Lisp Arrays</a></li>
+<li><a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION" title="Functional Shaping">7.2 Functional Shaping</a></li>
+<li><a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION" title="Destructive Shaping">7.3 Destructive Shaping</a></li>
 </ul></li>
-<li><a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION" title="Assembling">9 Assembling</a></li>
-<li><a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION" title="Caching">10 Caching</a></li>
-<li><a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION" title="BLAS Operations">11 BLAS Operations</a></li>
-<li><a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Destructive API">12 Destructive API</a></li>
-<li><a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Non-destructive API">13 Non-destructive API</a></li>
-<li><a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION" title="Mappings">14 Mappings</a></li>
-<li><a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION" title="Random numbers">15 Random numbers</a></li>
-<li><a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION" title="I/O">16 I/O</a></li>
-<li><a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">17 Debugging</a></li>
-<li><a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">18 Facet API</a>
+<li><a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION" title="Assembling">8 Assembling</a></li>
+<li><a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION" title="Caching">9 Caching</a></li>
+<li><a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION" title="BLAS Operations">10 BLAS Operations</a></li>
+<li><a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Destructive API">11 Destructive API</a></li>
+<li><a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Non-destructive API">12 Non-destructive API</a></li>
+<li><a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION" title="Mappings">13 Mappings</a></li>
+<li><a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION" title="Random numbers">14 Random numbers</a></li>
+<li><a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION" title="I/O">15 I/O</a></li>
+<li><a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">16 Debugging</a></li>
+<li><a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">17 Facet API</a>
 
 <ul>
-<li><a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION" title="Facets">18.1 Facets</a></li>
-<li><a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION" title="Foreign arrays">18.2 Foreign arrays</a></li>
-<li><a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION" title="CUDA">18.3 CUDA</a>
+<li><a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION" title="Facets">17.1 Facets</a></li>
+<li><a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION" title="Foreign arrays">17.2 Foreign arrays</a></li>
+<li><a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION" title="CUDA">17.3 CUDA</a>
 
 <ul>
-<li><a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">18.3.1 CUDA Memory Management</a></li>
+<li><a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">17.3.1 CUDA Memory Management</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">19 Writing Extensions</a>
+<li><a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">18 Writing Extensions</a>
 
 <ul>
-<li><a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION" title="Lisp Extensions">19.1 Lisp Extensions</a></li>
-<li><a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">19.2 CUDA Extensions</a>
+<li><a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION" title="Lisp Extensions">18.1 Lisp Extensions</a></li>
+<li><a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">18.2 CUDA Extensions</a>
 
 <ul>
-<li><a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION" title="CUBLAS">19.2.1 CUBLAS</a></li>
-<li><a href="#MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION" title="CURAND">19.2.2 CURAND</a></li>
+<li><a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION" title="CUBLAS">18.2.1 CUBLAS</a></li>
+<li><a href="#MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION" title="CURAND">18.2.2 CURAND</a></li>
 </ul></li>
 </ul></li>
 </ul>
 <h6>[in package MGL-MAT]</h6>
 <p><a id="x-28-22mgl-mat-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="mat-manual.html" title="MAT Manual">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/mgl-mat.asd#L1">&#955;</a></span></span></p>
-<h2><a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM">1 The mgl-mat ASDF System</a></h2>
+<ul>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/mgl-mat.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;mgl-mat&quot;</a></span></span></span>
+
 <ul>
 <li>Version: 0.1.0</li>
 <li>Description: <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> is library for working with multi-dimensional
-  arrays which supports efficient interfacing to foreign and CUDA
-  code. BLAS and CUBLAS bindings are available.</li>
+arrays which supports efficient interfacing to foreign and CUDA
+code. BLAS and CUBLAS bindings are available.</li>
 <li>Licence: MIT, see COPYING.</li>
 <li>Author: Gábor Melis <a href="m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;">m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;</a></li>
 <li>Mailto: <a href="mailto:mega@retes.hu" >mega@retes.hu</a></li>
 <li>Homepage: <a href="http://melisgl.github.io/mgl-mat" >http://melisgl.github.io/mgl-mat</a></li>
 <li>Bug tracker: <a href="https://github.com/melisgl/mgl-mat/issues" >https://github.com/melisgl/mgl-mat/issues</a></li>
 <li>Source control: <a href="https://github.com/melisgl/mgl-mat.git" >GIT</a></li>
+<li>Depends on: alexandria, bordeaux-threads, cffi, cffi-grovel, cl-cuda, flexi-streams, ieee-floats, lla, <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a>, num-utils, static-vectors, trivial-garbage</li>
+</ul></li>
 </ul>
 <p><a id="x-28MGL-MAT-3A-40MAT-LINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L35">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION">2 Links</a></h2>
+<p><span class="outer-navigation"><span class="navigation"> <a href="mat-manual.html" title="MAT Manual">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L35">&#955;</a></span></span></p>
+<h2><a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION">1 Links</a></h2>
 <p>Here is the <a href="https://github.com/melisgl/mgl-mat" >official
 repository</a> and the <a href="http://melisgl.github.io/mgl-mat/mat-manual.html" >HTML
 documentation</a>
@@ -114,11 +116,11 @@ for the latest version.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-LINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION" title="What's MGL-MAT?">&#8594;</a> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L41">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION">3 Introduction</a></h2>
+<h2><a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION">2 Introduction</a></h2>
 <p><a id="x-28MGL-MAT-3A-40MAT-WHAT-IS-IT-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8592;</a> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION" title="What kind of matrices are supported?">&#8594;</a> <a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION" title="What's MGL-MAT?">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L46">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION">3.1 What's MGL-MAT?</a></h3>
+<h3><a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION">2.1 What's MGL-MAT?</a></h3>
 <p>MGL-MAT is library for working with multi-dimensional arrays
 which supports efficient interfacing to foreign and CUDA code with
 automatic translations between cuda, foreign and lisp storage. BLAS
@@ -126,7 +128,7 @@ and CUBLAS bindings are available.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-WHAT-KIND-OF-MATRICES-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-WHAT-IS-IT%20MGL-PAX:SECTION" title="What's MGL-MAT?">&#8592;</a> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION" title="Where to Get it?">&#8594;</a> <a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION" title="What kind of matrices are supported?">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L52">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION">3.2 What kind of matrices are supported?</a></h3>
+<h3><a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION">2.2 What kind of matrices are supported?</a></h3>
 <p>Currently only row-major single and double float matrices are
 supported, but it would be easy to add single and double precision
 complex types too. Other numeric types, such as byte and native
@@ -138,7 +140,7 @@ elements are not affected.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-INSTALLATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-WHAT-KIND-OF-MATRICES%20MGL-PAX:SECTION" title="What kind of matrices are supported?">&#8592;</a> <a href="#MGL-MAT:@MAT-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8594;</a> <a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION" title="Where to Get it?">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L63">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION">3.3 Where to Get it?</a></h3>
+<h3><a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION">2.3 Where to Get it?</a></h3>
 <p>All dependencies are in quicklisp except for
 <a href="https://github.com/takagi/cl-cuda" >CL-CUDA</a> that needs to be
 fetched from github. Just clone CL-CUDA and MGL-MAT into
@@ -151,7 +153,7 @@ as part of <a href="http://melisgl.github.io/mgl-pax-world/" >PAX World</a>.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-TUTORIAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION" title="Where to Get it?">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION" title="Basics">&#8594;</a> <a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L76">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION">4 Tutorial</a></h2>
+<h2><a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION">3 Tutorial</a></h2>
 <p>We are going to see how to create matrices, access their contents.</p>
 <p>Creating matrices is just like creating lisp arrays:</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code">make-mat '6</span>)</span>
@@ -232,7 +234,7 @@ algorithms. MGL-MAT does its best to keep them separate.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-BASICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION" title="Element types">&#8594;</a> <a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION" title="Basics">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L176">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION">5 Basics</a></h2>
+<h2><a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION">4 Basics</a></h2>
 <p><a id="x-28MGL-MAT-3AMAT-20CLASS-29"></a>
 <a id="MGL-MAT:MAT%20CLASS"></a></p>
 <ul>
@@ -247,7 +249,7 @@ an introduction.</p></li>
 <p><a id="x-28MGL-MAT-3AMAT-CTYPE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L248">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-ctype</a></span></span> <span class="locative-args">mat (:ctype = *default-mat-ctype*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L248">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-ctype</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:ctype = *default-mat-ctype*)</span></span></p>
 
 <p>One of <a href="#MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE" title="MGL-MAT:*SUPPORTED-CTYPES* VARIABLE"><code>*supported-ctypes*</code></a>. The matrix can hold
 only values of this type.</p></li>
@@ -255,7 +257,7 @@ only values of this type.</p></li>
 <p><a id="x-28MGL-MAT-3AMAT-DISPLACEMENT-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L197">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-displacement</a></span></span> <span class="locative-args">mat (:displacement = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L197">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-displacement</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:displacement = 0)</span></span></p>
 
 <p>A value in the <code>[0,max-size]</code> interval. This is
 like the DISPLACED-INDEX-OFFSET of a lisp array, but displacement
@@ -264,7 +266,7 @@ is relative to the start of the underlying storage vector.</p></li>
 <p><a id="x-28MGL-MAT-3AMAT-DIMENSIONS-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="locative-args">mat (:dimensions)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L202">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:dimensions)</span></span></p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS (MGL-PAX:CLHS FUNCTION)"><code>array-dimensions</code></a>. It holds a list of
 dimensions, but it is allowed to pass in scalars too.</p></li>
@@ -280,7 +282,7 @@ dimensions, but it is allowed to pass in scalars too.</p></li>
 <p><a id="x-28MGL-MAT-3AMAT-INITIAL-ELEMENT-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L251">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-initial-element</a></span></span> <span class="locative-args">mat (:initial-element = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L251">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-initial-element</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:initial-element = 0)</span></span></p>
 
 <p>If non-nil, then when a facet is created, it is
 filled with <code>initial-element</code> coerced to the appropriate numeric
@@ -289,7 +291,7 @@ type. If <code>nil</code>, then no initialization is performed.</p></li>
 <p><a id="x-28MGL-MAT-3AMAT-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L206">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-size</a></span></span> <span class="locative-args">mat</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L206">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-size</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a></span></span></p>
 
 <p>The number of elements in the visible portion of
 the array. This is always the product of the elements
@@ -298,7 +300,7 @@ the array. This is always the product of the elements
 <p><a id="x-28MGL-MAT-3AMAT-MAX-SIZE-20-28MGL-PAX-3AREADER-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L254">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-max-size</a></span></span> <span class="locative-args">mat (:max-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L254">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-max-size</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:max-size)</span></span></p>
 
 <p>The number of elements for which storage may be
 allocated. This is <code>displacement</code> + <a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a> + <code>slack</code> where <code>slack</code>
@@ -393,7 +395,7 @@ there are no facets at all.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-CTYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-BASICS%20MGL-PAX:SECTION" title="Basics">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION" title="Printing">&#8594;</a> <a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION" title="Element types">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/util.lisp#L161">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION">6 Element types</a></h2>
+<h2><a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION">5 Element types</a></h2>
 <p><a id="x-28MGL-MAT-3A-2ASUPPORTED-CTYPES-2A-20VARIABLE-29"></a>
 <a id="MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE"></a></p>
 <ul>
@@ -424,7 +426,7 @@ or <code>:double</code>.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-PRINTING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-CTYPES%20MGL-PAX:SECTION" title="Element types">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">&#8594;</a> <a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION" title="Printing">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L489">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION">7 Printing</a></h2>
+<h2><a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION">6 Printing</a></h2>
 <p><a id="x-28MGL-MAT-3A-2APRINT-MAT-2A-20VARIABLE-29"></a>
 <a id="MGL-MAT:*PRINT-MAT*%20VARIABLE"></a></p>
 <ul>
@@ -449,7 +451,7 @@ indicates that there are no facets.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-SHAPING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-PRINTING%20MGL-PAX:SECTION" title="Printing">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">&#8594;</a> <a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L553">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION">8 Shaping</a></h2>
+<h2><a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION">7 Shaping</a></h2>
 <p>We are going to discuss various ways to change the visible portion
 and dimensions of matrices. Conceptually a matrix has an <em>underlying
 non-displaced storage vector</em>. For <code>(make-mat 10 :displacement
@@ -467,7 +469,7 @@ the matrices that share the same underlying vector.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-SHAPING-COMPARISON-TO-LISP-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">&#8592;</a> <a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">&#8593;</a> <a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION" title="Functional Shaping">&#8594;</a> <a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L574">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION">8.1 Comparison to Lisp Arrays</a></h3>
+<h3><a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION">7.1 Comparison to Lisp Arrays</a></h3>
 <p>One way to reshape and displace <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects is with <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a> and
 its <code>displaced-to</code> argument whose semantics are similar to that of
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"><code>make-array</code></a> in that the displacement is <em>relative</em> to the
@@ -497,7 +499,7 @@ underlying conceptual non-displaced vector.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-SHAPING-FUNCTIONAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">&#8592;</a> <a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">&#8593;</a> <a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION" title="Destructive Shaping">&#8594;</a> <a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION" title="Functional Shaping">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L610">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION">8.2 Functional Shaping</a></h3>
+<h3><a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION">7.2 Functional Shaping</a></h3>
 <p>The following functions are collectively called the functional
 shaping operations, since they don't alter their arguments in any
 way. Still, since storage is aliased modification to the returned
@@ -532,7 +534,7 @@ has the same dimensions as <code>mat</code>.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-SHAPING-DESTRUCTIVE-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-SHAPING-FUNCTIONAL%20MGL-PAX:SECTION" title="Functional Shaping">&#8592;</a> <a href="#MGL-MAT:@MAT-SHAPING%20MGL-PAX:SECTION" title="Shaping">&#8593;</a> <a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION" title="Assembling">&#8594;</a> <a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION" title="Destructive Shaping">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L642">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION">8.3 Destructive Shaping</a></h3>
+<h3><a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION">7.3 Destructive Shaping</a></h3>
 <p>The following destructive operations don't alter the contents of
 the matrix, but change what is visible. <a href="#MGL-MAT:ADJUST%21%20FUNCTION" title="MGL-MAT:ADJUST! FUNCTION"><code>adjust!</code></a> is the odd one out,
 it may create a new <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a>.</p>
@@ -597,7 +599,7 @@ copied over and the old matrix is destroyed with <a href="cube-manual.html#MGL-C
 <p><a id="x-28MGL-MAT-3A-40MAT-ASSEMBLING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION" title="Destructive Shaping">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION" title="Caching">&#8594;</a> <a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION" title="Assembling">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L747">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION">9 Assembling</a></h2>
+<h2><a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION">8 Assembling</a></h2>
 <p>The functions here assemble a single <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> from a number of
 <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a>s.</p>
 <p><a id="x-28MGL-MAT-3ASTACK-21-20FUNCTION-29"></a>
@@ -627,7 +629,7 @@ supported. All dimensions except for <code>axis</code> must be the same for all
 <p><a id="x-28MGL-MAT-3A-40MAT-CACHING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-ASSEMBLING%20MGL-PAX:SECTION" title="Assembling">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION" title="BLAS Operations">&#8594;</a> <a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION" title="Caching">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L790">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION">10 Caching</a></h2>
+<h2><a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION">9 Caching</a></h2>
 <p>Allocating and initializing a <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> object and its necessary facets
 can be expensive. The following macros remember the previous value
 of a binding in the same thread and /place/. Only weak references
@@ -685,7 +687,7 @@ matrix is cached for efficiency.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-BLAS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-CACHING%20MGL-PAX:SECTION" title="Caching">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Destructive API">&#8594;</a> <a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION" title="BLAS Operations">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L1462">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION">11 BLAS Operations</a></h2>
+<h2><a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION">10 BLAS Operations</a></h2>
 <p>Only some BLAS functions are implemented, but it should be easy to
 add more as needed. All of them default to using CUDA, if it is
 initialized and enabled (see <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a>).</p>
@@ -772,7 +774,7 @@ M --A--+  -C++
 <p><a id="x-28MGL-MAT-3A-40MAT-DESTRUCTIVE-API-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION" title="BLAS Operations">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Non-destructive API">&#8594;</a> <a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Destructive API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L933">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION">12 Destructive API</a></h2>
+<h2><a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION">11 Destructive API</a></h2>
 <p><a id="x-28MGL-MAT-3A-2ESQUARE-21-20FUNCTION-29"></a>
 <a id="MGL-MAT:.SQUARE%21%20FUNCTION"></a></p>
 <ul>
@@ -1037,7 +1039,7 @@ arguments. </p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-NON-DESTRUCTIVE-API-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Destructive API">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION" title="Mappings">&#8594;</a> <a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Non-destructive API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L1601">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION">13 Non-destructive API</a></h2>
+<h2><a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION">12 Non-destructive API</a></h2>
 <p><a id="x-28MGL-MAT-3ACOPY-MAT-20FUNCTION-29"></a>
 <a id="MGL-MAT:COPY-MAT%20FUNCTION"></a></p>
 <ul>
@@ -1140,7 +1142,7 @@ equivalent) to correct for the sign, as the second value.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-MAPPINGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-NON-DESTRUCTIVE-API%20MGL-PAX:SECTION" title="Non-destructive API">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION" title="Random numbers">&#8594;</a> <a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION" title="Mappings">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L1736">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION">14 Mappings</a></h2>
+<h2><a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION">13 Mappings</a></h2>
 <p><a id="x-28MGL-MAT-3AMAP-CONCAT-20FUNCTION-29"></a>
 <a id="MGL-MAT:MAP-CONCAT%20FUNCTION"></a></p>
 <ul>
@@ -1193,7 +1195,7 @@ the argument <code>mats</code> in turn.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-RANDOM-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION" title="Mappings">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION" title="I/O">&#8594;</a> <a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION" title="Random numbers">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L1838">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION">15 Random numbers</a></h2>
+<h2><a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION">14 Random numbers</a></h2>
 <p>Unless noted these work efficiently with CUDA.</p>
 <p><a id="x-28MGL-MAT-3ACOPY-RANDOM-STATE-20GENERIC-FUNCTION-29"></a>
 <a id="MGL-MAT:COPY-RANDOM-STATE%20GENERIC-FUNCTION"></a></p>
@@ -1239,7 +1241,7 @@ is the identity matrix (or something close if <code>m</code> is wide). Return <c
 <p><a id="x-28MGL-MAT-3A-40MAT-IO-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-IO%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION" title="Random numbers">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">&#8594;</a> <a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION" title="I/O">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L1952">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION">16 I/O</a></h2>
+<h2><a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION">15 I/O</a></h2>
 <p><a id="x-28MGL-MAT-3A-2AMAT-HEADERS-2A-20VARIABLE-29"></a>
 <a id="MGL-MAT:*MAT-HEADERS*%20VARIABLE"></a></p>
 <ul>
@@ -1271,7 +1273,7 @@ of elements from binary <code>stream</code>. Return <code>mat</code>. Also see
 <p><a id="x-28MGL-MAT-3A-40MAT-DEBUGGING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-IO%20MGL-PAX:SECTION" title="I/O">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">&#8594;</a> <a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L2029">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION">17 Debugging</a></h2>
+<h2><a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION">16 Debugging</a></h2>
 <p>The largest class of bugs has to do with synchronization of facets
 being broken. This is almost always caused by an operation that
 mispecifies the <code>direction</code> argument of <a href="cube-manual.html#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a>. For example, the
@@ -1325,11 +1327,11 @@ don't use it in production.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-FACET-API-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION" title="Facets">&#8594;</a> <a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L2097">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION">18 Facet API</a></h2>
+<h2><a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION">17 Facet API</a></h2>
 <p><a id="x-28MGL-MAT-3A-40MAT-FACETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">&#8592;</a> <a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">&#8593;</a> <a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION" title="Foreign arrays">&#8594;</a> <a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION" title="Facets">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L2103">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION">18.1 Facets</a></h3>
+<h3><a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION">17.1 Facets</a></h3>
 <p>A <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> is a <a href="cube-manual.html#MGL-CUBE:CUBE%20CLASS" title="MGL-CUBE:CUBE CLASS"><code>cube</code></a> (see <a href="cube-manual.html" title="Cube Manual">Cube Manual</a>) whose facets are
 different representations of numeric arrays. These facets can be
 accessed with <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a> with one of the following
@@ -1428,7 +1430,7 @@ and initialized. See <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MA
 <p><a id="x-28MGL-MAT-3A-40MAT-FOREIGN-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION" title="Facets">&#8592;</a> <a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">&#8593;</a> <a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION" title="CUDA">&#8594;</a> <a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION" title="Foreign arrays">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/foreign.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION">18.2 Foreign arrays</a></h3>
+<h3><a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION">17.2 Foreign arrays</a></h3>
 <p>One facet of <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> objects is <a href="#MGL-MAT:FOREIGN-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:FOREIGN-ARRAY MGL-CUBE:FACET-NAME"><code>foreign-array</code></a> which is
 backed by a memory area that can be a pinned lisp array or is
 allocated in foreign memory depending on <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a>.</p>
@@ -1508,7 +1510,7 @@ foreign arrays: 450 <span class="paren1">(<span class="code">used bytes: 3,386,2
 <p><a id="x-28MGL-MAT-3A-40MAT-CUDA-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION" title="Foreign arrays">&#8592;</a> <a href="#MGL-MAT:@MAT-FACET-API%20MGL-PAX:SECTION" title="Facet API">&#8593;</a> <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">&#8594;</a> <a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION" title="CUDA">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cuda-early.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION">18.3 CUDA</a></h3>
+<h3><a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION">17.3 CUDA</a></h3>
 <p><a id="x-28MGL-MAT-3ACUDA-AVAILABLE-P-20FUNCTION-29"></a>
 <a id="MGL-MAT:CUDA-AVAILABLE-P%20FUNCTION"></a></p>
 <ul>
@@ -1563,7 +1565,7 @@ turns off cuda initialization entirely.</p></li>
 <p><a id="x-28MGL-MAT-3ACUDA-ENABLED-20-28MGL-PAX-3AACCESSOR-20MGL-MAT-3AMAT-29-29"></a>
 <a id="MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L211">[accessor]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" >cuda-enabled</a></span></span> <span class="locative-args">mat (:cuda-enabled = *default-mat-cuda-enabled*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L211">[accessor]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" >cuda-enabled</a></span></span> <span class="locative-args"><a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:cuda-enabled = *default-mat-cuda-enabled*)</span></span></p>
 
 <p>The control provided by <a href="#MGL-MAT:*CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*CUDA-ENABLED* VARIABLE"><code>*cuda-enabled*</code></a> can be too
 coarse. This flag provides a per-object mechanism to turn cuda
@@ -1619,7 +1621,7 @@ Implementationally speaking, this is easily accomplished by using
 <p><a id="x-28MGL-MAT-3A-40MAT-CUDA-MEMORY-MANAGEMENT-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION" title="CUDA">&#8592;</a> <a href="#MGL-MAT:@MAT-CUDA%20MGL-PAX:SECTION" title="CUDA">&#8593;</a> <a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">&#8594;</a> <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cuda-early.lisp#L182">&#955;</a></span></span></p>
-<h4><a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION">18.3.1 CUDA Memory Management</a></h4>
+<h4><a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION">17.3.1 CUDA Memory Management</a></h4>
 <p>The GPU (called <em>device</em> in CUDA terminology) has its own memory
 and it can only perform computation on data in this <em>device memory</em>
 so there is some copying involved to and from main memory. Efficient
@@ -1710,13 +1712,13 @@ matrices.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">&#8592;</a> <a href="mat-manual.html" title="MAT Manual">&#8593;</a> <a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION" title="Lisp Extensions">&#8594;</a> <a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/mat.lisp#L2448">&#955;</a></span></span></p>
-<h2><a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION">19 Writing Extensions</a></h2>
+<h2><a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION">18 Writing Extensions</a></h2>
 <p>New operations are usually implemented in lisp, CUDA, or by calling
 a foreign function in, for instance, BLAS, CUBLAS, CURAND.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-LISP-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">&#8592;</a> <a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">&#8593;</a> <a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">&#8594;</a> <a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION" title="Lisp Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/lisp-kernel.lisp#L5">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION">19.1 Lisp Extensions</a></h3>
+<h3><a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION">18.1 Lisp Extensions</a></h3>
 <p><a id="x-28MGL-MAT-3ADEFINE-LISP-KERNEL-20MGL-PAX-3AMACRO-29"></a>
 <a id="MGL-MAT:DEFINE-LISP-KERNEL%20MGL-PAX:MACRO"></a></p>
 <ul>
@@ -1761,7 +1763,7 @@ called.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-CUDA-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION" title="Lisp Extensions">&#8592;</a> <a href="#MGL-MAT:@MAT-EXTENSIONS%20MGL-PAX:SECTION" title="Writing Extensions">&#8593;</a> <a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION" title="CUBLAS">&#8594;</a> <a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cuda-early.lisp#L17">&#955;</a></span></span></p>
-<h3><a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION">19.2 CUDA Extensions</a></h3>
+<h3><a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION">18.2 CUDA Extensions</a></h3>
 <p><a id="x-28MGL-MAT-3AUSE-CUDA-P-20FUNCTION-29"></a>
 <a id="MGL-MAT:USE-CUDA-P%20FUNCTION"></a></p>
 <ul>
@@ -1906,7 +1908,7 @@ kernel is called.</p></li>
 <p><a id="x-28MGL-MAT-3A-40MAT-CUBLAS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">&#8592;</a> <a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">&#8593;</a> <a href="#MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION" title="CURAND">&#8594;</a> <a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION" title="CUBLAS">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cublas.lisp#L15">&#955;</a></span></span></p>
-<h4><a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION">19.2.1 CUBLAS</a></h4>
+<h4><a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION">18.2.1 CUBLAS</a></h4>
 <p>In a <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a> <a href="#MGL-MAT:@MAT-BLAS%20MGL-PAX:SECTION" title="BLAS Operations">BLAS Operations</a> will automatically use CUBLAS. No need to
 use these at all.</p>
 <p><a id="x-28MGL-MAT-3ACUBLAS-ERROR-20CONDITION-29"></a>
@@ -1917,12 +1919,12 @@ use these at all.</p>
 <p><a id="x-28MGL-MAT-3ACUBLAS-ERROR-FUNCTION-NAME-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACUBLAS-ERROR-29-29"></a>
 <a id="MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-function-name</a></span></span> <span class="locative-args">cublas-error (:function-name)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-function-name</a></span></span> <span class="locative-args"><a href="#MGL-MAT:CUBLAS-ERROR%20CONDITION" title="MGL-MAT:CUBLAS-ERROR CONDITION">cublas-error</a> (:function-name)</span></span></li>
 </ul>
 <p><a id="x-28MGL-MAT-3ACUBLAS-ERROR-STATUS-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACUBLAS-ERROR-29-29"></a>
 <a id="MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-status</a></span></span> <span class="locative-args">cublas-error (:status)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/cublas.lisp#L68">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" >cublas-error-status</a></span></span> <span class="locative-args"><a href="#MGL-MAT:CUBLAS-ERROR%20CONDITION" title="MGL-MAT:CUBLAS-ERROR CONDITION">cublas-error</a> (:status)</span></span></li>
 </ul>
 <p><a id="x-28MGL-MAT-3A-2ACUBLAS-HANDLE-2A-20VARIABLE-29"></a>
 <a id="MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE"></a></p>
@@ -1952,7 +1954,7 @@ use these at all.</p>
 <p><a id="x-28MGL-MAT-3A-40MAT-CURAND-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION" title="CUBLAS">&#8592;</a> <a href="#MGL-MAT:@MAT-CUDA-EXTENSIONS%20MGL-PAX:SECTION" title="CUDA Extensions">&#8593;</a> <a href="#MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION" title="CURAND">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/curand.lisp#L3">&#955;</a></span></span></p>
-<h4><a href="#MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION">19.2.2 CURAND</a></h4>
+<h4><a href="#MGL-MAT:@MAT-CURAND%20MGL-PAX:SECTION">18.2.2 CURAND</a></h4>
 <p>This the low level CURAND API. You probably want <a href="#MGL-MAT:@MAT-RANDOM%20MGL-PAX:SECTION" title="Random numbers">Random numbers</a>
 instead.</p>
 <p><a id="x-28MGL-MAT-3AWITH-CURAND-STATE-20MGL-PAX-3AMACRO-29"></a>
@@ -1973,12 +1975,12 @@ instead.</p>
 <p><a id="x-28MGL-MAT-3AN-STATES-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACURAND-XORWOW-STATE-29-29"></a>
 <a id="MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/curand.lisp#L34">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >n-states</a></span></span> <span class="locative-args">curand-xorwow-state (:n-states)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/curand.lisp#L34">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >n-states</a></span></span> <span class="locative-args"><a href="#MGL-MAT:CURAND-XORWOW-STATE%20CLASS" title="MGL-MAT:CURAND-XORWOW-STATE CLASS">curand-xorwow-state</a> (:n-states)</span></span></li>
 </ul>
 <p><a id="x-28MGL-MAT-3ASTATES-20-28MGL-PAX-3AREADER-20MGL-MAT-3ACURAND-XORWOW-STATE-29-29"></a>
 <a id="MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/curand.lisp#L35">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >states</a></span></span> <span class="locative-args">curand-xorwow-state (:states)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/22af819892e1d834da5983078c4a9f953fef7f40/src/curand.lisp#L35">[reader]</a></span> <span class="reference-object"><a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >states</a></span></span> <span class="locative-args"><a href="#MGL-MAT:CURAND-XORWOW-STATE%20CLASS" title="MGL-MAT:CURAND-XORWOW-STATE CLASS">curand-xorwow-state</a> (:states)</span></span></li>
 </ul>
   </div>
 </div>

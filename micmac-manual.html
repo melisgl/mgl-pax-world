@@ -30,57 +30,59 @@
 <div id="content">
 <p><a id="x-28MICMAC-3A-40MICMAC-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC:@MICMAC-MANUAL%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;micmac&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/micmac.lisp#L3">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/micmac.lisp#L3">&#955;</a></span></span></p>
 <h1><a href="micmac-manual.html">Micmac Manual</a></h1>
 <h2>Table of Contents</h2>
 <ul>
-<li><a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;micmac&quot; ASDF/SYSTEM:SYSTEM">1 The micmac ASDF System</a></li>
-<li><a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">2 Introduction</a>
+<li><a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">1 Introduction</a>
 
 <ul>
-<li><a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION" title="Overview">2.1 Overview</a></li>
-<li><a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION" title="Links">2.2 Links</a></li>
+<li><a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION" title="Overview">1.1 Overview</a></li>
+<li><a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION" title="Links">1.2 Links</a></li>
 </ul></li>
-<li><a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION" title="Graph Search">3 Graph Search</a>
+<li><a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION" title="Graph Search">2 Graph Search</a>
 
 <ul>
-<li><a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION" title="UCT">3.1 UCT</a></li>
+<li><a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION" title="UCT">2.1 UCT</a></li>
 </ul></li>
-<li><a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION" title="Metropolis Hastings">4 Metropolis Hastings</a></li>
-<li><a href="#MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION" title="Game Theory">5 Game Theory</a></li>
+<li><a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION" title="Metropolis Hastings">3 Metropolis Hastings</a></li>
+<li><a href="#MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION" title="Game Theory">4 Game Theory</a></li>
 </ul>
 <h6>[in package MICMAC]</h6>
 <p><a id="x-28-22micmac-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22micmac%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="micmac-manual.html" title="Micmac Manual">&#8592;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8593;</a> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;micmac&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/micmac.asd#L1">&#955;</a></span></span></p>
-<h2><a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM">1 The micmac ASDF System</a></h2>
+<ul>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/micmac.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;micmac&quot;</a></span></span></span>
+
 <ul>
 <li>Version: 0.0.2</li>
 <li>Description: Micmac is mainly a library of graph search algorithms
-  such as alpha-beta, UCT and beam search, but it also has some MCMC
-  and other slightly unrelated stuff.</li>
+such as alpha-beta, UCT and beam search, but it also has some MCMC
+and other slightly unrelated stuff.</li>
 <li>Licence: MIT, see COPYING.</li>
 <li>Author: Gábor Melis <a href="m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;">m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;</a></li>
 <li>Mailto: <a href="mailto:mega@retes.hu" >mega@retes.hu</a></li>
 <li>Homepage: <a href="http://melisgl.github.io/mgl-gpr" >http://melisgl.github.io/mgl-gpr</a></li>
 <li>Bug tracker: <a href="https://github.com/melisgl/mgl-gpr/issues" >https://github.com/melisgl/mgl-gpr/issues</a></li>
 <li>Source control: <a href="https://github.com/melisgl/mgl-gpr.git" >GIT</a></li>
+<li>Depends on: alexandria, <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a></li>
+</ul></li>
 </ul>
 <p><a id="x-28MICMAC-3A-40MICMAC-INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;micmac&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8593;</a> <a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8594;</a> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/micmac.lisp#L10">&#955;</a></span></span></p>
-<h2><a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION">2 Introduction</a></h2>
+<p><span class="outer-navigation"><span class="navigation"> <a href="micmac-manual.html" title="Micmac Manual">&#8592;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8593;</a> <a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8594;</a> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/micmac.lisp#L10">&#955;</a></span></span></p>
+<h2><a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION">1 Introduction</a></h2>
 <p><a id="x-28MICMAC-3A-40MICMAC-OVERVIEW-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8592;</a> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/micmac.lisp#L14">&#955;</a></span></span></p>
-<h3><a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION">2.1 Overview</a></h3>
+<h3><a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION">1.1 Overview</a></h3>
 <p>MICMAC is a Common Lisp library by <a href="http://quotenil.com" >Gábor
 Melis</a> focusing on <a href="http://en.wikipedia.org/wiki/Graph_traversal" >graph
 search</a> algorithms.</p>
 <p><a id="x-28MICMAC-3A-40MICMAC-LINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC:@MICMAC-OVERVIEW%20MGL-PAX:SECTION" title="Overview">&#8592;</a> <a href="#MICMAC:@MICMAC-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8593;</a> <a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION" title="Graph Search">&#8594;</a> <a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/micmac.lisp#L19">&#955;</a></span></span></p>
-<h3><a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION">2.2 Links</a></h3>
+<h3><a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION">1.2 Links</a></h3>
 <p>Here is the <a href="https://github.com/melisgl/micmac" >official
 repository</a> and the <a href="http://melisgl.github.io/mgl-pax-world/micmac-manual.html" >HTML
 documentation</a>
@@ -88,7 +90,7 @@ for the latest version.</p>
 <p><a id="x-28MICMAC-3A-40MICMAC-GRAPH-SEARCH-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC:@MICMAC-LINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8593;</a> <a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION" title="UCT">&#8594;</a> <a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION" title="Graph Search">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/graph-search.lisp#L3">&#955;</a></span></span></p>
-<h2><a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION">3 Graph Search</a></h2>
+<h2><a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION">2 Graph Search</a></h2>
 <p><a id="x-28MICMAC-3AALPHA-BETA-20FUNCTION-29"></a>
 <a id="MICMAC:ALPHA-BETA%20FUNCTION"></a></p>
 <ul>
@@ -192,7 +194,7 @@ a sequence of active node sequences.</p>
 <p><a id="x-28MICMAC-2EUCT-3A-40MICMAC-UCT-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION" title="Graph Search">&#8592;</a> <a href="#MICMAC:@MICMAC-GRAPH-SEARCH%20MGL-PAX:SECTION" title="Graph Search">&#8593;</a> <a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION" title="Metropolis Hastings">&#8594;</a> <a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION" title="UCT">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION">3.1 UCT</a></h3>
+<h3><a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION">2.1 UCT</a></h3>
 <h6>[in package MICMAC.UCT]</h6>
 <p><a href="#MICMAC.UCT:UCT%20FUNCTION" title="MICMAC.UCT:UCT FUNCTION"><code>uct</code></a> Monte Carlo tree search. This is what makes current Go programs
 tick. And Hex programs as well, for that matter. This is a cleanup
@@ -213,19 +215,19 @@ the starting state or by customizing <a href="#MICMAC.UCT:MAKE-UCT-NODE%20GENERI
 <p><a id="x-28MICMAC-2EUCT-3ADEPTH-20-28MGL-PAX-3AREADER-20MICMAC-2EUCT-3AUCT-NODE-29-29"></a>
 <a id="MICMAC.UCT:DEPTH%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-NODE%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L32">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:DEPTH%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-NODE%29" >depth</a></span></span> <span class="locative-args">uct-node (:depth = 0)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L32">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:DEPTH%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-NODE%29" >depth</a></span></span> <span class="locative-args"><a href="#MICMAC.UCT:UCT-NODE%20CLASS" title="MICMAC.UCT:UCT-NODE CLASS">uct-node</a> (:depth = 0)</span></span></li>
 </ul>
 <p><a id="x-28MICMAC-2EUCT-3AEDGES-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-NODE-29-29"></a>
 <a id="MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L36">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >edges</a></span></span> <span class="locative-args">uct-node</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L36">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >edges</a></span></span> <span class="locative-args"><a href="#MICMAC.UCT:UCT-NODE%20CLASS" title="MICMAC.UCT:UCT-NODE CLASS">uct-node</a></span></span></p>
 
 <p>Outgoing edges.</p></li>
 </ul>
 <p><a id="x-28MICMAC-2EUCT-3AAVERAGE-REWARD-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-NODE-29-29"></a>
 <a id="MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L37">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >average-reward</a></span></span> <span class="locative-args">uct-node (:average-reward = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L37">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" >average-reward</a></span></span> <span class="locative-args"><a href="#MICMAC.UCT:UCT-NODE%20CLASS" title="MICMAC.UCT:UCT-NODE CLASS">uct-node</a> (:average-reward = 0)</span></span></p>
 
 <p>Average reward over random playouts started from
 below this node. See <a href="#MICMAC.UCT:UPDATE-UCT-STATISTICS%20GENERIC-FUNCTION" title="MICMAC.UCT:UPDATE-UCT-STATISTICS GENERIC-FUNCTION"><code>update-uct-statistics</code></a> and REWARD.</p></li>
@@ -243,21 +245,21 @@ specialize <a href="#MICMAC.UCT:AVERAGE-REWARD%20%28MGL-PAX:ACCESSOR%20MICMAC.UC
 <p><a id="x-28MICMAC-2EUCT-3AACTION-20-28MGL-PAX-3AREADER-20MICMAC-2EUCT-3AUCT-EDGE-29-29"></a>
 <a id="MICMAC.UCT:ACTION%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-EDGE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L56">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:ACTION%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-EDGE%29" >action</a></span></span> <span class="locative-args">uct-edge (:action)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L56">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:ACTION%20%28MGL-PAX:READER%20MICMAC.UCT:UCT-EDGE%29" >action</a></span></span> <span class="locative-args"><a href="#MICMAC.UCT:UCT-EDGE%20CLASS" title="MICMAC.UCT:UCT-EDGE CLASS">uct-edge</a> (:action)</span></span></p>
 
 <p>The action represented by the edge.</p></li>
 </ul>
 <p><a id="x-28MICMAC-2EUCT-3AFROM-NODE-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-EDGE-29-29"></a>
 <a id="MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L59">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >from-node</a></span></span> <span class="locative-args">uct-edge (:from-node)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L59">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >from-node</a></span></span> <span class="locative-args"><a href="#MICMAC.UCT:UCT-EDGE%20CLASS" title="MICMAC.UCT:UCT-EDGE CLASS">uct-edge</a> (:from-node)</span></span></p>
 
 <p>The node this edge starts from.</p></li>
 </ul>
 <p><a id="x-28MICMAC-2EUCT-3ATO-NODE-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EUCT-3AUCT-EDGE-29-29"></a>
 <a id="MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L62">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >to-node</a></span></span> <span class="locative-args">uct-edge (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/uct.lisp#L62">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" >to-node</a></span></span> <span class="locative-args"><a href="#MICMAC.UCT:UCT-EDGE%20CLASS" title="MICMAC.UCT:UCT-EDGE CLASS">uct-edge</a> (= nil)</span></span></p>
 
 <p>The node this edge points to if the edge has been
 visited or <code>nil</code>.</p></li>
@@ -370,7 +372,7 @@ care is taken in <a href="#MICMAC.UCT:STATE%20GENERIC-FUNCTION" title="MICMAC.UC
 <p><a id="x-28MICMAC-2EMETROPOLIS-HASTINGS-3A-40MICMAC-METROPOLIS-HASTINGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC.UCT:@MICMAC-UCT%20MGL-PAX:SECTION" title="UCT">&#8592;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8593;</a> <a href="#MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION" title="Game Theory">&#8594;</a> <a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION" title="Metropolis Hastings">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/metropolis-hastings.lisp#L3">&#955;</a></span></span></p>
-<h2><a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION">4 Metropolis Hastings</a></h2>
+<h2><a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION">3 Metropolis Hastings</a></h2>
 <h6>[in package MICMAC.METROPOLIS-HASTINGS with nicknames MICMAC.MH]</h6>
 <p>Generic interface for the Metropolis-Hastings algorithm, also
 Metropolis Coupled MCMC.</p>
@@ -395,7 +397,7 @@ temperature it is suitable for <code>mc3</code>.</p></li>
 <p><a id="x-28MICMAC-2EMETROPOLIS-HASTINGS-3ATEMPERATURE-20-28MGL-PAX-3AACCESSOR-20MICMAC-2EMETROPOLIS-HASTINGS-3AMC-CHAIN-29-29"></a>
 <a id="MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/metropolis-hastings.lisp#L43">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >temperature</a></span></span> <span class="locative-args">mc-chain (:temperature = 1.0d0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/metropolis-hastings.lisp#L43">[accessor]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >temperature</a></span></span> <span class="locative-args"><a href="#MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%20CLASS" title="MICMAC.METROPOLIS-HASTINGS:MC-CHAIN CLASS">mc-chain</a> (:temperature = 1.0d0)</span></span></p>
 
 <p>The PROBABILITY-RATIO of samples is raised to the
 power of 1 / <code>temperature</code> before calculating the acceptance
@@ -405,7 +407,7 @@ probability. This effectively flattens the peaks if <code>temperature</code> &gt
 <p><a id="x-28MICMAC-2EMETROPOLIS-HASTINGS-3ASTATE-20-28MGL-PAX-3AREADER-20MICMAC-2EMETROPOLIS-HASTINGS-3AMC-CHAIN-29-29"></a>
 <a id="MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/metropolis-hastings.lisp#L49">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >state</a></span></span> <span class="locative-args">mc-chain (:state)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/metropolis-hastings.lisp#L49">[reader]</a></span> <span class="reference-object"><a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" >state</a></span></span> <span class="locative-args"><a href="#MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%20CLASS" title="MICMAC.METROPOLIS-HASTINGS:MC-CHAIN CLASS">mc-chain</a> (:state)</span></span></p>
 
 <p>This is the current sample where the chain is.</p></li>
 </ul>
@@ -574,7 +576,7 @@ of acceptances/rejections.</p></li>
 <p><a id="x-28MICMAC-2EGAME-THEORY-3A-40MICMAC-GAME-THEORY-20MGL-PAX-3ASECTION-29"></a>
 <a id="MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MICMAC.METROPOLIS-HASTINGS:@MICMAC-METROPOLIS-HASTINGS%20MGL-PAX:SECTION" title="Metropolis Hastings">&#8592;</a> <a href="micmac-manual.html" title="Micmac Manual">&#8593;</a> <a href="#MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION" title="Game Theory">&#8634;</a> <a href="https://github.com/melisgl/micmac/blob/aaf79798384e2b500e4eb3f52ce7ed3c1f7eb5bd/src/game-theory.lisp#L3">&#955;</a></span></span></p>
-<h2><a href="#MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION">5 Game Theory</a></h2>
+<h2><a href="#MICMAC.GAME-THEORY:@MICMAC-GAME-THEORY%20MGL-PAX:SECTION">4 Game Theory</a></h2>
 <h6>[in package MICMAC.GAME-THEORY]</h6>
 <p><a id="x-28MICMAC-2EGAME-THEORY-3AFIND-NASH-EQUILIBRIUM-20FUNCTION-29"></a>
 <a id="MICMAC.GAME-THEORY:FIND-NASH-EQUILIBRIUM%20FUNCTION"></a></p>

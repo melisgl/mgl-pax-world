@@ -30,58 +30,60 @@
 <div id="content">
 <p><a id="x-28MGL-GPR-3A-40GPR-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-MANUAL%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-gpr&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="gpr-manual.html" title="GPR Manual">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L3">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="gpr-manual.html" title="GPR Manual">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L3">&#955;</a></span></span></p>
 <h1><a href="gpr-manual.html">GPR Manual</a></h1>
 <h2>Table of Contents</h2>
 <ul>
-<li><a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-gpr&quot; ASDF/SYSTEM:SYSTEM">1 The mgl-gpr ASDF System</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">2 Links</a></li>
-<li><a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION" title="Background">3 Background</a></li>
-<li><a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">4 Evolutionary Algorithms</a>
+<li><a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">1 Links</a></li>
+<li><a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION" title="Background">2 Background</a></li>
+<li><a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">3 Evolutionary Algorithms</a>
 
 <ul>
-<li><a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION" title="Populations">4.1 Populations</a></li>
-<li><a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION" title="Evaluation">4.2 Evaluation</a></li>
-<li><a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">4.3 Training</a></li>
+<li><a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION" title="Populations">3.1 Populations</a></li>
+<li><a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION" title="Evaluation">3.2 Evaluation</a></li>
+<li><a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">3.3 Training</a></li>
 </ul></li>
-<li><a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">5 Genetic Programming</a>
+<li><a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">4 Genetic Programming</a>
 
 <ul>
-<li><a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION" title="Background">5.1 Background</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">5.2 Tutorial</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION" title="Expressions">5.3 Expressions</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION" title="Basics">5.4 Basics</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION" title="Search Space">5.5 Search Space</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">5.6 Reproduction</a></li>
-<li><a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">5.7 Environment</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION" title="Background">4.1 Background</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">4.2 Tutorial</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION" title="Expressions">4.3 Expressions</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION" title="Basics">4.4 Basics</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION" title="Search Space">4.5 Search Space</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">4.6 Reproduction</a></li>
+<li><a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">4.7 Environment</a></li>
 </ul></li>
-<li><a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">6 Differential Evolution</a>
+<li><a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">5 Differential Evolution</a>
 
 <ul>
-<li><a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION" title="SANSDE">6.1 SANSDE</a></li>
+<li><a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION" title="SANSDE">5.1 SANSDE</a></li>
 </ul></li>
 </ul>
 <h6>[in package MGL-GPR]</h6>
 <p><a id="x-28-22mgl-gpr-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="gpr-manual.html" title="GPR Manual">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-gpr&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/mgl-gpr.asd#L1">&#955;</a></span></span></p>
-<h2><a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM">1 The mgl-gpr ASDF System</a></h2>
+<ul>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/mgl-gpr.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;mgl-gpr&quot;</a></span></span></span>
+
 <ul>
 <li>Version: 0.0.1</li>
 <li>Description: <code>mgl-gpr</code> is a library of evolutionary algorithms such
-  as Genetic Programming (evolving typed expressions from a set of
-  operators and constants) and Differential Evolution.</li>
+as Genetic Programming (evolving typed expressions from a set of
+operators and constants) and Differential Evolution.</li>
 <li>Licence: MIT, see COPYING.</li>
 <li>Author: Gábor Melis <a href="m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;">m&#x61;&#105;l&#x74;&#111;:&#x6D;&#101;g&#x61;&#64;r&#x65;&#116;e&#x73;&#46;h&#x75;</a></li>
 <li>Mailto: <a href="mailto:mega@retes.hu" >mega@retes.hu</a></li>
 <li>Homepage: <a href="http://melisgl.github.io/mgl-gpr" >http://melisgl.github.io/mgl-gpr</a></li>
 <li>Bug tracker: <a href="https://github.com/melisgl/mgl-gpr/issues" >https://github.com/melisgl/mgl-gpr/issues</a></li>
 <li>Source control: <a href="https://github.com/melisgl/mgl-gpr.git" >GIT</a></li>
+<li>Depends on: <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a></li>
+</ul></li>
 </ul>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-LINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-gpr&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L11">&#955;</a></span></span></p>
-<h2><a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION">2 Links</a></h2>
+<p><span class="outer-navigation"><span class="navigation"> <a href="gpr-manual.html" title="GPR Manual">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L11">&#955;</a></span></span></p>
+<h2><a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION">1 Links</a></h2>
 <p>Here is the <a href="https://github.com/melisgl/mgl-gpr" >official
 repository</a> and the <a href="http://melisgl.github.io/mgl-gpr/gpr-manual.html" >HTML
 documentation</a>
@@ -89,7 +91,7 @@ for the latest version.</p>
 <p><a id="x-28MGL-GPR-3A-40GPR-BACKGROUND-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">&#8594;</a> <a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L17">&#955;</a></span></span></p>
-<h2><a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION">3 Background</a></h2>
+<h2><a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION">2 Background</a></h2>
 <p>Evolutionary algorithms are optimization tools that assume little
 of the task at hand. Often they are population based, that is, there
 is a set of individuals that each represent a candidate solution.
@@ -112,7 +114,7 @@ Enjoy.</p>
 <p><a id="x-28MGL-GPR-3A-40GPR-EA-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-EA%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION" title="Populations">&#8594;</a> <a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L40">&#955;</a></span></span></p>
-<h2><a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION">4 Evolutionary Algorithms</a></h2>
+<h2><a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION">3 Evolutionary Algorithms</a></h2>
 <p>Evolutionary algorithm is an umbrella term. In this section we
 first discuss the concepts common to conrete evolutionary algorithms
 <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">Genetic Programming</a> and <a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">Differential Evolution</a>.</p>
@@ -127,7 +129,7 @@ class for generational, population based optimization algorithms.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-EA-POPULATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">&#8592;</a> <a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">&#8593;</a> <a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION" title="Evaluation">&#8594;</a> <a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION" title="Populations">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L49">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION">4.1 Populations</a></h3>
+<h3><a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION">3.1 Populations</a></h3>
 <p>The currenly implemented EAs are generational. That is, they
 maintain a population of candidate solutions (also known as
 individuals) which they replace with the next generation of
@@ -135,7 +137,7 @@ individuals.</p>
 <p><a id="x-28MGL-GPR-3APOPULATION-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L128">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population-size</a></span></span> <span class="locative-args">evolutionary-algorithm (:population-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L128">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population-size</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:population-size)</span></span></p>
 
 <p>The number of individuals in a generation. This is
 a very important parameter. Too low and there won't be enough
@@ -145,7 +147,7 @@ slow.</p></li>
 <p><a id="x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L148">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population</a></span></span> <span class="locative-args">evolutionary-algorithm (= (make-array 0 :adjustable 0 :fill-pointer t))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L148">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (= (make-array 0 :adjustable 0 :fill-pointer t))</span></span></p>
 
 <p>An adjustable array with a fill-pointer that holds
 the individuals that make up the population.</p></li>
@@ -153,7 +155,7 @@ the individuals that make up the population.</p></li>
 <p><a id="x-28MGL-GPR-3AGENERATION-COUNTER-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L121">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >generation-counter</a></span></span> <span class="locative-args">evolutionary-algorithm (= 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L121">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >generation-counter</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (= 0)</span></span></p>
 
 <p>A counter that starts from 0 and is incremented by
 <a href="#MGL-GPR:ADVANCE%20GENERIC-FUNCTION" title="MGL-GPR:ADVANCE GENERIC-FUNCTION"><code>advance</code></a>. All accessors of <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a> are allowed to be
@@ -171,11 +173,11 @@ initializing the <code>ea</code>.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-EA-EVALUATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION" title="Populations">&#8592;</a> <a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">&#8593;</a> <a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">&#8594;</a> <a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION" title="Evaluation">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L64">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION">4.2 Evaluation</a></h3>
+<h3><a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION">3.2 Evaluation</a></h3>
 <p><a id="x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L85">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >evaluator</a></span></span> <span class="locative-args">evolutionary-algorithm (:evaluator)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L85">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >evaluator</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:evaluator)</span></span></p>
 
 <p>A function of two arguments: the
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a> object and an individual. It must return
@@ -192,7 +194,7 @@ fitness function may include an L1 or L2 penalty term.</p>
 <p><a id="x-28MGL-GPR-3AMASS-EVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L99">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >mass-evaluator</a></span></span> <span class="locative-args">evolutionary-algorithm (:mass-evaluator = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L99">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >mass-evaluator</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:mass-evaluator = nil)</span></span></p>
 
 <p><code>nil</code> or a function of three arguments: the
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a> object, the population vector and the
@@ -205,7 +207,7 @@ over <code>evaluator</code>.</p></li>
 <p><a id="x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L110">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fitness-key</a></span></span> <span class="locative-args">evolutionary-algorithm (:fitness-key = #'identity)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L110">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fitness-key</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:fitness-key = #'identity)</span></span></p>
 
 <p>A function that returns a real number for an
 object returned by <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a>. It is called when two fitness are to
@@ -218,7 +220,7 @@ select the fitness value.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-EA-TRAINING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION" title="Evaluation">&#8592;</a> <a href="#MGL-GPR:@GPR-EA%20MGL-PAX:SECTION" title="Evolutionary Algorithms">&#8593;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8594;</a> <a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L69">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION">4.3 Training</a></h3>
+<h3><a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION">3.3 Training</a></h3>
 <p>Training is easy: one creates an object of a subclass of
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a> such as <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS"><code>genetic-programming</code></a> or
 <a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS"><code>differential-evolution</code></a>, creates the initial population by adding
@@ -236,7 +238,7 @@ generations or until the <a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR
 <p><a id="x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L135">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest</a></span></span> <span class="locative-args">evolutionary-algorithm (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L135">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (= nil)</span></span></p>
 
 <p>The fittest individual ever to be seen and its
 fittness as a cons cell.</p></li>
@@ -244,7 +246,7 @@ fittness as a cons cell.</p></li>
 <p><a id="x-28MGL-GPR-3AFITTEST-CHANGED-FN-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L140">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest-changed-fn</a></span></span> <span class="locative-args">evolutionary-algorithm (:fittest-changed-fn = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/evolutionary-algorithm.lisp#L140">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest-changed-fn</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:fittest-changed-fn = nil)</span></span></p>
 
 <p>If non-<code>nil</code>, a function that's called when <a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest</code></a>
 is updated with three arguments: the <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a>
@@ -254,11 +256,11 @@ tracking progress.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8594;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L3">&#955;</a></span></span></p>
-<h2><a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION">5 Genetic Programming</a></h2>
+<h2><a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION">4 Genetic Programming</a></h2>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-BACKGROUND-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L12">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION">5.1 Background</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION">4.1 Background</a></h3>
 <p>What is Genetic Programming? This is what Wikipedia has to say:</p>
 <blockquote>
 <p>In artificial intelligence, genetic programming (GP) is an
@@ -278,7 +280,7 @@ with sexps.</p>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-TUTORIAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION" title="Background">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION" title="Expressions">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L30">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION">5.2 Tutorial</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION">4.2 Tutorial</a></h3>
 <p>GPR works with typed expressions. Mutation and crossover never
 produce expressions that fail with a type error. Let's define a
 couple of operators that work with real numbers and also return a
@@ -381,7 +383,7 @@ example/symbolic-regression.lisp.</p>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-EXPRESSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION" title="Basics">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION" title="Expressions">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L139">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION">5.3 Expressions</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION">4.3 Expressions</a></h3>
 <p>Genetic programming works with a population of individuals. The
 individuals are sexps that may be evaluated directly by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm" title="EVAL (MGL-PAX:CLHS FUNCTION)"><code>eval</code></a> or by
 other means. The internal nodes and the leafs of the sexp as a tree
@@ -400,7 +402,7 @@ class and what lisp type those expressions evaluate to.</p></li>
 <p><a id="x-28MGL-GPR-3ARESULT-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEXPRESSION-CLASS-29-29"></a>
 <a id="MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L159">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >result-type</a></span></span> <span class="locative-args">expression-class (:result-type)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L159">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >result-type</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EXPRESSION-CLASS%20CLASS" title="MGL-GPR:EXPRESSION-CLASS CLASS">expression-class</a> (:result-type)</span></span></p>
 
 <p>Expressions belonging to this expression class
 must evaluate to a value of this lisp type.</p></li>
@@ -408,7 +410,7 @@ must evaluate to a value of this lisp type.</p></li>
 <p><a id="x-28MGL-GPR-3AWEIGHT-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEXPRESSION-CLASS-29-29"></a>
 <a id="MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L164">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >weight</a></span></span> <span class="locative-args">expression-class (:weight = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L164">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >weight</a></span></span> <span class="locative-args"><a href="#MGL-GPR:EXPRESSION-CLASS%20CLASS" title="MGL-GPR:EXPRESSION-CLASS CLASS">expression-class</a> (:weight = 1)</span></span></p>
 
 <p>The probability of an expression class to be
 selected from a set of candidates is proportional to its
@@ -439,14 +441,14 @@ built. See <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM
 <p><a id="x-28MGL-GPR-3ANAME-20-28MGL-PAX-3AREADER-20MGL-GPR-3AOPERATOR-29-29"></a>
 <a id="MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L179">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >name</a></span></span> <span class="locative-args">operator (:name)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L179">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >name</a></span></span> <span class="locative-args"><a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS">operator</a> (:name)</span></span></p>
 
 <p>A symbol that's the name of the operator.</p></li>
 </ul>
 <p><a id="x-28MGL-GPR-3AARGUMENT-TYPES-20-28MGL-PAX-3AREADER-20MGL-GPR-3AOPERATOR-29-29"></a>
 <a id="MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L183">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >argument-types</a></span></span> <span class="locative-args">operator (:argument-types)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L183">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >argument-types</a></span></span> <span class="locative-args"><a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS">operator</a> (:argument-types)</span></span></p>
 
 <p>A list of lisp types. One for each argument of
 this operator.</p></li>
@@ -485,7 +487,7 @@ macro provides a more convenient shorthand.</p></li>
 <p><a id="x-28MGL-GPR-3ABUILDER-20-28MGL-PAX-3AREADER-20MGL-GPR-3ALITERAL-29-29"></a>
 <a id="MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L221">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" >builder</a></span></span> <span class="locative-args">literal (:builder)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L221">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" >builder</a></span></span> <span class="locative-args"><a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS">literal</a> (:builder)</span></span></p>
 
 <p>A function of no arguments that returns a random
 literal that belongs to its literal class.</p></li>
@@ -531,7 +533,7 @@ available then it will fail with an error.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-BASICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION" title="Expressions">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION" title="Search Space">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION" title="Basics">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L299">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION">5.4 Basics</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION">4.4 Basics</a></h3>
 <p>To start the evolutionary process one creates a GP object,
 adds to it the individuals (see <a href="#MGL-GPR:ADD-INDIVIDUAL%20FUNCTION" title="MGL-GPR:ADD-INDIVIDUAL FUNCTION"><code>add-individual</code></a>) that make up the
 initial population and calls <a href="#MGL-GPR:ADVANCE%20GENERIC-FUNCTION" title="MGL-GPR:ADVANCE GENERIC-FUNCTION"><code>advance</code></a> in a loop to move on to the
@@ -560,14 +562,14 @@ expression, which is useful in a <a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READE
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-SEARCH-SPACE-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION" title="Basics">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION" title="Search Space">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L382">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION">5.5 Search Space</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION">4.5 Search Space</a></h3>
 <p>The search space of the GP is defined by the available operators,
 literals and the type of the final result produced. The evaluator
 function acts as the guiding light.</p>
 <p><a id="x-28MGL-GPR-3AOPERATORS-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L308">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >operators</a></span></span> <span class="locative-args">genetic-programming (:operators)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L308">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >operators</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:operators)</span></span></p>
 
 <p>The set of <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a>s from which (together
 with <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a>s) individuals are built.</p></li>
@@ -575,7 +577,7 @@ with <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>lite
 <p><a id="x-28MGL-GPR-3ALITERALS-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L313">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >literals</a></span></span> <span class="locative-args">genetic-programming (:literals)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L313">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >literals</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:literals)</span></span></p>
 
 <p>The set of <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a>s from which (together
 with <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a>s) individuals are built.</p></li>
@@ -583,7 +585,7 @@ with <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>op
 <p><a id="x-28MGL-GPR-3ATOPLEVEL-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L318">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >toplevel-type</a></span></span> <span class="locative-args">genetic-programming (:toplevel-type = t)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L318">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >toplevel-type</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:toplevel-type = t)</span></span></p>
 
 <p>The type of the results produced by individuals.
 If the problem is to find the minimum a 1d real function then this
@@ -602,13 +604,13 @@ leaves.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-REPRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION" title="Search Space">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L391">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION">5.6 Reproduction</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION">4.6 Reproduction</a></h3>
 <p>The <a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>randomizer</code></a> and <a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>selector</code></a> functions define how mutation and
 recombination occur.</p>
 <p><a id="x-28MGL-GPR-3ARANDOMIZER-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L327">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >randomizer</a></span></span> <span class="locative-args">genetic-programming (:randomizer)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L327">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >randomizer</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:randomizer)</span></span></p>
 
 <p>Used for mutations, this is a function of three
 arguments: the GP object, the type the expression must produce and
@@ -618,7 +620,7 @@ called with subexpressions of individuals.</p></li>
 <p><a id="x-28MGL-GPR-3ASELECTOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L334">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >selector</a></span></span> <span class="locative-args">genetic-programming (:selector)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L334">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >selector</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:selector)</span></span></p>
 
 <p>A function of two arguments: the GP object and a
 vector of fitnesses. It must return the and index into the fitness
@@ -645,14 +647,14 @@ elements of <code>fitnesses</code>.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-GP-ENVIRONMENT-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">&#8592;</a> <a href="#MGL-GPR:@GPR-GP%20MGL-PAX:SECTION" title="Genetic Programming">&#8593;</a> <a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">&#8594;</a> <a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L398">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION">5.7 Environment</a></h3>
+<h3><a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION">4.7 Environment</a></h3>
 <p>The new generation is created by applying a reproduction operator
 until <a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:POPULATION-SIZE (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>population-size</code></a> is reached in the new generation. At each
 step, a reproduction operator is randomly chosen.</p>
 <p><a id="x-28MGL-GPR-3ACOPY-CHANCE-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L342">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >copy-chance</a></span></span> <span class="locative-args">genetic-programming (:copy-chance = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L342">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >copy-chance</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:copy-chance = 0)</span></span></p>
 
 <p>The probability of the copying reproduction
 operator being chosen. Copying simply creates an exact copy of a
@@ -661,7 +663,7 @@ single individual.</p></li>
 <p><a id="x-28MGL-GPR-3AMUTATION-CHANCE-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L349">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >mutation-chance</a></span></span> <span class="locative-args">genetic-programming (:mutation-chance = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L349">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >mutation-chance</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:mutation-chance = 0)</span></span></p>
 
 <p>The probability of the mutation reproduction
 operator being chosen. Mutation creates a randomly altered copy of
@@ -672,7 +674,7 @@ take place.</p>
 <p><a id="x-28MGL-GPR-3AKEEP-FITTEST-P-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L356">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >keep-fittest-p</a></span></span> <span class="locative-args">genetic-programming (:keep-fittest-p = t)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/genetic-programming.lisp#L356">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >keep-fittest-p</a></span></span> <span class="locative-args"><a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:keep-fittest-p = t)</span></span></p>
 
 <p>If true, then the fittest individual is always
 copied without mutation to the next generation. Of course, it may
@@ -681,7 +683,7 @@ also have other offsprings.</p></li>
 <p><a id="x-28MGL-GPR-3A-40GPR-DE-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-DE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">&#8592;</a> <a href="gpr-manual.html" title="GPR Manual">&#8593;</a> <a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION" title="SANSDE">&#8594;</a> <a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L3">&#955;</a></span></span></p>
-<h2><a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION">6 Differential Evolution</a></h2>
+<h2><a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION">5 Differential Evolution</a></h2>
 <p>The concepts in this section are covered by <a href="http://107.167.189.191/~piak/teaching/ec/ec2012/das-de-sota-2011.pdf" >Differential
 Evolution: A Survey of the State-of-the-Art</a>.</p>
 <p><a id="x-28MGL-GPR-3ADIFFERENTIAL-EVOLUTION-20CLASS-29"></a>
@@ -698,7 +700,7 @@ individuals.</p></li>
 <p><a id="x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L21">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >map-weights-into-fn</a></span></span> <span class="locative-args">differential-evolution (:map-weights-into-fn = #'map-into)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L21">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >map-weights-into-fn</a></span></span> <span class="locative-args"><a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:map-weights-into-fn = #'map-into)</span></span></p>
 
 <p>The vector of numbers (the 'weights') are most
 often stored in some kind of array. All individuals must have the
@@ -709,7 +711,7 @@ of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" 
 <p><a id="x-28MGL-GPR-3ACREATE-INDIVIDUAL-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L30">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >create-individual-fn</a></span></span> <span class="locative-args">differential-evolution (:create-individual-fn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L30">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >create-individual-fn</a></span></span> <span class="locative-args"><a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:create-individual-fn)</span></span></p>
 
 <p>Holds a function of one argument, the DE, that
 returns a new individual that needs not be initialized in any way.
@@ -718,7 +720,7 @@ Typically this just calls <a href="http://www.lispworks.com/documentation/HyperS
 <p><a id="x-28MGL-GPR-3AMUTATE-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L36">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >mutate-fn</a></span></span> <span class="locative-args">differential-evolution (:mutate-fn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L36">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >mutate-fn</a></span></span> <span class="locative-args"><a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:mutate-fn)</span></span></p>
 
 <p>One of the supplied mutation functions:
 <a href="#MGL-GPR:MUTATE%2FRAND%2F1%20FUNCTION" title="MGL-GPR:MUTATE/RAND/1 FUNCTION"><code>mutate/rand/1</code></a> <a href="#MGL-GPR:MUTATE%2FBEST%2F1%20FUNCTION" title="MGL-GPR:MUTATE/BEST/1 FUNCTION"><code>mutate/best/1</code></a> <a href="#MGL-GPR:MUTATE%2FCURRENT-TO-BEST%2F2%20FUNCTION" title="MGL-GPR:MUTATE/CURRENT-TO-BEST/2 FUNCTION"><code>mutate/current-to-best/2</code></a>.</p></li>
@@ -726,7 +728,7 @@ Typically this just calls <a href="http://www.lispworks.com/documentation/HyperS
 <p><a id="x-28MGL-GPR-3ACROSSOVER-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L41">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >crossover-fn</a></span></span> <span class="locative-args">differential-evolution (:crossover-fn = #'crossover/binary)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L41">[reader]</a></span> <span class="reference-object"><a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >crossover-fn</a></span></span> <span class="locative-args"><a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:crossover-fn = #'crossover/binary)</span></span></p>
 
 <p>A function of three arguments, the DE and two
 individuals, that destructively modifies the second individual by
@@ -766,7 +768,7 @@ in <code>individual-1</code>. At least one, element is changed. Return
 <p><a id="x-28MGL-GPR-3A-40GPR-DE-SANSDE-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">&#8592;</a> <a href="#MGL-GPR:@GPR-DE%20MGL-PAX:SECTION" title="Differential Evolution">&#8593;</a> <a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION" title="SANSDE">&#8634;</a> <a href="https://github.com/melisgl/mgl-gpr/blob/b6b5188451111ebd4b6b9c026ca119104e459a1d/src/differential-evolution.lisp#L194">&#955;</a></span></span></p>
-<h3><a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION">6.1 SANSDE</a></h3>
+<h3><a href="#MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION">5.1 SANSDE</a></h3>
 <p><a id="x-28MGL-GPR-3ASANSDE-20CLASS-29"></a>
 <a id="MGL-GPR:SANSDE%20CLASS"></a></p>
 <ul>

@@ -30,102 +30,105 @@
 <div id="content">
 <p><a id="x-28TRY-3A-40TRY-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY-MANUAL%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;try&quot; ASDF/SYSTEM:SYSTEM">&#8594;</a> <a href="try-manual.html" title="Try Manual">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L5">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="try-manual.html" title="Try Manual">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L5">&#955;</a></span></span></p>
 <h1><a href="try-manual.html">Try Manual</a></h1>
 <h2>Table of Contents</h2>
 <ul>
-<li><a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;try&quot; ASDF/SYSTEM:SYSTEM">1 The try ASDF System</a></li>
-<li><a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">2 Links</a></li>
-<li><a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION" title="Tutorial">3 Tutorial</a></li>
-<li><a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION" title="Emacs Integration">4 Emacs Integration</a>
+<li><a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">1 Links</a></li>
+<li><a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION" title="Tutorial">2 Tutorial</a></li>
+<li><a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION" title="Emacs Integration">3 Emacs Integration</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION" title="Emacs Setup">4.1 Emacs Setup</a></li>
+<li><a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION" title="Emacs Setup">3.1 Emacs Setup</a></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">5 Events</a>
+<li><a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">4 Events</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION" title="Middle Layer of Events">5.1 Middle Layer of Events</a></li>
-<li><a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION" title="Concrete Events">5.2 Concrete Events</a></li>
-<li><a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION" title="Event Glue">5.3 Event Glue</a></li>
-<li><a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION" title="Printing Events">5.4 Printing Events</a></li>
-<li><a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION" title="Event Restarts">5.5 Event Restarts</a></li>
-<li><a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">5.6 Outcomes</a>
+<li><a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION" title="Middle Layer of Events">4.1 Middle Layer of Events</a></li>
+<li><a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION" title="Concrete Events">4.2 Concrete Events</a></li>
+<li><a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION" title="Event Glue">4.3 Event Glue</a></li>
+<li><a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION" title="Printing Events">4.4 Printing Events</a></li>
+<li><a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION" title="Event Restarts">4.5 Event Restarts</a></li>
+<li><a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">4.6 Outcomes</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome Restarts">5.6.1 Outcome Restarts</a></li>
-<li><a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION" title="Checks">5.6.2 Checks</a></li>
-<li><a href="#TRY:@TRY%2FTRIALS%20MGL-PAX:SECTION" title="Trials">5.6.3 Trials</a></li>
+<li><a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome Restarts">4.6.1 Outcome Restarts</a></li>
+<li><a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION" title="Checks">4.6.2 Checks</a></li>
+<li><a href="#TRY:@TRY%2FTRIALS%20MGL-PAX:SECTION" title="Trials">4.6.3 Trials</a></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FERRORS%20MGL-PAX:SECTION" title="Errors">5.7 Errors</a></li>
-<li><a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION" title="Categories">5.8 Categories</a></li>
+<li><a href="#TRY:@TRY%2FERRORS%20MGL-PAX:SECTION" title="Errors">4.7 Errors</a></li>
+<li><a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION" title="Categories">4.8 Categories</a></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">6 The <code>is</code> Macro</a>
+<li><a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">5 The <code>is</code> Macro</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION" title="Format Specifier Forms">6.1 Format Specifier Forms</a></li>
-<li><a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">6.2 Captures</a>
+<li><a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION" title="Format Specifier Forms">5.1 Format Specifier Forms</a></li>
+<li><a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">5.2 Captures</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION" title="Automatic Captures">6.2.1 Automatic Captures</a></li>
-<li><a href="#TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION" title="Explicit Captures">6.2.2 Explicit Captures</a></li>
+<li><a href="#TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION" title="Automatic Captures">5.2.1 Automatic Captures</a></li>
+<li><a href="#TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION" title="Explicit Captures">5.2.2 Explicit Captures</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">7 Check Library</a>
+<li><a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">6 Check Library</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">7.1 Checking Conditions</a></li>
-<li><a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION" title="Miscellaneous Checks">7.2 Miscellaneous Checks</a></li>
-<li><a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION" title="Check Utilities">7.3 Check Utilities</a>
+<li><a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">6.1 Checking Conditions</a></li>
+<li><a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION" title="Miscellaneous Checks">6.2 Miscellaneous Checks</a></li>
+<li><a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION" title="Check Utilities">6.3 Check Utilities</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION" title="Comparing Floats">7.3.1 Comparing Floats</a></li>
+<li><a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION" title="Comparing Floats">6.3.1 Comparing Floats</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">8 Tests</a>
+<li><a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">7 Tests</a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION" title="Calling Test Functions">8.1 Calling Test Functions</a></li>
-<li><a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">8.2 Explicit <code>try</code></a>
+<li><a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION" title="Calling Test Functions">7.1 Calling Test Functions</a></li>
+<li><a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">7.2 Explicit <code>try</code></a>
 
 <ul>
-<li><a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION" title="Testables">8.2.1 Testables</a></li>
-<li><a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">8.2.2 Implementation of Implicit <code>try</code></a></li>
+<li><a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION" title="Testables">7.2.1 Testables</a></li>
+<li><a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">7.2.2 Implementation of Implicit <code>try</code></a></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION" title="Printing Events">8.3 Printing Events</a></li>
-<li><a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">8.4 Counting Events</a></li>
-<li><a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">8.5 Collecting Events</a></li>
-<li><a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">8.6 Rerunning Trials</a></li>
-<li><a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION" title="Reprocessing Trials">8.7 Reprocessing Trials</a></li>
+<li><a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION" title="Printing Events">7.3 Printing Events</a></li>
+<li><a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">7.4 Counting Events</a></li>
+<li><a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">7.5 Collecting Events</a></li>
+<li><a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">7.6 Rerunning Trials</a></li>
+<li><a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION" title="Reprocessing Trials">7.7 Reprocessing Trials</a></li>
 </ul></li>
-<li><a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION" title="Implementation Notes">9 Implementation Notes</a></li>
-<li><a href="#TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">10 Glossary</a></li>
+<li><a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION" title="Implementation Notes">8 Implementation Notes</a></li>
+<li><a href="#TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">9 Glossary</a></li>
 </ul>
 <h6>[in package TRY]</h6>
 <p><a id="x-28-22try-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22try%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="try-manual.html" title="Try Manual">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8594;</a> <a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;try&quot; ASDF/SYSTEM:SYSTEM">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/try.asd#L1">&#955;</a></span></span></p>
-<h2><a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM">1 The try ASDF System</a></h2>
+<ul>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/try.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;try&quot;</a></span></span></span>
+
 <ul>
 <li>Version: 0.0.1</li>
 <li>Description: Try is an extensible test framework with equal support
-  for interactive and non-interactive workflows.</li>
+for interactive and non-interactive workflows.</li>
 <li>Long Description: Try stays as close to normal Lisp evaluation
-  rules as possible. Tests are functions that record the checks they
-  perform as events. These events provide the means of customization
-  of what to debug, print, rerun. There is a single fundamental check,
-  the extensible <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> macro. Everything else is built on top.</li>
+rules as possible. Tests are functions that record the checks they
+perform as events. These events provide the means of customization
+of what to debug, print, rerun. There is a single fundamental check,
+the extensible <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> macro. Everything else is built on top.</li>
 <li>Licence: MIT, see COPYING.</li>
 <li>Author: Gábor Melis</li>
 <li>Mailto: <a href="mailto:mega@retes.hu" >mega@retes.hu</a></li>
 <li>Homepage: <a href="http://melisgl.github.io/try" >http://melisgl.github.io/try</a></li>
 <li>Bug tracker: <a href="https://github.com/melisgl/try/issues" >https://github.com/melisgl/try/issues</a></li>
 <li>Source control: <a href="https://github.com/melisgl/try.git" >GIT</a></li>
+<li>Depends on: alexandria, cl-ppcre, closer-mop, ieee-floats, <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a>, trivial-gray-streams, uiop</li>
+<li>Defsystem depends on: try.asdf</li>
+</ul></li>
 </ul>
 <p><a id="x-28TRY-3A-40TRY-2FLINKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FLINKS%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;try&quot; ASDF/SYSTEM:SYSTEM">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8594;</a> <a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L17">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION">2 Links</a></h2>
+<p><span class="outer-navigation"><span class="navigation"> <a href="try-manual.html" title="Try Manual">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8594;</a> <a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L17">&#955;</a></span></span></p>
+<h2><a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION">1 Links</a></h2>
 <p>Here is the <a href="https://github.com/melisgl/try" >official repository</a>
 and the <a href="http://melisgl.github.io/mgl-pax-world/try-manual.html" >HTML
 documentation</a>
@@ -133,7 +136,7 @@ for the latest version.</p>
 <p><a id="x-28TRY-3A-40TRY-2FTUTORIAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FLINKS%20MGL-PAX:SECTION" title="Links">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION" title="Emacs Integration">&#8594;</a> <a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L23">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION">3 Tutorial</a></h2>
+<h2><a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION">2 Tutorial</a></h2>
 <p>Try is a library for unit testing with equal support for
 interactive and non-interactive workflows. Tests are functions, and
 almost everything else is a condition, whose types feature
@@ -438,7 +441,7 @@ environment necessary for lower level tests.</p>
 <p><a id="x-28TRY-3A-40TRY-2FEMACS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEMACS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FTUTORIAL%20MGL-PAX:SECTION" title="Tutorial">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION" title="Emacs Setup">&#8594;</a> <a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION" title="Emacs Integration">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L418">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION">4 Emacs Integration</a></h2>
+<h2><a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION">3 Emacs Integration</a></h2>
 <p>The Elisp <code>mgl-try</code> interactive command runs a Try test and
 displays its output in a <code>lisp-mode</code> buffer with minor modes
 <code>outline-mode</code> and <code>mgl-try-mode</code>. It is assumed that the lisp is
@@ -466,7 +469,7 @@ U               outline-up-heading
 <p><a id="x-28TRY-3A-40TRY-2FEMACS-SETUP-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION" title="Emacs Integration">&#8592;</a> <a href="#TRY:@TRY%2FEMACS%20MGL-PAX:SECTION" title="Emacs Integration">&#8593;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8594;</a> <a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION" title="Emacs Setup">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L449">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION">4.1 Emacs Setup</a></h3>
+<h3><a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION">3.1 Emacs Setup</a></h3>
 <p>Load <code>src/mgl-try.el</code> in Emacs.</p>
 <p>If you installed Try with Quicklisp, the location of <code>mgl-try.el</code>
 may change with updates, and you may want to copy the current
@@ -486,14 +489,14 @@ something like this to your <code>.emacs</code>:</p>
 <p><a id="x-28TRY-3A-40TRY-2FEVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEMACS-SETUP%20MGL-PAX:SECTION" title="Emacs Setup">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION" title="Middle Layer of Events">&#8594;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L5">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION">5 Events</a></h2>
+<h2><a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION">4 Events</a></h2>
 <p>Try is built around events implemented as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>s.
 Matching the types of events to <a href="#TRY:*DEBUG*%20VARIABLE" title="TRY:*DEBUG* VARIABLE"><code>*debug*</code></a>, <a href="#TRY:*COUNT*%20VARIABLE" title="TRY:*COUNT* VARIABLE"><code>*count*</code></a>, <a href="#TRY:*COLLECT*%20VARIABLE" title="TRY:*COLLECT* VARIABLE"><code>*collect*</code></a>, <a href="#TRY:*RERUN*%20VARIABLE" title="TRY:*RERUN* VARIABLE"><code>*rerun*</code></a>,
 <a href="#TRY:*PRINT*%20VARIABLE" title="TRY:*PRINT* VARIABLE"><code>*print*</code></a>, and <a href="#TRY:*DESCRIBE*%20VARIABLE" title="TRY:*DESCRIBE* VARIABLE"><code>*describe*</code></a> is what gives Try its flexibility.</p>
 <p><a id="x-28TRY-3A-40TRY-2FMIDDLE-LAYER-OF-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION" title="Concrete Events">&#8594;</a> <a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION" title="Middle Layer of Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L18">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION">5.1 Middle Layer of Events</a></h3>
+<h3><a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION">4.1 Middle Layer of Events</a></h3>
 <p>The event hierarchy is fairly involved, so let's start in the middle.
 The condition <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a> has 4 disjoint subclasses:</p>
 <ul>
@@ -521,7 +524,7 @@ The condition <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code
 <p><a id="x-28TRY-3A-40TRY-2FCONCRETE-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION" title="Middle Layer of Events">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION" title="Event Glue">&#8594;</a> <a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION" title="Concrete Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L50">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION">5.2 Concrete Events</a></h3>
+<h3><a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION">4.2 Concrete Events</a></h3>
 <p>The non-abstract condition classes of events that are actually
 signalled are called concrete.</p>
 <p><a href="#TRY:TRIAL-START%20CONDITION" title="TRY:TRIAL-START CONDITION"><code>trial-start</code></a> is a concrete event class. <a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>s and <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a>s have six
@@ -545,7 +548,7 @@ signalled are called concrete.</p>
 <p><a id="x-28TRY-3A-40TRY-2FEVENT-GLUE-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION" title="Concrete Events">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION" title="Printing Events">&#8594;</a> <a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION" title="Event Glue">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L76">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION">5.3 Event Glue</a></h3>
+<h3><a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION">4.3 Event Glue</a></h3>
 <p>These condition classes group various bits of the
 <a href="#TRY:@TRY%2FCONCRETE-EVENTS%20MGL-PAX:SECTION" title="Concrete Events">Concrete Events</a> and the <a href="#TRY:@TRY%2FMIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION" title="Middle Layer of Events">Middle Layer of Events</a> for ease of
 reference.</p>
@@ -668,7 +671,7 @@ Either <a href="#TRY:SKIP%20CONDITION" title="TRY:SKIP CONDITION"><code>skip</co
 <p><a id="x-28TRY-3A-40TRY-2FPRINTING-EVENTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEVENT-GLUE%20MGL-PAX:SECTION" title="Event Glue">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION" title="Event Restarts">&#8594;</a> <a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION" title="Printing Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L170">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION">5.4 Printing Events</a></h3>
+<h3><a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION">4.4 Printing Events</a></h3>
 <p><a id="x-28TRY-3A-2AEVENT-PRINT-BINDINGS-2A-20VARIABLE-29"></a>
 <a id="TRY:*EVENT-PRINT-BINDINGS*%20VARIABLE"></a></p>
 <ul>
@@ -691,7 +694,7 @@ this variable.</p></li>
 <p><a id="x-28TRY-3A-40TRY-2FEVENT-RESTARTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FPRINTING-EVENTS%20MGL-PAX:SECTION" title="Printing Events">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">&#8594;</a> <a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION" title="Event Restarts">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L209">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION">5.5 Event Restarts</a></h3>
+<h3><a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION">4.5 Event Restarts</a></h3>
 <p>Only <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a> is applicable to all <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a>s. See
 <a href="#TRY:@TRY%2FCHECK-RESTARTS%20MGL-PAX:SECTION" title="Check Restarts">Check Restarts</a>, <a href="#TRY:@TRY%2FTRIAL-RESTARTS%20MGL-PAX:SECTION" title="Trial Restarts">Trial Restarts</a> for more.</p>
 <p><a id="x-28TRY-3ARECORD-EVENT-20FUNCTION-29"></a>
@@ -706,7 +709,7 @@ always invokes <code>record-event</code> when handling events.</p></li>
 <p><a id="x-28TRY-3A-40TRY-2FOUTCOMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEVENT-RESTARTS%20MGL-PAX:SECTION" title="Event Restarts">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome Restarts">&#8594;</a> <a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/outcome.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION">5.6 Outcomes</a></h3>
+<h3><a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION">4.6 Outcomes</a></h3>
 <p><a id="x-28TRY-3AOUTCOME-20CONDITION-29"></a>
 <a id="TRY:OUTCOME%20CONDITION"></a></p>
 <ul>
@@ -799,7 +802,7 @@ cancels the effect of any enclosing <code>with-skip</code> with <code>skip</code
 <p><a id="x-28TRY-3A-40TRY-2FOUTCOME-RESTARTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">&#8592;</a> <a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">&#8593;</a> <a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION" title="Checks">&#8594;</a> <a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome Restarts">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/outcome.lisp#L245">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION">5.6.1 Outcome Restarts</a></h4>
+<h4><a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION">4.6.1 Outcome Restarts</a></h4>
 <p><a id="x-28TRY-3AFORCE-EXPECTED-SUCCESS-20FUNCTION-29"></a>
 <a id="TRY:FORCE-EXPECTED-SUCCESS%20FUNCTION"></a></p>
 <ul>
@@ -837,7 +840,7 @@ cancels the effect of any enclosing <code>with-skip</code> with <code>skip</code
 <p><a id="x-28TRY-3A-40TRY-2FCHECKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome Restarts">&#8592;</a> <a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">&#8593;</a> <a href="#TRY:@TRY%2FCHECK-RESTARTS%20MGL-PAX:SECTION" title="Check Restarts">&#8594;</a> <a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION" title="Checks">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/outcome.lisp#L278">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION">5.6.2 Checks</a></h4>
+<h4><a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION">4.6.2 Checks</a></h4>
 <p>Checks are like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:assert</code></a>s, they check whether some condition holds
 and signal an <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a>. The outcome signalled for checks is a
 subclass of <a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>.</p>
@@ -924,7 +927,7 @@ wrapped by the check without signalling an <a href="#TRY:OUTCOME%20CONDITION" ti
 <p><a id="x-28TRY-3A-40TRY-2FTRIALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FTRIALS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCHECK-RESTARTS%20MGL-PAX:SECTION" title="Check Restarts">&#8592;</a> <a href="#TRY:@TRY%2FOUTCOMES%20MGL-PAX:SECTION" title="Outcomes">&#8593;</a> <a href="#TRY:@TRY%2FTRIAL-EVENTS%20MGL-PAX:SECTION" title="Trial Events">&#8594;</a> <a href="#TRY:@TRY%2FTRIALS%20MGL-PAX:SECTION" title="Trials">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L5">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FTRIALS%20MGL-PAX:SECTION">5.6.3 Trials</a></h4>
+<h4><a href="#TRY:@TRY%2FTRIALS%20MGL-PAX:SECTION">4.6.3 Trials</a></h4>
 <p><a id="x-28TRY-3ATRIAL-20CLASS-29"></a>
 <a id="TRY:TRIAL%20CLASS"></a></p>
 <ul>
@@ -978,7 +981,7 @@ then an error is signalled. The returned trial is <a href="#TRY:RUNNINGP%20FUNCT
 <p><a id="x-28TRY-3ATRIAL-20-28MGL-PAX-3AREADER-20TRY-3ATRIAL-EVENT-29-29"></a>
 <a id="TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial-event.lisp#L17">[reader]</a></span> <span class="reference-object"><a href="#TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29" >trial</a></span></span> <span class="locative-args">trial-event (:trial)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial-event.lisp#L17">[reader]</a></span> <span class="reference-object"><a href="#TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29" >trial</a></span></span> <span class="locative-args"><a href="#TRY:TRIAL-EVENT%20CONDITION" title="TRY:TRIAL-EVENT CONDITION">trial-event</a> (:trial)</span></span></li>
 </ul>
 <p><a id="x-28TRY-3ATRIAL-START-20CONDITION-29"></a>
 <a id="TRY:TRIAL-START%20CONDITION"></a></p>
@@ -1114,7 +1117,7 @@ by the <a href="#TRY:@TRY%2FOUTCOME-RESTARTS%20MGL-PAX:SECTION" title="Outcome R
 <p><a id="x-28TRY-3AVERDICT-20-28MGL-PAX-3AREADER-20TRY-3ATRIAL-29-29"></a>
 <a id="TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L76">[reader]</a></span> <span class="reference-object"><a href="#TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29" >verdict</a></span></span> <span class="locative-args">trial (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L76">[reader]</a></span> <span class="reference-object"><a href="#TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29" >verdict</a></span></span> <span class="locative-args"><a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS">trial</a> (= nil)</span></span></p>
 
 <p>The <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a> <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a> signalled when this
 <code>trial</code> finished or <code>nil</code> if it has not finished yet.</p></li>
@@ -1287,7 +1290,7 @@ the <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdi
 <p><a id="x-28TRY-3AN-RETRIES-20-28MGL-PAX-3AREADER-20TRY-3ATRIAL-29-29"></a>
 <a id="TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L62">[reader]</a></span> <span class="reference-object"><a href="#TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29" >n-retries</a></span></span> <span class="locative-args">trial (:n-retries = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L62">[reader]</a></span> <span class="reference-object"><a href="#TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29" >n-retries</a></span></span> <span class="locative-args"><a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS">trial</a> (:n-retries = 0)</span></span></p>
 
 <p>The number of times this <code>trial</code> has
 been retried. See <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL FUNCTION"><code>retry-trial</code></a>.</p></li>
@@ -1295,7 +1298,7 @@ been retried. See <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL F
 <p><a id="x-28TRY-3A-40TRY-2FERRORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FERRORS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FTRIAL-RESTARTS%20MGL-PAX:SECTION" title="Trial Restarts">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION" title="Categories">&#8594;</a> <a href="#TRY:@TRY%2FERRORS%20MGL-PAX:SECTION" title="Errors">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FERRORS%20MGL-PAX:SECTION">5.7 Errors</a></h3>
+<h3><a href="#TRY:@TRY%2FERRORS%20MGL-PAX:SECTION">4.7 Errors</a></h3>
 <p><a id="x-28TRY-3AERROR-2A-20CONDITION-29"></a>
 <a id="TRY:ERROR*%20CONDITION"></a></p>
 <ul>
@@ -1309,7 +1312,7 @@ so as <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><
 <p><a id="x-28TRY-3ATEST-NAME-20-28MGL-PAX-3AREADER-20TRY-3AERROR-2A-29-29"></a>
 <a id="TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L13">[reader]</a></span> <span class="reference-object"><a href="#TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29" >test-name</a></span></span> <span class="locative-args">error* (:test-name)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L13">[reader]</a></span> <span class="reference-object"><a href="#TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29" >test-name</a></span></span> <span class="locative-args"><a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION">error*</a> (:test-name)</span></span></li>
 </ul>
 <p><a id="x-28TRY-3AUNHANDLED-ERROR-20CONDITION-29"></a>
 <a id="TRY:UNHANDLED-ERROR%20CONDITION"></a></p>
@@ -1323,17 +1326,17 @@ is invoked with a condition that's not an <a href="#TRY:EVENT%20CONDITION" title
 <p><a id="x-28TRY-3ANESTED-CONDITION-20-28MGL-PAX-3AREADER-20TRY-3AUNHANDLED-ERROR-29-29"></a>
 <a id="TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >nested-condition</a></span></span> <span class="locative-args">unhandled-error (:condition = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >nested-condition</a></span></span> <span class="locative-args"><a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION">unhandled-error</a> (:condition = 'nil)</span></span></li>
 </ul>
 <p><a id="x-28TRY-3ABACKTRACE-OF-20-28MGL-PAX-3AREADER-20TRY-3AUNHANDLED-ERROR-29-29"></a>
 <a id="TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >backtrace-of</a></span></span> <span class="locative-args">unhandled-error (:backtrace = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >backtrace-of</a></span></span> <span class="locative-args"><a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION">unhandled-error</a> (:backtrace = 'nil)</span></span></li>
 </ul>
 <p><a id="x-28TRY-3ADEBUGGER-INVOKED-P-20-28MGL-PAX-3AREADER-20TRY-3AUNHANDLED-ERROR-29-29"></a>
 <a id="TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >debugger-invoked-p</a></span></span> <span class="locative-args">unhandled-error (:debugger-invoked-p = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/error.lisp#L20">[reader]</a></span> <span class="reference-object"><a href="#TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" >debugger-invoked-p</a></span></span> <span class="locative-args"><a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION">unhandled-error</a> (:debugger-invoked-p = 'nil)</span></span></li>
 </ul>
 <p><a id="x-28TRY-3A-2AGATHER-BACKTRACE-2A-20VARIABLE-29"></a>
 <a id="TRY:*GATHER-BACKTRACE*%20VARIABLE"></a></p>
@@ -1358,7 +1361,7 @@ associated with the event.</p></li>
 <p><a id="x-28TRY-3A-40TRY-2FCATEGORIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FERRORS%20MGL-PAX:SECTION" title="Errors">&#8592;</a> <a href="#TRY:@TRY%2FEVENTS%20MGL-PAX:SECTION" title="Events">&#8593;</a> <a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">&#8594;</a> <a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION" title="Categories">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/events.lisp#L233">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION">5.8 Categories</a></h3>
+<h3><a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION">4.8 Categories</a></h3>
 <p>Categories determine how event types are printed and events of
 what types are counted together.</p>
 <p>The default value of <a href="#TRY:*CATEGORIES*%20VARIABLE" title="TRY:*CATEGORIES* VARIABLE"><code>*categories*</code></a> is</p>
@@ -1410,7 +1413,7 @@ characters for the markers.</p>
 <p><a id="x-28TRY-3A-40TRY-2FIS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FIS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCATEGORIES%20MGL-PAX:SECTION" title="Categories">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION" title="Format Specifier Forms">&#8594;</a> <a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/is.lisp#L5">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION">6 The <code>is</code> Macro</a></h2>
+<h2><a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION">5 The <code>is</code> Macro</a></h2>
 <p><a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> is the fundamental one among <a href="#TRY:@TRY%2FCHECKS%20MGL-PAX:SECTION" title="Checks">Checks</a>, on which all
 the others are built, and it is a replacement for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm" title="ASSERT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cl:assert</code></a> that can
 capture values of subforms to provide context to failures:</p>
@@ -1513,7 +1516,7 @@ to implement their own retry mechanism.</p></li>
 <p><a id="x-28TRY-3A-40TRY-2FFORMAT-SPECIFIER-FORMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">&#8592;</a> <a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">&#8593;</a> <a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">&#8594;</a> <a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION" title="Format Specifier Forms">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/is.lisp#L162">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION">6.1 Format Specifier Forms</a></h3>
+<h3><a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION">5.1 Format Specifier Forms</a></h3>
 <p>A format specifier form is a Lisp form, typically an argument to
 macro, standing for the <code>format-control</code> and <code>format-args</code> arguments to
 the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm" title="FORMAT (MGL-PAX:CLHS FUNCTION)"><code>format</code></a> function.</p>
@@ -1547,14 +1550,14 @@ default is implied.</p>
 <p><a id="x-28TRY-3A-40TRY-2FCAPTURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FFORMAT-SPECIFIER-FORMS%20MGL-PAX:SECTION" title="Format Specifier Forms">&#8592;</a> <a href="#TRY:@TRY%2FIS%20MGL-PAX:SECTION" title="The `is` Macro">&#8593;</a> <a href="#TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION" title="Automatic Captures">&#8594;</a> <a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/is.lisp#L213">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION">6.2 Captures</a></h3>
+<h3><a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION">5.2 Captures</a></h3>
 <p>During the evaluation of the <code>form</code> argument of <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a>, evaluation of any
 form (e.g. a subform of <code>form</code>) may be recorded, which are called
 captures.</p>
 <p><a id="x-28TRY-3A-40TRY-2FAUTOMATIC-CAPTURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">&#8592;</a> <a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">&#8593;</a> <a href="#TRY:@TRY%2FWRITING-AUTOMATIC-CAPTURE-RULES%20MGL-PAX:SECTION" title="Writing Automatic Capture Rules">&#8594;</a> <a href="#TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION" title="Automatic Captures">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/is.lisp#L311">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION">6.2.1 Automatic Captures</a></h4>
+<h4><a href="#TRY:@TRY%2FAUTOMATIC-CAPTURES%20MGL-PAX:SECTION">5.2.1 Automatic Captures</a></h4>
 <p><a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> automatically captures some subforms of <code>form</code> that are likely
 to be informative. In particular, if <code>form</code> is a function call, then
 non-constant arguments are automatically captured:</p>
@@ -1667,7 +1670,7 @@ where
 <p><a id="x-28TRY-3A-40TRY-2FEXPLICIT-CAPTURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FWRITING-AUTOMATIC-CAPTURE-RULES%20MGL-PAX:SECTION" title="Writing Automatic Capture Rules">&#8592;</a> <a href="#TRY:@TRY%2FCAPTURES%20MGL-PAX:SECTION" title="Captures">&#8593;</a> <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">&#8594;</a> <a href="#TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION" title="Explicit Captures">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/is.lisp#L221">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION">6.2.2 Explicit Captures</a></h4>
+<h4><a href="#TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION">5.2.2 Explicit Captures</a></h4>
 <p>In addition to automatic captures, which are prescribed by
 rewriting rules (see <a href="#TRY:@TRY%2FWRITING-AUTOMATIC-CAPTURE-RULES%20MGL-PAX:SECTION" title="Writing Automatic Capture Rules">Writing Automatic Capture Rules</a>),
 explicit, ad-hoc captures can also be made.</p>
@@ -1742,7 +1745,7 @@ from the <code>is</code> form when printed.</p></li>
 <p><a id="x-28TRY-3A-40TRY-2FCHECK-LIBRARY-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEXPLICIT-CAPTURES%20MGL-PAX:SECTION" title="Explicit Captures">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">&#8594;</a> <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/checks.lisp#L5">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION">7 Check Library</a></h2>
+<h2><a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION">6 Check Library</a></h2>
 <p>In the following, various checks built on top of <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> are described.
 Many of them share a number of arguments, which are described here.</p>
 <ul>
@@ -1757,7 +1760,7 @@ Many of them share a number of arguments, which are described here.</p>
 <p><a id="x-28TRY-3A-40TRY-2FCHECKING-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">&#8592;</a> <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">&#8593;</a> <a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION" title="Miscellaneous Checks">&#8594;</a> <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/checks.lisp#L24">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION">7.1 Checking Conditions</a></h3>
+<h3><a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION">6.1 Checking Conditions</a></h3>
 <p>The macros <a href="#TRY:SIGNALS%20MGL-PAX:MACRO" title="TRY:SIGNALS MGL-PAX:MACRO"><code>signals</code></a>, <a href="#TRY:SIGNALS-NOT%20MGL-PAX:MACRO" title="TRY:SIGNALS-NOT MGL-PAX:MACRO"><code>signals-not</code></a>, <a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, and
 <a href="#TRY:INVOKES-DEBUGGER-NOT%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER-NOT MGL-PAX:MACRO"><code>invokes-debugger-not</code></a> all check whether a condition of a given type,
 possibly also matching a predicate, was signalled. In addition to
@@ -1875,7 +1878,7 @@ The arguments are described in <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PA
 <p><a id="x-28TRY-3A-40TRY-2FMISC-CHECKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">&#8592;</a> <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">&#8593;</a> <a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION" title="Check Utilities">&#8594;</a> <a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION" title="Miscellaneous Checks">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/checks.lisp#L322">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION">7.2 Miscellaneous Checks</a></h3>
+<h3><a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION">6.2 Miscellaneous Checks</a></h3>
 <p><a id="x-28TRY-3AFAILS-20MGL-PAX-3AMACRO-29"></a>
 <a id="TRY:FAILS%20MGL-PAX:MACRO"></a></p>
 <ul>
@@ -1933,7 +1936,7 @@ the descriptions of the other arguments.</p>
 <p><a id="x-28TRY-3A-40TRY-2FCHECK-UTILITIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FMISC-CHECKS%20MGL-PAX:SECTION" title="Miscellaneous Checks">&#8592;</a> <a href="#TRY:@TRY%2FCHECK-LIBRARY%20MGL-PAX:SECTION" title="Check Library">&#8593;</a> <a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION" title="Comparing Floats">&#8594;</a> <a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION" title="Check Utilities">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/checks.lisp#L420">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION">7.3 Check Utilities</a></h3>
+<h3><a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION">6.3 Check Utilities</a></h3>
 <p>These utilities are not checks (which signal <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a>s) but simple
 functions and macros that may be useful for writing <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a> checks.</p>
 <p><a id="x-28TRY-3AON-VALUES-20MGL-PAX-3AMACRO-29"></a>
@@ -2112,7 +2115,7 @@ that accidentally depend on the order in which subtests are called.</p>
 <p><a id="x-28TRY-3A-40TRY-2FCOMPARING-FLOATS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION" title="Check Utilities">&#8592;</a> <a href="#TRY:@TRY%2FCHECK-UTILITIES%20MGL-PAX:SECTION" title="Check Utilities">&#8593;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8594;</a> <a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION" title="Comparing Floats">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/floats.lisp#L3">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION">7.3.1 Comparing Floats</a></h4>
+<h4><a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION">6.3.1 Comparing Floats</a></h4>
 <p>Float comparisons following
 <a href="https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/" >https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/</a>.</p>
 <p><a id="x-28TRY-3AFLOAT--7E-3D-20FUNCTION-29"></a>
@@ -2169,7 +2172,7 @@ but it also allows for approximate equality according to <a href="#TRY:FLOAT-~%3
 <p><a id="x-28TRY-3A-40TRY-2FTESTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FTESTS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCOMPARING-FLOATS%20MGL-PAX:SECTION" title="Comparing Floats">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION" title="Calling Test Functions">&#8594;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/test.lisp#L5">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION">8 Tests</a></h2>
+<h2><a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION">7 Tests</a></h2>
 <p>In Try, tests are Lisp functions that record their execution in
 <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> objects. <code>trial</code>s are to tests what function call traces are to
 functions. In more detail, tests</p>
@@ -2386,7 +2389,7 @@ each global tests in <code>package</code> not run.</p>
 <p><a id="x-28TRY-3A-40TRY-2FIMPLICIT-TRY-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">&#8594;</a> <a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION" title="Calling Test Functions">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/try.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION">8.1 Calling Test Functions</a></h3>
+<h3><a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION">7.1 Calling Test Functions</a></h3>
 <p>Tests can be run explicitly by invoking the <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> function or
 implicitly by calling a test function:</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-test <span class="paren2">(<span class="code"></span>)</span>
@@ -2479,7 +2482,7 @@ of is and other checks) of <a href="#TRY:UNEXPECTED%20CONDITION" title="TRY:UNEX
 <p><a id="x-28TRY-3A-40TRY-2FEXPLICIT-TRY-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FIMPLICIT-TRY%20MGL-PAX:SECTION" title="Calling Test Functions">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION" title="Testables">&#8594;</a> <a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/try.lisp#L91">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION">8.2 Explicit <code>try</code></a></h3>
+<h3><a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION">7.2 Explicit <code>try</code></a></h3>
 <p>Instead of invoking the test function directly, tests can also be
 run by invoking the <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> function.</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">deftest</span></i> my-test <span class="paren2">(<span class="code"></span>)</span>
@@ -2670,7 +2673,7 @@ onto a list of trials, but only <a href="#TRY:*N-RECENT-TRIALS*%20VARIABLE" titl
 <p><a id="x-28TRY-3A-40TRY-2FTESTABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">&#8592;</a> <a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">&#8593;</a> <a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">&#8594;</a> <a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION" title="Testables">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/testable.lisp#L3">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION">8.2.1 Testables</a></h4>
+<h4><a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION">7.2.1 Testables</a></h4>
 <p>Valid first arguments to <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> are called testables. A testable may
 be:</p>
 <ul>
@@ -2696,7 +2699,7 @@ If the trial is not <a href="#TRY:RUNNINGP%20FUNCTION" title="TRY:RUNNINGP FUNCT
 <p><a id="x-28TRY-3A-40TRY-2FIMPLICIT-TRY-IMPLEMENTATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FTESTABLES%20MGL-PAX:SECTION" title="Testables">&#8592;</a> <a href="#TRY:@TRY%2FEXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">&#8593;</a> <a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION" title="Printing Events">&#8594;</a> <a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/try.lisp#L197">&#955;</a></span></span></p>
-<h4><a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION">8.2.2 Implementation of Implicit <code>try</code></a></h4>
+<h4><a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION">7.2.2 Implementation of Implicit <code>try</code></a></h4>
 <p>What's happening in the implementation is that a test function,
 when it is called, checks whether it is running under the <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a>
 function. If it isn't, then it invokes <code>try</code> with its <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>. <code>try</code>
@@ -2713,7 +2716,7 @@ are infinite recursions:</p>
 <p><a id="x-28TRY-3A-40TRY-2FPRINT-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FPRINT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FIMPLICIT-TRY-IMPLEMENTATION%20MGL-PAX:SECTION" title="Implementation of Implicit `try`">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">&#8594;</a> <a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION" title="Printing Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/print.lisp#L5">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION">8.3 Printing Events</a></h3>
+<h3><a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION">7.3 Printing Events</a></h3>
 <p><a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> instantiates a printer of the type given by its <code>printer</code>
 argument. All <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a>s recorded by <code>try</code> are sent to this printer. The
 printer then prints events that match the type given by the <code>print</code>
@@ -2934,7 +2937,7 @@ has finished. The following example only prints <a href="#TRY:LEAF%20CONDITION" 
 <p><a id="x-28TRY-3A-40TRY-2FCOUNT-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FPRINT%20MGL-PAX:SECTION" title="Printing Events">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">&#8594;</a> <a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/count.lisp#L5">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION">8.4 Counting Events</a></h3>
+<h3><a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION">7.4 Counting Events</a></h3>
 <p><a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>s have a counter for each category in <a href="#TRY:*CATEGORIES*%20VARIABLE" title="TRY:*CATEGORIES* VARIABLE"><code>*categories*</code></a>. When an
 <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a> is recorded by <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> and its type matches <a href="#TRY:*COUNT*%20VARIABLE" title="TRY:*COUNT* VARIABLE"><code>*count*</code></a>, the counters
 of all categories matching the event type are incremented in the
@@ -2966,7 +2969,7 @@ separate counters for <a href="#TRY:ABORT*%20CONDITION" title="TRY:ABORT* CONDIT
 <p><a id="x-28TRY-3A-40TRY-2FCOLLECT-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCOUNT%20MGL-PAX:SECTION" title="Counting Events">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">&#8594;</a> <a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/collect.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION">8.5 Collecting Events</a></h3>
+<h3><a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION">7.5 Collecting Events</a></h3>
 <p>When an <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a> is recorded and the type of the <code>event</code> matches the
 <code>collect</code> type argument of <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a>, then a corresponding object is pushed
 onto <a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:CHILDREN (MGL-PAX:READER TRY:TRIAL)"><code>children</code></a> of the <a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION"><code>current-trial</code></a> for subsequent <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">Rerunning Trials</a> or
@@ -2981,7 +2984,7 @@ the enclosing trials.</p>
 <p><a id="x-28TRY-3ACHILDREN-20-28MGL-PAX-3AREADER-20TRY-3ATRIAL-29-29"></a>
 <a id="TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L80">[reader]</a></span> <span class="reference-object"><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" >children</a></span></span> <span class="locative-args">trial (:children = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/trial.lisp#L80">[reader]</a></span> <span class="reference-object"><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" >children</a></span></span> <span class="locative-args"><a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS">trial</a> (:children = nil)</span></span></p>
 
 <p>A list of immediate child <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a>s, <a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>s, and
 <a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a>s collected in reverse chronological order (see
@@ -2991,7 +2994,7 @@ but the <code>verdict</code>s of child trials' are.</p></li>
 <p><a id="x-28TRY-3A-40TRY-2FRERUN-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FRERUN%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FCOLLECT%20MGL-PAX:SECTION" title="Collecting Events">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION" title="Reprocessing Trials">&#8594;</a> <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/rerun.lisp#L3">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION">8.6 Rerunning Trials</a></h3>
+<h3><a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION">7.6 Rerunning Trials</a></h3>
 <p>When a <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm" title="FUNCALL (MGL-PAX:CLHS FUNCTION)"><code>funcall</code></a>ed or passed to <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a>, the <em>test that
 created the trial</em> is invoked, and it may be run again in its
 entirety or in part. As the test runs, it may invoke other tests.
@@ -3041,7 +3044,7 @@ with <code>funcall</code>, execution is guaranteed to happen under <code>try</co
 <p><a id="x-28TRY-3A-40TRY-2FREPLAY-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FRERUN%20MGL-PAX:SECTION" title="Rerunning Trials">&#8592;</a> <a href="#TRY:@TRY%2FTESTS%20MGL-PAX:SECTION" title="Tests">&#8593;</a> <a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION" title="Implementation Notes">&#8594;</a> <a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION" title="Reprocessing Trials">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/replay.lisp#L5">&#955;</a></span></span></p>
-<h3><a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION">8.7 Reprocessing Trials</a></h3>
+<h3><a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION">7.7 Reprocessing Trials</a></h3>
 <p><a id="x-28TRY-3AREPLAY-EVENTS-20FUNCTION-29"></a>
 <a id="TRY:REPLAY-EVENTS%20FUNCTION"></a></p>
 <ul>
@@ -3084,7 +3087,7 @@ and <code>:describe</code> at the end:</p>
 <p><a id="x-28TRY-3A-40TRY-2FIMPLEMENTATION-NOTES-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FREPLAY%20MGL-PAX:SECTION" title="Reprocessing Trials">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">&#8594;</a> <a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION" title="Implementation Notes">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L474">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION">9 Implementation Notes</a></h2>
+<h2><a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION">8 Implementation Notes</a></h2>
 <p>Try is supported on ABCL, AllegroCL, CLISP, CCL, CMUCL, ECL and
 SBCL.</p>
 <ul>
@@ -3101,7 +3104,7 @@ SBCL.</p>
 <p><a id="x-28TRY-3A-40TRY-2FGLOSSARY-20MGL-PAX-3ASECTION-29"></a>
 <a id="TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#TRY:@TRY%2FIMPLEMENTATION-NOTES%20MGL-PAX:SECTION" title="Implementation Notes">&#8592;</a> <a href="try-manual.html" title="Try Manual">&#8593;</a> <a href="#TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION" title="Glossary">&#8634;</a> <a href="https://github.com/melisgl/try/blob/708d98932e672abb4fe59f3a680217b01863d6e3/src/manual.lisp#L492">&#955;</a></span></span></p>
-<h2><a href="#TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION">10 Glossary</a></h2>
+<h2><a href="#TRY:@TRY%2FGLOSSARY%20MGL-PAX:SECTION">9 Glossary</a></h2>
 <p><a id="x-28TRY-3A-40FUNCALLABLE-INSTANCE-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
 <a id="TRY:@FUNCALLABLE-INSTANCE%20MGL-PAX:GLOSSARY-TERM"></a></p>
 <ul>
