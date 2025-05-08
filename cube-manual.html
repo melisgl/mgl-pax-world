@@ -215,7 +215,7 @@ cubes with <a href="#MGL-CUBE:SYNCHRONIZATION%20%28MGL-PAX:ACCESSOR%20MGL-CUBE:C
 <a id="MGL-CUBE:@CUBE-FACETS%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-CUBE:@CUBE-SYNCHRONIZATION%20MGL-PAX:SECTION" title="Synchronization">&#8592;</a> <a href="cube-manual.html" title="Cube Manual">&#8593;</a> <a href="#MGL-CUBE:@CUBE-FACET-EXTENSION-API%20MGL-PAX:SECTION" title="Facet Extension API">&#8594;</a> <a href="#MGL-CUBE:@CUBE-FACETS%20MGL-PAX:SECTION" title="Facets">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/8f980b39cd6f4152bafd63a31ec69711508f85ea/src/cube.lisp#L234">&#955;</a></span></span></p>
 <h2><a href="#MGL-CUBE:@CUBE-FACETS%20MGL-PAX:SECTION">5 Facets</a></h2>
-<p>The basic currency for implementing new cube types is the <a href="#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>facet</code></a>.
+<p>The basic currency for implementing new cube types is the <a href="#MGL-CUBE:FACET%20STRUCTURE" title="MGL-CUBE:FACET STRUCTURE"><code>facet</code></a>.
 Simply using a cube only involves facet names and values, never
 facets themselves.</p>
 <p><a id="x-28MGL-CUBE-3AFACETS-20FUNCTION-29"></a>
@@ -233,10 +233,10 @@ facets themselves.</p>
 <p>Return the facet of <code>cube</code> for the facet with <code>facet-name</code> or <code>nil</code> if no
 such facet exists.</p></li>
 </ul>
-<p><a id="x-28MGL-CUBE-3AFACET-20CLASS-29"></a>
-<a id="MGL-CUBE:FACET%20CLASS"></a></p>
+<p><a id="x-28MGL-CUBE-3AFACET-20STRUCTURE-29"></a>
+<a id="MGL-CUBE:FACET%20STRUCTURE"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/8f980b39cd6f4152bafd63a31ec69711508f85ea/src/cube.lisp#L258">[class]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET%20CLASS" >facet</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)">structure-object</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/8f980b39cd6f4152bafd63a31ec69711508f85ea/src/cube.lisp#L258">[structure]</a></span> <span class="reference-object"><a href="#MGL-CUBE:FACET%20STRUCTURE" >facet</a></span></span></span></p>
 
 <p>A cube has facets, as we discussed in <a href="#MGL-CUBE:@CUBE-BASICS%20MGL-PAX:SECTION" title="Basics">Basics</a>. Facets holds
 the data in a particular representation, this is called the <em>value</em>
@@ -304,7 +304,7 @@ updated. See <a href="#MGL-CUBE:FACET-UP-TO-DATE-P*%20GENERIC-FUNCTION" title="M
 <a id="MGL-CUBE:@CUBE-FACET-EXTENSION-API%20MGL-PAX:SECTION"></a></p>
 <p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-CUBE:@CUBE-FACETS%20MGL-PAX:SECTION" title="Facets">&#8592;</a> <a href="cube-manual.html" title="Cube Manual">&#8593;</a> <a href="#MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET*%20MGL-PAX:SECTION" title="The Default Implementation of `call-with-facet*`">&#8594;</a> <a href="#MGL-CUBE:@CUBE-FACET-EXTENSION-API%20MGL-PAX:SECTION" title="Facet Extension API">&#8634;</a> <a href="https://github.com/melisgl/mgl-mat/blob/8f980b39cd6f4152bafd63a31ec69711508f85ea/src/cube.lisp#L314">&#955;</a></span></span></p>
 <h2><a href="#MGL-CUBE:@CUBE-FACET-EXTENSION-API%20MGL-PAX:SECTION">6 Facet Extension API</a></h2>
-<p>Many of the generic functions in this section take <a href="#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>facet</code></a> arguments.
+<p>Many of the generic functions in this section take <a href="#MGL-CUBE:FACET%20STRUCTURE" title="MGL-CUBE:FACET STRUCTURE"><code>facet</code></a> arguments.
 <code>facet</code> is a structure and is not intended to be subclassed. To be
 able to add specialized methods, the name of the
 facet (<a href="#MGL-CUBE:FACET-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-NAME (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-name</code></a>) is also passed as the
@@ -531,7 +531,7 @@ to prevent resource leaks caused by stray references.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/8f980b39cd6f4152bafd63a31ec69711508f85ea/src/cube.lisp#L587">[function]</a></span> <span class="reference-object"><a href="#MGL-CUBE:ADD-FACET-REFERENCE-BY-NAME%20FUNCTION" >add-facet-reference-by-name</a></span></span> <span class="locative-args">cube facet-name</span></span></p>
 
 <p>Make sure <code>facet-name</code> exists on <code>cube</code> and increment its reference
-count. Return the <a href="#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>facet</code></a> behind <code>facet-name</code>.</p></li>
+count. Return the <a href="#MGL-CUBE:FACET%20STRUCTURE" title="MGL-CUBE:FACET STRUCTURE"><code>facet</code></a> behind <code>facet-name</code>.</p></li>
 </ul>
 <p><a id="x-28MGL-CUBE-3AREMOVE-FACET-REFERENCE-BY-NAME-20FUNCTION-29"></a>
 <a id="MGL-CUBE:REMOVE-FACET-REFERENCE-BY-NAME%20FUNCTION"></a></p>

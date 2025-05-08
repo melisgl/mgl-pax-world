@@ -220,7 +220,7 @@ accessing one of the facets directly, as in the following example:</p>
 <p>Notice that <a href="#MGL-MAT:LOGDET%20FUNCTION" title="MGL-MAT:LOGDET FUNCTION"><code>logdet</code></a> doesn't know about CUDA at all. <a href="cube-manual.html#MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"><code>with-facets</code></a>
 gives it the content of the matrix as a normal multidimensional lisp
 array, copying the data from the GPU or elsewhere if necessary. This
-allows new representations (<a href="cube-manual.html#MGL-CUBE:FACET%20CLASS" title="MGL-CUBE:FACET CLASS"><code>facet</code></a>s) to be added easily and it also
+allows new representations (<a href="cube-manual.html#MGL-CUBE:FACET%20STRUCTURE" title="MGL-CUBE:FACET STRUCTURE"><code>facet</code></a>s) to be added easily and it also
 avoids copying if the facet is already up-to-date. Of course, adding
 CUDA support to <code>logdet</code> could make it more efficient.</p>
 <p>Adding support for matrices that, for instance, live on a remote

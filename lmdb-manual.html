@@ -1407,7 +1407,7 @@ deleted, if it's not <code>nil</code>, then only the matching value. May signal
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/708d457e37ae11802577f356e4b8800e6603f239/src/lmdb.lisp#L2628">[macro]</a></span> <span class="reference-object"><a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" >with-cursor</a></span></span> <span class="locative-args">(var db) &amp;body body</span></span></p>
 
-<p>Bind <code>var</code> to a fresh <a href="#LMDB:CURSOR%20CLASS" title="LMDB:CURSOR CLASS"><code>cursor</code></a> on <code>db</code>. Execute <code>body</code>, then close the
+<p>Bind <code>var</code> to a fresh <a href="#LMDB:CURSOR%20STRUCTURE" title="LMDB:CURSOR STRUCTURE"><code>cursor</code></a> on <code>db</code>. Execute <code>body</code>, then close the
 cursor. Within the dynamic extent of <code>body</code>, this will be the
 <a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a>. The cursor is tied to the <a href="#LMDB:@ACTIVE-TRANSACTION%20MGL-PAX:GLOSSARY-TERM" title="active transaction">active transaction</a>.</p>
 
@@ -1450,10 +1450,10 @@ cursor is needed. That is, use</p>
 <p>Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga9ff5d7bd42557fd5ee235dc1d62613aa" >mdb_cursor_open()</a>
 and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859cc4c05188" >mdb_cursor_close()</a>.</p></li>
 </ul>
-<p><a id="x-28LMDB-3ACURSOR-20CLASS-29"></a>
-<a id="LMDB:CURSOR%20CLASS"></a></p>
+<p><a id="x-28LMDB-3ACURSOR-20STRUCTURE-29"></a>
+<a id="LMDB:CURSOR%20STRUCTURE"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/708d457e37ae11802577f356e4b8800e6603f239/src/lmdb.lisp#L2580">[class]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR%20CLASS" >cursor</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)">structure-object</a></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/708d457e37ae11802577f356e4b8800e6603f239/src/lmdb.lisp#L2580">[structure]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR%20STRUCTURE" >cursor</a></span></span></span></li>
 </ul>
 <p><a id="x-28LMDB-3ACURSOR-DB-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20LMDB-3ACURSOR-29-29"></a>
 <a id="LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29"></a></p>
@@ -1466,7 +1466,7 @@ and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859c
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/708d457e37ae11802577f356e4b8800e6603f239/src/lmdb.lisp#L2714">[glossary-term]</a></span> <span class="reference-object"><a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" >default cursor</a></span></span></span></p>
 
 <p>All operations, described below, that take cursor arguments accept
-<code>nil</code> instead of a <a href="#LMDB:CURSOR%20CLASS" title="LMDB:CURSOR CLASS"><code>cursor</code></a> object, in which case the cursor from the
+<code>nil</code> instead of a <a href="#LMDB:CURSOR%20STRUCTURE" title="LMDB:CURSOR STRUCTURE"><code>cursor</code></a> object, in which case the cursor from the
 immediately enclosing <a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-CURSOR MGL-PAX:MACRO"><code>with-cursor</code></a> or <a href="#LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-IMPLICIT-CURSOR MGL-PAX:MACRO"><code>with-implicit-cursor</code></a> is used.
 This cursor is referred to as the <em>default cursor</em>.</p>
 
