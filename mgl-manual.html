@@ -1282,10 +1282,10 @@ attributes without clobbering the those in the <code>:initform</code>, (<code>:t
 
 <p>A plist of attribute keys and values.</p></li>
 </ul>
-<p><a id="x-28MGL-COMMON-3ANAME-20-28METHOD-20NIL-20-28MGL-CORE-3AATTRIBUTED-29-29-29"></a>
-<a id="MGL-COMMON:NAME%20%28METHOD%20NIL%20%28MGL-CORE:ATTRIBUTED%29%29"></a></p>
+<p><a id="x-28MGL-COMMON-3ANAME-20-28METHOD-20-28MGL-CORE-3AATTRIBUTED-29-29-29"></a>
+<a id="MGL-COMMON:NAME%20%28METHOD%20%28MGL-CORE:ATTRIBUTED%29%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/counter.lisp#L112">[method]</a></span> <span class="reference-object"><a href="#MGL-COMMON:NAME%20%28METHOD%20NIL%20%28MGL-CORE:ATTRIBUTED%29%29" >name</a></span></span> <span class="locative-args">(attributed attributed)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/counter.lisp#L112">[method]</a></span> <span class="reference-object"><a href="#MGL-COMMON:NAME%20%28METHOD%20%28MGL-CORE:ATTRIBUTED%29%29" >name</a></span></span> <span class="locative-args">(attributed attributed)</span></span></p>
 
 <p>Return a string assembled from the values of the <a href="#MGL-CORE:ATTRIBUTES%20%28MGL-PAX:ACCESSOR%20MGL-CORE:ATTRIBUTED%29" title="MGL-CORE:ATTRIBUTES (MGL-PAX:ACCESSOR MGL-CORE:ATTRIBUTED)"><code>attributes</code></a> of
 <code>attributed</code>. If there are multiple entries with the same key, then
@@ -2036,10 +2036,10 @@ of the optimization when the monitors are empty anyway.</p></li>
 <a href="#MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY%20FUNCTION" title="MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY FUNCTION"><code>monitor-optimization-periodically</code></a> for an example of how this is
 used.</p></li>
 </ul>
-<p><a id="x-28MGL-OPT-3ARESET-OPTIMIZATION-MONITORS-20-28METHOD-20NIL-20-28MGL-OPT-3AITERATIVE-OPTIMIZER-20T-29-29-29"></a>
-<a id="MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20NIL%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29"></a></p>
+<p><a id="x-28MGL-OPT-3ARESET-OPTIMIZATION-MONITORS-20-28METHOD-20-28MGL-OPT-3AITERATIVE-OPTIMIZER-20T-29-29-29"></a>
+<a id="MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/optimize.lisp#L179">[method]</a></span> <span class="reference-object"><a href="#MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20NIL%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29" >reset-optimization-monitors</a></span></span> <span class="locative-args">(optimizer iterative-optimizer) gradient-source</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/optimize.lisp#L179">[method]</a></span> <span class="reference-object"><a href="#MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29" >reset-optimization-monitors</a></span></span> <span class="locative-args">(optimizer iterative-optimizer) gradient-source</span></span></p>
 
 <p>Log the counters of the monitors of <code>optimizer</code> and <code>gradient-source</code>
 and reset them.</p></li>
@@ -2167,7 +2167,7 @@ are <a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTI
 <p><a id="x-28MGL-GD-3ABATCH-GD-OPTIMIZER-20CLASS-29"></a>
 <a id="MGL-GD:BATCH-GD-OPTIMIZER%20CLASS"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/gradient-descent.lisp#L211">[class]</a></span> <span class="reference-object"><a href="#MGL-GD:BATCH-GD-OPTIMIZER%20CLASS" >batch-gd-optimizer</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/gradient-descent.lisp#L211">[class]</a></span> <span class="reference-object"><a href="#MGL-GD:BATCH-GD-OPTIMIZER%20CLASS" >batch-gd-optimizer</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a></span></span></p>
 
 <p>Another abstract base class for gradient based
 optimizers tath updates all weights simultaneously after chewing
@@ -2420,7 +2420,7 @@ same time for all weights.</p></li>
 <p><a id="x-28MGL-GD-3ASEGMENTED-GD-OPTIMIZER-20CLASS-29"></a>
 <a id="MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/gradient-descent.lisp#L846">[class]</a></span> <span class="reference-object"><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" >segmented-gd-optimizer</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/gradient-descent.lisp#L846">[class]</a></span> <span class="reference-object"><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" >segmented-gd-optimizer</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a></span></span></p>
 
 <p>An optimizer that delegates training of segments to
 other optimizers. Useful to delegate training of different segments
@@ -2454,7 +2454,7 @@ segments mapped to it.</p></li>
 <p><a id="x-28MGL-GD-3APER-WEIGHT-BATCH-GD-OPTIMIZER-20CLASS-29"></a>
 <a id="MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%20CLASS"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/gradient-descent.lisp#L764">[class]</a></span> <span class="reference-object"><a href="#MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%20CLASS" >per-weight-batch-gd-optimizer</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/gradient-descent.lisp#L764">[class]</a></span> <span class="reference-object"><a href="#MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%20CLASS" >per-weight-batch-gd-optimizer</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a></span></span></p>
 
 <p>This is much like <a href="#MGL-GD:@MGL-GD-BATCH-GD-OPTIMIZER%20MGL-PAX:SECTION" title="Batch Based Optimizers">Batch Based Optimizers</a> but it
 is more clever about when to update weights. Basically every weight
@@ -2881,10 +2881,10 @@ doesn't need to be a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MA
 <code>mgl-bm:chunk</code> of a <code>mgl-bm:bm</code> or a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>mgl-bp:lump</code></a> of a
 <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>mgl-bp:bpn</code></a> whose <a href="#MGL-COMMON:NODES%20GENERIC-FUNCTION" title="MGL-COMMON:NODES GENERIC-FUNCTION"><code>nodes</code></a> slot holds the weights.</p></li>
 </ul>
-<p><a id="x-28MGL-OPT-3ASEGMENT-WEIGHTS-20-28METHOD-20NIL-20-28MGL-MAT-3AMAT-29-29-29"></a>
-<a id="MGL-OPT:SEGMENT-WEIGHTS%20%28METHOD%20NIL%20%28MGL-MAT:MAT%29%29"></a></p>
+<p><a id="x-28MGL-OPT-3ASEGMENT-WEIGHTS-20-28METHOD-20-28MGL-MAT-3AMAT-29-29-29"></a>
+<a id="MGL-OPT:SEGMENT-WEIGHTS%20%28METHOD%20%28MGL-MAT:MAT%29%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/optimize.lisp#L385">[method]</a></span> <span class="reference-object"><a href="#MGL-OPT:SEGMENT-WEIGHTS%20%28METHOD%20NIL%20%28MGL-MAT:MAT%29%29" >segment-weights</a></span></span> <span class="locative-args">(mat mat)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/optimize.lisp#L385">[method]</a></span> <span class="reference-object"><a href="#MGL-OPT:SEGMENT-WEIGHTS%20%28METHOD%20%28MGL-MAT:MAT%29%29" >segment-weights</a></span></span> <span class="locative-args">(mat mat)</span></span></p>
 
 <p>When the segment is really a <code>mat</code>, then just return it.</p></li>
 </ul>
@@ -2915,10 +2915,10 @@ doesn't need to be a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MA
 this function may be specialized if <code>gradient-source</code> needs some kind
 of setup.</p></li>
 </ul>
-<p><a id="x-28MGL-OPT-3AINITIALIZE-GRADIENT-SOURCE-2A-20-28METHOD-20NIL-20-28T-20T-20T-20T-29-29-29"></a>
-<a id="MGL-OPT:INITIALIZE-GRADIENT-SOURCE*%20%28METHOD%20NIL%20%28T%20T%20T%20T%29%29"></a></p>
+<p><a id="x-28MGL-OPT-3AINITIALIZE-GRADIENT-SOURCE-2A-20-28METHOD-20-28T-20T-20T-20T-29-29-29"></a>
+<a id="MGL-OPT:INITIALIZE-GRADIENT-SOURCE*%20%28METHOD%20%28T%20T%20T%20T%29%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/optimize.lisp#L421">[method]</a></span> <span class="reference-object"><a href="#MGL-OPT:INITIALIZE-GRADIENT-SOURCE*%20%28METHOD%20NIL%20%28T%20T%20T%20T%29%29" >initialize-gradient-source*</a></span></span> <span class="locative-args">optimizer gradient-source weights dataset</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/optimize.lisp#L421">[method]</a></span> <span class="reference-object"><a href="#MGL-OPT:INITIALIZE-GRADIENT-SOURCE*%20%28METHOD%20%28T%20T%20T%20T%29%29" >initialize-gradient-source*</a></span></span> <span class="locative-args">optimizer gradient-source weights dataset</span></span></p>
 
 <p>The default method does nothing.</p></li>
 </ul>
@@ -3214,19 +3214,19 @@ It is an error to add a clump with a name already used by one of the
 Before a <code>bpn</code> is passed to <a href="#MGL-OPT:MINIMIZE%20FUNCTION" title="MGL-OPT:MINIMIZE FUNCTION"><code>minimize</code></a> (as its <code>gradient-source</code>
 argument), it must be wrapped in a <a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS"><code>bp-learner</code></a> object. <code>bp-learner</code> has
 <a href="#MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29" title="MGL-CORE:MONITORS (MGL-PAX:ACCESSOR MGL-BP:BP-LEARNER)"><code>monitors</code></a> slot which is used for example by
-<a href="#MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20NIL%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29" title="MGL-OPT:RESET-OPTIMIZATION-MONITORS (METHOD NIL (MGL-OPT:ITERATIVE-OPTIMIZER T))"><code>reset-optimization-monitors</code></a>.</p>
+<a href="#MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29" title="MGL-OPT:RESET-OPTIMIZATION-MONITORS (METHOD (MGL-OPT:ITERATIVE-OPTIMIZER T))"><code>reset-optimization-monitors</code></a>.</p>
 <p>Without the bells an whistles, the basic shape of training is this:</p>
 <pre><code><span class="code"><span class="paren1">(<span class="code">minimize optimizer <span class="paren2">(<span class="code">make-instance 'bp-learner <span class="keyword">:bpn</span> bpn</span>)</span>
           <span class="keyword">:dataset</span> dataset</span>)</span></span></code></pre>
 <p><a id="x-28MGL-BP-3ABP-LEARNER-20CLASS-29"></a>
 <a id="MGL-BP:BP-LEARNER%20CLASS"></a></p>
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L925">[class]</a></span> <span class="reference-object"><a href="#MGL-BP:BP-LEARNER%20CLASS" >bp-learner</a></span></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L924">[class]</a></span> <span class="reference-object"><a href="#MGL-BP:BP-LEARNER%20CLASS" >bp-learner</a></span></span></span></li>
 </ul>
 <p><a id="x-28MGL-BP-3ABPN-20-28MGL-PAX-3AREADER-20MGL-BP-3ABP-LEARNER-29-29"></a>
 <a id="MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L926">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29" >bpn</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:bpn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L925">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29" >bpn</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:bpn)</span></span></p>
 
 <p>The <code>bpn</code> for which this <a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS"><code>bp-learner</code></a> provides the
 gradients.</p></li>
@@ -3234,18 +3234,18 @@ gradients.</p></li>
 <p><a id="x-28MGL-CORE-3AMONITORS-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3ABP-LEARNER-29-29"></a>
 <a id="MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L931">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29" >monitors</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:monitors = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L930">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29" >monitors</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:monitors = nil)</span></span></p>
 
 <p>A list of <a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS"><code>monitor</code></a>s.</p></li>
 </ul>
 <p><a id="x-28MGL-BP-3A-40MGL-BP-MONITORING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-BP:@MGL-BP-MONITORING%20MGL-PAX:SECTION"></a></p>
-<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-BP:@MGL-BP-TRAINING%20MGL-PAX:SECTION" title="Training">&#8592;</a> <a href="#MGL-BP:@MGL-BPN%20MGL-PAX:SECTION" title="`bpn`s">&#8593;</a> <a href="#MGL-BP:@MGL-FNN%20MGL-PAX:SECTION" title="Feed-Forward Nets">&#8594;</a> <a href="#MGL-BP:@MGL-BP-MONITORING%20MGL-PAX:SECTION" title="Monitoring">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L997">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#MGL-BP:@MGL-BP-TRAINING%20MGL-PAX:SECTION" title="Training">&#8592;</a> <a href="#MGL-BP:@MGL-BPN%20MGL-PAX:SECTION" title="`bpn`s">&#8593;</a> <a href="#MGL-BP:@MGL-FNN%20MGL-PAX:SECTION" title="Feed-Forward Nets">&#8594;</a> <a href="#MGL-BP:@MGL-BP-MONITORING%20MGL-PAX:SECTION" title="Monitoring">&#8634;</a> <a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L996">&#955;</a></span></span></p>
 <h4><a href="#MGL-BP:@MGL-BP-MONITORING%20MGL-PAX:SECTION">11.3.2 Monitoring</a></h4>
 <p><a id="x-28MGL-BP-3AMONITOR-BPN-RESULTS-20FUNCTION-29"></a>
 <a id="MGL-BP:MONITOR-BPN-RESULTS%20FUNCTION"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L1006">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:MONITOR-BPN-RESULTS%20FUNCTION" >monitor-bpn-results</a></span></span> <span class="locative-args">dataset bpn monitors</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L1005">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:MONITOR-BPN-RESULTS%20FUNCTION" >monitor-bpn-results</a></span></span> <span class="locative-args">dataset bpn monitors</span></span></p>
 
 <p>For every batch (of size <a href="#MGL-CORE:MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:MAX-N-STRIPES GENERIC-FUNCTION"><code>max-n-stripes</code></a> of <code>bpn</code>) of instances in
 <code>dataset</code>, set the batch as the next input with <a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" title="MGL-CORE:SET-INPUT GENERIC-FUNCTION"><code>set-input</code></a>, perform a
@@ -3256,7 +3256,7 @@ Finally, return the counters of <code>monitors</code>. This is built on top of
 <p><a id="x-28MGL-BP-3AMAKE-STEP-MONITOR-MONITORS-20FUNCTION-29"></a>
 <a id="MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L1036">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION" >make-step-monitor-monitors</a></span></span> <span class="locative-args">rnn &amp;key (counter-values-fn #'counter-raw-values) (make-counter #'make-step-monitor-monitor-counter)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L1035">[function]</a></span> <span class="reference-object"><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION" >make-step-monitor-monitors</a></span></span> <span class="locative-args">rnn &amp;key (counter-values-fn #'counter-raw-values) (make-counter #'make-step-monitor-monitor-counter)</span></span></p>
 
 <p>Return a list of monitors, one for every monitor in <a href="#MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" title="MGL-BP:STEP-MONITORS (MGL-PAX:ACCESSOR MGL-BP:RNN)"><code>step-monitors</code></a>
 of <code>rnn</code>. These monitors extract the results from their warp
@@ -3276,7 +3276,7 @@ one does something like this do monitor warped prediction:</p>
 <p><a id="x-28MGL-BP-3AMAKE-STEP-MONITOR-MONITOR-COUNTER-20GENERIC-FUNCTION-29"></a>
 <a id="MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L1067">[generic-function]</a></span> <span class="reference-object"><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" >make-step-monitor-monitor-counter</a></span></span> <span class="locative-args">step-counter</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L1066">[generic-function]</a></span> <span class="reference-object"><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" >make-step-monitor-monitor-counter</a></span></span> <span class="locative-args">step-counter</span></span></p>
 
 <p>In an <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>rnn</code></a>, <code>step-counter</code> aggregates results of all
 the time steps during the processing of instances in the current
@@ -3906,10 +3906,10 @@ returns the <code>clump</code> itself.</p>
 <p>Return the time step <code>rnn</code> is currently executing or being unfolded for.
 It is 0 when the <code>rnn</code> is being unfolded for the first time.</p></li>
 </ul>
-<p><a id="x-28MGL-CORE-3ASET-INPUT-20-28METHOD-20NIL-20-28T-20MGL-BP-3ARNN-29-29-29"></a>
-<a id="MGL-CORE:SET-INPUT%20%28METHOD%20NIL%20%28T%20MGL-BP:RNN%29%29"></a></p>
+<p><a id="x-28MGL-CORE-3ASET-INPUT-20-28METHOD-20-28T-20MGL-BP-3ARNN-29-29-29"></a>
+<a id="MGL-CORE:SET-INPUT%20%28METHOD%20%28T%20MGL-BP:RNN%29%29"></a></p>
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L574">[method]</a></span> <span class="reference-object"><a href="#MGL-CORE:SET-INPUT%20%28METHOD%20NIL%20%28T%20MGL-BP:RNN%29%29" >set-input</a></span></span> <span class="locative-args">instances (rnn rnn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/82f7032d379daac39f180c9a4d0aaf61d89d2257/src/backprop.lisp#L574">[method]</a></span> <span class="reference-object"><a href="#MGL-CORE:SET-INPUT%20%28METHOD%20%28T%20MGL-BP:RNN%29%29" >set-input</a></span></span> <span class="locative-args">instances (rnn rnn)</span></span></p>
 
 <p><code>rnn</code>s operate on batches of instances just like <a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>fnn</code></a>s. But the
 instances here are like datasets: sequences or samplers and they are
