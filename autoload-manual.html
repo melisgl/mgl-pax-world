@@ -22,7 +22,7 @@
 <p><a id="x-28AUTOLOAD-3A-40AUTOLOAD-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="AUTOLOAD:@AUTOLOAD-MANUAL%20MGL-PAX:SECTION"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">&#8594;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/src/doc.lisp#L3">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">&#8594;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/doc.lisp#L5">&#955;</a></span></span></p>
 
 <h1><a href="autoload-manual.html">Autoload Manual</a></h1>
 
@@ -30,7 +30,22 @@
 
 <ul>
 <li><a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">1 Links and Systems</a></li>
-<li><a href="#AUTOLOAD:@API%20MGL-PAX:SECTION" title="API">2 API</a></li>
+<li><a href="#AUTOLOAD:@INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">2 Introduction</a></li>
+<li><a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">3 Basics</a>
+
+<ul>
+<li><a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">3.1 Loading Systems</a></li>
+<li><a href="#AUTOLOAD:@CONDITIONS%20MGL-PAX:SECTION" title="Conditions">3.2 Conditions</a></li>
+<li><a href="#AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION" title="Functions">3.3 Functions</a></li>
+<li><a href="#AUTOLOAD:@CLASSES%20MGL-PAX:SECTION" title="Classes">3.4 Classes</a></li>
+<li><a href="#AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION" title="Variables">3.5 Variables</a></li>
+<li><a href="#AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION" title="Packages">3.6 Packages</a></li>
+</ul></li>
+<li><a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">4 ASDF Integration</a>
+
+<ul>
+<li><a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">4.1 Automatically Generating Loaddefs</a></li>
+</ul></li>
 </ul>
 
 <h6>[in package AUTOLOAD]</h6>
@@ -38,7 +53,7 @@
 <p><a id="x-28AUTOLOAD-3A-40LINKS-AND-SYSTEMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html" title="Autoload Manual">&#8592;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8593;</a> <a href="#AUTOLOAD:@API%20MGL-PAX:SECTION" title="API">&#8594;</a> <a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/src/doc.lisp#L12">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html" title="Autoload Manual">&#8592;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8593;</a> <a href="#AUTOLOAD:@INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8594;</a> <a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/doc.lisp#L11">&#955;</a></span></span></p>
 
 <h2><a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION">1 Links and Systems</a></h2>
 
@@ -51,18 +66,19 @@ for the latest version.</p>
 <a id="%22autoload%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/autoload.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22autoload%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;autoload&quot;</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/autoload.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22autoload%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;autoload&quot;</a></span></span></span></p>
 
 <ul>
-<li><em>Version:</em> 0.0.1</li>
-<li><em>Description:</em> Bare-bones autoloading facility. See
+<li><em>Version:</em> 0.1.0</li>
+<li><em>Description:</em> An ASDF autoloading facility. See
 <a href="autoload-manual.html" title="Autoload Manual">Autoload Manual</a>.</li>
 <li><em>Licence:</em> MIT, see COPYING.</li>
 <li><em>Author:</em> Gábor Melis</li>
 <li><em>Mailto:</em> <a href="mailto:mega@retes.hu" >mega@retes.hu</a></li>
-<li><em>Homepage:</em> <a href="http://github.com/melisgl/autoload" >http://github.com/melisgl/autoload</a></li>
-<li><em>Bug tracker:</em> <a href="https://github.com/melisgl/autoload/issues" >https://github.com/melisgl/autoload/issues</a></li>
+<li><em>Homepage:</em> <a href="https://github.com/melisgl/autoload">https://github.com/melisgl/autoload</a></li>
+<li><em>Bug tracker:</em> <a href="https://github.com/melisgl/autoload/issues">https://github.com/melisgl/autoload/issues</a></li>
 <li><em>Source control:</em> <a href="https://github.com/melisgl/autoload.git" >GIT</a></li>
+<li><em>Depends on:</em> closer-mop, mgl-pax-bootstrap</li>
 </ul></li>
 </ul>
 
@@ -70,77 +86,751 @@ for the latest version.</p>
 <a id="%22autoload-doc%22%20ASDF%2FSYSTEM:SYSTEM"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/autoload-doc.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22autoload-doc%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;autoload-doc&quot;</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/autoload-doc.asd#L1">[system]</a></span> <span class="reference-object"><a href="#%22autoload-doc%22%20ASDF%2FSYSTEM:SYSTEM" >&quot;autoload-doc&quot;</a></span></span></span></p>
 
 <ul>
-<li><em>Description:</em> Parts of <a href="#%22autoload%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;autoload&quot; ASDF/SYSTEM:SYSTEM"><code>autoload</code></a> that depend on
-<a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax</code></a>. This is split off <code>autoload</code> because <code>mgl-pax-bootstrap</code> depends
-on <code>autoload</code>. Note that <a href="pax-manual.html#%22mgl-pax%2Fnavigate%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/navigate&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax/navigate</code></a> and
-<a href="pax-manual.html#%22mgl-pax%2Fdocument%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/document&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax/document</code></a> depend on this system, which
-renders most of this an implementation detail.</li>
-<li><em>Depends on:</em> <a href="#%22autoload%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;autoload&quot; ASDF/SYSTEM:SYSTEM">autoload</a>, <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a></li>
+<li><em>Description:</em> Parts of the Autoload library that depend on
+<a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax</code></a> are in this system to avoid the circular
+dependencies that would arise because <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax</code></a>
+depends on <a href="#%22autoload%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;autoload&quot; ASDF/SYSTEM:SYSTEM"><code>autoload</code></a>. Note that
+<a href="pax-manual.html#%22mgl-pax%2Fnavigate%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/navigate&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax/navigate</code></a> and <a href="pax-manual.html#%22mgl-pax%2Fdocument%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax/document&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-pax/document</code></a> depend on this system, which renders most of this an
+implementation detail.</li>
+<li><em>Depends on:</em> <a href="#%22autoload%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;autoload&quot; ASDF/SYSTEM:SYSTEM">autoload</a>, <a href="dref-manual.html#%22dref%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;dref&quot; ASDF/SYSTEM:SYSTEM">dref</a>, <a href="pax-manual.html#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-pax&quot; ASDF/SYSTEM:SYSTEM">mgl-pax</a>, <a href="named-readtables-manual.html#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;named-readtables&quot; ASDF/SYSTEM:SYSTEM">named-readtables</a>, pythonic-string-reader</li>
 </ul></li>
 </ul>
 
-<p><a id="x-28AUTOLOAD-3A-40API-20MGL-PAX-3ASECTION-29"></a>
-<a id="AUTOLOAD:@API%20MGL-PAX:SECTION"></a></p>
+<p><a id="x-28AUTOLOAD-3A-40INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@INTRODUCTION%20MGL-PAX:SECTION"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">&#8592;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8593;</a> <a href="#AUTOLOAD:@API%20MGL-PAX:SECTION" title="API">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/src/doc.lisp#L7">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION" title="Links and Systems">&#8592;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8593;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8594;</a> <a href="#AUTOLOAD:@INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/doc.lisp#L19">&#955;</a></span></span></p>
 
-<h2><a href="#AUTOLOAD:@API%20MGL-PAX:SECTION">2 API</a></h2>
+<h2><a href="#AUTOLOAD:@INTRODUCTION%20MGL-PAX:SECTION">2 Introduction</a></h2>
+
+<p>Libraries often choose to limit dependencies, even if it means
+sacrificing features or duplicating code, to minimize</p>
+
+<ul>
+<li><p>compilation time,</p></li>
+<li><p>memory usage in deployment, and</p></li>
+<li><p>the risk of breakage through dependencies.</p></li>
+</ul>
+
+<p>This library mitigates the first two issues by loading heavy
+dependencies on demand. The core idea is</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defmacro</span></i> autoload <span class="paren2">(<span class="code">name asdf-system</span>)</span>
+  `<span class="paren2">(<span class="code"><i><span class="symbol">defun</span></i> ,name <span class="paren3">(<span class="code">&amp;rest args</span>)</span>
+     <span class="paren3">(<span class="code">asdf:load-system ,asdf-system</span>)</span>
+     <span class="paren3">(<span class="code">apply ',name args</span>)</span></span>)</span></span>)</span></span></code></pre>
+
+<p>Suppose we have a library called <code>my-lib</code> that autoloads
+<code>my-lib/full</code>. In <code>my-lib</code>, we could use <code>autoload</code>
+as</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">autoload foo <span class="string">"my-lib/full"</span></span>)</span></span></code></pre>
+
+<p>and have</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> foo <span class="paren2">(<span class="code">x</span>)</span>
+  <span class="string">"doc"</span>
+  <span class="paren2">(<span class="code">1+ x</span>)</span></span>)</span></span></code></pre>
+
+<p>in <code>my-lib/full</code>.</p>
+
+<p>However, manually keeping the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a>s (e.g. the <code>autoload</code> form
+above) in sync with the definitions is fragile, so we introduce the
+<a href="#AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFUN/AUTO MGL-PAX:MACRO"><code>defun/auto</code></a> <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> to mark autoloaded functions in the
+<code>my-lib/full</code> system:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun/auto</span></i> foo <span class="paren2">(<span class="code">x</span>)</span>
+  <span class="string">"doc"</span>
+  <span class="paren2">(<span class="code">1+ x</span>)</span></span>)</span></span></code></pre>
+
+<p><br></p>
+
+<p><strong><a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">ASDF Integration</a></strong></p>
+
+<p>To <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">generate loaddefs</a>, we add a few lines to
+the system definitions:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">asdf:defsystem</span></i> <span class="string">"my-lib"</span>
+  <span class="keyword">:defsystem-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"autoload"</span></span>)</span>
+  <span class="keyword">:class</span> <span class="string">"autoload:autoload-system"</span>
+  <span class="keyword">:auto-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"my-lib/full"</span></span>)</span>
+  <span class="keyword">:auto-loaddefs</span> <span class="string">"loaddefs.lisp"</span>
+  <span class="keyword">:components</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:file</span> <span class="string">"loaddefs"</span></span>)</span>
+               ...</span>)</span></span>)</span></span></code></pre>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">asdf:defsystem</span></i> <span class="string">"my-lib/full"</span>
+  <span class="keyword">:defsystem-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"autoload"</span></span>)</span>
+  <span class="keyword">:class</span> <span class="string">"autoload:autoload-system"</span>
+  <span class="keyword">:components</span> <span class="paren2">(<span class="code">...</span>)</span></span>)</span></span></code></pre>
+
+<p>Then, the loaddefs can be extracted:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">extract-loaddefs <span class="string">"my-lib"</span></span>)</span>
+=&gt; <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">autoload foo <span class="string">"my-lib/full"</span> <span class="keyword">:arglist</span> <span class="string">"(x)"</span> <span class="keyword">:docstring</span> <span class="string">"doc"</span></span>)</span></span>)</span></span></code></pre>
+
+<p>This is implemented by loading the <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a> of <code>my-lib</code> and
+recording <code>defun/auto</code>s. <a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION"><code>extract-loaddefs</code></a> is a low-level utility used
+by <a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a>, which writes its results to the
+system's <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a>, <code>&quot;loaddefs.lisp&quot;</code> in the above example. So,
+all we need to do is call <code>record-loaddefs</code> to regenerate the loaddefs
+file:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">record-loaddefs <span class="string">"my-lib"</span></span>)</span></span></code></pre>
+
+<p>To prevent the loaddefs file from getting out of sync with the
+definitions, <code>asdf:test-system</code> calls <a href="#AUTOLOAD:CHECK-LOADDEFS%20FUNCTION" title="AUTOLOAD:CHECK-LOADDEFS FUNCTION"><code>check-loaddefs</code></a> by default.</p>
+
+<p>ASDF, and by extension <a href="https://www.quicklisp.org/" title="Quicklisp">Quicklisp</a>, doesn't know about the declared
+<a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a>, so <code>(ql:quickload &quot;my-lib&quot;)</code> does not install the
+autoloaded dependencies. They can be installed manually with</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">autodeps <span class="string">"my-lib"</span> <span class="keyword">:installer</span> #'ql:quickload</span>)</span></span></code></pre>
+
+<p>If all the autoloaded dependencies are installed, one can eagerly
+load them to ensure that autoloading is not triggered later (e.g.
+in deployment):</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code">map nil #'asdf:load-system <span class="paren2">(<span class="code">autodeps <span class="string">"my-lib"</span></span>)</span></span>)</span></span></code></pre>
+
+<p><br></p>
+
+<p><strong>Other Features</strong></p>
+
+<p>Autoloading is not only for <a href="#AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION" title="Functions">Functions</a>:</p>
+
+<ul>
+<li><p>Autoloading <a href="#AUTOLOAD:@CLASSES%20MGL-PAX:SECTION" title="Classes">Classes</a> at the time of their first instantiation is
+  supported.</p></li>
+<li><p><a href="#AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION" title="Variables">Variables</a> can be marked for early definition and have their
+  initial values assigned if the initial value form provably doesn't
+  have dependencies. If that's not the case, subject to platform
+  support, the definition in the loaded system injects a global
+  binding even in the presence of local bindings.</p></li>
+<li><p>Multiple <a href="#AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION" title="Packages">Packages</a> can have their final states and
+  interdependencies reconstructed before loading their systems even
+  if they were mutated operations like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_import.htm" title="IMPORT (MGL-PAX:CLHS FUNCTION)"><code>import</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_export.htm" title="EXPORT (MGL-PAX:CLHS FUNCTION)"><code>export</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40BASICS-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@BASICS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">&#8592;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8593;</a> <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">&#8594;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L3">&#955;</a></span></span></p>
+
+<h2><a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION">3 Basics</a></h2>
+
+<p><a id="x-28AUTOLOAD-3A-40LOADDEF-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
+<a id="AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L13">[glossary-term]</a></span> <span class="reference-object"><a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" >loaddef</a></span></span></span></p>
+
+<p>A loaddef is a preliminary definition that serves as a stand-in
+until the fully-realized implementation is loaded. Accessing it may
+or may not <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">load a system</a>. See
+<a href="#AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION" title="AUTOLOAD:LOADDEF-FUNCTION-P FUNCTION"><code>loaddef-function-p</code></a>, <a href="#AUTOLOAD:LOADDEF-CLASS-P%20FUNCTION" title="AUTOLOAD:LOADDEF-CLASS-P FUNCTION"><code>loaddef-class-p</code></a>, <a href="#AUTOLOAD:LOADDEF-VARIABLE-P%20FUNCTION" title="AUTOLOAD:LOADDEF-VARIABLE-P FUNCTION"><code>loaddef-variable-p</code></a> and
+<a href="#AUTOLOAD:LOADDEF-PACKAGE-P%20FUNCTION" title="AUTOLOAD:LOADDEF-PACKAGE-P FUNCTION"><code>loaddef-package-p</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40AUTODEF-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
+<a id="AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L27">[glossary-term]</a></span> <span class="reference-object"><a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" >autodef</a></span></span></span></p>
+
+<p>An autodef (e.g. <code>(defun/auto name ...)</code>) performs the job of its
+plain counterpart (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>). In addition, it marks the definition (of
+<code>name</code> as a function) for <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">Automatically Generating Loaddefs</a> and, at the time of the
+first such autodef, it signals an <a href="#AUTOLOAD:AUTOLOAD-WARNING%20CONDITION" title="AUTOLOAD:AUTOLOAD-WARNING CONDITION"><code>autoload-warning</code></a> if <code>name</code> has not
+been declared as a <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> (has never been <a href="#AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION" title="AUTOLOAD:LOADDEF-FUNCTION-P FUNCTION"><code>loaddef-function-p</code></a>). See
+<a href="#AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFUN/AUTO MGL-PAX:MACRO"><code>defun/auto</code></a>, <a href="#AUTOLOAD:DEFCLASS%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFCLASS/AUTO MGL-PAX:MACRO"><code>defclass/auto</code></a>, <a href="#AUTOLOAD:DEFVAR%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFVAR/AUTO MGL-PAX:MACRO"><code>defvar/auto</code></a> and <a href="#AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFPACKAGE/AUTO MGL-PAX:MACRO"><code>defpackage/auto</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40LOADING-SYSTEMS-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8592;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#AUTOLOAD:@CONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8594;</a> <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L99">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION">3.1 Loading Systems</a></h3>
+
+<p>Function and class <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a>s trigger the loading of <code>asdf:system</code>s.
+Unlike normal ASDF dependencies (declared in <code>:depends-on</code>), autoload
+dependencies (which may be declared in <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a>) are allowed
+to be circular. The rules for loading are as follows.</p>
+
+<ol>
+<li><p>It is an <a href="#AUTOLOAD:AUTOLOAD-ERROR%20CONDITION" title="AUTOLOAD:AUTOLOAD-ERROR CONDITION"><code>autoload-error</code></a> if loading is triggered during <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#compile_time" title="&quot;compile time&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">compile
+   time</a> or during a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_load.htm" title="LOAD (MGL-PAX:CLHS FUNCTION)"><code>load</code></a> of either a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_s.htm#source_file" title="&quot;source file&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">source file</a> or a
+   <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#compiled_file" title="&quot;compiled file&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">compiled file</a>. This is to prevent infinite autoload
+   recursion.</p></li>
+<li><p>It is an <code>autoload-error</code> if the system does not exist.</p></li>
+<li><p>The system is loaded under <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_comp.htm" title="WITH-COMPILATION-UNIT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>with-compilation-unit</code></a> <code>:override</code> <code>t</code> and
+   <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_std_.htm" title="WITH-STANDARD-IO-SYNTAX (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>with-standard-io-syntax</code></a> but with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_rda.htm" title="*PRINT-READABLY* (MGL-PAX:CLHS VARIABLE)"><code>*print-readably*</code></a> <code>nil</code>. Other
+   non-portable measures may be taken to standardize the dynamic
+   environment. Errors signalled during the load are not handled or
+   resignalled by the Autoload library.</p></li>
+<li><p>It is an <code>autoload-error</code> if the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> is not replaced by a
+   normal definition or deleted by the loaded system, that is, when
+   it remains a <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> (e.g. in terms of <a href="#AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION" title="AUTOLOAD:LOADDEF-FUNCTION-P FUNCTION"><code>loaddef-function-p</code></a>).</p></li>
+</ol>
+
+<p><a id="x-28AUTOLOAD-3A-40CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@CONDITIONS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">&#8592;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION" title="Functions">&#8594;</a> <a href="#AUTOLOAD:@CONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L172">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@CONDITIONS%20MGL-PAX:SECTION">3.2 Conditions</a></h3>
+
+<p><a id="x-28AUTOLOAD-3AAUTOLOAD-ERROR-20CONDITION-29"></a>
+<a id="AUTOLOAD:AUTOLOAD-ERROR%20CONDITION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L192">[condition]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD-ERROR%20CONDITION" >autoload-error</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)">error</a></span></span></p>
+
+<p>Signalled for some failures during <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">Loading Systems</a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3AAUTOLOAD-WARNING-20CONDITION-29"></a>
+<a id="AUTOLOAD:AUTOLOAD-WARNING%20CONDITION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L176">[condition]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD-WARNING%20CONDITION" >autoload-warning</a></span></span> <span class="locative-args"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_wa.htm" title="SIMPLE-WARNING (MGL-PAX:CLHS CONDITION)">simple-warning</a></span></span></p>
+
+<p>See <a href="#AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO" title="AUTOLOAD:AUTOLOAD MGL-PAX:MACRO"><code>autoload</code></a>, <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> and <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a> for
+when this is signalled.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40FUNCTIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@CONDITIONS%20MGL-PAX:SECTION" title="Conditions">&#8592;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#AUTOLOAD:@CLASSES%20MGL-PAX:SECTION" title="Classes">&#8594;</a> <a href="#AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION" title="Functions">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L233">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION">3.3 Functions</a></h3>
 
 <p><a id="x-28AUTOLOAD-3AAUTOLOAD-20MGL-PAX-3AMACRO-29"></a>
 <a id="AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/src/autoload.lisp#L3">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO" >autoload</a></span></span> <span class="locative-args">name asdf-system-name</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L239">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO" >autoload</a></span></span> <span class="locative-args">name system-name &amp;key (arglist nil) docstring</span></span></p>
 
-<p>Unless <code>name</code> already has an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm" title="FDEFINITION (MGL-PAX:CLHS FUNCTION)"><code>fdefinition</code></a>, define a stub function with
-<code>name</code> to autoload <code>asdf-system-name</code>. When called, this stub will do
-the following:</p>
+<p><em>This is the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> for <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> <a href="#AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFUN/AUTO MGL-PAX:MACRO"><code>defun/auto</code></a>.</em></p>
 
-<ol>
-<li><p>Set the <code>fdefinition</code> of <code>name</code> to a function that signals an error.</p></li>
-<li><p>Call <code>asdf:load-system</code> on <code>asdf-system-name</code>.</p></li>
-<li><p>Call <code>name</code> with the original arguments.</p></li>
-</ol>
+<p>Define a function stub with <code>name</code> and return <code>name</code>. The arguments are
+not evaluated. If <code>name</code> has an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm" title="FDEFINITION (MGL-PAX:CLHS FUNCTION)"><code>fdefinition</code></a> and it is not
+<a href="#AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION" title="AUTOLOAD:LOADDEF-FUNCTION-P FUNCTION"><code>loaddef-function-p</code></a>, then this does nothing and returns <code>nil</code>.</p>
 
-<p>Thus, the loaded system is expected to redefine the stub. If it
-doesn't, then an error will be signalled and all subsequent calls to
-the function will produce the same error without attempting to load
-the system again.</p>
+<p>The stub first <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">loads</a> <code>system-name</code>, then it <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm" title="APPLY (MGL-PAX:CLHS FUNCTION)"><code>apply</code></a>s
+the function <code>name</code> to the arguments originally provided to the stub.</p>
 
-<p>The stub is not defined at <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#compile_time" title="&quot;compile time&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">compile time</a>, which matches
-the required semantics of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>.</p></li>
-</ul>
-
-<p><a id="x-28AUTOLOAD-3ADEFUN-2FAUTOLOADED-20MGL-PAX-3AMACRO-29"></a>
-<a id="AUTOLOAD:DEFUN%2FAUTOLOADED%20MGL-PAX:MACRO"></a></p>
+<p>The stub is not defined at <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#compile_time" title="&quot;compile time&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">compile time</a>, which matches the
+required semantics of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>. <code>name</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_declai.htm" title="DECLAIM (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>declaim</code></a>ed with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_ftype.htm" title="FTYPE (MGL-PAX:CLHS DECLARATION)"><code>ftype</code></a>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="FUNCTION (MGL-PAX:CLHS CLASS)"><code>function</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_inline.htm" title="NOTINLINE (MGL-PAX:CLHS DECLARATION)"><code>notinline</code></a>.</p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/src/autoload.lisp#L63">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFUN%2FAUTOLOADED%20MGL-PAX:MACRO" >defun/autoloaded</a></span></span> <span class="locative-args">name lambda-list &amp;body body</span></span></p>
+<li><p><code>arglist</code> will be installed as the stub's arglist if specified and
+  it's supported on the platform (currently only SBCL). If <code>arglist</code>
+  is a string, the effective value of <code>arglist</code> is read from it. If
+  the read fails, an <a href="#AUTOLOAD:AUTOLOAD-WARNING%20CONDITION" title="AUTOLOAD:AUTOLOAD-WARNING CONDITION"><code>autoload-warning</code></a> is signalled and processing
+  continues as if <code>arglist</code> had not been provided.</p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>, but silence redefinition warnings.</p></li>
+<p>Arglists are for interactive purposes only. For example, they
+are shown by <a href="https://slime.common-lisp.dev/doc/html/slime_002dautodoc_002dmode.html#slime_002dautodoc_002dmode" title="SLIME autodoc">SLIME autodoc</a> and returned by <a href="dref-manual.html#DREF:ARGLIST%20FUNCTION" title="DREF:ARGLIST FUNCTION"><code>dref:arglist</code></a>.</p></li>
+<li><p><code>docstring</code>, if non-<code>nil</code>, will be the stub's docstring. If <code>nil</code>, then
+  a generic docstring that says what system it autoloads will be
+  used.</p></li>
 </ul>
 
-<p><a id="x-28AUTOLOAD-3ADEFVAR-2FAUTOLOADED-20MGL-PAX-3AMACRO-29"></a>
-<a id="AUTOLOAD:DEFVAR%2FAUTOLOADED%20MGL-PAX:MACRO"></a></p>
+<p>When <code>autoload</code> is macroexpanded during the compilation or loading of
+an <a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS"><code>autoload-system</code></a>, it signals an <code>autoload-warning</code> if <code>system-name</code> is
+not among those declared in <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ALOADDEF-FUNCTION-P-20FUNCTION-29"></a>
+<a id="AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/5e7ec0cfa3c1332aa37ed0076c42008471daa151/src/autoload.lisp#L75">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFVAR%2FAUTOLOADED%20MGL-PAX:MACRO" >defvar/autoloaded</a></span></span> <span class="locative-args">var &amp;optional (val nil) (doc nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L327">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION" >loaddef-function-p</a></span></span> <span class="locative-args">name</span></span></p>
 
-<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpar.htm" title="DEFVAR (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defvar</code></a>, but works with the global binding on Lisps that
-support it (currently Allegro, CCL, ECL, SBCL). This is to
-handle the case when a system that uses <code>defvar</code> with a default value
-is autoloaded while that variable is locally bound:</p>
+<p>See if an <a href="#AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO" title="AUTOLOAD:AUTOLOAD MGL-PAX:MACRO"><code>autoload</code></a> for <code>name</code> was established, and since then it has
+not been redefined (e.g. with <a href="#AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFUN/AUTO MGL-PAX:MACRO"><code>defun/auto</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>) or made
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fmakun.htm" title="FMAKUNBOUND (MGL-PAX:CLHS FUNCTION)"><code>fmakunbound</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ADEFUN-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
+<a id="AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L355">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO" >defun/auto</a></span></span> <span class="locative-args">name lambda-list &amp;body body</span></span></p>
+
+<p><em>This is the <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> for the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> <a href="#AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO" title="AUTOLOAD:AUTOLOAD MGL-PAX:MACRO"><code>autoload</code></a>.</em></p>
+
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>, but also silence redefinition warnings. <code>name</code> may be of
+the form <code>(definer name)</code>. In that case, instead of <code>defun</code>, <code>definer</code>
+is used to establish the underlying function binding.</p>
+
+<p><strong>Loaddef:</strong> The corresponding <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> is an <code>autoload</code> form.
+<a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION"><code>extract-loaddefs</code></a> with <code>process-arglist</code> <code>t</code> installs <code>lambda-list</code> as the
+<code>arglist</code>. If <code>process-arglist</code> is <code>nil</code>, then <code>arglist</code> will not be passed
+to <code>autoload</code>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ADEFGENERIC-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
+<a id="AUTOLOAD:DEFGENERIC%2FAUTO%20MGL-PAX:MACRO"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L378">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFGENERIC%2FAUTO%20MGL-PAX:MACRO" >defgeneric/auto</a></span></span> <span class="locative-args">name lambda-list &amp;body options</span></span></p>
+
+<p>A shorthand for <code>(</code> <a href="#AUTOLOAD:DEFUN%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFUN/AUTO MGL-PAX:MACRO"><code>defun/auto</code></a> <code>(defgeneric name) ...)</code>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40CLASSES-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@CLASSES%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@FUNCTIONS%20MGL-PAX:SECTION" title="Functions">&#8592;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION" title="Variables">&#8594;</a> <a href="#AUTOLOAD:@CLASSES%20MGL-PAX:SECTION" title="Classes">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L400">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@CLASSES%20MGL-PAX:SECTION">3.4 Classes</a></h3>
+
+<p><a id="x-28AUTOLOAD-3AAUTOLOAD-CLASS-20MGL-PAX-3AMACRO-29"></a>
+<a id="AUTOLOAD:AUTOLOAD-CLASS%20MGL-PAX:MACRO"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L405">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD-CLASS%20MGL-PAX:MACRO" >autoload-class</a></span></span> <span class="locative-args">class-name system-name &amp;key docstring (metaclass 'standard-class)</span></span></p>
+
+<p><em>This is the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> for <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> <a href="#AUTOLOAD:DEFCLASS%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFCLASS/AUTO MGL-PAX:MACRO"><code>defclass/auto</code></a>.</em></p>
+
+<p>Define a dummy class with <code>class-name</code> and arrange for <code>system-name</code> to
+be <a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">loaded</a> when the class or any of its
+subclasses are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm" title="MAKE-INSTANCE (MGL-PAX:CLHS GENERIC-FUNCTION)">instantiated</a>. Returns the
+class object. The arguments are not evaluated. If <code>class-name</code>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_c.htm" title="FIND-CLASS (MGL-PAX:CLHS FUNCTION)">denotes</a> a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm" title="CLASS (MGL-PAX:CLHS CLASS)"><code>class</code></a> and it is not <a href="#AUTOLOAD:LOADDEF-CLASS-P%20FUNCTION" title="AUTOLOAD:LOADDEF-CLASS-P FUNCTION"><code>loaddef-class-p</code></a>,
+then it does nothing and returns <code>nil</code>.</p>
+
+<p>When <code>autoload-class</code> is macroexpanded during the compilation or
+loading of an <a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS"><code>autoload-system</code></a>, it signals an <a href="#AUTOLOAD:AUTOLOAD-WARNING%20CONDITION" title="AUTOLOAD:AUTOLOAD-WARNING CONDITION"><code>autoload-warning</code></a> if
+<code>system-name</code> is not among those declared in <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a>.</p>
+
+<ul>
+<li><p><code>docstring</code>, if non-<code>nil</code>, will be the stub's docstring. If <code>nil</code>, then
+  a generic docstring that says what system it autoloads will be
+  used.</p></li>
+<li><p><code>metaclass</code> is a symbol denoting <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm" title="STANDARD-CLASS (MGL-PAX:CLHS CLASS)"><code>standard-class</code></a> or a subclass of it.
+  Also, classes with this metaclass must be allowed to inherit from
+  standard classes. In MOP terms, <code>closer-mop:validate-superclass</code>
+  must return true when called with an instance of <code>metaclass</code> and an
+  instance of <code>standard-class</code>.</p></li>
+</ul>
+
+<p>The dummy class is also defined at <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#compile_time" title="&quot;compile time&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">compile time</a> to
+approximate the semantics of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm" title="DEFCLASS (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defclass</code></a>. It class has <code>metaclass</code> with a
+single superclass and no slots. These are visible through
+introspection (e.g. via <code>closer-mop:class-direct-superclasses</code>), which
+does not trigger autoloading.</p>
+
+<p>Note that <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_init_i.htm" title="INITIALIZE-INSTANCE (MGL-PAX:CLHS GENERIC-FUNCTION)"><code>initialize-instance</code></a> <code>:around</code> methods specialized on a
+subclass of <code>class-name</code> may run twice in the context of the
+<code>make-instance</code> that triggers autoloading.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ALOADDEF-CLASS-P-20FUNCTION-29"></a>
+<a id="AUTOLOAD:LOADDEF-CLASS-P%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L492">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:LOADDEF-CLASS-P%20FUNCTION" >loaddef-class-p</a></span></span> <span class="locative-args">name</span></span></p>
+
+<p>See if an <a href="#AUTOLOAD:AUTOLOAD-CLASS%20MGL-PAX:MACRO" title="AUTOLOAD:AUTOLOAD-CLASS MGL-PAX:MACRO"><code>autoload-class</code></a> for <code>name</code> was established, and since then
+it has not been redefined (e.g. with <a href="#AUTOLOAD:DEFCLASS%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFCLASS/AUTO MGL-PAX:MACRO"><code>defclass/auto</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm" title="DEFCLASS (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defclass</code></a>) or
+deleted (with <code>(setf (find-class ...) nil)</code>). Subclasses do not
+inherit this property.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ADEFCLASS-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
+<a id="AUTOLOAD:DEFCLASS%2FAUTO%20MGL-PAX:MACRO"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L508">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFCLASS%2FAUTO%20MGL-PAX:MACRO" >defclass/auto</a></span></span> <span class="locative-args">name direct-superclasses direct-slots &amp;rest options</span></span></p>
+
+<p><em>This is the <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> for the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> <a href="#AUTOLOAD:AUTOLOAD-CLASS%20MGL-PAX:MACRO" title="AUTOLOAD:AUTOLOAD-CLASS MGL-PAX:MACRO"><code>autoload-class</code></a>.</em></p>
+
+<p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm" title="DEFCLASS (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defclass</code></a>. <code>name</code> may be of the form <code>(definer name)</code>. In that
+case, instead of <code>defclass</code>, <code>definer</code> is used to establish the
+underlying class definition.</p>
+
+<p><strong>Loaddef:</strong> The corresponding <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> is an <code>autoload-class</code> form.
+Note that the metaclass of the class <code>name</code> must already be defined
+when the loaddef is evaluated.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40VARIABLES-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@CLASSES%20MGL-PAX:SECTION" title="Classes">&#8592;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION" title="Packages">&#8594;</a> <a href="#AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION" title="Variables">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L544">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION">3.5 Variables</a></h3>
+
+<p><a id="x-28AUTOLOAD-3ALOADDEF-VARIABLE-P-20FUNCTION-29"></a>
+<a id="AUTOLOAD:LOADDEF-VARIABLE-P%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L561">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:LOADDEF-VARIABLE-P%20FUNCTION" >loaddef-variable-p</a></span></span> <span class="locative-args">name</span></span></p>
+
+<p>See if a loaddef was <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">generated</a> from a
+<a href="#AUTOLOAD:DEFVAR%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFVAR/AUTO MGL-PAX:MACRO"><code>defvar/auto</code></a> for <code>name</code>, but this <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> has not been evaluated.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ADEFVAR-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
+<a id="AUTOLOAD:DEFVAR%2FAUTO%20MGL-PAX:MACRO"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L566">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFVAR%2FAUTO%20MGL-PAX:MACRO" >defvar/auto</a></span></span> <span class="locative-args">var &amp;optional (val nil) doc</span></span></p>
+
+<p><em>This is an <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> with no public <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a>. See below.</em></p>
+
+<p>Unlike <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpar.htm" title="DEFVAR (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defvar</code></a>, this works with the <em>global</em> binding on Lisps that
+support it (currently Allegro, CCL, ECL, SBCL). This is to handle
+the case when a system that uses <code>defvar</code> with a default value is
+autoloaded while that variable is locally bound:</p>
 
 <pre><code><span class="code"><span class="comment">;; Some base system only foreshadows *X*.
 </span><span class="paren1">(<span class="code">declaim <span class="paren2">(<span class="code">special <span class="special">*x*</span></span>)</span></span>)</span>
 <span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*x*</span> 1</span>)</span></span>)</span>
-  <span class="comment">;; Imagine that the system that defines *X* is autoload here.
-</span>  <span class="paren2">(<span class="code"><i><span class="symbol">defvar/autoloaded</span></i> <span class="special">*x*</span> 2</span>)</span>
+  <span class="comment">;; Imagine that the system that defines *X* is autoloaded here.
+</span>  <span class="paren2">(<span class="code"><i><span class="symbol">defvar/auto</span></i> <span class="special">*x*</span> 2</span>)</span>
   <span class="special">*x*</span></span>)</span>
-=&gt; 1</span></code></pre></li>
+=&gt; 1</span></code></pre>
+
+<p><strong>Loaddef:</strong> The corresponding <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> is not public and must be
+<a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">generated</a>. The generated loaddef declaims
+the variable special and maybe sets its initial value and docstring.
+If the initial value form in <code>defvar/auto</code> is detected as a simple
+constant form, then it is evaluated and its value is assigned to the
+variable as in <code>defvar</code>. Simple constant forms are strings, numbers,
+characters, keywords, constants in the CL package, and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_quote.htm" title="QUOTE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>quote</code></a>d nested
+lists containing any of the previous or any symbol from the <code>cl</code>
+package and other packages for which loaddefs have been generated in
+the same <a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION"><code>extract-loaddefs</code></a> call (see <a href="#AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFPACKAGE/AUTO MGL-PAX:MACRO"><code>defpackage/auto</code></a>)).</p>
+
+<p>In case the global binding of <code>var</code> has been set between the
+corresponding loaddef and its first autodef, <code>val</code> is evaluated for
+side effect.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40PACKAGES-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@VARIABLES%20MGL-PAX:SECTION" title="Variables">&#8592;</a> <a href="#AUTOLOAD:@BASICS%20MGL-PAX:SECTION" title="Basics">&#8593;</a> <a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">&#8594;</a> <a href="#AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION" title="Packages">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L635">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION">3.6 Packages</a></h3>
+
+<p><a id="x-28AUTOLOAD-3ALOADDEF-PACKAGE-P-20FUNCTION-29"></a>
+<a id="AUTOLOAD:LOADDEF-PACKAGE-P%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L639">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:LOADDEF-PACKAGE-P%20FUNCTION" >loaddef-package-p</a></span></span> <span class="locative-args">name</span></span></p>
+
+<p>See if a loaddef was <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">generated</a> from a
+<a href="#AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFPACKAGE/AUTO MGL-PAX:MACRO"><code>defpackage/auto</code></a> for <code>name</code>, but this <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> has not been evaluated
+nor has the package been deleted.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ADEFPACKAGE-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
+<a id="AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L645">[macro]</a></span> <span class="reference-object"><a href="#AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO" >defpackage/auto</a></span></span> <span class="locative-args">name &amp;rest options</span></span></p>
+
+<p><em>This is an <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> with no public <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a>. See below.</em></p>
+
+<p>Unlike <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm" title="DEFPACKAGE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defpackage</code></a>, if the package is already defined,
+<code>defpackage/auto</code> extends it additively. The additivity means that
+instead of replacing the package definition or signalling errors on
+redefinition, it expands into individual package-altering operations
+such as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shadow.htm" title="SHADOW (MGL-PAX:CLHS FUNCTION)"><code>shadow</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_use_pk.htm" title="USE-PACKAGE (MGL-PAX:CLHS FUNCTION)"><code>use-package</code></a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_export.htm" title="EXPORT (MGL-PAX:CLHS FUNCTION)"><code>export</code></a>. This allows the package
+state to be built incrementally, but it also means that
+the <code>(definer name)</code> syntax cannot be supported. <code>defpackage/auto</code> is
+idempotent.</p>
+
+<p>In addition, <code>defpackage/auto</code> deviates from <code>defpackage</code> in the
+following ways.</p>
+
+<ul>
+<li><p>The default <code>:use</code> list is empty.</p></li>
+<li><p><code>:size</code> is not supported.</p></li>
+<li><p>Implementation-specific extensions such as <code>:local-nicknames</code> are
+  not supported. Use <code>add-package-local-nickname</code> after the
+  <code>defpackage/auto</code>.</p></li>
+</ul>
+
+<p><strong>Loaddef:</strong> The corresponding <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> is not public and must be
+<a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">generated</a>. As in the expansion of
+<code>defpackage/auto</code> itself, the generated operations are additive.</p>
+
+<ul>
+<li><p>The generated loaddef reconstructs the package states as they
+  exist after all <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a> systems are loaded. Thus, manual
+  modifications after the <code>defpackage/auto</code> definition (e.g. by
+  additional <code>export</code>s) are reflected in the loaddef.</p></li>
+<li><p>To handle circular dependencies, the loaddefs of all <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a>
+  packages and those passed in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>packages</code></a> argument to
+  <a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION"><code>extract-loaddefs</code></a> are generated in an interleaved manner. First,
+  all packages are created, then their state is reconstructed in
+  phases following <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm" title="DEFPACKAGE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defpackage</code></a>.</p></li>
+<li><p>Any reference to non-existent packages (e.g. in <code>:use</code>) or symbols
+  in non-existent packages (e.g. <code>:import-from</code>) is silently skipped
+  when the loaddef is evaluated.</p></li>
+</ul>
+
+<p>Instead of <code>defpackage/auto</code>, one may use, for example, <code>defpackage</code> or
+<code>uiop:define-package</code> and arrange for <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">Automatically Generating Loaddefs</a> for the
+package by listing it in <code>:packages</code> of <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40ASDF-INTEGRATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION" title="Packages">&#8592;</a> <a href="autoload-manual.html" title="Autoload Manual">&#8593;</a> <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">&#8594;</a> <a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L989">&#955;</a></span></span></p>
+
+<h2><a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION">4 ASDF Integration</a></h2>
+
+<p><a id="x-28AUTOLOAD-3AAUTOLOAD-SYSTEM-20CLASS-29"></a>
+<a id="AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L997">[class]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" >autoload-system</a></span></span> <span class="locative-args">asdf/system:system</span></span></p>
+
+<p>Inheriting from this class in an <code>asdf:defsystem</code>
+form enables the features documented in the reader methods. Consider
+the following example.</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">asdf:defsystem</span></i> <span class="string">"my-system"</span>
+  <span class="keyword">:defsystem-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"autoload"</span></span>)</span>
+  <span class="keyword">:class</span> <span class="string">"autoload:autoload-system"</span>
+  <span class="keyword">:auto-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"dyndep"</span></span>)</span>
+  <span class="keyword">:auto-loaddefs</span> <span class="string">"loaddefs.lisp"</span>
+  <span class="keyword">:components</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:file</span> <span class="string">"package"</span></span>)</span>
+               <span class="paren3">(<span class="code"><span class="keyword">:file</span> <span class="string">"loaddefs"</span></span>)</span>
+               ...</span>)</span></span>)</span></span></code></pre>
+
+<p>With the above,</p>
+
+<ul>
+<li><p>It is an error if an <a href="#AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO" title="AUTOLOAD:AUTOLOAD MGL-PAX:MACRO"><code>autoload</code></a> refers to a system other than
+  <code>dyndep</code>.</p></li>
+<li><p><code>(</code><a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a> <code>&quot;my-system&quot;)</code> will update
+  <code>loaddefs.lisp</code>.</p></li>
+<li><p><code>(asdf:test-system &quot;my-system&quot;)</code> <a href="#AUTOLOAD:CHECK-LOADDEFS%20FUNCTION" title="AUTOLOAD:CHECK-LOADDEFS FUNCTION">checks</a> that
+  <code>loaddefs.lisp</code> is up-to-date.</p></li>
+</ul>
+
+<p>If the package definitions are also generated with
+<a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a> (e.g. because there is a
+<a href="#AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO" title="AUTOLOAD:DEFPACKAGE/AUTO MGL-PAX:MACRO"><code>defpackage/auto</code></a> in <code>dyndep</code> or <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a> specifies
+<code>:packages</code>), then we can do without the <code>package.lisp</code> file:</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">asdf:defsystem</span></i> <span class="string">"my-system"</span>
+  <span class="keyword">:defsystem-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"autoload"</span></span>)</span>
+  <span class="keyword">:class</span> <span class="string">"autoload:autoload-system"</span>
+  <span class="keyword">:auto-depends-on</span> <span class="paren2">(<span class="code"><span class="string">"dyndep"</span></span>)</span>
+  <span class="keyword">:auto-loaddefs</span> <span class="paren2">(<span class="code"><span class="string">"loaddefs.lisp"</span> <span class="keyword">:packages</span> <span class="keyword">#:my-pkg</span></span>)</span>
+  <span class="keyword">:components</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:file</span> <span class="string">"loaddefs"</span></span>)</span>
+               ...</span>)</span></span>)</span></span></code></pre></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3AAUTOLOAD-CL-SOURCE-FILE-20CLASS-29"></a>
+<a id="AUTOLOAD:AUTOLOAD-CL-SOURCE-FILE%20CLASS"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1086">[class]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTOLOAD-CL-SOURCE-FILE%20CLASS" >autoload-cl-source-file</a></span></span> <span class="locative-args">asdf/lisp-action:cl-source-file</span></span></p>
+
+<p>This is the <code>:default-component-class</code> of
+<a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS"><code>autoload-system</code></a>. <a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">ASDF Integration</a> relies on source files belonging to
+this class. When combining autoload with another ASDF extension that
+has its own <code>asdf:cl-source-file</code> subclass, define a new class that
+inherits from both, and use that as <code>:default-component-class</code>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ASYSTEM-AUTO-DEPENDS-ON-20-28MGL-PAX-3AREADER-20AUTOLOAD-3AAUTOLOAD-SYSTEM-29-29"></a>
+<a id="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L998">[reader]</a></span> <span class="reference-object"><a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" >system-auto-depends-on</a></span></span> <span class="locative-args"><a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS">autoload-system</a> (:auto-depends-on = nil)</span></span></p>
+
+<p>This is the list of the names of systems that this
+system may autoload. The names are canonicalized with
+<code>asdf:coerce-name</code>. It is an <a href="#AUTOLOAD:AUTOLOAD-WARNING%20CONDITION" title="AUTOLOAD:AUTOLOAD-WARNING CONDITION"><code>autoload-warning</code></a> if a <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> refers
+to a system not listed here. This is also used by
+<a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION"><code>extract-loaddefs</code></a> and affects the checks performed by
+<a href="#AUTOLOAD:@LOADING-SYSTEMS%20MGL-PAX:SECTION" title="Loading Systems">Loading Systems</a>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ASYSTEM-AUTO-LOADDEFS-20-28MGL-PAX-3AREADER-20AUTOLOAD-3AAUTOLOAD-SYSTEM-29-29"></a>
+<a id="AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1008">[reader]</a></span> <span class="reference-object"><a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" >system-auto-loaddefs</a></span></span> <span class="locative-args"><a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS">autoload-system</a> (:auto-loaddefs = nil)</span></span></p>
+
+<p>When non-<code>nil</code>, this specifies arguments for
+<a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">Automatically Generating Loaddefs</a>. It may be a single pathname designator or a
+list of the form</p>
+
+<pre><code>(loaddefs-file &amp;key (process-arglist t) (process-docstring t)
+                    packages (test t))
+</code></pre>
+
+<ul>
+<li><p><code>loaddefs-file</code> designates the pathname where <a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a> writes the <a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION">extracted loaddefs</a>.
+  The pathname is relative to <code>asdf:system-source-directory</code> of
+  <code>system</code> and is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm" title="OPEN (MGL-PAX:CLHS FUNCTION)"><code>open</code></a>ed with <code>:if-exists</code> <code>:supersede</code>.</p></li>
+<li><p><code>process-arglist</code>, <code>process-docstring</code> and <code>packages</code>
+  are passed on by <code>record-loaddefs</code> to <code>extract-loaddefs</code>.</p></li>
+<li><p>If <code>test</code>, then <a href="#AUTOLOAD:CHECK-LOADDEFS%20FUNCTION" title="AUTOLOAD:CHECK-LOADDEFS FUNCTION"><code>check-loaddefs</code></a> is run by <code>asdf:test-system</code>.</p></li>
+</ul>
+
+<p>Conditions signalled while ASDF is compiling or loading the file
+given have a <a href="#AUTOLOAD:RECORD-LOADDEFS%20RESTART" title="AUTOLOAD:RECORD-LOADDEFS RESTART"><code>record-loaddefs</code></a> restart.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3AAUTODEPS-20FUNCTION-29"></a>
+<a id="AUTOLOAD:AUTODEPS%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1151">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:AUTODEPS%20FUNCTION" >autodeps</a></span></span> <span class="locative-args">system &amp;key (cross-autoloaded t) installer</span></span></p>
+
+<p>Return the list of system names that may be autoloaded by <code>system</code> or
+any of its direct or indirect dependencies. This recursively visits
+systems in the dependency tree, traversing both normal (<code>:depends-on</code>)
+and autoloaded (<a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a>) dependencies. It works even if
+<code>system</code> is not an <a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS"><code>autoload-system</code></a>.</p>
+
+<ul>
+<li><p><code>cross-autoloaded</code> controls whether systems only reachable from
+  <code>system</code> via intermediate autoloaded dependencies are visited. Thus,
+  if <code>cross-autoloaded</code> is <code>nil</code>, then the returned list is the first
+  boundary of autoloaded systems.</p></li>
+<li><p>If <code>installer</code> is non-<code>nil</code>, it is called when an autoloaded system
+  that is not installed (i.e. <code>asdf:find-system</code> fails) is visited.
+  <code>installer</code> is passed a single argument, the name of the system to
+  be installed. It may or may not install the system.</p></li>
+</ul>
+
+<p>If an autoloaded system is not installed (i.e. <code>asdf:find-system</code>
+fails, even after <code>installer</code> had a chance), then its dependencies are
+unknown and cannot be traversed. Note that autoloaded systems that
+are not installed are still visited and included in the returned
+list.</p>
+
+<p>The following example makes sure that all autoloaded dependencies
+(direct or indirect) of <code>my-system</code> are installed:</p>
+
+<pre><code>(autodeps &quot;my-system&quot; :installer #'ql:quickload)
+</code></pre></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3A-40AUTOMATIC-LOADDEFS-20MGL-PAX-3ASECTION-29"></a>
+<a id="AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION"></a></p>
+
+<p><span class="outer-navigation"><span class="navigation"> <a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">&#8592;</a> <a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">&#8593;</a> <a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION" title="Automatically Generating Loaddefs">&#8634;</a> <a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1196">&#955;</a></span></span></p>
+
+<h3><a href="#AUTOLOAD:@AUTOMATIC-LOADDEFS%20MGL-PAX:SECTION">4.1 Automatically Generating Loaddefs</a></h3>
+
+<p><a id="x-28AUTOLOAD-3AEXTRACT-LOADDEFS-20FUNCTION-29"></a>
+<a id="AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1251">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" >extract-loaddefs</a></span></span> <span class="locative-args">system &amp;key (process-arglist t) (process-docstring t) packages</span></span></p>
+
+<p>List the <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a> forms of the <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a> definitions in
+<a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a> of <code>system</code>.</p>
+
+<p>There is rarely a need to call this function directly, as
+<a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a> and <a href="#AUTOLOAD:CHECK-LOADDEFS%20FUNCTION" title="AUTOLOAD:CHECK-LOADDEFS FUNCTION"><code>check-loaddefs</code></a> provide
+<a href="#AUTOLOAD:@ASDF-INTEGRATION%20MGL-PAX:SECTION" title="ASDF Integration">ASDF Integration</a>.</p>
+
+<p>Note that this is an expensive operation, as it loads or reloads the
+direct dependencies listed in <code>:auto-depends-on</code> one by one with
+<code>asdf:load-system</code> <code>:force</code> <code>t</code> to find the <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a>s.</p>
+
+<p>See the individual <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a>s for descriptions of the generated
+loaddefs.</p>
+
+<ul>
+<li>If <code>process-docstring</code>, then the docstrings extracted from <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a>
+  definitions will be associated with the definition.</li>
+</ul>
+
+<p>Note that if a definition is not made with an <a href="#AUTOLOAD:@AUTODEF%20MGL-PAX:GLOSSARY-TERM" title="autodef">autodef</a>, then
+<code>extract-loaddefs</code> will not detect it. For such functions, <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a>s
+must be written manually.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3AWRITE-LOADDEFS-20FUNCTION-29"></a>
+<a id="AUTOLOAD:WRITE-LOADDEFS%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1300">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:WRITE-LOADDEFS%20FUNCTION" >write-loaddefs</a></span></span> <span class="locative-args">loaddefs stream</span></span></p>
+
+<p>Write <code>loaddefs</code> to <code>stream</code> so they can be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_load.htm" title="LOAD (MGL-PAX:CLHS FUNCTION)"><code>load</code></a>ed or included in an
+<code>asdf:defsystem</code>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ARECORD-LOADDEFS-20FUNCTION-29"></a>
+<a id="AUTOLOAD:RECORD-LOADDEFS%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1335">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" >record-loaddefs</a></span></span> <span class="locative-args">system</span></span></p>
+
+<p><a href="#AUTOLOAD:EXTRACT-LOADDEFS%20FUNCTION" title="AUTOLOAD:EXTRACT-LOADDEFS FUNCTION"><code>extract-loaddefs</code></a> from <code>system</code> and <a href="#AUTOLOAD:WRITE-LOADDEFS%20FUNCTION" title="AUTOLOAD:WRITE-LOADDEFS FUNCTION"><code>write-loaddefs</code></a>. The arguments of
+these functions are taken from <code>system</code>'s <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a>.</p>
+
+<p>As <code>extract-loaddefs</code> loads the direct autoloaded dependencies,
+compiler warnings (e.g. about undefined specials and functions) may
+occur that go away once the generated loaddefs are in place. The
+easiest way to trigger this is to call <code>record-loaddefs</code> before these
+dependencies have been loaded. In this case, temporarily emptying
+the loaddefs file and fixing these warnings is recommended.</p>
+
+<p><code>record-loaddefs</code> may also be used as a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#condition_handler" title="&quot;condition handler&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">condition handler</a>, in
+which case it invokes the <a href="#AUTOLOAD:RECORD-LOADDEFS%20RESTART" title="AUTOLOAD:RECORD-LOADDEFS RESTART"><code>record-loaddefs</code></a> restart.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ACHECK-LOADDEFS-20FUNCTION-29"></a>
+<a id="AUTOLOAD:CHECK-LOADDEFS%20FUNCTION"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/autoload.lisp#L1398">[function]</a></span> <span class="reference-object"><a href="#AUTOLOAD:CHECK-LOADDEFS%20FUNCTION" >check-loaddefs</a></span></span> <span class="locative-args">system &amp;key (errorp t)</span></span></p>
+
+<p>In the <a href="#AUTOLOAD:AUTOLOAD-SYSTEM%20CLASS" title="AUTOLOAD:AUTOLOAD-SYSTEM CLASS"><code>autoload-system</code></a> <code>system</code>, check that both recorded and manual
+autoload declarations are correct.</p>
+
+<ul>
+<li><p>If <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a> is specified, check that the file generated by
+  <a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a> is up-to-date.</p></li>
+<li><p>Check that all manual (non-generated) <a href="#AUTOLOAD:@LOADDEF%20MGL-PAX:GLOSSARY-TERM" title="loaddef">loaddef</a>s in <code>system</code> are
+  resolved (e.g. no longer <a href="#AUTOLOAD:LOADDEF-FUNCTION-P%20FUNCTION" title="AUTOLOAD:LOADDEF-FUNCTION-P FUNCTION"><code>loaddef-function-p</code></a>) by loading
+  <a href="#AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-DEPENDS-ON (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-depends-on</code></a>.</p></li>
+</ul>
+
+<p>If <code>errorp</code>, then signal an error if a check fails or the loaddefs
+file cannot be read. If <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a> is specified, then the
+<a href="#AUTOLOAD:RECORD-LOADDEFS%20RESTART" title="AUTOLOAD:RECORD-LOADDEFS RESTART"><code>record-loaddefs</code></a> restart is provided.</p>
+
+<p>If <code>errorp</code> is <code>nil</code>, then instead of signalling an error, return <code>nil</code>.</p>
+
+<p>This function is called automatically by <code>asdf:test-op</code> on an
+<code>autoload-system</code> method if <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a> has <code>:test</code> <code>t</code>.</p></li>
+</ul>
+
+<p><a id="x-28AUTOLOAD-3ARECORD-LOADDEFS-20RESTART-29"></a>
+<a id="AUTOLOAD:RECORD-LOADDEFS%20RESTART"></a></p>
+
+<ul>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/autoload/blob/31ffd333e0cbcf38857ea7c6a3ece390897d7f4d/src/doc.lisp#L147">[restart]</a></span> <span class="reference-object"><a href="#AUTOLOAD:RECORD-LOADDEFS%20RESTART" >record-loaddefs</a></span></span></span></p>
+
+<p>Provided by <a href="#AUTOLOAD:CHECK-LOADDEFS%20FUNCTION" title="AUTOLOAD:CHECK-LOADDEFS FUNCTION"><code>check-loaddefs</code></a> and also when the compilation of the
+loaddefs file declared in <a href="#AUTOLOAD:SYSTEM-AUTO-LOADDEFS%20%28MGL-PAX:READER%20AUTOLOAD:AUTOLOAD-SYSTEM%29" title="AUTOLOAD:SYSTEM-AUTO-LOADDEFS (MGL-PAX:READER AUTOLOAD:AUTOLOAD-SYSTEM)"><code>:auto-loaddefs</code></a> fails. The function
+<a href="#AUTOLOAD:RECORD-LOADDEFS%20FUNCTION" title="AUTOLOAD:RECORD-LOADDEFS FUNCTION"><code>record-loaddefs</code></a> can be used as a condition handler to invoke this
+restart.</p></li>
 </ul>
   </div>
 </div>
