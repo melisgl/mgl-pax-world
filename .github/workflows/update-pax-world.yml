@@ -1,0 +1,89 @@
+name: Update PAX World
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Every day at 19:32
+    - cron: "32 19 * * *"
+
+# Required to commit
+permissions:
+  contents: write
+
+jobs:
+  test:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Host Dependencies
+        # We need a host Lisp to bootstrap the new SBCL, plus Texinfo for docs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sbcl build-essential time curl \
+              libblas-dev liblapack-dev
+
+      - name: Install SBCL
+        run: |
+          cd ~
+          # Need some --depth because SBCL determines its version
+          # number from the history.
+          git clone --branch pax-doc --depth 1000 https://github.com/melisgl/sbcl.git
+          # FIXME:
+          # git clone --depth 1000 https://github.com/sbcl/sbcl.git
+          cd sbcl
+          sh make.sh
+
+      - name: Install Quicklisp
+        run: |
+          cd ~
+          curl -O https://beta.quicklisp.org/quicklisp.lisp
+          ~/sbcl/run-sbcl.sh --non-interactive \
+               --load quicklisp.lisp \
+               --eval '(quicklisp-quickstart:install)' \
+               --eval '(ql-util:without-prompting (ql:add-to-init-file))'
+
+      # FIXME: Maybe use Ultralisp?
+      - name: Install latest stuff from GitHub
+        run: |
+          mkdir -p ~/quicklisp/local-projects/
+          cd ~/quicklisp/local-projects/
+          # Dependencies
+          git clone --depth 1 https://github.com/melisgl/autoload
+          git clone --depth 1 https://github.com/melisgl/named-readtables
+          git clone --depth 1 https://github.com/melisgl/dref
+          git clone --branch indices --depth 1 https://github.com/melisgl/mgl-pax.git
+          # FIXME:
+          # git clone --depth 1 https://github.com/melisgl/mgl-pax.git
+          git clone --depth 1 https://github.com/slime/slime.git
+          # PAX World
+          git clone --depth 1 https://github.com/melisgl/mgl-mat
+          git clone --depth 1 https://github.com/melisgl/micmac
+          git clone --depth 1 https://github.com/melisgl/mgl
+          git clone --depth 1 https://github.com/melisgl/mgl-gpr
+          git clone --depth 1 https://github.com/melisgl/journal
+          git clone --depth 1 https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8.git
+          git clone --depth 1 https://github.com/melisgl/try
+          git clone --depth 1 https://github.com/melisgl/lmdb
+
+      - name: Update PAX World
+        run: ~/sbcl/run-sbcl.sh --non-interactive --load update-pax-world.lisp
+
+      - name: Commit the changes if successful
+        if: github.event_name != 'pull_request'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          # Only commit when things changed. Also [skip ci] is there
+          # to prevent a rerun due to the 'on push' above.
+          git diff-index --quiet HEAD || (git commit -m "Auto-update PAX World [skip ci]" && git push)
