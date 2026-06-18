@@ -31,4 +31,9 @@
      (handler-bind ((pax:transcription-error #'continue))
        (pax:update-pax-world :dir dir :update-css-p t :style :charter)))))
 
+;;; From the github action
 (update-pax-world* :dir "./")
+
+;;; Manually
+#+nil
+(update-pax-world*)
