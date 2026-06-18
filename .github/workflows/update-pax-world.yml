@@ -4,8 +4,8 @@ on:
   push:
   pull_request:
   schedule:
-    # Every day at 19:32
-    - cron: "32 19 * * *"
+    # Every hour at the 48th minute
+    - cron: "48 * * * *"
 
 # Required to commit
 permissions:
