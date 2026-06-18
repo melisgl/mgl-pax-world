@@ -177,9 +177,16 @@ hr {
   background-color: #CCCCCC;
 }
 
-blockquote, table, pre {
+table, pre {
   line-height: var(--line-height);
   margin: var(--parsep) 0 0 0;
+}
+
+blockquote {
+  line-height: var(--line-height);
+  margin: var(--parsep) 0 0 0.1em;
+  padding-left: calc(var(--line-height) - 0.1em - 0.2em);
+  border-left: 0.2em solid #CCCCCC;
 }
 
 pre {
@@ -469,4 +476,43 @@ a.symbol:hover { color: #229955; background-color: transparent; text-decoration:
 
 #paxToDocument, #paxToApropos {
   min-width: 17em;
+}
+
+.pax-index {
+  text-align: left;
+  font-size: 90%;
+}
+
+.pax-index a {
+  text-decoration-color: #aaa;
+}
+
+.pax-index > ul > li > p:first-child > a:first-child {
+  text-decoration-color: #111;
+}
+
+.pax-index ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.pax-index ul ul {
+  padding-left: 1em;
+}
+
+.pax-index li {
+  /* Hanging indent */
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.pax-index > ul {
+  /* padding-left: 0; */
+  /* margin-left: 0; */
+}
+
+/* Ensure paragraph wrappers from Markdown don't break the first-line
+ * indent */
+.pax-index li > p {
+  display: inline;
 }
