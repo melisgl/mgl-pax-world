@@ -3,4 +3,4 @@ MGL-PAX:UPDATE-PAX-WORLD. Go and see the
 [HTML](http://melisgl.github.io/mgl-pax-world/).
 
 For the list of ASDF systems included, see `UPDATE-PAX-WORLD*` in
-`src/document-util.lisp`.
+`update-pax-world.lisp`.
