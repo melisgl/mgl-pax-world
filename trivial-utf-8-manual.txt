@@ -1,0 +1,89 @@
+# Trivial UTF-8 Manual
+
+###### [in package TRIVIAL-UTF-8]
+
+## Introduction
+
+Trivial UTF-8 is a small library for doing UTF-8-based in- and
+output on a Lisp implementation that already supports Unicode -
+meaning char-code and code-char deal with Unicode character codes.
+
+The rationale for the existence of this library is that while
+Unicode-enabled implementations usually do provide some kind of
+interface to dealing with character encodings, these are typically
+not terribly flexible or uniform.
+
+The Babel library solves a similar problem while
+understanding more encodings. Trivial UTF-8 was written before Babel
+existed, but for new projects you might be better off going with
+Babel. The one plus that Trivial UTF-8 has is that it doesn't depend
+on any other libraries.
+
+[babel]: https://common-lisp.net/project/babel/
+
+## Links and Systems
+
+Here is the official repository and the
+HTML documentation for the latest version.
+
+[trivial-utf-8-repo]: https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8
+
+[trivial-utf-8-doc]: http://melisgl.github.io/mgl-pax-world/trivial-utf-8-manual.html
+
+- [system] "trivial-utf-8"
+
+    - Description: A small library for doing UTF-8-based input and output.
+
+    - Licence: ZLIB
+
+    - Author: Marijn Haverbeke <marijnh@gmail.com>
+
+    - Maintainer: Gábor Melis <mega@retes.hu>
+
+    - Homepage: <https://common-lisp.net/project/trivial-utf-8/>
+
+    - Bug tracker: <https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8/-/issues>
+
+    - Source control: [GIT](https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8.git)
+
+    - Depends on: mgl-pax-bootstrap
+
+## Reference
+
+- [function] utf-8-byte-length string
+
+    Calculate the amount of bytes needed to encode string.
+
+- [function] string-to-utf-8-bytes string &key null-terminate
+
+    Convert string into an array of unsigned bytes containing its UTF-8
+    representation. If null-terminate, add an extra 0 byte at the end.
+
+- [function] utf-8-group-size byte
+
+    Determine the amount of bytes that are part of the character whose
+    encoding starts with byte. May signal utf-8-decoding-error.
+
+- [function] utf-8-bytes-to-string bytes &key (start 0) (end (length bytes))
+
+    Convert the start, end subsequence of the array of bytes containing
+    UTF-8 encoded characters to a string. The element type of
+    bytes may be anything as long as it can be coerced into
+    an (unsigned-bytes 8) array. May signal utf-8-decoding-error.
+
+- [function] read-utf-8-string input &key null-terminated stop-at-eof (char-length -1) (byte-length -1)
+
+    Read UTF-8 encoded data from input, a byte stream, and construct a
+    string with the characters found. When null-terminated is given,
+    stop reading at a null character. If stop-at-eof, then stop at
+    end-of-file without raising an error. The char-length and
+    byte-length parameters can be used to specify the max amount of
+    characters or bytes to read, where -1 means no limit. May signal
+    utf-8-decoding-error.
+
+- [function] write-utf-8-bytes string byte-stream &key null-terminate
+
+    Write string to byte-stream, encoding it as UTF-8. If
+    null-terminate, write an extra 0 byte at the end.
+
+- [condition] utf-8-decoding-error simple-error
