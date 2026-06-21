@@ -6,30 +6,42 @@
 ;;; https://github.com/melisgl/mgl-pax-world manually, check out its
 ;;; gh-pages branch in that directory, UPDATE-PAX-WORLD*, commit and
 ;;; push the changes to GitHub.
-(defun update-pax-world* (&key dir)
+(defun update-pax-world* (&key dir delete)
   ;; KLUDGE: Bind *READTABLE* so that when evaluating in Slime (e.g.
   ;; with C-x C-e), the file's readtable is not used (which leads to a
   ;; reader macro conflict with CL-SYNTAX).
   (let ((*readtable* (named-readtables:find-readtable :standard)))
-    (ql:quickload :mgl-pax/full :silent t)
-    ;; KLUDGE: The mgl-mat system does not declare its dependencies
-    ;; properly.
-    (ql:quickload :cl-cuda :silent t)
-    (ql:quickload :mgl-mat :silent t)
-    (ql:quickload :named-readtables :silent t)
-    (ql:quickload :micmac :silent t)
-    (ql:quickload :mgl-gpr :silent t)
-    (ql:quickload :mgl :silent t)
-    (ql:quickload :journal :silent t)
-    (ql:quickload :trivial-utf-8 :silent t)
-    (ql:quickload :try :silent t)
-    (ql:quickload :lmdb :silent t)
+    (flet ((load-system (name)
+             (ql:quickload name)
+             (autoload:autodeps name
+                                :installer (lambda (name)
+                                             (ql:quickload name :silent t)))))
+      (load-system :mgl-pax/full)
+      ;; KLUDGE: The mgl-mat system does not declare its dependencies
+      ;; properly.
+      (load-system :cl-cuda)
+      (load-system :mgl-mat)
+      (load-system :named-readtables)
+      (load-system :micmac)
+      (load-system :mgl-gpr)
+      (load-system :mgl)
+      (load-system :journal)
+      (load-system :trivial-utf-8)
+      (load-system :try)
+      (load-system :lmdb))
     #+sbcl
     (require :sb-manual))
+  (when delete
+    (dolist (type '("txt" "md" "html" "css" "js" "pdf"))
+      (dolist (filename (directory (make-pathname :name :wild :type type
+                                                  :defaults dir)))
+        (unless (equal (pathname-name filename) "README")
+          (delete-file filename)))))
   (time
    (let ((pax:*document-downcase-uppercase-code* t))
      (handler-bind ((pax:transcription-error #'continue))
-       (pax:update-pax-world :dir dir :update-css-p t :style :charter)))))
+       (pax:update-pax-world :dir dir :formats '(:plain :markdown :html :pdf)
+                             :update-css-p t :style :charter)))))
 
 ;;; This updates the world/ dir below the mgl-pax ASDF system.
 #+nil

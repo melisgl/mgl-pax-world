@@ -4,8 +4,8 @@ on:
   push:
   pull_request:
   schedule:
-    # Every hour at the 48th minute
-    - cron: "48 * * * *"
+    # Every two hours at the 48th minute
+    - cron: "48 */2 * * *"
 
 # Required to commit
 permissions:
@@ -28,9 +28,11 @@ jobs:
       - name: Install Host Dependencies
         # We need a host Lisp to bootstrap the new SBCL, plus Texinfo for docs
         run: |
-          sudo apt-get update
-          sudo apt-get install -y sbcl build-essential time curl \
+          sudo apt update
+          sudo apt install -y sbcl build-essential time curl \
               libblas-dev liblapack-dev
+          sudo apt install -y pandoc texlive-latex-recommended \
+              texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
       - name: Install SBCL
         run: |
@@ -78,7 +80,7 @@ jobs:
       - name: Update PAX World
         run: |
           ~/sbcl/run-sbcl.sh --non-interactive --load update-pax-world.lisp \
-              --eval '(update-pax-world* :dir "./")'
+              --eval '(update-pax-world* :dir "./" :delete t)'
 
       - name: Commit the changes if successful
         if: github.event_name != 'pull_request'
