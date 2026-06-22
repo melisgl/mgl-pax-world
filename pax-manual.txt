@@ -4,11 +4,10 @@
 
 ## Introduction
 
-What if documentation really lived in the code?
+What if documentation were code?
 
-Docstrings are already there. If some narrative glued them together,
-we'd be able develop and explore the code along with the
-documentation due to their physical proximity. The main tool that
+If some narrative glued docstrings together, we'd be able to develop
+and explore the code alongside its documentation. The main tool that
 PAX provides for this is defsection:
 
     (defsection @foo-random-manual (:title "Foo Random manual")
@@ -17,10 +16,10 @@ PAX provides for this is defsection:
       (uniform-random function)
       (@foo-random-examples section))
 
-Like this one, sections can have docstrings and
+Like the one above, sections can have docstrings and
 references to
-definitions (e.g. (uniform-random function)). These docstrings and
-references are the glue. To support interactive development, PAX
+definitions (e.g. (uniform-random function)). These are the glue.
+To support interactive development, PAX
 
 - makes SLIME's M-. work with references and
 
@@ -32,11 +31,8 @@ Beyond interactive workflows, Generating Documentation from
 sections and all the referenced items in Markdown or HTML format is
 also implemented.
 
-With the simplistic tools provided, one may emphasize the narrative
-as with Literate Programming, but documentation is generated from
-code, not vice versa, and there is no support for chunking.
-
-Code is first, code must look pretty, documentation is code.
+PAX emphasizes the narrative much like
+Literate Programming, but it is an untangled LP system.
 
 ##### Docstrings
 
@@ -133,8 +129,7 @@ Note how (variable *foo-state*) in the defsection form both
 exports *foo-state* and includes its documentation in
 @foo-random-manual. The symbols variable and
 function are just two instances of locatives,
-which are used in defsection to refer to definitions tied to
-symbols.
+used in defsection to refer to definitions tied to symbols.
 
 (document @foo-random-manual) generates fancy Markdown or HTML
 output with automatic markup and Autolinks uppercase words found in docstrings,
@@ -537,20 +532,23 @@ Now let's examine the most important pieces.
     locative + name/title style. See the glossary entry name for an
     example.
 
-    When a glossary term is linked to in documentation, its title will
-    be the link text instead of the name of the symbol (as with
-    sections).
+    - When a glossary term is linked to in documentation, its title will
+      be the link text instead of the name of the symbol (as with
+      sections).
 
-    Glossary entries with a non-nil url are like external links: they
-    are linked to their url in the generated documentation. These offer
-    a more reliable alternative to using Markdown reference links and
-    are usually not included in sections.
+    - Glossary terms with non-nil urls are like external links: they are
+      linked to their url in the generated documentation. These offer a
+      more reliable alternative to using Markdown reference links and
+      are usually not included in sections.
 
     - When discard-documentation-p (defaults to *discard-documentation-p*)
       is true, docstring will not be recorded to save memory.
 
     - concepts is a list of concept names and concept keys, for which
       this term is a primary source. See Indexing Concepts.
+
+    By default, glossary terms are indexed
+    alongside concepts.
 
 - [macro] note &body args
 
@@ -2692,6 +2690,8 @@ Also, see concept subkey on how to order concepts in the output.
     concepts start with a #\~ character to indicate that they are pure
     index key multiplexers, and do not appear in the generated
     documentation.
+
+    See also define-glossary-term.
 
 - [glossary-term] concept key
 

@@ -86,11 +86,10 @@
 
 ## 1 Introduction
 
-*What if documentation really lived in the code?*
+*What if documentation were code?*
 
-Docstrings are already there. If some narrative glued them together,
-we'd be able develop and explore the code along with the
-documentation due to their physical proximity. The main tool that
+If some narrative glued docstrings together, we'd be able to develop
+and explore the code alongside its documentation. The main tool that
 PAX provides for this is [`defsection`][72b4]:
 
 ```
@@ -101,10 +100,10 @@ PAX provides for this is [`defsection`][72b4]:
   (@foo-random-examples section))
 ```
 
-Like this one, sections can have docstrings and
+Like the one above, sections can have docstrings and
 [references][5225] to
-definitions (e.g. `(uniform-random function)`). These docstrings and
-references are the glue. To support interactive development, PAX
+definitions (e.g. `(uniform-random function)`). These are the glue.
+To support interactive development, PAX
 
 - makes [SLIME][6be7]'s [`M-.`][cb15] work with references and
 
@@ -116,11 +115,8 @@ Beyond interactive workflows, [Generating Documentation][2c93] from
 sections and all the referenced items in Markdown or HTML format is
 also implemented.
 
-With the simplistic tools provided, one may emphasize the narrative
-as with Literate Programming, but documentation is generated from
-code, not vice versa, and there is no support for chunking.
-
-*Code is first, code must look pretty, documentation is code*.
+PAX [emphasizes the narrative][bbc6] much like
+Literate Programming, but it is an [untangled LP][3e20] system.
 
 ##### Docstrings
 
@@ -223,8 +219,7 @@ Note how `(variable *foo-state*)` in the [`defsection`][72b4] form both
 exports `*foo-state*` and includes its documentation in
 `@foo-random-manual`. The symbols [`variable`][6c83] and
 [`function`][ba62] are just two instances of [locative][7ac8]s,
-which are used in `defsection` to refer to definitions tied to
-symbols.
+used in `defsection` to refer to definitions tied to symbols.
 
 `(document @foo-random-manual)` generates fancy Markdown or HTML
 output with [automatic markup][f25f] and [Autolink][ec7a]s uppercase [word][d7b0]s found in docstrings,
@@ -681,20 +676,23 @@ Now let's examine the most important pieces.
     locative + name/title style. See the glossary entry [name][88cf] for an
     example.
     
-    When a glossary term is linked to in documentation, its `title` will
-    be the link text instead of the name of the symbol (as with
-    [`section`][5fac]s).
+    - When a glossary term is linked to in documentation, its `title` will
+      be the link text instead of the name of the symbol (as with
+      [`section`][5fac]s).
     
-    Glossary entries with a non-`nil` `url` are like external links: they
-    are linked to their `url` in the generated documentation. These offer
-    a more reliable alternative to using Markdown reference links and
-    are usually not included in `section`s.
+    - Glossary terms with non-`nil` `url`s are like external links: they are
+      linked to their `url` in the generated documentation. These offer a
+      more reliable alternative to using Markdown reference links and
+      are usually not included in `section`s.
     
     - When `discard-documentation-p` (defaults to [`*discard-documentation-p*`][730f])
       is true, `docstring` will not be recorded to save memory.
     
     - `concepts` is a list of concept names and [concept key][b19d]s, for which
       this term is a *primary source*. See [Indexing Concepts][c001].
+    
+    By [default][8894], glossary terms are indexed
+    alongside concepts.
 
 <a id="x-28MGL-PAX-3ANOTE-20MGL-PAX-3AMACRO-29"></a>
 <a id="MGL-PAX:NOTE%20MGL-PAX:MACRO"></a>
@@ -3174,6 +3172,8 @@ Also, see [concept subkey][5920] on how to order concepts in the output.
     concepts start with a #\~ character to indicate that they are pure
     index key multiplexers, and do not appear in the generated
     documentation.
+    
+    See also [`define-glossary-term`][8ece].
 
 <a id="x-28MGL-PAX-3A-40CONCEPT-KEY-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
 <a id="MGL-PAX:@CONCEPT-KEY%20MGL-PAX:GLOSSARY-TERM"></a>
@@ -5306,6 +5306,7 @@ they are presented.
   [3972]: http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_r.htm#reader_macro "\"reader macro\" (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)"
   [39df]: http://www.lispworks.com/documentation/HyperSpec/Body/m_w_std_.htm "WITH-STANDARD-IO-SYNTAX (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [3da8]: #MGL-PAX:*FORMAT*%20VARIABLE "MGL-PAX:*FORMAT* VARIABLE"
+  [3e20]: https://quotenil.com/untangling-literate-programming.html "untangled LP"
   [3e6e]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cbb.htm "\"22.3.2.2\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [3f2e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pr_obj.htm "PRINT-OBJECT (MGL-PAX:CLHS GENERIC-FUNCTION)"
   [3fa1]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cad.htm "\"22.3.1.4\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
@@ -5519,6 +5520,7 @@ they are presented.
   [ba76]: #MGL-PAX:*DOCUMENT-INDEX-FORMATS*%20VARIABLE "MGL-PAX:*DOCUMENT-INDEX-FORMATS* VARIABLE"
   [ba90]: #MGL-PAX:@LINKS-AND-SYSTEMS%20MGL-PAX:SECTION "Links and Systems"
   [bb12]: #MGL-PAX:UPDATE-ASDF-SYSTEM-HTML-DOCS%20FUNCTION "MGL-PAX:UPDATE-ASDF-SYSTEM-HTML-DOCS FUNCTION"
+  [bbc6]: https://quotenil.com/multifaceted-development.html "PAX development style"
   [bc83]: #MGL-PAX:@MARKDOWN-SYNTAX-HIGHLIGHTING%20MGL-PAX:SECTION "Syntax Highlighting"
   [bcb6]: http://www.lispworks.com/documentation/HyperSpec/Body/e_warnin.htm "WARNING (MGL-PAX:CLHS CONDITION)"
   [bdd6]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cga.htm "\"22.3.7.1\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
