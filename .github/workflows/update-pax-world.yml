@@ -80,7 +80,7 @@ jobs:
       - name: Update PAX World
         run: |
           ~/sbcl/run-sbcl.sh --non-interactive --load update-pax-world.lisp \
-              --eval '(update-pax-world* :dir "./" :delete t)'
+              --eval '(update-pax-world* :dir "./")'
 
       - name: Commit the changes if successful
         if: github.event_name != 'pull_request'
