@@ -282,15 +282,15 @@
         - [18.7.2 Historical Interfaces][292d]
 
 ###### \[in package SB-MANUAL\]
-This manual – for SBCL version `2.6.1.pax-doc.1000-f285162`, generated *2026-06-22 10:51:03* –
-is part of the SBCL software system. See the `readme` file for more
-information.
+This manual – for SBCL version `2.6.1.pax-doc.1000-f003ea4`, generated *2026-06-22 11:22:44* –
+is part of the SBCL software system. See the `README` file for
+more information.
 
 This manual is largely derived from the manual for the CMUCL system,
 which was produced at Carnegie Mellon University and later released
 into the public domain. This manual is in the public domain and is
-provided with absolutely no warranty. See the `copying` and
-`credits` files for more information.
+provided with absolutely no warranty. See the `COPYING` and
+`CREDITS` files for more information.
 
 <a id="x-28SB-MANUAL-3A-40SUPPORT-AND-BUGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SUPPORT-AND-BUGS%20MGL-PAX:SECTION"></a>
