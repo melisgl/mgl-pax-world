@@ -2,7 +2,7 @@
 
 ###### [in package SB-MANUAL]
 
-This manual – for SBCL version 2.6.1.pax-doc.1000-d9abb60, generated 2026-06-23 21:25:11 –
+This manual – for SBCL version 2.6.1.pax-doc.1000-d9abb60, generated 2026-06-23 23:17:11 –
 is part of the SBCL software system. See the README file for
 more information.
 
