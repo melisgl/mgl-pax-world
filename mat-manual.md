@@ -258,7 +258,7 @@ algorithms. MGL-MAT does its best to keep them separate.
 
 - [reader] **mat-dimensions** *[mat][6d14] (:dimensions)*
 
-    Like [`array-dimensions`][b3153]. It holds a list of
+    Like [`array-dimensions`][b315]. It holds a list of
     dimensions, but it is allowed to pass in scalars too.
 
 <a id="x-28MGL-MAT-3AMAT-DIMENSION-20FUNCTION-29"></a>
@@ -1283,7 +1283,7 @@ Unless noted these work efficiently with CUDA.
 - [variable] **\*mat-headers\*** *t*
 
     If true, a header with [`mat-ctype`][62f5] and [`mat-size`][3573] is written by
-    [`write-mat`][f0dbd] before the contents and [`read-mat`][420d] checks that these match
+    [`write-mat`][f0db] before the contents and [`read-mat`][420d] checks that these match
     the matrix into which it is reading.
 
 <a id="x-28MGL-MAT-3AWRITE-MAT-20GENERIC-FUNCTION-29"></a>
@@ -1346,7 +1346,7 @@ used.
     because `(make-mat (expt 2 60))` doesn't actually uses memory until
     one of its facets is accessed (don't simply evaluate it though,
     printing the result will access the [`array`][cb94] facet if
-    [`*print-mat*`][1f37b]). Also, while facets today all require the same number
+    [`*print-mat*`][1f37]). Also, while facets today all require the same number
     of bytes, this may change in the future. This is a debugging tool,
     don't use it in production.
     
@@ -1405,7 +1405,7 @@ accessed with [`with-facets`][ddd4] with one of the following
 
 - [facet-name] **foreign-array**
 
-    The facet's value is a [`foreign-array`][cdc3b] which is an
+    The facet's value is a [`foreign-array`][cdc3] which is an
     `offset-pointer` wrapping a CFFI pointer. See
     [`*foreign-array-strategy*`][7400].
 
@@ -1504,10 +1504,10 @@ allocated in foreign memory depending on [`*foreign-array-strategy*`][7400].
 
 - [class] **foreign-array**
 
-    [`foreign-array`][cdc3b] wraps a foreign pointer (in
+    [`foreign-array`][cdc3] wraps a foreign pointer (in
     the sense of `cffi:pointerp`). That is, both `offset-pointer` and
     `base-pointer` return a foreign pointer. There are no other public
-    operations that work with [`foreign-array`][cdc3b] objects, their sole
+    operations that work with [`foreign-array`][cdc3] objects, their sole
     purpose is represent facets of [`mat`][6d14] objects.
 
 <a id="x-28MGL-MAT-3A-2AFOREIGN-ARRAY-STRATEGY-2A-20VARIABLE-29"></a>
@@ -2090,7 +2090,7 @@ instead.
   [1600]: #MGL-MAT:@MAT-MAPPINGS%20MGL-PAX:SECTION "Mappings"
   [1659]: cube-manual.md#MGL-CUBE:CUBE%20CLASS "MGL-CUBE:CUBE CLASS"
   [1b99]: #MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION "Tutorial"
-  [1f37b]: #MGL-MAT:*PRINT-MAT*%20VARIABLE "MGL-MAT:*PRINT-MAT* VARIABLE"
+  [1f37]: #MGL-MAT:*PRINT-MAT*%20VARIABLE "MGL-MAT:*PRINT-MAT* VARIABLE"
   [1f99]: http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm "ARRAY (MGL-PAX:CLHS CLASS)"
   [1fda]: #MGL-MAT:BACKING-ARRAY%20MGL-CUBE:FACET-NAME "MGL-MAT:BACKING-ARRAY MGL-CUBE:FACET-NAME"
   [2053]: http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm "ROW-MAJOR-AREF (MGL-PAX:CLHS FUNCTION)"
@@ -2161,7 +2161,7 @@ instead.
   [aba0]: #MGL-MAT:*CUDA-ENABLED*%20VARIABLE "MGL-MAT:*CUDA-ENABLED* VARIABLE"
   [ac8d]: #MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION "Debugging"
   [b116]: #MGL-MAT:@MAT-CUBLAS%20MGL-PAX:SECTION "CUBLAS"
-  [b3153]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm "ARRAY-DIMENSIONS (MGL-PAX:CLHS FUNCTION)"
+  [b315]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm "ARRAY-DIMENSIONS (MGL-PAX:CLHS FUNCTION)"
   [b6a7]: #MGL-MAT:@MAT-SHAPING-DESTRUCTIVE%20MGL-PAX:SECTION "Destructive Shaping"
   [bc8c]: http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm "EXP (MGL-PAX:CLHS FUNCTION)"
   [bd19]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dis.htm "ARRAY-DISPLACEMENT (MGL-PAX:CLHS FUNCTION)"
@@ -2173,7 +2173,7 @@ instead.
   [c96c]: #MGL-MAT:@MAT-INSTALLATION%20MGL-PAX:SECTION "Where to Get it?"
   [cb94]: #ARRAY%20MGL-CUBE:FACET-NAME "ARRAY MGL-CUBE:FACET-NAME"
   [cd9e]: #MGL-MAT:STACK%21%20FUNCTION "MGL-MAT:STACK! FUNCTION"
-  [cdc3b]: #MGL-MAT:FOREIGN-ARRAY%20CLASS "MGL-MAT:FOREIGN-ARRAY CLASS"
+  [cdc3]: #MGL-MAT:FOREIGN-ARRAY%20CLASS "MGL-MAT:FOREIGN-ARRAY CLASS"
   [d162]: http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm "ERROR (MGL-PAX:CLHS CONDITION)"
   [d3b8]: #MGL-MAT:@MAT-LISP-EXTENSIONS%20MGL-PAX:SECTION "Lisp Extensions"
   [d5f8]: #MGL-MAT:FOREIGN-ROOM%20FUNCTION "MGL-MAT:FOREIGN-ROOM FUNCTION"
@@ -2191,7 +2191,7 @@ instead.
   [eb95]: #MGL-MAT:MREF%20FUNCTION "MGL-MAT:MREF FUNCTION"
   [ece2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm "SIN (MGL-PAX:CLHS FUNCTION)"
   [ecf9]: http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm "STORAGE-CONDITION (MGL-PAX:CLHS CONDITION)"
-  [f0dbd]: #MGL-MAT:WRITE-MAT%20GENERIC-FUNCTION "MGL-MAT:WRITE-MAT GENERIC-FUNCTION"
+  [f0db]: #MGL-MAT:WRITE-MAT%20GENERIC-FUNCTION "MGL-MAT:WRITE-MAT GENERIC-FUNCTION"
   [f5be]: #MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29 "MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT)"
   [fae1]: #MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION "MGL-MAT:PINNING-SUPPORTED-P FUNCTION"
   [fc7d]: #MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE "MGL-MAT:*SUPPORTED-CTYPES* VARIABLE"

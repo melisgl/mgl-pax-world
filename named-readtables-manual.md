@@ -432,7 +432,7 @@ and the API of packages.
 
 - [function] **copy-named-readtable** *named-readtable*
 
-    Like [`copy-readtable`][6d9f1] but takes a [`named-readtable-designator`][4e61] as argument.
+    Like [`copy-readtable`][6d9f] but takes a [`named-readtable-designator`][4e61] as argument.
 
 <a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3ALIST-ALL-NAMED-READTABLES-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:LIST-ALL-NAMED-READTABLES%20FUNCTION"></a>
@@ -494,7 +494,7 @@ and the API of packages.
   [4e61]: #EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR%20TYPE "EDITOR-HINTS.NAMED-READTABLES:NAMED-READTABLE-DESIGNATOR TYPE"
   [5b1b]: http://www.lispworks.com/documentation/HyperSpec/Body/f_set__1.htm "SET-DISPATCH-MACRO-CHARACTER (MGL-PAX:CLHS FUNCTION)"
   [6a02]: #EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE%20MGL-PAX:MACRO "EDITOR-HINTS.NAMED-READTABLES:DEFREADTABLE MGL-PAX:MACRO"
-  [6d9f1]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm "COPY-READTABLE (MGL-PAX:CLHS FUNCTION)"
+  [6d9f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm "COPY-READTABLE (MGL-PAX:CLHS FUNCTION)"
   [78ad]: #EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-ALREADY-EXIST%20CONDITION "EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-ALREADY-EXIST CONDITION"
   [9b43]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm "DEFPACKAGE (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [9c9c]: http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm "EVAL-WHEN (MGL-PAX:CLHS MGL-PAX:MACRO)"

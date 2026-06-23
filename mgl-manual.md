@@ -67,9 +67,9 @@
         - [11.4.1 Lump Base Class][3045]
         - [11.4.2 Inputs][207b]
         - [11.4.3 Weight Lump][6872]
-        - [11.4.4 Activations][91051]
+        - [11.4.4 Activations][9105]
         - [11.4.5 Activation Functions][5d86]
-        - [11.4.6 Losses][93a79]
+        - [11.4.6 Losses][93a7]
         - [11.4.7 Stochasticity][aa2e]
         - [11.4.8 Arithmetic][2fe9]
         - [11.4.9 Operations for `rnn`s][51f7]
@@ -1040,7 +1040,7 @@ respectively.
 
 For example, consider training a backpropagation neural network. We
 want to look at the state of of network just after the backward
-pass. [`mgl-bp:bp-learner`][00a01] has a [`monitors`][6202] event hook corresponding to the moment after
+pass. [`mgl-bp:bp-learner`][00a0] has a [`monitors`][6202] event hook corresponding to the moment after
 backpropagating the gradients. Suppose we are interested in how the
 training cost evolves:
 
@@ -3238,7 +3238,7 @@ a [`lump`][c1ac].
 - [reader] **max-n-stripes** *[bpn][5187] (:max-n-stripes = nil)*
 
     The maximum number of instances the network can
-    operate on in parallel. Within [`build-fnn`][606c5] or [`build-rnn`][764b], it defaults
+    operate on in parallel. Within [`build-fnn`][606c] or [`build-rnn`][764b], it defaults
     to `max-n-stripes` of that parent network, else it defaults to 1.
     When set `max-n-stripes` of all [`clumps`][f7c1] get set to the same value.
 
@@ -3250,7 +3250,7 @@ a [`lump`][c1ac].
     A topological sorted adjustable array with a fill
     pointer that holds the clumps that make up the network. Clumps are
     added to it by [`add-clump`][82d8] or, more often, automatically when within
-    a [`build-fnn`][606c5] or [`build-rnn`][764b]. Rarely needed, [`find-clump`][175f] takes care of
+    a [`build-fnn`][606c] or [`build-rnn`][764b]. Rarely needed, [`find-clump`][175f] takes care of
     most uses.
 
 <a id="x-28MGL-BP-3AFIND-CLUMP-20FUNCTION-29"></a>
@@ -3278,7 +3278,7 @@ a [`lump`][c1ac].
 
 [`bpn`][5187]s are trained to minimize the loss function they compute.
 Before a `bpn` is passed to [`minimize`][46a4] (as its `gradient-source`
-argument), it must be wrapped in a [`bp-learner`][00a01] object. `bp-learner` has
+argument), it must be wrapped in a [`bp-learner`][00a0] object. `bp-learner` has
 [`monitors`][6202] slot which is used for example by
 [`reset-optimization-monitors`][d479].
 
@@ -3298,15 +3298,15 @@ Without the bells an whistles, the basic shape of training is this:
 <a id="x-28MGL-BP-3ABPN-20-28MGL-PAX-3AREADER-20MGL-BP-3ABP-LEARNER-29-29"></a>
 <a id="MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29"></a>
 
-- [reader] **bpn** *[bp-learner][00a01] (:bpn)*
+- [reader] **bpn** *[bp-learner][00a0] (:bpn)*
 
-    The `bpn` for which this [`bp-learner`][00a01] provides the
+    The `bpn` for which this [`bp-learner`][00a0] provides the
     gradients.
 
 <a id="x-28MGL-CORE-3AMONITORS-20-28MGL-PAX-3AACCESSOR-20MGL-BP-3ABP-LEARNER-29-29"></a>
 <a id="MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29"></a>
 
-- [accessor] **monitors** *[bp-learner][00a01] (:monitors = nil)*
+- [accessor] **monitors** *[bp-learner][00a0] (:monitors = nil)*
 
     A list of [`monitor`][7068]s.
 
@@ -4149,7 +4149,7 @@ will never reference them again.
     
         (->tanh some-input :name 'my-tanh)
     
-    Lumps instantiated in any way within a [`build-fnn`][606c5] or [`build-rnn`][764b] are
+    Lumps instantiated in any way within a [`build-fnn`][606c] or [`build-rnn`][764b] are
     automatically added to the network being built.
     
     A lump has its own [`nodes`][cc1c] and [`derivatives`][a81b] matrices allocated for it
@@ -4347,7 +4347,7 @@ use activation subnets to reduce the clutter.
 - [class] **->activation** *[bpn][5187]*
 
     Activation subnetworks are built by the function
-    [`->activation`][b6021] and they have a number of lumps hidden inside them.
+    [`->activation`][b602] and they have a number of lumps hidden inside them.
     Ultimately, this subnetwork computes a sum like `sum_i x_i * W_i +
     sum_j y_j .* V_j + biases` where `x_i` are input lumps, `W_i` are
     dense matrices representing connections, while `V_j` are peephole
@@ -4434,7 +4434,7 @@ use activation subnets to reduce the clutter.
     (->batch-normalized lump :batch-size 32)
     ```
     
-    The primary input of `->batch-normalized` is often an `->activation`([`0`][7162] [`1`][b6021]) and
+    The primary input of `->batch-normalized` is often an `->activation`([`0`][7162] [`1`][b602]) and
     its output is fed into an activation function (see
     [Activation Functions][5d86]).
 
@@ -4460,7 +4460,7 @@ use activation subnets to reduce the clutter.
         `(,name :scale)
         `(,name :shift)
     
-    where `name` is the [`name`][58424] of this lump.
+    where `name` is the [`name`][5842] of this lump.
     
     This default behavior covers the use-case where the statistics
     kept by `->batch-normalization` are to be shared only between time
@@ -4541,7 +4541,7 @@ use activation subnets to reduce the clutter.
 
 - [function] **->batch-normalized-activation** *inputs &key (name (gensym)) size peepholes batch-size variance-adjustment population-decay*
 
-    A utility functions that creates and wraps an `->activation`([`0`][7162] [`1`][b6021]) in
+    A utility functions that creates and wraps an `->activation`([`0`][7162] [`1`][b602]) in
     [`->batch-normalized`][9da9] and with its [`batch-normalization`][eaf1] the two weight
     lumps for the scale and shift
     parameters. `(->batch-normalized-activation inputs :name 'h1 :size
@@ -5199,7 +5199,7 @@ a [`->loss`][2171].
     stands for the initial state of the value cell (`c_{-1}`). `cell-init`
     being `nil` is equivalent to the state of all zeros.
     
-    `activation-fn` defaults to `->activation`([`0`][7162] [`1`][b6021]), but it can be for example
+    `activation-fn` defaults to `->activation`([`0`][7162] [`1`][b602]), but it can be for example
     [`->batch-normalized-activation`][0f0f]. In general, functions like the
     aforementioned two with signature like (`inputs` [`&key`][4336] `name` `size`
     `peepholes`) can be passed as `activation-fn`.
@@ -5465,7 +5465,7 @@ grow into a more serious toolset for NLP eventually.
 
   [0072]: #MGL-OPT:ON-OPTIMIZATION-FINISHED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29 "MGL-OPT:ON-OPTIMIZATION-FINISHED (MGL-PAX:ACCESSOR MGL-OPT:ITERATIVE-OPTIMIZER)"
   [0078]: #MGL-CORE:INSTANCE-TO-EXECUTOR-PARAMETERS%20GENERIC-FUNCTION "MGL-CORE:INSTANCE-TO-EXECUTOR-PARAMETERS GENERIC-FUNCTION"
-  [00a01]: #MGL-BP:BP-LEARNER%20CLASS "MGL-BP:BP-LEARNER CLASS"
+  [00a0]: #MGL-BP:BP-LEARNER%20CLASS "MGL-BP:BP-LEARNER CLASS"
   [00ee]: #MGL:@MGL-LINKS%20MGL-PAX:SECTION "Links"
   [011d]: #MGL-GD:MEAN-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29 "MGL-GD:MEAN-DECAY (MGL-PAX:ACCESSOR MGL-GD:ADAM-OPTIMIZER)"
   [019f]: #MGL-COMMON:SIZE%20GENERIC-FUNCTION "MGL-COMMON:SIZE GENERIC-FUNCTION"
@@ -5563,7 +5563,7 @@ grow into a more serious toolset for NLP eventually.
   [56b2]: #MGL-BP:@MGL-BP-OVERVIEW%20MGL-PAX:SECTION "Backprop Overview"
   [5748]: #MGL-OPT:@MGL-OPT-OPTIMIZER%20MGL-PAX:SECTION "Implementing Optimizers"
   [5752]: #MGL-CORE:COUNTER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29 "MGL-CORE:COUNTER (MGL-PAX:READER MGL-CORE:MONITOR)"
-  [58424]: #MGL-COMMON:NAME%20GENERIC-FUNCTION "MGL-COMMON:NAME GENERIC-FUNCTION"
+  [5842]: #MGL-COMMON:NAME%20GENERIC-FUNCTION "MGL-COMMON:NAME GENERIC-FUNCTION"
   [5979]: #MGL-CORE:BASIC-COUNTER%20CLASS "MGL-CORE:BASIC-COUNTER CLASS"
   [59c2]: #MGL-RESAMPLE:@MGL-RESAMPLE-MISC%20MGL-PAX:SECTION "Miscellaneous Operations"
   [59dd]: #MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX%29 "MGL-COMMON:GROUP-SIZE (MGL-PAX:READER MGL-BP:->MAX)"
@@ -5577,7 +5577,7 @@ grow into a more serious toolset for NLP eventually.
   [5fdc]: #MGL-CORE:MAP-BATCHES-FOR-MODEL%20FUNCTION "MGL-CORE:MAP-BATCHES-FOR-MODEL FUNCTION"
   [6004]: #MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION "MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS FUNCTION"
   [6021]: #MGL-BP:-%3EMAX-CHANNEL%20CLASS "MGL-BP:->MAX-CHANNEL CLASS"
-  [606c5]: #MGL-BP:BUILD-FNN%20MGL-PAX:MACRO "MGL-BP:BUILD-FNN MGL-PAX:MACRO"
+  [606c]: #MGL-BP:BUILD-FNN%20MGL-PAX:MACRO "MGL-BP:BUILD-FNN MGL-PAX:MACRO"
   [6098]: http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm "VECTOR (MGL-PAX:CLHS CLASS)"
   [60b3]: #MGL:@MGL-GP%20MGL-PAX:SECTION "Gaussian Processes"
   [60d2]: #MGL-CORE:CONFUSION-MATRIX%20CLASS "MGL-CORE:CONFUSION-MATRIX CLASS"
@@ -5637,13 +5637,13 @@ grow into a more serious toolset for NLP eventually.
   [8e53]: #MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29 "MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"
   [8f37]: #MGL-CORE:MONITORS%20GENERIC-FUNCTION "MGL-CORE:MONITORS GENERIC-FUNCTION"
   [9006]: #MGL-OPT:TERMINATION%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29 "MGL-OPT:TERMINATION (MGL-PAX:ACCESSOR MGL-OPT:ITERATIVE-OPTIMIZER)"
-  [91051]: #MGL-BP:@MGL-BP-ACTIVATIONS%20MGL-PAX:SECTION "Activations"
+  [9105]: #MGL-BP:@MGL-BP-ACTIVATIONS%20MGL-PAX:SECTION "Activations"
   [911c]: #MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS%20FUNCTION "MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS FUNCTION"
   [9192]: #MGL:@MGL-OVERVIEW%20MGL-PAX:SECTION "Overview"
   [91a3]: #MGL-CORE:MAX-N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29 "MGL-CORE:MAX-N-STRIPES (MGL-PAX:READER MGL-BP:BPN)"
   [91f3]: #MGL-BP:@MGL-BP-UTILITIES%20MGL-PAX:SECTION "Utilities"
   [9385]: #MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION "MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"
-  [93a79]: #MGL-BP:@MGL-BP-LOSSES%20MGL-PAX:SECTION "Losses"
+  [93a7]: #MGL-BP:@MGL-BP-LOSSES%20MGL-PAX:SECTION "Losses"
   [9524]: #MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION "MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"
   [95fe]: #MGL-CORE:WRITE-STATE%20FUNCTION "MGL-CORE:WRITE-STATE FUNCTION"
   [9641]: #MGL-BP:@MGL-BP-LUMPS%20MGL-PAX:SECTION "Lumps"
@@ -5685,7 +5685,7 @@ grow into a more serious toolset for NLP eventually.
   [b0f3]: #MGL-BP:RNN%20CLASS "MGL-BP:RNN CLASS"
   [b186]: #MGL-CORE:CROSS-ENTROPY-COUNTER%20CLASS "MGL-CORE:CROSS-ENTROPY-COUNTER CLASS"
   [b5c7]: #MGL-COMMON:TARGET%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29 "MGL-COMMON:TARGET (MGL-PAX:ACCESSOR MGL-BP:->SOFTMAX-XE-LOSS)"
-  [b6021]: #MGL-BP:-%3EACTIVATION%20FUNCTION "MGL-BP:->ACTIVATION FUNCTION"
+  [b602]: #MGL-BP:-%3EACTIVATION%20FUNCTION "MGL-BP:->ACTIVATION FUNCTION"
   [b647]: #MGL-RESAMPLE:@MGL-RESAMPLE-BAGGING%20MGL-PAX:SECTION "Bagging"
   [b76f]: #MGL-BP:-%3EWEIGHT%20CLASS "MGL-BP:->WEIGHT CLASS"
   [ba91]: #MGL-RESAMPLE:STRATIFY%20FUNCTION "MGL-RESAMPLE:STRATIFY FUNCTION"

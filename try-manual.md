@@ -40,7 +40,7 @@
     - [7.4 Collecting Events][52e5]
     - [7.5 Rerunning Trials][e4ac]
     - [7.6 Reprocessing Trials][2337]
-- [8 Implementation Notes][3eef6]
+- [8 Implementation Notes][3eef]
 - [9 Glossary][c759]
 
 ###### \[in package TRY\]
@@ -905,7 +905,7 @@ The following types are shorthands.
 - [variable] **\*event-print-bindings\*** *((\*print-circle\* t) (sb-ext:\*print-circle-not-shared\* nil))*
 
     [Try var][0d7a]. [`event`][955d]s are conditions signalled in code that may change printer
-    variables such as [`*print-circle*`][c8cb], [`*print-length*`][8f7a8], etc. To control
+    variables such as [`*print-circle*`][c8cb], [`*print-length*`][8f7a], etc. To control
     how events are printed, the list of variable bindings in
     `*event-print-bindings*` is established whenever an `event` is printed
     as if with:
@@ -2635,7 +2635,7 @@ See [`deftest`][e7ca] and [`with-test`][8f5d] for more precise descriptions.
     
     - values are not returned implicitly
     
-    - values returned with an explicit [`return-from`][3eef] are returned as
+    - values returned with an explicit [`return-from`][3eef7] are returned as
       values after the trial
     
     ```common-lisp
@@ -2946,7 +2946,7 @@ in any way.
     
     `try` returns the values returned by the outermost trial. This is just
     the [`trial`][99d0] object in the absence of an explicit [`return`][5b0b] or
-    [`return-from`][3eef] (see examples in [Tests][dc28]).
+    [`return-from`][3eef7] (see examples in [Tests][dc28]).
     
     If `try` is called within the dynamic extent of another `try` run, then
     it simply calls `testable`, ignores the other arguments and leaves
@@ -3863,8 +3863,8 @@ SBCL.
   [3cf4]: #TRY:*PRINT-COMPACTLY*%20VARIABLE "TRY:*PRINT-COMPACTLY* VARIABLE"
   [3d27]: #TRY:@CAPTURES%20MGL-PAX:SECTION "Captures"
   [3e0c]: #TRY:@MIDDLE-LAYER-OF-EVENTS%20MGL-PAX:SECTION "Middle Layer of Events"
-  [3eef]: http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm "RETURN-FROM (MGL-PAX:CLHS MGL-PAX:MACRO)"
-  [3eef6]: #TRY:@IMPLEMENTATION-NOTES%20MGL-PAX:SECTION "Implementation Notes"
+  [3eef]: #TRY:@IMPLEMENTATION-NOTES%20MGL-PAX:SECTION "Implementation Notes"
+  [3eef7]: http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm "RETURN-FROM (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [4444]: http://www.lispworks.com/documentation/HyperSpec/Body/m_mult_1.htm "MULTIPLE-VALUE-LIST (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [47d5]: #TRY:SUB%20STRUCTURE "TRY:SUB STRUCTURE"
   [4805]: #TRY:VERDICT-ABORT*%20CONDITION "TRY:VERDICT-ABORT* CONDITION"
@@ -3927,7 +3927,7 @@ SBCL.
   [8f49]: http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm "SIGNAL (MGL-PAX:CLHS FUNCTION)"
   [8f5d]: #TRY:WITH-TEST%20MGL-PAX:MACRO "TRY:WITH-TEST MGL-PAX:MACRO"
   [8f78]: #TRY:UNHANDLED-ERROR%20CONDITION "TRY:UNHANDLED-ERROR CONDITION"
-  [8f7a8]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_lev.htm "*PRINT-LENGTH* (MGL-PAX:CLHS VARIABLE)"
+  [8f7a]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_lev.htm "*PRINT-LENGTH* (MGL-PAX:CLHS VARIABLE)"
   [8f9f]: #TRY:*N-RECENT-TRIALS*%20VARIABLE "TRY:*N-RECENT-TRIALS* VARIABLE"
   [906a]: #TRY:@CHECK-UTILITIES%20MGL-PAX:SECTION "Check Utilities"
   [92af]: #TRY:%21%20VARIABLE "TRY:! VARIABLE"

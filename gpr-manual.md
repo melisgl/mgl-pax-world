@@ -18,7 +18,7 @@
     - [4.4 Basics][e084]
     - [4.5 Search Space][9085]
     - [4.6 Reproduction][5d57]
-    - [4.7 Environment][084d4]
+    - [4.7 Environment][084d]
 - [5 Differential Evolution][db20]
     - [5.1 SANSDE][40a0]
 
@@ -788,7 +788,7 @@ Neighborhood Search][1].
   [049c]: #MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
   [057a]: #MGL-GPR:@GPR-EA%20MGL-PAX:SECTION "Evolutionary Algorithms"
   [075b]: #MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION "Tutorial"
-  [084d4]: #MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION "Environment"
+  [084d]: #MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION "Environment"
   [0cb2]: #MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29 "MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL)"
   [0d2f]: #MGL-GPR:@GPR-GP%20MGL-PAX:SECTION "Genetic Programming"
   [0d6e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm "EVAL (MGL-PAX:CLHS FUNCTION)"

@@ -2,7 +2,7 @@
 
 ###### [in package SB-MANUAL]
 
-This manual – for SBCL version 2.6.1.pax-doc.1000-f003ea4, generated 2026-06-23 12:31:37 –
+This manual – for SBCL version 2.6.1.pax-doc.1000-d9abb60, generated 2026-06-23 13:48:35 –
 is part of the SBCL software system. See the README file for
 more information.
 
@@ -4569,7 +4569,7 @@ created by calling the following generic function:
 
 ### Support For Unix
 
-- [variable] sb-ext:*posix-argv* ("/home/runner/sbcl/src/runtime/sbcl")
+- [variable] sb-ext:*posix-argv* "<omitted>"
 
     A list of strings related to the UNIX command line (argv in C).
 

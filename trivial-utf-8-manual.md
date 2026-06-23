@@ -7,7 +7,7 @@
 
 - [1 Introduction][870d]
 - [2 Links and Systems][3450]
-- [3 Reference][f5756]
+- [3 Reference][f575]
 
 ###### \[in package TRIVIAL-UTF-8\]
 <a id="x-28TRIVIAL-UTF-8-3A-40INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
@@ -132,5 +132,5 @@ Here is the [official repository][trivial-utf-8-repo] and the
   [ad1e]: #TRIVIAL-UTF-8:UTF-8-DECODING-ERROR%20CONDITION "TRIVIAL-UTF-8:UTF-8-DECODING-ERROR CONDITION"
   [b93c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm "STRING (MGL-PAX:CLHS CLASS)"
   [cac1]: http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_er.htm "SIMPLE-ERROR (MGL-PAX:CLHS CONDITION)"
-  [f5756]: #TRIVIAL-UTF-8:@REFERENCE%20MGL-PAX:SECTION "Reference"
+  [f575]: #TRIVIAL-UTF-8:@REFERENCE%20MGL-PAX:SECTION "Reference"
   [fe09]: http://www.lispworks.com/documentation/HyperSpec/Body/e_end_of.htm "END-OF-FILE (MGL-PAX:CLHS CONDITION)"

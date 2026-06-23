@@ -9,7 +9,7 @@
 - [2 Introduction][3bc3]
 - [3 Design and implementation][c362]
     - [3.1 Safety][af06]
-    - [3.2 Deviations from the C lmdb API][84b19]
+    - [3.2 Deviations from the C lmdb API][84b1]
 - [4 Library versions][1d55]
 - [5 Environments][d0ca]
     - [5.1 Environments reference][bd3d]
@@ -26,7 +26,7 @@
 - [9 Basic operations][f63b]
 - [10 Cursors][eb36]
     - [10.1 Positioning cursors][471b]
-    - [10.2 Basic cursor operations][ea6cf]
+    - [10.2 Basic cursor operations][ea6c]
     - [10.3 Miscellaneous cursor operations][328c]
 - [11 Conditions][edfb]
     - [11.1 Conditions for C lmdb error codes][58a4]
@@ -2258,7 +2258,7 @@ code.
   [7c81]: #LMDB:UINT64-TO-OCTETS%20FUNCTION "LMDB:UINT64-TO-OCTETS FUNCTION"
   [7def]: #LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO "LMDB:WITH-IMPLICIT-CURSOR MGL-PAX:MACRO"
   [82fb]: #LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION "Opening and closing environments"
-  [84b19]: #LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION "Deviations from the C lmdb API"
+  [84b1]: #LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION "Deviations from the C lmdb API"
   [8615]: #LMDB:CURSOR-SET-KEY%20FUNCTION "LMDB:CURSOR-SET-KEY FUNCTION"
   [8720]: #LMDB:LMDB-KEY-EXISTS-ERROR%20CONDITION "LMDB:LMDB-KEY-EXISTS-ERROR CONDITION"
   [8887]: #LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29 "LMDB:CURSOR-DB (MGL-PAX:STRUCTURE-ACCESSOR LMDB:CURSOR)"
@@ -2300,7 +2300,7 @@ code.
   [e274]: #LMDB:LMDB-TXN-READ-ONLY-ERROR%20CONDITION "LMDB:LMDB-TXN-READ-ONLY-ERROR CONDITION"
   [e84c]: #LMDB:WITH-MDB-VAL-SLOTS%20MGL-PAX:MACRO "LMDB:WITH-MDB-VAL-SLOTS MGL-PAX:MACRO"
   [e93f]: #LMDB:LMDB-MAP-RESIZED-ERROR%20CONDITION "LMDB:LMDB-MAP-RESIZED-ERROR CONDITION"
-  [ea6cf]: #LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION "Basic cursor operations"
+  [ea6c]: #LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION "Basic cursor operations"
   [eb36]: #LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION "Cursors"
   [edfb]: #LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION "Conditions"
   [edfe]: #LMDB:PUT%20FUNCTION "LMDB:PUT FUNCTION"
