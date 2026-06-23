@@ -60,6 +60,7 @@ jobs:
           mkdir -p ~/quicklisp/local-projects/
           cd ~/quicklisp/local-projects/
           # Dependencies
+          git clone --depth 1 https://github.com/3b/3bmd
           git clone --depth 1 https://github.com/melisgl/autoload
           git clone --depth 1 https://github.com/melisgl/named-readtables
           git clone --depth 1 https://github.com/melisgl/dref
