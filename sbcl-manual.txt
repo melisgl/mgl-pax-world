@@ -2,7 +2,7 @@
 
 ###### [in package SB-MANUAL]
 
-This manual – for SBCL version 2.6.1.pax-doc.1000-f003ea4, generated 2026-06-23 11:52:25 –
+This manual – for SBCL version 2.6.1.pax-doc.1000-f003ea4, generated 2026-06-23 12:31:37 –
 is part of the SBCL software system. See the README file for
 more information.
 
@@ -29,7 +29,7 @@ good question.
 
 Before sending mail, check the list archives at either
 
-<http://sourceforge.net/mailarchive/forum.php?forum\_name=sbcl-help>
+<http://sourceforge.net/mailarchive/forum.php?forum_name=sbcl-help>
 
 or
 
@@ -469,7 +469,7 @@ IRC channels on <https://libera.chat/>:
 
 You can use <https://web.libera.chat> or a normal IRC client.
 
-Also, see <https://www.reddit.com/r/Common\_Lisp/>, as well as
+Also, see <https://www.reddit.com/r/Common_Lisp/>, as well as
 <https://www.lisp.org> and <https://cliki.net>, which contain
 numerous pointers places in the net where lispers talks shop.
 

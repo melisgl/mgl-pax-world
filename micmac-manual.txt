@@ -49,13 +49,14 @@ for the latest version.
     of view of the player to move at depth and as the second value the
     list of actions of the principal variant.
 
-    call-with-action is a function of (state depth action FN). It
+    call-with-action is a function of (state depth action fn). It
     carries out action (returned by list-actions or nil) to get the
-    state corresponding to depth and calls FN with that state. It may
+    state corresponding to depth and calls fn with that state. It may
     destructively modify state provided it undoes the damage after FN
-    returns. call-with-action is called with nil as action for the root
-    of the tree, in this case state need not be changed. FN returns the
-    same kinds of values as alpha-beta. They may be useful for logging.
+    returns. call-with-action is called with nil as action for the
+    root of the tree, in this case state need not be changed. fn
+    returns the same kinds of values as alpha-beta. They may be useful
+    for logging.
 
     maybe-evaluate-state is a function of (state depth). If state at
     depth is a terminal node then it returns the score from the point of

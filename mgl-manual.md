@@ -2390,7 +2390,7 @@ are [`iterative-optimizer`][8da0]s, so see
 
     A number between 0 and 1 that determines how fast
     the estimated mean of derivatives is updated. 0 basically gives
-    you `rmsprop` (if [`variance-decay`][0900] is not too large) or AdaGrad (if
+    you RMSPROP (if [`variance-decay`][0900] is not too large) or AdaGrad (if
     `variance-decay` is close to 1 and the learning rate is annealed.
     This is $\beta_1$ in the paper.
 
