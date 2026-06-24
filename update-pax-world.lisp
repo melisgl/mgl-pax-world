@@ -1,12 +1,16 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (ql:quickload "mgl-pax/full"))
 
+(defvar *this-dir*
+  (make-pathname :name nil :type nil
+                 :defaults (or *load-pathname* *compile-file-pathname*)))
+
 ;;; Load systems that use PAX and generate PAX World in
 ;;; <mgl-pax-asdf-system-dir>/world/ by default. To update
 ;;; https://github.com/melisgl/mgl-pax-world manually, check out its
 ;;; gh-pages branch in that directory, UPDATE-PAX-WORLD*, commit and
 ;;; push the changes to GitHub.
-(defun update-pax-world* (&key dir (delete t)
+(defun update-pax-world* (&key (dir *this-dir*) (delete t)
                           (formats '(:plain :markdown :html :pdf)))
   ;; KLUDGE: Bind *READTABLE* so that when evaluating in Slime (e.g.
   ;; with C-x C-e), the file's readtable is not used (which leads to a
@@ -56,4 +60,6 @@
 
 ;;; This updates the world/ dir below the mgl-pax ASDF system.
 #+nil
-(update-pax-world* :formats '(:html) :delete nil)
+(update-pax-world* :formats '(:markdown :html) :delete nil)
+#+nil
+(update-pax-world*)

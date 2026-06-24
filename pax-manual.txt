@@ -2052,7 +2052,8 @@ else as a symbol.
 
 Examples:
 
-- [see this][eql type] renders as see this.
+- [see this][output-label restart] renders as see
+  this.
 
 - [see this]["MGL-PAX" package] renders as see this.
 
@@ -2069,7 +2070,7 @@ Examples:
 
 - single link: [print][] renders as print.
 
-- multiple links: [eql][] renders as eql.
+- multiple links: [output-label][] renders as output-label.
 
 - no definitions: [bad-name][] renders as BAD-NAME.
 
@@ -2085,7 +2086,7 @@ Examples:
 
 - [see this][print] renders as see this.
 
-- [see this][eql] renders as see this.
+- [see this][output-label] renders as see this.
 
 ##### Markdown Reflink
 
@@ -2113,26 +2114,31 @@ Markdown reference links (see Markdown in Docstrings).
 
     When document encounters a Reflink that looks
     like a PAX construct but has no matching definition, it signals an
-    unresolvable-reflink warning.
+    unresolvable-reflink warning with the output-reflink and
+    output-label restarts available.
 
-    - If the output-reflink restart is invoked, then no warning is
-      printed and the Markdown link is left unchanged. muffle-warning is
-      equivalent to output-reflink.
+    If the warning is not handled, then it is printed to *error-output*,
+    and it behaves as if output-label was invoked.
 
-    - If the output-label restart is invoked, then no warning is printed
-      and the Markdown link is replaced by its label. For example,
-      [NONEXISTENT][function] becomes nonexistent.
+- [restart] output-reflink
 
-    - If the warning is not handled, then it is printed to
-      *error-output*, and it behaves as if output-label was invoked.
+    In the context of an unresolvable-reflink, print no warning, and leave
+    the Markdown link unchanged. muffle-warning is equivalent to
+    output-reflink.
+
+- [restart] output-label
+
+    In the context of an unresolvable-reflink, print no warning, and
+    replace the Markdown link by its label. For example,
+    [NONEXISTENT][function] becomes nonexistent.
 
 - [function] output-reflink &optional condition
 
-    Invoke the output-reflink restart. See unresolvable-reflink.
+    Invoke the output-reflink restart.
 
 - [function] output-label &optional condition
 
-    Invoke the output-label restart. See unresolvable-reflink.
+    Invoke the output-label restart.
 
 #### Autolink
 
@@ -2252,7 +2258,13 @@ dislocated or the argument locative may be used as in
     [T][constant] (that links to t).
 
     Note that linking explicitly with the clhs locative is not subject
-    to the value of this variable.
+    to the value of this variable, so
+
+    - [PRINT][clhs] always renders as print, and
+
+    - PRINT clhs always renders as  print clhs.
+
+    See also the filtering of Unspecific Links.
 
 - [variable] *document-hyperspec-root* "http://www.lispworks.com/documentation/HyperSpec/"
 
@@ -2375,11 +2387,15 @@ packages, asdf:systems and clhs
 sections from cluttering the documentation without the control
 provided by importing symbols.
 
-2. All references with locative-type locative are filtered out.
+2. Links to the clhs are filtered out when the
+corresponding non-clhs definition is being
+documented (and thus among the links).
 
-3. Non-linkable definitions are removed.
+3. All references with locative-type locative are filtered out.
 
-4. If the definitions include a generic-function, then
+4. Non-linkable definitions are removed.
+
+5. If the definitions include a generic-function, then
 all definitions with locative-type method,
 accessor, reader and writer are
 removed to avoid linking to a possibly large number of methods.

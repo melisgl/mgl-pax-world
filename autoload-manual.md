@@ -258,7 +258,7 @@ to be circular. The rules for loading are as follows.
 
 2. It is an `autoload-error` if the system does not exist.
 
-3. The system is loaded under `with-compilation-unit`([`0`][6166] [`1`][e7bf]) `:override` `t` and
+3. The system is loaded under [`with-compilation-unit`][e7bf] `:override` `t` and
    [`with-standard-io-syntax`][39df] but with [`*print-readably*`][8aca] `nil`. Other
    non-portable measures may be taken to standardize the dynamic
    environment. Errors signalled during the load are not handled or
@@ -794,7 +794,6 @@ to be circular. The rules for loading are as follows.
   [53ee]: http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_c.htm#compiled_file "\"compiled file\" (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)"
   [5968]: #%22autoload%22%20ASDF%2FSYSTEM:SYSTEM "\"autoload\" ASDF/SYSTEM:SYSTEM"
   [609c]: http://www.lispworks.com/documentation/HyperSpec/Body/f_fmakun.htm "FMAKUNBOUND (MGL-PAX:CLHS FUNCTION)"
-  [6166]: http://www.lispworks.com/documentation/HyperSpec/Body/m_w_comp.htm "WITH-COMPILATION-UNIT (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [643f]: #AUTOLOAD:@PACKAGES%20MGL-PAX:SECTION "Packages"
   [6547]: http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm "OPEN (MGL-PAX:CLHS FUNCTION)"
   [6caf]: autoload-manual.md "Autoload Manual"

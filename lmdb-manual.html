@@ -400,7 +400,7 @@ and indices. The terminology comes from <a href="https://docs.oracle.com/cd/E172
 <a id="LMDB:ENV%20CLASS"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[class]</a></span> <span class="reference-object"><a href="#LMDB:ENV%20CLASS" >env</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L684">[class]</a></span> <span class="reference-object"><a href="#LMDB:ENV%20CLASS" >env</a></span></span></span></p>
 
 <p>An environment object through which a memory-mapped
 data file can be accessed. Always to be created by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.</p></li>
@@ -410,7 +410,7 @@ data file can be accessed. Always to be created by <a href="#LMDB:OPEN-ENV%20FUN
 <a id="LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:path)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L687">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:path)</span></span></p>
 
 <p>The location of the memory-mapped file and the
 environment lock file.</p></li>
@@ -420,7 +420,7 @@ environment lock file.</p></li>
 <a id="LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:max-dbs)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L691">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:max-dbs)</span></span></p>
 
 <p>The maximum number of named databases in the
 environment. Currently a moderate number is cheap, but a huge
@@ -432,7 +432,7 @@ number gets expensive: 7-120 words per transaction, and every
 <a id="LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:max-readers)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L697">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:max-readers)</span></span></p>
 
 <p>The maximum number of threads/reader slots. See
 the documentation of the <a href="http://lmdb.tech/doc/group__readers.html" >reader lock
@@ -443,7 +443,7 @@ table</a> for more.</p></li>
 <a id="LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:map-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L702">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:map-size)</span></span></p>
 
 <p>Specifies the size of the data file in bytes.</p></li>
 </ul>
@@ -452,14 +452,14 @@ table</a> for more.</p></li>
 <a id="LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:mode)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L711">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:mode)</span></span></li>
 </ul>
 
 <p><a id="x-28LMDB-3AENV-FLAGS-20-28MGL-PAX-3AREADER-20LMDB-3AENV-29-29"></a>
 <a id="LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L682">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:flags)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L707">[reader]</a></span> <span class="reference-object"><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="locative-args"><a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:flags)</span></span></p>
 
 <p>A plist of the options as captured by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.
 For example, <code>(:fixed-map nil :subdir t ...)</code>.</p></li>
@@ -1213,7 +1213,7 @@ subsequent open to another named database.</p>
 <a id="LMDB:DB%20CLASS"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1817">[class]</a></span> <span class="reference-object"><a href="#LMDB:DB%20CLASS" >db</a></span></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1819">[class]</a></span> <span class="reference-object"><a href="#LMDB:DB%20CLASS" >db</a></span></span></span></p>
 
 <p>A database in an environment (class <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a>). Always to
 be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
@@ -1223,7 +1223,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1817">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="locative-args"><a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:name)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1822">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="locative-args"><a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:name)</span></span></p>
 
 <p>The name of the database.</p></li>
 </ul>
@@ -1232,7 +1232,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1817">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="locative-args"><a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:key-encoding)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1828">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="locative-args"><a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:key-encoding)</span></span></p>
 
 <p>The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>key-encoding</code> to
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
@@ -1242,7 +1242,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1817">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="locative-args"><a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:value-encoding)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L1834">[reader]</a></span> <span class="reference-object"><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="locative-args"><a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:value-encoding)</span></span></p>
 
 <p>The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>value-encoding</code>
 to <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</p></li>
@@ -1698,7 +1698,7 @@ and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859c
 <a id="LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L2579">[structure-accessor]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" >cursor-db</a></span></span> <span class="locative-args">cursor</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/00af21295ec1a91bebdf2e14a8f1dedc761d078c/src/lmdb.lisp#L2584">[structure-accessor]</a></span> <span class="reference-object"><a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" >cursor-db</a></span></span> <span class="locative-args">cursor</span></span></li>
 </ul>
 
 <p><a id="x-28LMDB-3A-40DEFAULT-CURSOR-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
@@ -2477,10 +2477,10 @@ refer to the parent transaction:</p>
             <span class="paren1">(<span class="code">cursor-set-key #<span class="paren2">(<span class="code">1</span>)</span> cursor</span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre></li>
 </ul>
 
-<p><a id="Indices"></a>
-<a id="Indices"></a></p>
+<p><a id="Indices-1"></a>
+<a id="Indices-1"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="sbcl-manual.html#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8592;</a> <a href="sbcl-manual.html" title="SBCL Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
 
 <h2>12 Indices</h2>
 
@@ -2503,8 +2503,8 @@ refer to the parent transaction:</p>
 <p><div class="pax-index"></p>
 
 <p></div>
-<a id="Function-20and-20Macro-20Index"></a>
-<a id="Function%20and%20Macro%20Index"></a></p>
+<a id="Function-20and-20Macro-20Index-1"></a>
+<a id="Function%20and%20Macro%20Index-1"></a></p>
 
 <p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Indices" title="Indices">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="autoload-manual.html#Type%20Index" title="Type Index">&#8594;</a>  <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8634;</a> </span></span></p>
 
@@ -2715,8 +2715,8 @@ refer to the parent transaction:</p>
 </ul>
 
 <p></div>
-<a id="Type-20Index"></a>
-<a id="Type%20Index"></a></p>
+<a id="Type-20Index-1"></a>
+<a id="Type%20Index-1"></a></p>
 
 <p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Type%20Index" title="Type Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="autoload-manual.html#Concept%20Index" title="Concept Index">&#8594;</a>  <a href="autoload-manual.html#Misc%20Index" title="Misc Index">&#8634;</a> </span></span></p>
 
@@ -2802,8 +2802,8 @@ refer to the parent transaction:</p>
 </ul>
 
 <p></div>
-<a id="Misc-20Index"></a>
-<a id="Misc%20Index"></a></p>
+<a id="Misc-20Index-1"></a>
+<a id="Misc%20Index-1"></a></p>
 
 <p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Misc%20Index" title="Misc Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="dref-manual.html#Concept%20Index-1" title="Concept Index">&#8594;</a>  <a href="autoload-manual.html#Concept%20Index" title="Concept Index">&#8634;</a> </span></span></p>
 
@@ -2830,8 +2830,8 @@ refer to the parent transaction:</p>
 </ul>
 
 <p></div>
-<a id="Concept-20Index"></a>
-<a id="Concept%20Index"></a></p>
+<a id="Concept-20Index-2"></a>
+<a id="Concept%20Index-2"></a></p>
 
 <p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Concept%20Index" title="Concept Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a>  <a href="dref-manual.html#Concept%20Index-1" title="Concept Index">&#8634;</a> </span></span></p>
 
@@ -2850,7 +2850,7 @@ refer to the parent transaction:</p>
 <li><p><a href="#LMDB:@DEFAULT-CURSOR%20MGL-PAX:GLOSSARY-TERM" title="default cursor">default cursor</a> <em>(glossary-term)</em> ↩ <em>f</em>: <a href="#LMDB:DO-CURSOR%20MGL-PAX:MACRO" title="LMDB:DO-CURSOR MGL-PAX:MACRO"><code>do-cursor</code></a>, <a href="#LMDB:DO-CURSOR-DUP%20MGL-PAX:MACRO" title="LMDB:DO-CURSOR-DUP MGL-PAX:MACRO"><code>do-cursor-dup</code></a>, <a href="#LMDB:DO-DB%20MGL-PAX:MACRO" title="LMDB:DO-DB MGL-PAX:MACRO"><code>do-db</code></a>, <a href="#LMDB:DO-DB-DUP%20MGL-PAX:MACRO" title="LMDB:DO-DB-DUP MGL-PAX:MACRO"><code>do-db-dup</code></a>, <a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-CURSOR MGL-PAX:MACRO"><code>with-cursor</code></a>, <a href="#LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-IMPLICIT-CURSOR MGL-PAX:MACRO"><code>with-implicit-cursor</code></a></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-24T01:32:57Z]</h6>
+<h6>[Generated 2026-06-24T14:06:24Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

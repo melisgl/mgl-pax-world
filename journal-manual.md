@@ -161,7 +161,7 @@ Journal library is this idea taken to its logical conclusion.
 
 See [Logging][4e53] for a complete example.
 
-##### Compared to `cl:trace`([`0`][10c3] [`1`][548d])
+##### Compared to [`cl:trace`][548d]
 
 - Ability to handle [non-local exit][b815]s
 
@@ -247,7 +247,7 @@ cycles focussing on persistence.
     
     - returns a new [`in-memory-journal`][b668] if `designator` is `t`,
     
-    - returns a new [`file-journal`][8428] if `designator` is a `pathname`([`0`][0317] [`1`][6671]).
+    - returns a new [`file-journal`][8428] if `designator` is a [`pathname`][783a].
 
 <a id="x-28JOURNAL-3AWITH-JOURNALING-20MGL-PAX-3AMACRO-29"></a>
 <a id="JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO"></a>
@@ -1254,7 +1254,7 @@ Also, see notes on thread [Safety][7bf3].
 
 ## 7 Tracing
 
-[`jtrace`][18be] behaves similarly to `cl:trace`([`0`][10c3] [`1`][548d]) but deals with
+[`jtrace`][18be] behaves similarly to [`cl:trace`][548d] but deals with
 [non-local exit][b815]s gracefully.
 
 ##### Basic tracing
@@ -1343,7 +1343,7 @@ achieved by [`setf`][a138]ing [`pprint-journal-prettifier`][853d],
 
 - [macro] **jtrace** *&rest names*
 
-    Like `cl:trace`([`0`][10c3] [`1`][548d]), `jtrace` takes a list of symbols. When functions
+    Like [`cl:trace`][548d], `jtrace` takes a list of symbols. When functions
     denoted by those `names` are invoked, their names, arguments and
     outcomes are printed in human readable form to [`*trace-output*`][2243]. These
     values may not be [readable][768f], `jtrace` does not care.
@@ -1377,7 +1377,7 @@ achieved by [`setf`][a138]ing [`pprint-journal-prettifier`][853d],
 
 - [macro] **juntrace** *&rest names*
 
-    Like `cl:untrace`([`0`][a370] [`1`][4823]), `juntrace` makes it so that the global functions
+    Like [`cl:untrace`][4823], `juntrace` makes it so that the global functions
     denoted by the symbols `names` are no longer traced by [`jtrace`][18be]. When
     invoked with no arguments, it untraces all traced functions.
 
@@ -1456,7 +1456,7 @@ achieved by [`setf`][a138]ing [`pprint-journal-prettifier`][853d],
 ### 7.1 Slime integration
 
 [Slime](https://common-lisp.net/project/slime/), by default,
-binds `C-c C-t` to toggling `cl:trace`([`0`][10c3] [`1`][548d]). To integrate [`jtrace`][18be] into
+binds `C-c C-t` to toggling [`cl:trace`][548d]. To integrate [`jtrace`][18be] into
 Slime, load `src/mgl-jrn.el` into Emacs.
 
 - If you installed Journal with Quicklisp, the location of
@@ -2072,7 +2072,7 @@ assistance may be required from `replay-values` and `replay-condition`:
   condition (has `event-exit` `:condition`), then the recorded
   condition (in `event-outcome`) is signalled as
   IN `(error (event-outcome replay-event))`. If `replay-condition` is
-  specified, it is called instead of `error`([`0`][d162] [`1`][35ba]). `replay-condition` must
+  specified, it is called instead of [`error`][669b]. `replay-condition` must
   not return normally, and it's a [`journal-error`][0002] if it does.
 
 [`with-replay-filter`][0cce]'s `no-replay-outcome` can selectively turn off
@@ -3386,7 +3386,7 @@ The rest of section is about concrete subclasses of [`journal`][5082].
     generated. They differ from `file-journal`s in that events written to
     `in-memory-journal`s are not serialized (and deserialized on replay)
     with the following consequences for the objects recorded by
-    [`journaled`][6267] (i.e. its `name`, `args` arguments, and also the return `values`([`0`][fc69] [`1`][eef3])
+    [`journaled`][6267] (i.e. its `name`, `args` arguments, and also the return [`values`][5cc0]
     of the block, or the value returned by [`condition`][83e1]):
     
     - These objects need not be [readable][768f].
@@ -3452,7 +3452,7 @@ The rest of section is about concrete subclasses of [`journal`][5082].
     
     Since serialization in `file-journal`s is built on top of Lisp [`read`][fe58]
     and [`write`][fc0a], everything that [`journaled`][6267] records in events (i.e. its
-    `name`, `args` arguments, and also the return `values`([`0`][fc69] [`1`][eef3]) of the block, or
+    `name`, `args` arguments, and also the return [`values`][5cc0] of the block, or
     the value returned by [`condition`][83e1]) must be [readable][768f].
     
     File journals are human-readable and editable by hand with some
@@ -3955,7 +3955,6 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [0002]: #JOURNAL:JOURNAL-ERROR%20CONDITION "JOURNAL:JOURNAL-ERROR CONDITION"
   [0114]: #JOURNAL:@JOURNAL-BACKGROUND%20MGL-PAX:SECTION "Background"
   [01fd]: #JOURNAL:WRITE-EVENT%20GENERIC-FUNCTION "JOURNAL:WRITE-EVENT GENERIC-FUNCTION"
-  [0317]: http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm "PATHNAME (MGL-PAX:CLHS CLASS)"
   [03de]: #JOURNAL:JOURNAL-STATE%20TYPE "JOURNAL:JOURNAL-STATE TYPE"
   [041c]: #JOURNAL:@REPLAY%20MGL-PAX:SECTION "Replay"
   [046e]: #JOURNAL:@SYNCHRONIZATION%20MGL-PAX:SECTION "Synchronization to storage"
@@ -3969,7 +3968,6 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [0e53]: #JOURNAL:EXTERNAL-EVENT%20TYPE "JOURNAL:EXTERNAL-EVENT TYPE"
   [0fdb]: #JOURNAL:REPLAY-VERSION-DOWNGRADE%20CONDITION "JOURNAL:REPLAY-VERSION-DOWNGRADE CONDITION"
   [1033]: http://www.lispworks.com/documentation/HyperSpec/Body/t_syn_st.htm "SYNONYM-STREAM (MGL-PAX:CLHS CLASS)"
-  [10c3]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm "TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [10c8]: #JOURNAL:REPLAY-FORCE-UPGRADE%20RESTART "JOURNAL:REPLAY-FORCE-UPGRADE RESTART"
   [11b7]: #JOURNAL:PRETTIFY-EVENT%20FUNCTION "JOURNAL:PRETTIFY-EVENT FUNCTION"
   [1256]: #JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION "JOURNAL:REPLAY-ARGS-MISMATCH CONDITION"
@@ -4031,6 +4029,7 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [560b]: #JOURNAL:@ERROR-OUTCOME%20MGL-PAX:GLOSSARY-TERM "error outcome"
   [5833]: #JOURNAL:PPRINT-EVENTS%20FUNCTION "JOURNAL:PPRINT-EVENTS FUNCTION"
   [5a82]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm "EQ (MGL-PAX:CLHS FUNCTION)"
+  [5cc0]: http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm "VALUES (MGL-PAX:CLHS NIL)"
   [5cd1]: #JOURNAL:LEAF-EVENT%20TYPE "JOURNAL:LEAF-EVENT TYPE"
   [5d05]: #JOURNAL:FRAMED%20MGL-PAX:MACRO "JOURNAL:FRAMED MGL-PAX:MACRO"
   [5da8]: #JOURNAL:OPEN-STREAMLET-P%20GENERIC-FUNCTION "JOURNAL:OPEN-STREAMLET-P GENERIC-FUNCTION"
@@ -4045,8 +4044,8 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [6525]: #JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM "replay event"
   [6547]: http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm "OPEN (MGL-PAX:CLHS FUNCTION)"
   [663f]: http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm "NULL (MGL-PAX:CLHS CLASS)"
-  [6671]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm "PATHNAME (MGL-PAX:CLHS FUNCTION)"
   [6699]: #JOURNAL:REPLAY-UNEXPECTED-OUTCOME%20CONDITION "JOURNAL:REPLAY-UNEXPECTED-OUTCOME CONDITION"
+  [669b]: http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm "ERROR (MGL-PAX:CLHS NIL)"
   [6710]: #JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION "JOURNAL:REPLAY-NAME-MISMATCH CONDITION"
   [674f]: #JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION "Synchronization with file journals"
   [676d]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm "PRINC (MGL-PAX:CLHS FUNCTION)"
@@ -4065,6 +4064,7 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [768f]: #JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM "readable"
   [77a2]: https://en.wikipedia.org/wiki/Continuation "continuation"
   [782a]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_pre.htm "*PRINT-PRETTY* (MGL-PAX:CLHS VARIABLE)"
+  [783a]: http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm "PATHNAME (MGL-PAX:CLHS NIL)"
   [78fd]: #JOURNAL:@ABORTED-EXECUTION%20MGL-PAX:GLOSSARY-TERM "aborted execution"
   [7991]: #JOURNAL:@REPLAYING-THE-OUTCOME%20MGL-PAX:SECTION "Replaying the outcome"
   [7a2f]: #JOURNAL:STREAMLET%20CLASS "JOURNAL:STREAMLET CLASS"
@@ -4105,7 +4105,6 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [9f84]: #JOURNAL:EVENT-NAME%20FUNCTION "JOURNAL:EVENT-NAME FUNCTION"
   [9f90]: #JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29 "JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION (MGL-PAX:READER JOURNAL:JOURNALING-FAILURE)"
   [a138]: http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm "SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"
-  [a370]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm "UNTRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [a394]: #JOURNAL:EVENT%20TYPE "JOURNAL:EVENT TYPE"
   [a6ac]: #JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION "`:log-record`"
   [a8a7]: #JOURNAL:@THE-REPLAY-STRATEGY%20MGL-PAX:SECTION "The replay strategy"
@@ -4157,7 +4156,6 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
   [e95a]: #JOURNAL:CHECKED%20MGL-PAX:MACRO "JOURNAL:CHECKED MGL-PAX:MACRO"
   [ecf9]: http://www.lispworks.com/documentation/HyperSpec/Body/e_storag.htm "STORAGE-CONDITION (MGL-PAX:CLHS CONDITION)"
   [eddd]: #JOURNAL:PEEK-REPLAY-EVENT%20FUNCTION "JOURNAL:PEEK-REPLAY-EVENT FUNCTION"
-  [eef3]: http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm "VALUES (MGL-PAX:CLHS TYPE)"
   [f0e7]: #JOURNAL:MAKE-FILE-JOURNAL%20FUNCTION "JOURNAL:MAKE-FILE-JOURNAL FUNCTION"
   [f17d]: #JOURNAL:VALUES%3C-%20FUNCTION "JOURNAL:VALUES<- FUNCTION"
   [f224]: #JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION "JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"

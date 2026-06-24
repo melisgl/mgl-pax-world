@@ -2,7 +2,7 @@
 
 ###### [in package SB-MANUAL]
 
-This manual – for SBCL version 2.6.1.pax-doc.1000-d9abb60, generated 2026-06-24 01:31:48 –
+This manual – for SBCL version 2.6.5.32.pax-doc.18-b999eeefd, generated 2026-06-24 15:56:43 –
 is part of the SBCL software system. See the README file for
 more information.
 
@@ -1831,6 +1831,8 @@ the program by causing cache misses or even swapping.
           (declaim (optimize safety))
           (load "foo.lisp"))
 
+    Also, see the CLHS.
+
 ### Compiler Errors
 
 #### Type Errors at Compile Time
@@ -2211,8 +2213,8 @@ present in the debugger, see Debugger Policy Control.
 
 If a function is defined by defun it will appear in backtrace
 by that name. Functions defined by labels and flet will appear as
-(FLET <name>) and (LABELS <name>) respectively. Anonymous
-lambdas will appear as (LAMBDA <lambda-list>).
+(flet <name>) and (labels <name>) respectively. Anonymous
+lambdas will appear as (lambda <lambda-list>).
 
 ##### Entry Point Details
 
@@ -2958,6 +2960,8 @@ traced.
     which are evaluated after the function call, (sb-debug:arg n) returns
     the nth value returned by the function.
 
+    Also, see the CLHS.
+
 In the case of functions where the known return convention is used
 to optimize, encapsulation may be necessary in order to make tracing
 work at all. The symptom of this occurring is an error stating
@@ -2971,6 +2975,8 @@ in such cases we recommend using (TRACE FOO :ENCAPSULATE t).
 
     Remove tracing from the specified functions. Untraces all
     functions when called with no arguments.
+
+    Also, see the CLHS.
 
 - [variable] sb-debug:*trace-indentation-step* 2
 
@@ -3021,6 +3027,8 @@ The following debugger commands are used for controlling single stepping.
     outside the lexical scope of the form can be stepped into only if the
     functions in question have been compiled with sufficient debug policy
     to be at least partially steppable.
+
+    Also, see the CLHS.
 
 ### Enabling and Disabling the Debugger
 
@@ -3271,9 +3279,9 @@ detect incorrect usage of dynamic extent declarations.
 
 Some numeric functions have a property: n lower bits of the
 result depend only on n lower bits of (all or some) arguments. If
-the compiler sees an expression of form (LOGAND <expr> <mask>),
+the compiler sees an expression of form (logand <expr> <mask>),
 where <expr> is a tree of such good functions and <mask> is
-known to be of type (UNSIGNED-BYTE <w>), where <w> is a good
+known to be of type (unsigned-byte <w>), where <w> is a good
 width, all intermediate results will be cut to <w> bits (but it is
 not done for variables and constants!). This often results in an
 ability to use simple machine instructions for the functions.
@@ -4116,7 +4124,8 @@ are:
     AMOP as the functional version of defclass, which has this
     behaviour; however, it is not consistent with the weaker
     requirement in AMOP, which states that any class found by
-    find-class, no matter what its class-name, is redefined.
+    find-class, no matter what its class-name, is
+    redefined.
 
 - An error is not signaled in the case of the :name initialization
   argument for sb-mop:slot-definition objects being a constant, when
@@ -5007,15 +5016,15 @@ Unicode codepoint.
 
     Returns t if character is a Default_Ignorable_Code_Point
 
-- [function] sb-unicode:grapheme-break-class char
+- [function] sb-unicode:grapheme-break-class character
 
     Returns the grapheme breaking class of character, as specified in UAX #29.
 
-- [function] sb-unicode:word-break-class char
+- [function] sb-unicode:word-break-class character
 
     Returns the word breaking class of character, as specified in UAX #29.
 
-- [function] sb-unicode:sentence-break-class char
+- [function] sb-unicode:sentence-break-class character
 
     Returns the sentence breaking class of character, as specified in UAX #29.
 
@@ -5171,6 +5180,8 @@ way:
     responsible for calling provide to indicate a successful load of the
     module.
 
+    Also, see the CLHS.
+
 - [variable] sb-ext:*module-provider-functions* (asdf/operate:module-provide-asdf sb-impl::module-provide-contrib)
 
     See require.
@@ -5186,6 +5197,8 @@ mechanisms as follows:
     until one of them returns non-nil; these functions are responsible for
     signalling a file-error to indicate failure to perform an operation on
     the file system.
+
+    Also, see the CLHS.
 
 - [variable] sb-ext:*ed-functions* nil
 
@@ -5301,6 +5314,8 @@ arguments to make-hash-table.
         t, all concurrent accesses are safe, but note that CLHS
         3.6 (Traversal Rules and Side Effects) remains in force. See
         also: sb-ext:with-locked-hash-table.
+
+    Also, see the CLHS.
 
 - [macro] sb-ext:define-hash-table-test name hash-function
 
@@ -5766,6 +5781,8 @@ and its context.
     returns the documentation stored under the function name if any, and
     falls back on the documentation in the function object if necessary.
 
+    Also, see the CLHS.
+
 ### Stale Extensions
 
 SBCL has inherited from CMUCL various hooks to allow the user to
@@ -6142,7 +6159,7 @@ These are the basic foreign type specifiers:
   is desired, it may be explicitly coerced using cast.
 
 Arrays are accessed using deref, passing the indices
-as additional arguments.  Elements are stored in column-major order
+as additional arguments.  Elements are stored in row-major order
 (as in C), so the first dimension determines only the size of the
 memory block, and not the layout of the higher dimensions. An array
 whose first dimension is variable may be specified by using nil as
@@ -6251,10 +6268,10 @@ can only be allocated using make-alien.
     support that means an <external-format> of :ascii and an
     <element-type> of base-char. Without Unicode support the
     <external-format> can also be :iso-8859-1, and the
-    <element-type> can also be character. If <external-format>
-    and <element-type> are not compatible, or the string is a
-    (simple-array character (*)), this data is copied by the
-    implementation as required.
+    <element-type> can also be character. If
+    <external-format> and <element-type> are not compatible, or
+    the string is a (simple-array character (*)), this data is
+    copied by the implementation as required.
 
     Assigning a Lisp string to a c-string structure field or
     variable stores the contents of the string to the memory already
@@ -6277,10 +6294,10 @@ can only be allocated using make-alien.
     variable.
 
 - sb-alien also exports translations of these C type
-  specifiers as foreign type specifiers:
+specifiers as foreign type specifiers:
 
-    char, short, int, long, unsigned-char, unsigned-short,
-    unsigned-int, unsigned-long, float, double, size-t, off-t
+char, short, int, long, unsigned-char, unsigned-short,
+  unsigned-int, unsigned-long, float, double, size-t, off-t
 
 ### Operations On Foreign Values
 
@@ -7253,11 +7270,15 @@ of fundamental-stream.
     stream. The class sb-gray:fundamental-character-stream provides a
     default method which returns character.
 
+    Also, see the CLHS.
+
 - [generic-function] close stream &key abort
 
     Close the given stream. No more I/O may be performed, but
     inquiries may still be made. If :abort is true, an attempt is made
     to clean up the side effects of having created the stream.
+
+    Also, see the CLHS.
 
 - [generic-function] sb-gray:stream-file-position stream &optional position-spec
 
@@ -8309,19 +8330,24 @@ lockless algorithms.
     the increment.
 
     place must access one of the following:
-     - a defstruct slot with declared type (unsigned-byte 64)
-       or aref of a (simple-array (unsigned-byte 64) (*))
-       The type sb-ext:word can be used for these purposes.
-     - car or cdr (respectively first or rest) of a cons.
-     - a variable defined using defglobal with a proclaimed type of fixnum.
-    Macroexpansion is performed on place before expanding atomic-incf.
 
-    Incrementing is done using modular arithmetic,
-    which is well-defined over two different domains:
-     - For structures and arrays, the operation accepts and produces
+    - a defstruct slot with declared type (unsigned-byte 64)
+      or aref of a (simple-array (unsigned-byte 64) (*))
+      The type sb-ext:word can be used for these purposes.
+
+    - car or cdr (respectively first or rest) of a cons.
+
+    - a variable defined using defglobal with a proclaimed type of fixnum.
+      Macroexpansion is performed on place before expanding atomic-incf.
+
+    Incrementing is done using modular arithmetic, which is well-defined
+    over two different domains:
+
+    - For structures and arrays, the operation accepts and produces
        an (unsigned-byte 64), and diff must be of type (signed-byte 64).
        atomic-incf of #xFFFFFFFFFFFFFFFF by one results in #x0 being stored in place.
-     - For other places, the domain is fixnum, and diff must be a fixnum.
+
+    - For other places, the domain is fixnum, and diff must be a fixnum.
        atomic-incf of #x3FFFFFFFFFFFFFFF by one results in #x-4000000000000000
        being stored in place.
 
@@ -10683,7 +10709,7 @@ as querying their properties and relationships in the running image.
     indirect containers: fdefinitions, eql specializers, classes, and
     thread-local symbol values in other threads fall into this category.
 
-    > Note: calling map-root with a THREAD does not currently map over
+    > Note: calling map-root with a thread does not currently map over
     > conservative roots from the thread registers and interrupt contexts.
 
     Experimental: interface subject to change.
@@ -10903,8 +10929,8 @@ both pathnames and strings as its arguments.
 
 - [type] sb-posix:file-descriptor-designator
 
-    Designator for a file-descriptor: either a fixnum designating itself, or
-    a file-stream designating the underlying file-descriptor.
+    Designator for a file-descriptor: either a fixnum designating
+    itself, or a file-stream designating the underlying file-descriptor.
 
 - [function] sb-posix:file-descriptor file-descriptor
 

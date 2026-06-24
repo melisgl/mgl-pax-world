@@ -240,7 +240,7 @@ Journal library is this idea taken to its logical conclusion.</p>
 
 <p>See <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">Logging</a> for a complete example.</p>
 
-<h5>Compared to <code>cl:trace</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>1</code></a>)</h5>
+<h5>Compared to <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a></h5>
 
 <ul>
 <li><p>Ability to handle <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a>s</p></li>
@@ -322,7 +322,7 @@ signal an error. The default implementation</p>
 <ul>
 <li><p>returns <code>designator</code> itself if it is of type <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>,</p></li>
 <li><p>returns a new <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a> if <code>designator</code> is <code>t</code>,</p></li>
-<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).</p></li>
+<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm" title="PATHNAME (MGL-PAX:CLHS NIL)"><code>pathname</code></a>.</p></li>
 </ul></li>
 </ul>
 
@@ -1245,7 +1245,7 @@ most often used with <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title
 <a id="JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L468">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:log-decorator = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L479">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:log-decorator = nil)</span></span></p>
 
 <p>If non-<code>nil</code>, this is a function to add <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="decoration">decoration</a>
 to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s before they are written to a journal. The only
@@ -1358,7 +1358,7 @@ point-in-time textual log messages, and <a href="#JOURNAL:JOURNALED%20MGL-PAX:MA
 
 <h2><a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION">7 Tracing</a></h2>
 
-<p><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> behaves similarly to <code>cl:trace</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>1</code></a>) but deals with
+<p><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> behaves similarly to <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a> but deals with
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a>s gracefully.</p>
 
 <h5>Basic tracing</h5>
@@ -1440,7 +1440,7 @@ achieved by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_set
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2623">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" >jtrace</a></span></span> <span class="locative-args">&amp;rest names</span></span></p>
 
-<p>Like <code>cl:trace</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>1</code></a>), <code>jtrace</code> takes a list of symbols. When functions
+<p>Like <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a>, <code>jtrace</code> takes a list of symbols. When functions
 denoted by those <code>names</code> are invoked, their names, arguments and
 outcomes are printed in human readable form to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*TRACE-OUTPUT* (MGL-PAX:CLHS VARIABLE)"><code>*trace-output*</code></a>. These
 values may not be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="readable">readable</a>, <code>jtrace</code> does not care.</p>
@@ -1474,7 +1474,7 @@ it can also detect – somewhat heuristically – <a href="http://www.lispworks.
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2719">[macro]</a></span> <span class="reference-object"><a href="#JOURNAL:JUNTRACE%20MGL-PAX:MACRO" >juntrace</a></span></span> <span class="locative-args">&amp;rest names</span></span></p>
 
-<p>Like <code>cl:untrace</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="UNTRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="sbcl-manual.html#UNTRACE%20MGL-PAX:MACRO" title="UNTRACE MGL-PAX:MACRO"><code>1</code></a>), <code>juntrace</code> makes it so that the global functions
+<p>Like <a href="sbcl-manual.html#UNTRACE%20MGL-PAX:MACRO" title="UNTRACE MGL-PAX:MACRO"><code>cl:untrace</code></a>, <code>juntrace</code> makes it so that the global functions
 denoted by the symbols <code>names</code> are no longer traced by <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a>. When
 invoked with no arguments, it untraces all traced functions.</p></li>
 </ul>
@@ -1572,7 +1572,7 @@ However, by changing <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESS
 <h3><a href="#JOURNAL:@JOURNAL-SLIME-INTEGRATION%20MGL-PAX:SECTION">7.1 Slime integration</a></h3>
 
 <p><a href="https://common-lisp.net/project/slime/" >Slime</a>, by default,
-binds <code>C-c C-t</code> to toggling <code>cl:trace</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm" title="TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>1</code></a>). To integrate <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> into
+binds <code>C-c C-t</code> to toggling <a href="sbcl-manual.html#TRACE%20MGL-PAX:MACRO" title="TRACE MGL-PAX:MACRO"><code>cl:trace</code></a>. To integrate <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> into
 Slime, load <code>src/mgl-jrn.el</code> into Emacs.</p>
 
 <ul>
@@ -2218,7 +2218,7 @@ assistance may be required from <code>replay-values</code> and <code>replay-cond
   condition (has <code>event-exit</code> <code>:condition</code>), then the recorded
   condition (in <code>event-outcome</code>) is signalled as
   IN <code>(error (event-outcome replay-event))</code>. If <code>replay-condition</code> is
-  specified, it is called instead of <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>). <code>replay-condition</code> must
+  specified, it is called instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a>. <code>replay-condition</code> must
   not return normally, and it's a <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a> if it does.</p></li>
 </ul>
 
@@ -3491,7 +3491,7 @@ journals normally only consists of creating and using them in
 <a id="JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L468">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-state</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:state)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L470">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-state</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:state)</span></span></p>
 
 <p>Return the state of <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>, which is of type
 <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a>.</p></li>
@@ -3501,7 +3501,7 @@ journals normally only consists of creating and using them in
 <a id="JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L468">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-sync</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:sync = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L474">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-sync</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:sync = nil)</span></span></p>
 
 <p>The <code>sync</code> argument specified at instantiation. See
 <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>.</p></li>
@@ -3531,7 +3531,7 @@ is safe to call from any thread.</p></li>
 <a id="JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L468">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-replay-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L488">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-replay-mismatch</a></span></span> <span class="locative-args"><a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (= nil)</span></span></p>
 
 <p>If <a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" title="JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"><code>journal-divergent-p</code></a>, then this is a list of two
 elements: the <a href="#JOURNAL:READ-POSITION%20GENERIC-FUNCTION" title="JOURNAL:READ-POSITION GENERIC-FUNCTION"><code>read-position</code></a>s in the <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> and
@@ -3620,7 +3620,7 @@ ideal for smallish journals persisted manually (see
 generated. They differ from <code>file-journal</code>s in that events written to
 <code>in-memory-journal</code>s are not serialized (and deserialized on replay)
 with the following consequences for the objects recorded by
-<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>)
+<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>values</code></a>
 of the block, or the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>):</p>
 
 <ul>
@@ -3658,7 +3658,7 @@ discussion, see <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL
 <a id="JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5040">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-events</a></span></span> <span class="locative-args"><a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (:events)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5042">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-events</a></span></span> <span class="locative-args"><a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (:events)</span></span></p>
 
 <p>A sequence of events in the journal. Not to be
 mutated by client code.</p></li>
@@ -3668,7 +3668,7 @@ mutated by client code.</p></li>
 <a id="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5040">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-previous-sync-position</a></span></span> <span class="locative-args"><a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (= 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5047">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-previous-sync-position</a></span></span> <span class="locative-args"><a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (= 0)</span></span></p>
 
 <p>The length of <a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-EVENTS (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-events</code></a> at the time of the
 most recent invocation of <code>sync-fn</code>.</p></li>
@@ -3694,7 +3694,7 @@ a more full-featured solution for repeated <a href="#JOURNAL:@REPLAY%20MGL-PAX:S
 
 <p>Since serialization in <code>file-journal</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a>
 and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE (MGL-PAX:CLHS FUNCTION)"><code>write</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> records in events (i.e. its
-<code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>) of the block, or
+<code>name</code>, <code>args</code> arguments, and also the return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>values</code></a> of the block, or
 the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="readable">readable</a>.</p>
 
 <p>File journals are human-readable and editable by hand with some
@@ -3748,7 +3748,7 @@ invalidation, a new <code>file-journal</code> object is created.</p></li>
 <a id="JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5212">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" >pathname-of</a></span></span> <span class="locative-args"><a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS">file-journal</a> (:pathname)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5214">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" >pathname-of</a></span></span> <span class="locative-args"><a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS">file-journal</a> (:pathname)</span></span></p>
 
 <p>The pathname of the file backing the journal.</p></li>
 </ul>
@@ -3787,7 +3787,7 @@ support reads, so they cannot be used as a <a href="#JOURNAL:REPLAY-JOURNAL%20FU
 <a id="JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2042">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:stream = *standard-output*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2044">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:stream = *standard-output*)</span></span></p>
 
 <p>The stream where events are dumped. May be set any
 time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM (MGL-PAX:CLHS CLASS)"><code>stream</code></a>.</p></li>
@@ -3797,7 +3797,7 @@ time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t
 <a id="JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2042">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-pretty</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:pretty = t)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2049">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-pretty</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:pretty = t)</span></span></p>
 
 <p>Whether to use <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a> or write
 events in as the property lists they are. A
@@ -3808,7 +3808,7 @@ events in as the property lists they are. A
 <a id="JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2042">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-prettifier</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:prettifier = 'prettify-event)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L2055">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-prettifier</a></span></span> <span class="locative-args"><a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:prettifier = 'prettify-event)</span></span></p>
 
 <p>A function like <a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a> that writes an
 event to a stream. Only used when <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a>, this is
@@ -3852,7 +3852,7 @@ yet, the replay journal is an empty, completed one.</p>
 <a id="JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5704">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="locative-args"><a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-failed = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5708">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="locative-args"><a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-failed = 1)</span></span></p>
 
 <p>If <code>max-n-failed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:failed</code> in the bundle exceeds
@@ -3864,7 +3864,7 @@ deleted.</p></li>
 <a id="JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5704">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="locative-args"><a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-completed = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5714">[accessor]</a></span> <span class="reference-object"><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="locative-args"><a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-completed = 1)</span></span></p>
 
 <p>If <code>max-n-completed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:completed</code> in the bundle exceeds
@@ -3924,7 +3924,7 @@ are passed on to <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOU
 <a id="JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5852">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" >directory-of</a></span></span> <span class="locative-args"><a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS">file-bundle</a> (:directory)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L5854">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" >directory-of</a></span></span> <span class="locative-args"><a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS">file-bundle</a> (:directory)</span></span></p>
 
 <p>The directory where the files backing the
 <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s in the <a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS"><code>file-bundle</code></a> are kept.</p></li>
@@ -3992,7 +3992,7 @@ built on top of streamlets.</p></li>
 <a id="JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L603">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" >journal</a></span></span> <span class="locative-args"><a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS">streamlet</a> (:journal)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/48dc10e2d924c607d2c1a73b3b90167d901d13f9/src/journal.lisp#L605">[reader]</a></span> <span class="reference-object"><a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" >journal</a></span></span> <span class="locative-args"><a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS">streamlet</a> (:journal)</span></span></p>
 
 <p>The <code>journal</code> that was passed to <a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a>.
 This is the journal <code>streamlet</code> operates on.</p></li>
@@ -4295,7 +4295,7 @@ be readable.</p></li>
 <p><a id="Indices"></a>
 <a id="Indices"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="sbcl-manual.html#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8592;</a> <a href="sbcl-manual.html" title="SBCL Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="lmdb-manual.html#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
 
 <h2>17 Indices</h2>
 
@@ -4966,7 +4966,7 @@ be readable.</p></li>
 </ul></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-24T01:32:59Z]</h6>
+<h6>[Generated 2026-06-24T14:06:24Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>
