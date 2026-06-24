@@ -298,7 +298,7 @@ able to add specialized methods, the name of the
 facet ([`facet-name`][8ce7]) is also passed as the
 argument right in front of the corresponding facet argument.
 
-In summary, define [`eql`][38a2] specializers on facet name arguments, and use
+In summary, define `eql`([`0`][db03] [`1`][5fd4]) specializers on facet name arguments, and use
 [`facet-description`][65d4] to associate arbitrary information with facets.
 
 <a id="x-28MGL-CUBE-3AMAKE-FACET-2A-20GENERIC-FUNCTION-29"></a>
@@ -602,10 +602,10 @@ Also see [Lifetime][a810].
   [2415]: pax-manual.md "PAX Manual"
   [2ce8]: #MGL-CUBE:UNWATCH-FACET%20GENERIC-FUNCTION "MGL-CUBE:UNWATCH-FACET GENERIC-FUNCTION"
   [36d6]: #MGL-CUBE:FACET%20STRUCTURE "MGL-CUBE:FACET STRUCTURE"
-  [38a2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm "EQL (MGL-PAX:CLHS NIL)"
   [3912]: #MGL-CUBE:@CUBE-LINKS%20MGL-PAX:SECTION "Links"
   [39a0]: #MGL-CUBE:DESTROY-FACET%20FUNCTION "MGL-CUBE:DESTROY-FACET FUNCTION"
   [43a2]: #MGL-CUBE:@CUBE-INTRODUCTION%20MGL-PAX:SECTION "Introduction"
+  [5fd4]: http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm "EQL (MGL-PAX:CLHS TYPE)"
   [65d4]: #MGL-CUBE:FACET-DESCRIPTION%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29 "MGL-CUBE:FACET-DESCRIPTION (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"
   [6832]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm "DEFMETHOD (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [696b]: #MGL-CUBE:FACET-UP-TO-DATE-P*%20GENERIC-FUNCTION "MGL-CUBE:FACET-UP-TO-DATE-P* GENERIC-FUNCTION"
@@ -624,6 +624,7 @@ Also see [Lifetime][a810].
   [b78f]: #MGL-CUBE:REMOVE-FACET-REFERENCE-BY-NAME%20FUNCTION "MGL-CUBE:REMOVE-FACET-REFERENCE-BY-NAME FUNCTION"
   [bf71]: #MGL-CUBE:*LET-OUTPUT-THROUGH-P*%20VARIABLE "MGL-CUBE:*LET-OUTPUT-THROUGH-P* VARIABLE"
   [d720]: #MGL-CUBE:@CUBE-DEFAULT-CALL-WITH-FACET*%20MGL-PAX:SECTION "The Default Implementation of `call-with-facet*`"
+  [db03]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm "EQL (MGL-PAX:CLHS FUNCTION)"
   [db31]: #MGL-CUBE:ADD-FACET-REFERENCE-BY-NAME%20FUNCTION "MGL-CUBE:ADD-FACET-REFERENCE-BY-NAME FUNCTION"
   [dbac]: #MGL-CUBE:DESTROY-CUBE%20FUNCTION "MGL-CUBE:DESTROY-CUBE FUNCTION"
   [ddd4]: #MGL-CUBE:WITH-FACETS%20MGL-PAX:MACRO "MGL-CUBE:WITH-FACETS MGL-PAX:MACRO"

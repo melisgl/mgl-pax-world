@@ -315,7 +315,7 @@ instances are simply called <strong>results</strong>.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type">[function]</span> <span class="reference-object"><a href="#MGL-COMMON:NAME%3D%20FUNCTION" >name=</a></span></span> <span class="locative-args">x y</span></span></p>
 
-<p>Return <code>t</code> if X and Y are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a> or if they are structured components whose
+<p>Return <code>t</code> if X and Y are <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) or if they are structured components whose
 elements are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. Strings and bit-vectors are <code>equal</code> if they are the same
 length and have identical components. Other arrays must be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a> to be <code>equal</code>.</p></li>
 </ul>
@@ -534,7 +534,7 @@ generated (<a href="#MGL-DATASET:N-SAMPLES%20%28MGL-PAX:READER%20MGL-DATASET:FUN
 <a id="MGL-DATASET:GENERATOR%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L126">[reader]</a></span> <span class="reference-object"><a href="#MGL-DATASET:GENERATOR%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29" >generator</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:generator)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L124">[reader]</a></span> <span class="reference-object"><a href="#MGL-DATASET:GENERATOR%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29" >generator</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:generator)</span></span></p>
 
 <p>A generator function of no arguments that returns
 the next sample.</p></li>
@@ -544,14 +544,14 @@ the next sample.</p></li>
 <a id="MGL-DATASET:MAX-N-SAMPLES%20%28MGL-PAX:ACCESSOR%20MGL-DATASET:FUNCTION-SAMPLER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L136">[accessor]</a></span> <span class="reference-object"><a href="#MGL-DATASET:MAX-N-SAMPLES%20%28MGL-PAX:ACCESSOR%20MGL-DATASET:FUNCTION-SAMPLER%29" >max-n-samples</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:max-n-samples = nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L124">[accessor]</a></span> <span class="reference-object"><a href="#MGL-DATASET:MAX-N-SAMPLES%20%28MGL-PAX:ACCESSOR%20MGL-DATASET:FUNCTION-SAMPLER%29" >max-n-samples</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:max-n-samples = nil)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-COMMON-3ANAME-20-28MGL-PAX-3AREADER-20MGL-DATASET-3AFUNCTION-SAMPLER-29-29"></a>
 <a id="MGL-COMMON:NAME%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L140">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:NAME%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29" >name</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:name = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L124">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:NAME%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29" >name</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:name = nil)</span></span></p>
 
 <p>An arbitrary object naming the sampler. Only used
 for printing the sampler object.</p></li>
@@ -561,7 +561,7 @@ for printing the sampler object.</p></li>
 <a id="MGL-DATASET:N-SAMPLES%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L131">[reader]</a></span> <span class="reference-object"><a href="#MGL-DATASET:N-SAMPLES%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29" >n-samples</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:n-samples = 0)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L124">[reader]</a></span> <span class="reference-object"><a href="#MGL-DATASET:N-SAMPLES%20%28MGL-PAX:READER%20MGL-DATASET:FUNCTION-SAMPLER%29" >n-samples</a></span></span> <span class="locative-args"><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS">function-sampler</a> (:n-samples = 0)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-RESAMPLE-3A-40MGL-RESAMPLE-20MGL-PAX-3ASECTION-29"></a>
@@ -914,7 +914,7 @@ evenly:</p>
 <p>Make a single sequence out of the sequences in <code>seqs</code> so that in the
 returned sequence indices of elements belonging to the same source
 sequence are spread evenly across the whole range. The result is a
-list is <code>result-type</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm" title="LIST (MGL-PAX:CLHS NIL)"><code>list</code></a>, it's a vector if <code>result-type</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm" title="VECTOR (MGL-PAX:CLHS NIL)"><code>vector</code></a>.
+list is <code>result-type</code> is <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), it's a vector if <code>result-type</code> is <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).
 If <code>result-type</code> is <code>nil</code>, then it's determined by the type of the first
 sequence in <code>seqs</code>.</p>
 
@@ -1304,7 +1304,7 @@ accessor:</p>
 
 <p>Note that the monitor we push can be anything as long as
 <a href="#MGL-CORE:APPLY-MONITOR%20GENERIC-FUNCTION" title="MGL-CORE:APPLY-MONITOR GENERIC-FUNCTION"><code>apply-monitor</code></a> is implemented on it with the appropriate signature.
-Also note that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm" title="ZEROP (MGL-PAX:CLHS FUNCTION)"><code>zerop</code></a> + <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_mod.htm" title="MOD (MGL-PAX:CLHS NIL)"><code>mod</code></a> logic is fragile, so you will likely
+Also note that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm" title="ZEROP (MGL-PAX:CLHS FUNCTION)"><code>zerop</code></a> + <code>mod</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mod_r.htm" title="MOD (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_mod.htm" title="MOD (MGL-PAX:CLHS TYPE)"><code>1</code></a>) logic is fragile, so you will likely
 want to use <a href="#MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY%20FUNCTION" title="MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY FUNCTION"><code>mgl-opt:monitor-optimization-periodically</code></a> instead of
 doing the above.</p>
 
@@ -1412,7 +1412,7 @@ the arguments that are documented to come with the event.</p></li>
 <a id="MGL-CORE:MEASURER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/monitor.lisp#L128">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:MEASURER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29" >measurer</a></span></span> <span class="locative-args"><a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS">monitor</a> (:measurer)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/monitor.lisp#L126">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:MEASURER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29" >measurer</a></span></span> <span class="locative-args"><a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS">monitor</a> (:measurer)</span></span></p>
 
 <p>This must be a monitor itself which only means
 that <a href="#MGL-CORE:APPLY-MONITOR%20GENERIC-FUNCTION" title="MGL-CORE:APPLY-MONITOR GENERIC-FUNCTION"><code>apply-monitor</code></a> is defined on it (but see <a href="#MGL-CORE:@MGL-MONITORING%20MGL-PAX:SECTION" title="Monitoring">Monitoring</a>). The
@@ -1424,7 +1424,7 @@ returned values are aggregated by <a href="#MGL-CORE:COUNTER%20%28MGL-PAX:READER
 <a id="MGL-CORE:COUNTER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/monitor.lisp#L134">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:COUNTER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29" >counter</a></span></span> <span class="locative-args"><a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS">monitor</a> (:counter)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/monitor.lisp#L126">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:COUNTER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29" >counter</a></span></span> <span class="locative-args"><a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS">monitor</a> (:counter)</span></span></p>
 
 <p>The <code>counter</code> of a monitor carries out the
 aggregation of results returned by <a href="#MGL-CORE:MEASURER%20%28MGL-PAX:READER%20MGL-CORE:MONITOR%29" title="MGL-CORE:MEASURER (MGL-PAX:READER MGL-CORE:MONITOR)"><code>measurer</code></a>. The See <a href="#MGL-CORE:@MGL-COUNTER%20MGL-PAX:SECTION" title="Counters">Counters</a>
@@ -1546,7 +1546,7 @@ attributes without clobbering the those in the <code>:initform</code>, (<code>:t
 <a id="MGL-CORE:ATTRIBUTES%20%28MGL-PAX:ACCESSOR%20MGL-CORE:ATTRIBUTED%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/counter.lisp#L41">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CORE:ATTRIBUTES%20%28MGL-PAX:ACCESSOR%20MGL-CORE:ATTRIBUTED%29" >attributes</a></span></span> <span class="locative-args"><a href="#MGL-CORE:ATTRIBUTED%20CLASS" title="MGL-CORE:ATTRIBUTED CLASS">attributed</a> (:attributes = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/counter.lisp#L39">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CORE:ATTRIBUTES%20%28MGL-PAX:ACCESSOR%20MGL-CORE:ATTRIBUTED%29" >attributes</a></span></span> <span class="locative-args"><a href="#MGL-CORE:ATTRIBUTED%20CLASS" title="MGL-CORE:ATTRIBUTED CLASS">attributed</a> (:attributes = nil)</span></span></p>
 
 <p>A plist of attribute keys and values.</p></li>
 </ul>
@@ -1675,7 +1675,7 @@ sequences.</p>
 <a id="MGL-CORE:CONCATENATION-TYPE%20%28MGL-PAX:READER%20MGL-CORE:CONCAT-COUNTER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/counter.lisp#L250">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:CONCATENATION-TYPE%20%28MGL-PAX:READER%20MGL-CORE:CONCAT-COUNTER%29" >concatenation-type</a></span></span> <span class="locative-args"><a href="#MGL-CORE:CONCAT-COUNTER%20CLASS" title="MGL-CORE:CONCAT-COUNTER CLASS">concat-counter</a> (:concatenation-type = 'list)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/counter.lisp#L247">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:CONCATENATION-TYPE%20%28MGL-PAX:READER%20MGL-CORE:CONCAT-COUNTER%29" >concatenation-type</a></span></span> <span class="locative-args"><a href="#MGL-CORE:CONCAT-COUNTER%20CLASS" title="MGL-CORE:CONCAT-COUNTER CLASS">concat-counter</a> (:concatenation-type = 'list)</span></span></p>
 
 <p>A type designator suitable as the RESULT-TYPE
 argument to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm" title="CONCATENATE (MGL-PAX:CLHS FUNCTION)"><code>concatenate</code></a>.</p></li>
@@ -2354,7 +2354,7 @@ termination condition is met.</p></li>
 <a id="MGL-OPT:N-INSTANCES%20%28MGL-PAX:READER%20MGL-OPT:ITERATIVE-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L76">[reader]</a></span> <span class="reference-object"><a href="#MGL-OPT:N-INSTANCES%20%28MGL-PAX:READER%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >n-instances</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:n-instances = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L74">[reader]</a></span> <span class="reference-object"><a href="#MGL-OPT:N-INSTANCES%20%28MGL-PAX:READER%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >n-instances</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:n-instances = 0)</span></span></p>
 
 <p>The number of instances this optimizer has seen so
 far. Incremented automatically during optimization.</p></li>
@@ -2364,7 +2364,7 @@ far. Incremented automatically during optimization.</p></li>
 <a id="MGL-OPT:TERMINATION%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L80">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:TERMINATION%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >termination</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:termination = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L74">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:TERMINATION%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >termination</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:termination = nil)</span></span></p>
 
 <p>If a number, it's the number of instances to train
 on in the sense of <a href="#MGL-OPT:N-INSTANCES%20%28MGL-PAX:READER%20MGL-OPT:ITERATIVE-OPTIMIZER%29" title="MGL-OPT:N-INSTANCES (MGL-PAX:READER MGL-OPT:ITERATIVE-OPTIMIZER)"><code>n-instances</code></a>. If <code>n-instances</code> is equal or greater
@@ -2378,7 +2378,7 @@ is processed as if it was returned by <code>termination</code>.</p></li>
 <a id="MGL-OPT:ON-OPTIMIZATION-STARTED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:ON-OPTIMIZATION-STARTED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >on-optimization-started</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:on-optimization-started = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L74">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:ON-OPTIMIZATION-STARTED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >on-optimization-started</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:on-optimization-started = nil)</span></span></p>
 
 <p>An event hook with parameters <code>(optimizer
 gradient-source n-instances)</code>. Called after initializations are
@@ -2390,7 +2390,7 @@ before optimization is started.</p></li>
 <a id="MGL-OPT:ON-OPTIMIZATION-FINISHED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L98">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:ON-OPTIMIZATION-FINISHED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >on-optimization-finished</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:on-optimization-finished = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L74">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:ON-OPTIMIZATION-FINISHED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >on-optimization-finished</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:on-optimization-finished = nil)</span></span></p>
 
 <p>An event hook with parameters <code>(optimizer
 gradient-source n-instances)</code>. Called when optimization has
@@ -2401,7 +2401,7 @@ finished.</p></li>
 <a id="MGL-OPT:ON-N-INSTANCES-CHANGED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L105">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:ON-N-INSTANCES-CHANGED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >on-n-instances-changed</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:on-n-instances-changed = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L74">[accessor]</a></span> <span class="reference-object"><a href="#MGL-OPT:ON-N-INSTANCES-CHANGED%20%28MGL-PAX:ACCESSOR%20MGL-OPT:ITERATIVE-OPTIMIZER%29" >on-n-instances-changed</a></span></span> <span class="locative-args"><a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a> (:on-n-instances-changed = nil)</span></span></p>
 
 <p>An event hook with parameters <code>(optimizer
 gradient-source n-instances)</code>. Called when optimization of a batch
@@ -2625,7 +2625,7 @@ weights can go unused for instance due to missing input values.</p></li>
 <a id="MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L111">[accessor]</a></span> <span class="reference-object"><a href="#MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >batch-size</a></span></span> <span class="locative-args">gd-optimizer (:batch-size = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >batch-size</a></span></span> <span class="locative-args">gd-optimizer (:batch-size = 1)</span></span></p>
 
 <p>After having gone through <code>batch-size</code> number of
 inputs, weights are updated. With <code>batch-size</code> 1, one gets
@@ -2639,7 +2639,7 @@ most practical 'mini-batch' compromise.</p></li>
 <a id="MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L120">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >learning-rate</a></span></span> <span class="locative-args">gd-optimizer (:learning-rate = 0.1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >learning-rate</a></span></span> <span class="locative-args">gd-optimizer (:learning-rate = 0.1)</span></span></p>
 
 <p>This is the step size along the gradient. Decrease
 it if optimization diverges, increase it if it doesn't make
@@ -2650,7 +2650,7 @@ progress.</p></li>
 <a id="MGL-GD:MOMENTUM%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L125">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:MOMENTUM%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >momentum</a></span></span> <span class="locative-args">gd-optimizer (:momentum = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:MOMENTUM%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >momentum</a></span></span> <span class="locative-args">gd-optimizer (:momentum = 0)</span></span></p>
 
 <p>A value in the [0, 1) interval. <code>momentum</code> times the
 previous weight change is added to the gradient. 0 means no
@@ -2661,7 +2661,7 @@ momentum.</p></li>
 <a id="MGL-GD:MOMENTUM-TYPE%20%28MGL-PAX:READER%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L130">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:MOMENTUM-TYPE%20%28MGL-PAX:READER%20MGL-GD::GD-OPTIMIZER%29" >momentum-type</a></span></span> <span class="locative-args">gd-optimizer (:momentum-type = :normal)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:MOMENTUM-TYPE%20%28MGL-PAX:READER%20MGL-GD::GD-OPTIMIZER%29" >momentum-type</a></span></span> <span class="locative-args">gd-optimizer (:momentum-type = :normal)</span></span></p>
 
 <p>One of <code>:normal</code>, <code>:nesterov</code> or <code>:none</code>. For pure
 optimization Nesterov's momentum may be better, but it may also
@@ -2674,7 +2674,7 @@ momentum, but it also uses less memory. Note that with <code>:none</code>,
 <a id="MGL-GD:WEIGHT-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L138">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:WEIGHT-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >weight-decay</a></span></span> <span class="locative-args">gd-optimizer (:weight-decay = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:WEIGHT-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >weight-decay</a></span></span> <span class="locative-args">gd-optimizer (:weight-decay = 0)</span></span></p>
 
 <p>An L2 penalty. It discourages large weights, much
 like a zero mean gaussian prior. <code>weight-decay</code> * WEIGHT is added to
@@ -2687,7 +2687,7 @@ added to it.</p></li>
 <a id="MGL-GD:WEIGHT-PENALTY%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L145">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:WEIGHT-PENALTY%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >weight-penalty</a></span></span> <span class="locative-args">gd-optimizer (:weight-penalty = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:WEIGHT-PENALTY%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >weight-penalty</a></span></span> <span class="locative-args">gd-optimizer (:weight-penalty = 0)</span></span></p>
 
 <p>An L1 penalty. It encourages sparsity.
 <code>sign</code>(WEIGHT) * <code>weight-penalty</code> is added to the gradient pushing the
@@ -2701,7 +2701,7 @@ on the features.</p></li>
 <a id="MGL-GD:USE-SEGMENT-DERIVATIVES-P%20%28MGL-PAX:READER%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L100">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:USE-SEGMENT-DERIVATIVES-P%20%28MGL-PAX:READER%20MGL-GD::GD-OPTIMIZER%29" >use-segment-derivatives-p</a></span></span> <span class="locative-args">gd-optimizer (:use-segment-derivatives-p = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:USE-SEGMENT-DERIVATIVES-P%20%28MGL-PAX:READER%20MGL-GD::GD-OPTIMIZER%29" >use-segment-derivatives-p</a></span></span> <span class="locative-args">gd-optimizer (:use-segment-derivatives-p = nil)</span></span></p>
 
 <p>Save memory if both the gradient source (the model
 being optimized) and the optimizer support this feature. It works
@@ -2715,7 +2715,7 @@ accumulator matrix into which the derivatives are summed.</p></li>
 <a id="MGL-GD:AFTER-UPDATE-HOOK%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L153">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:AFTER-UPDATE-HOOK%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >after-update-hook</a></span></span> <span class="locative-args">gd-optimizer (:after-update-hook = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L90">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:AFTER-UPDATE-HOOK%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" >after-update-hook</a></span></span> <span class="locative-args">gd-optimizer (:after-update-hook = nil)</span></span></p>
 
 <p>A list of functions with no arguments called after
 each weight update.</p></li>
@@ -2725,7 +2725,7 @@ each weight update.</p></li>
 <a id="MGL-GD:BEFORE-UPDATE-HOOK%20%28MGL-PAX:ACCESSOR%20MGL-GD:BATCH-GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L214">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:BEFORE-UPDATE-HOOK%20%28MGL-PAX:ACCESSOR%20MGL-GD:BATCH-GD-OPTIMIZER%29" >before-update-hook</a></span></span> <span class="locative-args"><a href="#MGL-GD:BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:BATCH-GD-OPTIMIZER CLASS">batch-gd-optimizer</a> (:before-update-hook = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L210">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:BEFORE-UPDATE-HOOK%20%28MGL-PAX:ACCESSOR%20MGL-GD:BATCH-GD-OPTIMIZER%29" >before-update-hook</a></span></span> <span class="locative-args"><a href="#MGL-GD:BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:BATCH-GD-OPTIMIZER CLASS">batch-gd-optimizer</a> (:before-update-hook = nil)</span></span></p>
 
 <p>A list of functions of no parameters. Each
 function is called just before a weight update takes place (after
@@ -2809,7 +2809,7 @@ options common to all batch based optimizers.</p></li>
 <a id="MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L420">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >learning-rate</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (= 2.0e-4)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L418">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >learning-rate</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (= 2.0e-4)</span></span></p>
 
 <p>Same thing as <a href="#MGL-GD:LEARNING-RATE%20%28MGL-PAX:ACCESSOR%20MGL-GD::GD-OPTIMIZER%29" title="MGL-GD:LEARNING-RATE (MGL-PAX:ACCESSOR MGL-GD::GD-OPTIMIZER)"><code>learning-rate</code></a> but with the default suggested by the Adam paper.</p></li>
 </ul>
@@ -2818,7 +2818,7 @@ options common to all batch based optimizers.</p></li>
 <a id="MGL-GD:MEAN-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L425">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:MEAN-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >mean-decay</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:mean-decay = 0.9)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L418">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:MEAN-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >mean-decay</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:mean-decay = 0.9)</span></span></p>
 
 <p>A number between 0 and 1 that determines how fast
 the estimated mean of derivatives is updated. 0 basically gives
@@ -2831,7 +2831,7 @@ This is \(\beta_1\) in the paper.</p></li>
 <a id="MGL-GD:MEAN-DECAY-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L433">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:MEAN-DECAY-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >mean-decay-decay</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:mean-decay-decay = (- 1 1.0d-7))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L418">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:MEAN-DECAY-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >mean-decay-decay</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:mean-decay-decay = (- 1 1.0d-7))</span></span></p>
 
 <p>A value that should be close to 1. <a href="#MGL-GD:MEAN-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" title="MGL-GD:MEAN-DECAY (MGL-PAX:ACCESSOR MGL-GD:ADAM-OPTIMIZER)"><code>mean-decay</code></a> is
 multiplied by this value after each update. This is \(\lambda\) in
@@ -2842,7 +2842,7 @@ the paper.</p></li>
 <a id="MGL-GD:VARIANCE-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L439">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:VARIANCE-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >variance-decay</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:variance-decay = 0.999)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L418">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:VARIANCE-DECAY%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >variance-decay</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:variance-decay = 0.999)</span></span></p>
 
 <p>A number between 0 and 1 that determines how fast
 the estimated variance of derivatives is updated. This is
@@ -2853,7 +2853,7 @@ the estimated variance of derivatives is updated. This is
 <a id="MGL-GD:VARIANCE-ADJUSTMENT%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L445">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:VARIANCE-ADJUSTMENT%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >variance-adjustment</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:variance-adjustment = 1.0d-7)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L418">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:VARIANCE-ADJUSTMENT%20%28MGL-PAX:ACCESSOR%20MGL-GD:ADAM-OPTIMIZER%29" >variance-adjustment</a></span></span> <span class="locative-args"><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS">adam-optimizer</a> (:variance-adjustment = 1.0d-7)</span></span></p>
 
 <p>Within the bowels of adam, the estimated mean is
 divided by the square root of the estimated variance (per weight)
@@ -2889,7 +2889,7 @@ same time for all weights.</p></li>
 <a id="MGL-GD:N-WEIGHT-USES-IN-BATCH%20%28MGL-PAX:ACCESSOR%20MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L670">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:N-WEIGHT-USES-IN-BATCH%20%28MGL-PAX:ACCESSOR%20MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER%29" >n-weight-uses-in-batch</a></span></span> <span class="locative-args"><a href="#MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER CLASS">normalized-batch-gd-optimizer</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L668">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:N-WEIGHT-USES-IN-BATCH%20%28MGL-PAX:ACCESSOR%20MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER%29" >n-weight-uses-in-batch</a></span></span> <span class="locative-args"><a href="#MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:NORMALIZED-BATCH-GD-OPTIMIZER CLASS">normalized-batch-gd-optimizer</a></span></span></p>
 
 <p>Number of uses of the weight in its current batch.</p></li>
 </ul>
@@ -2917,7 +2917,7 @@ simply to not train all segments.</p></li>
 <a id="MGL-GD:SEGMENTER%20%28MGL-PAX:READER%20MGL-GD:SEGMENTED-GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L847">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:SEGMENTER%20%28MGL-PAX:READER%20MGL-GD:SEGMENTED-GD-OPTIMIZER%29" >segmenter</a></span></span> <span class="locative-args"><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" title="MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS">segmented-gd-optimizer</a> (:segmenter)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L845">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:SEGMENTER%20%28MGL-PAX:READER%20MGL-GD:SEGMENTED-GD-OPTIMIZER%29" >segmenter</a></span></span> <span class="locative-args"><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" title="MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS">segmented-gd-optimizer</a> (:segmenter)</span></span></p>
 
 <p>When this optimizer is initialized it loops over
 the segment of the learner with <a href="#MGL-OPT:MAP-SEGMENTS%20GENERIC-FUNCTION" title="MGL-OPT:MAP-SEGMENTS GENERIC-FUNCTION"><code>map-segments</code></a>. <code>segmenter</code> is a
@@ -2932,7 +2932,7 @@ segments mapped to it.</p></li>
 <a id="MGL-OPT:SEGMENTS%20%28MGL-PAX:READER%20MGL-GD:SEGMENTED-GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L857">[reader]</a></span> <span class="reference-object"><a href="#MGL-OPT:SEGMENTS%20%28MGL-PAX:READER%20MGL-GD:SEGMENTED-GD-OPTIMIZER%29" >segments</a></span></span> <span class="locative-args"><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" title="MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS">segmented-gd-optimizer</a></span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L845">[reader]</a></span> <span class="reference-object"><a href="#MGL-OPT:SEGMENTS%20%28MGL-PAX:READER%20MGL-GD:SEGMENTED-GD-OPTIMIZER%29" >segments</a></span></span> <span class="locative-args"><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" title="MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS">segmented-gd-optimizer</a></span></span></li>
 </ul>
 
 <p><a href="#MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS" title="MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS"><code>segmented-gd-optimizer</code></a> inherits from <a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS"><code>iterative-optimizer</code></a>, so see
@@ -2968,7 +2968,7 @@ this optimizer.</p></li>
 <a id="MGL-GD:N-WEIGHT-USES-IN-BATCH%20%28MGL-PAX:ACCESSOR%20MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L765">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:N-WEIGHT-USES-IN-BATCH%20%28MGL-PAX:ACCESSOR%20MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%29" >n-weight-uses-in-batch</a></span></span> <span class="locative-args"><a href="#MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER CLASS">per-weight-batch-gd-optimizer</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/gradient-descent.lisp#L763">[accessor]</a></span> <span class="reference-object"><a href="#MGL-GD:N-WEIGHT-USES-IN-BATCH%20%28MGL-PAX:ACCESSOR%20MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%29" >n-weight-uses-in-batch</a></span></span> <span class="locative-args"><a href="#MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:PER-WEIGHT-BATCH-GD-OPTIMIZER CLASS">per-weight-batch-gd-optimizer</a></span></span></p>
 
 <p>Number of uses of the weight in its current batch.</p></li>
 </ul>
@@ -3218,7 +3218,7 @@ through <a href="#MGL-COMMON:BATCH-SIZE%20GENERIC-FUNCTION" title="MGL-COMMON:BA
 <a id="MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L367">[accessor]</a></span> <span class="reference-object"><a href="#MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" >batch-size</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:batch-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L365">[accessor]</a></span> <span class="reference-object"><a href="#MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" >batch-size</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:batch-size)</span></span></p>
 
 <p>After having gone through <code>batch-size</code> number of
 instances, weights are updated. Normally, <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a> operates on all
@@ -3232,14 +3232,14 @@ the dataset at the start of optimization.</p></li>
 <a id="MGL-CG:CG-ARGS%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L375">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CG:CG-ARGS%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" >cg-args</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:cg-args = 'nil)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L365">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CG:CG-ARGS%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" >cg-args</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:cg-args = 'nil)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-CG-3AON-CG-BATCH-DONE-20-28MGL-PAX-3AACCESSOR-20MGL-CG-3ACG-OPTIMIZER-29-29"></a>
 <a id="MGL-CG:ON-CG-BATCH-DONE%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L381">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CG:ON-CG-BATCH-DONE%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" >on-cg-batch-done</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:on-cg-batch-done = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L365">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CG:ON-CG-BATCH-DONE%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" >on-cg-batch-done</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:on-cg-batch-done = nil)</span></span></p>
 
 <p>An event hook called when processing a conjugate
 gradient batch is done. The handlers on the hook are called with 8
@@ -3268,7 +3268,7 @@ arguments.</p></li>
 <a id="MGL-CG:SEGMENT-FILTER%20%28MGL-PAX:READER%20MGL-CG:CG-OPTIMIZER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L376">[reader]</a></span> <span class="reference-object"><a href="#MGL-CG:SEGMENT-FILTER%20%28MGL-PAX:READER%20MGL-CG:CG-OPTIMIZER%29" >segment-filter</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:segment-filter = (constantly t))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/conjugate-gradient.lisp#L365">[reader]</a></span> <span class="reference-object"><a href="#MGL-CG:SEGMENT-FILTER%20%28MGL-PAX:READER%20MGL-CG:CG-OPTIMIZER%29" >segment-filter</a></span></span> <span class="locative-args"><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS">cg-optimizer</a> (:segment-filter = (constantly t))</span></span></p>
 
 <p>A predicate function on segments that filters out
 uninteresting segments. Called from <a href="#MGL-OPT:INITIALIZE-OPTIMIZER*%20GENERIC-FUNCTION" title="MGL-OPT:INITIALIZE-OPTIMIZER* GENERIC-FUNCTION"><code>initialize-optimizer*</code></a>.</p></li>
@@ -3367,7 +3367,7 @@ accumulator).</p></li>
 <a id="MGL-OPT:SEGMENTS%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L305">[reader]</a></span> <span class="reference-object"><a href="#MGL-OPT:SEGMENTS%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" >segments</a></span></span> <span class="locative-args"><a href="#MGL-OPT:SEGMENT-SET%20CLASS" title="MGL-OPT:SEGMENT-SET CLASS">segment-set</a> (:segments)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L303">[reader]</a></span> <span class="reference-object"><a href="#MGL-OPT:SEGMENTS%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" >segments</a></span></span> <span class="locative-args"><a href="#MGL-OPT:SEGMENT-SET%20CLASS" title="MGL-OPT:SEGMENT-SET CLASS">segment-set</a> (:segments)</span></span></p>
 
 <p>A list of weight matrices.</p></li>
 </ul>
@@ -3376,7 +3376,7 @@ accumulator).</p></li>
 <a id="MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L309">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" >size</a></span></span> <span class="locative-args"><a href="#MGL-OPT:SEGMENT-SET%20CLASS" title="MGL-OPT:SEGMENT-SET CLASS">segment-set</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/optimize.lisp#L303">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-OPT:SEGMENT-SET%29" >size</a></span></span> <span class="locative-args"><a href="#MGL-OPT:SEGMENT-SET%20CLASS" title="MGL-OPT:SEGMENT-SET CLASS">segment-set</a></span></span></p>
 
 <p>The sum of the sizes of the weight matrices of
 <a href="#MGL-OPT:SEGMENTS%20GENERIC-FUNCTION" title="MGL-OPT:SEGMENTS GENERIC-FUNCTION"><code>segments</code></a>.</p></li>
@@ -3589,7 +3589,7 @@ allows it to be used in <a href="#MGL-OPT:MINIMIZE%20FUNCTION" title="MGL-OPT:MI
 <a id="MGL-COMMON:FN%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/differentiable-function.lisp#L10">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:FN%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29" >fn</a></span></span> <span class="locative-args"><a href="#MGL-DIFFUN:DIFFUN%20CLASS" title="MGL-DIFFUN:DIFFUN CLASS">diffun</a> (:fn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/differentiable-function.lisp#L8">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:FN%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29" >fn</a></span></span> <span class="locative-args"><a href="#MGL-DIFFUN:DIFFUN%20CLASS" title="MGL-DIFFUN:DIFFUN CLASS">diffun</a> (:fn)</span></span></p>
 
 <p>A real valued lisp function. It may have any
 number of parameters.</p></li>
@@ -3599,7 +3599,7 @@ number of parameters.</p></li>
 <a id="MGL-DIFFUN:PARAMETER-INDICES%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/differentiable-function.lisp#L14">[reader]</a></span> <span class="reference-object"><a href="#MGL-DIFFUN:PARAMETER-INDICES%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29" >parameter-indices</a></span></span> <span class="locative-args"><a href="#MGL-DIFFUN:DIFFUN%20CLASS" title="MGL-DIFFUN:DIFFUN CLASS">diffun</a> (:parameter-indices = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/differentiable-function.lisp#L8">[reader]</a></span> <span class="reference-object"><a href="#MGL-DIFFUN:PARAMETER-INDICES%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29" >parameter-indices</a></span></span> <span class="locative-args"><a href="#MGL-DIFFUN:DIFFUN%20CLASS" title="MGL-DIFFUN:DIFFUN CLASS">diffun</a> (:parameter-indices = nil)</span></span></p>
 
 <p>The list of indices of parameters that we don't
 optimize. Values for these will come from the DATASET argument of
@@ -3610,7 +3610,7 @@ optimize. Values for these will come from the DATASET argument of
 <a id="MGL-DIFFUN:WEIGHT-INDICES%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/differentiable-function.lisp#L21">[reader]</a></span> <span class="reference-object"><a href="#MGL-DIFFUN:WEIGHT-INDICES%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29" >weight-indices</a></span></span> <span class="locative-args"><a href="#MGL-DIFFUN:DIFFUN%20CLASS" title="MGL-DIFFUN:DIFFUN CLASS">diffun</a> (:weight-indices = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/differentiable-function.lisp#L8">[reader]</a></span> <span class="reference-object"><a href="#MGL-DIFFUN:WEIGHT-INDICES%20%28MGL-PAX:READER%20MGL-DIFFUN:DIFFUN%29" >weight-indices</a></span></span> <span class="locative-args"><a href="#MGL-DIFFUN:DIFFUN%20CLASS" title="MGL-DIFFUN:DIFFUN CLASS">diffun</a> (:weight-indices = nil)</span></span></p>
 
 <p>The list of indices of parameters to be optimized,
 the values of which will come from the <code>weights</code>
@@ -3807,7 +3807,7 @@ a <a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS"><code>lump</code></a>
 <a id="MGL-CORE:N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L177">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29" >n-stripes</a></span></span> <span class="locative-args"><a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS">bpn</a> (:n-stripes = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L166">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29" >n-stripes</a></span></span> <span class="locative-args"><a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS">bpn</a> (:n-stripes = 1)</span></span></p>
 
 <p>The current number of instances the network has.
 This is automatically set to the number of instances passed to
@@ -3820,7 +3820,7 @@ value.</p></li>
 <a id="MGL-CORE:MAX-N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L184">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:MAX-N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29" >max-n-stripes</a></span></span> <span class="locative-args"><a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS">bpn</a> (:max-n-stripes = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L166">[reader]</a></span> <span class="reference-object"><a href="#MGL-CORE:MAX-N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29" >max-n-stripes</a></span></span> <span class="locative-args"><a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS">bpn</a> (:max-n-stripes = nil)</span></span></p>
 
 <p>The maximum number of instances the network can
 operate on in parallel. Within <a href="#MGL-BP:BUILD-FNN%20MGL-PAX:MACRO" title="MGL-BP:BUILD-FNN MGL-PAX:MACRO"><code>build-fnn</code></a> or <a href="#MGL-BP:BUILD-RNN%20MGL-PAX:MACRO" title="MGL-BP:BUILD-RNN MGL-PAX:MACRO"><code>build-rnn</code></a>, it defaults
@@ -3832,7 +3832,7 @@ When set <code>max-n-stripes</code> of all <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:
 <a id="MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L168">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" >clumps</a></span></span> <span class="locative-args"><a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS">bpn</a> (:clumps = (make-array 0 :element-type 'clump :adjustable t :fill-pointer t))</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L166">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" >clumps</a></span></span> <span class="locative-args"><a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS">bpn</a> (:clumps = (make-array 0 :element-type 'clump :adjustable t :fill-pointer t))</span></span></p>
 
 <p>A topological sorted adjustable array with a fill
 pointer that holds the clumps that make up the network. Clumps are
@@ -3892,7 +3892,7 @@ argument), it must be wrapped in a <a href="#MGL-BP:BP-LEARNER%20CLASS" title="M
 <a id="MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L925">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29" >bpn</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:bpn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L923">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:BPN%20%28MGL-PAX:READER%20MGL-BP:BP-LEARNER%29" >bpn</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:bpn)</span></span></p>
 
 <p>The <code>bpn</code> for which this <a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS"><code>bp-learner</code></a> provides the
 gradients.</p></li>
@@ -3902,7 +3902,7 @@ gradients.</p></li>
 <a id="MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L930">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29" >monitors</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:monitors = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L923">[accessor]</a></span> <span class="reference-object"><a href="#MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29" >monitors</a></span></span> <span class="locative-args"><a href="#MGL-BP:BP-LEARNER%20CLASS" title="MGL-BP:BP-LEARNER CLASS">bp-learner</a> (:monitors = nil)</span></span></p>
 
 <p>A list of <a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS"><code>monitor</code></a>s.</p></li>
 </ul>
@@ -4517,7 +4517,7 @@ that all weights are present and one can start training it.</p></li>
 <a id="MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L442">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >unfolder</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:unfolder)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L440">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >unfolder</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:unfolder)</span></span></p>
 
 <p>The <code>unfolder</code> of an <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>rnn</code></a> is function of no arguments
 that builds and returns a <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>. The unfolder is allowed to create
@@ -4533,7 +4533,7 @@ exists, then the existing lump will be added to the <code>bpn</code> created by
 <a id="MGL-BP:MAX-LAG%20%28MGL-PAX:READER%20MGL-BP:RNN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L453">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:MAX-LAG%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >max-lag</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:max-lag = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L440">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:MAX-LAG%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >max-lag</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:max-lag = 1)</span></span></p>
 
 <p>The networks built by <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a> may contain new
 weights up to time step <code>max-lag</code>. Beyond that point, all weight
@@ -4549,7 +4549,7 @@ when creating the <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>r
 <a id="MGL-BP:CUDA-WINDOW-START-TIME%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L480">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:CUDA-WINDOW-START-TIME%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" >cuda-window-start-time</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:cuda-window-start-time = *cuda-window-start-time*)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L440">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:CUDA-WINDOW-START-TIME%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" >cuda-window-start-time</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:cuda-window-start-time = *cuda-window-start-time*)</span></span></p>
 
 <p>Due to unfolding, the memory footprint of an <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>rnn</code></a>
 is almost linear in the number of time steps (i.e. the max
@@ -4721,7 +4721,7 @@ to takes its input from itself which is problematic because it has
 <a id="MGL-BP:WARP-START%20%28MGL-PAX:READER%20MGL-BP:RNN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L469">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:WARP-START%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >warp-start</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:warp-start = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L440">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:WARP-START%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >warp-start</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:warp-start = 1)</span></span></p>
 
 <p>The <a href="#MGL-BP:TIME-STEP%20FUNCTION" title="MGL-BP:TIME-STEP FUNCTION"><code>time-step</code></a> from which <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a> will create
 <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>s that essentially repeat every <a href="#MGL-BP:WARP-LENGTH%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:WARP-LENGTH (MGL-PAX:READER MGL-BP:RNN)"><code>warp-length</code></a> steps.</p></li>
@@ -4731,7 +4731,7 @@ to takes its input from itself which is problematic because it has
 <a id="MGL-BP:WARP-LENGTH%20%28MGL-PAX:READER%20MGL-BP:RNN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L473">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:WARP-LENGTH%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >warp-length</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:warp-length = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L440">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:WARP-LENGTH%20%28MGL-PAX:READER%20MGL-BP:RNN%29" >warp-length</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:warp-length = 1)</span></span></p>
 
 <p>An integer such that the <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a> <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a> creates at
 time step <code>i</code> (where <code>(&lt;= warp-start i)</code>) is identical to the <code>bpn</code>
@@ -4744,7 +4744,7 @@ connections.</p></li>
 <a id="MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L505">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" >step-monitors</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:step-monitors = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/backprop.lisp#L440">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" >step-monitors</a></span></span> <span class="locative-args"><a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a> (:step-monitors = nil)</span></span></p>
 
 <p>During training, unfolded <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>s corresponding to
 previous time steps may be expensive to get at because they are no
@@ -4817,7 +4817,7 @@ handled automagically behind the scenes.</p></li>
 <a id="MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L39">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >size</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a> (:size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L37">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:SIZE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >size</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a> (:size)</span></span></p>
 
 <p>The number of values in a single stripe.</p></li>
 </ul>
@@ -4826,7 +4826,7 @@ handled automagically behind the scenes.</p></li>
 <a id="MGL-COMMON:DEFAULT-VALUE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L54">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:DEFAULT-VALUE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >default-value</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a> (:default-value = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L37">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:DEFAULT-VALUE%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >default-value</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a> (:default-value = 0)</span></span></p>
 
 <p>Upon creation or resize the lump's nodes get
 filled with this value.</p></li>
@@ -4848,7 +4848,7 @@ implementing new lump types.</p></li>
 <a id="MGL-COMMON:NODES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L42">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:NODES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >nodes</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a> (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L37">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:NODES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >nodes</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a> (= nil)</span></span></p>
 
 <p>The values computed by the lump in the forward
 pass are stored here. It is an <code>n-stripes * size</code> matrix that has
@@ -4861,7 +4861,7 @@ on their shape.</p></li>
 <a id="MGL-BP:DERIVATIVES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L49">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:DERIVATIVES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >derivatives</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L37">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:DERIVATIVES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" >derivatives</a></span></span> <span class="locative-args"><a href="#MGL-BP:LUMP%20CLASS" title="MGL-BP:LUMP CLASS">lump</a></span></span></p>
 
 <p>The derivatives computed in the backward pass are
 stored here. This matrix is very much like <a href="#MGL-COMMON:NODES%20%28MGL-PAX:READER%20MGL-BP:LUMP%29" title="MGL-COMMON:NODES (MGL-PAX:READER MGL-BP:LUMP)"><code>nodes</code></a>
@@ -4903,7 +4903,7 @@ defaults to no dropout.</p>
 <a id="MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EINPUT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L454">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EINPUT%29" >dropout</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EINPUT%20CLASS" title="MGL-BP:-&gt;INPUT CLASS">-&gt;input</a> (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L452">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EINPUT%29" >dropout</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EINPUT%20CLASS" title="MGL-BP:-&gt;INPUT CLASS">-&gt;input</a> (= nil)</span></span></p>
 
 <p>See <a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EDROPOUT%29" title="MGL-BP:DROPOUT (MGL-PAX:ACCESSOR MGL-BP:-&gt;DROPOUT)"><code>dropout</code></a>.</p></li>
 </ul>
@@ -4943,7 +4943,7 @@ determined automatically.</p>
 <a id="MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EEMBEDDING%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1000">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EEMBEDDING%29" >weights</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EEMBEDDING%20CLASS" title="MGL-BP:-&gt;EMBEDDING CLASS">-&gt;embedding</a> (:weights)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L998">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EEMBEDDING%29" >weights</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EEMBEDDING%20CLASS" title="MGL-BP:-&gt;EMBEDDING CLASS">-&gt;embedding</a> (:weights)</span></span></p>
 
 <p>A weight lump whose rows indexed by
 <a href="#MGL-BP:INPUT-ROW-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EEMBEDDING%29" title="MGL-BP:INPUT-ROW-INDICES (MGL-PAX:ACCESSOR MGL-BP:-&gt;EMBEDDING)"><code>input-row-indices</code></a> are copied to the output of this lump.</p></li>
@@ -4953,7 +4953,7 @@ determined automatically.</p>
 <a id="MGL-BP:INPUT-ROW-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EEMBEDDING%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1004">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:INPUT-ROW-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EEMBEDDING%29" >input-row-indices</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EEMBEDDING%20CLASS" title="MGL-BP:-&gt;EMBEDDING CLASS">-&gt;embedding</a> (:input-row-indices)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L998">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:INPUT-ROW-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EEMBEDDING%29" >input-row-indices</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EEMBEDDING%20CLASS" title="MGL-BP:-&gt;EMBEDDING CLASS">-&gt;embedding</a> (:input-row-indices)</span></span></p>
 
 <p>A sequence of batch size length of row indices. To
 be set in <a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" title="MGL-CORE:SET-INPUT GENERIC-FUNCTION"><code>set-input</code></a>.</p></li>
@@ -4989,7 +4989,7 @@ dimensions:</p>
 <a id="MGL-BP:DIMENSIONS%20%28MGL-PAX:READER%20MGL-BP:-%3EWEIGHT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L206">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:DIMENSIONS%20%28MGL-PAX:READER%20MGL-BP:-%3EWEIGHT%29" >dimensions</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EWEIGHT%20CLASS" title="MGL-BP:-&gt;WEIGHT CLASS">-&gt;weight</a> (:dimensions)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L204">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:DIMENSIONS%20%28MGL-PAX:READER%20MGL-BP:-%3EWEIGHT%29" >dimensions</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EWEIGHT%20CLASS" title="MGL-BP:-&gt;WEIGHT CLASS">-&gt;weight</a> (:dimensions)</span></span></p>
 
 <p><a href="#MGL-COMMON:NODES%20GENERIC-FUNCTION" title="MGL-COMMON:NODES GENERIC-FUNCTION"><code>nodes</code></a> and <a href="#MGL-BP:DERIVATIVES%20GENERIC-FUNCTION" title="MGL-BP:DERIVATIVES GENERIC-FUNCTION"><code>derivatives</code></a> of this lump will be
 allocated with these dimensions.</p></li>
@@ -5126,7 +5126,7 @@ its output is fed into an activation function (see
 <a id="MGL-BP:BATCH-NORMALIZATION%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZED%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L576">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:BATCH-NORMALIZATION%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZED%29" >batch-normalization</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZED%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZED CLASS">-&gt;batch-normalized</a> (:normalization)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L573">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:BATCH-NORMALIZATION%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZED%29" >batch-normalization</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZED%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZED CLASS">-&gt;batch-normalized</a> (:normalization)</span></span></p>
 
 <p>The <a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS"><code>-&gt;batch-normalization</code></a> of this lump. May be
 shared between multiple <a href="#MGL-BP:-%3EBATCH-NORMALIZED%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZED CLASS"><code>-&gt;batch-normalized</code></a> lumps.</p>
@@ -5174,7 +5174,7 @@ carry out the computation. These estimations are saved and loaded by
 <a id="MGL-COMMON:SCALE%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L862">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:SCALE%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >scale</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:scale)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L860">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:SCALE%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >scale</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:scale)</span></span></p>
 
 <p>A weight lump of the same size as <a href="#MGL-BP:SHIFT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" title="MGL-BP:SHIFT (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZATION)"><code>shift</code></a>. This is
 \(\gamma\) in the paper.</p></li>
@@ -5184,7 +5184,7 @@ carry out the computation. These estimations are saved and loaded by
 <a id="MGL-BP:SHIFT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L866">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:SHIFT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >shift</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:shift)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L860">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:SHIFT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >shift</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:shift)</span></span></p>
 
 <p>A weight lump of the same size as <a href="#MGL-COMMON:SCALE%20GENERIC-FUNCTION" title="MGL-COMMON:SCALE GENERIC-FUNCTION"><code>scale</code></a>. This is
 \(\beta\) in the paper.</p></li>
@@ -5194,7 +5194,7 @@ carry out the computation. These estimations are saved and loaded by
 <a id="MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L874">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >batch-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:batch-size = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L860">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:BATCH-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >batch-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:batch-size = nil)</span></span></p>
 
 <p>Normally all stripes participate in the batch.
 Lowering the number of stripes may increase the regularization
@@ -5214,7 +5214,7 @@ effect, leaving only the faster learning.</p></li>
 <a id="MGL-GD:VARIANCE-ADJUSTMENT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L888">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:VARIANCE-ADJUSTMENT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >variance-adjustment</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:variance-adjustment = 1.0e-4)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L860">[reader]</a></span> <span class="reference-object"><a href="#MGL-GD:VARIANCE-ADJUSTMENT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >variance-adjustment</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:variance-adjustment = 1.0e-4)</span></span></p>
 
 <p>A small positive real number that's added to the
 sample variance. This is \(\epsilon\) in the paper.</p></li>
@@ -5224,7 +5224,7 @@ sample variance. This is \(\epsilon\) in the paper.</p></li>
 <a id="MGL-BP:POPULATION-DECAY%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L895">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:POPULATION-DECAY%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >population-decay</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:population-decay = 0.99)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L860">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:POPULATION-DECAY%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29" >population-decay</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS">-&gt;batch-normalization</a> (:population-decay = 0.99)</span></span></p>
 
 <p>While training, an exponential moving average of
 batch means and standard deviances (termed <em>population
@@ -5293,7 +5293,7 @@ automatically.</p></li>
 <a id="MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESIGMOID%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1081">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESIGMOID%29" >dropout</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESIGMOID%20CLASS" title="MGL-BP:-&gt;SIGMOID CLASS">-&gt;sigmoid</a> (= nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1079">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESIGMOID%29" >dropout</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESIGMOID%20CLASS" title="MGL-BP:-&gt;SIGMOID CLASS">-&gt;sigmoid</a> (= nil)</span></span></p>
 
 <p>See <a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EDROPOUT%29" title="MGL-BP:DROPOUT (MGL-PAX:ACCESSOR MGL-BP:-&gt;DROPOUT)"><code>dropout</code></a>.</p></li>
 </ul>
@@ -5392,7 +5392,7 @@ state.</p></li>
 <a id="MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1466">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EMAX%20CLASS" title="MGL-BP:-&gt;MAX CLASS">-&gt;max</a> (:group-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1463">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EMAX%20CLASS" title="MGL-BP:-&gt;MAX CLASS">-&gt;max</a> (:group-size)</span></span></p>
 
 <p>The number of inputs in each group.</p></li>
 </ul>
@@ -5418,7 +5418,7 @@ Rarely useful.</p></li>
 <a id="MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMIN%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1583">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMIN%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EMIN%20CLASS" title="MGL-BP:-&gt;MIN CLASS">-&gt;min</a> (:group-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1580">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMIN%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EMIN%20CLASS" title="MGL-BP:-&gt;MIN CLASS">-&gt;min</a> (:group-size)</span></span></p>
 
 <p>The number of inputs in each group.</p></li>
 </ul>
@@ -5450,7 +5450,7 @@ automatically.</p></li>
 <a id="MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX-CHANNEL%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1688">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX-CHANNEL%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EMAX-CHANNEL%20CLASS" title="MGL-BP:-&gt;MAX-CHANNEL CLASS">-&gt;max-channel</a> (:group-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1685">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3EMAX-CHANNEL%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EMAX-CHANNEL%20CLASS" title="MGL-BP:-&gt;MAX-CHANNEL CLASS">-&gt;max-channel</a> (:group-size)</span></span></p>
 
 <p>The number of inputs in each group.</p></li>
 </ul>
@@ -5493,7 +5493,7 @@ whose value is computed as the sum of nodes in their input lump.</p></li>
 <a id="MGL-BP:IMPORTANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ELOSS%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1867">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:IMPORTANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ELOSS%29" >importance</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ELOSS%20CLASS" title="MGL-BP:-&gt;LOSS CLASS">-&gt;loss</a> (:importance = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L1865">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:IMPORTANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ELOSS%29" >importance</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ELOSS%20CLASS" title="MGL-BP:-&gt;LOSS CLASS">-&gt;loss</a> (:importance = nil)</span></span></p>
 
 <p>This is to support weighted instances. That is
 when not all training instances are equally important. If non-<code>nil</code>,
@@ -5585,7 +5585,7 @@ it is nearly ubiquitous. See the <a href="#MGL-BP:@MGL-FNN-TUTORIAL%20MGL-PAX:SE
 <a id="MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2004">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESOFTMAX-XE-LOSS%20CLASS" title="MGL-BP:-&gt;SOFTMAX-XE-LOSS CLASS">-&gt;softmax-xe-loss</a> (:group-size)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2001">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:GROUP-SIZE%20%28MGL-PAX:READER%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29" >group-size</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESOFTMAX-XE-LOSS%20CLASS" title="MGL-BP:-&gt;SOFTMAX-XE-LOSS CLASS">-&gt;softmax-xe-loss</a> (:group-size)</span></span></p>
 
 <p>The number of elements in a softmax group. This is
 the number of classes for classification. Often <code>group-size</code> is
@@ -5597,7 +5597,7 @@ constraint is that <code>size</code> is a multiple of <code>group-size</code>.</
 <a id="MGL-COMMON:TARGET%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2010">[accessor]</a></span> <span class="reference-object"><a href="#MGL-COMMON:TARGET%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29" >target</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESOFTMAX-XE-LOSS%20CLASS" title="MGL-BP:-&gt;SOFTMAX-XE-LOSS CLASS">-&gt;softmax-xe-loss</a> (:target = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2001">[accessor]</a></span> <span class="reference-object"><a href="#MGL-COMMON:TARGET%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESOFTMAX-XE-LOSS%29" >target</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESOFTMAX-XE-LOSS%20CLASS" title="MGL-BP:-&gt;SOFTMAX-XE-LOSS CLASS">-&gt;softmax-xe-loss</a> (:target = nil)</span></span></p>
 
 <p>Set in <a href="#MGL-CORE:SET-INPUT%20GENERIC-FUNCTION" title="MGL-CORE:SET-INPUT GENERIC-FUNCTION"><code>set-input</code></a>, this is either a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> of the same
 size as the input lump <code>x</code> or if the target is very sparse, this
@@ -5675,7 +5675,7 @@ automatically.</p></li>
 <a id="MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EDROPOUT%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L341">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EDROPOUT%29" >dropout</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EDROPOUT%20CLASS" title="MGL-BP:-&gt;DROPOUT CLASS">-&gt;dropout</a> (:dropout = 0.5)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L338">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:DROPOUT%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EDROPOUT%29" >dropout</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EDROPOUT%20CLASS" title="MGL-BP:-&gt;DROPOUT CLASS">-&gt;dropout</a> (:dropout = 0.5)</span></span></p>
 
 <p>If non-<code>nil</code>, then in the forward pass zero out each
 node in this chunk with <code>dropout</code> probability.</p></li>
@@ -5707,7 +5707,7 @@ based regularization methods.</p>
 <a id="MGL-BP:MEAN%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2367">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:MEAN%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" >mean</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EGAUSSIAN-RANDOM%20CLASS" title="MGL-BP:-&gt;GAUSSIAN-RANDOM CLASS">-&gt;gaussian-random</a> (:mean = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2365">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:MEAN%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" >mean</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EGAUSSIAN-RANDOM%20CLASS" title="MGL-BP:-&gt;GAUSSIAN-RANDOM CLASS">-&gt;gaussian-random</a> (:mean = 0)</span></span></p>
 
 <p>The mean of the normal distribution.</p></li>
 </ul>
@@ -5716,7 +5716,7 @@ based regularization methods.</p>
 <a id="MGL-BP:VARIANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2370">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:VARIANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" >variance</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EGAUSSIAN-RANDOM%20CLASS" title="MGL-BP:-&gt;GAUSSIAN-RANDOM CLASS">-&gt;gaussian-random</a> (:variance = 1)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2365">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:VARIANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" >variance</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EGAUSSIAN-RANDOM%20CLASS" title="MGL-BP:-&gt;GAUSSIAN-RANDOM CLASS">-&gt;gaussian-random</a> (:variance = 1)</span></span></p>
 
 <p>The variance of the normal distribution.</p></li>
 </ul>
@@ -5725,7 +5725,7 @@ based regularization methods.</p>
 <a id="MGL-BP:VARIANCE-FOR-PREDICTION%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2373">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:VARIANCE-FOR-PREDICTION%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" >variance-for-prediction</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EGAUSSIAN-RANDOM%20CLASS" title="MGL-BP:-&gt;GAUSSIAN-RANDOM CLASS">-&gt;gaussian-random</a> (:variance-for-prediction = 0)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2365">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:VARIANCE-FOR-PREDICTION%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" >variance-for-prediction</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EGAUSSIAN-RANDOM%20CLASS" title="MGL-BP:-&gt;GAUSSIAN-RANDOM CLASS">-&gt;gaussian-random</a> (:variance-for-prediction = 0)</span></span></p>
 
 <p>If not <code>nil</code>, then this value overrides <a href="#MGL-BP:VARIANCE%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29" title="MGL-BP:VARIANCE (MGL-PAX:ACCESSOR MGL-BP:-&gt;GAUSSIAN-RANDOM)"><code>variance</code></a>
 when not in training (i.e. when making predictions).</p></li>
@@ -5801,7 +5801,7 @@ of this lump. If <a href="#MGL-BP:TRANSPOSE-WEIGHTS-P%20%28MGL-PAX:READER%20MGL-
 <a id="MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2465">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29" >weights</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EV*M%20CLASS" title="MGL-BP:-&gt;V*M CLASS">-&gt;v*m</a> (:weights)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2462">[reader]</a></span> <span class="reference-object"><a href="#MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29" >weights</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EV*M%20CLASS" title="MGL-BP:-&gt;V*M CLASS">-&gt;v*m</a> (:weights)</span></span></p>
 
 <p>A <a href="#MGL-BP:-%3EWEIGHT%20CLASS" title="MGL-BP:-&gt;WEIGHT CLASS"><code>-&gt;weight</code></a> lump.</p></li>
 </ul>
@@ -5810,7 +5810,7 @@ of this lump. If <a href="#MGL-BP:TRANSPOSE-WEIGHTS-P%20%28MGL-PAX:READER%20MGL-
 <a id="MGL-BP:TRANSPOSE-WEIGHTS-P%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2468">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:TRANSPOSE-WEIGHTS-P%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29" >transpose-weights-p</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EV*M%20CLASS" title="MGL-BP:-&gt;V*M CLASS">-&gt;v*m</a> (:transpose-weights-p = nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L2462">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:TRANSPOSE-WEIGHTS-P%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29" >transpose-weights-p</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3EV*M%20CLASS" title="MGL-BP:-&gt;V*M CLASS">-&gt;v*m</a> (:transpose-weights-p = nil)</span></span></p>
 
 <p>Determines whether the input is multiplied by
 <a href="#MGL-COMMON:WEIGHTS%20GENERIC-FUNCTION" title="MGL-COMMON:WEIGHTS GENERIC-FUNCTION"><code>weights</code></a> or its transpose.</p></li>
@@ -6032,7 +6032,7 @@ returned by <code>(funcall seq-elt-fn 0)</code>.</p></li>
 <a id="MGL-BP:SEQ-ELT-FN%20%28MGL-PAX:READER%20MGL-BP:-%3ESEQ-BARRIER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L3115">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:SEQ-ELT-FN%20%28MGL-PAX:READER%20MGL-BP:-%3ESEQ-BARRIER%29" >seq-elt-fn</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESEQ-BARRIER%20CLASS" title="MGL-BP:-&gt;SEQ-BARRIER CLASS">-&gt;seq-barrier</a> (:seq-elt-fn)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L3113">[reader]</a></span> <span class="reference-object"><a href="#MGL-BP:SEQ-ELT-FN%20%28MGL-PAX:READER%20MGL-BP:-%3ESEQ-BARRIER%29" >seq-elt-fn</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESEQ-BARRIER%20CLASS" title="MGL-BP:-&gt;SEQ-BARRIER CLASS">-&gt;seq-barrier</a> (:seq-elt-fn)</span></span></p>
 
 <p>A function of an <code>index</code> argument that returns the
 lump with that index in some sequence.</p></li>
@@ -6042,7 +6042,7 @@ lump with that index in some sequence.</p></li>
 <a id="MGL-BP:SEQ-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESEQ-BARRIER%29"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L3119">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:SEQ-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESEQ-BARRIER%29" >seq-indices</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESEQ-BARRIER%20CLASS" title="MGL-BP:-&gt;SEQ-BARRIER CLASS">-&gt;seq-barrier</a></span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/lumps.lisp#L3113">[accessor]</a></span> <span class="reference-object"><a href="#MGL-BP:SEQ-INDICES%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3ESEQ-BARRIER%29" >seq-indices</a></span></span> <span class="locative-args"><a href="#MGL-BP:-%3ESEQ-BARRIER%20CLASS" title="MGL-BP:-&gt;SEQ-BARRIER CLASS">-&gt;seq-barrier</a></span></span></p>
 
 <p>A sequence of length batch size of indices. The
 element at index <code>i</code> is the index to be passed to <a href="#MGL-BP:SEQ-ELT-FN%20%28MGL-PAX:READER%20MGL-BP:-%3ESEQ-BARRIER%29" title="MGL-BP:SEQ-ELT-FN (MGL-PAX:READER MGL-BP:-&gt;SEQ-BARRIER)"><code>seq-elt-fn</code></a> to
@@ -6229,35 +6229,35 @@ was found in <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PA
 <a id="MGL-NLP:FEATURE-ENCODER%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L144">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:FEATURE-ENCODER%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >feature-encoder</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:feature-encoder)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L142">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:FEATURE-ENCODER%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >feature-encoder</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:feature-encoder)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-NLP-3AFEATURE-MAPPER-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29"></a>
 <a id="MGL-NLP:FEATURE-MAPPER%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L145">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:FEATURE-MAPPER%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >feature-mapper</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:feature-mapper)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L142">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:FEATURE-MAPPER%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >feature-mapper</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:feature-mapper)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-NLP-3AENCODED-FEATURE-TEST-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29"></a>
 <a id="MGL-NLP:ENCODED-FEATURE-TEST%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L146">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:ENCODED-FEATURE-TEST%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >encoded-feature-test</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:encoded-feature-test = #'eql)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L142">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:ENCODED-FEATURE-TEST%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >encoded-feature-test</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:encoded-feature-test = #'eql)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-NLP-3AENCODED-FEATURE-TYPE-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29"></a>
 <a id="MGL-NLP:ENCODED-FEATURE-TYPE%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L148">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:ENCODED-FEATURE-TYPE%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >encoded-feature-type</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:encoded-feature-type = t)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L142">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:ENCODED-FEATURE-TYPE%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >encoded-feature-type</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:encoded-feature-type = t)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-NLP-3ABAG-OF-WORDS-KIND-20-28MGL-PAX-3AREADER-20MGL-NLP-3ABAG-OF-WORDS-ENCODER-29-29"></a>
 <a id="MGL-NLP:BAG-OF-WORDS-KIND%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29"></a></p>
 
 <ul>
-<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L150">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:BAG-OF-WORDS-KIND%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >bag-of-words-kind</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:kind = :binary)</span></span></li>
+<li><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/nlp.lisp#L142">[reader]</a></span> <span class="reference-object"><a href="#MGL-NLP:BAG-OF-WORDS-KIND%20%28MGL-PAX:READER%20MGL-NLP:BAG-OF-WORDS-ENCODER%29" >bag-of-words-kind</a></span></span> <span class="locative-args"><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS">bag-of-words-encoder</a> (:kind = :binary)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-LOG-3A-40MGL-LOG-20MGL-PAX-3ASECTION-29"></a>
@@ -6307,7 +6307,7 @@ was found in <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PA
 <p><a id="Indices"></a>
 <a id="Indices"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="lmdb-manual.html#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">&#8592;</a> <a href="lmdb-manual.html" title="LMDB Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="sbcl-manual.html#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8592;</a> <a href="sbcl-manual.html" title="SBCL Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
 
 <h2>16 Indices</h2>
 
@@ -6965,7 +6965,7 @@ was found in <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PA
 <li><p><a href="#MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29" title="MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M)"><code>weights</code></a> [<code>mgl-common</code>] <em>(reader mgl-bp:-&gt;v*m)</em></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-24T14:14:37Z]</h6>
+<h6>[Generated 2026-06-24T15:46:49Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

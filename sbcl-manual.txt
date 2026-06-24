@@ -2,7 +2,7 @@
 
 ###### [in package SB-MANUAL]
 
-This manual – for SBCL version 2.6.5.32.pax-doc.18-b999eeefd, generated 2026-06-24 15:56:43 –
+This manual – for SBCL version 2.6.1.pax-doc.1000-b999eee, generated 2026-06-24 15:45:33 –
 is part of the SBCL software system. See the README file for
 more information.
 
@@ -10709,7 +10709,7 @@ as querying their properties and relationships in the running image.
     indirect containers: fdefinitions, eql specializers, classes, and
     thread-local symbol values in other threads fall into this category.
 
-    > Note: calling map-root with a thread does not currently map over
+    > Note: calling map-root with a THREAD does not currently map over
     > conservative roots from the thread registers and interrupt contexts.
 
     Experimental: interface subject to change.

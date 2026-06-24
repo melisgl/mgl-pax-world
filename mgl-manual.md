@@ -204,7 +204,7 @@ instances are simply called **results**.
 
 - [function] **name=** *x y*
 
-    Return `t` if X and Y are [`eql`][38a2] or if they are structured components whose
+    Return `t` if X and Y are `eql`([`0`][db03] [`1`][5fd4]) or if they are structured components whose
     elements are [`equal`][3fb5]. Strings and bit-vectors are `equal` if they are the same
     length and have identical components. Other arrays must be [`eq`][5a82] to be `equal`.
 
@@ -738,7 +738,7 @@ contains it.
     Make a single sequence out of the sequences in `seqs` so that in the
     returned sequence indices of elements belonging to the same source
     sequence are spread evenly across the whole range. The result is a
-    list is `result-type` is [`list`][9271], it's a vector if `result-type` is [`vector`][64b3].
+    list is `result-type` is `list`([`0`][79d8] [`1`][6d9f]), it's a vector if `result-type` is `vector`([`0`][6098] [`1`][6d31]).
     If `result-type` is `nil`, then it's determined by the type of the first
     sequence in `seqs`.
     
@@ -1069,7 +1069,7 @@ accessor:
 
 Note that the monitor we push can be anything as long as
 [`apply-monitor`][bbdf] is implemented on it with the appropriate signature.
-Also note that the [`zerop`][ec8b] + [`mod`][e363] logic is fragile, so you will likely
+Also note that the [`zerop`][ec8b] + `mod`([`0`][80fa] [`1`][ee86]) logic is fragile, so you will likely
 want to use [`mgl-opt:monitor-optimization-periodically`][4528] instead of
 doing the above.
 
@@ -5525,7 +5525,6 @@ grow into a more serious toolset for NLP eventually.
   [331b]: #MGL-CORE:MAKE-EXECUTOR-WITH-PARAMETERS%20GENERIC-FUNCTION "MGL-CORE:MAKE-EXECUTOR-WITH-PARAMETERS GENERIC-FUNCTION"
   [332e]: #MGL:@MGL-BM%20MGL-PAX:SECTION "Boltzmann Machines"
   [3815]: #MGL-OPT:MAKE-COST-MONITORS*%20GENERIC-FUNCTION "MGL-OPT:MAKE-COST-MONITORS* GENERIC-FUNCTION"
-  [38a2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm "EQL (MGL-PAX:CLHS NIL)"
   [3ce0]: #MGL-GD:SEGMENTED-GD-OPTIMIZER%20CLASS "MGL-GD:SEGMENTED-GD-OPTIMIZER CLASS"
   [3db3]: mat-manual.md#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO "MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"
   [3f2e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pr_obj.htm "PRINT-OBJECT (MGL-PAX:CLHS GENERIC-FUNCTION)"
@@ -5574,17 +5573,18 @@ grow into a more serious toolset for NLP eventually.
   [5cd8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm "DENOMINATOR (MGL-PAX:CLHS FUNCTION)"
   [5d86]: #MGL-BP:@MGL-BP-ACTIVATION-FUNCTIONS%20MGL-PAX:SECTION "Activation Functions"
   [5ded]: #MGL-RESAMPLE:SPLIT-FOLD%2FMOD%20FUNCTION "MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION"
+  [5fd4]: http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm "EQL (MGL-PAX:CLHS TYPE)"
   [5fdc]: #MGL-CORE:MAP-BATCHES-FOR-MODEL%20FUNCTION "MGL-CORE:MAP-BATCHES-FOR-MODEL FUNCTION"
   [6004]: #MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION "MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS FUNCTION"
   [6021]: #MGL-BP:-%3EMAX-CHANNEL%20CLASS "MGL-BP:->MAX-CHANNEL CLASS"
   [606c]: #MGL-BP:BUILD-FNN%20MGL-PAX:MACRO "MGL-BP:BUILD-FNN MGL-PAX:MACRO"
+  [6098]: http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm "VECTOR (MGL-PAX:CLHS CLASS)"
   [60b3]: #MGL:@MGL-GP%20MGL-PAX:SECTION "Gaussian Processes"
   [60d2]: #MGL-CORE:CONFUSION-MATRIX%20CLASS "MGL-CORE:CONFUSION-MATRIX CLASS"
   [60e3]: #MGL-CORE:@MGL-CLASSIFICATION%20MGL-PAX:SECTION "Classification"
   [6202]: #MGL-CORE:MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:BP-LEARNER%29 "MGL-CORE:MONITORS (MGL-PAX:ACCESSOR MGL-BP:BP-LEARNER)"
   [627a]: #MGL-RESAMPLE:FRACTURE-STRATIFIED%20FUNCTION "MGL-RESAMPLE:FRACTURE-STRATIFIED FUNCTION"
   [62de]: #MGL-CORE:ADD-TO-COUNTER%20GENERIC-FUNCTION "MGL-CORE:ADD-TO-COUNTER GENERIC-FUNCTION"
-  [64b3]: http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm "VECTOR (MGL-PAX:CLHS NIL)"
   [6547]: http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm "OPEN (MGL-PAX:CLHS FUNCTION)"
   [6598]: #MGL-CORE:@MGL-CLASSIFICATION-COUNTER%20MGL-PAX:SECTION "Classification Counters"
   [6651]: http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm "DESCRIBE (MGL-PAX:CLHS FUNCTION)"
@@ -5594,6 +5594,8 @@ grow into a more serious toolset for NLP eventually.
   [6b38]: #MGL-BP:@MGL-FNN-TUTORIAL%20MGL-PAX:SECTION "`fnn` Tutorial"
   [6bd7]: #MGL-CORE:LOAD-STATE%20FUNCTION "MGL-CORE:LOAD-STATE FUNCTION"
   [6d14]: mat-manual.md#MGL-MAT:MAT%20CLASS "MGL-MAT:MAT CLASS"
+  [6d31]: http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm "VECTOR (MGL-PAX:CLHS FUNCTION)"
+  [6d9f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm "LIST (MGL-PAX:CLHS FUNCTION)"
   [6da5]: #MGL-CORE:@MGL-ATTRIBUTES%20MGL-PAX:SECTION "Attributes"
   [6e96]: #MGL-BP:TIME-STEP%20FUNCTION "MGL-BP:TIME-STEP FUNCTION"
   [6f82]: #MGL-RESAMPLE:FRACTURE%20FUNCTION "MGL-RESAMPLE:FRACTURE FUNCTION"
@@ -5607,11 +5609,13 @@ grow into a more serious toolset for NLP eventually.
   [765c]: #MGL-DATASET:MAP-DATASETS%20FUNCTION "MGL-DATASET:MAP-DATASETS FUNCTION"
   [779d]: #MGL-OPT:@MGL-OPT-ITERATIVE-OPTIMIZER%20MGL-PAX:SECTION "Iterative Optimizer"
   [7960]: #MGL-BP:SHIFT%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZATION%29 "MGL-BP:SHIFT (MGL-PAX:READER MGL-BP:->BATCH-NORMALIZATION)"
+  [79d8]: http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm "LIST (MGL-PAX:CLHS CLASS)"
   [7a28]: #MGL-BP:@MGL-BP-EXTENSION-API%20MGL-PAX:SECTION "Clump API"
   [7bc3]: #MGL-DATASET:@MGL-SAMPLER%20MGL-PAX:SECTION "Samplers"
   [7c2f]: #MGL-OPT:INITIALIZE-OPTIMIZER*%20GENERIC-FUNCTION "MGL-OPT:INITIALIZE-OPTIMIZER* GENERIC-FUNCTION"
   [7ee3]: #MGL-CORE:@MGL-COUNTER-CLASSES%20MGL-PAX:SECTION "Counter classes"
   [80e2]: #MGL-BP:VARIANCE-FOR-PREDICTION%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29 "MGL-BP:VARIANCE-FOR-PREDICTION (MGL-PAX:ACCESSOR MGL-BP:->GAUSSIAN-RANDOM)"
+  [80fa]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mod_r.htm "MOD (MGL-PAX:CLHS FUNCTION)"
   [8148]: #MGL-CORE:READ-STATE%20FUNCTION "MGL-CORE:READ-STATE FUNCTION"
   [82d8]: #MGL-BP:ADD-CLUMP%20FUNCTION "MGL-BP:ADD-CLUMP FUNCTION"
   [83e6]: #MGL-CG:@MGL-CG%20MGL-PAX:SECTION "Conjugate Gradient"
@@ -5638,7 +5642,6 @@ grow into a more serious toolset for NLP eventually.
   [9192]: #MGL:@MGL-OVERVIEW%20MGL-PAX:SECTION "Overview"
   [91a3]: #MGL-CORE:MAX-N-STRIPES%20%28MGL-PAX:READER%20MGL-BP:BPN%29 "MGL-CORE:MAX-N-STRIPES (MGL-PAX:READER MGL-BP:BPN)"
   [91f3]: #MGL-BP:@MGL-BP-UTILITIES%20MGL-PAX:SECTION "Utilities"
-  [9271]: http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm "LIST (MGL-PAX:CLHS NIL)"
   [9385]: #MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION "MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"
   [93a7]: #MGL-BP:@MGL-BP-LOSSES%20MGL-PAX:SECTION "Losses"
   [9524]: #MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION "MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"
@@ -5724,12 +5727,12 @@ grow into a more serious toolset for NLP eventually.
   [d811]: http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm "APPLY (MGL-PAX:CLHS FUNCTION)"
   [d94e]: #MGL-GD:BATCH-GD-OPTIMIZER%20CLASS "MGL-GD:BATCH-GD-OPTIMIZER CLASS"
   [d96a]: #MGL-BP:MEAN%20%28MGL-PAX:ACCESSOR%20MGL-BP:-%3EGAUSSIAN-RANDOM%29 "MGL-BP:MEAN (MGL-PAX:ACCESSOR MGL-BP:->GAUSSIAN-RANDOM)"
+  [db03]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm "EQL (MGL-PAX:CLHS FUNCTION)"
   [dbc4]: #MGL-BP:-%3EV*M%20CLASS "MGL-BP:->V*M CLASS"
   [dd95]: #MGL-OPT:INITIALIZE-GRADIENT-SOURCE*%20GENERIC-FUNCTION "MGL-OPT:INITIALIZE-GRADIENT-SOURCE* GENERIC-FUNCTION"
   [e0e6]: #MGL-GD:ADAM-OPTIMIZER%20CLASS "MGL-GD:ADAM-OPTIMIZER CLASS"
   [e198]: #MGL-COMMON:@MGL-COMMON%20MGL-PAX:SECTION "Common Stuff"
   [e2ae]: pax-manual.md#MGL-PAX:NOTE%20MGL-PAX:MACRO "MGL-PAX:NOTE MGL-PAX:MACRO"
-  [e363]: http://www.lispworks.com/documentation/HyperSpec/Body/a_mod.htm "MOD (MGL-PAX:CLHS NIL)"
   [e46f]: #MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS*%20GENERIC-FUNCTION "MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS* GENERIC-FUNCTION"
   [e4dd]: http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm "MULTIPLE-VALUE-CALL (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [e50c]: #MGL-CORE:MONITOR-MODEL-RESULTS%20FUNCTION "MGL-CORE:MONITOR-MODEL-RESULTS FUNCTION"
@@ -5746,6 +5749,7 @@ grow into a more serious toolset for NLP eventually.
   [ece2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm "SIN (MGL-PAX:CLHS FUNCTION)"
   [ed4f]: #MGL-BP:*WARP-TIME*%20VARIABLE "MGL-BP:*WARP-TIME* VARIABLE"
   [edcf]: #MGL-BP:-%3ESUM%20CLASS "MGL-BP:->SUM CLASS"
+  [ee86]: http://www.lispworks.com/documentation/HyperSpec/Body/t_mod.htm "MOD (MGL-PAX:CLHS TYPE)"
   [ee97]: #MGL-CG:CG-OPTIMIZER%20CLASS "MGL-CG:CG-OPTIMIZER CLASS"
   [f00d]: #MGL-OPT:SEGMENTS%20GENERIC-FUNCTION "MGL-OPT:SEGMENTS GENERIC-FUNCTION"
   [f17b]: #MGL-RESAMPLE:@MGL-RESAMPLE-CROSS-VALIDATION%20MGL-PAX:SECTION "Cross-validation"

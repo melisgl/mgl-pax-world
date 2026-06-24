@@ -1308,7 +1308,7 @@ case-sensitive. Examples:
 
 - `pri<TAB>` invokes the usual Slime completion.
 
-- `print <TAB>` (note the space) lists [`function`][a51f] and (`pax:clhs`
+- `print <TAB>` (note the space) lists `function`([`0`][119e] [`1`][81f7]) and (`pax:clhs`
   [`function`][aeb6]) as locatives.
 
 - `class dref:<TAB>` lists `dref:xref`([`0`][1538] [`1`][cda7]) and `dref:dref`([`0`][d930] [`1`][7e92]) (all the classes
@@ -2118,7 +2118,7 @@ docstrings are equivalent:
 
 - [glossary-term] **title**
 
-    A title is a [`string`][68cc] associated with a [definition][2143] (e.g. with
+    A title is a `string`([`0`][b93c] [`1`][dae6]) associated with a [definition][2143] (e.g. with
     the `title` argument of [`defsection`][72b4] or [`define-glossary-term`][8ece]). Titles
     are accessible via [`doctitle`][e619] and processed according to
     [Markdown in Titles][165c].
@@ -2347,7 +2347,7 @@ locations.
     uniqueness condition requires that if two definitions are different
     under [`xref=`][0617], then their textual representations are also different.
     
-    On the other hand, for example, a method involving an [`eql`][38a2]
+    On the other hand, for example, a method involving an `eql`([`0`][db03] [`1`][5fd4])
     specializer with an object printed with [`print-unreadable-object`][9439]
     `:identity` `t` does not produce a stable string and links will break.
 
@@ -2398,8 +2398,7 @@ else as a symbol.
 
 *Examples:*
 
-- `[see this][output-label restart]` *renders as* [see
-  this][65e5].
+- `[see this][eql type]` *renders as* [see this][5fd4].
 
 - `[see this]["MGL-PAX" package]` *renders as* see this.
 
@@ -2420,7 +2419,7 @@ to. If no [name][88cf] with any definition is found, then an
 
 - single link: `[print][]` *renders as* [`print`][d451].
 
-- multiple links: `[output-label][]` *renders as* `output-label`([`0`][c818] [`1`][65e5]).
+- multiple links: `[eql][]` *renders as* `eql`([`0`][db03] [`1`][5fd4]).
 
 - no definitions: `[bad-name][]` *renders as* BAD-NAME.
 
@@ -2440,7 +2439,7 @@ warning is signalled.
 
 - `[see this][print]` *renders as* [see this][d451].
 
-- `[see this][output-label]` *renders as* see this([`0`][c818] [`1`][65e5]).
+- `[see this][eql]` *renders as* see this([`0`][db03] [`1`][5fd4]).
 
 
 <a id="x-28MGL-PAX-3A-40MARKDOWN-REFLINK-20MGL-PAX-3ASECTION-29"></a>
@@ -2482,43 +2481,32 @@ Markdown reference links (see [Markdown in Docstrings][7bf5]).
 
     When [`document`][432c] encounters a [Reflink][cbc4] that looks
     like a PAX construct but has no matching definition, it signals an
-    `unresolvable-reflink` warning with the [`output-reflink`][ff9c] and
-    `output-label`([`0`][c818] [`1`][65e5]) restarts available.
+    `unresolvable-reflink` warning.
     
-    If the warning is not handled, then it is printed to [`*error-output*`][66c6],
-    and it behaves as if [`output-label`][65e5] was invoked.
-
-<a id="x-28MGL-PAX-3AOUTPUT-REFLINK-20RESTART-29"></a>
-<a id="MGL-PAX:OUTPUT-REFLINK%20RESTART"></a>
-
-- [restart] **output-reflink**
-
-    In the context of an [`unresolvable-reflink`][64be], print no warning, and leave
-    the Markdown link unchanged. [`muffle-warning`][9dac] is equivalent to
-    `output-reflink`.
-
-<a id="x-28MGL-PAX-3AOUTPUT-LABEL-20RESTART-29"></a>
-<a id="MGL-PAX:OUTPUT-LABEL%20RESTART"></a>
-
-- [restart] **output-label**
-
-    In the context of an [`unresolvable-reflink`][64be], print no warning, and
-    replace the Markdown link by its label. For example,
-    `[NONEXISTENT][function]` becomes `nonexistent`.
+    - If the [`output-reflink`][2ca9] restart is invoked, then no warning is
+      printed and the Markdown link is left unchanged. `muffle-warning`([`0`][b8b4] [`1`][6f51]) is
+      equivalent to `output-reflink`.
+    
+    - If the [`output-label`][c818] restart is invoked, then no warning is printed
+      and the Markdown link is replaced by its label. For example,
+      `[NONEXISTENT][function]` becomes `nonexistent`.
+    
+    - If the warning is not handled, then it is printed to
+      [`*error-output*`][66c6], and it behaves as if `output-label` was invoked.
 
 <a id="x-28MGL-PAX-3AOUTPUT-REFLINK-20FUNCTION-29"></a>
 <a id="MGL-PAX:OUTPUT-REFLINK%20FUNCTION"></a>
 
 - [function] **output-reflink** *&optional condition*
 
-    Invoke the [`output-reflink`][ff9c] restart.
+    Invoke the `output-reflink` restart. See [`unresolvable-reflink`][64be].
 
 <a id="x-28MGL-PAX-3AOUTPUT-LABEL-20FUNCTION-29"></a>
 <a id="MGL-PAX:OUTPUT-LABEL%20FUNCTION"></a>
 
 - [function] **output-label** *&optional condition*
 
-    Invoke the [`output-label`][65e5] restart.
+    Invoke the `output-label` restart. See [`unresolvable-reflink`][64be].
 
 <a id="x-28MGL-PAX-3A-40AUTOLINK-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@AUTOLINK%20MGL-PAX:SECTION"></a>
@@ -2578,7 +2566,7 @@ first.
 
 - `print` *renders as* [`print`][d451].
 
-- `eql` *renders as* [`eql`][38a2].
+- `eql` *renders as* `eql`([`0`][db03] [`1`][5fd4]).
 
 [Unspecific Autolink][e2a4]ing is suppressed if the name found has a
 [Local Definition][9db9] or was linked to before in the same docstring:
@@ -2649,11 +2637,11 @@ This renders as `document`. Alternatively, the
     definition in the Lisp and in the HyperSpec.
     
     Locatives work as expected (see [`*document-link-code*`][d9ee]): `find-if`
-    links to [`find-if`][5884], `function` links to [`function`][a51f], and
+    links to [`find-if`][5884], `function` links to `function`([`0`][119e] [`1`][81f7]), and
     `[FUNCTION][type]` links to [`function`][119e].
     
     [Unspecific Autolink][e2a4]ing to `t` and `nil` is suppressed. If desired, use
-    [Reflink][cbc4]s such as `[t][]` (that links to [`t`][1c08]) or
+    [Reflink][cbc4]s such as `[t][]` (that links to `t`([`0`][9172] [`1`][fe21])) or
     `[T][constant]` (that links to [`t`][fe21]).
     
     Note that linking explicitly with the [`clhs`][ed5f] locative is not subject
@@ -3168,7 +3156,7 @@ Also, see [concept subkey][5920] on how to order concepts in the output.
 
 - [macro] **define-concept** *name (&key title keys)*
 
-    Define a `concept` for [Indexing Concepts][c001]. `title` is a [`string`][68cc] or `nil`,
+    Define a `concept` for [Indexing Concepts][c001]. `title` is a `string`([`0`][b93c] [`1`][dae6]) or `nil`,
     while `keys` is a list of [concept key][b19d]s and [`symbol`][e5af]s (naming other
     concepts, see below).
     
@@ -3741,7 +3729,7 @@ See the following variables, which control HTML generation.
     
     - If `nil`, nothing is included.
     
-    - If a [`string`][68cc], then it is written to the HTML output as is without
+    - If a `string`([`0`][b93c] [`1`][dae6]), then it is written to the HTML output as is without
       any escaping.
     
     - If a function designator, then it is called with a single
@@ -3758,7 +3746,7 @@ See the following variables, which control HTML generation.
       [`*document-html-top-blocks-of-links*`][e216], followed by the dynamic table
       of contents, and [`*document-html-bottom-blocks-of-links*`][0ef0].
     
-    - If a [`string`][68cc], then it is written to the HTML output as is without
+    - If a `string`([`0`][b93c] [`1`][dae6]), then it is written to the HTML output as is without
       any escaping.
     
     - If a function designator, then it is called with a single
@@ -5280,7 +5268,6 @@ they are presented.
   [1aed]: #MGL-PAX:INSTALL-PAX-ELISP%20FUNCTION "MGL-PAX:INSTALL-PAX-ELISP FUNCTION"
   [1b1b]: #MGL-PAX:@DOCUMENTATION-UTILITIES%20MGL-PAX:SECTION "Utilities for Generating Documentation"
   [1b28]: #MGL-PAX:*DOCUMENT-LINK-SECTIONS*%20VARIABLE "MGL-PAX:*DOCUMENT-LINK-SECTIONS* VARIABLE"
-  [1c08]: http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm "T (MGL-PAX:CLHS NIL)"
   [1d1d]: dref-manual.md#DREF:@BASIC-LOCATIVE-TYPES%20MGL-PAX:SECTION "Basic Locative Types"
   [1d5a]: http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm "PACKAGE (MGL-PAX:CLHS CLASS)"
   [1e36]: dref-manual.md#DREF:DREF-NAME%20%28MGL-PAX:READER%20DREF:DREF%29 "DREF:DREF-NAME (MGL-PAX:READER DREF:DREF)"
@@ -5302,6 +5289,7 @@ they are presented.
   [2826]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dhj.htm "\"2.4.8.10\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [292a]: #MGL-PAX:@PAX-LOCATIVES%20MGL-PAX:SECTION "PAX Locatives"
   [2c93]: #MGL-PAX:@GENERATING-DOCUMENTATION%20MGL-PAX:SECTION "Generating Documentation"
+  [2ca9]: #MGL-PAX:OUTPUT-REFLINK%20FUNCTION "MGL-PAX:OUTPUT-REFLINK FUNCTION"
   [2cd5]: #MGL-PAX:*DOCUMENT-PANDOC-PDF-HEADER-INCLUDES*%20VARIABLE "MGL-PAX:*DOCUMENT-PANDOC-PDF-HEADER-INCLUDES* VARIABLE"
   [2d48]: #MGL-PAX:WITH-DISLOCATED-NAMES%20MGL-PAX:MACRO "MGL-PAX:WITH-DISLOCATED-NAMES MGL-PAX:MACRO"
   [2f21]: #MGL-PAX:@PRINTS-TO-AN-EQUIVALENT-STRING%20MGL-PAX:GLOSSARY-TERM "prints to an equivalent string"
@@ -5322,7 +5310,6 @@ they are presented.
   [378f]: #MGL-PAX:@PARSING%20MGL-PAX:SECTION "Parsing"
   [3808]: http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm "FRESH-LINE (MGL-PAX:CLHS FUNCTION)"
   [3831]: http://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm "/// (MGL-PAX:CLHS VARIABLE)"
-  [38a2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm "EQL (MGL-PAX:CLHS NIL)"
   [38de]: #MGL-PAX:@SPECIFIC-AUTOLINK%20MGL-PAX:SECTION "Specific Autolink"
   [3942]: #MGL-PAX:@STABLE-PRINTED-LOCATIVE%20MGL-PAX:GLOSSARY-TERM "stable printed locative"
   [3972]: http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_r.htm#reader_macro "\"reader macro\" (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)"
@@ -5390,7 +5377,6 @@ they are presented.
   [659d]: #MGL-PAX:@BROWSE-BY-LOCATIVE-TYPE%20MGL-PAX:SECTION "Browse by Locative Types"
   [65b4]: dref-manual.md#DREF:DREF-APROPOS%20FUNCTION "DREF:DREF-APROPOS FUNCTION"
   [65bc]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cae.htm "\"22.3.1.5\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
-  [65e5]: #MGL-PAX:OUTPUT-LABEL%20RESTART "MGL-PAX:OUTPUT-LABEL RESTART"
   [66c6]: http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm "*ERROR-OUTPUT* (MGL-PAX:CLHS VARIABLE)"
   [672f]: #MGL-PAX:SECTION%20MGL-PAX:LOCATIVE "MGL-PAX:SECTION MGL-PAX:LOCATIVE"
   [676d]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm "PRINC (MGL-PAX:CLHS FUNCTION)"
@@ -5398,7 +5384,6 @@ they are presented.
   [685e]: #MGL-PAX:@INTRODUCTION%20MGL-PAX:SECTION "Introduction"
   [6897]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cbc.htm "\"22.3.2.3\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [68c1]: https://daringfireball.net/projects/markdown/syntax#code "Markdown inline code"
-  [68cc]: http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm "STRING (MGL-PAX:CLHS NIL)"
   [68d2]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dhh.htm "\"2.4.8.8\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [68f1]: sbcl-manual.md#DOCUMENTATION%20GENERIC-FUNCTION "DOCUMENTATION GENERIC-FUNCTION"
   [68fb]: dref-manual.md#DREF-EXT:@EXTENDING-DREF%20MGL-PAX:SECTION "Extending DRef"
@@ -5409,6 +5394,7 @@ they are presented.
   [6be7]: https://slime.common-lisp.dev/ "SLIME"
   [6c83]: dref-manual.md#VARIABLE%20MGL-PAX:LOCATIVE "VARIABLE MGL-PAX:LOCATIVE"
   [6e18]: #MGL-PAX:@TRANSCRIPT-FINER-GRAINED-CONSISTENCY-CHECKS%20MGL-PAX:SECTION "Finer-Grained Consistency Checks"
+  [6f51]: http://www.lispworks.com/documentation/HyperSpec/Body/r_muffle.htm "MUFFLE-WARNING (MGL-PAX:CLHS RESTART)"
   [6fdb]: #%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM "\"mgl-pax\" ASDF/SYSTEM:SYSTEM"
   [7163]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dhl.htm "\"2.4.8.12\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [718a]: named-readtables-manual.md#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM "\"named-readtables\" ASDF/SYSTEM:SYSTEM"
@@ -5442,6 +5428,7 @@ they are presented.
   [80e8]: #MGL-PAX:WITH-HEADING%20MGL-PAX:MACRO "MGL-PAX:WITH-HEADING MGL-PAX:MACRO"
   [8106]: #MGL-PAX:@M-.-MINIBUFFER-SYNTAX%20MGL-PAX:SECTION "`M-.` Minibuffer Syntax"
   [81b3]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dhr.htm "\"2.4.8.18\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
+  [81f7]: http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm "FUNCTION (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [8251]: #MGL-PAX:GLOSSARY-TERM%20CLASS "MGL-PAX:GLOSSARY-TERM CLASS"
   [8269]: #MGL-PAX:DOCUMENT-OBJECT*%20GENERIC-FUNCTION "MGL-PAX:DOCUMENT-OBJECT* GENERIC-FUNCTION"
   [826b]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dg.htm "\"2.4.7\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
@@ -5473,6 +5460,7 @@ they are presented.
   [8f46]: http://www.lispworks.com/documentation/HyperSpec/Body/f_import.htm "IMPORT (MGL-PAX:CLHS FUNCTION)"
   [8fb6]: #MGL-PAX:*DOCUMENT-MARK-UP-SIGNATURES*%20VARIABLE "MGL-PAX:*DOCUMENT-MARK-UP-SIGNATURES* VARIABLE"
   [90fa]: #MGL-PAX:*DOCUMENT-HTML-DEFAULT-STYLE*%20VARIABLE "MGL-PAX:*DOCUMENT-HTML-DEFAULT-STYLE* VARIABLE"
+  [9172]: http://www.lispworks.com/documentation/HyperSpec/Body/t_t.htm "T (MGL-PAX:CLHS CLASS)"
   [935f]: http://www.lispworks.com/documentation/HyperSpec/Issues/iss045.htm "\"SUMMARY:CHARACTER-PROPOSAL:2-6-5\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [9439]: http://www.lispworks.com/documentation/HyperSpec/Body/m_pr_unr.htm "PRINT-UNREADABLE-OBJECT (MGL-PAX:CLHS MGL-PAX:MACRO)"
   [943a]: dref-manual.md#DREF:PSEUDO%20DREF:DTYPE "DREF:PSEUDO DREF:DTYPE"
@@ -5491,7 +5479,6 @@ they are presented.
   [9bd5]: #MGL-PAX:@TRANSCRIBING-IN-DOCUMENTATION%20MGL-PAX:SECTION "Transcribing in Documentation"
   [9c7d]: #MGL-PAX:@PAGES%20MGL-PAX:SECTION "`pages`"
   [9d50]: #MGL-PAX:@PAX-LIVE-HOME-PAGE%20MGL-PAX:SECTION "PAX Live Home Page"
-  [9dac]: http://www.lispworks.com/documentation/HyperSpec/Body/a_muffle.htm "MUFFLE-WARNING (MGL-PAX:CLHS NIL)"
   [9db9]: #MGL-PAX:@LOCAL-DEFINITION%20MGL-PAX:SECTION "Local Definition"
   [9dbc]: #MGL-PAX:@TRANSCRIPT-API%20MGL-PAX:SECTION "Transcript API"
   [9f2f]: http://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm "/ (MGL-PAX:CLHS VARIABLE)"
@@ -5504,7 +5491,6 @@ they are presented.
   [a317]: https://daringfireball.net/projects/markdown/ "Markdown"
   [a412]: #MGL-PAX:DOCUMENTING-DEFINITION%20MGL-PAX:MACRO "MGL-PAX:DOCUMENTING-DEFINITION MGL-PAX:MACRO"
   [a459]: dref-manual.md#DREF:@DTYPES%20MGL-PAX:SECTION "`dtype`s"
-  [a51f]: http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm "FUNCTION (MGL-PAX:CLHS NIL)"
   [a595]: #MGL-PAX:@BROWSING-LIVE-DOCUMENTATION%20MGL-PAX:SECTION "Browsing Live Documentation"
   [a5b1]: #MGL-PAX:SECTION-PACKAGE%20%28MGL-PAX:READER%20MGL-PAX:SECTION%29 "MGL-PAX:SECTION-PACKAGE (MGL-PAX:READER MGL-PAX:SECTION)"
   [a5ee]: #MGL-PAX:*DOCUMENT-DOWNCASE-UPPERCASE-CODE*%20VARIABLE "MGL-PAX:*DOCUMENT-DOWNCASE-UPPERCASE-CODE* VARIABLE"
@@ -5537,6 +5523,7 @@ they are presented.
   [b80d]: #MGL-PAX:DEFINE-CONCEPT%20MGL-PAX:MACRO "MGL-PAX:DEFINE-CONCEPT MGL-PAX:MACRO"
   [b81d]: #MGL-PAX:TRANSCRIPTION-ERROR%20CONDITION "MGL-PAX:TRANSCRIPTION-ERROR CONDITION"
   [b89a]: #MGL-PAX:@CODIFIABLE%20MGL-PAX:GLOSSARY-TERM "codifiable"
+  [b8b4]: http://www.lispworks.com/documentation/HyperSpec/Body/f_abortc.htm "MUFFLE-WARNING (MGL-PAX:CLHS FUNCTION)"
   [b93c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm "STRING (MGL-PAX:CLHS CLASS)"
   [ba62]: dref-manual.md#FUNCTION%20MGL-PAX:LOCATIVE "FUNCTION MGL-PAX:LOCATIVE"
   [ba76]: #MGL-PAX:*DOCUMENT-INDEX-FORMATS*%20VARIABLE "MGL-PAX:*DOCUMENT-INDEX-FORMATS* VARIABLE"
@@ -5600,6 +5587,7 @@ they are presented.
   [d9f2]: trivial-utf-8-manual.md#%22trivial-utf-8%22%20ASDF%2FSYSTEM:SYSTEM "\"trivial-utf-8\" ASDF/SYSTEM:SYSTEM"
   [da14]: http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_cn.htm "SIMPLE-CONDITION-FORMAT-ARGUMENTS (MGL-PAX:CLHS FUNCTION)"
   [da65]: dref-manual.md#STRUCTURE%20MGL-PAX:LOCATIVE "STRUCTURE MGL-PAX:LOCATIVE"
+  [dae6]: http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm "STRING (MGL-PAX:CLHS FUNCTION)"
   [db03]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm "EQL (MGL-PAX:CLHS FUNCTION)"
   [db38]: http://www.lispworks.com/documentation/HyperSpec/Body/22_ced.htm "\"22.3.5.4\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [db68]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_na.htm "PACKAGE-NAME (MGL-PAX:CLHS FUNCTION)"
@@ -5665,5 +5653,4 @@ they are presented.
   [fe58]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm "READ (MGL-PAX:CLHS FUNCTION)"
   [ff58]: #MGL-PAX:@PUBLIC-SUPERCLASSES%20MGL-PAX:GLOSSARY-TERM "public superclasses"
   [ff76]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_esc.htm "*PRINT-ESCAPE* (MGL-PAX:CLHS VARIABLE)"
-  [ff9c]: #MGL-PAX:OUTPUT-REFLINK%20RESTART "MGL-PAX:OUTPUT-REFLINK RESTART"
   [ffd7]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dhf.htm "\"2.4.8.6\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
