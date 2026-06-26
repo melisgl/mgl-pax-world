@@ -2244,7 +2244,7 @@ upcast the returned value to the `dref` argument's `dref-locative-type`.
     ==> #<DREF FOO-A (ACCESSOR FOO)>
     (dtypep * '(method (t foo)))
     => T
-    ;; Internally, DTYPEP upcast #<DREF FOO-A (ACCESSOR FOO)>
+    ;; Internally, DTYPEP upcasts #<DREF FOO-A (ACCESSOR FOO)>
     ;; and checks that the locative args of the resulting
     ;; definition match those in (METHOD (T FOO)).
     (locate* ** 'method)

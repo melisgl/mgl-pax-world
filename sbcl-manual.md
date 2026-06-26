@@ -282,7 +282,7 @@
         - [18.7.2 Historical Interfaces][292d]
 
 ###### \[in package SB-MANUAL\]
-This manual – for SBCL version `2.6.1.pax-doc.1000-b999eee`, generated *2026-06-26 13:33:21* –
+This manual – for SBCL version `2.6.1.pax-doc.1000-5b199a0`, generated *2026-06-26 15:37:30* –
 is part of the SBCL software system. See the `README` file for
 more information.
 
@@ -404,7 +404,7 @@ If you run into a signal related bug, you are getting fatal errors
 such as `signal N is [un]blocked` or just hangs, and you want to
 send a useful bug report then:
 
-- Compile SBCL with ldb enabled (feature `:sb-ldb`, see
+- Compile SBCL with `ldb` enabled (feature `:sb-ldb`, see
   `base-target-features.lisp-expr`).
 
 - Isolate a smallish test case, run it.
@@ -564,8 +564,8 @@ have proper documentation yet.
   regression and unit-test framework.
 
 - **MD5 Sums:** The [sb-md5][4321] module provides an implementation of the
-  MD5 message digest algorithm for Common Lisp, using the modular
-  arithmetic optimizations provided by SBCL.
+  MD5 message digest algorithm for Common Lisp, using the
+  [Modular Arithmetic][1a1b] optimizations provided by SBCL.
 
 
 <a id="x-28SB-MANUAL-3A-40IDIOSYNCRASIES-20MGL-PAX-3ASECTION-29"></a>
@@ -933,9 +933,8 @@ still reflected in the current implementation:
 
 SBCL also inherited some newer architectural features from CMUCL.
 The most important is that on some architectures it has a
-generational garbage collector (GC), which has various
-implications (mostly good) for performance. These are discussed in
-another chapter, [Efficiency][29fd].
+generational GC, which has various implications (mostly good) for
+performance. These are discussed in another chapter, [Efficiency][29fd].
 
 SBCL has diverged from CMUCL in that SBCL is now essentially a
 compiler-only implementation of Common Lisp. This is a change in
@@ -961,7 +960,7 @@ particularly well there. SBCL should be able to improve in these areas
 (and has already improved in some other areas), but it takes a while.
 
 On the x86 SBCL -- like the x86 port of CMUCL -- uses a
-*conservative* GC. This means that it doesn't maintain a strict
+\_@CONSERVATIVE-GC. This means that it doesn't maintain a strict
 separation between tagged and untagged data, instead treating some
 untagged data (e.g. raw floating point numbers) as possibly-tagged
 data and so not collecting any Lisp objects that they point to. This
@@ -969,9 +968,9 @@ has some negative consequences for average time efficiency (though
 possibly no worse than the negative consequences of trying to
 implement an exact GC on a processor architecture as register-poor
 as the X86) and also has potentially unlimited consequences for
-worst-case memory efficiency. In practice, conservative garbage
-collectors work reasonably well, not getting anywhere near the worst
-case. But they can occasionally cause odd patterns of memory usage.
+worst-case memory efficiency. In practice, conservative GCs work
+reasonably well, not getting anywhere near the worst case. But they
+can occasionally cause odd patterns of memory usage.
 
 The fork from CMUCL was based on a major rewrite of the system
 bootstrap process. CMUCL has for many years tolerated a very unusual
@@ -1406,7 +1405,7 @@ system.
 - `--disable-ldb`
 
     Disable the low-level debugger. Only effective if SBCL is
-    compiled with [`ldb`][00e9].
+    compiled with `ldb`. disabling `ldb`
 
 - `--lose-on-corruption`
 
@@ -1416,7 +1415,7 @@ system.
     to continue and handle the error in Lisp, but this will not
     always work, and SBCL may malfunction or even hang. With this
     option, upon encountering such an error, SBCL will exit instead
-    of invoking `ldb` (if present and enabled).
+    of invoking `ldb` (if present and enabled enabling `ldb`).
 
 - `--script <filename>`
 
@@ -1804,14 +1803,14 @@ diagnostic:
   they are all printed from the outside in, separated by `=>`s. In
   this example, the problem was in the [`defun`][f472] for `foo`.
 
-- `(zoq y)` is the *original source* form responsible for the
+- `(zoq y)` is the *@ORIGINAL-SOURCE* form responsible for the
   diagnostic. Original source means that the form directly appeared
   in the original input to the compiler, i.e. in the lambda passed
   to [`compile`][bc41] or in the top level form read from the source file. In
   this example, the expansion of the `zoq` macro was responsible for
   the message.
 
-- `--> roq ploq` This is the *processing path* that the compiler
+- `--> roq ploq` This is the *@PROCESSING-PATH* that the compiler
   used to produce the code that caused the message to be emitted.
   The processing path is a representation of the evaluated forms
   enclosing the actual source that the compiler encountered when
@@ -1933,10 +1932,10 @@ This message is not saying that there is a problem somewhere in this
 this example, the problem is that `a`'s `nil` initial value is not a
 [`fixnum`][3cde].
 
-<a id="x-28SB-MANUAL-3A-40PROCESSING-PATH-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@PROCESSING-PATH%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40PROCESSING-PATHS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@PROCESSING-PATHS%20MGL-PAX:SECTION"></a>
 
-##### Processing Path
+##### Processing Paths
 
 The processing path is mainly useful for debugging macros, so if you
 don't write macros, you can probably ignore it. Consider this example:
@@ -1962,7 +1961,8 @@ Note that [`do`][5d2b] appears in the processing path. This is because
         ((>= i #:g1) *undefined*)
       (declare (type unsigned-byte i)))
 
-The rest of the processing path results from the expansion of `do`:
+The rest of the processing path results from the macroexpansion of
+`do`: 
 
     (block nil
       (let ((i 0) (#:g1 n))
@@ -2016,10 +2016,11 @@ provide some exceptions to this rule, see
 
 CLOS slot types form a notable exception. Types declared using the
 `:type` slot option in [`defclass`][ead6] are asserted if and only if the class
-was defined in *safe code* and the slot access location is in *safe
-code* as well. This laxness does not pose any internal consistency
-issues, as the CLOS slot types are not available for the type
-inferencer, nor do CLOS slot types provide any efficiency benefits.
+was defined in *safe code*  and the slot access location is
+in *safe code* as well. This laxness does not pose any internal
+consistency issues, as the CLOS slot types are not available for the
+type inferencer, nor do CLOS slot types provide any efficiency
+benefits.
 
 There are three type checking policies available in SBCL, selectable
 via [`optimize`][4d51] declarations.
@@ -2087,7 +2088,7 @@ if parts of the program have never been tested.
 
 Some incorrect declarations can only be detected by run-time type
 checking. It is very important to initially compile a program with
-full type checks (high [`safety`][f384] optimization) and then test this safe
+full type checks (high safety optimization) and then test this safe
 version. After the checking version has been tested, then you can
 consider weakening or eliminating type checks. *This applies even to
 previously debugged programs* because the SBCL compiler does much
@@ -2818,7 +2819,7 @@ entry points.
 #### 5.3.4 Debug Tail Recursion
 
 The compiler is *properly tail recursive*. If a function call is
-in a tail-recursive position, the stack frame will be deallocated
+in a tail recursive position, the stack frame will be deallocated
 *at the time of the call*, rather than after the call returns.
 Consider this backtrace:
 
@@ -2874,8 +2875,8 @@ There are three reasons why a code location could be unknown:
 
 - The debugger was entered because of an interrupt such as `C-c`.
 
-- A hardware error such as a bus error occurred in code that was
-  compiled unsafely due to the value of the [`safety`][f384]
+- A hardware error  such as a bus error occurred in
+  code that was compiled unsafely due to the value of the [`safety`][f384]
   optimization quality.
 
 
@@ -2975,10 +2976,10 @@ down the stack will be fine.
 
 The value of a variable may be unavailable for these reasons:
 
-- The value of the [`debug`][5df9] optimization quality may have omitted debug
-  information needed to determine whether the variable is available.
-  Unless a variable is an argument, its value will only be available
-  when `debug` is at least 2.
+- The value of the debug optimization quality may have omitted
+  debug information needed to determine whether the variable is
+  available. Unless a variable is an argument, its value will only
+  be available when [`debug`][5df9] is at least 2.
 
 - The compiler did lifetime analysis and determined that the value
   was no longer needed, even though its scope had not been exited.
@@ -3160,7 +3161,7 @@ same [`eq`][5a82] list twice. If you don't define read macros and don't use
 
 #### 5.5.2 Source Location Availability
 
-Source location information is only available when the [`debug`][5df9]
+Source location information is only available when the debug
 optimization quality is at least 2. If source location information
 is unavailable, the source commands will give an error message.
 
@@ -3172,7 +3173,7 @@ print
     Unknown location: using block start.
 
 and then proceed to print the source location for the start of the
-*basic block* enclosing the code location. It's a bit complicated to
+*@BASIC-BLOCK* enclosing the code location. It's a bit complicated to
 explain exactly what a basic block is, but here are some properties
 of the block start location:
 
@@ -3202,13 +3203,13 @@ have changed the program on you.)
 ### 5.6 Debugger Policy Control
 
 The compilation policy specified by [`optimize`][4d51] declarations
-affects the behavior seen in the debugger. The [`debug`][5df9] quality
+affects the behavior seen in the debugger. The debug quality
 directly affects the debugger by controlling the amount of debugger
 information dumped. Other optimization qualities have indirect but
 observable effects due to changes in the way compilation is done.
 
 Unlike the other optimization qualities (which are compared in
-relative value to evaluate tradeoffs), the `debug` optimization
+relative value to evaluate tradeoffs), the [`debug`][5df9] optimization
 quality is directly translated to a level of debug information. This
 absolute interpretation allows the user to count on a particular
 amount of debug information being available even when the values of
@@ -3268,9 +3269,9 @@ values of the `speed` and `space` qualities also change whether
 functions are inline expanded. If a function is inline expanded,
 then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
-*semi-inline*, in which case there is a frame to represent the call,
-but the call is to an optimized local version of the function, not
-to the original function.
+*@SEMI-INLINE*, in which case there is a frame to represent the
+call, but the call is to an optimized local version of the function,
+not to the original function.
 
 <a id="x-28SB-MANUAL-3A-40EXITING-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXITING-COMMANDS%20MGL-PAX:SECTION"></a>
@@ -3818,7 +3819,7 @@ of values when they are recognized as having dynamic extent:
 
     > **Warning**: Stack space is limited, so allocation of a large
     > vector may cause stack overflow. Stack overflow checks are
-    > done except in zero [`safety`][f384] policies.
+    > done except in 0 safety policies.
 
 - closures defined with [`flet`][091c] or [`labels`][c2ef] with a bound [`dynamic-extent`][0901]
   declaration;
@@ -4138,10 +4139,10 @@ points to keep in mind.
 
 
 - Since the time the CMUCL manual was written, CMUCL (and thus SBCL)
-  has gotten a generational garbage collector. This means that there
-  are some efficiency implications of various patterns of memory
-  usage which aren't discussed in the CMUCL manual. (Some new
-  material should be written about this.)
+  has gotten a generational GC. This means that there are some
+  efficiency implications of various patterns of memory usage which
+  aren't discussed in the CMUCL manual. (Some new material should be
+  written about this.)
 
 - SBCL has some important known efficiency problems. Perhaps the
   most important are
@@ -4228,8 +4229,8 @@ normalized is controlled by
 
 - [function] **sb-ext:readtable-normalization** *readtable*
 
-    Returns `t` if `readtable` normalizes symbols to NFKC, and `nil` otherwise.
-    The `readtable-normalization` of the standard readtable is `t`.
+    Returns `t` if `readtable` normalizes symbols to NFKC, and `nil`
+    otherwise. The `readtable-normalization` of the standard readtable is `t`.
 
 Symbols created by [`intern`][b4f0] and similar functions are not affected by
 this setting. If [`sb-ext:readtable-normalization`][9e48] is `t`, symbols that
@@ -4836,7 +4837,7 @@ For structures:
 
 - `slot-value` and [`slot-boundp`][4a9d] function as expected, including (for
   `slot-value`) calling and respecting the return value of
-  [`slot-unbound`][c31a] if the slot is unbound;
+  [`slot-unbound`][c31a] if the slot is unbound; 
 
 - `(setf slot-value)` functions as expected, including performing
   type checks to verify that the new value is of an appropriate type
@@ -5051,8 +5052,8 @@ AMOP; at present, they are:
   methods convert between classes and proper names and between lists
   of the form `(EQL <x>)` and interned eql specializer objects.
 
-- Distinguishing unbound instance allocated slots from bound ones
-  when using `sb-mop:standard-instance-access` and
+- Distinguishing unbound instance allocated slots  from
+  bound ones when using `sb-mop:standard-instance-access` and
   `sb-mop:funcallable-standard-instance-access` is possible by
   comparison to the symbol-macro `sb-pcl:+slot-unbound+`.
 
@@ -6500,7 +6501,7 @@ the condition accessor `sb-ext:name-conflict-symbols`.
 
 ### 7.14 Hash Table Extensions
 
-Hash table extensions supported by SBCL are all controlled by keyword
+hash table extensions supported by SBCL are all controlled by keyword
 arguments to [`make-hash-table`][e826].
 
 <a id="x-28MAKE-HASH-TABLE-20FUNCTION-29"></a>
@@ -7166,8 +7167,8 @@ efficiency when using a more sophisticated garbage collector which
 is well suited to the program's memory usage pattern. It also allows
 permanent code to be frozen at fixed addresses, a precondition for
 using copy-on-write to share code between multiple Lisp processes.
-This is less important with modern generational garbage collectors,
-but not all SBCL platforms use such a garbage collector.
+This is less important with modern generational GC, but not all
+SBCL platforms use such a garbage collector.
 
 The `sb-ext:truly-the` special form declares the type of the result of
 the operations, producing its argument; the declaration is not
@@ -7649,14 +7650,14 @@ can only be allocated using [`make-alien`][fb92].
   declare that no useful value is returned. Using `alien-funcall` to
   call a `void` foreign function will return zero values.
 
-- The foreign type specifier `(C-STRING &KEY <external-format>
+- The foreign type specifier `(c-string &key <external-format>
   <element-type> <not-null>)` is similar to `(* char)` but is
   interpreted as a null-terminated string, and is automatically
   converted into a Lisp string when accessed; or if the pointer is C
   `null` or 0, then accessing it gives Lisp `nil` unless
   `<not-null>` is true, in which case a [`type-error`][abfd] is signalled.
 
-    External format conversion is automatically done when Lisp
+    external format conversion is automatically done when Lisp
     strings are passed to foreign code, or when foreign strings are
     passed to Lisp code. If the type specifier has an explicit
     `<external-format>`, that external format will be used.
@@ -8377,11 +8378,10 @@ coping with this:
 
 - `sb-sys:with-pinned-objects` is a macro which arranges for some set
   of objects to be pinned in memory for the dynamic extent of its
-  body forms. On ports which use the generational garbage
-  collector (most, as of this writing) this affects exactly the
-  specified objects. On other ports it is implemented by turning off
-  GC for the duration (so could be said to have a whole-world
-  granularity).
+  body forms. On ports which use the generational GC
+  (most, as of this writing) this affects exactly the specified
+  objects. On other ports it is implemented by turning off GC for
+  the duration (so could be said to have a whole-world granularity).
 
 - Disable GC, using the SB-EXT:WITHOUT-GCING macro.
 
@@ -8737,7 +8737,7 @@ streams:
 ### 11.1 Stream External Formats
 
 The function [`stream-external-format`][3d00] returns the canonical name of
-the external format (See [External Formats][d293]) used by the stream for
+the external format (see [External Formats][d293]) used by the stream for
 character-based input and/or output.
 
 When constructing file streams, for example using [`open`][6547] or
@@ -11736,8 +11736,8 @@ sampling runs.
 **Platform support**
 
 Allocation profiling is only supported on SBCL builds that use the
-generational garbage collector. Tracking of call stacks at a depth
-of more than two levels is only supported on x86 and x86-64.
+generational GC. Tracking of call stacks at a depth of more than
+two levels is only supported on x86 and x86-64.
 
 **Macros**
 
