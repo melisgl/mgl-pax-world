@@ -282,7 +282,7 @@
         - [18.7.2 Historical Interfaces][292d]
 
 ###### \[in package SB-MANUAL\]
-This manual – for SBCL version `2.6.1.pax-doc.1000-5b199a0`, generated *2026-06-26 17:27:31* –
+This manual – for SBCL version `2.6.1.pax-doc.1000-5b199a0`, generated *2026-06-26 19:27:07* –
 is part of the SBCL software system. See the `README` file for
 more information.
 
