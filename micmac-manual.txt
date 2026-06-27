@@ -72,10 +72,10 @@ for the latest version.
     call-with-action, maybe-evaluate-state and list-actions are
     mandatory.
 
-    record-best, if non-nil, is a function of (depth score actions). It
-    is called when at depth a new best action is found. actions is a
-    list of all the actions in the principle variant corresonding to the
-    newly found best score. record-best is useful for graceful
+    record-best, if non-nil, is a function of (depth score actions).
+    It is called when at depth a new best action is found. actions is
+    a list of all the actions in the principle variant corresonding to
+    the newly found best score. record-best is useful for graceful
     degradation in case of timeout.
 
     alpha and beta are typically nil (equivalent to -infinity,

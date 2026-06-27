@@ -282,13 +282,20 @@
         - [18.7.2 Historical Interfaces][292d]
 
 ###### \[in package SB-MANUAL\]
-This manual – for SBCL version `2.6.1.pax-doc.1000-5b199a0`, generated *2026-06-27 07:49:21* –
-is part of the SBCL software system. See the `README` file for
-more information.
+This is an unofficial rendering of the SBCL Manual
+using [MGL-PAX][2415] with the same content as the
+official version at <https://www.sbcl.org/> but with heavy linking
+internally, to the `clhs`, and to the source code on
+[GitHub](https://github.com/sbcl/sbcl).
 
-This manual is largely derived from the manual for the CMUCL system,
+The output is for SBCL version `2.6.1.pax-doc.1000-64a49a0`, generated *2026-06-27 09:40:05*. See
+<https://fixnum.com> for this document in other formats.
+
+This manual is part of the SBCL software system. See the
+`README` file for more information. The manual is largely
+derived from the manual for the [CMUCL](https://cmucl.org/) system,
 which was produced at Carnegie Mellon University and later released
-into the public domain. This manual is in the public domain and is
+into the public domain. The manual is in the public domain and is
 provided with absolutely no warranty. See the `COPYING` and
 `CREDITS` files for more information.
 
@@ -5614,7 +5621,7 @@ created by calling the following generic function:
 <a id="x-28SB-EXT-3A-2APOSIX-ARGV-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*POSIX-ARGV*%20VARIABLE"></a>
 
-- [variable] **sb-ext:\*posix-argv\*** *"\<omitted>"*
+- [variable] **sb-ext:\*posix-argv\*** *"\<varies>"*
 
     A list of strings related to the UNIX command line (`argv` in C).
     
@@ -14704,6 +14711,7 @@ versions of SBCL, which have since then been deleted.
   [23aa]: #SB-MANUAL:@SB-POSIX-FUNCTION-PARAMETERS%20MGL-PAX:SECTION "Function Parameters"
   [23c4]: #SB-MANUAL:@SYMBOL-NAME-NORMALIZATION%20MGL-PAX:SECTION "Symbol Name Normalization"
   [240e]: #SB-MANUAL:@HOW-TO-REPORT-SIGNAL-RELATED-BUGS%20MGL-PAX:SECTION "How to Report Signal-related Bugs"
+  [2415]: pax-manual.md "PAX Manual"
   [2474]: #SB-MANUAL:@COMPILER-POLICY%20MGL-PAX:SECTION "Compiler Policy"
   [2496]: #SB-MANUAL:@UNKNOWN-LOCATIONS-AND-INTERRUPTS%20MGL-PAX:SECTION "Unknown Locations and Interrupts"
   [24fb]: #SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION "Package-Local Nicknames"
