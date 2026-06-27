@@ -53,10 +53,9 @@
 
 ## 1 Links
 
-Here is the [official repository](https://github.com/antimer/lmdb)
-and the [HTML
-documentation](http://melisgl.github.io/mgl-pax-world/lmdb-manual.html)
-for the latest version.
+The official repository is <https://github.com/melisgl/lmdb>, and
+this document in available in various formats on
+<https://fixnum.com> for the latest version.
 
 <a id="x-28LMDB-3A-40LMDB-2FINTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION"></a>

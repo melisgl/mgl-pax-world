@@ -23,9 +23,9 @@
 
 ## 1 Links and Systems
 
-Here is the [official
-repository](https://github.com/melisgl/autoload/) and the [HTML
-documentation](http://melisgl.github.io/mgl-pax-world/autoload-manual.html)
+The official repository is <https://github.com/melisgl/autoload>, and
+this document in available in various formats on
+<https://fixnum.com> for the latest version.)
 for the latest version.
 
 <a id="x-28-22autoload-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>

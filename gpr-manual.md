@@ -45,10 +45,9 @@
 
 ## 1 Links
 
-Here is the [official
-repository](https://github.com/melisgl/mgl-gpr) and the [HTML
-documentation](http://melisgl.github.io/mgl-gpr/gpr-manual.html)
-for the latest version.
+The official repository is <https://github.com/melisgl/mgl-gpr>, and
+this document in available in various formats on
+<https://fixnum.com> for the latest version.
 
 <a id="x-28MGL-GPR-3A-40GPR-BACKGROUND-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION"></a>
