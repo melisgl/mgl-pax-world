@@ -288,7 +288,7 @@ standard readtable.
     - The effects of in-readtable are file-local since both compile-file
       and load rebind *readtable*.
 
-- [function] make-readtable &optional (name nil name-supplied-p) &key merge
+- [function] make-readtable &optional name &key merge
 
     Creates and returns a new readtable under the specified
     name.
@@ -325,7 +325,7 @@ standard readtable.
     Looks for the readtable specified by name and returns it if it is
     found. Returns nil otherwise.
 
-- [function] ensure-readtable name &optional (default nil default-p)
+- [function] ensure-readtable name &optional default
 
     Looks up the readtable specified by name and returns it if it's found.
     If it is not found, it registers the readtable designated by default

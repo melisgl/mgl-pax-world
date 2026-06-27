@@ -417,7 +417,7 @@ it may create a new mat.
     possible by the row-major layout, hence no column counterpart.
     Return mat.
 
-- [macro] with-shape-and-displacement (mat &optional (dimensions nil) (displacement nil)) &body body
+- [macro] with-shape-and-displacement (mat &optional dimensions displacement) &body body
 
     Reshape and displace mat if dimensions and/or displacement is given
     and restore the original shape and displacement after body is

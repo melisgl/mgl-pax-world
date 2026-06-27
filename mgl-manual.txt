@@ -142,7 +142,7 @@ Samplers object that produces instances.
     to iterating over the elements of a sequence or a sampler (see
     Samplers).
 
-- [function] map-datasets fn datasets &key (impute nil imputep)
+- [function] map-datasets fn datasets &key impute
 
     Call fn with a list of instances, one from each dataset in
     datasets. Return nothing. If impute is specified then iterate until

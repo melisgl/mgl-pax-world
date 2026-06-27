@@ -642,7 +642,7 @@ disjoint subclasses:</p>
 <li><p><a href="#TRY:TRIAL-START%20CONDITION" title="TRY:TRIAL-START CONDITION"><code>trial-start</code></a>, starting a <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> (by executing a <a href="#TRY:@TESTS%20MGL-PAX:SECTION" title="Tests">test</a>),</p></li>
 <li><p><a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a>, the <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a> of a <code>trial</code>,</p></li>
 <li><p><a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>, the <code>outcome</code> of a <a href="#TRY:@CHECKS%20MGL-PAX:SECTION" title="Checks">check</a>, and</p></li>
-<li><p><a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a>, an unexpected <code>cl:error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) or unadorned <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
+<li><p><a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a>, an unexpected <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>cl:error</code></a> or unadorned <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
 </ul>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="comment">;; We don't want to debug nor print a backtrace for the error below.
@@ -689,7 +689,7 @@ concrete event class, that marks the start of a <a href="#TRY:TRIAL%20CLASS" tit
 <p><a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a> is an abstract class with two concrete subclasses:</p>
 
 <ul>
-<li><p><a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION"><code>unhandled-error</code></a>, signalled when a <code>cl:error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) reaches the handler set
+<li><p><a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION"><code>unhandled-error</code></a>, signalled when a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>cl:error</code></a> reaches the handler set
   up by <a href="#TRY:DEFTEST%20MGL-PAX:MACRO" title="TRY:DEFTEST MGL-PAX:MACRO"><code>deftest</code></a> or <a href="#TRY:WITH-TEST%20MGL-PAX:MACRO" title="TRY:WITH-TEST MGL-PAX:MACRO"><code>with-test</code></a>, or when the debugger is invoked.</p></li>
 <li><p><a href="#TRY:NLX%20CONDITION" title="TRY:NLX CONDITION"><code>nlx</code></a>, signalled when no error was detected by the handler, but the
   trial finishes with a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a>.</p></li>
@@ -1253,7 +1253,7 @@ it, and it can be changed with the <a href="#TRY:@OUTCOME-RESTARTS%20MGL-PAX:SEC
 
 <p>Change the <a href="#TRY:OUTCOME%20CONDITION" title="TRY:OUTCOME CONDITION"><code>outcome</code></a> of the check being signalled to <a href="#TRY:RESULT-SKIP%20CONDITION" title="TRY:RESULT-SKIP CONDITION"><code>result-skip</code></a>.
 <code>result-skip</code>, being a <a href="#TRY:PASS%20TYPE" title="TRY:PASS TYPE"><code>pass</code></a>, will cause the check to return <code>t</code> if
-<code>continue</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_abortc.htm" title="CONTINUE (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_contin.htm" title="CONTINUE (MGL-PAX:CLHS RESTART)"><code>1</code></a>) or <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a> is invoked on it.</p></li>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_contin.htm" title="CONTINUE (MGL-PAX:CLHS NIL)"><code>continue</code></a> or <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a> is invoked on it.</p></li>
 </ul>
 
 <p><a id="x-28TRY-3ARETRY-CHECK-20FUNCTION-29"></a>
@@ -1582,7 +1582,7 @@ following example, the non-local exit from a skip is cancelled by a
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code"><i><span class="symbol">WITH-TEST</span></i> <span class="paren2">(<span class="code">SOME-TEST</span>)</span></span>)</span> SKIP 0.000s ⋅1&gt;</span></code></pre>
 
 <p>In the next example, the non-local exit from a skip is cancelled by
-an <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), which triggers an <code>abort-trial</code>.</p>
+an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a>, which triggers an <code>abort-trial</code>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="special">*debug*</span> nil</span>)</span>
       <span class="paren3">(<span class="code"><span class="special">*describe*</span> nil</span>)</span></span>)</span>
@@ -1782,7 +1782,7 @@ populated. Also, see <a href="#TRY:*PRINT-BACKTRACE*%20VARIABLE" title="TRY:*PRI
 <p>Representing a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local exit</a> of unknown
 origin, this is signalled if a <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> does not return normally
 although it should have because it was not dismissed (see <a href="#TRY:DISMISSAL%20CONDITION" title="TRY:DISMISSAL CONDITION"><code>dismissal</code></a>,
-<a href="#TRY:SKIP-TRIAL%20FUNCTION" title="TRY:SKIP-TRIAL FUNCTION"><code>skip-trial</code></a>, <a href="#TRY:ABORT-TRIAL%20FUNCTION" title="TRY:ABORT-TRIAL FUNCTION"><code>abort-trial</code></a>). In this case, there is no <code>cl:error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>)
+<a href="#TRY:SKIP-TRIAL%20FUNCTION" title="TRY:SKIP-TRIAL FUNCTION"><code>skip-trial</code></a>, <a href="#TRY:ABORT-TRIAL%20FUNCTION" title="TRY:ABORT-TRIAL FUNCTION"><code>abort-trial</code></a>). In this case, there is no <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>cl:error</code></a>
 associated with the event.</p></li>
 </ul>
 
@@ -2396,7 +2396,7 @@ conditions, <code>invokes-debugger</code> sets up a <a href="http://www.lispwork
 <code>*debugger-hook*</code> is changed by <code>body</code>, it may not detect the condition.
 The arguments are described in <a href="#TRY:@CHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">Checking Conditions</a>.</p>
 
-<p>Note that in a trial (see <a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION"><code>current-trial</code></a>), all <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>)s are handled,
+<p>Note that in a trial (see <a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION"><code>current-trial</code></a>), all <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a>s are handled,
 and a <code>*debugger-hook*</code> is set up (see <a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION"><code>unhandled-error</code></a>). Thus,
 invoking the debugger would normally cause the trial to abort.</p>
 
@@ -2856,7 +2856,7 @@ longer names a global test.</p></li>
 <a id="TRY:WITH-TEST%20MGL-PAX:MACRO"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/6b959ea45312eacbacce9c70c00791cf20bf0daa/src/test.lisp#L196">[macro]</a></span> <span class="reference-object"><a href="#TRY:WITH-TEST%20MGL-PAX:MACRO" >with-test</a></span></span> <span class="locative-args">(&amp;optional var-or-name &amp;key (name nil)) &amp;body body</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/try/blob/6b959ea45312eacbacce9c70c00791cf20bf0daa/src/test.lisp#L196">[macro]</a></span> <span class="reference-object"><a href="#TRY:WITH-TEST%20MGL-PAX:MACRO" >with-test</a></span></span> <span class="locative-args">(&amp;optional var-or-name &amp;key name) &amp;body body</span></span></p>
 
 <p>Execute <code>body</code> in a <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a> to group together <code>check</code>s and
 other tests in its dynamic scope. <code>body</code> is executed in its lexical
@@ -2942,7 +2942,7 @@ valid to specify non-symbols for <code>var-or-name</code>, one can also write:</
 </ul>
 
 <p><code>with-test</code> can be thought of as analogous to <code>(funcall (lambda ()
-body))</code>. The presence of the <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) is important because it is
+body))</code>. The presence of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm" title="LAMBDA (MGL-PAX:CLHS NIL)"><code>lambda</code></a> is important because it is
 stored in the <code>trial</code> object to support <a href="#TRY:@RERUN%20MGL-PAX:SECTION" title="Rerunning Trials">Rerunning Trials</a>.</p></li>
 </ul>
 
@@ -3042,7 +3042,7 @@ called directly by <code>try</code>.</p>
 ==&gt; #&lt;TRIAL <span class="paren1">(<span class="code">MY-TEST</span>)</span> EXPECTED-SUCCESS 0.000s ⋅1&gt;</span></code></pre>
 
 <p>However, <a href="#TRY:WITH-TEST%20MGL-PAX:MACRO" title="TRY:WITH-TEST MGL-PAX:MACRO"><code>with-test</code></a> has no global name, so to delay its execution
-until <code>try</code> calls it, it needs to be wrapped in a <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>).</p>
+until <code>try</code> calls it, it needs to be wrapped in a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm" title="LAMBDA (MGL-PAX:CLHS NIL)"><code>lambda</code></a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">try <span class="paren2">(<span class="code"><i><span class="symbol">lambda</span></i> <span class="paren3">(<span class="code"></span>)</span>
        <span class="paren3">(<span class="code"><i><span class="symbol">with-test</span></i> <span class="paren4">(<span class="code">my-test</span>)</span>
@@ -4653,7 +4653,7 @@ first nlx will not continue.</p>
 <li><p><a href="#TRY:@TRYVAR%20MGL-PAX:GLOSSARY-TERM" title="Try var">Try var</a> <em>(glossary-term)</em> ↩ <em>v</em>: <a href="#TRY:*CATEGORIES*%20VARIABLE" title="TRY:*CATEGORIES* VARIABLE"><code>*categories*</code></a>, <a href="#TRY:*COLLECT*%20VARIABLE" title="TRY:*COLLECT* VARIABLE"><code>*collect*</code></a>, <a href="#TRY:*COUNT*%20VARIABLE" title="TRY:*COUNT* VARIABLE"><code>*count*</code></a>, <a href="#TRY:*DEBUG*%20VARIABLE" title="TRY:*DEBUG* VARIABLE"><code>*debug*</code></a>, <a href="#TRY:*DEFER-DESCRIBE*%20VARIABLE" title="TRY:*DEFER-DESCRIBE* VARIABLE"><code>*defer-describe*</code></a>, <a href="#TRY:*DESCRIBE*%20VARIABLE" title="TRY:*DESCRIBE* VARIABLE"><code>*describe*</code></a>, <a href="#TRY:*EVENT-PRINT-BINDINGS*%20VARIABLE" title="TRY:*EVENT-PRINT-BINDINGS* VARIABLE"><code>*event-print-bindings*</code></a>, <a href="#TRY:*GATHER-BACKTRACE*%20VARIABLE" title="TRY:*GATHER-BACKTRACE* VARIABLE"><code>*gather-backtrace*</code></a>, <a href="#TRY:*PRINT*%20VARIABLE" title="TRY:*PRINT* VARIABLE"><code>*print*</code></a>, <a href="#TRY:*PRINT-BACKTRACE*%20VARIABLE" title="TRY:*PRINT-BACKTRACE* VARIABLE"><code>*print-backtrace*</code></a>, <a href="#TRY:*PRINT-COMPACTLY*%20VARIABLE" title="TRY:*PRINT-COMPACTLY* VARIABLE"><code>*print-compactly*</code></a>, <a href="#TRY:*PRINT-DURATION*%20VARIABLE" title="TRY:*PRINT-DURATION* VARIABLE"><code>*print-duration*</code></a>, <a href="#TRY:*PRINT-INDENTATION*%20VARIABLE" title="TRY:*PRINT-INDENTATION* VARIABLE"><code>*print-indentation*</code></a>, <a href="#TRY:*PRINT-PARENT*%20VARIABLE" title="TRY:*PRINT-PARENT* VARIABLE"><code>*print-parent*</code></a>, <a href="#TRY:*PRINTER*%20VARIABLE" title="TRY:*PRINTER* VARIABLE"><code>*printer*</code></a>, <a href="#TRY:*RERUN*%20VARIABLE" title="TRY:*RERUN* VARIABLE"><code>*rerun*</code></a>, <a href="#TRY:*RERUN-CONTEXT*%20VARIABLE" title="TRY:*RERUN-CONTEXT* VARIABLE"><code>*rerun-context*</code></a>, <a href="#TRY:*STREAM*%20VARIABLE" title="TRY:*STREAM* VARIABLE"><code>*stream*</code></a>, <a href="#TRY:*TRY-COLLECT*%20VARIABLE" title="TRY:*TRY-COLLECT* VARIABLE"><code>*try-collect*</code></a>, <a href="#TRY:*TRY-COUNT*%20VARIABLE" title="TRY:*TRY-COUNT* VARIABLE"><code>*try-count*</code></a>, <a href="#TRY:*TRY-DEBUG*%20VARIABLE" title="TRY:*TRY-DEBUG* VARIABLE"><code>*try-debug*</code></a>, <a href="#TRY:*TRY-DESCRIBE*%20VARIABLE" title="TRY:*TRY-DESCRIBE* VARIABLE"><code>*try-describe*</code></a>, <a href="#TRY:*TRY-PRINT*%20VARIABLE" title="TRY:*TRY-PRINT* VARIABLE"><code>*try-print*</code></a>, <a href="#TRY:*TRY-PRINTER*%20VARIABLE" title="TRY:*TRY-PRINTER* VARIABLE"><code>*try-printer*</code></a>, <a href="#TRY:*TRY-RERUN*%20VARIABLE" title="TRY:*TRY-RERUN* VARIABLE"><code>*try-rerun*</code></a>, <a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE"><code>*try-stream*</code></a></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-27T09:41:19Z]</h6>
+<h6>[Generated 2026-06-27T09:53:44Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

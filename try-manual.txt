@@ -2061,7 +2061,7 @@ See deftest and with-test for more precise descriptions.
     uninterned, fmakunbounded, or redefined with defun, then it no
     longer names a global test.
 
-- [macro] with-test (&optional var-or-name &key (name nil)) &body body
+- [macro] with-test (&optional var-or-name &key name) &body body
 
     Execute body in a trial to group together checks and
     other tests in its dynamic scope. body is executed in its lexical

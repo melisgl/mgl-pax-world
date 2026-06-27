@@ -2760,7 +2760,7 @@ The rest of section is about concrete subclasses of journal.
 
     - They must must not be mutated in any way.
 
-- [function] make-in-memory-journal &key (events nil eventsp) state (sync nil syncp) sync-fn
+- [function] make-in-memory-journal &key events state sync sync-fn
 
     Create an in-memory-journal.
 

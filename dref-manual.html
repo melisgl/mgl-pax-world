@@ -684,7 +684,7 @@ generalize <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_clas
 <li><p>named with <a href="#DREF:DEFINE-DTYPE%20MGL-PAX:MACRO" title="DREF:DEFINE-DTYPE MGL-PAX:MACRO"><code>define-dtype</code></a> (such as <a href="#DREF:PSEUDO%20DREF:DTYPE" title="DREF:PSEUDO DREF:DTYPE"><code>pseudo</code></a> and <a href="#DREF:TOP%20DREF:DTYPE" title="DREF:TOP DREF:DTYPE"><code>top</code></a>), or</p></li>
 <li><p>a combination of the above with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_and.htm" title="AND (MGL-PAX:CLHS TYPE)"><code>and</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm" title="OR (MGL-PAX:CLHS TYPE)"><code>or</code></a> and
   <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_not.htm" title="NOT (MGL-PAX:CLHS TYPE)"><code>not</code></a>, or</p></li>
-<li><p>a <code>member</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mem_m.htm" title="MEMBER (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_member.htm" title="MEMBER (MGL-PAX:CLHS TYPE)"><code>1</code></a>) form with <a href="#DREF:LOCATE%20FUNCTION" title="DREF:LOCATE FUNCTION"><code>locate</code></a>able definitions, or</p></li>
+<li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_member.htm" title="MEMBER (MGL-PAX:CLHS NIL)"><code>member</code></a> form with <a href="#DREF:LOCATE%20FUNCTION" title="DREF:LOCATE FUNCTION"><code>locate</code></a>able definitions, or</p></li>
 <li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm" title="SATISFIES (MGL-PAX:CLHS TYPE)"><code>satisfies</code></a> form with the name of a function that takes a single
   <a href="#DREF:@DEFINITION%20MGL-PAX:GLOSSARY-TERM" title="definition">definition</a> as its argument.</p></li>
 </ul>
@@ -764,7 +764,7 @@ to <code>(or ,@(pseudo-locative-types))</code>.</p></li>
 <pre><code><span class="code"><span class="paren1">(<span class="code">dtypep <span class="paren2">(<span class="code">dref 'number 'class</span>)</span> 'type</span>)</span>
 =&gt; T</span></code></pre>
 
-<p>It is an error if <code>dtype</code> is an <code>atom</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_atom.htm" title="ATOM (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_atom.htm" title="ATOM (MGL-PAX:CLHS TYPE)"><code>1</code></a>) but not a <a href="#DREF:@LOCATIVE-TYPE%20MGL-PAX:GLOSSARY-TERM" title="locative type">locative type</a>. On
+<p>It is an error if <code>dtype</code> is an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_atom.htm" title="ATOM (MGL-PAX:CLHS NIL)"><code>atom</code></a> but not a <a href="#DREF:@LOCATIVE-TYPE%20MGL-PAX:GLOSSARY-TERM" title="locative type">locative type</a>. On
 the other hand, (the empty) argument list of atomic locatives is
 not checked even if having no arguments makes them
 <a href="#DREF:@LOCATIVE%20MGL-PAX:GLOSSARY-TERM" title="locative">invalid</a>.</p></li>
@@ -866,7 +866,7 @@ the whole <a href="#DREF:@NAME%20MGL-PAX:GLOSSARY-TERM" title="name">name</a> of
 <pre><code><span class="code"><span class="paren1">(<span class="code">dref-apropos 'method <span class="keyword">:package</span> <span class="keyword">:dref</span> <span class="keyword">:external-only</span> t</span>)</span>
 ==&gt; <span class="paren1">(<span class="code">#&lt;DREF METHOD CLASS&gt; #&lt;DREF METHOD LOCATIVE&gt;</span>)</span></span></code></pre>
 
-<p>On the other hand, when <code>name</code> or <code>package</code> is a <code>string</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="STRING (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), they are
+<p>On the other hand, when <code>name</code> or <code>package</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm" title="STRING (MGL-PAX:CLHS NIL)"><code>string</code></a>, they are
 matched as substrings to the definition's name <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm" title="PRINC-TO-STRING (MGL-PAX:CLHS FUNCTION)"><code>princ-to-string</code></a>ed:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">dref-apropos <span class="string">"method"</span> <span class="keyword">:package</span> <span class="keyword">:dref</span> <span class="keyword">:external-only</span> t</span>)</span>
@@ -1373,7 +1373,7 @@ reference <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_gener
 <li><p>Direct locative subtypes: <a href="#MGL-PAX:STRUCTURE-ACCESSOR%20MGL-PAX:LOCATIVE" title="MGL-PAX:STRUCTURE-ACCESSOR MGL-PAX:LOCATIVE">structure-accessor</a>, <a href="#DREF:SETF-GENERIC-FUNCTION%20MGL-PAX:LOCATIVE" title="DREF:SETF-GENERIC-FUNCTION MGL-PAX:LOCATIVE">setf-generic-function</a></p></li>
 </ul>
 
-<p>Refers to a global <code>function</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="FUNCTION (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm" title="FUNCTION (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) with a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_s.htm#setf_function_name" title="&quot;setf function name&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">setf function name</a>.</p>
+<p>Refers to a global <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm" title="FUNCTION (MGL-PAX:CLHS NIL)"><code>function</code></a> with a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_s.htm#setf_function_name" title="&quot;setf function name&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">setf function name</a>.</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defun</span></i> <span class="paren2">(<span class="code">setf ooh</span>)</span> <span class="paren2">(<span class="code"></span>)</span></span>)</span>
 <span class="paren1">(<span class="code">locate #'<span class="paren2">(<span class="code">setf ooh</span>)</span></span>)</span>
@@ -1562,7 +1562,7 @@ A <a href="#DREF-EXT:LOCATE-ERROR%20CONDITION" title="DREF-EXT:LOCATE-ERROR COND
 
 <p>Note that there is no portable way to detect structure accessors,
 and on some platforms, <code>(locate #'my-accessor)</code>, <a href="#DREF:DEFINITIONS%20FUNCTION" title="DREF:DEFINITIONS FUNCTION"><code>definitions</code></a> and
-<a href="#DREF:DREF-APROPOS%20FUNCTION" title="DREF:DREF-APROPOS FUNCTION"><code>dref-apropos</code></a> will return <code>function</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="FUNCTION (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm" title="FUNCTION (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) references instead. On such
+<a href="#DREF:DREF-APROPOS%20FUNCTION" title="DREF:DREF-APROPOS FUNCTION"><code>dref-apropos</code></a> will return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm" title="FUNCTION (MGL-PAX:CLHS NIL)"><code>function</code></a> references instead. On such
 platforms, <code>structure-accessor</code> references do not <a href="#DREF:RESOLVE%20FUNCTION" title="DREF:RESOLVE FUNCTION"><code>resolve</code></a>.</p></li>
 </ul>
 
@@ -1727,7 +1727,7 @@ class. HyperSpec <a href="http://www.lispworks.com/documentation/HyperSpec/Issue
 <code>lambda-list</code> should be what calls like <code>(invoke-restart '&lt;symbol&gt;
 ...)</code> must conform to, but this is not enforced.</p>
 
-<p>PAX &quot;defines&quot; standard CL restarts such as <code>use-value</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_abortc.htm" title="USE-VALUE (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_use_va.htm" title="USE-VALUE (MGL-PAX:CLHS RESTART)"><code>1</code></a>) with
+<p>PAX &quot;defines&quot; standard CL restarts such as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_use_va.htm" title="USE-VALUE (MGL-PAX:CLHS NIL)"><code>use-value</code></a> with
 <code>define-restart</code>:</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code">dref 'use-value 'restart</span>)</span>
@@ -2752,7 +2752,7 @@ it's not a <code>dref</code>).</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/dref/blob/48b760d062ad9dd9ec2cb19ca29fd7888a31673d/src/base/extension-api.lisp#L1025">[generic-function]</a></span> <span class="reference-object"><a href="#DREF:ARGLIST-PARAMETERS*%20GENERIC-FUNCTION" >arglist-parameters*</a></span></span> <span class="locative-args">arglist arglist-type</span></span></p>
 
-<p>To extend <a href="#DREF:ARGLIST-PARAMETERS%20FUNCTION" title="DREF:ARGLIST-PARAMETERS FUNCTION"><code>arglist-parameters</code></a><em>, <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>)-specialize
+<p>To extend <a href="#DREF:ARGLIST-PARAMETERS%20FUNCTION" title="DREF:ARGLIST-PARAMETERS FUNCTION"><code>arglist-parameters</code></a><em>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a>-specialize
 <code>arglist-type</code> on, say, :BOA (see <a href="http://www.lispworks.com/documentation/HyperSpec/Body/03_df.htm" title="&quot;3.4.6&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)">BOA lambda lists</a>. This must
 be done if <code>arglist</code></em> is extended to return an unsupported value.</p>
 
@@ -2871,7 +2871,7 @@ non-existent definitions.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/dref/blob/48b760d062ad9dd9ec2cb19ca29fd7888a31673d/src/base/extension-api.lisp#L1268">[function]</a></span> <span class="reference-object"><a href="#DREF-EXT:DEFINITION-PROPERTY%20FUNCTION" >definition-property</a></span></span> <span class="locative-args">obj indicator</span></span></p>
 
 <p>Return the value of the property associated with <code>obj</code> whose name
-is <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) to <code>indicator</code>. The second return value indicates whether the
+is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a> to <code>indicator</code>. The second return value indicates whether the
 property was found. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>able.</p>
 
 <ul>
@@ -4009,7 +4009,7 @@ returns its own <a href="#DREF:SOURCE-LOCATION%20FUNCTION" title="DREF:SOURCE-LO
 <li><p><a href="#DREF:@REVERSE-DEFINITION-ORDER%20MGL-PAX:GLOSSARY-TERM" title="reverse definition order">reverse definition order</a> <em>(glossary-term)</em> ↩ <em>f</em>: <a href="#DREF:LISP-LOCATIVE-TYPES%20FUNCTION" title="DREF:LISP-LOCATIVE-TYPES FUNCTION"><code>lisp-locative-types</code></a>, <a href="#DREF:LOCATIVE-ALIASES%20FUNCTION" title="DREF:LOCATIVE-ALIASES FUNCTION"><code>locative-aliases</code></a>, <a href="#DREF-EXT:LOCATIVE-TYPE-DIRECT-SUBS%20FUNCTION" title="DREF-EXT:LOCATIVE-TYPE-DIRECT-SUBS FUNCTION"><code>locative-type-direct-subs</code></a> [<code>dref-ext</code>], <a href="#DREF:LOCATIVE-TYPES%20FUNCTION" title="DREF:LOCATIVE-TYPES FUNCTION"><code>locative-types</code></a>, <a href="#DREF:PSEUDO-LOCATIVE-TYPES%20FUNCTION" title="DREF:PSEUDO-LOCATIVE-TYPES FUNCTION"><code>pseudo-locative-types</code></a></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-27T09:41:23Z]</h6>
+<h6>[Generated 2026-06-27T09:53:48Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

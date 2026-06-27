@@ -299,7 +299,7 @@ to be circular. The rules for loading are as follows.
 <a id="x-28AUTOLOAD-3AAUTOLOAD-20MGL-PAX-3AMACRO-29"></a>
 <a id="AUTOLOAD:AUTOLOAD%20MGL-PAX:MACRO"></a>
 
-- [macro] **autoload** *name system-name &key (arglist nil) docstring*
+- [macro] **autoload** *name system-name &key arglist docstring*
 
     *This is the [loaddef][e4a5] for [autodef][af1d] [`defun/auto`][a825].*
     
@@ -447,7 +447,7 @@ to be circular. The rules for loading are as follows.
 <a id="x-28AUTOLOAD-3ADEFVAR-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
 <a id="AUTOLOAD:DEFVAR%2FAUTO%20MGL-PAX:MACRO"></a>
 
-- [macro] **defvar/auto** *var &optional (val nil) doc*
+- [macro] **defvar/auto** *var &optional val doc*
 
     *This is an [autodef][af1d] with no public [loaddef][e4a5]. See below.*
     

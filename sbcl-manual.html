@@ -500,7 +500,7 @@ official version at <a href="https://www.sbcl.org/">https://www.sbcl.org/</a> bu
 internally, to the <code>clhs</code>, and to the source code on
 <a href="https://github.com/sbcl/sbcl" >GitHub</a>.</p>
 
-<p>The output is for SBCL version <code>2.6.1.pax-doc.1000-64a49a0</code>, generated <em>2026-06-27 09:40:05</em>. See
+<p>The output is for SBCL version <code>2.6.1.pax-doc.1000-64a49a0</code>, generated <em>2026-06-27 09:52:36</em>. See
 <a href="https://fixnum.com">https://fixnum.com</a> for this document in other formats.</p>
 
 <p>This manual is part of the SBCL software system. See the
@@ -861,7 +861,7 @@ the interpreter.</p>
 
 <p>SBCL is quite strict about ANSI's definition of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcon.htm" title="DEFCONSTANT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defconstant</code></a>.
 ANSI says that doing <code>defconstant</code> of the same symbol more than once
-is undefined unless the new value is <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) to the old value.
+is undefined unless the new value is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a> to the old value.
 Conforming to this specification is a nuisance when the &quot;constant&quot;
 value is only constant under some weaker test like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm" title="STRING= (MGL-PAX:CLHS FUNCTION)"><code>string=</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>.</p>
 
@@ -1428,7 +1428,7 @@ process, and is also provided as an extension to the user.</p>
 <a id="SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/save.lisp#L95">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION" >sb-ext:save-lisp-and-die</a></span></span> <span class="locative-args">core-file-name &amp;key (toplevel #'toplevel-init toplevel-supplied) (executable nil) (save-runtime-options nil) (callable-exports nil) (purify t) (root-structures nil) (environment-name &quot;auxiliary&quot;) (compression nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/save.lisp#L95">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION" >sb-ext:save-lisp-and-die</a></span></span> <span class="locative-args">core-file-name &amp;key (toplevel #'toplevel-init) executable save-runtime-options callable-exports (purify t) root-structures (environment-name &quot;auxiliary&quot;) compression</span></span></p>
 
 <p>Save a &quot;core image&quot;, i.e. enough information to restart a Lisp
 process later in the same state, in the file of the specified name.
@@ -1923,7 +1923,7 @@ more then some users would prefer -- the amount of noise emitted can
 be controlled, however.</p>
 
 <p>To control emission of compiler diagnostics (of any severity other
-than <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>): <a href="#SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION" title="Diagnostic Severity">Diagnostic Severity</a>) use the <a href="#SB-EXT:MUFFLE-CONDITIONS%20DECLARATION" title="SB-EXT:MUFFLE-CONDITIONS DECLARATION"><code>sb-ext:muffle-conditions</code></a>
+than <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a>: <a href="#SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION" title="Diagnostic Severity">Diagnostic Severity</a>) use the <a href="#SB-EXT:MUFFLE-CONDITIONS%20DECLARATION" title="SB-EXT:MUFFLE-CONDITIONS DECLARATION"><code>sb-ext:muffle-conditions</code></a>
 and <a href="#SB-EXT:UNMUFFLE-CONDITIONS%20DECLARATION" title="SB-EXT:UNMUFFLE-CONDITIONS DECLARATION"><code>sb-ext:unmuffle-conditions</code></a> declarations, specifying the type of
 condition that is to be muffled (the muffling is done using an
 associated <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_muffle.htm" title="MUFFLE-WARNING (MGL-PAX:CLHS RESTART)"><code>muffle-warning</code></a> restart).</p>
@@ -2135,7 +2135,7 @@ diagnostic:</p>
   variable <code>y</code>.</p></li>
 <li><p><code>caught WARNING: Asserted type NUMBER conflicts with derived type
   (VALUES SYMBOL &amp;OPTIONAL).</code> is the <em>explanation</em> of the problem.
-  In this example, the problem is that, while the call to <code>+</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pl.htm" title="+ (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm" title="+ (MGL-PAX:CLHS VARIABLE)"><code>1</code></a>)
+  In this example, the problem is that, while the call to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pl.htm" title="+ (MGL-PAX:CLHS NIL)"><code>+</code></a>
   requires that its arguments are all of type <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_number.htm" title="NUMBER (MGL-PAX:CLHS CLASS)"><code>number</code></a>, the compiler
   has derived that Y will evaluate to a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_symbol.htm" title="SYMBOL (MGL-PAX:CLHS CLASS)"><code>symbol</code></a>. Note that
   <code>(values symbol &amp;optional)</code> expresses that <code>y</code> evaluates to
@@ -2395,8 +2395,8 @@ producing a single <a href="http://www.lispworks.com/documentation/HyperSpec/Bod
 
 <p>To gain maximum benefit from the compiler's type checking, you
 should always declare the types of function arguments and structure
-slots as precisely as possible. This often involves the use of <code>or</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_or.htm" title="OR (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm" title="OR (MGL-PAX:CLHS TYPE)"><code>1</code></a>),
-<code>member</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mem_m.htm" title="MEMBER (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_member.htm" title="MEMBER (MGL-PAX:CLHS TYPE)"><code>1</code></a>), and other list-style type specifiers.</p>
+slots as precisely as possible. This often involves the use of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_or.htm" title="OR (MGL-PAX:CLHS NIL)"><code>or</code></a>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_member.htm" title="MEMBER (MGL-PAX:CLHS NIL)"><code>member</code></a>, and other list-style type specifiers.</p>
 
 <p><a id="x-28SB-MANUAL-3A-40GETTING-EXISTING-PROGRAMS-TO-RUN-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GETTING-EXISTING-PROGRAMS-TO-RUN%20MGL-PAX:SECTION"></a></p>
@@ -2472,7 +2472,7 @@ For example, this call is illegal:</p>
 </code></pre>
 
 <p>This call is illegal because the argument to the macro is <code>(+ 4 5)</code>,
-which is a <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), not a <code>fixnum</code>. Because of macro semantics, it is
+which is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm" title="LIST (MGL-PAX:CLHS NIL)"><code>list</code></a>, not a <code>fixnum</code>. Because of macro semantics, it is
 hardly ever useful to declare the types of macro arguments. If you
 really want to assert something about the type of the result of
 evaluating a macro argument, then put a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_the.htm" title="THE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>the</code></a> in the expansion:</p>
@@ -2757,7 +2757,7 @@ an error if it is executed) and gives a warning.</p>
 
 <p>The compiler handles errors that happen during macroexpansion, turning
 them into compiler errors. If you want to debug the error (to debug
-a macro), you can set <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_break_.htm" title="*BREAK-ON-SIGNALS* (MGL-PAX:CLHS VARIABLE)"><code>*break-on-signals*</code></a> to <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>). For example, this
+a macro), you can set <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_break_.htm" title="*BREAK-ON-SIGNALS* (MGL-PAX:CLHS VARIABLE)"><code>*break-on-signals*</code></a> to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a>. For example, this
 definition:</p>
 
 <pre><code>(defun foo (e l)
@@ -2966,7 +2966,7 @@ followed by the debugger prompt.</p>
 <p>The debugger is invoked when:</p>
 
 <ul>
-<li><p><code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) is called, and the condition it signals is not handled.</p></li>
+<li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a> is called, and the condition it signals is not handled.</p></li>
 <li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_break.htm" title="BREAK (MGL-PAX:CLHS FUNCTION)"><code>break</code></a> is called, or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm" title="SIGNAL (MGL-PAX:CLHS FUNCTION)"><code>signal</code></a> is called with a condition that matches
   the current <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_break_.htm" title="*BREAK-ON-SIGNALS* (MGL-PAX:CLHS VARIABLE)"><code>*break-on-signals*</code></a>.</p></li>
 <li><p>The debugger is explicitly entered with the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_invoke.htm" title="INVOKE-DEBUGGER (MGL-PAX:CLHS FUNCTION)"><code>invoke-debugger</code></a>
@@ -3331,7 +3331,7 @@ X#1  =  2
 <a id="SB-DEBUG:VAR%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/debug.lisp#L1758">[function]</a></span> <span class="reference-object"><a href="#SB-DEBUG:VAR%20FUNCTION" >sb-debug:var</a></span></span> <span class="locative-args">name &amp;optional (id 0 id-supplied)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/debug.lisp#L1758">[function]</a></span> <span class="reference-object"><a href="#SB-DEBUG:VAR%20FUNCTION" >sb-debug:var</a></span></span> <span class="locative-args">name &amp;optional (id 0)</span></span></p>
 
 <p>Return a variable's value if possible. <code>name</code> is a simple-string or symbol.
 If it is a simple-string, it is an initial substring of the
@@ -3601,7 +3601,7 @@ of the block start location:</p>
 <li><p>The block start location may be the same as the true location.</p></li>
 <li><p>The block start location will never be later in the program's flow
   of control than the true location.</p></li>
-<li><p>No conditional control structures (such as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_if.htm" title="IF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>if</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_cond.htm" title="COND (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cond</code></a>, <code>or</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_or.htm" title="OR (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm" title="OR (MGL-PAX:CLHS TYPE)"><code>1</code></a>)) will
+<li><p>No conditional control structures (such as <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_if.htm" title="IF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>if</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_cond.htm" title="COND (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>cond</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_or.htm" title="OR (MGL-PAX:CLHS NIL)"><code>or</code></a>) will
   intervene between the block start and the true location (but note
   that some conditionals present in the original source could be
   optimized away.) Function calls <em>do not</em> end basic blocks.</p></li>
@@ -3703,12 +3703,12 @@ not to the original function.</p>
 <ul>
 <li><p><code>toplevel</code>: Throw to top level.</p></li>
 <li><p><code>restart [&lt;n&gt;]</code>: Invoke the <code>&lt;n&gt;</code>th restart case as displayed by
-  the <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) command. If <code>&lt;n&gt;</code> is not specified, the available
+  the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a> command. If <code>&lt;n&gt;</code> is not specified, the available
   restart cases are reported.</p></li>
-<li><p><code>continue</code>: Call <code>continue</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_abortc.htm" title="CONTINUE (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_contin.htm" title="CONTINUE (MGL-PAX:CLHS RESTART)"><code>1</code></a>) on the condition given to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm" title="DEBUG (MGL-PAX:CLHS DECLARATION)"><code>debug</code></a>. If
+<li><p><code>continue</code>: Call <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_contin.htm" title="CONTINUE (MGL-PAX:CLHS NIL)"><code>continue</code></a> on the condition given to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm" title="DEBUG (MGL-PAX:CLHS DECLARATION)"><code>debug</code></a>. If
   there is no restart case named <code>continue</code>, then an error is
   signaled.</p></li>
-<li><p><code>abort</code>: Call <code>abort</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_abortc.htm" title="ABORT (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/r_abort.htm" title="ABORT (MGL-PAX:CLHS RESTART)"><code>1</code></a>) on the condition given to <code>debug</code>. This is
+<li><p><code>abort</code>: Call <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_abort.htm" title="ABORT (MGL-PAX:CLHS NIL)"><code>abort</code></a> on the condition given to <code>debug</code>. This is
   useful for popping debug command loop levels or aborting to top
   level, as the case may be.</p></li>
 <li><p><code>return &lt;value&gt;</code>: Return <code>value</code> from the current stack frame.
@@ -3924,7 +3924,7 @@ functions are called. In its simplest form:</p>
   previous names for functions, macros, methods or compiler macros.
   Tracing local functions may require <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm" title="DEBUG (MGL-PAX:CLHS DECLARATION)"><code>debug</code></a> policy 3 to inhibit
   inlining.</p></li>
-<li><p><code>string</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="STRING (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) denoting all functions fbound to symbols whose home package
+<li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm" title="STRING (MGL-PAX:CLHS NIL)"><code>string</code></a> denoting all functions fbound to symbols whose home package
   is the package with the given name.</p></li>
 </ul>
 
@@ -4253,7 +4253,7 @@ of values when they are recognized as having dynamic extent:</p>
 
 <ul>
 <li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/03_da.htm" title="&quot;3.4.1&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>&amp;rest</code></a> lists;</p></li>
-<li><p>the results of <code>cons</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm" title="CONS (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cons.htm" title="CONS (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST* (MGL-PAX:CLHS FUNCTION)"><code>list*</code></a>, and <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>);</p></li>
+<li><p>the results of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm" title="CONS (MGL-PAX:CLHS NIL)"><code>cons</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm" title="LIST (MGL-PAX:CLHS NIL)"><code>list</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST* (MGL-PAX:CLHS FUNCTION)"><code>list*</code></a>, and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm" title="VECTOR (MGL-PAX:CLHS NIL)"><code>vector</code></a>;</p></li>
 <li><p>the result of simple forms of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm" title="MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"><code>make-array</code></a>: stack allocation is
   possible only if the resulting array is known to be both simple
   and one-dimensional, and has a constant <code>:element-type</code>;</p>
@@ -4265,7 +4265,7 @@ done except in 0 safety policies.</p>
 </blockquote></li>
 <li><p>closures defined with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm" title="FLET (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>flet</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm" title="LABELS (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>labels</code></a> with a bound <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_dynami.htm" title="DYNAMIC-EXTENT (MGL-PAX:CLHS DECLARATION)"><code>dynamic-extent</code></a>
   declaration;</p></li>
-<li><p>anonymous closures defined with <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>);</p></li>
+<li><p>anonymous closures defined with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm" title="LAMBDA (MGL-PAX:CLHS NIL)"><code>lambda</code></a>;</p></li>
 <li><p>user-defined structures when the structure constructor defined using
   <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defstr.htm" title="DEFSTRUCT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defstruct</code></a> has been declared <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_inline.htm" title="INLINE (MGL-PAX:CLHS DECLARATION)"><code>inline</code></a>;</p>
 
@@ -4442,7 +4442,7 @@ cutting results to 32 bits, and because terminals (here, expressions
 <code>x</code> and <code>y</code>) are also of type <code>(unsigned-byte 32)</code>, 32-bit machine
 arithmetic can be used.</p>
 
-<p>As of SBCL 0.8.5 good functions are <code>+</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pl.htm" title="+ (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm" title="+ (MGL-PAX:CLHS VARIABLE)"><code>1</code></a>), <code>-</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f__.htm" title="- (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm" title="- (MGL-PAX:CLHS VARIABLE)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm" title="LOGAND (MGL-PAX:CLHS FUNCTION)"><code>logand</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm" title="LOGIOR (MGL-PAX:CLHS FUNCTION)"><code>logior</code></a>,
+<p>As of SBCL 0.8.5 good functions are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pl.htm" title="+ (MGL-PAX:CLHS NIL)"><code>+</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a__.htm" title="- (MGL-PAX:CLHS NIL)"><code>-</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm" title="LOGAND (MGL-PAX:CLHS FUNCTION)"><code>logand</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm" title="LOGIOR (MGL-PAX:CLHS FUNCTION)"><code>logior</code></a>,
 <code>logxor</code>, <code>lognot</code> and their combinations; and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ash.htm" title="ASH (MGL-PAX:CLHS FUNCTION)"><code>ash</code></a> with the positive
 second argument. Good widths are 32 on 32-bit CPUs and 64 on 64-bit
 CPUs. While it is possible to support smaller widths as well,
@@ -4502,7 +4502,7 @@ internal features.</p>
 <a id="SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/macros.lisp#L406">[macro]</a></span> <span class="reference-object"><a href="#SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO" >sb-ext:defglobal</a></span></span> <span class="locative-args">name value &amp;optional (doc nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/macros.lisp#L406">[macro]</a></span> <span class="reference-object"><a href="#SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO" >sb-ext:defglobal</a></span></span> <span class="locative-args">name value &amp;optional doc</span></span></p>
 
 <p>Defines <code>name</code> as a global variable that is always bound. <code>value</code> is evaluated
 and assigned to <code>name</code> both at compile- and load-time, but only if <code>name</code> is not
@@ -4719,7 +4719,7 @@ the rational with the exact value of the decimal number expressed as
 a float.</p>
 
 <p>In addition, setting or binding the value of
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_def.htm" title="*READ-DEFAULT-FLOAT-FORMAT* (MGL-PAX:CLHS VARIABLE)"><code>*read-default-float-format*</code></a> to <code>rational</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_ration.htm" title="RATIONAL (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ration.htm" title="RATIONAL (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) around a call to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a> or
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_def.htm" title="*READ-DEFAULT-FLOAT-FORMAT* (MGL-PAX:CLHS VARIABLE)"><code>*read-default-float-format*</code></a> to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_ration.htm" title="RATIONAL (MGL-PAX:CLHS NIL)"><code>rational</code></a> around a call to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a> or
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_fro.htm" title="READ-FROM-STRING (MGL-PAX:CLHS FUNCTION)"><code>read-from-string</code></a> has the effect that floating-point numbers without
 exponent markers are read as rational numbers, as if there had been
 an explicit <code>r</code> or <code>r</code> marker.</p>
@@ -4907,7 +4907,7 @@ specified by ANSI.</p>
 <a id="SB-EXT:GC%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/gc.lisp#L232">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:GC%20FUNCTION" >sb-ext:gc</a></span></span> <span class="locative-args">&amp;key (full nil) (gen 0) &amp;allow-other-keys</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/gc.lisp#L232">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:GC%20FUNCTION" >sb-ext:gc</a></span></span> <span class="locative-args">&amp;key sb-kernel::full (gen 0) &amp;allow-other-keys</span></span></p>
 
 <p>Initiate a garbage collection.</p>
 
@@ -5409,7 +5409,7 @@ are:</p>
   There is no record of what the second return value was meant to
   indicate, and apparently no clients for it.</p></li>
 <li><p>The direct superclasses of <code>sb-mop:funcallable-standard-object</code> are
-  (<code>function</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="FUNCTION (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm" title="FUNCTION (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm" title="STANDARD-OBJECT (MGL-PAX:CLHS CLASS)"><code>standard-object</code></a>) instead of the correct (<code>standard-object</code>
+  (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm" title="FUNCTION (MGL-PAX:CLHS NIL)"><code>function</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm" title="STANDARD-OBJECT (MGL-PAX:CLHS CLASS)"><code>standard-object</code></a>) instead of the correct (<code>standard-object</code>
   <code>function</code>).</p>
 
 <p>This is to ensure that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm" title="STANDARD-OBJECT (MGL-PAX:CLHS CLASS)"><code>standard-object</code></a> class is the last of
@@ -5595,8 +5595,8 @@ AMOP; at present, they are:</p>
 
 <h3><a href="#SB-MANUAL:@EXTENSIBLE-SEQUENCES%20MGL-PAX:SECTION">7.8 Extensible Sequences</a></h3>
 
-<p>ANSI Common Lisp has a class <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE (MGL-PAX:CLHS CLASS)"><code>sequence</code></a> with subclasses <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) and
-<code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), on which the sequence functions like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm" title="FIND (MGL-PAX:CLHS FUNCTION)"><code>find</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_subseq.htm" title="SUBSEQ (MGL-PAX:CLHS FUNCTION)"><code>subseq</code></a>, etc.
+<p>ANSI Common Lisp has a class <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm" title="SEQUENCE (MGL-PAX:CLHS CLASS)"><code>sequence</code></a> with subclasses <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm" title="LIST (MGL-PAX:CLHS NIL)"><code>list</code></a> and
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm" title="VECTOR (MGL-PAX:CLHS NIL)"><code>vector</code></a>, on which the sequence functions like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm" title="FIND (MGL-PAX:CLHS FUNCTION)"><code>find</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_subseq.htm" title="SUBSEQ (MGL-PAX:CLHS FUNCTION)"><code>subseq</code></a>, etc.
 operate. As an extension to the ANSI specification, SBCL allows
 additional subclasses of <code>sequence</code> to be defined.</p>
 
@@ -6313,7 +6313,7 @@ executables that system library routines do not.</p>
 <a id="SB-EXT:RUN-PROGRAM%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/run-program.lisp#L717">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:RUN-PROGRAM%20FUNCTION" >sb-ext:run-program</a></span></span> <span class="locative-args">program args &amp;key (env nil env-p) (environment (when env-p (unix-environment-sbcl-from-cmucl env)) environment-p) (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/run-program.lisp#L717">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:RUN-PROGRAM%20FUNCTION" >sb-ext:run-program</a></span></span> <span class="locative-args">program args &amp;key env (environment (when env-p (unix-environment-sbcl-from-cmucl env))) (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn</span></span></p>
 
 <p><code>run-program</code> creates a new process specified by <code>program</code>.
 <code>args</code> is a list of strings to be passed literally to the new program.
@@ -6349,7 +6349,7 @@ Users Manual for details about the <code>process</code> structure.</p>
 <ul>
 <li><p><code>:environment</code></p>
 
-<p>A list of <code>string</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="STRING (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>)s describing the new Unix environment
+<p>A list of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm" title="STRING (MGL-PAX:CLHS NIL)"><code>string</code></a>s describing the new Unix environment
 (as in &quot;man environ&quot;). The default is to copy the environment of
 the current process.</p></li>
 <li><p><code>:env</code></p>
@@ -7289,7 +7289,7 @@ arguments to <a href="#MAKE-HASH-TABLE%20FUNCTION" title="MAKE-HASH-TABLE FUNCTI
 <a id="MAKE-HASH-TABLE%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/target-hash-table.lisp#L885">[function]</a></span> <span class="reference-object"><a href="#MAKE-HASH-TABLE%20FUNCTION" >make-hash-table</a></span></span> <span class="locative-args">&amp;key (test 'eql) (size 7) (rehash-size 1.5) (rehash-threshold 1) (hash-function nil user-hashfun-p) (weakness nil) (synchronized)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/target-hash-table.lisp#L885">[function]</a></span> <span class="reference-object"><a href="#MAKE-HASH-TABLE%20FUNCTION" >make-hash-table</a></span></span> <span class="locative-args">&amp;key (test 'eql) (size 7) (rehash-size 1.5) (rehash-threshold 1) hash-function weakness synchronized</span></span></p>
 
 <p>Create and return a new hash table. The keywords are as follows:</p>
 
@@ -7374,7 +7374,7 @@ Afterwards both '<code>name</code> and #'<code>name</code> can be used with <cod
 cases <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_5.htm" title="HASH-TABLE-TEST (MGL-PAX:CLHS FUNCTION)"><code>hash-table-test</code></a> will return the symbol <code>name</code>.</p>
 
 <p><code>hash-function</code> must be a symbol naming a global hash function consistent with
-the predicate, or be a <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) form implementing one in the current lexical
+the predicate, or be a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm" title="LAMBDA (MGL-PAX:CLHS NIL)"><code>lambda</code></a> form implementing one in the current lexical
 environment. The hash function must compute the same hash code for any two
 objects for which <code>name</code> returns true, and subsequent calls with already hashed
 objects must always return the same hash code.</p>
@@ -7944,7 +7944,7 @@ also work:</p>
 </ul>
 
 <p>Function documentation is stored separately for function names and objects:
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>, <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>), &amp;co create function objects with the specified documentation
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm" title="LAMBDA (MGL-PAX:CLHS NIL)"><code>lambda</code></a>, &amp;co create function objects with the specified documentation
 strings.</p>
 
 <pre><code>(setf (documentation name 'function) string)
@@ -8396,7 +8396,7 @@ Lisp type specifier. For example,</p>
 
 <p>can be used to determine whether <code>foo</code> is a pointer to a foreign
 <code>int</code>. <code>alien</code> type specifiers can be used in the same ways as
-ordinary Lisp type specifiers (like <code>string</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="STRING (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).) Alien type declarations
+ordinary Lisp type specifiers (like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm" title="STRING (MGL-PAX:CLHS NIL)"><code>string</code></a>.) Alien type declarations
 are subject to the same precise type checking as any other
 declaration. See <a href="#SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION" title="Precise Type Checking">Precise Type Checking</a>.</p>
 
@@ -8568,7 +8568,7 @@ specifiers as foreign type specifiers:</p></li>
 </ul>
 
 <p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_char_.htm" title="CHAR (MGL-PAX:CLHS FUNCTION)"><code>char</code></a>, <code>short</code>, <code>int</code>, <code>long</code>, <code>unsigned-char</code>, <code>unsigned-short</code>,
-  <code>unsigned-int</code>, <code>unsigned-long</code>, <code>float</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="FLOAT (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_float.htm" title="FLOAT (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), <code>double</code>, <code>size-t</code>, <code>off-t</code></p>
+  <code>unsigned-int</code>, <code>unsigned-long</code>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm" title="FLOAT (MGL-PAX:CLHS NIL)"><code>float</code></a>, <code>double</code>, <code>size-t</code>, <code>off-t</code></p>
 
 <p><a id="x-28SB-MANUAL-3A-40OPERATIONS-ON-FOREIGN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-ON-FOREIGN-VALUES%20MGL-PAX:SECTION"></a></p>
@@ -9706,7 +9706,7 @@ streams:</p>
 
 <ul>
 <li><p><em>Bivalent Streams</em>: A type of stream that can read and write both
-  <code>character</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_ch.htm" title="CHARACTER (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ch.htm" title="CHARACTER (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) and <code>(unsigned-byte 8)</code> values.</p></li>
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_ch.htm" title="CHARACTER (MGL-PAX:CLHS NIL)"><code>character</code></a> and <code>(unsigned-byte 8)</code> values.</p></li>
 <li><p><em>Gray Streams</em>: User-overloadable CLOS classes whose instances can
   be used as Lisp streams (e.g. passed as the first argument to
   <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm" title="FORMAT (MGL-PAX:CLHS FUNCTION)"><code>format</code></a>).</p></li>
@@ -9738,7 +9738,7 @@ designator (see <a href="#SB-MANUAL:@EXTERNAL-FORMAT-DESIGNATORS%20MGL-PAX:SECTI
 <h3><a href="#SB-MANUAL:@BIVALENT-STREAMS%20MGL-PAX:SECTION">11.2 Bivalent Streams</a></h3>
 
 <p>A <em>bivalent stream</em> can be used to read and write both
-<code>character</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_ch.htm" title="CHARACTER (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ch.htm" title="CHARACTER (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) and <code>(unsigned-byte 8)</code> values. A bivalent stream is
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_ch.htm" title="CHARACTER (MGL-PAX:CLHS NIL)"><code>character</code></a> and <code>(unsigned-byte 8)</code> values. A bivalent stream is
 created by calling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm" title="OPEN (MGL-PAX:CLHS FUNCTION)"><code>open</code></a> with the argument <code>:element-type</code>
 <code>:default</code>. On such a stream, both binary and character data can be
 read and written with the usual input and output functions.</p>
@@ -9886,7 +9886,7 @@ of fundamental-stream.</p>
 
 <p>Return a type specifier for the kind of object returned by the
 <code>stream</code>. The class <a href="#SB-GRAY:FUNDAMENTAL-CHARACTER-STREAM%20CLASS" title="SB-GRAY:FUNDAMENTAL-CHARACTER-STREAM CLASS"><code>sb-gray:fundamental-character-stream</code></a> provides a
-default method which returns <code>character</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_ch.htm" title="CHARACTER (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ch.htm" title="CHARACTER (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).</p>
+default method which returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_ch.htm" title="CHARACTER (MGL-PAX:CLHS NIL)"><code>character</code></a>.</p>
 
 <p>Also, see the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stm_el.htm" title="STREAM-ELEMENT-TYPE (MGL-PAX:CLHS FUNCTION)">CLHS</a>.</p></li>
 </ul>
@@ -11072,7 +11072,7 @@ main thread depends on the <code>:toplevel</code> argument to
 <a id="SB-THREAD:JOIN-THREAD%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/target-thread.lisp#L2268">[function]</a></span> <span class="reference-object"><a href="#SB-THREAD:JOIN-THREAD%20FUNCTION" >sb-thread:join-thread</a></span></span> <span class="locative-args">thread &amp;key (default nil defaultp) timeout</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/target-thread.lisp#L2268">[function]</a></span> <span class="reference-object"><a href="#SB-THREAD:JOIN-THREAD%20FUNCTION" >sb-thread:join-thread</a></span></span> <span class="locative-args">thread &amp;key default timeout</span></span></p>
 
 <p>Suspend current thread until <code>thread</code> exits. Return the result values
 of the thread function.</p>
@@ -11374,7 +11374,7 @@ the decrement.</p>
 <li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defstr.htm" title="DEFSTRUCT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defstruct</code></a> slot with declared type <code>(unsigned-byte 64)</code> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF (MGL-PAX:CLHS FUNCTION)"><code>aref</code></a>
   of a <code>(simple-array (unsigned-byte 64) (*))</code> (the type
   <code>sb-ext:word</code> can be used for these purposes)</p></li>
-<li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CAR (MGL-PAX:CLHS FUNCTION)"><code>car</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CDR (MGL-PAX:CLHS FUNCTION)"><code>cdr</code></a> (respectively <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm" title="FIRST (MGL-PAX:CLHS FUNCTION)"><code>first</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rest.htm" title="REST (MGL-PAX:CLHS FUNCTION)"><code>rest</code></a>) of a <code>cons</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm" title="CONS (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cons.htm" title="CONS (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>),</p></li>
+<li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CAR (MGL-PAX:CLHS FUNCTION)"><code>car</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CDR (MGL-PAX:CLHS FUNCTION)"><code>cdr</code></a> (respectively <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm" title="FIRST (MGL-PAX:CLHS FUNCTION)"><code>first</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rest.htm" title="REST (MGL-PAX:CLHS FUNCTION)"><code>rest</code></a>) of a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm" title="CONS (MGL-PAX:CLHS NIL)"><code>cons</code></a>,</p></li>
 <li><p>a variable defined using <a href="#SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO" title="SB-EXT:DEFGLOBAL MGL-PAX:MACRO"><code>defglobal</code></a> with a proclaimed type of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm" title="FIXNUM (MGL-PAX:CLHS TYPE)"><code>fixnum</code></a>.</p></li>
 </ul>
 
@@ -11413,7 +11413,7 @@ the increment.</p>
 <li><p>a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defstr.htm" title="DEFSTRUCT (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defstruct</code></a> slot with declared type (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_unsgn_.htm" title="UNSIGNED-BYTE (MGL-PAX:CLHS TYPE)"><code>unsigned-byte</code></a> 64)
   or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm" title="AREF (MGL-PAX:CLHS FUNCTION)"><code>aref</code></a> of a (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ar.htm" title="SIMPLE-ARRAY (MGL-PAX:CLHS TYPE)"><code>simple-array</code></a> (<code>unsigned-byte</code> 64) (*))
   The type <code>sb-ext:word</code> can be used for these purposes.</p></li>
-<li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CAR (MGL-PAX:CLHS FUNCTION)"><code>car</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CDR (MGL-PAX:CLHS FUNCTION)"><code>cdr</code></a> (respectively <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm" title="FIRST (MGL-PAX:CLHS FUNCTION)"><code>first</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rest.htm" title="REST (MGL-PAX:CLHS FUNCTION)"><code>rest</code></a>) of a <code>cons</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm" title="CONS (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cons.htm" title="CONS (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).</p></li>
+<li><p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CAR (MGL-PAX:CLHS FUNCTION)"><code>car</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm" title="CDR (MGL-PAX:CLHS FUNCTION)"><code>cdr</code></a> (respectively <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm" title="FIRST (MGL-PAX:CLHS FUNCTION)"><code>first</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rest.htm" title="REST (MGL-PAX:CLHS FUNCTION)"><code>rest</code></a>) of a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm" title="CONS (MGL-PAX:CLHS NIL)"><code>cons</code></a>.</p></li>
 <li><p>a variable defined using <a href="#SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO" title="SB-EXT:DEFGLOBAL MGL-PAX:MACRO"><code>defglobal</code></a> with a proclaimed type of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm" title="FIXNUM (MGL-PAX:CLHS TYPE)"><code>fixnum</code></a>.
   Macroexpansion is performed on <code>place</code> before expanding <code>atomic-incf</code>.</p></li>
 </ul>
@@ -11644,7 +11644,7 @@ that they go to sleep.</p>
 <a id="SB-THREAD:WITH-MUTEX%20MGL-PAX:MACRO"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/thread.lisp#L175">[macro]</a></span> <span class="reference-object"><a href="#SB-THREAD:WITH-MUTEX%20MGL-PAX:MACRO" >sb-thread:with-mutex</a></span></span> <span class="locative-args">(mutex &amp;key (wait-p t) timeout (value nil)) &amp;body body</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/thread.lisp#L175">[macro]</a></span> <span class="reference-object"><a href="#SB-THREAD:WITH-MUTEX%20MGL-PAX:MACRO" >sb-thread:with-mutex</a></span></span> <span class="locative-args">(mutex &amp;key (wait-p t) timeout value) &amp;body body</span></span></p>
 
 <p>Acquire <code>mutex</code> for the dynamic scope of <code>body</code>. If <code>wait-p</code> is true (the default),
 and the <code>mutex</code> is not immediately available, sleep until it is available.</p>
@@ -11733,7 +11733,7 @@ stale value, use <a href="#SB-THREAD:MUTEX-OWNER%20FUNCTION" title="SB-THREAD:MU
 <a id="SB-THREAD:GRAB-MUTEX%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/target-thread.lisp#L966">[function]</a></span> <span class="reference-object"><a href="#SB-THREAD:GRAB-MUTEX%20FUNCTION" >sb-thread:grab-mutex</a></span></span> <span class="locative-args">mutex &amp;key (waitp t) (timeout nil)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/target-thread.lisp#L966">[function]</a></span> <span class="reference-object"><a href="#SB-THREAD:GRAB-MUTEX%20FUNCTION" >sb-thread:grab-mutex</a></span></span> <span class="locative-args">mutex &amp;key (waitp t) timeout</span></span></p>
 
 <p>Acquire <code>mutex</code> for the current thread. If <code>waitp</code> is true (the default) and
 the mutex is not immediately available, sleep until it is available.</p>
@@ -11783,7 +11783,7 @@ directly.</p></li>
 around calls to it.</p>
 
 <p>The <code>if-not-owner</code> keyword dictates behavior when the current thread does not own the
-mutex. Do nothing and silently return if <code>:punt</code>, signal a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_warnin.htm" title="WARNING (MGL-PAX:CLHS CONDITION)"><code>warning</code></a> or <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) if <code>:warn</code>
+mutex. Do nothing and silently return if <code>:punt</code>, signal a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_warnin.htm" title="WARNING (MGL-PAX:CLHS CONDITION)"><code>warning</code></a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a> if <code>:warn</code>
 or <code>:error</code> respectively, or release the mutex anyway if <code>:force</code>.</p></li>
 </ul>
 
@@ -12373,7 +12373,7 @@ from now. For timers with a repeat interval it returns true.</p></li>
 <a id="SB-EXT:SCHEDULE-TIMER%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/timer.lisp#L256">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:SCHEDULE-TIMER%20FUNCTION" >sb-ext:schedule-timer</a></span></span> <span class="locative-args">timer time &amp;key repeat-interval absolute-p (catch-up nil catch-up-p)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/src/code/timer.lisp#L256">[function]</a></span> <span class="reference-object"><a href="#SB-EXT:SCHEDULE-TIMER%20FUNCTION" >sb-ext:schedule-timer</a></span></span> <span class="locative-args">timer time &amp;key repeat-interval absolute-p catch-up</span></span></p>
 
 <p>Schedule <code>timer</code> to be triggered at <code>time</code>. If <code>absolute-p</code> then <code>time</code> is
 universal time, but non-integral values are also allowed, else <code>time</code> is
@@ -13143,7 +13143,7 @@ two levels is only supported on x86 and x86-64.</p>
 <a id="SB-SPROF:WITH-PROFILING%20MGL-PAX:MACRO"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/contrib/sb-sprof/interface.lisp#L20">[macro]</a></span> <span class="reference-object"><a href="#SB-SPROF:WITH-PROFILING%20MGL-PAX:MACRO" >sb-sprof:with-profiling</a></span></span> <span class="locative-args">(&amp;key (sample-interval '*sample-interval*) alloc-interval (max-samples '*max-samples*) (reset nil) (mode '*sampling-mode*) (loop nil) max-depth show-progress (threads :all) (report nil)) &amp;body body</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/contrib/sb-sprof/interface.lisp#L20">[macro]</a></span> <span class="reference-object"><a href="#SB-SPROF:WITH-PROFILING%20MGL-PAX:MACRO" >sb-sprof:with-profiling</a></span></span> <span class="locative-args">(&amp;key (sample-interval '*sample-interval*) alloc-interval (max-samples '*max-samples*) reset (mode '*sampling-mode*) loop max-depth show-progress (threads :all) report) &amp;body body</span></span></p>
 
 <p>Evaluate <code>body</code> with statistical profiling turned on. If <code>loop</code> is true,
 loop around the <code>body</code> until a sufficient number of samples has been collected.
@@ -13968,7 +13968,7 @@ validated later.</p>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/contrib/sb-concurrency/frlock.lisp#L154">[function]</a></span> <span class="reference-object"><a href="#SB-CONCURRENCY:FRLOCK-READ-END%20FUNCTION" >sb-concurrency:frlock-read-end</a></span></span> <span class="locative-args">frlock</span></span></p>
 
 <p>Ends a read sequence on <code>frlock</code>. Returns a token and an epoch. If the token
-and epoch are <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) to the read-token and epoch returned by <a href="#SB-CONCURRENCY:FRLOCK-READ-BEGIN%20FUNCTION" title="SB-CONCURRENCY:FRLOCK-READ-BEGIN FUNCTION"><code>frlock-read-begin</code></a>,
+and epoch are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a> to the read-token and epoch returned by <a href="#SB-CONCURRENCY:FRLOCK-READ-BEGIN%20FUNCTION" title="SB-CONCURRENCY:FRLOCK-READ-BEGIN FUNCTION"><code>frlock-read-begin</code></a>,
 the values read under the <code>frlock</code> are consistent and can be used: if the values
 differ, the values are inconsistent and the read must be restated.</p>
 
@@ -14509,7 +14509,7 @@ when the file was compiled.</p></li>
 
 <p>Return the <a href="#SB-INTROSPECT:DEFINITION-SOURCE%20STRUCTURE" title="SB-INTROSPECT:DEFINITION-SOURCE STRUCTURE"><code>definition-source</code></a> corresponding to the definition of <code>object</code>
 or <code>nil</code> if there is no corresponding definition. <code>object</code> must be a
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>package</code></a>, <code>function</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="FUNCTION (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm" title="FUNCTION (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>), <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_method.htm" title="METHOD (MGL-PAX:CLHS CLASS)"><code>method</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_meth_1.htm" title="METHOD-COMBINATION (MGL-PAX:CLHS CLASS)"><code>method-combination</code></a>, <code>sb-mop:slot-definition</code>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm" title="PACKAGE (MGL-PAX:CLHS CLASS)"><code>package</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm" title="FUNCTION (MGL-PAX:CLHS NIL)"><code>function</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_method.htm" title="METHOD (MGL-PAX:CLHS CLASS)"><code>method</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_meth_1.htm" title="METHOD-COMBINATION (MGL-PAX:CLHS CLASS)"><code>method-combination</code></a>, <code>sb-mop:slot-definition</code>,
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm" title="STANDARD-OBJECT (MGL-PAX:CLHS CLASS)"><code>standard-object</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm" title="STRUCTURE-OBJECT (MGL-PAX:CLHS CLASS)"><code>structure-object</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm" title="CLASS (MGL-PAX:CLHS CLASS)"><code>class</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_cl.htm" title="STRUCTURE-CLASS (MGL-PAX:CLHS CLASS)"><code>structure-class</code></a>,
 or a subclass of <code>condition</code>. An error is signalled for other types.</p>
 
@@ -14742,8 +14742,8 @@ value.</p>
 <p><code>type-specifier-name</code> must be a symbol. This function can find the
 lambda list of derived type specifiers (e.g. those defined with
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm" title="DEFTYPE (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>deftype</code></a>) and classes with compound type specifier syntaxes (e.g. the
-class <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="FLOAT (MGL-PAX:CLHS CLASS)"><code>float</code></a>). It returns <code>nil</code>, <code>nil</code> for other type specifiers (e.g. <code>and</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_and.htm" title="AND (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_and.htm" title="AND (MGL-PAX:CLHS TYPE)"><code>1</code></a>),
-<code>or</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_or.htm" title="OR (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm" title="OR (MGL-PAX:CLHS TYPE)"><code>1</code></a>), <code>not</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_not.htm" title="NOT (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_not.htm" title="NOT (MGL-PAX:CLHS TYPE)"><code>1</code></a>)) and types (e.g. <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>)).</p></li>
+class <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm" title="FLOAT (MGL-PAX:CLHS CLASS)"><code>float</code></a>). It returns <code>nil</code>, <code>nil</code> for other type specifiers (e.g. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_and.htm" title="AND (MGL-PAX:CLHS NIL)"><code>and</code></a>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_or.htm" title="OR (MGL-PAX:CLHS NIL)"><code>or</code></a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_not.htm" title="NOT (MGL-PAX:CLHS NIL)"><code>not</code></a>) and types (e.g. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm" title="LIST (MGL-PAX:CLHS NIL)"><code>list</code></a>).</p></li>
 </ul>
 
 <p><a id="x-28SB-INTROSPECT-3AWHO-SPECIALIZES-DIRECTLY-20FUNCTION-29"></a>
@@ -14860,7 +14860,7 @@ corresponding <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_p
 
 <p>If <code>ext</code> is true (default is <code>t</code>), includes some pointers that are not
 actually contained in the object but found in certain well-known
-indirect containers: <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm" title="FDEFINITION (MGL-PAX:CLHS FUNCTION)"><code>fdefinition</code></a>s, <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) specializers, classes, and
+indirect containers: <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm" title="FDEFINITION (MGL-PAX:CLHS FUNCTION)"><code>fdefinition</code></a>s, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a> specializers, classes, and
 thread-local symbol values in other threads fall into this category.</p>
 
 <blockquote>
@@ -15196,7 +15196,7 @@ itself, or a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fi
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/contrib/sb-posix/macros.lisp#L2">[type]</a></span> <span class="reference-object"><a href="#SB-POSIX:FILENAME%20TYPE" >sb-posix:filename</a></span></span></span></p>
 
-<p>A <code>string</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="STRING (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) designating a filename in native namestring syntax.</p>
+<p>A <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm" title="STRING (MGL-PAX:CLHS NIL)"><code>string</code></a> designating a filename in native namestring syntax.</p>
 
 <p>Note that native namestring syntax is distinct from Lisp namestring syntax:</p>
 
@@ -15229,8 +15229,8 @@ true <code>:as-file</code> argument to <code>sb-ext:native-namestring</code>.</p
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/sbcl/sbcl/blob/64a49a0e497a3a738ab73c0654837e268ad5b30f/contrib/sb-posix/macros.lisp#L2">[type]</a></span> <span class="reference-object"><a href="#SB-POSIX:FILENAME-DESIGNATOR%20TYPE" >sb-posix:filename-designator</a></span></span></span></p>
 
-<p>Designator for a <a href="#SB-POSIX:FILENAME%20TYPE" title="SB-POSIX:FILENAME TYPE"><code>filename</code></a>: a <code>string</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_string.htm" title="STRING (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) designating itself, or a
-designator for a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) designating the corresponding native namestring.</p></li>
+<p>Designator for a <a href="#SB-POSIX:FILENAME%20TYPE" title="SB-POSIX:FILENAME TYPE"><code>filename</code></a>: a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm" title="STRING (MGL-PAX:CLHS NIL)"><code>string</code></a> designating itself, or a
+designator for a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm" title="PATHNAME (MGL-PAX:CLHS NIL)"><code>pathname</code></a> designating the corresponding native namestring.</p></li>
 </ul>
 
 <p><a id="x-28SB-POSIX-3AFILENAME-20FUNCTION-29"></a>
@@ -15761,7 +15761,7 @@ array in memory.</p>
 operation <code>op</code> element-wise to the <code>y</code> elements of type <code>x</code>, there
 exists also a functions <code>x-op</code> for applying that operation only to a
 single element. For example, the SIMD function <code>f64.4+</code> has a
-corresponding function <code>f64+</code> that differs from <code>cl:+</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pl.htm" title="+ (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm" title="+ (MGL-PAX:CLHS VARIABLE)"><code>1</code></a>) in that it
+corresponding function <code>f64+</code> that differs from <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pl.htm" title="+ (MGL-PAX:CLHS NIL)"><code>cl:+</code></a> in that it
 only accepts arguments of type double float, and that it adds its
 supplied arguments in a fixed order that is the same as the one used
 by <code>f64.4</code>.</p>
@@ -15948,7 +15948,7 @@ signaled at compile-time.</p></li>
 <p>During final deprecation the symbols still exist. However, when
 a thing in this deprecation stage is used, a
 <a href="#SB-EXT:FINAL-DEPRECATION-WARNING%20CONDITION" title="SB-EXT:FINAL-DEPRECATION-WARNING CONDITION"><code>sb-ext:final-deprecation-warning</code></a>, which is a full <code>warning</code>, is
-signaled at compile-time and an <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>) is signaled at run-time.</p></li>
+signaled at compile-time and an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a> is signaled at run-time.</p></li>
 <li><p><strong>After Final Deprecation</strong></p>
 
 <p>The interface is deleted entirely.</p></li>
@@ -16062,7 +16062,7 @@ the Common Lisp Hyperspec.)</p>
 
 <p>object-clause ::= (namespace <code>&lt;name&gt;</code> [<code>:replacement</code> <code>&lt;replacement&gt;</code>])</p>
 
-<p>namespace ::= {<code>cl:variable</code> | <code>cl:function</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm" title="FUNCTION (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm" title="FUNCTION (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>) | <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_type.htm" title="TYPE (MGL-PAX:CLHS DECLARATION)"><code>cl:type</code></a>}</p>
+<p>namespace ::= {<code>cl:variable</code> | <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm" title="FUNCTION (MGL-PAX:CLHS NIL)"><code>cl:function</code></a> | <a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_type.htm" title="TYPE (MGL-PAX:CLHS DECLARATION)"><code>cl:type</code></a>}</p>
 
 <p>where the terminal <code>&lt;name&gt;</code> is the name of the deprecated thing,
 <code>&lt;version&gt;</code> and <code>&lt;software&gt;</code> are strings describing the version in
@@ -16346,7 +16346,7 @@ versions of SBCL, which have since then been deleted.</p>
 <li><p><code>sb-kernel:instance-lambda</code></p>
 
 <p>Historically needed for CLOS code. Deprecated as of 0.9.3.32 in
-August 2005. Deleted as of 1.0.47.8 in April 2011. Plain <code>lambda</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_lambda.htm" title="&quot;s_lambda&quot; (MGL-PAX:CLHS MGL-PAX:SECTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_lambda.htm" title="LAMBDA (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>1</code></a>)
+August 2005. Deleted as of 1.0.47.8 in April 2011. Plain <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm" title="LAMBDA (MGL-PAX:CLHS NIL)"><code>lambda</code></a>
 can be used where <code>sb-kernel:instance-lambda</code> used to be needed.</p></li>
 <li><p><code>sb-alien:def-alien-routine</code>, <code>sb-alien:def-alien-variable</code>,
   <code>sb-alien:def-alien-type</code></p>
@@ -17417,7 +17417,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>weak pointers ↩ <em>d</em>: <a href="#SB-MANUAL:@WEAK-POINTERS%20MGL-PAX:SECTION" title="Weak Pointers"><strong>Weak Pointers</strong></a></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-27T09:41:18Z]</h6>
+<h6>[Generated 2026-06-27T09:53:44Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

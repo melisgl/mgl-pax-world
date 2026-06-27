@@ -591,7 +591,7 @@ it may create a new [`mat`][6d14].
 <a id="x-28MGL-MAT-3AWITH-SHAPE-AND-DISPLACEMENT-20MGL-PAX-3AMACRO-29"></a>
 <a id="MGL-MAT:WITH-SHAPE-AND-DISPLACEMENT%20MGL-PAX:MACRO"></a>
 
-- [macro] **with-shape-and-displacement** *(mat &optional (dimensions nil) (displacement nil)) &body body*
+- [macro] **with-shape-and-displacement** *(mat &optional dimensions displacement) &body body*
 
     Reshape and displace `mat` if `dimensions` and/or `displacement` is given
     and restore the original shape and displacement after `body` is

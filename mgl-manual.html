@@ -315,7 +315,7 @@ instances are simply called <strong>results</strong>.</p>
 <ul>
 <li><p><span class=reference-bullet><span class=reference><span class="locative-type">[function]</span> <span class="reference-object"><a href="#MGL-COMMON:NAME%3D%20FUNCTION" >name=</a></span></span> <span class="locative-args">x y</span></span></p>
 
-<p>Return <code>t</code> if X and Y are <code>eql</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm" title="EQL (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm" title="EQL (MGL-PAX:CLHS TYPE)"><code>1</code></a>) or if they are structured components whose
+<p>Return <code>t</code> if X and Y are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)"><code>eql</code></a> or if they are structured components whose
 elements are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a>. Strings and bit-vectors are <code>equal</code> if they are the same
 length and have identical components. Other arrays must be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm" title="EQ (MGL-PAX:CLHS FUNCTION)"><code>eq</code></a> to be <code>equal</code>.</p></li>
 </ul>
@@ -403,7 +403,7 @@ to iterating over the elements of a sequence or a sampler (see
 <a id="MGL-DATASET:MAP-DATASETS%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L25">[function]</a></span> <span class="reference-object"><a href="#MGL-DATASET:MAP-DATASETS%20FUNCTION" >map-datasets</a></span></span> <span class="locative-args">fn datasets &amp;key (impute nil imputep)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/569262633e59aeb313de3ade633ebe5b21d4625e/src/dataset.lisp#L25">[function]</a></span> <span class="reference-object"><a href="#MGL-DATASET:MAP-DATASETS%20FUNCTION" >map-datasets</a></span></span> <span class="locative-args">fn datasets &amp;key impute</span></span></p>
 
 <p>Call <code>fn</code> with a list of instances, one from each dataset in
 <code>datasets</code>. Return nothing. If <code>impute</code> is specified then iterate until
@@ -914,7 +914,7 @@ evenly:</p>
 <p>Make a single sequence out of the sequences in <code>seqs</code> so that in the
 returned sequence indices of elements belonging to the same source
 sequence are spread evenly across the whole range. The result is a
-list is <code>result-type</code> is <code>list</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_list.htm" title="LIST (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm" title="LIST (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>), it's a vector if <code>result-type</code> is <code>vector</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_vector.htm" title="VECTOR (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vector.htm" title="VECTOR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).
+list is <code>result-type</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm" title="LIST (MGL-PAX:CLHS NIL)"><code>list</code></a>, it's a vector if <code>result-type</code> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm" title="VECTOR (MGL-PAX:CLHS NIL)"><code>vector</code></a>.
 If <code>result-type</code> is <code>nil</code>, then it's determined by the type of the first
 sequence in <code>seqs</code>.</p>
 
@@ -1304,7 +1304,7 @@ accessor:</p>
 
 <p>Note that the monitor we push can be anything as long as
 <a href="#MGL-CORE:APPLY-MONITOR%20GENERIC-FUNCTION" title="MGL-CORE:APPLY-MONITOR GENERIC-FUNCTION"><code>apply-monitor</code></a> is implemented on it with the appropriate signature.
-Also note that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm" title="ZEROP (MGL-PAX:CLHS FUNCTION)"><code>zerop</code></a> + <code>mod</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mod_r.htm" title="MOD (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_mod.htm" title="MOD (MGL-PAX:CLHS TYPE)"><code>1</code></a>) logic is fragile, so you will likely
+Also note that the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm" title="ZEROP (MGL-PAX:CLHS FUNCTION)"><code>zerop</code></a> + <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_mod.htm" title="MOD (MGL-PAX:CLHS NIL)"><code>mod</code></a> logic is fragile, so you will likely
 want to use <a href="#MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY%20FUNCTION" title="MGL-OPT:MONITOR-OPTIMIZATION-PERIODICALLY FUNCTION"><code>mgl-opt:monitor-optimization-periodically</code></a> instead of
 doing the above.</p>
 
@@ -6965,7 +6965,7 @@ was found in <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PA
 <li><p><a href="#MGL-COMMON:WEIGHTS%20%28MGL-PAX:READER%20MGL-BP:-%3EV*M%29" title="MGL-COMMON:WEIGHTS (MGL-PAX:READER MGL-BP:-&gt;V*M)"><code>weights</code></a> [<code>mgl-common</code>] <em>(reader mgl-bp:-&gt;v*m)</em></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-27T09:41:21Z]</h6>
+<h6>[Generated 2026-06-27T09:53:46Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

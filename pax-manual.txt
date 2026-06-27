@@ -184,7 +184,7 @@ PAX is built on top of the DRef library (bundled in the same repository).
 
 - [system] "mgl-pax"
 
-    - Version: 0.4.12
+    - Version: 0.5
 
     - Description: Documentation system, browser, generator. See the
     PAX Manual.
@@ -2052,7 +2052,8 @@ else as a symbol.
 
 Examples:
 
-- [see this][eql type] renders as see this.
+- [see this][output-label restart] renders as see
+  this.
 
 - [see this]["MGL-PAX" package] renders as see this.
 
@@ -2069,7 +2070,7 @@ Examples:
 
 - single link: [print][] renders as print.
 
-- multiple links: [eql][] renders as eql.
+- multiple links: [output-label][] renders as output-label.
 
 - no definitions: [bad-name][] renders as BAD-NAME.
 
@@ -2085,7 +2086,7 @@ Examples:
 
 - [see this][print] renders as see this.
 
-- [see this][eql] renders as see this.
+- [see this][output-label] renders as see this.
 
 ##### Markdown Reflink
 
@@ -2113,26 +2114,31 @@ Markdown reference links (see Markdown in Docstrings).
 
     When document encounters a Reflink that looks
     like a PAX construct but has no matching definition, it signals an
-    unresolvable-reflink warning.
+    unresolvable-reflink warning with the output-reflink and
+    output-label restarts available.
 
-    - If the output-reflink restart is invoked, then no warning is
-      printed and the Markdown link is left unchanged. muffle-warning is
-      equivalent to output-reflink.
+    If the warning is not handled, then it is printed to *error-output*,
+    and it behaves as if output-label was invoked.
 
-    - If the output-label restart is invoked, then no warning is printed
-      and the Markdown link is replaced by its label. For example,
-      [NONEXISTENT][function] becomes nonexistent.
+- [restart] output-reflink
 
-    - If the warning is not handled, then it is printed to
-      *error-output*, and it behaves as if output-label was invoked.
+    In the context of an unresolvable-reflink, print no warning, and leave
+    the Markdown link unchanged. muffle-warning is equivalent to
+    output-reflink.
+
+- [restart] output-label
+
+    In the context of an unresolvable-reflink, print no warning, and
+    replace the Markdown link by its label. For example,
+    [NONEXISTENT][function] becomes nonexistent.
 
 - [function] output-reflink &optional condition
 
-    Invoke the output-reflink restart. See unresolvable-reflink.
+    Invoke the output-reflink restart.
 
 - [function] output-label &optional condition
 
-    Invoke the output-label restart. See unresolvable-reflink.
+    Invoke the output-label restart.
 
 #### Autolink
 
@@ -4247,7 +4253,7 @@ are for writing new document-object* methods, which emit Markdown.
 
     This function is for extension only. Do not call it directly.
 
-- [macro] documenting-definition (stream &key dref package readtable (arglist nil)) &body body
+- [macro] documenting-definition (stream &key dref package readtable arglist) &body body
 
     Write dref to stream as described in
     *document-mark-up-signatures*, and establish dref as a
@@ -4276,6 +4282,9 @@ are for writing new document-object* methods, which emit Markdown.
           is printed without the outermost parens and with the package
           names removed from the argument names. Keywords are
           printed with a leading colon.
+
+            &aux variables and supplied-p-parameters of &optional and
+            &key arguments are considered internal and are not printed.
 
         - If it is a string, then it must be valid Markdown.
 

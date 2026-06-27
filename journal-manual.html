@@ -322,7 +322,7 @@ signal an error. The default implementation</p>
 <ul>
 <li><p>returns <code>designator</code> itself if it is of type <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>,</p></li>
 <li><p>returns a new <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a> if <code>designator</code> is <code>t</code>,</p></li>
-<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <code>pathname</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pn.htm" title="PATHNAME (MGL-PAX:CLHS CLASS)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn.htm" title="PATHNAME (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>).</p></li>
+<li><p>returns a new <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a> if <code>designator</code> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm" title="PATHNAME (MGL-PAX:CLHS NIL)"><code>pathname</code></a>.</p></li>
 </ul></li>
 </ul>
 
@@ -2218,7 +2218,7 @@ assistance may be required from <code>replay-values</code> and <code>replay-cond
   condition (has <code>event-exit</code> <code>:condition</code>), then the recorded
   condition (in <code>event-outcome</code>) is signalled as
   IN <code>(error (event-outcome replay-event))</code>. If <code>replay-condition</code> is
-  specified, it is called instead of <code>error</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm" title="ERROR (MGL-PAX:CLHS CONDITION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_error.htm" title="ERROR (MGL-PAX:CLHS FUNCTION)"><code>1</code></a>). <code>replay-condition</code> must
+  specified, it is called instead of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm" title="ERROR (MGL-PAX:CLHS NIL)"><code>error</code></a>. <code>replay-condition</code> must
   not return normally, and it's a <a href="#JOURNAL:JOURNAL-ERROR%20CONDITION" title="JOURNAL:JOURNAL-ERROR CONDITION"><code>journal-error</code></a> if it does.</p></li>
 </ul>
 
@@ -3620,7 +3620,7 @@ ideal for smallish journals persisted manually (see
 generated. They differ from <code>file-journal</code>s in that events written to
 <code>in-memory-journal</code>s are not serialized (and deserialized on replay)
 with the following consequences for the objects recorded by
-<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>)
+<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>values</code></a>
 of the block, or the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>):</p>
 
 <ul>
@@ -3634,7 +3634,7 @@ of the block, or the value returned by <a href="http://www.lispworks.com/documen
 <a id="JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/335ea8d70958327d089d2138173c4271bb63f465/src/journal.lisp#L5095">[function]</a></span> <span class="reference-object"><a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" >make-in-memory-journal</a></span></span> <span class="locative-args">&amp;key (events nil eventsp) state (sync nil syncp) sync-fn</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/335ea8d70958327d089d2138173c4271bb63f465/src/journal.lisp#L5095">[function]</a></span> <span class="reference-object"><a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" >make-in-memory-journal</a></span></span> <span class="locative-args">&amp;key events state sync sync-fn</span></span></p>
 
 <p>Create an <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a>.</p>
 
@@ -3694,7 +3694,7 @@ a more full-featured solution for repeated <a href="#JOURNAL:@REPLAY%20MGL-PAX:S
 
 <p>Since serialization in <code>file-journal</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a>
 and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE (MGL-PAX:CLHS FUNCTION)"><code>write</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> records in events (i.e. its
-<code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_values.htm" title="VALUES (MGL-PAX:CLHS FUNCTION)"><code>0</code></a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm" title="VALUES (MGL-PAX:CLHS TYPE)"><code>1</code></a>) of the block, or
+<code>name</code>, <code>args</code> arguments, and also the return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>values</code></a> of the block, or
 the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="readable">readable</a>.</p>
 
 <p>File journals are human-readable and editable by hand with some
@@ -4966,7 +4966,7 @@ be readable.</p></li>
 </ul></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-27T09:41:20Z]</h6>
+<h6>[Generated 2026-06-27T09:53:45Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

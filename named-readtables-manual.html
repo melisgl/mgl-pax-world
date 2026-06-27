@@ -393,7 +393,7 @@ return the readtable. This may signal <a href="#EDITOR-HINTS.NAMED-READTABLES:RE
 <a id="EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/07fde2576d82a2de6be036c68a92a12c8128a761/src/named-readtables.lisp#L262">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION" >make-readtable</a></span></span> <span class="locative-args">&amp;optional (name nil name-supplied-p) &amp;key merge</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/07fde2576d82a2de6be036c68a92a12c8128a761/src/named-readtables.lisp#L262">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION" >make-readtable</a></span></span> <span class="locative-args">&amp;optional name &amp;key merge</span></span></p>
 
 <p>Creates and returns a new readtable under the specified
 <code>name</code>.</p>
@@ -445,7 +445,7 @@ found. Returns <code>nil</code> otherwise.</p></li>
 <a id="EDITOR-HINTS.NAMED-READTABLES:ENSURE-READTABLE%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/07fde2576d82a2de6be036c68a92a12c8128a761/src/named-readtables.lisp#L518">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:ENSURE-READTABLE%20FUNCTION" >ensure-readtable</a></span></span> <span class="locative-args">name &amp;optional (default nil default-p)</span></span></p>
+<li><p><span class=reference-bullet><span class=reference><span class="locative-type"><a href="https://github.com/melisgl/named-readtables/blob/07fde2576d82a2de6be036c68a92a12c8128a761/src/named-readtables.lisp#L518">[function]</a></span> <span class="reference-object"><a href="#EDITOR-HINTS.NAMED-READTABLES:ENSURE-READTABLE%20FUNCTION" >ensure-readtable</a></span></span> <span class="locative-args">name &amp;optional default</span></span></p>
 
 <p>Looks up the readtable specified by <code>name</code> and returns it if it's found.
 If it is not found, it registers the readtable designated by <code>default</code>
@@ -647,7 +647,7 @@ readtable and the two respective reader macro functions differ.</p></li>
 <li><a href="#%22named-readtables%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;named-readtables&quot; ASDF/SYSTEM:SYSTEM"><code>named-readtables</code></a> <em>(asdf:system)</em></li>
 </ul>
  </div>
-<h6>[Generated 2026-06-27T09:41:23Z]</h6>
+<h6>[Generated 2026-06-27T09:53:47Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

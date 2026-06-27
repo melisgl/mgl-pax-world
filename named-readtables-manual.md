@@ -340,7 +340,7 @@ and the API of packages.
 <a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:MAKE-READTABLE%20FUNCTION"></a>
 
-- [function] **make-readtable** *&optional (name nil name-supplied-p) &key merge*
+- [function] **make-readtable** *&optional name &key merge*
 
     Creates and returns a new readtable under the specified
     `name`.
@@ -386,7 +386,7 @@ and the API of packages.
 <a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AENSURE-READTABLE-20FUNCTION-29"></a>
 <a id="EDITOR-HINTS.NAMED-READTABLES:ENSURE-READTABLE%20FUNCTION"></a>
 
-- [function] **ensure-readtable** *name &optional (default nil default-p)*
+- [function] **ensure-readtable** *name &optional default*
 
     Looks up the readtable specified by `name` and returns it if it's found.
     If it is not found, it registers the readtable designated by `default`

@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.1.pax-doc.1000-64a49a0, generated 2026-06-27 09:40:05. See
+The output is for SBCL version 2.6.1.pax-doc.1000-64a49a0, generated 2026-06-27 09:52:36. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -750,7 +750,7 @@ SBCL has the ability to save its state as a file for later
 execution. This functionality is important for its bootstrapping
 process, and is also provided as an extension to the user.
 
-- [function] sb-ext:save-lisp-and-die core-file-name &key (toplevel #'toplevel-init toplevel-supplied) (executable nil) (save-runtime-options nil) (callable-exports nil) (purify t) (root-structures nil) (environment-name "auxiliary") (compression nil)
+- [function] sb-ext:save-lisp-and-die core-file-name &key (toplevel #'toplevel-init) executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression
 
     Save a "core image", i.e. enough information to restart a Lisp
     process later in the same state, in the file of the specified name.
@@ -2342,7 +2342,7 @@ identifier 0 (which is not printed), the second one has identifier
   #<identifier> suffix, where <identifier> is the small integer
   used to make the name unique.
 
-- [function] sb-debug:var name &optional (id 0 id-supplied)
+- [function] sb-debug:var name &optional (id 0)
 
     Return a variable's value if possible. name is a simple-string or symbol.
     If it is a simple-string, it is an initial substring of the
@@ -3343,7 +3343,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 
 ### Global and Always-bound Variables
 
-- [macro] sb-ext:defglobal name value &optional (doc nil)
+- [macro] sb-ext:defglobal name value &optional doc
 
     Defines name as a global variable that is always bound. value is evaluated
     and assigned to name both at compile- and load-time, but only if name is not
@@ -3661,7 +3661,7 @@ the following variable.
 SBCL provides additional garbage collection functionality not
 specified by ANSI.
 
-- [function] sb-ext:gc &key (full nil) (gen 0) &allow-other-keys
+- [function] sb-ext:gc &key sb-kernel::full (gen 0) &allow-other-keys
 
     Initiate a garbage collection.
 
@@ -4619,7 +4619,7 @@ External programs can be run with sb-ext:run-program.
 > However, we caution such users that this search routine finds
 > executables that system library routines do not.
 
-- [function] sb-ext:run-program program args &key (env nil env-p) (environment (when env-p (unix-environment-sbcl-from-cmucl env)) environment-p) (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn
+- [function] sb-ext:run-program program args &key env (environment (when env-p (unix-environment-sbcl-from-cmucl env))) (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn
 
     run-program creates a new process specified by program.
     args is a list of strings to be passed literally to the new program.
@@ -5249,7 +5249,7 @@ the condition accessor sb-ext:name-conflict-symbols.
 hash table extensions supported by SBCL are all controlled by keyword
 arguments to make-hash-table.
 
-- [function] make-hash-table &key (test 'eql) (size 7) (rehash-size 1.5) (rehash-threshold 1) (hash-function nil user-hashfun-p) (weakness nil) (synchronized)
+- [function] make-hash-table &key (test 'eql) (size 7) (rehash-size 1.5) (rehash-threshold 1) hash-function weakness synchronized
 
     Create and return a new hash table. The keywords are as follows:
 
@@ -8089,7 +8089,7 @@ see install for directions.
     main thread depends on the :toplevel argument to
     sb-ext:save-lisp-and-die.)
 
-- [function] sb-thread:join-thread thread &key (default nil defaultp) timeout
+- [function] sb-thread:join-thread thread &key default timeout
 
     Suspend current thread until thread exits. Return the result values
     of the thread function.
@@ -8526,7 +8526,7 @@ that they go to sleep.
 
     Mutex type.
 
-- [macro] sb-thread:with-mutex (mutex &key (wait-p t) timeout (value nil)) &body body
+- [macro] sb-thread:with-mutex (mutex &key (wait-p t) timeout value) &body body
 
     Acquire mutex for the dynamic scope of body. If wait-p is true (the default),
     and the mutex is not immediately available, sleep until it is available.
@@ -8585,7 +8585,7 @@ that they go to sleep.
     Current owner of mutex, nil if the mutex is free. May return a
     stale value, use mutex-owner instead.
 
-- [function] sb-thread:grab-mutex mutex &key (waitp t) (timeout nil)
+- [function] sb-thread:grab-mutex mutex &key (waitp t) timeout
 
     Acquire mutex for the current thread. If waitp is true (the default) and
     the mutex is not immediately available, sleep until it is available.
@@ -9049,7 +9049,7 @@ serve as a cautionary tale:
     See if timer will still need to be triggered after delta seconds
     from now. For timers with a repeat interval it returns true.
 
-- [function] sb-ext:schedule-timer timer time &key repeat-interval absolute-p (catch-up nil catch-up-p)
+- [function] sb-ext:schedule-timer timer time &key repeat-interval absolute-p catch-up
 
     Schedule timer to be triggered at time. If absolute-p then time is
     universal time, but non-integral values are also allowed, else time is
@@ -9552,7 +9552,7 @@ two levels is only supported on x86 and x86-64.
 
 Macros
 
-- [macro] sb-sprof:with-profiling (&key (sample-interval '*sample-interval*) alloc-interval (max-samples '*max-samples*) (reset nil) (mode '*sampling-mode*) (loop nil) max-depth show-progress (threads :all) (report nil)) &body body
+- [macro] sb-sprof:with-profiling (&key (sample-interval '*sample-interval*) alloc-interval (max-samples '*max-samples*) reset (mode '*sampling-mode*) loop max-depth show-progress (threads :all) report) &body body
 
     Evaluate body with statistical profiling turned on. If loop is true,
     loop around the body until a sufficient number of samples has been collected.
