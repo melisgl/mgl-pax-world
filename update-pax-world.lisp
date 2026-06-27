@@ -5,13 +5,7 @@
   (make-pathname :name nil :type nil
                  :defaults (or *load-pathname* *compile-file-pathname*)))
 
-;;; Load systems that use PAX and generate PAX World in
-;;; <mgl-pax-asdf-system-dir>/world/ by default. To update
-;;; https://github.com/melisgl/mgl-pax-world manually, check out its
-;;; gh-pages branch in that directory, UPDATE-PAX-WORLD*, commit and
-;;; push the changes to GitHub.
-(defun update-pax-world* (&key (dir *this-dir*) (delete t)
-                          (formats '(:plain :markdown :html :pdf)))
+(defun load-projects ()
   ;; KLUDGE: Bind *READTABLE* so that when evaluating in Slime (e.g.
   ;; with C-x C-e), the file's readtable is not used (which leads to a
   ;; reader macro conflict with CL-SYNTAX).
@@ -35,7 +29,16 @@
       (load-system :try)
       (load-system :lmdb))
     #+sbcl
-    (require :sb-manual))
+    (require :sb-manual)))
+
+;;; Load systems that use PAX and generate PAX World in
+;;; <mgl-pax-asdf-system-dir>/world/ by default. To update
+;;; https://github.com/melisgl/mgl-pax-world manually, check out its
+;;; gh-pages branch in that directory, UPDATE-PAX-WORLD*, commit and
+;;; push the changes to GitHub.
+(defun update-pax-world* (&key (dir *this-dir*) (delete t)
+                          (formats '(:plain :markdown :html :pdf)))
+  (load-projects)
   (when delete
     (flet ((delete-all (type)
              (dolist (filename (directory (make-pathname :name :wild :type type
