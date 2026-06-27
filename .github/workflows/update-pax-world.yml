@@ -64,9 +64,7 @@ jobs:
           git clone --depth 1 https://github.com/melisgl/autoload
           git clone --depth 1 https://github.com/melisgl/named-readtables
           git clone --depth 1 https://github.com/melisgl/dref
-          git clone --branch indices --depth 1 https://github.com/melisgl/mgl-pax.git
-          # FIXME:
-          # git clone --depth 1 https://github.com/melisgl/mgl-pax.git
+          git clone --depth 1 https://github.com/melisgl/mgl-pax.git
           git clone --depth 1 https://github.com/slime/slime.git
           # PAX World
           git clone --depth 1 https://github.com/melisgl/mgl-mat
