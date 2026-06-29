@@ -1408,8 +1408,8 @@ exploration of the Lisp, much like describe-function,
 apropos-command and other online help commands in Emacs, for which
 direct parallels are provided.
 
-Still, even without Emacs and SLIME, limited functionality can be
-accessed through PAX Live Home Page by starting the live
+Still, even without Emacs and SLIME, limited functionality is
+available through the PAX Live Home Page by starting the live
 documentation web server manually.
 
 If Emacs Setup has been done, the Elisp function
@@ -1478,6 +1478,17 @@ The convenience function
 mgl-pax-current-definition-toggle-view (C-c C-d c) documents the
 definition with point in it.
 
+- [variable] *browse-context*
+
+    When set to a documentable, live browsing will link only to
+    definitions reachable from it as opposed to linking to all
+    definitions in the running Lisp when it is unbound. This makes
+    it easier to see how offline generated documentation will turn
+    out.
+
+    For convenience, setting *browse-context* to :pax-world is
+    equivalent to listing all registered sections.
+
 #### Browsing with w3m
 
 When the value of the Elisp variable mgl-pax-browser-function
@@ -1501,8 +1512,8 @@ In addition, the following PAX-specific key bindings are available:
 
 - p moves to the previous PAX definition on the page.
 
-- u follows the first Up: link (to the first containing
-  section) if any.
+- u follows the first Up: link (to the first containing section)
+  if any.
 
 - U is like u but positions the cursor at the top of the page.
 
@@ -2400,9 +2411,13 @@ accessor, reader and writer are
 removed to avoid linking to a possibly large number of methods.
 
 If at most a single definition remains, then the output is the same
-as with a Specific Link. If multiple definitions remain, then the
-link text is output followed by a number of numbered links, one to
-each definition.
+as with a Specific Link.
+
+If multiple definitions remain, then the link text is output
+followed by a number of numbered links, one to each definition. When
+Browsing Live Documentation, ambiguities can be much more frequent;
+and thus a single disambiguation page is linked to instead (but see
+*browse-context*).
 
 #### Link Format
 
@@ -2763,8 +2778,9 @@ Also, see concept subkey on how to order concepts in the output.
 
     Non-concept referents recorded during documentation generation
     are assigned to the first (in depth-first order) spec with a
-    matching dtype. For referents that are concepts, their
-    keys are assigned to the first spec with :concepts true.
+    matching dtype. For referents that are
+    concepts, their keys are assigned to the first spec with :concepts
+    true.
 
     Specs are processed in the following way and order:
 
@@ -2774,12 +2790,12 @@ Also, see concept subkey on how to order concepts in the output.
     - Else, a dynamically generated section with title (a Markdown
       string) is entered.
 
-    - If documentation is non-nil, then it is a Markdown docstring and
-      is written as is to the output.
+    - If documentation is non-nil, then it is a Markdown
+      docstring and is written as is to the output.
 
-    - If document-referrer-groups is true, then the abbrevs and
-      documentations in *document-index-referrer-groups* are listed
-      in the output.
+    - If document-referrer-groups is true, then the
+      abbrevs and documentations in
+      *document-index-referrer-groups* are listed in the output.
 
     - The referents assigned to this spec are output along with their
       referrers (see the examples in Indexing Concepts).
@@ -3120,10 +3136,10 @@ See the following variables, which control HTML generation.
 
 - [variable] *document-html-default-style* :default
 
-    The HTML style to use. It's either style is either :default or
-    :charter. The :default CSS stylesheet relies on the default
-    fonts (sans-serif, serif, monospace), while :charter bundles some
-    fonts for a more controlled look.
+    The HTML style to use. It's either :default or :charter. The :default
+    CSS stylesheet relies on the default fonts (sans-serif, serif,
+    monospace), while :charter bundles some fonts for a more controlled
+    look.
 
     The value of this variable affects the default style of
     update-asdf-system-html-docs.
@@ -3314,7 +3330,7 @@ For example, this is how PAX registers itself:
     page-specs is augmented with HTML headers, footers and output
     location specifications (based on the name of the section).
 
-    If necessary a default page spec is created for every section.
+    If necessary, a default page spec is created for every section.
 
 ## Transcripts
 

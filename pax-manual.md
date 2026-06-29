@@ -1661,8 +1661,8 @@ exploration of the Lisp, much like `describe-function`,
 `apropos-command` and other online help commands in Emacs, for which
 direct parallels are provided.
 
-Still, even without Emacs and [SLIME][6be7], limited functionality can be
-accessed through [PAX Live Home Page][9d50] by starting the live
+Still, even without Emacs and [SLIME][6be7], limited functionality is
+available through the [PAX Live Home Page][9d50] by starting the live
 documentation web server [manually][72cc].
 
 If [Emacs Setup][8541] has been done, the Elisp function
@@ -1731,6 +1731,20 @@ The convenience function
 `mgl-pax-current-definition-toggle-view` (`C-c C-d c`) documents the
 definition with point in it.
 
+<a id="x-28MGL-PAX-3A-2ABROWSE-CONTEXT-2A-20VARIABLE-29"></a>
+<a id="MGL-PAX:*BROWSE-CONTEXT*%20VARIABLE"></a>
+
+- [variable] **\*browse-context\***
+
+    When set to a [`documentable`][0702], live browsing will link only to
+    definitions reachable from it as opposed to linking to all
+    definitions in the running Lisp when it is unbound. This makes
+    it easier to see how offline generated documentation will turn
+    out.
+    
+    For convenience, setting `*browse-context*` to `:pax-world` is
+    equivalent to listing all [registered][f4fd] sections.
+
 <a id="x-28MGL-PAX-3A-40BROWSING-WITH-W3M-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@BROWSING-WITH-W3M%20MGL-PAX:SECTION"></a>
 
@@ -1757,8 +1771,8 @@ In addition, the following PAX-specific key bindings are available:
 
 - `p` moves to the previous PAX definition on the page.
 
-- `u` follows the first `Up:` link (to the first containing
-  [`section`][5fac]) if any.
+- `u` follows the first `Up:` link (to the first containing [`section`][5fac])
+  if any.
 
 - `U` is like `u` but positions the cursor at the top of the page.
 
@@ -2835,9 +2849,13 @@ all definitions with `locative-type` [`method`][172e],
 removed to avoid linking to a possibly large number of methods.
 
 If at most a single definition remains, then the output is the same
-as with a [Specific Link][0361]. If multiple definitions remain, then the
-link text is output followed by a number of numbered links, one to
-each definition.
+as with a [Specific Link][0361].
+
+If multiple definitions remain, then the link text is output
+followed by a number of numbered links, one to each definition. When
+[Browsing Live Documentation][a595], ambiguities can be much more frequent;
+and thus a single disambiguation page is linked to instead (but see
+[`*browse-context*`][805d]).
 
 <a id="x-28MGL-PAX-3A-40LINK-FORMAT-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@LINK-FORMAT%20MGL-PAX:SECTION"></a>
@@ -3269,8 +3287,9 @@ Also, see [concept subkey][5920] on how to order concepts in the output.
     
     Non-`concept` [referent][ad8e]s recorded during documentation generation
     are assigned to the first (in depth-first order) spec with a
-    [matching][963f] `dtype`. For [referent][ad8e]s that are concepts, their
-    keys are assigned to the first spec with `:concepts` true.
+    [matching][963f] `dtype`. For [referent][ad8e]s that are
+    concepts, their keys are assigned to the first spec with `:concepts`
+    true.
     
     Specs are processed in the following way and order:
     
@@ -3280,12 +3299,12 @@ Also, see [concept subkey][5920] on how to order concepts in the output.
     - Else, a dynamically generated [`section`][5fac] with `title` (a Markdown
       string) is entered.
     
-    - If [`documentation`][68f1] is non-`nil`, then it is a Markdown docstring and
-      is written as is to the output.
+    - If `documentation` is non-`nil`, then it is a Markdown
+      docstring and is written as is to the output.
     
-    - If `document-referrer-groups` is true, then the `abbrev`s and
-      `documentation`s in [`*document-index-referrer-groups*`][85c9] are listed
-      in the output.
+    - If `document-referrer-groups` is true, then the
+      `abbrev`s and `documentation`s in
+      [`*document-index-referrer-groups*`][85c9] are listed in the output.
     
     - The [referent][ad8e]s assigned to this spec are output along with their
       [referrer][e7e0]s (see the examples in [Indexing Concepts][c001]).
@@ -3698,10 +3717,10 @@ See the following variables, which control HTML generation.
 
 - [variable] **\*document-html-default-style\*** *:default*
 
-    The HTML style to use. It's either `style` is either `:default` or
-    `:charter`. The `:default` CSS stylesheet relies on the default
-    fonts (sans-serif, serif, monospace), while `:charter` bundles some
-    fonts for a more controlled look.
+    The HTML style to use. It's either `:default` or `:charter`. The `:default`
+    CSS stylesheet relies on the default fonts (sans-serif, serif,
+    monospace), while `:charter` bundles some fonts for a more controlled
+    look.
     
     The value of this variable affects the default style of
     [`update-asdf-system-html-docs`][bb12].
@@ -3934,7 +3953,7 @@ For example, this is how PAX registers itself:
     `page-specs` is augmented with HTML headers, footers and output
     location specifications (based on the name of the section).
     
-    If necessary a default page spec is created for every section.
+    If necessary, a default page spec is created for every section.
 
 <a id="x-28MGL-PAX-3A-40TRANSCRIPTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@TRANSCRIPTS%20MGL-PAX:SECTION"></a>
@@ -5448,6 +5467,7 @@ they are presented.
   [7eb5]: #MGL-PAX:@LINKABLE%20MGL-PAX:GLOSSARY-TERM "linkable"
   [7f1f]: #MGL-PAX:DOCUMENT-DOCSTRING%20FUNCTION "MGL-PAX:DOCUMENT-DOCSTRING FUNCTION"
   [7f9a]: http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm "DEFTYPE (MGL-PAX:CLHS MGL-PAX:MACRO)"
+  [805d]: #MGL-PAX:*BROWSE-CONTEXT*%20VARIABLE "MGL-PAX:*BROWSE-CONTEXT* VARIABLE"
   [80a8]: dref-manual.md#DREF-EXT:LOCATIVE-TYPE-DIRECT-SUPERS%20FUNCTION "DREF-EXT:LOCATIVE-TYPE-DIRECT-SUPERS FUNCTION"
   [80e8]: #MGL-PAX:WITH-HEADING%20MGL-PAX:MACRO "MGL-PAX:WITH-HEADING MGL-PAX:MACRO"
   [8106]: #MGL-PAX:@M-.-MINIBUFFER-SYNTAX%20MGL-PAX:SECTION "`M-.` Minibuffer Syntax"
