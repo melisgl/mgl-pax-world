@@ -39,9 +39,7 @@ jobs:
           cd ~
           # Need some --depth because SBCL determines its version
           # number from the history.
-          git clone --branch pax-doc --depth 1000 https://github.com/melisgl/sbcl.git
-          # FIXME:
-          # git clone --depth 1000 https://github.com/sbcl/sbcl.git
+          git clone --depth 1000 https://github.com/sbcl/sbcl.git
           cd sbcl
           sh make.sh
 
