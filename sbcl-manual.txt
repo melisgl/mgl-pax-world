@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.6.52-b76c7fe, generated 2026-07-01 11:51:48. See
+The output is for SBCL version 2.6.6.55-739a65f, generated 2026-07-01 13:44:40. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -826,18 +826,18 @@ process, and is also provided as an extension to the user.
     - :compression
 
         This is only meaningful if the runtime was built with the
-        :SB-CORE-COMPRESSION feature enabled. If nil (the default),
-        saves to uncompressed core files. If :SB-CORE-COMPRESSION was
+        :sb-core-compression feature enabled. If nil (the default),
+        saves to uncompressed core files. If :sb-core-compression was
         enabled at build-time, the argument may also be an integer from -7
         to 22, corresponding to zstd compression levels, or t (which is
         equivalent to the default compression level, 9).
 
-    - :APPLICATION-TYPE
+    - :application-type
 
         Present only on Windows and is meaningful only with :executable t.
-        Specifies the subsystem of the executable, :CONSOLE or :GUI.
-        The notable difference is that :GUI doesn't automatically create
-        a console window. The default is :CONSOLE.
+        Specifies the subsystem of the executable, :console or :gui.
+        The notable difference is that :gui doesn't automatically create
+        a console window. The default is :console.
 
     The save/load process changes the values of some global variables:
 
@@ -1821,23 +1821,23 @@ the program by causing cache misses or even swapping.
 
     Examples:
 
-    ;; Prevent proclamations from the file leaking, and restrict
-    ;; safety to 3 -- otherwise uses the current global policy.
-    (with-compilation-unit (:policy '(optimize))
-      (restrict-compiler-policy 'safety 3)
-      (load "foo.lisp"))
+        ;; Prevent proclamations from the file leaking, and restrict
+        ;; SAFETY to 3 -- otherwise uses the current global policy.
+        (with-compilation-unit (:policy '(optimize))
+          (restrict-compiler-policy 'safety 3)
+          (load "foo.lisp"))
 
-    ;; Using default policy instead of the current global one,
-    ;; except for debug 3.
-    (with-compilation-unit (:policy '(optimize debug)
-                            :override t)
-      (load "foo.lisp"))
+        ;; Using default policy instead of the current global one,
+        ;; except for DEBUG 3.
+        (with-compilation-unit (:policy '(optimize debug)
+                                :override t)
+          (load "foo.lisp"))
 
-    ;; Same as if :policy had not been specified at all: safety 3
-    ;; proclamation leaks out from with-compilation-unit.
-    (with-compilation-unit (:policy nil)
-      (declaim (optimize safety))
-      (load "foo.lisp"))
+        ;; Same as if :POLICY had not been specified at all: SAFETY 3
+        ;; proclamation leaks out from WITH-COMPILATION-UNIT.
+        (with-compilation-unit (:policy nil)
+          (declaim (optimize safety))
+          (load "foo.lisp"))
 
     Also, see the CLHS.
 
@@ -2851,7 +2851,7 @@ traced.
 
 - [macro] trace &rest specs
 
-    trace {Option Global-Value}* {Name {Option Value}}
+    trace {Option Global-Value}* {Name {Option Value}*}*
 
     trace is a debugging tool that provides information when specified
     functions are called. In its simplest form:
@@ -2864,12 +2864,12 @@ traced.
 
     - fname, a valid function name, denoting a function.
 
-    - (method fname QUALIFIERS* (SPECIALIZERS*)) denoting a method.
+    - (method fname qualifiers* (specializers*)) denoting a method.
 
     - (compiler-macro symbol) denoting a compiler macro.
 
-    - (labels fname :in OUTER-NAME) or (flet fname :in OUTER-NAME)
-      denoting a local function where OUTER-NAME may be any of the
+    - (labels fname :in outer-name) or (flet fname :in outer-name)
+      denoting a local function where outer-name may be any of the
       previous names for functions, macros, methods or compiler macros.
       Tracing local functions may require debug policy 3 to inhibit
       inlining.
@@ -2893,10 +2893,10 @@ traced.
 
     - :report <report-type>
 
-        If REPORT-TYPE is trace (the default) then information is
-        reported by printing immediately. If REPORT-TYPE is nil, then
+        If report-type is trace (the default) then information is
+        reported by printing immediately. If report-type is nil, then
         the only effect of the trace is to execute other options (e.g.
-        print or break). Otherwise, REPORT-TYPE is treated as a function
+        print or break). Otherwise, report-type is treated as a function
         designator and, for each trace event, funcalled with 5 arguments:
         trace depth (a non-negative integer), a function name or a
         function object, a keyword (:enter, :exit or :non-local-exit), a
@@ -2958,15 +2958,15 @@ traced.
     - :function <function-form>
 
         This is a not really an option but rather another way of
-        specifying what function to trace. The FUNCTION-FORM is
+        specifying what function to trace. The function-form is
         evaluated immediately, and the resulting function is traced.
 
     :condition, :break and :print forms are evaluated in a context which
     mocks up the lexical environment of the called function, so that
     sb-debug:var and sb-debug:arg can be used.
-    The *-AFTER and *-ALL forms can use also use sb-debug:arg. In forms
-    which are evaluated after the function call, (sb-debug:arg N) returns
-    the Nth value returned by the function.
+    The *-after and *-all forms can use also use sb-debug:arg. In forms
+    which are evaluated after the function call, (sb-debug:arg n) returns
+    the nth value returned by the function.
 
     Also, see the CLHS.
 
@@ -3363,7 +3363,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 
     Specifies that the named symbols cannot be proclaimed or locally
     declared special. Proclaiming an already special or constant variable
-    name as sb-ext:global signal an error. Allows more efficient value
+    name as sb-ext:global signals an error. Allows more efficient value
     lookup in threaded environments in addition to expressing programmer
     intention.
 
@@ -3540,8 +3540,8 @@ with normal nicknames.
 
 A local nickname is valid only when inside the package for which it
 has been specified. Different packages can use same local nickname
-for different global names, or different local nickname for same
-global name.
+for different global names, or different local nicknames for the
+same global name.
 
 The symbol :package-local-nicknames in *features* denotes the
 support for this feature.
@@ -3570,7 +3570,7 @@ Example:
     Returns an alist of (local-nickname . actual-package) describing the
     nicknames local to the designated package.
 
-    When in the designated package, calls to find-package with the any of the
+    When in the designated package, calls to find-package with any of the
     local-nicknames will return the corresponding actual-package instead. This
     also affects all implied calls to find-package, including those performed by
     the reader.
@@ -3598,7 +3598,7 @@ Example:
 
     Signals a continuable error if local-nickname is already a package
     local nickname for a different package, or if local-nickname is one of
-    "CL", "COMMON-LISP", "keyword", or if local-nickname is a
+    "CL", "COMMON-LISP", "KEYWORD", or if local-nickname is a
     global name or nickname for the package to which the nickname would be
     added.
 
@@ -3703,33 +3703,33 @@ memory associated with a Lisp object.
 
     Examples:
 
-    ;;; GOOD, assuming RELEASE-HANDLE is re-entrant.
-    (let* ((handle (get-handle))
-           (object (make-object handle)))
-     (finalize object (lambda () (release-handle handle)))
-     object)
+        ;;; GOOD, assuming RELEASE-HANDLE is re-entrant.
+        (let* ((handle (get-handle))
+               (object (make-object handle)))
+         (finalize object (lambda () (release-handle handle)))
+         object)
 
-    ;;; BAD, finalizer refers to object being finalized, causing
-    ;;; it to be retained indefinitely!
-    (let* ((handle (get-handle))
-           (object (make-object handle)))
-      (finalize object
-                (lambda ()
-                  (release-handle (object-handle object)))))
+        ;;; BAD, finalizer refers to object being finalized, causing
+        ;;; it to be retained indefinitely!
+        (let* ((handle (get-handle))
+               (object (make-object handle)))
+          (finalize object
+                    (lambda ()
+                      (release-handle (object-handle object)))))
 
-    ;;; BAD, not re-entrant!
-    (defvar rec nil)
+        ;;; BAD, not re-entrant!
+        (defvar *rec* nil)
+        
+        (defun oops ()
+         (when *rec*
+           (error "recursive OOPS"))
+         (let ((*rec* t))
+           (gc))) ; or just cons enough to cause one
 
-    (defun oops ()
-     (when rec
-       (error "recursive oops"))
-     (let ((rec t))
-       (gc))) ; or just cons enough to cause one
-
-    (progn
-      (finalize "oops" #'oops)
-      (oops)) ; gc causes re-entry to #'oops due to the finalizer
-              ; -> error, caught, warning signalled
+        (progn
+          (finalize "oops" #'oops)
+          (oops)) ; GC causes re-entry to #'oops due to the finalizer
+                  ; -> ERROR, caught, WARNING signalled
 
 - [function] sb-ext:cancel-finalization object
 
@@ -3788,7 +3788,7 @@ Hash Table Extensions.
     this result will be a consed bignum, so if you have an
     application (e.g. profiling) which can't tolerate the overhead of
     consing bignums, you'll probably want either to hack in at a lower
-    level (as the code in the SB-PROFILE package does), or to design a
+    level (as the code in the sb-profile package does), or to design a
     more microefficient interface and submit it as a patch.
 
 - [function] sb-ext:gc-logfile
@@ -3923,16 +3923,16 @@ paths:
 
             If an unknown thread stack pins the root of the path.
 
-        - ((THREAD-NAME | THREAD-OBJECT) symbol currentp)
+        - ((thread-name | thread-object) symbol currentp)
 
             If the path begins at a special binding of symbol in a thread.
             currentp is a boolean indicating whether the value is current
             or shadowed by another binding.
 
-        - ((THREAD-NAME | THREAD-OBJECT) GUESSED-PC)
+        - ((thread-name | thread-object) guessed-pc)
 
             If the path begins at a lexical variable in the function whose
-            code contains GUESSED-PC.
+            code contains guessed-pc.
 
         Each node in the remainder of the path is a cons (object . slot)
         indicating that the slot at index slot in object references the
@@ -4765,27 +4765,23 @@ External programs can be run with sb-ext:run-program.
 
     Windows specific options:
 
-    - :ESCAPE-ARGUMENTS (default t)
+    - :escape-arguments (default t)
 
         Controls escaping of the arguments passed to CreateProcess.
 
-    - :WINDOW (default nil)
+    - :window (default nil)
 
         When nil, the subprocess decides how it will display its window.
         The following options control how the subprocess window should be
-        displayed: :HIDE, :SHOW-NORMAL, :SHOW-MAXIMIZED,
-        :SHOW-MINIMIZED, :SHOW-NO-ACTIVATE, :SHOW-MIN-NO-ACTIVE,
-        :SHOW-NA.
+        displayed: :hide, :show-normal, :show-maximized,
+        :show-minimized, :show-no-activate, :show-min-no-active,
+        :show-na.
 
         > Note: console application subprocesses may or may not display
         > a console window depending on whether the SBCL runtime is itself
         > a console or GUI application. Invoke cmd /c start to
-        > consistently display a console window or use the :WINDOW
-        > :HIDE option to consistently hide the console window.
-        > a console window depending on whether the SBCL runtime is itself
-        > a console or GUI application. Invoke cmd /c start to
-        > consistently display a console window or use the :WINDOW
-        > :HIDE option to consistently hide the console window.
+        > consistently display a console window or use the :window
+        > :hide option to consistently hide the console window.
 
 When sb-ext:run-program is called with :wait nil, an process object
 is returned. The following functions are available for use with
@@ -4908,8 +4904,7 @@ Unicode codepoint.
     The only characters in Unicode with a decimal digit value are those
     that are part of a range of characters that encode the digits 0-9.
     Because of this, (decimal-digit c) <=> (digit-char-p c 10) in
-
-    # +sb-unicode builds
+    #+sb-unicode builds
 
 - [function] sb-unicode:digit-value character
 
@@ -5260,7 +5255,7 @@ arguments to make-hash-table.
 
     - :test
 
-        Determines how keys are compared. Must a designator for one of
+        Determines how keys are compared. Must be a designator for one of
         the standard hash table tests, or a hash table test defined
         using sb-ext:define-hash-table-test. Additionally, when an
         explicit hash-function is provided (see below), any two argument
@@ -5347,41 +5342,40 @@ arguments to make-hash-table.
 
     > Note: The :hash-function keyword argument to make-hash-table can
     > be used to override the specified default hash-function.
-    > be used to override the specified default hash-function.
 
     Attempting to define name in a locked package as hash-table test causes a
     package lock violation.
 
     Examples:
 
-    ;; We want to use objects of type FOO as keys (by their
-    ;; names.) equalp would work, but would make the names
-    ;; case-insensitive -- which we don't want.
-    (defstruct foo (name nil :type (or null string)))
+        ;; We want to use objects of type FOO as keys (by their
+        ;; names.) EQUALP would work, but would make the names
+        ;; case-insensitive -- which we don't want.
+        (defstruct foo (name nil :type (or null string)))
+        
+        ;; Define an equivalence test function and a hash function.
+        (defun foo-name= (f1 f2) (equal (foo-name f1) (foo-name f2)))
+        (defun sxhash-foo-name (f) (sxhash (foo-name f)))
+        
+        (define-hash-table-test foo-name= sxhash-foo-name)
+        
+        ;; #'foo-name would work too.
+        (defun make-foo-table () (make-hash-table :test 'foo-name=))
 
-    ;; Define an equivalence test function and a hash function.
-    (defun foo-name= (f1 f2) (equal (foo-name f1) (foo-name f2)))
-    (defun sxhash-foo-name (f) (sxhash (foo-name f)))
-
-    (define-hash-table-test foo-name= sxhash-foo-name)
-
-    ;; #'foo-name would work too.
-    (defun make-foo-table () (make-hash-table :test 'foo-name=))
-
-    (defun == (x y) (= x y))
-
-    (define-hash-table-test ==
-      (lambda (x)
-        ;; Hash codes must be consistent with test, so
-        ;; not (sxhash X), since
-        ;;   (= 1 1.0)                   => t
-        ;;   (= (sxhash 1) (sxhash 1.0)) => nil
-        ;; Note: this doesn't deal with complex numbers or
-        ;; bignums too large to represent as double floats.
-        (sxhash (coerce x 'double-float))))
-
-    ;; #'== would work too
-    (defun make-number-table () (make-hash-table :test '==))
+        (defun == (x y) (= x y))
+        
+        (define-hash-table-test ==
+          (lambda (x)
+            ;; Hash codes must be consistent with test, so
+            ;; not (SXHASH X), since
+            ;;   (= 1 1.0)                   => T
+            ;;   (= (SXHASH 1) (SXHASH 1.0)) => NIL
+            ;; Note: this doesn't deal with complex numbers or
+            ;; bignums too large to represent as double floats.
+            (sxhash (coerce x 'double-float))))
+        
+        ;; #'== would work too
+        (defun make-number-table () (make-hash-table :test '==))
 
 - [macro] sb-ext:with-locked-hash-table (hash-table) &body body
 
@@ -5661,8 +5655,8 @@ sb-ext:with-timeout macro:
              (when foo
                (release-foo foo)))))
 
-    If timeout occurs after GET-FOO has executed, but before the
-    assignment, then RELEASE-FOO will be missed. While individual sites
+    If timeout occurs after get-foo has executed, but before the
+    assignment, then release-foo will be missed. While individual sites
     like this can be made proof against asynchronous unwinds, this doesn't
     solve the fundamental issue, as all the frames potentially unwound
     through need to be proofed, which includes both system and application
@@ -5709,8 +5703,6 @@ and its context.
     > Note: the underlying vector is an implementation detail. Even
     > though this function exposes it, changes in the implementation may
     > cause this function to be removed without further warning.
-    > though this function exposes it, changes in the implementation may
-    > cause this function to be removed without further warning.
 
 - [function] sb-ext:delete-directory pathspec &key recursive
 
@@ -5731,7 +5723,7 @@ and its context.
         (DELETE-DIRECTORY "/tmp/foo/")
 
     delete the "foo" subdirectory of "/tmp", or signal an error if
-    it does not exist or if is a file or a symbolic link.
+    it does not exist or if it is a file or a symbolic link.
 
 - [function] sb-ext:get-time-of-day
 
@@ -6467,13 +6459,13 @@ variables are supported.
 
          VAR TYPE [ ALLOCATION ] [ INITIAL-VALUE | EXTERNAL-NAME ]
 
-    ALLOCATION should be one of:
+    allocation should be one of:
 
     - :local (the default): The alien is allocated on the stack, and
      has dynamic extent.
 
     - :extern: No alien is allocated, but var is established as a
-     local name for the external alien given by EXTERNAL-NAME.
+     local name for the external alien given by external-name.
 
     vars are established as symbol-macros; the bindings have lexical
     scope, and may be assigned with setq or setf.
@@ -6482,11 +6474,11 @@ variables are supported.
     structures and unions. Any type specified for a variable may contain
     named structure or union types with the slots specified. Within the
     lexical scope of the binding specifiers and body, a locally defined
-    foreign structure type FOO can be referenced by its name using
-    (struct FOO).
+    foreign structure type foo can be referenced by its name using
+    (struct foo).
 
     When a foreign function returns a structure by value, using
-    alien-funcall as the INITIAL-VALUE allows the returned struct to
+    alien-funcall as the initial-value allows the returned struct to
     be stack-allocated directly into the local variable's storage,
     avoiding heap allocation:
 
@@ -6521,8 +6513,8 @@ define-alien-routine use this conversion heuristic:
     Define name as an external alien variable of type type.
     Neither is evaluated.
 
-    In its full form, name is (<ALIEN-NAME-STRING>
-    <LISP-NAME-SYMBOL>). If name is just a symbol or string, then the
+    In its full form, name is (<alien-name-string>
+    <lisp-name-symbol>). If name is just a symbol or string, then the
     other name is guessed from the one supplied as described
     External Foreign Variables.
 
@@ -6696,9 +6688,9 @@ Threading.
     returned by value. The implementation follows the System V AMD64 ABI
     and AAPCS64 specifications respectively.
 
-    Here is an example which allocates a (struct FOO), calls a foreign
+    Here is an example which allocates a (struct foo), calls a foreign
     function to initialize it, then returns a Lisp vector of all
-    the (* (struct FOO)) objects filled in by the foreign call:
+    the (* (struct foo)) objects filled in by the foreign call:
 
         ;; Allocate a foo on the stack.
         (with-alien ((f (struct foo)))
@@ -6749,14 +6741,14 @@ Threading.
     pass-by-reference idiom into additional return values.
 
     name may be either a string, a symbol, or a list of the
-    form (<FOREIGN-NAME-STRING> <LISP-NAME-SYMBOL>).
+    form (<foreign-name-string> <lisp-name-symbol>).
 
     result-type is the alien type for the function return value. void may be
     used to specify a function with no result.
 
-    args is a list of (ARG-NAME ARG-TYPE &optional style) elements.
-    ARG-NAME is a symbol that names the argument, primarily for
-    documentation. ARG-TYPE is the C type of the argument.
+    args is a list of (arg-name arg-type &optional style) elements.
+    arg-name is a symbol that names the argument, primarily for
+    documentation. arg-type is the C type of the argument.
 
     style specifies the way that the argument is passed:
 
@@ -6782,14 +6774,6 @@ Threading.
       the object on return.
 
     > Note: Any efficiency-critical foreign interface function should be
-    > inline expanded, which can be done by preceding the
-    > define-alien-routine call with:
-
-    >     (declaim (inline lisp-name))
-
-    > In addition to avoiding the Lisp call overhead, this allows
-    > pointers, word-integers and floats to be passed using non-descriptor
-    > representations, avoiding consing.
     > inline expanded, which can be done by preceding the
     > define-alien-routine call with:
 
@@ -6836,11 +6820,11 @@ value.
 
     Define an alien function which can be called by alien code. The alien
     function returned by (alien-callable-function name) expects alien
-    arguments of the specified ARG-TYPEs and returns an alien of type
+    arguments of the specified arg-types and returns an alien of type
     result-type.
 
-    typed-lambda-list is a list of (ARG-NAME ARG-TYPE) elements, and
-    body is {DOC-STRING} {DECL}* {FORM}*.
+    typed-lambda-list is a list of (arg-name arg-type) elements, and
+    body is {doc-string} {decl}* {form}*.
 
     If (alien-callable-function name) already exists, its value is not
     changed (though it is arranged that an updated version of the Lisp
@@ -7328,7 +7312,7 @@ sb-gray:fundamental-input-stream:
 
 - [generic-function] sb-gray:stream-peek-char stream
 
-    This is used to implement peek-char; this corresponds to PEEK-TYPE
+    This is used to implement peek-char; this corresponds to peek-type
     of nil. It returns either a character or :eof. The default method
     calls stream-read-char and stream-unread-char.
 
@@ -7403,7 +7387,7 @@ sb-gray:fundamental-character-output-stream:
     Write enough blank space so that the next character will be
     written at the specified column. Returns true if the operation is
     successful, or nil if it is not supported for this stream. This is
-    intended for use by by pprint and format ~T. The default method
+    intended for use by by pprint and format ~t. The default method
     uses stream-line-column and repeated calls to stream-write-char
     with a #space character; it returns nil if stream-line-column
     returns nil.
@@ -7420,7 +7404,7 @@ sb-gray:fundamental-character-output-stream:
     Return the column number where the next character
     will be written, or nil if that is not meaningful for this stream.
     The first column on a line is numbered 0. This function is used in
-    the implementation of pprint and the format ~T directive. For every
+    the implementation of pprint and the format ~t directive. For every
     character output stream class that is defined, a method must be
     defined for this function, although it is permissible for it to
     always return nil.
@@ -7719,7 +7703,7 @@ bound to one of the implementation packages of the locked package.
 
 Unless explicitly altered by defpackage,
 sb-ext:add-implementation-package, or
-sb-ext:remove-implementation-package each package is its own
+sb-ext:remove-implementation-package, each package is its own
 (only) implementation package.
 
 #### Package Lock Violations
@@ -7730,8 +7714,8 @@ Lexical bindings or declarations that violate package locks cause a
 compile-time warning, and a runtime program-error when the form that
 violates package locks would be executed.
 
-A complete listing of operators affect by this is: let, let*, flet,
-labels, macrolet, and symbol-macrolet, declare.
+A complete listing of operators affected by this is: let, let*,
+flet, labels, macrolet, symbol-macrolet, declare.
 
 Package locks affecting both lexical bindings and declarations can
 be disabled locally with the sb-ext:disable-package-locks
@@ -7752,7 +7736,7 @@ Example:
 
 ##### Other Operations
 
-If an non-lexical operation violates a package lock, a continuable
+If a non-lexical operation violates a package lock, a continuable
 error that is of a subtype of sb-ext:package-lock-violation
 (subtype of package-error) is signalled when the operation is
 attempted.
@@ -7814,7 +7798,7 @@ operations signal errors of type sb-ext:package-locked-error.
 
 - Adding a new package local nickname to a package.
 
-- Removing an existing package local nickname to a package.
+- Removing an existing package local nickname from a package.
 
 ##### Operations on Symbols
 
@@ -7940,7 +7924,7 @@ Example:
 - [function] sb-ext:lock-package package
 
     Locks package and returns t. Has no effect if package was already
-    locked. Signals an error if package is not a valid package designator
+    locked. Signals an error if package is not a valid package designator.
 
 - [function] sb-ext:unlock-package package
 
@@ -8134,7 +8118,6 @@ see install for directions.
 
     > Note: Return convention in case of a timeout is experimental and
     > subject to change.
-    > subject to change.
 
 - [function] sb-thread:thread-yield
 
@@ -8219,9 +8202,9 @@ see install for directions.
                ;; to be dropped.
                (release-foo foo))))
 
-    might miss calling RELEASE-FOO despite GET-FOO having returned true
+    might miss calling release-foo despite GET-FOO having returned true
     if the interrupt occurs inside the cleanup clause, eg. during
-    execution of RELEASE-FOO.
+    execution of release-foo.
 
     Thus, in order to write an asynch unwind safe unwind-protect you need
     to use without-interrupts:
@@ -8627,8 +8610,8 @@ that they go to sleep.
         while the mutex is in an inconsistent state while allow-with-interrupts
         allows the call to be interrupted from sleep.
 
-    - (grab-mutex <MUTEX> :timeout 0.0) differs from
-    (grab-mutex <MUTEX> :waitp nil) in that the former may signal a
+    - (grab-mutex <mutex> :timeout 0.0) differs from
+    (grab-mutex <mutex> :waitp nil) in that the former may signal a
     deadline-timeout if the global deadline was due already on
     entering grab-mutex.
 
@@ -9746,7 +9729,7 @@ Functions
     Mark the functions named by names as being subject to call counting
     during statistical profiling. If a string is used as a name, it will
     be interpreted as a package name. In this case call counting will be
-    done for all functions with names like X or (setf X), where X is
+    done for all functions with names like x or (setf x), where x is
     a symbol with the package as its home package.
 
 - [function] sb-sprof:unprofile-call-counts
@@ -9811,7 +9794,7 @@ The following customization variables are available:
 
 - [variable] sb-aclrepl:*use-short-package-name* t
 
-    When t, use the shortnest package nickname in a prompt
+    When t, use the shortest package nickname in a prompt.
 
 - [variable] sb-aclrepl:*max-history* 100
 
@@ -9973,12 +9956,9 @@ Built on top of the Queue implementation.
     from mailbox, or returns nil if no messages are pending.
 
     > Note: Concurrent threads may be snarfing messages during the run
-    > of this function, so even X and Y appearing right next to each
-    > other in the result does not necessarily mean that Y was the
-    > message sent right after X.
-    > of this function, so even X and Y appearing right next to each
-    > other in the result does not necessarily mean that Y was the
-    > message sent right after X.
+    > of this function, so even x and y appearing right next to each
+    > other in the result does not necessarily mean that y was the
+    > message sent right after x.
 
 - [function] sb-concurrency:send-message mailbox message
 
@@ -10482,7 +10462,7 @@ as querying their properties and relationships in the running image.
 
 - [structure-accessor] sb-introspect:definition-source-plist definition-source
 
-    The SOURCE-PLIST from with-compilation-unit in effect
+    The source-plist from with-compilation-unit in effect
     when the file was compiled.
 
 - [function] sb-introspect:find-definition-source object
@@ -10610,7 +10590,7 @@ as querying their properties and relationships in the running image.
     This can make previously garbage objects live.
 
     spaces should be a list of the symbols :dynamic, :static, :read-only,
-    or :immobile on #+IMMOBILE-SPACE. The shorthand (:all) is also
+    or :immobile on #+immobile-space. The shorthand (:all) is also
     accepted.
 
 - [function] sb-introspect:find-function-callees function
@@ -10738,7 +10718,6 @@ as querying their properties and relationships in the running image.
 
     > Note: calling map-root with a THREAD does not currently map over
     > conservative roots from the thread registers and interrupt contexts.
-    > conservative roots from the thread registers and interrupt contexts.
 
     Experimental: interface subject to change.
 
@@ -10778,7 +10757,7 @@ real, so that PAX can work with them.
 - [function] use-pax
 
     Ensure that exported variables are pax:sections.
-    It is an error if the MGL-PAX library is not loaded.
+    It is an error if the mgl-pax library is not loaded.
 
     Calling this function explicitly is rarely necessary because it is
     called automatically:
@@ -10788,7 +10767,7 @@ real, so that PAX can work with them.
     - when pax:document (more precisely, dref:locate) is called on
       an sb-manual section.
 
-    The latter feature requires v0.4.12 of pax. See the MGL-PAX
+    The latter feature requires v0.4.12 of pax. See the mgl-pax
     asdf:system.
 
 #### Browsing Live with PAX
@@ -10982,7 +10961,7 @@ both pathnames and strings as its arguments.
 
     Note also that POSIX filename syntax does not distinguish the names of files
     from the names of directories: in order to parse the name of a directory in
-    POSIX filename syntax into a pathname MY-DEFAULTS for which
+    POSIX filename syntax into a pathname my-defaults for which
 
         (merge-pathnames (make-pathname :name "FOO" :case :common)
                           my-defaults)
@@ -11587,7 +11566,7 @@ in various namespaces as deprecated.
 
 - [declaration] sb-ext:deprecated
 
-    Syntax: (sb-ext:deprecated STAGE since &rest OBJECT-CLAUSES)
+    Syntax: (sb-ext:deprecated stage since &rest object-clauses)
 
     stage ::= {:early | :late | :final}
 
