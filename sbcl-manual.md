@@ -288,7 +288,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.6.59-ff7a653`, generated *2026-07-02 11:25:41*. See
+The output is for SBCL version `2.6.6.60-2be4173`, generated *2026-07-02 15:04:30*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -367,11 +367,13 @@ SBCL uses Launchpad to track bugs. The bug database is available at
 <https://bugs.launchpad.net/sbcl>
 
 Reporting bugs there requires registering at Launchpad. However,
-bugs can also be reported on the mailing list `sbcl-bugs`,
-which is moderated but does *not* require subscribing.
+bugs can also be reported on the mailing list `sbcl-bugs`, which is
+moderated but does *not* require subscribing. Simply send email to
+[`sbcl-bugs@lists.sourceforge.net`](mailto:sbcl-bugs@lists.sourceforge.net)
+and the bug will be checked and added to Launchpad by SBCL
+maintainers.
 
-Simply send email to `sbcl-bugs@lists.sourceforge.net` and the bug
-will be checked and added to Launchpad by SBCL maintainers.
+See the `HACKING` file on how to send patches.
 
 <a id="x-28SB-MANUAL-3A-40HOW-TO-REPORT-BUGS-EFFECTIVELY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HOW-TO-REPORT-BUGS-EFFECTIVELY%20MGL-PAX:SECTION"></a>
@@ -730,7 +732,7 @@ SLIME can be downloaded from <https://slime.common-lisp.dev/>.
 
 #### 2.4.2 Language Reference
 
-*CLHS* (Common Lisp Hyperspec) is a hypertext version of the ANSI
+*CLHS* (Common Lisp HyperSpec) is a hypertext version of the ANSI
 standard, made freely available by LispWorks -- an invaluable
 reference.
 
@@ -805,7 +807,9 @@ be installed along with this manual on your system, e.g. in
 #### 2.5.4 Internals Documentation
 
 If you're interested in the development of the SBCL system itself,
-then subscribing to `sbcl-devel` is a good idea.
+then subscribing to
+[sbcl-devel@lists.sourceforge.net](mailto:sbcl-devel@lists.sourceforge.net)
+is a good idea.
 
 SBCL internals documentation -- besides comments in the source -- is
 available in the Web Archive:
@@ -967,7 +971,7 @@ particularly well there. SBCL should be able to improve in these areas
 (and has already improved in some other areas), but it takes a while.
 
 On the x86 SBCL -- like the x86 port of CMUCL -- uses a
-\_@CONSERVATIVE-GC. This means that it doesn't maintain a strict
+*conservative GC*. This means that it doesn't maintain a strict
 separation between tagged and untagged data, instead treating some
 untagged data (e.g. raw floating point numbers) as possibly-tagged
 data and so not collecting any Lisp objects that they point to. This
@@ -14292,7 +14296,7 @@ The [`sb-ext:deprecated`][5888] declaration can be used to declare objects
 in various namespaces as deprecated.
 
 > *Note*: See the [`namespace`][c8c1] `clhs` glossary entry in the glossary of
-> the Common Lisp Hyperspec.)
+> the Common Lisp HyperSpec.)
 
 
 <a id="x-28SB-EXT-3ADEPRECATED-20DECLARATION-29"></a>
