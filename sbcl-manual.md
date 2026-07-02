@@ -288,7 +288,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.6.59-ff7a653`, generated *2026-07-02 08:02:11*. See
+The output is for SBCL version `2.6.6.59-ff7a653`, generated *2026-07-02 11:25:41*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1810,14 +1810,14 @@ diagnostic:
   they are all printed from the outside in, separated by `=>`s. In
   this example, the problem was in the [`defun`][f472] for `foo`.
 
-- `(zoq y)` is the *@ORIGINAL-SOURCE* form responsible for the
+- `(zoq y)` is the *original source* form responsible for the
   diagnostic. Original source means that the form directly appeared
   in the original input to the compiler, i.e. in the lambda passed
   to [`compile`][bc41] or in the top level form read from the source file. In
   this example, the expansion of the `zoq` macro was responsible for
   the message.
 
-- `--> roq ploq` This is the *@PROCESSING-PATH* that the compiler
+- `--> roq ploq` This is the *processing path* that the compiler
   used to produce the code that caused the message to be emitted.
   The processing path is a representation of the evaluated forms
   enclosing the actual source that the compiler encountered when
@@ -3180,7 +3180,7 @@ print
     Unknown location: using block start.
 
 and then proceed to print the source location for the start of the
-*@BASIC-BLOCK* enclosing the code location. It's a bit complicated to
+*basic block* enclosing the code location. It's a bit complicated to
 explain exactly what a basic block is, but here are some properties
 of the block start location:
 
@@ -3276,7 +3276,7 @@ values of the `speed` and `space` qualities also change whether
 functions are inline expanded. If a function is inline expanded,
 then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
-*@SEMI-INLINE*, in which case there is a frame to represent the
+*semi inline*, in which case there is a frame to represent the
 call, but the call is to an optimized local version of the function,
 not to the original function.
 

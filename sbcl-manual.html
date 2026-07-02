@@ -481,14 +481,14 @@
 <li><a href="#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">18.7.2 Historical Interfaces</a></li>
 </ul></li>
 </ul></li>
-<li><a href="autoload-manual.html#Indices" title="Indices">19 Indices</a>
+<li><a href="#Indices" title="Indices">19 Indices</a>
 
 <ul>
-<li><a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">19.1 Function and Macro Index</a></li>
-<li><a href="autoload-manual.html#Type%20Index" title="Type Index">19.2 Variable and Constant Index</a></li>
-<li><a href="autoload-manual.html#Misc%20Index" title="Misc Index">19.3 Type Index</a></li>
-<li><a href="autoload-manual.html#Concept%20Index" title="Concept Index">19.4 Misc Index</a></li>
-<li><a href="dref-manual.html#Concept%20Index-1" title="Concept Index">19.5 Concept Index</a></li>
+<li><a href="#Function%20and%20Macro%20Index" title="Function and Macro Index">19.1 Function and Macro Index</a></li>
+<li><a href="#Variable%20and%20Constant%20Index" title="Variable and Constant Index">19.2 Variable and Constant Index</a></li>
+<li><a href="#Type%20Index" title="Type Index">19.3 Type Index</a></li>
+<li><a href="#Misc%20Index" title="Misc Index">19.4 Misc Index</a></li>
+<li><a href="#Concept%20Index" title="Concept Index">19.5 Concept Index</a></li>
 </ul></li>
 </ul>
 
@@ -500,7 +500,7 @@ official version at <a href="https://www.sbcl.org/">https://www.sbcl.org/</a> bu
 internally, to the <code>clhs</code>, and to the source code on
 <a href="https://github.com/sbcl/sbcl" >GitHub</a>.</p>
 
-<p>The output is for SBCL version <code>2.6.6.59-ff7a653</code>, generated <em>2026-07-02 08:02:11</em>. See
+<p>The output is for SBCL version <code>2.6.6.59-ff7a653</code>, generated <em>2026-07-02 11:25:41</em>. See
 <a href="https://fixnum.com">https://fixnum.com</a> for this document in other formats.</p>
 
 <p>This manual is part of the SBCL software system. See the
@@ -2110,13 +2110,13 @@ diagnostic:</p>
   outermost form is used. If there are multiple <code>def</code> forms, then
   they are all printed from the outside in, separated by <code>=&gt;</code>s. In
   this example, the problem was in the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm" title="DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>defun</code></a> for <code>foo</code>.</p></li>
-<li><p><code>(zoq y)</code> is the <em>@ORIGINAL-SOURCE</em> form responsible for the
+<li><p><code>(zoq y)</code> is the <em>original source</em> form responsible for the
   diagnostic. Original source means that the form directly appeared
   in the original input to the compiler, i.e. in the lambda passed
   to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm" title="COMPILE (MGL-PAX:CLHS FUNCTION)"><code>compile</code></a> or in the top level form read from the source file. In
   this example, the expansion of the <code>zoq</code> macro was responsible for
   the message.</p></li>
-<li><p><code>--&gt; roq ploq</code> This is the <em>@PROCESSING-PATH</em> that the compiler
+<li><p><code>--&gt; roq ploq</code> This is the <em>processing path</em> that the compiler
   used to produce the code that caused the message to be emitted.
   The processing path is a representation of the evaluated forms
   enclosing the actual source that the compiler encountered when
@@ -3593,7 +3593,7 @@ print</p>
 </code></pre>
 
 <p>and then proceed to print the source location for the start of the
-<em>@BASIC-BLOCK</em> enclosing the code location. It's a bit complicated to
+<em>basic block</em> enclosing the code location. It's a bit complicated to
 explain exactly what a basic block is, but here are some properties
 of the block start location:</p>
 
@@ -3687,7 +3687,7 @@ values of the <code>speed</code> and <code>space</code> qualities also change wh
 functions are inline expanded. If a function is inline expanded,
 then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
-<em>@SEMI-INLINE</em>, in which case there is a frame to represent the
+<em>semi inline</em>, in which case there is a frame to represent the
 call, but the call is to an optimized local version of the function,
 not to the original function.</p>
 
@@ -16335,7 +16335,7 @@ in conjunction with <code>write-sequence</code>.</p></li>
 <p><a id="x-28SB-MANUAL-3A-40HISTORICAL-INTERFACES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#SB-MANUAL:@FINAL-DEPRECATION%20MGL-PAX:SECTION" title="Final Deprecation">&#8592;</a> <a href="#SB-MANUAL:@DEPRECATED-INTERFACES-IN-SBCL%20MGL-PAX:SECTION" title="Deprecated Interfaces in SBCL">&#8593;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8594;</a>  <a href="#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8634;</a>  <a href="https://github.com/sbcl/sbcl/blob/ff7a653710315dd1d3a4a2ecdc70a9ca02a8ad7f/contrib/sb-manual/doc/deprecation.lisp#L378">&#955;</a></span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#SB-MANUAL:@FINAL-DEPRECATION%20MGL-PAX:SECTION" title="Final Deprecation">&#8592;</a> <a href="#SB-MANUAL:@DEPRECATED-INTERFACES-IN-SBCL%20MGL-PAX:SECTION" title="Deprecated Interfaces in SBCL">&#8593;</a> <a href="#Indices" title="Indices">&#8594;</a>  <a href="#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8634;</a>  <a href="https://github.com/sbcl/sbcl/blob/ff7a653710315dd1d3a4a2ecdc70a9ca02a8ad7f/contrib/sb-manual/doc/deprecation.lisp#L378">&#955;</a></span></span></p>
 
 <h4><a href="#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION">18.7.2 Historical Interfaces</a></h4>
 
@@ -16358,10 +16358,10 @@ preferred SBCL style. Deprecated as of 0.pre7.90 in December
 and <code>sb-alien:define-alien-type</code>.</p></li>
 </ul>
 
-<p><a id="Indices-1"></a>
-<a id="Indices-1"></a></p>
+<p><a id="Indices"></a>
+<a id="Indices"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8592;</a> <a href="sbcl-manual.html" title="SBCL Manual">&#8593;</a> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="autoload-manual.html#Indices" title="Indices">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION" title="Historical Interfaces">&#8592;</a> <a href="sbcl-manual.html" title="SBCL Manual">&#8593;</a> <a href="#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8594;</a>  <a href="#Indices" title="Indices">&#8634;</a> </span></span></p>
 
 <h2>19 Indices</h2>
 
@@ -16384,10 +16384,10 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <p><div class="pax-index"></p>
 
 <p></div>
-<a id="Function-20and-20Macro-20Index-1"></a>
-<a id="Function%20and%20Macro%20Index-1"></a></p>
+<a id="Function-20and-20Macro-20Index"></a>
+<a id="Function%20and%20Macro%20Index"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Indices" title="Indices">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="autoload-manual.html#Type%20Index" title="Type Index">&#8594;</a>  <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#Indices" title="Indices">&#8592;</a> <a href="#Indices" title="Indices">&#8593;</a> <a href="#Variable%20and%20Constant%20Index" title="Variable and Constant Index">&#8594;</a>  <a href="#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8634;</a> </span></span></p>
 
 <h3>19.1 Function and Macro Index</h3>
 
@@ -17039,7 +17039,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <a id="Variable-20and-20Constant-20Index"></a>
 <a id="Variable%20and%20Constant%20Index"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="autoload-manual.html#Misc%20Index" title="Misc Index">&#8594;</a>  <a href="autoload-manual.html#Type%20Index" title="Type Index">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#Function%20and%20Macro%20Index" title="Function and Macro Index">&#8592;</a> <a href="#Indices" title="Indices">&#8593;</a> <a href="#Type%20Index" title="Type Index">&#8594;</a>  <a href="#Variable%20and%20Constant%20Index" title="Variable and Constant Index">&#8634;</a> </span></span></p>
 
 <h3>19.2 Variable and Constant Index</h3>
 
@@ -17083,10 +17083,10 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 </ul>
 
 <p></div>
-<a id="Type-20Index-1"></a>
-<a id="Type%20Index-1"></a></p>
+<a id="Type-20Index"></a>
+<a id="Type%20Index"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Type%20Index" title="Type Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="autoload-manual.html#Concept%20Index" title="Concept Index">&#8594;</a>  <a href="autoload-manual.html#Misc%20Index" title="Misc Index">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#Variable%20and%20Constant%20Index" title="Variable and Constant Index">&#8592;</a> <a href="#Indices" title="Indices">&#8593;</a> <a href="#Misc%20Index" title="Misc Index">&#8594;</a>  <a href="#Type%20Index" title="Type Index">&#8634;</a> </span></span></p>
 
 <h3>19.3 Type Index</h3>
 
@@ -17194,10 +17194,10 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 </ul>
 
 <p></div>
-<a id="Misc-20Index-1"></a>
-<a id="Misc%20Index-1"></a></p>
+<a id="Misc-20Index"></a>
+<a id="Misc%20Index"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Misc%20Index" title="Misc Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a> <a href="dref-manual.html#Concept%20Index-1" title="Concept Index">&#8594;</a>  <a href="autoload-manual.html#Concept%20Index" title="Concept Index">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#Type%20Index" title="Type Index">&#8592;</a> <a href="#Indices" title="Indices">&#8593;</a> <a href="#Concept%20Index" title="Concept Index">&#8594;</a>  <a href="#Misc%20Index" title="Misc Index">&#8634;</a> </span></span></p>
 
 <h3>19.4 Misc Index</h3>
 
@@ -17224,10 +17224,10 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 </ul>
 
 <p></div>
-<a id="Concept-20Index-2"></a>
-<a id="Concept%20Index-2"></a></p>
+<a id="Concept-20Index"></a>
+<a id="Concept%20Index"></a></p>
 
-<p><span class="outer-navigation"><span class="navigation"> <a href="autoload-manual.html#Concept%20Index" title="Concept Index">&#8592;</a> <a href="autoload-manual.html#Indices" title="Indices">&#8593;</a>  <a href="dref-manual.html#Concept%20Index-1" title="Concept Index">&#8634;</a> </span></span></p>
+<p><span class="outer-navigation"><span class="navigation"> <a href="#Misc%20Index" title="Misc Index">&#8592;</a> <a href="#Indices" title="Indices">&#8593;</a>  <a href="#Concept%20Index" title="Concept Index">&#8634;</a> </span></span></p>
 
 <h3>19.5 Concept Index</h3>
 
@@ -17242,8 +17242,14 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>modular ↩ <em>d</em>: <a href="#SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION" title="Modular Arithmetic"><strong>Modular Arithmetic</strong></a>, <a href="#SB-MANUAL:@RECOGNIZED-IDIOMS%20MGL-PAX:SECTION" title="Recognized Idioms"><strong>Recognized Idioms</strong></a></p></li>
 </ul></li>
 <li><p>asynchronous timeout ↩ <em>d</em>: <a href="#SB-MANUAL:@ASYNCHRONOUS-TIMEOUTS%20MGL-PAX:SECTION" title="Asynchronous Timeouts"><strong>Asynchronous Timeouts</strong></a></p></li>
+<li><p>basic block ↩ <em>d</em>: <a href="#SB-MANUAL:@SOURCE-LOCATION-AVAILABILITY%20MGL-PAX:SECTION" title="Source Location Availability">Source Location Availability</a></p></li>
 <li><p>block compilation, debugger implications ↩ <em>d</em>: <a href="#SB-MANUAL:@ENTRY-POINT-DETAILS%20MGL-PAX:SECTION" title="Entry Point Details"><strong>Entry Point Details</strong></a></p></li>
-<li><p>block, start location ↩ <em>d</em>: <a href="#SB-MANUAL:@SOURCE-LOCATION-AVAILABILITY%20MGL-PAX:SECTION" title="Source Location Availability">Source Location Availability</a></p></li>
+<li><p>block,</p>
+
+<ul>
+<li><p>basic ↩ <em>d</em>: <a href="#SB-MANUAL:@SOURCE-LOCATION-AVAILABILITY%20MGL-PAX:SECTION" title="Source Location Availability">Source Location Availability</a></p></li>
+<li><p>start location ↩ <em>d</em>: <a href="#SB-MANUAL:@SOURCE-LOCATION-AVAILABILITY%20MGL-PAX:SECTION" title="Source Location Availability">Source Location Availability</a></p></li>
+</ul></li>
 <li><p>breakpoint ↩ <em>d</em>: <a href="#SB-MANUAL:@BREAKPOINT-COMMANDS%20MGL-PAX:SECTION" title="Breakpoint Commands"><strong>Breakpoint Commands</strong></a></p></li>
 <li><p>cleanup, stack frame kind ↩ <em>d</em>: <a href="#SB-MANUAL:@ENTRY-POINT-DETAILS%20MGL-PAX:SECTION" title="Entry Point Details"><strong>Entry Point Details</strong></a></p></li>
 <li><p>code location unknown ↩ <em>d</em>: <a href="#SB-MANUAL:@UNKNOWN-LOCATIONS-AND-INTERRUPTS%20MGL-PAX:SECTION" title="Unknown Locations and Interrupts"><strong>Unknown Locations and Interrupts</strong></a></p></li>
@@ -17316,6 +17322,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>generational garbage collector ↩ <em>d</em>: <a href="#SB-MANUAL:@CALLING-LISP-FROM-C%20MGL-PAX:SECTION" title="Calling Lisp From C">Calling Lisp From C</a>, <a href="#SB-MANUAL:@EFFICIENCY-HACKS%20MGL-PAX:SECTION" title="Efficiency Hacks">Efficiency Hacks</a>, <a href="#SB-MANUAL:@HISTORY-AND-IMPLEMENTATION-OF-SBCL%20MGL-PAX:SECTION" title="History and Implementation of SBCL">History and Implementation of SBCL</a>, <a href="#SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION" title="Miscellaneous Efficiency Issues">Miscellaneous Efficiency Issues</a>, <a href="#SB-MANUAL:@STATISTICAL-PROFILER%20MGL-PAX:SECTION" title="Statistical Profiler">Statistical Profiler</a></p></li>
 <li><p>hash table ↩ <em>d</em>: <a href="#SB-MANUAL:@HASH-TABLE-EXTENSIONS%20MGL-PAX:SECTION" title="Hash Table Extensions">Hash Table Extensions</a></p></li>
 <li><p>inline expansion ↩ <em>d</em>: <a href="#SB-MANUAL:@OPEN-CODING-AND-INLINE-EXPANSION%20MGL-PAX:SECTION" title="Open Coding and Inline Expansion"><strong>Open Coding and Inline Expansion</strong></a></p></li>
+<li><p>inline, semi ↩ <em>d</em>: <a href="#SB-MANUAL:@DEBUGGER-POLICY-CONTROL%20MGL-PAX:SECTION" title="Debugger Policy Control">Debugger Policy Control</a></p></li>
 <li><p>interning symbols ↩ <em>d</em>: <a href="#SB-MANUAL:@EXTENDED-PACKAGE-PREFIX-SYNTAX%20MGL-PAX:SECTION" title="Extended Package Prefix Syntax">Extended Package Prefix Syntax</a></p></li>
 <li><p>interpreter ↩ <em>d</em>: <a href="#SB-MANUAL:@INTERPRETER%20MGL-PAX:SECTION" title="Interpreter"><strong>Interpreter</strong></a></p></li>
 <li><p>interrupt ↩ <em>d</em>: <a href="#SB-MANUAL:@UNKNOWN-LOCATIONS-AND-INTERRUPTS%20MGL-PAX:SECTION" title="Unknown Locations and Interrupts">Unknown Locations and Interrupts</a></p></li>
@@ -17349,7 +17356,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>safety ↩ <em>d</em>: <a href="#SB-MANUAL:@DECLARATIONS-AS-ASSERTIONS%20MGL-PAX:SECTION" title="Declarations as Assertions">Declarations as Assertions</a>, <a href="#SB-MANUAL:@GETTING-EXISTING-PROGRAMS-TO-RUN%20MGL-PAX:SECTION" title="Getting Existing Programs to Run">Getting Existing Programs to Run</a>, <a href="#SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION" title="Stack Allocation">Stack Allocation</a></p></li>
 </ul></li>
 <li><p>optional, stack frame kind ↩ <em>d</em>: <a href="#SB-MANUAL:@ENTRY-POINT-DETAILS%20MGL-PAX:SECTION" title="Entry Point Details"><strong>Entry Point Details</strong></a></p></li>
-<li><p>original source ↩ <em>d</em>: <a href="#SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION" title="Original and Actual Source"><strong>Original and Actual Source</strong></a></p></li>
+<li><p>original source ↩ <em>d</em>: <a href="#SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION" title="Original and Actual Source"><strong>Original and Actual Source</strong></a>, <a href="#SB-MANUAL:@PARTS-OF-A-COMPILER-DIAGNOSTIC%20MGL-PAX:SECTION" title="Parts of a Compiler Diagnostic">Parts of a Compiler Diagnostic</a></p></li>
 <li><p>package lock ↩ <em>d</em>: <a href="#SB-MANUAL:@EXTENDED-PACKAGE-PREFIX-SYNTAX%20MGL-PAX:SECTION" title="Extended Package Prefix Syntax">Extended Package Prefix Syntax</a>, <a href="#SB-MANUAL:@PACKAGE-LOCKS%20MGL-PAX:SECTION" title="Package Locks"><strong>Package Locks</strong></a></p></li>
 <li><p>package prefix syntax, extended ↩ <em>d</em>: <a href="#SB-MANUAL:@EXTENDED-PACKAGE-PREFIX-SYNTAX%20MGL-PAX:SECTION" title="Extended Package Prefix Syntax"><strong>Extended Package Prefix Syntax</strong></a></p></li>
 <li><p>package-local nicknames ↩ <em>d</em>: <a href="#SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION" title="Package-Local Nicknames"><strong>Package-Local Nicknames</strong></a></p></li>
@@ -17357,7 +17364,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>pathname, logical ↩ <em>d</em>: <a href="#SB-MANUAL:@THE-SYS-LOGICAL-PATHNAME-HOST%20MGL-PAX:SECTION" title="The SYS Logical Pathname Host">The SYS Logical Pathname Host</a></p></li>
 <li><p>policy, debugger ↩ <em>d</em>: <a href="#SB-MANUAL:@DEBUGGER-POLICY-CONTROL%20MGL-PAX:SECTION" title="Debugger Policy Control"><strong>Debugger Policy Control</strong></a></p></li>
 <li><p>precise type checking ↩ <em>d</em>: <a href="#SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION" title="Precise Type Checking"><strong>Precise Type Checking</strong></a></p></li>
-<li><p>processing path ↩ <em>d</em>: <a href="#SB-MANUAL:@PROCESSING-PATHS%20MGL-PAX:SECTION" title="Processing Paths"><strong>Processing Paths</strong></a></p></li>
+<li><p>processing path ↩ <em>d</em>: <a href="#SB-MANUAL:@PARTS-OF-A-COMPILER-DIAGNOSTIC%20MGL-PAX:SECTION" title="Parts of a Compiler Diagnostic">Parts of a Compiler Diagnostic</a>, <a href="#SB-MANUAL:@PROCESSING-PATHS%20MGL-PAX:SECTION" title="Processing Paths"><strong>Processing Paths</strong></a></p></li>
 <li><p>profiling ↩ <em>d</em>: <a href="#SB-MANUAL:@PROFILING%20MGL-PAX:SECTION" title="Profiling"><strong>Profiling</strong></a></p></li>
 <li><p>profiling,</p>
 
@@ -17374,6 +17381,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>REPL ↩ <em>d</em>: <a href="#SB-MANUAL:@INITIALIZATION-FILES%20MGL-PAX:SECTION" title="Initialization Files">Initialization Files</a>, <a href="#SB-MANUAL:@SB-ACLREPL%20MGL-PAX:SECTION" title="sb-aclrepl"><strong>sb-aclrepl</strong></a></p></li>
 <li><p>run-time error ↩ <em>d</em>: <a href="#SB-MANUAL:@UNKNOWN-LOCATIONS-AND-INTERRUPTS%20MGL-PAX:SECTION" title="Unknown Locations and Interrupts">Unknown Locations and Interrupts</a></p></li>
 <li><p>safety, optimization quality ↩ <em>d</em>: <a href="#SB-MANUAL:@DECLARATIONS-AS-ASSERTIONS%20MGL-PAX:SECTION" title="Declarations as Assertions">Declarations as Assertions</a>, <a href="#SB-MANUAL:@GETTING-EXISTING-PROGRAMS-TO-RUN%20MGL-PAX:SECTION" title="Getting Existing Programs to Run">Getting Existing Programs to Run</a>, <a href="#SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION" title="Stack Allocation">Stack Allocation</a></p></li>
+<li><p>semi-inline ↩ <em>d</em>: <a href="#SB-MANUAL:@DEBUGGER-POLICY-CONTROL%20MGL-PAX:SECTION" title="Debugger Policy Control">Debugger Policy Control</a></p></li>
 <li><p>severity of compiler message ↩ <em>d</em>: <a href="#SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION" title="Diagnostic Severity"><strong>Diagnostic Severity</strong></a></p></li>
 <li><p>single-stepping ↩ <em>d</em>: <a href="#SB-MANUAL:@SINGLE-STEPPING%20MGL-PAX:SECTION" title="Single Stepping"><strong>Single Stepping</strong></a></p></li>
 <li><p>slot access ↩ <em>d</em>: <a href="#SB-MANUAL:@SLOT-ACCESS%20MGL-PAX:SECTION" title="Slot Access"><strong>Slot Access</strong></a></p></li>
@@ -17384,7 +17392,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 
 <ul>
 <li><p>actual ↩ <em>d</em>: <a href="#SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION" title="Original and Actual Source"><strong>Original and Actual Source</strong></a>, <a href="#SB-MANUAL:@PARTS-OF-A-COMPILER-DIAGNOSTIC%20MGL-PAX:SECTION" title="Parts of a Compiler Diagnostic">Parts of a Compiler Diagnostic</a></p></li>
-<li><p>original ↩ <em>d</em>: <a href="#SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION" title="Original and Actual Source"><strong>Original and Actual Source</strong></a></p></li>
+<li><p>original ↩ <em>d</em>: <a href="#SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION" title="Original and Actual Source"><strong>Original and Actual Source</strong></a>, <a href="#SB-MANUAL:@PARTS-OF-A-COMPILER-DIAGNOSTIC%20MGL-PAX:SECTION" title="Parts of a Compiler Diagnostic">Parts of a Compiler Diagnostic</a></p></li>
 </ul></li>
 <li><p>stack frame ↩ <em>d</em>: <a href="#SB-MANUAL:@STACK-FRAMES%20MGL-PAX:SECTION" title="Stack Frames"><strong>Stack Frames</strong></a></p></li>
 <li><p>static functions ↩ <em>d</em>: <a href="#SB-MANUAL:@OPEN-CODING-AND-INLINE-EXPANSION%20MGL-PAX:SECTION" title="Open Coding and Inline Expansion"><strong>Open Coding and Inline Expansion</strong></a></p></li>
@@ -17417,7 +17425,7 @@ and <code>sb-alien:define-alien-type</code>.</p></li>
 <li><p>weak pointers ↩ <em>d</em>: <a href="#SB-MANUAL:@WEAK-POINTERS%20MGL-PAX:SECTION" title="Weak Pointers"><strong>Weak Pointers</strong></a></p></li>
 </ul>
  </div>
-<h6>[Generated 2026-07-02T08:03:26Z]</h6>
+<h6>[Generated 2026-07-02T11:26:52Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>
