@@ -149,7 +149,7 @@ documentation is generated.
 ## Links and Systems
 
 The official repository is <https://github.com/melisgl/mgl-pax>, and
-this document in available in various formats on
+this document is available in various formats on
 <https://fixnum.com> for the latest version. There is also a PAX
 channel on YouTube with a couple of videos.
 
@@ -560,7 +560,7 @@ Now let's examine the most important pieces.
     brackets indicate optional arguments. See below for the details of
     parsing args.
 
-    note is experimental and as such subject to change.
+    > Note: note is experimental and, as such, subject to change.
 
     note can occur in any evaluated position without changing its body's
     run-time behaviour or introducing any run-time overhead. Top level
@@ -1117,7 +1117,7 @@ For more powerful search, see Apropos.
 
     Write documentable in format to stream diverting some output to pages.
     format is one of :plain,
-    :markdown, :html and
+    :markdown, :html,
     :pdf or nil. stream may be a
     stream object, t or nil as with cl:format.
 
@@ -1155,8 +1155,8 @@ For more powerful search, see Apropos.
 #### documentable
 
 The documentable argument of document may be a single object (e.g.
-#'print'), a definition such as (dref 'print 'function),
-a string, or a nested list of these. More precisely, documentable is
+#'print), a definition such as (dref 'print 'function), a
+string, or a nested list of these. More precisely, documentable is
 one of the following:
 
 - single definition designator: A dref or anything else
@@ -1457,10 +1457,10 @@ M-. except:
 
 - It supports fragment syntax at the prompt:
 
-        NAME LOCATIVE FRAGMENT-NAME FRAGMENT-LOCATIVE
+        <name> <locative> <fragment-name> <fragment-locative>
 
-    This is like name locative, but the browser scrolls to the
-    definition of fragment-name fragment-locative within that
+    This is like <name> <locative>, but the browser scrolls to the
+    definition of <fragment-name> <fragment-locative> within that
     page.
 
     For example, entering this at the prompt will generate the
@@ -2435,17 +2435,17 @@ The following variables control various aspects of links and URLs.
     <a id="MGL-PAX:FOO%20FUNCTION">, and its URL will end
     with #MGL-PAX:FOO%20FUNCTION.
 
-    Note that to make the URL independent of whether a symbol is
-    internal or external to their symbol-package, single
-    colon is printed where a double colon would be expected. Package and
-    symbol names are both printed verbatim except for escaping colons
-    and spaces with a backslash. For exported symbols with no funny
-    characters, this coincides with how prin1 would print the symbol,
-    while having the benefit of making the URL independent of the Lisp
-    printer's escaping strategy and producing human-readable output for
-    mixed-case symbols. No such promises are made for non-ASCII
-    characters, and their URLs may change in future versions. Locatives
-    are printed with prin1.
+    > Note: To make the URL independent of whether a symbol is
+    > internal or external to their symbol-package,
+    > single colon is printed where a double colon would be expected.
+    > Package and symbol names are both printed verbatim except for
+    > escaping colons and spaces with a backslash. For exported symbols
+    > with no funny characters, this coincides with how prin1 would
+    > print the symbol, while having the benefit of making the URL
+    > independent of the Lisp printer's escaping strategy and producing
+    > human-readable output for mixed-case symbols. No such promises are
+    > made for non-ASCII characters, and their URLs may change in
+    > future versions. Locatives are printed with prin1.
 
     Version 1 is based on the more strict HTML4 standard and the id of
     foo is "x-28MGL-PAX-3A-3AFOO-20FUNCTION-29". This is supported
@@ -2492,10 +2492,17 @@ The following variables control various aspects of links and URLs.
 
     When *document-base-url* is non-nil, this is prepended to all
     Markdown relative urls. It must be a valid url without query or
-    fragment parts (that is, http://lisp.org/doc/ but not
-    http://lisp.org/doc?a=1 or http://lisp.org/doc#fragment). Note
-    that intra-page links using only url fragments (e.g. and explicit
-    HTML links (e.g. <a href="...">) in Markdown are not
+    fragment parts. For example,
+
+        http://lisp.org/doc/
+
+    but not either of the following:
+
+        http://lisp.org/doc?a=1
+        http://lisp.org/doc#fragment.
+
+    Note that intra-page links using only url fragments (e.g. and
+    explicit HTML links (e.g. <a href="...">) in Markdown are not
     affected.
 
 ### Local Definition
@@ -4099,7 +4106,8 @@ The rules are:
    read-from-string can read the embedded string from it, then that
    string is considered as a name and nothing else.
 
-<br/>
+#### Name Parsing Example
+
 For example, when M-. is pressed while point is over
 unREADable., the last word of the sentence It may be
 unREADable., the following raw names are considered until one is
@@ -4408,7 +4416,7 @@ they are presented.
 
     A title or nil. Used in generated
     documentation (see Markdown Output) and is returned by doctitle
-    for glossary-term objects and glossary-term definitions..
+    for glossary-term objects and glossary-term definitions.
 
 - [reader] glossary-term-url glossary-term (:url)
 

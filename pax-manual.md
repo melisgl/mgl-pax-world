@@ -72,6 +72,7 @@
     - [10.1 Parsing Names][e65d]
         - [10.1.1 Raw Names in Words][f0d5]
         - [10.1.2 Names in Raw Names][016d]
+        - [10.1.3 Name Parsing Example][bd7f]
     - [10.2 Parsing Locatives][ab38]
 - [11 Writing Extensions][c4ce]
     - [11.1 Adding New Locatives][54d8]
@@ -242,7 +243,7 @@ documentation is generated.
 ## 2 Links and Systems
 
 The official repository is <https://github.com/melisgl/mgl-pax>, and
-this document in available in various formats on
+this document is available in various formats on
 <https://fixnum.com> for the latest version. There is also a [PAX
 channel][pax-yt] on YouTube with a couple of videos.
 
@@ -707,7 +708,7 @@ Now let's examine the most important pieces.
     brackets indicate optional arguments. See below for the details of
     parsing `args`.
     
-    **`note` is experimental and as such subject to change.**
+    > *Note*: `note` is experimental and, as such, subject to change.
     
     `note` can occur in any evaluated position without changing its `body`'s
     run-time behaviour or introducing any run-time overhead. [Top level
@@ -1342,7 +1343,7 @@ For more powerful search, see [Apropos][b7fc].
 
     Write `documentable` in `format` to `stream` diverting some output to `pages`.
     `format` is one of [`:plain`][c879],
-    [`:markdown`][dd29], [`:html`][36e1] and
+    [`:markdown`][dd29], [`:html`][36e1],
     [`:pdf`][19ad] or [`nil`][f7e6]. `stream` may be a
     [`stream`][d5a9] object, `t` or `nil` as with [`cl:format`][ad78].
     
@@ -1383,8 +1384,8 @@ For more powerful search, see [Apropos][b7fc].
 #### 8.1.1 `documentable`
 
 The `documentable` argument of [`document`][432c] may be a single object (e.g.
-`#'print`'), a [definition][2143] such as `(dref 'print 'function)`,
-a string, or a nested list of these. More precisely, `documentable` is
+`#'print`), a [definition][2143] such as `(dref 'print 'function)`, a
+string, or a nested list of these. More precisely, `documentable` is
 one of the following:
 
 - *single definition designator*: A [`dref`][d930] or anything else
@@ -1710,10 +1711,10 @@ In interactive use, `mgl-pax-document` behaves similarly to
 
 - It supports fragment syntax at the prompt:
 
-        NAME LOCATIVE FRAGMENT-NAME FRAGMENT-LOCATIVE
+        <name> <locative> <fragment-name> <fragment-locative>
 
-    This is like `name locative`, but the browser scrolls to the
-    definition of `fragment-name fragment-locative` within that
+    This is like `<name> <locative>`, but the browser scrolls to the
+    definition of `<fragment-name> <fragment-locative>` within that
     page.
 
     For example, entering this at the prompt will generate the
@@ -2879,17 +2880,17 @@ The following variables control various aspects of links and URLs.
     `<a id="MGL-PAX:FOO%20FUNCTION">`, and its URL will end
     with `#MGL-PAX:FOO%20FUNCTION`.
     
-    *Note that to make the URL independent of whether a symbol is
-    [internal or external][3473] to their [`symbol-package`][e5ab], single
-    colon is printed where a double colon would be expected. Package and
-    symbol names are both printed verbatim except for escaping colons
-    and spaces with a backslash. For exported symbols with no funny
-    characters, this coincides with how [`prin1`][6384] would print the symbol,
-    while having the benefit of making the URL independent of the Lisp
-    printer's escaping strategy and producing human-readable output for
-    mixed-case symbols. No such promises are made for non-ASCII
-    characters, and their URLs may change in future versions. Locatives
-    are printed with `prin1`.*
+    > *Note*: To make the URL independent of whether a symbol is
+    > [internal or external][3473] to their [`symbol-package`][e5ab],
+    > single colon is printed where a double colon would be expected.
+    > Package and symbol names are both printed verbatim except for
+    > escaping colons and spaces with a backslash. For exported symbols
+    > with no funny characters, this coincides with how [`prin1`][6384] would
+    > print the symbol, while having the benefit of making the URL
+    > independent of the Lisp printer's escaping strategy and producing
+    > human-readable output for mixed-case symbols. No such promises are
+    > made for non-ASCII characters, and their URLs may change in
+    > future versions. Locatives are printed with `prin1`.
     
     Version 1 is based on the more strict HTML4 standard and the id of
     `foo` is `"x-28MGL-PAX-3A-3AFOO-20FUNCTION-29"`. This is supported
@@ -2944,10 +2945,17 @@ The following variables control various aspects of links and URLs.
 
     When `*document-base-url*` is non-`nil`, this is prepended to all
     Markdown relative `url`s. It must be a valid `url` without query or
-    fragment parts (that is, *http://lisp.org/doc/* but not
-    *http://lisp.org/doc?a=1* or *http://lisp.org/doc#fragment*). Note
-    that intra-page links using only `url` fragments (e.g. and explicit
-    HTML links (e.g. `<a href="...">`) in Markdown are not
+    fragment parts. For example,
+    
+        http://lisp.org/doc/
+    
+    but not either of the following:
+    
+        http://lisp.org/doc?a=1
+        http://lisp.org/doc#fragment.
+    
+    Note that intra-page links using only `url` fragments (e.g. and
+    explicit HTML links (e.g. `<a href="...">`) in Markdown are not
     affected.
 
 <a id="x-28MGL-PAX-3A-40LOCAL-DEFINITION-20MGL-PAX-3ASECTION-29"></a>
@@ -4846,7 +4854,11 @@ The rules are:
    string is considered as a name and nothing else.
 
 
-<br/>
+<a id="x-28MGL-PAX-3A-40NAME-PARSING-EXAMPLE-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@NAME-PARSING-EXAMPLE%20MGL-PAX:SECTION"></a>
+
+#### 10.1.3 Name Parsing Example
+
 For example, when `M-.` is pressed while point is over
 `unREADable.`, the last word of the sentence `It may be
 unREADable.`, the following [raw name][f5af]s are considered until one is
@@ -4885,7 +4897,7 @@ Parsing deviates from `read` in the following ways.
   contains uninterned symbols, then it is not parsable as a
   locative.
 
-- Read-time evaluation ([#.][ffd7]) follows normal `read` semantics.
+- Read-time evaluation ([`#.`][ffd7]) follows normal `read` semantics.
   Thus, `(method ((eql #.(find-package 'cl))))` may `intern` the
   symbol `cl`.
 
@@ -5249,7 +5261,7 @@ they are presented.
 
     A [title][090e] or `nil`. Used in generated
     documentation (see [Markdown Output][dd29]) and is returned by [`doctitle`][e619]
-    for [`glossary-term`][8251] objects and `glossary-term` [definition][2143]s..
+    for [`glossary-term`][8251] objects and `glossary-term` [definition][2143]s.
 
 <a id="x-28MGL-PAX-3AGLOSSARY-TERM-URL-20-28MGL-PAX-3AREADER-20MGL-PAX-3AGLOSSARY-TERM-29-29"></a>
 <a id="MGL-PAX:GLOSSARY-TERM-URL%20%28MGL-PAX:READER%20MGL-PAX:GLOSSARY-TERM%29"></a>
@@ -5575,6 +5587,7 @@ they are presented.
   [bbc6]: https://quotenil.com/multifaceted-development.html "PAX development style"
   [bc83]: #MGL-PAX:@MARKDOWN-SYNTAX-HIGHLIGHTING%20MGL-PAX:SECTION "Syntax Highlighting"
   [bcb6]: http://www.lispworks.com/documentation/HyperSpec/Body/e_warnin.htm "WARNING (MGL-PAX:CLHS CONDITION)"
+  [bd7f]: #MGL-PAX:@NAME-PARSING-EXAMPLE%20MGL-PAX:SECTION "Name Parsing Example"
   [bdd6]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cga.htm "\"22.3.7.1\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [bf38]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cfc.htm "\"22.3.6.3\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
   [bfaa]: http://www.lispworks.com/documentation/HyperSpec/Body/02_dhk.htm "\"2.4.8.11\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
