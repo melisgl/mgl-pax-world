@@ -44,7 +44,7 @@
 ## 1 Links and Systems
 
 The official repository is <https://github.com/melisgl/dref>, and
-this document in available in various formats on
+this document is available in various formats on
 <https://fixnum.com> for the latest version.
 
 <a id="x-28-22dref-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
