@@ -1174,8 +1174,10 @@ one of the following:
 
 - [variable] *document-tight* nil
 
-    If nil, then document adds a newline between consecutive
-    atomic documentables on the same page.
+    Normally, document calls ensure-md-paragraph before and after
+    documenting each atomic documentable. If *document-tight*
+    is true, then this doesn't happen for top-level string
+    documentables.
 
 #### Return Values
 
@@ -1266,16 +1268,16 @@ If multiple page specs match, then the first one has precedence.
 
     - If it's a stream, then output will be sent to that stream.
 
-    - If it's a list whose first element is a string or a pathname, then
-      output will be sent to the file denoted by that and the rest of
-      the elements of the list are passed on to cl:open. One extra
-      keyword argument is :ensure-directories-exist. If it's true,
-      ensure-directories-exist will be called on the pathname before
-      it's opened.
+    - If it's a list whose first element is a string or a pathname,
+      then output will be sent to the file denoted by that and the
+      rest of the elements of the list are passed on to cl:open. One
+      extra keyword argument is :ensure-directories-exist. If it's
+      true, ensure-directories-exist will be called on the pathname
+      before it's opened.
 
-    Note that even if pages is specified, stream acts as a catch all,
-    absorbing the generated documentation for references not claimed by
-    any pages.
+    Note that even if pages is specified, stream acts as a catch
+    all, absorbing the generated documentation for references not
+    claimed by any pages.
 
 - :header-fn, if not nil, is a function of a single stream argument,
   which is called just before the first write to the page. Since
@@ -1302,10 +1304,10 @@ If multiple page specs match, then the first one has precedence.
 
 #### Package and Readtable
 
-While generating documentation, symbols may be read from
-docstrings and printed. Our goal in general is to use the *package*
-and *readtable* in effect at the time the docstring was read. This
-keeps the correspondence between
+While generating documentation, symbols may be read from docstrings
+and printed. Our goal in general is to use the *package* and
+*readtable* in effect at the time the docstring was read. This keeps
+the correspondence between
 
 - M-. and Linking, and
 
@@ -1813,7 +1815,7 @@ docstrings are equivalent:
 
         The characters #\Space, #\Tab and
         #\Return are in the whitespace group.
-        
+    
         The characters #\Space, #\Tab and
         \#\Return are in the whitespace group.
 
@@ -2113,7 +2115,6 @@ This is a normal Markdown reference link if id is not a valid locative.
 
         (document "[see this][user-defined]" :format :markdown)
         .. [see this][user-defined]
-        ..
 
 Use urls with define-glossary-term as a better alternative to
 Markdown reference links (see Markdown in Docstrings).
@@ -2547,7 +2548,7 @@ works.
   and downcasing off. Use this for things that are not Lisp code but
   which need to be in a monospace font.
 
-In the following examples capital C/D/A letters mark the presence,
+In the following examples, capital C/D/A letters mark the presence,
 and a/b/c the absence of codification, downcasing, and autolinking
 assuming all these features are enabled by
 *document-uppercase-is-code*, *document-downcase-uppercase-code*,
@@ -2564,8 +2565,8 @@ and *document-link-code*.
     [DOCUMENT][dislocated]  => `document`            (CDa)
 
 Note that in the example marked with *, the single backslash,
-that would normally turn autolinking off, is ignored because it is
-in an explicit link.
+that would normally turn autolinking off is ignored because it is in
+an explicit link.
 
 ### Indexing
 
@@ -2962,9 +2963,8 @@ printed.
 
 - When documentation is being generated for a definition with
 the section locative, a new (sub)section is opened (see
-with-heading), within which documentation for its each of its
-section-entries is generated. A fresh line is printed after all
-entries except the last.
+with-heading), within which documentation for its section-entries is
+generated, separated from each other by ensure-md-paragraph.
 
 - For definitions with a glossary-term locative, no arglist is
 printed, and if non-nil, glossary-term-title is printed as name.
@@ -4173,10 +4173,11 @@ there are only a couple of PAX generic functions left to extend.
 
 - [generic-function] document-object* object stream
 
-    Write object in *format* to stream.
-    Specialize this on a subclass of dref if that subclass is
-    not resolveable, else on the type of object it resolves to. This
-    function is for extension only. Don't call it directly.
+    Write the documentation of object in Markdown to stream.
+    The output may depend on *format*. Specialize this on a subclass of
+    dref if that subclass is not resolveable, else on the type
+    of object it resolves to. This function is for extension only. Don't
+    call it directly.
 
 - [generic-function] exportable-reference-p package symbol locative-type locative-args
 
@@ -4253,7 +4254,8 @@ export the symbols a and an.
 
 For all definitions that it encounters, document calls
 document-object* to generate documentation. The following utilities
-are for writing new document-object* methods, which emit Markdown.
+are for writing new document-object* methods. They emit Markdown
+encoded in an unspecified format internal to document.
 
 - [variable] *format*
 
@@ -4327,7 +4329,7 @@ are for writing new document-object* methods, which emit Markdown.
 
 - [function] document-docstring docstring stream &key (indentation "    ") exclude-first-line-p (paragraphp t)
 
-    Write docstring to stream, sanitizing the Markdown from it, performing Codification and
+    Write docstring to stream, sanitizing the Markdown in it, performing Codification and
     Linking, finally prefixing each line with indentation. The prefix
     is not added to the first line if exclude-first-line-p. If
     paragraphp, then add a newline before and after the output.
@@ -4354,6 +4356,13 @@ are for writing new document-object* methods, which emit Markdown.
     Like prin1-to-string, but bind *print-case* depending on
     *document-downcase-uppercase-code* and *format*, and
     escape-markdown.
+
+- [function] ensure-md-paragraph stream
+
+    Ensure that output previously written to stream is in a separate
+    Markdown paragraph than the output that follows. Calling this
+    function multiple times without writing anything else to stream in
+    between is equivalent to calling it once.
 
 ### Sections
 

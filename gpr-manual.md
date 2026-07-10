@@ -6,38 +6,62 @@
 ## Table of Contents
 
 - [1 Links][6e4d]
+
 - [2 Background][2e8a]
+
 - [3 Evolutionary Algorithms][057a]
+
     - [3.1 Populations][9cba]
+
     - [3.2 Evaluation][b60a]
+
     - [3.3 Training][e87f]
+
 - [4 Genetic Programming][0d2f]
+
     - [4.1 Background][c392]
+
     - [4.2 Tutorial][075b]
+
     - [4.3 Expressions][f9a4]
+
     - [4.4 Basics][e084]
+
     - [4.5 Search Space][9085]
+
     - [4.6 Reproduction][5d57]
+
     - [4.7 Environment][084d]
+
 - [5 Differential Evolution][db20]
+
     - [5.1 SANSDE][40a0]
 
 ###### \[in package MGL-GPR\]
+
 <a id="x-28-22mgl-gpr-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
 <a id="%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM"></a>
 
-- [system] **"mgl-gpr"**
+- \[system\] **"mgl-gpr"**
 
-    - _Version:_ 0.0.1
-    - _Description:_ `mgl-gpr` is a library of evolutionary algorithms such
-        as Genetic Programming (evolving typed expressions from a set of
-        operators and constants) and Differential Evolution.
-    - _Licence:_ MIT, see COPYING.
-    - _Author:_ Gábor Melis <mega@retes.hu>
-    - _Mailto:_ [mega@retes.hu](mailto:mega@retes.hu)
-    - _Homepage:_ <http://melisgl.github.io/mgl-gpr>
-    - _Bug tracker:_ <https://github.com/melisgl/mgl-gpr/issues>
-    - _Source control:_ [GIT](https://github.com/melisgl/mgl-gpr.git)
+    - *Version:* 0.0.1
+
+    - *Description:* `mgl-gpr` is a library of evolutionary algorithms such
+    as Genetic Programming (evolving typed expressions from a set of
+    operators and constants) and Differential Evolution.
+
+    - *Licence:* MIT, see COPYING.
+
+    - *Author:* Gábor Melis <mega@retes.hu>
+
+    - *Mailto:* [mega@retes.hu](mailto:mega@retes.hu)
+
+    - *Homepage:* <http://melisgl.github.io/mgl-gpr>
+
+    - *Bug tracker:* <https://github.com/melisgl/mgl-gpr/issues>
+
+    - *Source control:* [GIT](https://github.com/melisgl/mgl-gpr.git)
+
     - *Depends on:* alexandria, [mgl-pax][6fdb]
 
 <a id="x-28MGL-GPR-3A-40GPR-GP-LINKS-20MGL-PAX-3ASECTION-29"></a>
@@ -88,7 +112,7 @@ first discuss the concepts common to conrete evolutionary algorithms
 <a id="x-28MGL-GPR-3AEVOLUTIONARY-ALGORITHM-20CLASS-29"></a>
 <a id="MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS"></a>
 
-- [class] **evolutionary-algorithm**
+- \[class\] **evolutionary-algorithm**
 
     The `evolutionary-algorithm` is an abstract base
     class for generational, population based optimization algorithms.
@@ -106,7 +130,7 @@ individuals.
 <a id="x-28MGL-GPR-3APOPULATION-SIZE-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [accessor] **population-size** *[evolutionary-algorithm][f5ee] (:population-size)*
+- \[accessor\] **population-size** *[evolutionary-algorithm][f5ee] (:population-size)*
 
     The number of individuals in a generation. This is
     a very important parameter. Too low and there won't be enough
@@ -116,7 +140,7 @@ individuals.
 <a id="x-28MGL-GPR-3APOPULATION-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [accessor] **population** *[evolutionary-algorithm][f5ee] (= (make-array 0 :adjustable 0 :fill-pointer t))*
+- \[accessor\] **population** *[evolutionary-algorithm][f5ee] (= (make-array 0 :adjustable 0 :fill-pointer t))*
 
     An adjustable array with a fill-pointer that holds
     the individuals that make up the population.
@@ -124,7 +148,7 @@ individuals.
 <a id="x-28MGL-GPR-3AGENERATION-COUNTER-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [reader] **generation-counter** *[evolutionary-algorithm][f5ee] (= 0)*
+- \[reader\] **generation-counter** *[evolutionary-algorithm][f5ee] (= 0)*
 
     A counter that starts from 0 and is incremented by
     [`advance`][be13]. All accessors of [`evolutionary-algorithm`][f5ee] are allowed to be
@@ -134,7 +158,7 @@ individuals.
 <a id="x-28MGL-GPR-3AADD-INDIVIDUAL-20FUNCTION-29"></a>
 <a id="MGL-GPR:ADD-INDIVIDUAL%20FUNCTION"></a>
 
-- [function] **add-individual** *ea individual*
+- \[function\] **add-individual** *ea individual*
 
     Adds `individual` to [`population`][1602] of `ea`. Usually called when
     initializing the `ea`.
@@ -147,7 +171,7 @@ individuals.
 <a id="x-28MGL-GPR-3AEVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [reader] **evaluator** *[evolutionary-algorithm][f5ee] (:evaluator)*
+- \[reader\] **evaluator** *[evolutionary-algorithm][f5ee] (:evaluator)*
 
     A function of two arguments: the
     [`evolutionary-algorithm`][f5ee] object and an individual. It must return
@@ -158,13 +182,13 @@ individuals.
     cost (see [`count-nodes`][d237]). For [Differential Evolution][db20], individuals are
     conceptually (and often implemented as) vectors of numbers so the
     fitness function may include an L1 or L2 penalty term.
-    
+
     Alternatively, one can specify [`mass-evaluator`][ef7a] instead.
 
 <a id="x-28MGL-GPR-3AMASS-EVALUATOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [reader] **mass-evaluator** *[evolutionary-algorithm][f5ee] (:mass-evaluator = nil)*
+- \[reader\] **mass-evaluator** *[evolutionary-algorithm][f5ee] (:mass-evaluator = nil)*
 
     `nil` or a function of three arguments: the
     [`evolutionary-algorithm`][f5ee] object, the population vector and the
@@ -177,7 +201,7 @@ individuals.
 <a id="x-28MGL-GPR-3AFITNESS-KEY-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [reader] **fitness-key** *[evolutionary-algorithm][f5ee] (:fitness-key = #'identity)*
+- \[reader\] **fitness-key** *[evolutionary-algorithm][f5ee] (:fitness-key = #'identity)*
 
     A function that returns a real number for an
     object returned by [`evaluator`][9a7e]. It is called when two fitness are to
@@ -202,7 +226,7 @@ generations or until the [`fittest`][9631] individual is good enough.
 <a id="x-28MGL-GPR-3AADVANCE-20GENERIC-FUNCTION-29"></a>
 <a id="MGL-GPR:ADVANCE%20GENERIC-FUNCTION"></a>
 
-- [generic-function] **advance** *ea*
+- \[generic-function\] **advance** *ea*
 
     Create the next generation and place it in
     [`population`][1602] of `ea`.
@@ -210,7 +234,7 @@ generations or until the [`fittest`][9631] individual is good enough.
 <a id="x-28MGL-GPR-3AFITTEST-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [reader] **fittest** *[evolutionary-algorithm][f5ee] (= nil)*
+- \[reader\] **fittest** *[evolutionary-algorithm][f5ee] (= nil)*
 
     The fittest individual ever to be seen and its
     fittness as a cons cell.
@@ -218,7 +242,7 @@ generations or until the [`fittest`][9631] individual is good enough.
 <a id="x-28MGL-GPR-3AFITTEST-CHANGED-FN-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AEVOLUTIONARY-ALGORITHM-29-29"></a>
 <a id="MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a>
 
-- [accessor] **fittest-changed-fn** *[evolutionary-algorithm][f5ee] (:fittest-changed-fn = nil)*
+- \[accessor\] **fittest-changed-fn** *[evolutionary-algorithm][f5ee] (:fittest-changed-fn = nil)*
 
     If non-`nil`, a function that's called when [`fittest`][9631]
     is updated with three arguments: the [`evolutionary-algorithm`][f5ee]
@@ -380,7 +404,7 @@ literal lists.
 <a id="x-28MGL-GPR-3AEXPRESSION-CLASS-20CLASS-29"></a>
 <a id="MGL-GPR:EXPRESSION-CLASS%20CLASS"></a>
 
-- [class] **expression-class**
+- \[class\] **expression-class**
 
     An object of `expression-class` defines two things:
     how to build a random expression that belongs to that expression
@@ -389,7 +413,7 @@ literal lists.
 <a id="x-28MGL-GPR-3ARESULT-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEXPRESSION-CLASS-29-29"></a>
 <a id="MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29"></a>
 
-- [reader] **result-type** *[expression-class][95f7] (:result-type)*
+- \[reader\] **result-type** *[expression-class][95f7] (:result-type)*
 
     Expressions belonging to this expression class
     must evaluate to a value of this lisp type.
@@ -397,7 +421,7 @@ literal lists.
 <a id="x-28MGL-GPR-3AWEIGHT-20-28MGL-PAX-3AREADER-20MGL-GPR-3AEXPRESSION-CLASS-29-29"></a>
 <a id="MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29"></a>
 
-- [reader] **weight** *[expression-class][95f7] (:weight = 1)*
+- \[reader\] **weight** *[expression-class][95f7] (:weight = 1)*
 
     The probability of an expression class to be
     selected from a set of candidates is proportional to its
@@ -406,20 +430,20 @@ literal lists.
 <a id="x-28MGL-GPR-3AOPERATOR-20CLASS-29"></a>
 <a id="MGL-GPR:OPERATOR%20CLASS"></a>
 
-- [class] **operator** *[expression-class][95f7]*
+- \[class\] **operator** *[expression-class][95f7]*
 
     Defines how the symbol [`name`][12f5] in the function
     position of a list can be combined arguments: how many and of what
     types. The following defines `+` as an operator that
     adds two [`float`][eee2]s:
-    
+
         (make-instance 'operator 
                        :name '+
                        :result-type float
                        :argument-types '(float float))
-    
+
     See the macro [`operator`][5b15] for a shorthand for the above.
-    
+
     Currently no lambda list keywords are supported and there is no way
     to define how an expression with a particular operator is to be
     built. See [`random-expression`][7df2].
@@ -427,14 +451,14 @@ literal lists.
 <a id="x-28MGL-GPR-3ANAME-20-28MGL-PAX-3AREADER-20MGL-GPR-3AOPERATOR-29-29"></a>
 <a id="MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29"></a>
 
-- [reader] **name** *[operator][b75b] (:name)*
+- \[reader\] **name** *[operator][b75b] (:name)*
 
     A symbol that's the name of the operator.
 
 <a id="x-28MGL-GPR-3AARGUMENT-TYPES-20-28MGL-PAX-3AREADER-20MGL-GPR-3AOPERATOR-29-29"></a>
 <a id="MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29"></a>
 
-- [reader] **argument-types** *[operator][b75b] (:argument-types)*
+- \[reader\] **argument-types** *[operator][b75b] (:argument-types)*
 
     A list of lisp types. One for each argument of
     this operator.
@@ -442,36 +466,36 @@ literal lists.
 <a id="x-28MGL-GPR-3AOPERATOR-20MGL-PAX-3AMACRO-29"></a>
 <a id="MGL-GPR:OPERATOR%20MGL-PAX:MACRO"></a>
 
-- [macro] **operator** *(name &rest arg-types) result-type &key (weight 1)*
+- \[macro\] **operator** *(name \&rest arg-types) result-type \&key (weight 1)*
 
     Syntactic sugar for instantiating operators. The example given for
     [`operator`][b75b] could be written as:
-    
+
         (operator (+ float float) float)
-    
+
     See [`weight`][be2e] for what `weight` means.
 
 <a id="x-28MGL-GPR-3ALITERAL-20CLASS-29"></a>
 <a id="MGL-GPR:LITERAL%20CLASS"></a>
 
-- [class] **literal** *[expression-class][95f7]*
+- \[class\] **literal** *[expression-class][95f7]*
 
     This is slightly misnamed. An object belonging to
     the [`literal`][32b7] class is not a literal itself, it's a factory for
     literals via its [`builder`][0cb2] function. For example, the following
     literal builds bytes:
-    
+
         (make-instance 'literal
                        :result-type '(unsigned-byte 8)
                        :builder (lambda () (random 256)))
-    
+
     In practice, one rarely writes it out like that, because the [`literal`][8a46]
     macro provides a more convenient shorthand.
 
 <a id="x-28MGL-GPR-3ABUILDER-20-28MGL-PAX-3AREADER-20MGL-GPR-3ALITERAL-29-29"></a>
 <a id="MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29"></a>
 
-- [reader] **builder** *[literal][32b7] (:builder)*
+- \[reader\] **builder** *[literal][32b7] (:builder)*
 
     A function of no arguments that returns a random
     literal that belongs to its literal class.
@@ -479,20 +503,20 @@ literal lists.
 <a id="x-28MGL-GPR-3ALITERAL-20MGL-PAX-3AMACRO-29"></a>
 <a id="MGL-GPR:LITERAL%20MGL-PAX:MACRO"></a>
 
-- [macro] **literal** *(result-type &key (weight 1)) &body body*
+- \[macro\] **literal** *(result-type \&key (weight 1)) \&body body*
 
     Syntactic sugar for defining literal classes. The example given for
     [`literal`][32b7] could be written as:
-    
+
         (literal ((unsigned-byte 8))
           (random 256))
-    
+
     See [`weight`][be2e] for what `weight` means.
 
 <a id="x-28MGL-GPR-3ARANDOM-EXPRESSION-20FUNCTION-29"></a>
 <a id="MGL-GPR:RANDOM-EXPRESSION%20FUNCTION"></a>
 
-- [function] **random-expression** *operators literals type terminate-fn*
+- \[function\] **random-expression** *operators literals type terminate-fn*
 
     Return an expression built from `operators` and `literals` that
     evaluates to values of `type`. `terminate-fn` is a function of one
@@ -500,7 +524,7 @@ literal lists.
     in the context of the entire expression. If it returns `t` then a
     [`literal`][32b7] will be inserted (by calling its `builder` function),
     else an [`operator`][b75b] with all its necessary arguments.
-    
+
     The algorithm recursively generates the expression starting from
     level 0 where only operators and literals with a [`result-type`][4e03] that's
     a subtype of `type` are considered and one is selected with the
@@ -508,7 +532,7 @@ literal lists.
     [`argument-types`][a92c] specification of operators is similarly satisfied and
     the resulting expression should evaluate without without a type
     error.
-    
+
     The building of expressions cannot backtrack. If it finds itself in
     a situation where no literals or operators of the right type are
     available then it will fail with an error.
@@ -526,7 +550,7 @@ next generation.
 <a id="x-28MGL-GPR-3AGENETIC-PROGRAMMING-20CLASS-29"></a>
 <a id="MGL-GPR:GENETIC-PROGRAMMING%20CLASS"></a>
 
-- [class] **genetic-programming** *[evolutionary-algorithm][f5ee]*
+- \[class\] **genetic-programming** *[evolutionary-algorithm][f5ee]*
 
     The [`genetic-programming`][4643] class defines the search
     space, how mutation and recombination occur, and hold various
@@ -536,7 +560,7 @@ next generation.
 <a id="x-28MGL-GPR-3ARANDOM-GP-EXPRESSION-20FUNCTION-29"></a>
 <a id="MGL-GPR:RANDOM-GP-EXPRESSION%20FUNCTION"></a>
 
-- [function] **random-gp-expression** *gp terminate-fn &key (type (toplevel-type gp))*
+- \[function\] **random-gp-expression** *gp terminate-fn \&key (type (toplevel-type gp))*
 
     Creating the initial population by hand is tedious. This
     convenience function calls [`random-expression`][7df2] to create a random
@@ -556,7 +580,7 @@ function acts as the guiding light.
 <a id="x-28MGL-GPR-3AOPERATORS-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [reader] **operators** *[genetic-programming][4643] (:operators)*
+- \[reader\] **operators** *[genetic-programming][4643] (:operators)*
 
     The set of [`operator`][b75b]s from which (together
     with [`literal`][32b7]s) individuals are built.
@@ -564,7 +588,7 @@ function acts as the guiding light.
 <a id="x-28MGL-GPR-3ALITERALS-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [reader] **literals** *[genetic-programming][4643] (:literals)*
+- \[reader\] **literals** *[genetic-programming][4643] (:literals)*
 
     The set of [`literal`][32b7]s from which (together
     with [`operator`][b75b]s) individuals are built.
@@ -572,7 +596,7 @@ function acts as the guiding light.
 <a id="x-28MGL-GPR-3ATOPLEVEL-TYPE-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [reader] **toplevel-type** *[genetic-programming][4643] (:toplevel-type = t)*
+- \[reader\] **toplevel-type** *[genetic-programming][4643] (:toplevel-type = t)*
 
     The type of the results produced by individuals.
     If the problem is to find the minimum a 1d real function then this
@@ -583,7 +607,7 @@ function acts as the guiding light.
 <a id="x-28MGL-GPR-3ACOUNT-NODES-20FUNCTION-29"></a>
 <a id="MGL-GPR:COUNT-NODES%20FUNCTION"></a>
 
-- [function] **count-nodes** *tree &key internal*
+- \[function\] **count-nodes** *tree \&key internal*
 
     Count the nodes in the sexp `tree`. If `internal` then don't count the
     leaves.
@@ -599,7 +623,7 @@ recombination occur.
 <a id="x-28MGL-GPR-3ARANDOMIZER-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [reader] **randomizer** *[genetic-programming][4643] (:randomizer)*
+- \[reader\] **randomizer** *[genetic-programming][4643] (:randomizer)*
 
     Used for mutations, this is a function of three
     arguments: the GP object, the type the expression must produce and
@@ -609,7 +633,7 @@ recombination occur.
 <a id="x-28MGL-GPR-3ASELECTOR-20-28MGL-PAX-3AREADER-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [reader] **selector** *[genetic-programming][4643] (:selector)*
+- \[reader\] **selector** *[genetic-programming][4643] (:selector)*
 
     A function of two arguments: the GP object and a
     vector of fitnesses. It must return the and index into the fitness
@@ -620,7 +644,7 @@ recombination occur.
 <a id="x-28MGL-GPR-3AHOLD-TOURNAMENT-20FUNCTION-29"></a>
 <a id="MGL-GPR:HOLD-TOURNAMENT%20FUNCTION"></a>
 
-- [function] **hold-tournament** *fitnesses &key select-contestant-fn n-contestants key*
+- \[function\] **hold-tournament** *fitnesses \&key select-contestant-fn n-contestants key*
 
     Select `n-contestants` (all different) for the tournament randomly,
     represented by indices into `fitnesses` and return the one with the
@@ -645,7 +669,7 @@ step, a reproduction operator is randomly chosen.
 <a id="x-28MGL-GPR-3ACOPY-CHANCE-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [accessor] **copy-chance** *[genetic-programming][4643] (:copy-chance = 0)*
+- \[accessor\] **copy-chance** *[genetic-programming][4643] (:copy-chance = 0)*
 
     The probability of the copying reproduction
     operator being chosen. Copying simply creates an exact copy of a
@@ -654,7 +678,7 @@ step, a reproduction operator is randomly chosen.
 <a id="x-28MGL-GPR-3AMUTATION-CHANCE-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [accessor] **mutation-chance** *[genetic-programming][4643] (:mutation-chance = 0)*
+- \[accessor\] **mutation-chance** *[genetic-programming][4643] (:mutation-chance = 0)*
 
     The probability of the mutation reproduction
     operator being chosen. Mutation creates a randomly altered copy of
@@ -666,7 +690,7 @@ take place.
 <a id="x-28MGL-GPR-3AKEEP-FITTEST-P-20-28MGL-PAX-3AACCESSOR-20MGL-GPR-3AGENETIC-PROGRAMMING-29-29"></a>
 <a id="MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a>
 
-- [accessor] **keep-fittest-p** *[genetic-programming][4643] (:keep-fittest-p = t)*
+- \[accessor\] **keep-fittest-p** *[genetic-programming][4643] (:keep-fittest-p = t)*
 
     If true, then the fittest individual is always
     copied without mutation to the next generation. Of course, it may
@@ -682,11 +706,10 @@ Evolution: A Survey of the State-of-the-Art][1].
 
 [1]: http://107.167.189.191/~piak/teaching/ec/ec2012/das-de-sota-2011.pdf
 
-
 <a id="x-28MGL-GPR-3ADIFFERENTIAL-EVOLUTION-20CLASS-29"></a>
 <a id="MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS"></a>
 
-- [class] **differential-evolution** *[evolutionary-algorithm][f5ee]*
+- \[class\] **differential-evolution** *[evolutionary-algorithm][f5ee]*
 
     Differential evolution (DE) is an evolutionary
     algorithm in which individuals are represented by vectors of
@@ -697,7 +720,7 @@ Evolution: A Survey of the State-of-the-Art][1].
 <a id="x-28MGL-GPR-3AMAP-WEIGHTS-INTO-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a>
 
-- [reader] **map-weights-into-fn** *[differential-evolution][a4e6] (:map-weights-into-fn = #'map-into)*
+- \[reader\] **map-weights-into-fn** *[differential-evolution][a4e6] (:map-weights-into-fn = #'map-into)*
 
     The vector of numbers (the 'weights') are most
     often stored in some kind of array. All individuals must have the
@@ -708,7 +731,7 @@ Evolution: A Survey of the State-of-the-Art][1].
 <a id="x-28MGL-GPR-3ACREATE-INDIVIDUAL-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a>
 
-- [reader] **create-individual-fn** *[differential-evolution][a4e6] (:create-individual-fn)*
+- \[reader\] **create-individual-fn** *[differential-evolution][a4e6] (:create-individual-fn)*
 
     Holds a function of one argument, the DE, that
     returns a new individual that needs not be initialized in any way.
@@ -717,7 +740,7 @@ Evolution: A Survey of the State-of-the-Art][1].
 <a id="x-28MGL-GPR-3AMUTATE-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a>
 
-- [reader] **mutate-fn** *[differential-evolution][a4e6] (:mutate-fn)*
+- \[reader\] **mutate-fn** *[differential-evolution][a4e6] (:mutate-fn)*
 
     One of the supplied mutation functions:
     [`mutate/rand/1`][720f] [`mutate/best/1`][2fdd] [`mutate/current-to-best/2`][f19b].
@@ -725,7 +748,7 @@ Evolution: A Survey of the State-of-the-Art][1].
 <a id="x-28MGL-GPR-3ACROSSOVER-FN-20-28MGL-PAX-3AREADER-20MGL-GPR-3ADIFFERENTIAL-EVOLUTION-29-29"></a>
 <a id="MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a>
 
-- [reader] **crossover-fn** *[differential-evolution][a4e6] (:crossover-fn = #'crossover/binary)*
+- \[reader\] **crossover-fn** *[differential-evolution][a4e6] (:crossover-fn = #'crossover/binary)*
 
     A function of three arguments, the DE and two
     individuals, that destructively modifies the second individual by
@@ -735,22 +758,22 @@ Evolution: A Survey of the State-of-the-Art][1].
 <a id="x-28MGL-GPR-3AMUTATE-2FRAND-2F1-20FUNCTION-29"></a>
 <a id="MGL-GPR:MUTATE%2FRAND%2F1%20FUNCTION"></a>
 
-- [function] **mutate/rand/1** *de current best population nursery &key (f 0.5)*
+- \[function\] **mutate/rand/1** *de current best population nursery \&key (f 0.5)*
 
 <a id="x-28MGL-GPR-3AMUTATE-2FBEST-2F1-20FUNCTION-29"></a>
 <a id="MGL-GPR:MUTATE%2FBEST%2F1%20FUNCTION"></a>
 
-- [function] **mutate/best/1** *de current best population nursery &key (f 0.5)*
+- \[function\] **mutate/best/1** *de current best population nursery \&key (f 0.5)*
 
 <a id="x-28MGL-GPR-3AMUTATE-2FCURRENT-TO-BEST-2F2-20FUNCTION-29"></a>
 <a id="MGL-GPR:MUTATE%2FCURRENT-TO-BEST%2F2%20FUNCTION"></a>
 
-- [function] **mutate/current-to-best/2** *de current best population nursery &key (f 0.5)*
+- \[function\] **mutate/current-to-best/2** *de current best population nursery \&key (f 0.5)*
 
 <a id="x-28MGL-GPR-3ACROSSOVER-2FBINARY-20FUNCTION-29"></a>
 <a id="MGL-GPR:CROSSOVER%2FBINARY%20FUNCTION"></a>
 
-- [function] **crossover/binary** *de individual-1 individual-2 &key (crossover-rate 0.5)*
+- \[function\] **crossover/binary** *de individual-1 individual-2 \&key (crossover-rate 0.5)*
 
     Destructively modify `individual-2` by replacement each element with
     a probability of 1 - `crossover-rate` with the corresponding element
@@ -760,7 +783,7 @@ Evolution: A Survey of the State-of-the-Art][1].
 <a id="x-28MGL-GPR-3ASELECT-DISTINCT-RANDOM-NUMBERS-20FUNCTION-29"></a>
 <a id="MGL-GPR:SELECT-DISTINCT-RANDOM-NUMBERS%20FUNCTION"></a>
 
-- [function] **select-distinct-random-numbers** *taboos n limit*
+- \[function\] **select-distinct-random-numbers** *taboos n limit*
 
 <a id="x-28MGL-GPR-3A-40GPR-DE-SANSDE-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION"></a>
@@ -772,71 +795,126 @@ Neighborhood Search][1].
 
 [1]: http://staff.ustc.edu.cn/~ketang/papers/YangTangYao_CEC08a.pdf
 
-
 <a id="x-28MGL-GPR-3ASANSDE-20CLASS-29"></a>
 <a id="MGL-GPR:SANSDE%20CLASS"></a>
 
-- [class] **sansde** *[differential-evolution][a4e6]*
+- \[class\] **sansde** *[differential-evolution][a4e6]*
 
     SaNSDE is a special DE that dynamically adjust the
     crossover and mutation are performed. The only parameters are the
     generic EA ones: [`population-size`][ce25], [`evaluator`][9a7e], etc. One also has to
     specify [`map-weights-into-fn`][7ca1] and [`create-individual-fn`][1c33].
 
-  [03c7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm "FUNCALL (MGL-PAX:CLHS FUNCTION)"
-  [049c]: #MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
-  [057a]: #MGL-GPR:@GPR-EA%20MGL-PAX:SECTION "Evolutionary Algorithms"
-  [075b]: #MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION "Tutorial"
-  [084d]: #MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION "Environment"
-  [0cb2]: #MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29 "MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL)"
-  [0d2f]: #MGL-GPR:@GPR-GP%20MGL-PAX:SECTION "Genetic Programming"
-  [0d6e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm "EVAL (MGL-PAX:CLHS FUNCTION)"
-  [12f5]: #MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29 "MGL-GPR:NAME (MGL-PAX:READER MGL-GPR:OPERATOR)"
-  [1602]: #MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:POPULATION (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"
-  [1c33]: #MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29 "MGL-GPR:CREATE-INDIVIDUAL-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"
-  [2e8a]: #MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION "Background"
-  [2fdd]: #MGL-GPR:MUTATE%2FBEST%2F1%20FUNCTION "MGL-GPR:MUTATE/BEST/1 FUNCTION"
-  [32b7]: #MGL-GPR:LITERAL%20CLASS "MGL-GPR:LITERAL CLASS"
-  [40a0]: #MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION "SANSDE"
-  [4643]: #MGL-GPR:GENETIC-PROGRAMMING%20CLASS "MGL-GPR:GENETIC-PROGRAMMING CLASS"
-  [4a1e]: #MGL-GPR:ADD-INDIVIDUAL%20FUNCTION "MGL-GPR:ADD-INDIVIDUAL FUNCTION"
-  [4e03]: #MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29 "MGL-GPR:RESULT-TYPE (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"
-  [5460]: #MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:TOPLEVEL-TYPE (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
-  [5b15]: #MGL-GPR:OPERATOR%20MGL-PAX:MACRO "MGL-GPR:OPERATOR MGL-PAX:MACRO"
-  [5d57]: #MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION "Reproduction"
-  [612d]: #MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
-  [6e4d]: #MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION "Links"
-  [6fdb]: pax-manual.md#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM "\"mgl-pax\" ASDF/SYSTEM:SYSTEM"
-  [720f]: #MGL-GPR:MUTATE%2FRAND%2F1%20FUNCTION "MGL-GPR:MUTATE/RAND/1 FUNCTION"
-  [7ca1]: #MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29 "MGL-GPR:MAP-WEIGHTS-INTO-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"
-  [7df2]: #MGL-GPR:RANDOM-EXPRESSION%20FUNCTION "MGL-GPR:RANDOM-EXPRESSION FUNCTION"
-  [8a46]: #MGL-GPR:LITERAL%20MGL-PAX:MACRO "MGL-GPR:LITERAL MGL-PAX:MACRO"
-  [8ae0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm "IDENTITY (MGL-PAX:CLHS FUNCTION)"
-  [9085]: #MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION "Search Space"
-  [92ab]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm "MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"
-  [95f7]: #MGL-GPR:EXPRESSION-CLASS%20CLASS "MGL-GPR:EXPRESSION-CLASS CLASS"
-  [9631]: #MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"
-  [9a7e]: #MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"
-  [9cba]: #MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION "Populations"
-  [a4e6]: #MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS "MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS"
-  [a78a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm "MAP-INTO (MGL-PAX:CLHS FUNCTION)"
-  [a92c]: #MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29 "MGL-GPR:ARGUMENT-TYPES (MGL-PAX:READER MGL-GPR:OPERATOR)"
-  [b60a]: #MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION "Evaluation"
-  [b75b]: #MGL-GPR:OPERATOR%20CLASS "MGL-GPR:OPERATOR CLASS"
-  [bc41]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm "COMPILE (MGL-PAX:CLHS FUNCTION)"
-  [be13]: #MGL-GPR:ADVANCE%20GENERIC-FUNCTION "MGL-GPR:ADVANCE GENERIC-FUNCTION"
-  [be2e]: #MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29 "MGL-GPR:WEIGHT (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"
-  [c392]: #MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION "Background"
-  [c4ce]: http://www.lispworks.com/documentation/HyperSpec/Body/t_real.htm "REAL (MGL-PAX:CLHS CLASS)"
-  [ce25]: #MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:POPULATION-SIZE (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"
-  [d237]: #MGL-GPR:COUNT-NODES%20FUNCTION "MGL-GPR:COUNT-NODES FUNCTION"
-  [d40e]: #MGL-GPR:HOLD-TOURNAMENT%20FUNCTION "MGL-GPR:HOLD-TOURNAMENT FUNCTION"
-  [db20]: #MGL-GPR:@GPR-DE%20MGL-PAX:SECTION "Differential Evolution"
-  [e084]: #MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION "Basics"
-  [e67a]: #MGL-GPR:CROSSOVER%2FBINARY%20FUNCTION "MGL-GPR:CROSSOVER/BINARY FUNCTION"
-  [e87f]: #MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION "Training"
-  [eee2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm "FLOAT (MGL-PAX:CLHS NIL)"
-  [ef7a]: #MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:MASS-EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"
-  [f19b]: #MGL-GPR:MUTATE%2FCURRENT-TO-BEST%2F2%20FUNCTION "MGL-GPR:MUTATE/CURRENT-TO-BEST/2 FUNCTION"
-  [f5ee]: #MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS "MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"
-  [f9a4]: #MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION "Expressions"
+[03c7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm "FUNCALL (MGL-PAX:CLHS FUNCTION)"
+
+[049c]: #MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
+
+[057a]: #MGL-GPR:@GPR-EA%20MGL-PAX:SECTION "Evolutionary Algorithms"
+
+[075b]: #MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION "Tutorial"
+
+[084d]: #MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION "Environment"
+
+[0cb2]: #MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29 "MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL)"
+
+[0d2f]: #MGL-GPR:@GPR-GP%20MGL-PAX:SECTION "Genetic Programming"
+
+[0d6e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm "EVAL (MGL-PAX:CLHS FUNCTION)"
+
+[12f5]: #MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29 "MGL-GPR:NAME (MGL-PAX:READER MGL-GPR:OPERATOR)"
+
+[1602]: #MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:POPULATION (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"
+
+[1c33]: #MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29 "MGL-GPR:CREATE-INDIVIDUAL-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"
+
+[2e8a]: #MGL-GPR:@GPR-BACKGROUND%20MGL-PAX:SECTION "Background"
+
+[2fdd]: #MGL-GPR:MUTATE%2FBEST%2F1%20FUNCTION "MGL-GPR:MUTATE/BEST/1 FUNCTION"
+
+[32b7]: #MGL-GPR:LITERAL%20CLASS "MGL-GPR:LITERAL CLASS"
+
+[40a0]: #MGL-GPR:@GPR-DE-SANSDE%20MGL-PAX:SECTION "SANSDE"
+
+[4643]: #MGL-GPR:GENETIC-PROGRAMMING%20CLASS "MGL-GPR:GENETIC-PROGRAMMING CLASS"
+
+[4a1e]: #MGL-GPR:ADD-INDIVIDUAL%20FUNCTION "MGL-GPR:ADD-INDIVIDUAL FUNCTION"
+
+[4e03]: #MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29 "MGL-GPR:RESULT-TYPE (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"
+
+[5460]: #MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:TOPLEVEL-TYPE (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
+
+[5b15]: #MGL-GPR:OPERATOR%20MGL-PAX:MACRO "MGL-GPR:OPERATOR MGL-PAX:MACRO"
+
+[5d57]: #MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION "Reproduction"
+
+[612d]: #MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29 "MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"
+
+[6e4d]: #MGL-GPR:@GPR-GP-LINKS%20MGL-PAX:SECTION "Links"
+
+[6fdb]: pax-manual.md#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM "\"mgl-pax\" ASDF/SYSTEM:SYSTEM"
+
+[720f]: #MGL-GPR:MUTATE%2FRAND%2F1%20FUNCTION "MGL-GPR:MUTATE/RAND/1 FUNCTION"
+
+[7ca1]: #MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29 "MGL-GPR:MAP-WEIGHTS-INTO-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"
+
+[7df2]: #MGL-GPR:RANDOM-EXPRESSION%20FUNCTION "MGL-GPR:RANDOM-EXPRESSION FUNCTION"
+
+[8a46]: #MGL-GPR:LITERAL%20MGL-PAX:MACRO "MGL-GPR:LITERAL MGL-PAX:MACRO"
+
+[8ae0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm "IDENTITY (MGL-PAX:CLHS FUNCTION)"
+
+[9085]: #MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION "Search Space"
+
+[92ab]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm "MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"
+
+[95f7]: #MGL-GPR:EXPRESSION-CLASS%20CLASS "MGL-GPR:EXPRESSION-CLASS CLASS"
+
+[9631]: #MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"
+
+[9a7e]: #MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"
+
+[9cba]: #MGL-GPR:@GPR-EA-POPULATION%20MGL-PAX:SECTION "Populations"
+
+[a4e6]: #MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS "MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS"
+
+[a78a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm "MAP-INTO (MGL-PAX:CLHS FUNCTION)"
+
+[a92c]: #MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29 "MGL-GPR:ARGUMENT-TYPES (MGL-PAX:READER MGL-GPR:OPERATOR)"
+
+[b60a]: #MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION "Evaluation"
+
+[b75b]: #MGL-GPR:OPERATOR%20CLASS "MGL-GPR:OPERATOR CLASS"
+
+[bc41]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm "COMPILE (MGL-PAX:CLHS FUNCTION)"
+
+[be13]: #MGL-GPR:ADVANCE%20GENERIC-FUNCTION "MGL-GPR:ADVANCE GENERIC-FUNCTION"
+
+[be2e]: #MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29 "MGL-GPR:WEIGHT (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"
+
+[c392]: #MGL-GPR:@GPR-GP-BACKGROUND%20MGL-PAX:SECTION "Background"
+
+[c4ce]: http://www.lispworks.com/documentation/HyperSpec/Body/t_real.htm "REAL (MGL-PAX:CLHS CLASS)"
+
+[ce25]: #MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:POPULATION-SIZE (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"
+
+[d237]: #MGL-GPR:COUNT-NODES%20FUNCTION "MGL-GPR:COUNT-NODES FUNCTION"
+
+[d40e]: #MGL-GPR:HOLD-TOURNAMENT%20FUNCTION "MGL-GPR:HOLD-TOURNAMENT FUNCTION"
+
+[db20]: #MGL-GPR:@GPR-DE%20MGL-PAX:SECTION "Differential Evolution"
+
+[e084]: #MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION "Basics"
+
+[e67a]: #MGL-GPR:CROSSOVER%2FBINARY%20FUNCTION "MGL-GPR:CROSSOVER/BINARY FUNCTION"
+
+[e87f]: #MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION "Training"
+
+[eee2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm "FLOAT (MGL-PAX:CLHS NIL)"
+
+[ef7a]: #MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29 "MGL-GPR:MASS-EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"
+
+[f19b]: #MGL-GPR:MUTATE%2FCURRENT-TO-BEST%2F2%20FUNCTION "MGL-GPR:MUTATE/CURRENT-TO-BEST/2 FUNCTION"
+
+[f5ee]: #MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS "MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"
+
+[f9a4]: #MGL-GPR:@GPR-GP-EXPRESSIONS%20MGL-PAX:SECTION "Expressions"
