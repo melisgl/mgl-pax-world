@@ -29,21 +29,21 @@
 <h2>Table of Contents</h2>
 
 <ul>
-<li><p><a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION" title="Links">1 Links</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION" title="Introduction">2 Introduction</a></p></li>
+<li><a href="#LMDB:@LMDB%2FLINKS%20MGL-PAX:SECTION" title="Links">1 Links</a></li>
+<li><a href="#LMDB:@LMDB%2FINTRODUCTION%20MGL-PAX:SECTION" title="Introduction">2 Introduction</a></li>
 <li><p><a href="#LMDB:@LMDB%2FDESIGN-AND-IMPLEMENTATION%20MGL-PAX:SECTION" title="Design and implementation">3 Design and implementation</a></p>
 
 <ul>
-<li><p><a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">3.1 Safety</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION" title="Deviations from the C lmdb API">3.2 Deviations from the C lmdb API</a></p></li>
+<li><a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">3.1 Safety</a></li>
+<li><a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION" title="Deviations from the C lmdb API">3.2 Deviations from the C lmdb API</a></li>
 </ul></li>
-<li><p><a href="#LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION" title="Library versions">4 Library versions</a></p></li>
+<li><a href="#LMDB:@LMDB%2FVERSION%20MGL-PAX:SECTION" title="Library versions">4 Library versions</a></li>
 <li><p><a href="#LMDB:@LMDB%2FENVIRONMENTS%20MGL-PAX:SECTION" title="Environments">5 Environments</a></p>
 
 <ul>
-<li><p><a href="#LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION" title="Environments reference">5.1 Environments reference</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION" title="Opening and closing environments">5.2 Opening and closing environments</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION" title="Miscellaneous environment functions">5.3 Miscellaneous environment functions</a></p></li>
+<li><a href="#LMDB:@LMDB%2FENV-REFERENCE%20MGL-PAX:SECTION" title="Environments reference">5.1 Environments reference</a></li>
+<li><a href="#LMDB:@LMDB%2FOPENING-AND-CLOSING-ENV%20MGL-PAX:SECTION" title="Opening and closing environments">5.2 Opening and closing environments</a></li>
+<li><a href="#LMDB:@LMDB%2FMISC-ENV%20MGL-PAX:SECTION" title="Miscellaneous environment functions">5.3 Miscellaneous environment functions</a></li>
 </ul></li>
 <li><p><a href="#LMDB:@LMDB%2FTRANSACTIONS%20MGL-PAX:SECTION" title="Transactions">6 Transactions</a></p>
 
@@ -53,37 +53,37 @@
 <li><p><a href="#LMDB:@LMDB%2FDATABASES%20MGL-PAX:SECTION" title="Databases">7 Databases</a></p>
 
 <ul>
-<li><p><a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">7.1 The unnamed database</a></p></li>
-<li><p><a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`">7.2 <code>dupsort</code></a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION" title="Database API">7.3 Database API</a></p></li>
+<li><a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">7.1 The unnamed database</a></li>
+<li><a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`">7.2 <code>dupsort</code></a></li>
+<li><a href="#LMDB:@LMDB%2FDATABASE-API%20MGL-PAX:SECTION" title="Database API">7.3 Database API</a></li>
 </ul></li>
 <li><p><a href="#LMDB:@LMDB%2FENCODINGS%20MGL-PAX:SECTION" title="Encoding and decoding data">8 Encoding and decoding data</a></p>
 
 <ul>
 <li><a href="#LMDB:@LMDB%2FOVERRIDING-ENCODINGS%20MGL-PAX:SECTION" title="Overriding encodings">8.1 Overriding encodings</a></li>
 </ul></li>
-<li><p><a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">9 Basic operations</a></p></li>
+<li><a href="#LMDB:@LMDB%2FBASIC-OPERATIONS%20MGL-PAX:SECTION" title="Basic operations">9 Basic operations</a></li>
 <li><p><a href="#LMDB:@LMDB%2FCURSORS%20MGL-PAX:SECTION" title="Cursors">10 Cursors</a></p>
 
 <ul>
-<li><p><a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION" title="Positioning cursors">10.1 Positioning cursors</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">10.2 Basic cursor operations</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION" title="Miscellaneous cursor operations">10.3 Miscellaneous cursor operations</a></p></li>
+<li><a href="#LMDB:@LMDB%2FPOSITIONING-CURSORS%20MGL-PAX:SECTION" title="Positioning cursors">10.1 Positioning cursors</a></li>
+<li><a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">10.2 Basic cursor operations</a></li>
+<li><a href="#LMDB:@LMDB%2FMISC-CURSOR%20MGL-PAX:SECTION" title="Miscellaneous cursor operations">10.3 Miscellaneous cursor operations</a></li>
 </ul></li>
 <li><p><a href="#LMDB:@LMDB%2FCONDITIONS%20MGL-PAX:SECTION" title="Conditions">11 Conditions</a></p>
 
 <ul>
-<li><p><a href="#LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION" title="Conditions for C lmdb error codes">11.1 Conditions for C lmdb error codes</a></p></li>
-<li><p><a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">11.2 Additional conditions</a></p></li>
+<li><a href="#LMDB:@LMDB%2FERROR-CODE-CONDITIONS%20MGL-PAX:SECTION" title="Conditions for C lmdb error codes">11.1 Conditions for C lmdb error codes</a></li>
+<li><a href="#LMDB:@LMDB%2FADDITIONAL-CONDITIONS%20MGL-PAX:SECTION" title="Additional conditions">11.2 Additional conditions</a></li>
 </ul></li>
 <li><p><a href="#Indices" title="Indices">12 Indices</a></p>
 
 <ul>
-<li><p><a href="#Function%20and%20Macro%20Index" title="Function and Macro Index">12.1 Function and Macro Index</a></p></li>
-<li><p><a href="#Variable%20and%20Constant%20Index" title="Variable and Constant Index">12.2 Variable and Constant Index</a></p></li>
-<li><p><a href="#Type%20Index" title="Type Index">12.3 Type Index</a></p></li>
-<li><p><a href="#Misc%20Index" title="Misc Index">12.4 Misc Index</a></p></li>
-<li><p><a href="#Concept%20Index" title="Concept Index">12.5 Concept Index</a></p></li>
+<li><a href="#Function%20and%20Macro%20Index" title="Function and Macro Index">12.1 Function and Macro Index</a></li>
+<li><a href="#Variable%20and%20Constant%20Index" title="Variable and Constant Index">12.2 Variable and Constant Index</a></li>
+<li><a href="#Type%20Index" title="Type Index">12.3 Type Index</a></li>
+<li><a href="#Misc%20Index" title="Misc Index">12.4 Misc Index</a></li>
+<li><a href="#Concept%20Index" title="Concept Index">12.5 Concept Index</a></li>
 </ul></li>
 </ul>
 
@@ -2856,7 +2856,7 @@ refer to the parent transaction:</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-11T21:40:30Z]</h6>
+<h6>[Generated 2026-07-11T23:42:37Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>
