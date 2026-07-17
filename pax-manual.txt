@@ -4262,7 +4262,7 @@ encoded in an unspecified format internal to document.
     Bound by document to its format argument, this allows Markdown
     output to depend on the output format.
 
-- [macro] with-heading (stream &key dref link-title-to) &body body
+- [macro] with-heading (stream &key dref link-title-to (numbered t)) &body body
 
     Write a Markdown heading with the doctitle of dref to stream.
 
@@ -4275,6 +4275,11 @@ encoded in an unspecified format internal to document.
 
     - link-title-to behaves like the link-title-to argument of
       defsection.
+
+    - numbered controls whether a heading number is assigned to the
+      heading. The heading number reflects the nesting structure of
+      with-headings (e.g. 3.1.2). Descendants of unnumbered headings are
+      unnumbered regardless of numbered.
 
 - [generic-function] doctitle* object
 

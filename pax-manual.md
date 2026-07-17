@@ -4831,7 +4831,7 @@ Depending on the context, trimming and depluralization may be
 enabled (see [Raw Names in Words][f0d5]), while the possible names may be
 restricted to symbols (see [Names in Raw Names][016d]).
 
-- *Trimming:* Enabled for [`M-.` Defaulting][460e] and [Codification][f1ab].
+- *Trimming*: Enabled for [`M-.` Defaulting][460e] and [Codification][f1ab].
 
 - *Depluralization:* Enabled when the [word][d7b0] is part of the normal
   flow of text (i.e. not for [Specific Reflink with Text][fb17],
@@ -4839,7 +4839,7 @@ restricted to symbols (see [Names in Raw Names][016d]).
   `mgl-pax-apropos` unless they determine their argument from buffer
   contents).
 
-- *Symbols only:* This is the case for [Codification][f1ab] and
+- *Symbols only*: This is the case for [Codification][f1ab] and
   [Unspecific Autolink][e2a4] to prevent string-based definitions from
   littering the documentation with links without the control
   provided by explicitly [`import`][8f46]ing symbols.
@@ -5126,7 +5126,7 @@ encoded in an unspecified format internal to `document`.
 <a id="x-28MGL-PAX-3AWITH-HEADING-20MGL-PAX-3AMACRO-29"></a>
 <a id="MGL-PAX:WITH-HEADING%20MGL-PAX:MACRO"></a>
 
-- \[macro\] **with-heading** *(stream \&key dref link-title-to) \&body body*
+- \[macro\] **with-heading** *(stream \&key dref link-title-to (numbered t)) \&body body*
 
     Write a Markdown heading with the [`doctitle`][e619] of `dref` to `stream`.
 
@@ -5139,6 +5139,11 @@ encoded in an unspecified format internal to `document`.
 
     - `link-title-to` behaves like the `link-title-to` argument of
       [`defsection`][72b4].
+
+    - `numbered` controls whether a heading number is assigned to the
+      heading. The heading number reflects the nesting structure of
+      `with-headings` (e.g. 3.1.2). Descendants of unnumbered headings are
+      unnumbered regardless of `numbered`.
 
 <a id="x-28MGL-PAX-3ADOCTITLE-2A-20GENERIC-FUNCTION-29"></a>
 <a id="MGL-PAX:DOCTITLE*%20GENERIC-FUNCTION"></a>
