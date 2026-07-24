@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.6.163-c56f9b9`, generated *2026-07-24 14:32:40*. See
+The output is for SBCL version `2.6.6.164-e45c5c7`, generated *2026-07-24 18:10:21*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -5034,8 +5034,8 @@ An example of using this could look like this:
     * (defvar *my-string* (list 1 2 "my string"))
     *MY-STRING*
     
-     * (sb-ext:search-roots (sb-ext:make-weak-pointer (third *my-string*)))
-     -> ((SIMPLE-VECTOR 3)) #x10004E9EAF[2] -> (SYMBOL) #x5044100F[1] -> (CONS) #x100181FAE7[1] -> (CONS) #x100181FAF7[1] -> (CONS) #x100181FB07[0] -> #x100181F9AF
+    * (sb-ext:search-roots (sb-ext:make-weak-pointer (third *my-string*)))
+    -> ((SIMPLE-VECTOR 3)) #x10004E9EAF[2] -> (SYMBOL) #x5044100F[1] -> (CONS) #x100181FAE7[1] -> (CONS) #x100181FAF7[1] -> (CONS) #x100181FB07[0] -> #x100181F9AF
 
 The single line of output on [`*standard-output*`][e7ee] shows the path from a
 root to `"my string"`: the path starts with SBCL's internal
