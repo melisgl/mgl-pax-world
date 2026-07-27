@@ -16,7 +16,7 @@
                                 :installer (lambda (name)
                                              (ql:quickload name :silent t)))))
       ;; For more precise source locations (see DREF::@BACKENDS).
-      (load-system :slime)
+      (load-system :swank)
       (load-system :mgl-pax/full)
       ;; KLUDGE: The mgl-mat system does not declare its dependencies
       ;; properly.
