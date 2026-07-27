@@ -102,7 +102,7 @@
 ## 1 Links
 
 The official repository is <https://github.com/melisgl/mgl-mat>, and
-this document in available in various formats on
+this document is available in various formats on
 <https://fixnum.com> for the latest version.
 
 <a id="x-28MGL-MAT-3A-40MAT-INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
