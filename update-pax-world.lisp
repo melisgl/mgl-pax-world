@@ -1,4 +1,6 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
+  ;; For more precise source locations (see DREF::@BACKENDS).
+  (load-system :swank)
   (ql:quickload "mgl-pax/full"))
 
 (defvar *this-dir*
@@ -15,8 +17,6 @@
              (autoload:autodeps name
                                 :installer (lambda (name)
                                              (ql:quickload name :silent t)))))
-      ;; For more precise source locations (see DREF::@BACKENDS).
-      (load-system :swank)
       (load-system :mgl-pax/full)
       ;; KLUDGE: The mgl-mat system does not declare its dependencies
       ;; properly.
