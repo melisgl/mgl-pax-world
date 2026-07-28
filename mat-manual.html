@@ -311,7 +311,7 @@ only values of this type.</li>
 <a id="MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L194" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-displacement</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L196" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-displacement</a></span></span> <span class="arglist">
 <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:displacement = 0)</span></span></p>
 A value in the <code>[0,max-size]</code> interval. This is
 like the DISPLACED-INDEX-OFFSET of a lisp array, but displacement
@@ -322,7 +322,7 @@ is relative to the start of the underlying storage vector.</li>
 <a id="MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L194" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L201" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-dimensions</a></span></span> <span class="arglist">
 <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:dimensions)</span></span></p>
 Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm" title="ARRAY-DIMENSIONS (MGL-PAX:CLHS FUNCTION)"><code>array-dimensions</code></a>. It holds a list of
 dimensions, but it is allowed to pass in scalars too.</li>
@@ -353,7 +353,7 @@ type. If <code>nil</code>, then no initialization is performed.</li>
 <a id="MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L194" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-size</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L205" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" >mat-size</a></span></span> <span class="arglist">
 <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a></span></span></p>
 The number of elements in the visible portion of
 the array. This is always the product of the elements
@@ -453,7 +453,7 @@ enabled and it is up-to-date or there are no facets at all.</li>
 <a id="MGL-MAT:ROW-MAJOR-MREF%20FUNCTION"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L432" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:ROW-MAJOR-MREF%20FUNCTION" >row-major-mref</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L441" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:ROW-MAJOR-MREF%20FUNCTION" >row-major-mref</a></span></span> <span class="arglist">
 mat index</span></span></p>
 Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm" title="ROW-MAJOR-AREF (MGL-PAX:CLHS FUNCTION)"><code>row-major-aref</code></a> for arrays. Don't use this if you care about
 performance at all. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm" title="SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>setf</code></a>able. When set, the value is coerced to the
@@ -484,7 +484,7 @@ Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_row.htm
 <a id="MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE"></a></p>
 
 <ul>
-<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/util.lisp#L166" title="View definition">[variable]</a></span> <span class="dref-name"> <a href="#MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE" >*supported-ctypes*</a></span></span> <span class="arglist">
+<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/util.lisp#L168" title="View definition">[variable]</a></span> <span class="dref-name"> <a href="#MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE" >*supported-ctypes*</a></span></span> <span class="arglist">
 (:float :double)</span></span></li>
 </ul>
 
@@ -1930,7 +1930,7 @@ turns off cuda initialization entirely.</li>
 <a id="MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L194" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" >cuda-enabled</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L210" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" >cuda-enabled</a></span></span> <span class="arglist">
 <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a> (:cuda-enabled = *default-mat-cuda-enabled*)</span></span></p>
 The control provided by <a href="#MGL-MAT:*CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*CUDA-ENABLED* VARIABLE"><code>*cuda-enabled*</code></a> can be too
 coarse. This flag provides a per-object mechanism to turn cuda
@@ -2434,7 +2434,7 @@ instead.</p>
 <a id="MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29"></a></p>
 
 <ul>
-<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/curand.lisp#L32" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >n-states</a></span></span> <span class="arglist">
+<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/curand.lisp#L34" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >n-states</a></span></span> <span class="arglist">
 <a href="#MGL-MAT:CURAND-XORWOW-STATE%20CLASS" title="MGL-MAT:CURAND-XORWOW-STATE CLASS">curand-xorwow-state</a> (:n-states)</span></span></li>
 </ul>
 
@@ -2442,7 +2442,7 @@ instead.</p>
 <a id="MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29"></a></p>
 
 <ul>
-<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/curand.lisp#L32" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >states</a></span></span> <span class="arglist">
+<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/curand.lisp#L35" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" >states</a></span></span> <span class="arglist">
 <a href="#MGL-MAT:CURAND-XORWOW-STATE%20CLASS" title="MGL-MAT:CURAND-XORWOW-STATE CLASS">curand-xorwow-state</a> (:states)</span></span></li>
 </ul>
 
@@ -2748,7 +2748,7 @@ instead.</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-27T16:46:15Z]</h6>
+<h6>[Generated 2026-07-28T06:50:12Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

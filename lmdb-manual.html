@@ -397,7 +397,7 @@ and indices. The terminology comes from <a href="https://docs.oracle.com/cd/E172
 <a id="LMDB:ENV%20CLASS"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[class]</a></span> <span class="dref-name"> <a href="#LMDB:ENV%20CLASS" >env</a></span></span></span></p>
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L683" title="View definition">[class]</a></span> <span class="dref-name"> <a href="#LMDB:ENV%20CLASS" >env</a></span></span></span></p>
 An environment object through which a memory-mapped
 data file can be accessed. Always to be created by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.</li>
 </ul>
@@ -406,7 +406,7 @@ data file can be accessed. Always to be created by <a href="#LMDB:OPEN-ENV%20FUN
 <a id="LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L686" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-path</a></span></span> <span class="arglist">
 <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:path)</span></span></p>
 The location of the memory-mapped file and the
 environment lock file.</li>
@@ -416,7 +416,7 @@ environment lock file.</li>
 <a id="LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L690" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-dbs</a></span></span> <span class="arglist">
 <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:max-dbs)</span></span></p>
 The maximum number of named databases in the
 environment. Currently a moderate number is cheap, but a huge
@@ -428,7 +428,7 @@ number gets expensive: 7-120 words per transaction, and every
 <a id="LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L696" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-max-readers</a></span></span> <span class="arglist">
 <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:max-readers)</span></span></p>
 The maximum number of threads/reader slots. See
 the documentation of the <a href="http://lmdb.tech/doc/group__readers.html" >reader lock
@@ -439,7 +439,7 @@ table</a> for more.</li>
 <a id="LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L701" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-map-size</a></span></span> <span class="arglist">
 <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:map-size)</span></span></p>
 Specifies the size of the data file in bytes.</li>
 </ul>
@@ -448,7 +448,7 @@ Specifies the size of the data file in bytes.</li>
 <a id="LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="arglist">
+<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L710" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-mode</a></span></span> <span class="arglist">
 <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:mode)</span></span></li>
 </ul>
 
@@ -456,7 +456,7 @@ Specifies the size of the data file in bytes.</li>
 <a id="LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L681" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L706" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" >env-flags</a></span></span> <span class="arglist">
 <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS">env</a> (:flags)</span></span></p>
 A plist of the options as captured by <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a>.
 For example, <code>(:fixed-map nil :subdir t ...)</code>.</li>
@@ -1209,7 +1209,7 @@ Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gac08cad5b096925642ca359
 <a id="LMDB:DB%20CLASS"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1816" title="View definition">[class]</a></span> <span class="dref-name"> <a href="#LMDB:DB%20CLASS" >db</a></span></span></span></p>
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1818" title="View definition">[class]</a></span> <span class="dref-name"> <a href="#LMDB:DB%20CLASS" >db</a></span></span></span></p>
 A database in an environment (class <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a>). Always to
 be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</li>
 </ul>
@@ -1218,7 +1218,7 @@ be created by <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><co
 <a id="LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1816" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1821" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" >db-name</a></span></span> <span class="arglist">
 <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:name)</span></span></p>
 The name of the database.</li>
 </ul>
@@ -1227,7 +1227,7 @@ The name of the database.</li>
 <a id="LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1816" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1827" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-key-encoding</a></span></span> <span class="arglist">
 <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:key-encoding)</span></span></p>
 The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>key-encoding</code> to
 <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</li>
@@ -1237,7 +1237,7 @@ The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</c
 <a id="LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1816" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1833" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" >db-value-encoding</a></span></span> <span class="arglist">
 <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS">db</a> (:value-encoding)</span></span></p>
 The <a href="#LMDB:ENCODING%20TYPE" title="LMDB:ENCODING TYPE"><code>encoding</code></a> that was passed as <code>value-encoding</code>
 to <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>.</li>
@@ -1694,7 +1694,7 @@ and <a href="http://www.lmdb.tech/doc/group__mdb.html#gad685f5d73c052715c7bd859c
 <a id="LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29"></a></p>
 
 <ul>
-<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L2578" title="View definition">[structure-accessor]</a></span> <span class="dref-name"> <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" >cursor-db</a></span></span> <span class="arglist">
+<li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L2583" title="View definition">[structure-accessor]</a></span> <span class="dref-name"> <a href="#LMDB:CURSOR-DB%20%28MGL-PAX:STRUCTURE-ACCESSOR%20LMDB:CURSOR%29" >cursor-db</a></span></span> <span class="arglist">
 cursor</span></span></li>
 </ul>
 
@@ -2856,7 +2856,7 @@ refer to the parent transaction:</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-27T16:46:14Z]</h6>
+<h6>[Generated 2026-07-28T06:50:11Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

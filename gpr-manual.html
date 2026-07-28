@@ -162,7 +162,7 @@ individuals.</p>
 <a id="MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population-size</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L127" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population-size</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:population-size)</span></span></p>
 The number of individuals in a generation. This is
 a very important parameter. Too low and there won't be enough
@@ -174,7 +174,7 @@ slow.</li>
 <a id="MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L147" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >population</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (= (make-array 0 :adjustable 0 :fill-pointer t))</span></span></p>
 An adjustable array with a fill-pointer that holds
 the individuals that make up the population.</li>
@@ -184,7 +184,7 @@ the individuals that make up the population.</li>
 <a id="MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >generation-counter</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L120" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >generation-counter</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (= 0)</span></span></p>
 A counter that starts from 0 and is incremented by
 <a href="#MGL-GPR:ADVANCE%20GENERIC-FUNCTION" title="MGL-GPR:ADVANCE GENERIC-FUNCTION"><code>advance</code></a>. All accessors of <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a> are allowed to be
@@ -213,7 +213,7 @@ initializing the <code>ea</code>.</li>
 <a id="MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >evaluator</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L84" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >evaluator</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:evaluator)</span></span></p>
 
 <p>A function of two arguments: the
@@ -232,7 +232,7 @@ Alternatively, one can specify <a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:REA
 <a id="MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >mass-evaluator</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L98" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >mass-evaluator</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:mass-evaluator = nil)</span></span></p>
 <code>nil</code> or a function of three arguments: the
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a> object, the population vector and the
@@ -247,7 +247,7 @@ over <code>evaluator</code>.</li>
 <a id="MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fitness-key</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L109" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fitness-key</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:fitness-key = #'identity)</span></span></p>
 A function that returns a real number for an
 object returned by <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a>. It is called when two fitness are to
@@ -286,7 +286,7 @@ Create the next generation and place it in
 <a id="MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L134" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (= nil)</span></span></p>
 The fittest individual ever to be seen and its
 fittness as a cons cell.</li>
@@ -296,7 +296,7 @@ fittness as a cons cell.</li>
 <a id="MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L82" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest-changed-fn</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/evolutionary-algorithm.lisp#L139" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" >fittest-changed-fn</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS">evolutionary-algorithm</a> (:fittest-changed-fn = nil)</span></span></p>
 If non-<code>nil</code>, a function that's called when <a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest</code></a>
 is updated with three arguments: the <a href="#MGL-GPR:EVOLUTIONARY-ALGORITHM%20CLASS" title="MGL-GPR:EVOLUTIONARY-ALGORITHM CLASS"><code>evolutionary-algorithm</code></a>
@@ -487,7 +487,7 @@ class and what lisp type those expressions evaluate to.</li>
 <a id="MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L157" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >result-type</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L159" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >result-type</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EXPRESSION-CLASS%20CLASS" title="MGL-GPR:EXPRESSION-CLASS CLASS">expression-class</a> (:result-type)</span></span></p>
 Expressions belonging to this expression class
 must evaluate to a value of this lisp type.</li>
@@ -497,7 +497,7 @@ must evaluate to a value of this lisp type.</li>
 <a id="MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L157" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >weight</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L164" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" >weight</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:EXPRESSION-CLASS%20CLASS" title="MGL-GPR:EXPRESSION-CLASS CLASS">expression-class</a> (:weight = 1)</span></span></p>
 The probability of an expression class to be
 selected from a set of candidates is proportional to its
@@ -532,7 +532,7 @@ built. See <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM
 <a id="MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L177" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >name</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L179" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >name</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS">operator</a> (:name)</span></span></p>
 A symbol that's the name of the operator.</li>
 </ul>
@@ -541,7 +541,7 @@ A symbol that's the name of the operator.</li>
 <a id="MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L177" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >argument-types</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L183" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" >argument-types</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS">operator</a> (:argument-types)</span></span></p>
 A list of lisp types. One for each argument of
 this operator.</li>
@@ -586,7 +586,7 @@ macro provides a more convenient shorthand.</li>
 <a id="MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L219" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" >builder</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L221" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" >builder</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS">literal</a> (:builder)</span></span></p>
 A function of no arguments that returns a random
 literal that belongs to its literal class.</li>
@@ -686,7 +686,7 @@ function acts as the guiding light.</p>
 <a id="MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >operators</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L308" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >operators</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:operators)</span></span></p>
 The set of <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a>s from which (together
 with <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a>s) individuals are built.</li>
@@ -696,7 +696,7 @@ with <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>lite
 <a id="MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >literals</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L313" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >literals</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:literals)</span></span></p>
 The set of <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a>s from which (together
 with <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a>s) individuals are built.</li>
@@ -706,7 +706,7 @@ with <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>op
 <a id="MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >toplevel-type</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L318" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >toplevel-type</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:toplevel-type = t)</span></span></p>
 The type of the results produced by individuals.
 If the problem is to find the minimum a 1d real function then this
@@ -739,7 +739,7 @@ recombination occur.</p>
 <a id="MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >randomizer</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L327" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >randomizer</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:randomizer)</span></span></p>
 Used for mutations, this is a function of three
 arguments: the GP object, the type the expression must produce and
@@ -751,7 +751,7 @@ called with subexpressions of individuals.</li>
 <a id="MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >selector</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L334" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" >selector</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:selector)</span></span></p>
 A function of two arguments: the GP object and a
 vector of fitnesses. It must return the and index into the fitness
@@ -793,7 +793,7 @@ step, a reproduction operator is randomly chosen.</p>
 <a id="MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >copy-chance</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L342" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >copy-chance</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:copy-chance = 0)</span></span></p>
 The probability of the copying reproduction
 operator being chosen. Copying simply creates an exact copy of a
@@ -804,7 +804,7 @@ single individual.</li>
 <a id="MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >mutation-chance</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L349" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >mutation-chance</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:mutation-chance = 0)</span></span></p>
 The probability of the mutation reproduction
 operator being chosen. Mutation creates a randomly altered copy of
@@ -818,7 +818,7 @@ take place.</p>
 <a id="MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L306" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >keep-fittest-p</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/genetic-programming.lisp#L356" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" >keep-fittest-p</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:GENETIC-PROGRAMMING%20CLASS" title="MGL-GPR:GENETIC-PROGRAMMING CLASS">genetic-programming</a> (:keep-fittest-p = t)</span></span></p>
 If true, then the fittest individual is always
 copied without mutation to the next generation. Of course, it may
@@ -852,7 +852,7 @@ individuals.</li>
 <a id="MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L19" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >map-weights-into-fn</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L21" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >map-weights-into-fn</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:map-weights-into-fn = #'map-into)</span></span></p>
 The vector of numbers (the 'weights') are most
 often stored in some kind of array. All individuals must have the
@@ -865,7 +865,7 @@ of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm" 
 <a id="MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L19" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >create-individual-fn</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L30" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >create-individual-fn</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:create-individual-fn)</span></span></p>
 Holds a function of one argument, the DE, that
 returns a new individual that needs not be initialized in any way.
@@ -876,7 +876,7 @@ Typically this just calls <a href="http://www.lispworks.com/documentation/HyperS
 <a id="MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L19" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >mutate-fn</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L36" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >mutate-fn</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:mutate-fn)</span></span></p>
 One of the supplied mutation functions:
 <a href="#MGL-GPR:MUTATE%2FRAND%2F1%20FUNCTION" title="MGL-GPR:MUTATE/RAND/1 FUNCTION"><code>mutate/rand/1</code></a> <a href="#MGL-GPR:MUTATE%2FBEST%2F1%20FUNCTION" title="MGL-GPR:MUTATE/BEST/1 FUNCTION"><code>mutate/best/1</code></a> <a href="#MGL-GPR:MUTATE%2FCURRENT-TO-BEST%2F2%20FUNCTION" title="MGL-GPR:MUTATE/CURRENT-TO-BEST/2 FUNCTION"><code>mutate/current-to-best/2</code></a>.</li>
@@ -886,7 +886,7 @@ One of the supplied mutation functions:
 <a id="MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L19" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >crossover-fn</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-gpr/blob/011654ddaf982843958a40445c613df345498d8e/src/differential-evolution.lisp#L41" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" >crossover-fn</a></span></span> <span class="arglist">
 <a href="#MGL-GPR:DIFFERENTIAL-EVOLUTION%20CLASS" title="MGL-GPR:DIFFERENTIAL-EVOLUTION CLASS">differential-evolution</a> (:crossover-fn = #'crossover/binary)</span></span></p>
 A function of three arguments, the DE and two
 individuals, that destructively modifies the second individual by
@@ -1110,7 +1110,7 @@ specify <a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFF
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-27T16:46:15Z]</h6>
+<h6>[Generated 2026-07-28T06:50:12Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

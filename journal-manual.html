@@ -1236,7 +1236,7 @@ most often used with <a href="#JOURNAL:@PRETTY-PRINTING%20MGL-PAX:SECTION" title
 <a id="JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L467" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L478" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" >journal-log-decorator</a></span></span> <span class="arglist">
 <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:log-decorator = nil)</span></span></p>
 If non-<code>nil</code>, this is a function to add <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="decoration">decoration</a>
 to <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>s before they are written to a journal. The only
@@ -3472,7 +3472,7 @@ journals normally only consists of creating and using them in
 <a id="JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L467" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-state</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L469" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-state</a></span></span> <span class="arglist">
 <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:state)</span></span></p>
 Return the state of <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS"><code>journal</code></a>, which is of type
 <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a>.</li>
@@ -3482,7 +3482,7 @@ Return the state of <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CL
 <a id="JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L467" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-sync</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L473" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-sync</a></span></span> <span class="arglist">
 <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (:sync = nil)</span></span></p>
 The <code>sync</code> argument specified at instantiation. See
 <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>.</li>
@@ -3512,7 +3512,7 @@ is safe to call from any thread.</li>
 <a id="JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L467" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-replay-mismatch</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L487" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" >journal-replay-mismatch</a></span></span> <span class="arglist">
 <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a> (= nil)</span></span></p>
 If <a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" title="JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"><code>journal-divergent-p</code></a>, then this is a list of two
 elements: the <a href="#JOURNAL:READ-POSITION%20GENERIC-FUNCTION" title="JOURNAL:READ-POSITION GENERIC-FUNCTION"><code>read-position</code></a>s in the <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a> and
@@ -3640,7 +3640,7 @@ discussion, see <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL
 <a id="JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5039" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-events</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5041" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-events</a></span></span> <span class="arglist">
 <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (:events)</span></span></p>
 A sequence of events in the journal. Not to be
 mutated by client code.</li>
@@ -3650,7 +3650,7 @@ mutated by client code.</li>
 <a id="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5039" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-previous-sync-position</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5046" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" >journal-previous-sync-position</a></span></span> <span class="arglist">
 <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS">in-memory-journal</a> (= 0)</span></span></p>
 The length of <a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-EVENTS (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-events</code></a> at the time of the
 most recent invocation of <code>sync-fn</code>.</li>
@@ -3730,7 +3730,7 @@ invalidation, a new <code>file-journal</code> object is created.</li>
 <a id="JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5211" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" >pathname-of</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5213" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" >pathname-of</a></span></span> <span class="arglist">
 <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS">file-journal</a> (:pathname)</span></span></p>
 The pathname of the file backing the journal.</li>
 </ul>
@@ -3769,7 +3769,7 @@ Creates a <a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNA
 <a id="JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2041" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2043" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-stream</a></span></span> <span class="arglist">
 <a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:stream = *standard-output*)</span></span></p>
 The stream where events are dumped. May be set any
 time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm" title="STREAM (MGL-PAX:CLHS CLASS)"><code>stream</code></a>.</li>
@@ -3779,7 +3779,7 @@ time to another <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t
 <a id="JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2041" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-pretty</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2048" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-pretty</a></span></span> <span class="arglist">
 <a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:pretty = t)</span></span></p>
 Whether to use <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a> or write
 events in as the property lists they are. A
@@ -3790,7 +3790,7 @@ events in as the property lists they are. A
 <a id="JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2041" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-prettifier</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2054" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" >pprint-journal-prettifier</a></span></span> <span class="arglist">
 <a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS">pprint-journal</a> (:prettifier = 'prettify-event)</span></span></p>
 A function like <a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a> that writes an
 event to a stream. Only used when <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a>, this is
@@ -3833,7 +3833,7 @@ This is an abstract base class. Direct subclasses are
 <a id="JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5703" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5707" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-failed</a></span></span> <span class="arglist">
 <a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-failed = 1)</span></span></p>
 If <code>max-n-failed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:failed</code> in the bundle exceeds
@@ -3845,7 +3845,7 @@ deleted.</li>
 <a id="JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5703" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5713" title="View definition">[accessor]</a></span> <span class="dref-name"> <a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" >max-n-completed</a></span></span> <span class="arglist">
 <a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL:BUNDLE CLASS">bundle</a> (:max-n-completed = 1)</span></span></p>
 If <code>max-n-completed</code> is non-<code>nil</code>, and the number of
 journals of <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a> <code>:completed</code> in the bundle exceeds
@@ -3905,7 +3905,7 @@ A <code>file-bundle</code> is a <a href="#JOURNAL:BUNDLE%20CLASS" title="JOURNAL
 <a id="JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5851" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" >directory-of</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L5853" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" >directory-of</a></span></span> <span class="arglist">
 <a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS">file-bundle</a> (:directory)</span></span></p>
 The directory where the files backing the
 <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>s in the <a href="#JOURNAL:FILE-BUNDLE%20CLASS" title="JOURNAL:FILE-BUNDLE CLASS"><code>file-bundle</code></a> are kept.</li>
@@ -3972,7 +3972,7 @@ built on top of streamlets.</li>
 <a id="JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29"></a></p>
 
 <ul>
-<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L602" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" >journal</a></span></span> <span class="arglist">
+<li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L604" title="View definition">[reader]</a></span> <span class="dref-name"> <a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" >journal</a></span></span> <span class="arglist">
 <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS">streamlet</a> (:journal)</span></span></p>
 The <code>journal</code> that was passed to <a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a>.
 This is the journal <code>streamlet</code> operates on.</li>
@@ -4949,7 +4949,7 @@ be readable.</li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-27T16:46:14Z]</h6>
+<h6>[Generated 2026-07-28T06:50:12Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>
