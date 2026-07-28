@@ -136,7 +136,7 @@ encoding starts with <code>byte</code>. May signal <a href="#TRIVIAL-UTF-8:UTF-8
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8/-/blob/489153bc932555cea99012df39b8d926f7c9fa4b/trivial-utf-8.lisp#L194" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRIVIAL-UTF-8:UTF-8-BYTES-TO-STRING%20FUNCTION" >utf-8-bytes-to-string</a></span></span> <span class="arglist">
-bytes &amp;key (start 0) (end (length bytes))</span></span></p>
+bytes &amp;key (start 0) (end (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm" title="LENGTH (MGL-PAX:CLHS FUNCTION)">length</a> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_by_by.htm" title="BYTE (MGL-PAX:CLHS FUNCTION)">bytes</a>))</span></span></p>
 Convert the <code>start</code>, <code>end</code> subsequence of the array of <code>bytes</code> containing
 UTF-8 encoded characters to a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm" title="STRING (MGL-PAX:CLHS CLASS)"><code>string</code></a>. The element type of
 <code>bytes</code> may be anything as long as it can be <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_coerce.htm" title="COERCE (MGL-PAX:CLHS FUNCTION)"><code>coerce</code></a>d into
@@ -252,7 +252,7 @@ Write <code>string</code> to <code>byte-stream</code>, encoding it as UTF-8. If
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

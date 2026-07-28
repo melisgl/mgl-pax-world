@@ -736,7 +736,7 @@ list as multiple values instead of as a list.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L1555" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#JOURNAL:LIST-EVENTS%20FUNCTION" >list-events</a></span></span> <span class="arglist">
-&amp;optional (journal (record-journal))</span></span></p>
+&amp;optional (journal (<a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION">record-journal</a>))</span></span></p>
 Return a list of all the events in the journal designated by
 <code>journal</code>. Calls <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a> first to make sure that all writes are
 taken into account.</li>
@@ -827,7 +827,7 @@ called on it first.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L1929" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#JOURNAL:PPRINT-EVENTS%20FUNCTION" >pprint-events</a></span></span> <span class="arglist">
-events &amp;key stream (prettifier 'prettify-event)</span></span></p>
+events &amp;key stream (prettifier '<a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION">prettify-event</a>)</span></span></p>
 
 <p>Like <a href="#JOURNAL:PRINT-EVENTS%20FUNCTION" title="JOURNAL:PRINT-EVENTS FUNCTION"><code>print-events</code></a>, but produces terser, more human readable
 output.</p>
@@ -3493,7 +3493,7 @@ The <code>sync</code> argument specified at instantiation. See
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L4897" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" >sync-journal</a></span></span> <span class="arglist">
-&amp;optional (journal (record-journal))</span></span></p>
+&amp;optional (journal (<a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION">record-journal</a>))</span></span></p>
 
 <p>Durably persist changes made to <code>journal</code> if <a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-SYNC (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-sync</code></a> is <code>t</code>.
 The changes that are persisted are </p>
@@ -3761,7 +3761,7 @@ support reads, so they cannot be used as a <a href="#JOURNAL:REPLAY-JOURNAL%20FU
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L2070" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#JOURNAL:MAKE-PPRINT-JOURNAL%20FUNCTION" >make-pprint-journal</a></span></span> <span class="arglist">
-&amp;key (stream (make-synonym-stream '*standard-output*)) (pretty t) (prettifier 'prettify-event) log-decorator</span></span></p>
+&amp;key (stream (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_syn.htm" title="MAKE-SYNONYM-STREAM (MGL-PAX:CLHS FUNCTION)">make-synonym-stream</a> '<a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*STANDARD-OUTPUT* (MGL-PAX:CLHS VARIABLE)">*standard-output*</a>)) (pretty t) (prettifier '<a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION">prettify-event</a>) log-decorator</span></span></p>
 Creates a <a href="#JOURNAL:PPRINT-JOURNAL%20CLASS" title="JOURNAL:PPRINT-JOURNAL CLASS"><code>pprint-journal</code></a>.</li>
 </ul>
 
@@ -4135,7 +4135,7 @@ the read position, or return <code>nil</code> if there is no event to be read.</
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L825" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#JOURNAL:PEEK-EVENT%20%28METHOD%20%28JOURNAL:STREAMLET%29%29" >peek-event</a></span></span> <span class="arglist">
-(streamlet streamlet)</span></span></p>
+(streamlet <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS">streamlet</a>)</span></span></p>
 This is a slow default implementation, which relies on
 <a href="#JOURNAL:SAVE-EXCURSION%20MGL-PAX:MACRO" title="JOURNAL:SAVE-EXCURSION MGL-PAX:MACRO"><code>save-excursion</code></a> and <a href="#JOURNAL:READ-EVENT%20GENERIC-FUNCTION" title="JOURNAL:READ-EVENT GENERIC-FUNCTION"><code>read-event</code></a>.</li>
 </ul>
@@ -4165,7 +4165,7 @@ of the <a href="#JOURNAL:READ-POSITION%20GENERIC-FUNCTION" title="JOURNAL:READ-P
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/journal/blob/e76a6693b0eead1d8dd9d39f2dbbd7b818bd8082/src/journal.lisp#L842" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#JOURNAL:WRITE-EVENT%20%28METHOD%20%28T%20JOURNAL:JOURNAL%29%29" >write-event</a></span></span> <span class="arglist">
-event (journal journal)</span></span></p>
+event (journal <a href="#JOURNAL:JOURNAL%20CLASS" title="JOURNAL:JOURNAL CLASS">journal</a>)</span></span></p>
 For convenience, it is possible to write directly to a <code>journal</code>,
 in which case the journal's internal output streamlet is used.
 This internal streamlet is opened for <code>:output</code> and may be used by
@@ -4460,7 +4460,7 @@ be readable.</li>
 <li><p>↩ <em>f</em>: <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a>, <a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-PRETTY*%20VARIABLE" title="JOURNAL:*TRACE-PRETTY* VARIABLE"><code>*trace-pretty*</code></a></p></li>
 </ul></li>
-<li><p><a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DECORATOR FUNCTION"><code>make-log-decorator</code></a>, <a href="#JOURNAL:PPRINT-EVENTS%20FUNCTION" title="JOURNAL:PPRINT-EVENTS FUNCTION"><code>pprint-events</code></a>, <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a></p></li>
+<li><p><a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DECORATOR FUNCTION"><code>make-log-decorator</code></a>, <a href="#JOURNAL:MAKE-PPRINT-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-PPRINT-JOURNAL FUNCTION"><code>make-pprint-journal</code></a>, <a href="#JOURNAL:PPRINT-EVENTS%20FUNCTION" title="JOURNAL:PPRINT-EVENTS FUNCTION"><code>pprint-events</code></a>, <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a></p></li>
 <li><p><a href="#JOURNAL:PRINT-EVENTS%20FUNCTION" title="JOURNAL:PRINT-EVENTS FUNCTION"><code>print-events</code></a> <em>(fn)</em></p>
 
 <ul>
@@ -4478,7 +4478,7 @@ be readable.</li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`"><code>:log-record</code></a>, <a href="#JOURNAL:@LOGGING%20MGL-PAX:SECTION" title="Logging">Logging</a>, <a href="#JOURNAL:@MATCHING-OUT-EVENTS%20MGL-PAX:SECTION" title="Matching out-events">Matching out-events</a>, <a href="#JOURNAL:@SYNCHRONIZATION-STRATEGIES%20MGL-PAX:SECTION" title="Synchronization strategies">Synchronization strategies</a>, <a href="#JOURNAL:@SYNCHRONIZATION-WITH-FILE-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with file journals">Synchronization with file journals</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#JOURNAL:DEFINE-FILE-BUNDLE-TEST%20MGL-PAX:MACRO" title="JOURNAL:DEFINE-FILE-BUNDLE-TEST MGL-PAX:MACRO"><code>define-file-bundle-test</code></a>, <a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-REPLAY-MISMATCH (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-replay-mismatch</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-JOURNAL FUNCTION"><code>make-in-memory-journal</code></a>, <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#JOURNAL:DEFINE-FILE-BUNDLE-TEST%20MGL-PAX:MACRO" title="JOURNAL:DEFINE-FILE-BUNDLE-TEST MGL-PAX:MACRO"><code>define-file-bundle-test</code></a>, <a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-REPLAY-MISMATCH (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-replay-mismatch</code></a>, <a href="#JOURNAL:LIST-EVENTS%20FUNCTION" title="JOURNAL:LIST-EVENTS FUNCTION"><code>list-events</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-JOURNAL FUNCTION"><code>make-in-memory-journal</code></a>, <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a>, <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#JOURNAL:END-OF-JOURNAL%20CONDITION" title="JOURNAL:END-OF-JOURNAL CONDITION"><code>end-of-journal</code></a>, <a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION"><code>journaling-failure</code></a>, <a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION"><code>replay-failure</code></a></p></li>
 </ul></li>
 <li><p><a href="#JOURNAL:REPLAY-JOURNAL%20FUNCTION" title="JOURNAL:REPLAY-JOURNAL FUNCTION"><code>replay-journal</code></a> <em>(fn)</em></p>
@@ -4653,7 +4653,7 @@ be readable.</li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#JOURNAL:@LOG-RECORD%20MGL-PAX:SECTION" title="`:log-record`"><code>:log-record</code></a>, <a href="#JOURNAL:@JOURNALS-REFERENCE%20MGL-PAX:SECTION" title="Journals reference">Journals reference</a>, <a href="#JOURNAL:@SAFETY%20MGL-PAX:SECTION" title="Safety">Safety</a>, <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">Streamlets reference</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#JOURNAL:EVENTS-TO-FRAMES%20FUNCTION" title="JOURNAL:EVENTS-TO-FRAMES FUNCTION"><code>events-to-frames</code></a>, <a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-STATE (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-state</code></a>, <a href="#JOURNAL:PRINT-EVENTS%20FUNCTION" title="JOURNAL:PRINT-EVENTS FUNCTION"><code>print-events</code></a>, <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a>, <a href="#JOURNAL:REPLAY-JOURNAL%20FUNCTION" title="JOURNAL:REPLAY-JOURNAL FUNCTION"><code>replay-journal</code></a>, <a href="#JOURNAL:REQUEST-COMPLETED-ON-ABORT%20GENERIC-FUNCTION" title="JOURNAL:REQUEST-COMPLETED-ON-ABORT GENERIC-FUNCTION"><code>request-completed-on-abort</code></a>, <a href="#JOURNAL:TO-JOURNAL%20GENERIC-FUNCTION" title="JOURNAL:TO-JOURNAL GENERIC-FUNCTION"><code>to-journal</code></a>, <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#JOURNAL:EVENTS-TO-FRAMES%20FUNCTION" title="JOURNAL:EVENTS-TO-FRAMES FUNCTION"><code>events-to-frames</code></a>, <a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-STATE (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-state</code></a>, <a href="#JOURNAL:PRINT-EVENTS%20FUNCTION" title="JOURNAL:PRINT-EVENTS FUNCTION"><code>print-events</code></a>, <a href="#JOURNAL:RECORD-JOURNAL%20FUNCTION" title="JOURNAL:RECORD-JOURNAL FUNCTION"><code>record-journal</code></a>, <a href="#JOURNAL:REPLAY-JOURNAL%20FUNCTION" title="JOURNAL:REPLAY-JOURNAL FUNCTION"><code>replay-journal</code></a>, <a href="#JOURNAL:REQUEST-COMPLETED-ON-ABORT%20GENERIC-FUNCTION" title="JOURNAL:REQUEST-COMPLETED-ON-ABORT GENERIC-FUNCTION"><code>request-completed-on-abort</code></a>, <a href="#JOURNAL:TO-JOURNAL%20GENERIC-FUNCTION" title="JOURNAL:TO-JOURNAL GENERIC-FUNCTION"><code>to-journal</code></a>, <a href="#JOURNAL:WITH-JOURNALING%20MGL-PAX:MACRO" title="JOURNAL:WITH-JOURNALING MGL-PAX:MACRO"><code>with-journaling</code></a>, <a href="#JOURNAL:WRITE-EVENT%20%28METHOD%20%28T%20JOURNAL:JOURNAL%29%29" title="JOURNAL:WRITE-EVENT (METHOD (T JOURNAL:JOURNAL))"><code>write-event</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#JOURNAL:END-OF-JOURNAL%20CONDITION" title="JOURNAL:END-OF-JOURNAL CONDITION"><code>end-of-journal</code></a>, <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>, <a href="#JOURNAL:JOURNAL-STATE%20TYPE" title="JOURNAL:JOURNAL-STATE TYPE"><code>journal-state</code></a>, <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" title="JOURNAL:*TRACE-JOURNAL* VARIABLE"><code>*trace-journal*</code></a></p></li>
 </ul></li>
@@ -4759,7 +4759,7 @@ be readable.</li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#JOURNAL:@STREAMLETS-REFERENCE%20MGL-PAX:SECTION" title="Streamlets reference">Streamlets reference</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a>, <a href="#JOURNAL:WITH-OPEN-JOURNAL%20MGL-PAX:MACRO" title="JOURNAL:WITH-OPEN-JOURNAL MGL-PAX:MACRO"><code>with-open-journal</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a>, <a href="#JOURNAL:PEEK-EVENT%20%28METHOD%20%28JOURNAL:STREAMLET%29%29" title="JOURNAL:PEEK-EVENT (METHOD (JOURNAL:STREAMLET))"><code>peek-event</code></a>, <a href="#JOURNAL:WITH-OPEN-JOURNAL%20MGL-PAX:MACRO" title="JOURNAL:WITH-OPEN-JOURNAL MGL-PAX:MACRO"><code>with-open-journal</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" title="JOURNAL:STREAMLET-ERROR CONDITION"><code>streamlet-error</code></a></p></li>
 </ul></li>
 <li><p><a href="#JOURNAL:STREAMLET-ERROR%20CONDITION" title="JOURNAL:STREAMLET-ERROR CONDITION"><code>streamlet-error</code></a> <em>(condition)</em></p>
@@ -4949,7 +4949,7 @@ be readable.</li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

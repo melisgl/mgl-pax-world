@@ -485,7 +485,7 @@ objects.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L825" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:OPEN-ENV%20FUNCTION" >open-env</a></span></span> <span class="arglist">
-path &amp;key (class *env-class*) (if-does-not-exist :error) (synchronized t) (max-dbs 1) (max-readers 126) (map-size (* 1024 1024)) (mode 436) (subdir t) (sync t) (meta-sync t) read-only (tls t) (read-ahead t) (lock t) (mem-init t) fixed-map write-map map-async</span></span></p>
+path &amp;key (class <a href="#LMDB:*ENV-CLASS*%20VARIABLE" title="LMDB:*ENV-CLASS* VARIABLE">*env-class*</a>) (if-does-not-exist :error) (synchronized t) (max-dbs 1) (max-readers 126) (map-size (* 1024 1024)) (mode 436) (subdir t) (sync t) (meta-sync t) read-only (tls t) (read-ahead t) (lock t) (mem-init t) fixed-map write-map map-async</span></span></p>
 
 <p>Create an <a href="#LMDB:ENV%20CLASS" title="LMDB:ENV CLASS"><code>env</code></a> object through which the <code>lmdb</code> environment can be
 accessed and open it. To prevent corruption, an error is signalled
@@ -710,7 +710,7 @@ corresponding <a href="#LMDB:CLOSE-ENV%20FUNCTION" title="LMDB:CLOSE-ENV FUNCTIO
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1148" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:CHECK-FOR-STALE-READERS%20FUNCTION" >check-for-stale-readers</a></span></span> <span class="arglist">
-&amp;optional (env *env*)</span></span></p>
+&amp;optional (env <a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>)</span></span></p>
 
 <p>Check for stale entries in the reader lock table. See
 <a href="http://www.lmdb.tech/doc/" >Caveats</a>. This function is called
@@ -726,7 +726,7 @@ Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga366923d08bb384b3d9580a
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1164" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-STATISTICS%20FUNCTION" >env-statistics</a></span></span> <span class="arglist">
-&amp;optional (env *env*)</span></span></p>
+&amp;optional (env <a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>)</span></span></p>
 
 <p>Return statistics about <code>env</code> as a plist.</p>
 
@@ -746,7 +746,7 @@ Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#gaf881dca452050efbd434cd
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1194" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-INFO%20FUNCTION" >env-info</a></span></span> <span class="arglist">
-&amp;optional (env *env*)</span></span></p>
+&amp;optional (env <a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>)</span></span></p>
 
 <p>Return information about <code>env</code> as a plist.</p>
 
@@ -767,7 +767,7 @@ Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga18769362c7e7d6cf91889a
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1225" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:SYNC-ENV%20FUNCTION" >sync-env</a></span></span> <span class="arglist">
-&amp;optional (env *env*)</span></span></p>
+&amp;optional (env <a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>)</span></span></p>
 
 <p>Flush the data buffers to disk as in calling <code>fsync()</code>. When <code>env</code>
 had been opened with <code>:sync</code> <code>nil</code> or <code>:meta-sync</code> <code>nil</code>, this may be handy
@@ -781,7 +781,7 @@ Wraps <a href="http://www.lmdb.tech/doc/group__mdb.html#ga85e61f05aa68b520cc6c3b
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1235" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" >env-max-key-size</a></span></span> <span class="arglist">
-&amp;optional (env *env*)</span></span></p>
+&amp;optional (env <a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>)</span></span></p>
 
 <p>Return the maximum size of keys and <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a> data in bytes. Depends
 on the compile-time constant <code>mdb_maxkeysize</code> in the C library. The
@@ -847,7 +847,7 @@ committed child transactions, are discarded.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1442" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" >with-txn</a></span></span> <span class="arglist">
-(&amp;key (env '*env*) write ignore-parent (sync t) (meta-sync t)) &amp;body body</span></span></p>
+(&amp;key (env '<a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>) write ignore-parent (sync t) (meta-sync t)) &amp;body body</span></span></p>
 
 <p>Start a transaction in <code>env</code>, execute <code>body</code>. Then, if the transaction
 is open (see <a href="#LMDB:OPEN-TXN-P%20FUNCTION" title="LMDB:OPEN-TXN-P FUNCTION"><code>open-txn-p</code></a>) and <code>body</code> returned normally, attempt to
@@ -1135,7 +1135,7 @@ objects.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/lmdb/blob/f61791c63433f33b4478bd6416c1d3bb999b2d9d/src/lmdb.lisp#L1886" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#LMDB:GET-DB%20FUNCTION" >get-db</a></span></span> <span class="arglist">
-name &amp;key (class *db-class*) (env *env*) (if-does-not-exist :create) key-encoding value-encoding integer-key reverse-key dupsort integer-dup reverse-dup dupfixed</span></span></p>
+name &amp;key (class <a href="#LMDB:*DB-CLASS*%20VARIABLE" title="LMDB:*DB-CLASS* VARIABLE">*db-class*</a>) (env <a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE">*env*</a>) (if-does-not-exist :create) key-encoding value-encoding integer-key reverse-key dupsort integer-dup reverse-dup dupfixed</span></span></p>
 
 <p>Open the database with <code>name</code> in the open environment <code>env</code>, and return
 a <a href="#LMDB:DB%20CLASS" title="LMDB:DB CLASS"><code>db</code></a> object. If <code>name</code> is <code>nil</code>, then the <a href="#LMDB:@LMDB%2FTHE-UNNAMED-DATABASE%20MGL-PAX:SECTION" title="The unnamed database">The unnamed database</a> is
@@ -2698,8 +2698,8 @@ refer to the parent transaction:</p>
 
 <ul>
 <li><p><a href="#LMDB:*DB-CLASS*%20VARIABLE" title="LMDB:*DB-CLASS* VARIABLE"><code>*db-class*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a></p></li>
-<li><p><a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE"><code>*env*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#LMDB:*ENV-CLASS*%20VARIABLE" title="LMDB:*ENV-CLASS* VARIABLE"><code>*env-class*</code></a> <em>(var)</em></p></li>
+<li><p><a href="#LMDB:*ENV*%20VARIABLE" title="LMDB:*ENV* VARIABLE"><code>*env*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#LMDB:CHECK-FOR-STALE-READERS%20FUNCTION" title="LMDB:CHECK-FOR-STALE-READERS FUNCTION"><code>check-for-stale-readers</code></a>, <a href="#LMDB:ENV-INFO%20FUNCTION" title="LMDB:ENV-INFO FUNCTION"><code>env-info</code></a>, <a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" title="LMDB:ENV-MAX-KEY-SIZE FUNCTION"><code>env-max-key-size</code></a>, <a href="#LMDB:ENV-STATISTICS%20FUNCTION" title="LMDB:ENV-STATISTICS FUNCTION"><code>env-statistics</code></a>, <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a>, <a href="#LMDB:SYNC-ENV%20FUNCTION" title="LMDB:SYNC-ENV FUNCTION"><code>sync-env</code></a>, <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a></p></li>
+<li><p><a href="#LMDB:*ENV-CLASS*%20VARIABLE" title="LMDB:*ENV-CLASS* VARIABLE"><code>*env-class*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a></p></li>
 <li><p><a href="#LMDB:*KEY-DECODER*%20VARIABLE" title="LMDB:*KEY-DECODER* VARIABLE"><code>*key-decoder*</code></a> <em>(var)</em></p>
 
 <ul>
@@ -2856,7 +2856,7 @@ refer to the parent transaction:</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

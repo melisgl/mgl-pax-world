@@ -491,7 +491,7 @@ sampled.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/dataset.lisp#L105" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-DATASET:MAKE-RANDOM-SAMPLER%20FUNCTION" >make-random-sampler</a></span></span> <span class="arglist">
-seq &amp;key max-n-samples (reorder #'mgl-resample:shuffle)</span></span></p>
+seq &amp;key max-n-samples (reorder #'<a href="#MGL-RESAMPLE:SHUFFLE%20FUNCTION" title="MGL-RESAMPLE:SHUFFLE FUNCTION">mgl-resample:shuffle</a>)</span></span></p>
 Create a sampler that returns elements of <code>seq</code> in random order. If
 <code>max-n-samples</code> is non-nil, then at most <code>max-n-samples</code> are sampled.
 The first pass over a shuffled copy of <code>seq</code>, and this copy is
@@ -658,7 +658,7 @@ have the same weight.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L112" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:STRATIFY%20FUNCTION" >stratify</a></span></span> <span class="arglist">
-seq &amp;key (key #'identity) (test #'eql)</span></span></p>
+seq &amp;key (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>) (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>)</span></span></p>
 
 <p>Return the list of strata of <code>seq</code>. <code>seq</code> is a sequence of elements for
 which the function <code>key</code> returns the class they belong to. Such
@@ -674,7 +674,7 @@ stratum is a sequence of elements with the same (under <code>test</code>) <code>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L156" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:FRACTURE-STRATIFIED%20FUNCTION" >fracture-stratified</a></span></span> <span class="arglist">
-fractions seq &amp;key (key #'identity) (test #'eql) weight</span></span></p>
+fractions seq &amp;key (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>) (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) weight</span></span></p>
 
 <p>Similar to <a href="#MGL-RESAMPLE:FRACTURE%20FUNCTION" title="MGL-RESAMPLE:FRACTURE FUNCTION"><code>fracture</code></a>, but also makes sure that keys are evenly
 distributed among the partitions (see <a href="#MGL-RESAMPLE:STRATIFY%20FUNCTION" title="MGL-RESAMPLE:STRATIFY FUNCTION"><code>stratify</code></a>). It can be useful
@@ -703,7 +703,7 @@ of even and odd numbers:</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L193" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" >cross-validate</a></span></span> <span class="arglist">
-data fn &amp;key (n-folds 5) (folds (alexandria:iota n-folds)) (split-fn #'split-fold/mod) pass-fold</span></span></p>
+data fn &amp;key (n-folds 5) (folds (alexandria:iota n-folds)) (split-fn #'<a href="#MGL-RESAMPLE:SPLIT-FOLD%2FMOD%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION">split-fold/mod</a>) pass-fold</span></span></p>
 
 <p>Map <code>fn</code> over the <code>folds</code> of <code>data</code> split with <code>split-fn</code> and collect the
 results in a list. The simplest demonstration is:</p>
@@ -770,7 +770,7 @@ function is suitable as the <code>split-fn</code> argument of <a href="#MGL-RESA
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L284" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:SPLIT-STRATIFIED%20FUNCTION" >split-stratified</a></span></span> <span class="arglist">
-seq fold n-folds &amp;key (key #'identity) (test #'eql) weight</span></span></p>
+seq fold n-folds &amp;key (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>) (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) weight</span></span></p>
 Split <code>seq</code> into <code>n-folds</code> partitions (as in <a href="#MGL-RESAMPLE:FRACTURE-STRATIFIED%20FUNCTION" title="MGL-RESAMPLE:FRACTURE-STRATIFIED FUNCTION"><code>fracture-stratified</code></a>).
 Return the partition of index <code>fold</code> as the first value, and the
 concatenation of the rest as the second value. This function is
@@ -790,7 +790,7 @@ as a closure with <code>key</code>, <code>test</code>, <code>weight</code> bound
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L304" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:BAG%20FUNCTION" >bag</a></span></span> <span class="arglist">
-seq fn &amp;key (ratio 1) n weight (replacement t) key (test #'eql) (random-state *random-state*)</span></span></p>
+seq fn &amp;key (ratio 1) n weight (replacement t) key (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) (random-state <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rnd_st.htm" title="*RANDOM-STATE* (MGL-PAX:CLHS VARIABLE)">*random-state*</a>)</span></span></p>
 Sample from <code>seq</code> with <a href="#MGL-RESAMPLE:SAMPLE-FROM%20FUNCTION" title="MGL-RESAMPLE:SAMPLE-FROM FUNCTION"><code>sample-from</code></a> (passing <code>ratio</code>, <code>weight</code>,
 <code>replacement</code>), or <a href="#MGL-RESAMPLE:SAMPLE-STRATIFIED%20FUNCTION" title="MGL-RESAMPLE:SAMPLE-STRATIFIED FUNCTION"><code>sample-stratified</code></a> if <code>key</code> is not <code>nil</code>. Call <code>fn</code> with
 the sample. If <code>n</code> is <code>nil</code> then keep repeating this until <code>fn</code> performs a
@@ -805,7 +805,7 @@ examples.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L326" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:SAMPLE-FROM%20FUNCTION" >sample-from</a></span></span> <span class="arglist">
-ratio seq &amp;key weight replacement (random-state *random-state*)</span></span></p>
+ratio seq &amp;key weight replacement (random-state <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rnd_st.htm" title="*RANDOM-STATE* (MGL-PAX:CLHS VARIABLE)">*random-state*</a>)</span></span></p>
 
 <p>Return a sequence constructed by sampling with or without
 <code>replacement</code> from <code>seq</code>. The sum of weights in the result sequence will
@@ -839,7 +839,7 @@ sampled multiple times):</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L410" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:SAMPLE-STRATIFIED%20FUNCTION" >sample-stratified</a></span></span> <span class="arglist">
-ratio seq &amp;key weight replacement (key #'identity) (test #'eql) (random-state *random-state*)</span></span></p>
+ratio seq &amp;key weight replacement (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>) (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) (random-state <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rnd_st.htm" title="*RANDOM-STATE* (MGL-PAX:CLHS VARIABLE)">*random-state*</a>)</span></span></p>
 Like <a href="#MGL-RESAMPLE:SAMPLE-FROM%20FUNCTION" title="MGL-RESAMPLE:SAMPLE-FROM FUNCTION"><code>sample-from</code></a> but makes sure that the weighted proportion of
 classes in the result is approximately the same as the proportion in
 <code>seq</code>. See <a href="#MGL-RESAMPLE:STRATIFY%20FUNCTION" title="MGL-RESAMPLE:STRATIFY FUNCTION"><code>stratify</code></a> for the description of <code>key</code> and <code>test</code>.</li>
@@ -857,7 +857,7 @@ classes in the result is approximately the same as the proportion in
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L431" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:BAG-CV%20FUNCTION" >bag-cv</a></span></span> <span class="arglist">
-data fn &amp;key n (n-folds 5) (folds (alexandria:iota n-folds)) (split-fn #'split-fold/mod) pass-fold (random-state *random-state*)</span></span></p>
+data fn &amp;key n (n-folds 5) (folds (alexandria:iota n-folds)) (split-fn #'<a href="#MGL-RESAMPLE:SPLIT-FOLD%2FMOD%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION">split-fold/mod</a>) pass-fold (random-state <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rnd_st.htm" title="*RANDOM-STATE* (MGL-PAX:CLHS VARIABLE)">*random-state*</a>)</span></span></p>
 
 <p>Perform cross-validation on different shuffles of <code>data</code> <code>n</code> times and
 collect the results. Since <a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" title="MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"><code>cross-validate</code></a> collects the return values
@@ -895,7 +895,7 @@ estimate for each example which gets refined by further CVs.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/resample.lisp#L472" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-RESAMPLE:SPREAD-STRATA%20FUNCTION" >spread-strata</a></span></span> <span class="arglist">
-seq &amp;key (key #'identity) (test #'eql)</span></span></p>
+seq &amp;key (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>) (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>)</span></span></p>
 
 <p>Return a sequence that's a reordering of <code>seq</code> such that elements
 belonging to different strata (under <code>key</code> and <code>test</code>, see <a href="#MGL-RESAMPLE:STRATIFY%20FUNCTION" title="MGL-RESAMPLE:STRATIFY FUNCTION"><code>stratify</code></a>) are
@@ -1567,7 +1567,7 @@ A plist of attribute keys and values.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/counter.lisp#L111" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#MGL-COMMON:NAME%20%28METHOD%20%28MGL-CORE:ATTRIBUTED%29%29" >name</a></span></span> <span class="arglist">
-(attributed attributed)</span></span></p>
+(attributed <a href="#MGL-CORE:ATTRIBUTED%20CLASS" title="MGL-CORE:ATTRIBUTED CLASS">attributed</a>)</span></span></p>
 
 <p>Return a string assembled from the values of the <a href="#MGL-CORE:ATTRIBUTES%20%28MGL-PAX:ACCESSOR%20MGL-CORE:ATTRIBUTED%29" title="MGL-CORE:ATTRIBUTES (MGL-PAX:ACCESSOR MGL-CORE:ATTRIBUTED)"><code>attributes</code></a> of
 <code>attributed</code>. If there are multiple entries with the same key, then
@@ -1775,7 +1775,7 @@ types. </p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L58" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS%20FUNCTION" >make-classification-accuracy-monitors</a></span></span> <span class="arglist">
-model &amp;key operation-mode attributes (label-index-fn #'label-index)</span></span></p>
+model &amp;key operation-mode attributes (label-index-fn #'<a href="#MGL-CORE:LABEL-INDEX%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX GENERIC-FUNCTION">label-index</a>)</span></span></p>
 
 <p>Return a list of <a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS"><code>monitor</code></a> objects associated with
 <a href="#MGL-CORE:CLASSIFICATION-ACCURACY-COUNTER%20CLASS" title="MGL-CORE:CLASSIFICATION-ACCURACY-COUNTER CLASS"><code>classification-accuracy-counter</code></a>s. <code>label-index-fn</code> is a function
@@ -1788,7 +1788,7 @@ Implemented in terms of <a href="#MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L68" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION" >make-cross-entropy-monitors</a></span></span> <span class="arglist">
-model &amp;key operation-mode attributes (label-index-distribution-fn #'label-index-distribution)</span></span></p>
+model &amp;key operation-mode attributes (label-index-distribution-fn #'<a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION">label-index-distribution</a>)</span></span></p>
 
 <p>Return a list of <a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS"><code>monitor</code></a> objects associated with
 <a href="#MGL-CORE:CROSS-ENTROPY-COUNTER%20CLASS" title="MGL-CORE:CROSS-ENTROPY-COUNTER CLASS"><code>cross-entropy-counter</code></a>s. <code>label-index-distribution-fn</code> is a
@@ -1801,7 +1801,7 @@ Implemented in terms of <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS*%20GENERI
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L79" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MAKE-LABEL-MONITORS%20FUNCTION" >make-label-monitors</a></span></span> <span class="arglist">
-model &amp;key operation-mode attributes (label-index-fn #'label-index) (label-index-distribution-fn #'label-index-distribution)</span></span></p>
+model &amp;key operation-mode attributes (label-index-fn #'<a href="#MGL-CORE:LABEL-INDEX%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX GENERIC-FUNCTION">label-index</a>) (label-index-distribution-fn #'<a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION">label-index-distribution</a>)</span></span></p>
 Return classification accuracy and cross-entropy monitors. See
 <a href="#MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS FUNCTION"><code>make-classification-accuracy-monitors</code></a> and
 <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS FUNCTION"><code>make-cross-entropy-monitors</code></a> for a description of paramters.</li>
@@ -1856,7 +1856,7 @@ behind <a href="#MGL-CORE:@MGL-CLASSIFICATION-MONITOR%20MGL-PAX:SECTION" title="
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L151" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MEASURE-CLASSIFICATION-ACCURACY%20FUNCTION" >measure-classification-accuracy</a></span></span> <span class="arglist">
-truths predictions &amp;key (test #'eql) truth-key prediction-key weight</span></span></p>
+truths predictions &amp;key (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) truth-key prediction-key weight</span></span></p>
 
 <p>Return the number of correct classifications and as the second
 value the number of instances (equal to length of <code>truths</code> in the
@@ -1935,7 +1935,7 @@ with #'<a href="#MGL-CORE:ADD-TO-COUNTER%20GENERIC-FUNCTION" title="MGL-CORE:ADD
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L264" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MEASURE-ROC-AUC%20FUNCTION" >measure-roc-auc</a></span></span> <span class="arglist">
-predictions pred &amp;key (key #'identity) weight</span></span></p>
+predictions pred &amp;key (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>) weight</span></span></p>
 
 <p>Return the area under the ROC curve for <code>predictions</code> representing
 predictions for a binary classification problem. <code>pred</code> is a predicate
@@ -1965,7 +1965,7 @@ sorted by scores.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L324" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MEASURE-CONFUSION%20FUNCTION" >measure-confusion</a></span></span> <span class="arglist">
-truths predictions &amp;key (test #'eql) truth-key prediction-key weight</span></span></p>
+truths predictions &amp;key (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) truth-key prediction-key weight</span></span></p>
 
 <p>Create a <a href="#MGL-CORE:CONFUSION-MATRIX%20CLASS" title="MGL-CORE:CONFUSION-MATRIX CLASS"><code>confusion-matrix</code></a> from <code>truths</code> and <code>predictions</code>.
 <code>truths</code> (keyed by <code>truth-key</code>) is a sequence of class labels compared
@@ -2026,7 +2026,7 @@ classifier is called</code>prediction'.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/classification.lisp#L437" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MAKE-CONFUSION-MATRIX%20FUNCTION" >make-confusion-matrix</a></span></span> <span class="arglist">
-&amp;key (test #'eql)</span></span></p>
+&amp;key (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>)</span></span></p>
 Classes are compared with <code>test</code>.</li>
 </ul>
 
@@ -2150,7 +2150,7 @@ that maps features to scores.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/feature.lisp#L16" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:COUNT-FEATURES%20FUNCTION" >count-features</a></span></span> <span class="arglist">
-documents mapper &amp;key (key #'identity)</span></span></p>
+documents mapper &amp;key (key #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm" title="IDENTITY (MGL-PAX:CLHS FUNCTION)">identity</a>)</span></span></p>
 
 <p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table whose keys are
 features of <code>documents</code> and values are counts of occurrences of
@@ -2171,7 +2171,7 @@ with features of the document.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/feature.lisp#L58" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:FEATURE-LLRS%20FUNCTION" >feature-llrs</a></span></span> <span class="arglist">
-documents mapper class-fn &amp;key (classes (all-document-classes documents class-fn))</span></span></p>
+documents mapper class-fn &amp;key (classes (all-document-classes <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION">documents</a> class-fn))</span></span></p>
 
 <p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table whose keys are
 features of <code>documents</code> and values are their log likelihood ratios.
@@ -2194,7 +2194,7 @@ features of the document.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/feature.lisp#L121" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:FEATURE-DISAMBIGUITIES%20FUNCTION" >feature-disambiguities</a></span></span> <span class="arglist">
-documents mapper class-fn &amp;key (classes (all-document-classes documents class-fn))</span></span></p>
+documents mapper class-fn &amp;key (classes (all-document-classes <a href="pax-manual.html#MGL-PAX:DOCUMENT%20FUNCTION" title="MGL-PAX:DOCUMENT FUNCTION">documents</a> class-fn))</span></span></p>
 
 <p>Return scored features as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm" title="EQUAL (MGL-PAX:CLHS FUNCTION)"><code>equal</code></a> hash table whose keys are
 features of <code>documents</code> and values are their <em>disambiguities</em>. <code>mapper</code>
@@ -2288,7 +2288,7 @@ read/write consitency.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/feature.lisp#L279" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CORE:MAKE-INDEXER%20FUNCTION" >make-indexer</a></span></span> <span class="arglist">
-scored-features n &amp;key (start 0) (class 'encoder/decoder)</span></span></p>
+scored-features n &amp;key (start 0) (class '<a href="#MGL-CORE:ENCODER%2FDECODER%20CLASS" title="MGL-CORE:ENCODER/DECODER CLASS">encoder/decoder</a>)</span></span></p>
 Take the top <code>n</code> features from <code>scored-features</code> (see
 <a href="#MGL-CORE:@MGL-FEATURE-SELECTION%20MGL-PAX:SECTION" title="Feature Selection">Feature Selection</a>), assign indices to them starting from <code>start</code>.
 Return an <a href="#MGL-CORE:ENCODER%2FDECODER%20CLASS" title="MGL-CORE:ENCODER/DECODER CLASS"><code>encoder/decoder</code></a> (or another <code>class</code>) that converts between
@@ -2326,7 +2326,7 @@ gradients) but more can be added with the <a href="#MGL-OPT:@MGL-OPT-EXTENSION-A
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/optimize.lisp#L24" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-OPT:MINIMIZE%20FUNCTION" >minimize</a></span></span> <span class="arglist">
-optimizer gradient-source &amp;key (weights (list-segments gradient-source)) (dataset *infinitely-empty-dataset*)</span></span></p>
+optimizer gradient-source &amp;key (weights (<a href="#MGL-OPT:LIST-SEGMENTS%20FUNCTION" title="MGL-OPT:LIST-SEGMENTS FUNCTION">list-segments</a> gradient-source)) (dataset <a href="#MGL-DATASET:*INFINITELY-EMPTY-DATASET*%20VARIABLE" title="MGL-DATASET:*INFINITELY-EMPTY-DATASET* VARIABLE">*infinitely-empty-dataset*</a>)</span></span></p>
 
 <p>Minimize the value of the real valued function represented by
 <code>gradient-source</code> by updating some of its parameters in <code>weights</code> (a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a>
@@ -2470,7 +2470,7 @@ used.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/optimize.lisp#L178" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29" >reset-optimization-monitors</a></span></span> <span class="arglist">
-(optimizer iterative-optimizer) gradient-source</span></span></p>
+(optimizer <a href="#MGL-OPT:ITERATIVE-OPTIMIZER%20CLASS" title="MGL-OPT:ITERATIVE-OPTIMIZER CLASS">iterative-optimizer</a>) gradient-source</span></span></p>
 Log the counters of the monitors of <code>optimizer</code> and <code>gradient-source</code>
 and reset them.</li>
 </ul>
@@ -3087,7 +3087,7 @@ respect to some of its parameters.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/conjugate-gradient.lisp#L132" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CG:CG%20FUNCTION" >cg</a></span></span> <span class="arglist">
-fn w &amp;key (max-n-line-searches *default-max-n-line-searches*) (max-n-evaluations-per-line-search *default-max-n-evaluations-per-line-search*) (max-n-evaluations *default-max-n-evaluations*) (sig *default-sig*) (rho *default-rho*) (int *default-int*) (ext *default-ext*) (ratio *default-ratio*) spare-vectors</span></span></p>
+fn w &amp;key (max-n-line-searches <a href="#MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES* VARIABLE">*default-max-n-line-searches*</a>) (max-n-evaluations-per-line-search <a href="#MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH* VARIABLE">*default-max-n-evaluations-per-line-search*</a>) (max-n-evaluations <a href="#MGL-CG:*DEFAULT-MAX-N-EVALUATIONS*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-EVALUATIONS* VARIABLE">*default-max-n-evaluations*</a>) (sig <a href="#MGL-CG:*DEFAULT-SIG*%20VARIABLE" title="MGL-CG:*DEFAULT-SIG* VARIABLE">*default-sig*</a>) (rho <a href="#MGL-CG:*DEFAULT-RHO*%20VARIABLE" title="MGL-CG:*DEFAULT-RHO* VARIABLE">*default-rho*</a>) (int <a href="#MGL-CG:*DEFAULT-INT*%20VARIABLE" title="MGL-CG:*DEFAULT-INT* VARIABLE">*default-int*</a>) (ext <a href="#MGL-CG:*DEFAULT-EXT*%20VARIABLE" title="MGL-CG:*DEFAULT-EXT* VARIABLE">*default-ext*</a>) (ratio <a href="#MGL-CG:*DEFAULT-RATIO*%20VARIABLE" title="MGL-CG:*DEFAULT-RATIO* VARIABLE">*default-ratio*</a>) spare-vectors</span></span></p>
 
 <p><a href="#MGL-CG:CG-OPTIMIZER%20CLASS" title="MGL-CG:CG-OPTIMIZER CLASS"><code>cg-optimizer</code></a> passes each batch of data to this function with its
 <a href="#MGL-CG:CG-ARGS%20%28MGL-PAX:ACCESSOR%20MGL-CG:CG-OPTIMIZER%29" title="MGL-CG:CG-ARGS (MGL-PAX:ACCESSOR MGL-CG:CG-OPTIMIZER)"><code>cg-args</code></a> passed on.</p>
@@ -3485,7 +3485,7 @@ doesn't need to be a <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MA
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/optimize.lisp#L384" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#MGL-OPT:SEGMENT-WEIGHTS%20%28METHOD%20%28MGL-MAT:MAT%29%29" >segment-weights</a></span></span> <span class="arglist">
-(mat mat)</span></span></p>
+(mat <a href="mat-manual.html#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS">mat</a>)</span></span></p>
 When the segment is really a <code>mat</code>, then just return it.</li>
 </ul>
 
@@ -3947,7 +3947,7 @@ Finally, return the counters of <code>monitors</code>. This is built on top of
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/backprop.lisp#L1034" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION" >make-step-monitor-monitors</a></span></span> <span class="arglist">
-rnn &amp;key (counter-values-fn #'counter-raw-values) (make-counter #'make-step-monitor-monitor-counter)</span></span></p>
+rnn &amp;key (counter-values-fn #'<a href="#MGL-CORE:COUNTER-RAW-VALUES%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER-RAW-VALUES GENERIC-FUNCTION">counter-raw-values</a>) (make-counter #'<a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER GENERIC-FUNCTION">make-step-monitor-monitor-counter</a>)</span></span></p>
 
 <p>Return a list of monitors, one for every monitor in <a href="#MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" title="MGL-BP:STEP-MONITORS (MGL-PAX:ACCESSOR MGL-BP:RNN)"><code>step-monitors</code></a>
 of <code>rnn</code>. These monitors extract the results from their warp
@@ -4004,7 +4004,7 @@ recurrent one, see <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS"><code>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/backprop.lisp#L360" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#MGL-BP:BUILD-FNN%20MGL-PAX:MACRO" >build-fnn</a></span></span> <span class="arglist">
-(&amp;key fnn (class ''fnn) initargs max-n-stripes name) &amp;body clumps</span></span></p>
+(&amp;key fnn (class ''<a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS">fnn</a>) initargs max-n-stripes name) &amp;body clumps</span></span></p>
 
 <p>Syntactic sugar to assemble <code>fnn</code>s from <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a>s. Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm" title="LET* (MGL-PAX:CLHS MGL-PAX:MACRO)"><code>let*</code></a>, it is a
 sequence of bindings (of symbols to <code>clump</code>s). The names of the clumps
@@ -4604,7 +4604,7 @@ The default for <a href="#MGL-BP:CUDA-WINDOW-START-TIME%20%28MGL-PAX:ACCESSOR%20
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/backprop.lisp#L767" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#MGL-BP:BUILD-RNN%20MGL-PAX:MACRO" >build-rnn</a></span></span> <span class="arglist">
-(&amp;key rnn (class ''rnn) name initargs max-n-stripes (max-lag 1)) &amp;body body</span></span></p>
+(&amp;key rnn (class ''<a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a>) name initargs max-n-stripes (max-lag 1)) &amp;body body</span></span></p>
 Create an <code>rnn</code> with <code>max-n-stripes</code> and <code>max-lag</code> whose <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a> is <code>body</code>
 wrapped in a lambda. Bind symbol given as the <code>rnn</code> argument to the
 <code>rnn</code> object so that <code>body</code> can see it.</li>
@@ -4642,7 +4642,7 @@ It is 0 when the <code>rnn</code> is being unfolded for the first time.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/backprop.lisp#L573" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#MGL-CORE:SET-INPUT%20%28METHOD%20%28T%20MGL-BP:RNN%29%29" >set-input</a></span></span> <span class="arglist">
-instances (rnn rnn)</span></span></p>
+instances (rnn <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a>)</span></span></p>
 
 <p><code>rnn</code>s operate on batches of instances just like <a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>fnn</code></a>s. But the
 instances here are like datasets: sequences or samplers and they are
@@ -4689,7 +4689,7 @@ enable it for training, as it would make backprop impossible.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/backprop.lisp#L617" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-BP:WARPED-TIME%20FUNCTION" >warped-time</a></span></span> <span class="arglist">
-&amp;key (rnn *rnn*) (time (time-step :rnn rnn)) (lag 0)</span></span></p>
+&amp;key (rnn *rnn*) (time (<a href="#MGL-BP:TIME-STEP%20FUNCTION" title="MGL-BP:TIME-STEP FUNCTION">time-step</a> :rnn <a href="#MGL-BP:RNN%20CLASS" title="MGL-BP:RNN CLASS">rnn</a>)) (lag 0)</span></span></p>
 
 <p>Return the index of the <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a> in <a href="#MGL-BP:CLUMPS%20%28MGL-PAX:READER%20MGL-BP:BPN%29" title="MGL-BP:CLUMPS (MGL-PAX:READER MGL-BP:BPN)"><code>clumps</code></a> of <code>rnn</code> whose task it is to
 execute computation at <code>(- (time-step rnn) lag)</code>. This is normally
@@ -5064,7 +5064,7 @@ their corresponding input <code>y_j</code>.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/lumps.lisp#L505" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" >-&gt;activation</a></span></span> <span class="arglist">
-inputs &amp;key (name (gensym)) size peepholes (add-bias-p t)</span></span></p>
+inputs &amp;key (name (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gensym.htm" title="GENSYM (MGL-PAX:CLHS FUNCTION)">gensym</a>)) size peepholes (add-bias-p t)</span></span></p>
 
 <p>Create a subnetwork of class <a href="#MGL-BP:-%3EACTIVATION%20CLASS" title="MGL-BP:-&gt;ACTIVATION CLASS"><code>-&gt;activation</code></a> that computes the over
 activation from dense connection from lumps in <code>inputs</code>, and
@@ -5258,7 +5258,7 @@ persisted by <a href="#MGL-CORE:SAVE-STATE%20FUNCTION" title="MGL-CORE:SAVE-STAT
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/lumps.lisp#L967" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-BP:-%3EBATCH-NORMALIZED-ACTIVATION%20FUNCTION" >-&gt;batch-normalized-activation</a></span></span> <span class="arglist">
-inputs &amp;key (name (gensym)) size peepholes batch-size variance-adjustment population-decay</span></span></p>
+inputs &amp;key (name (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gensym.htm" title="GENSYM (MGL-PAX:CLHS FUNCTION)">gensym</a>)) size peepholes batch-size variance-adjustment population-decay</span></span></p>
 
 <p>A utility functions that creates and wraps an <code>-&gt;activation</code>(<a href="#MGL-BP:-%3EACTIVATION%20CLASS" title="MGL-BP:-&gt;ACTIVATION CLASS"><code>0</code></a> <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" title="MGL-BP:-&gt;ACTIVATION FUNCTION"><code>1</code></a>) in
 <a href="#MGL-BP:-%3EBATCH-NORMALIZED%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZED CLASS"><code>-&gt;batch-normalized</code></a> and with its <a href="#MGL-BP:BATCH-NORMALIZATION%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZED%29" title="MGL-BP:BATCH-NORMALIZATION (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZED)"><code>batch-normalization</code></a> the two weight
@@ -5978,7 +5978,7 @@ lumps are packaged into a subnetwork to reduce clutter.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl/blob/c3ed04a3fff175728f5af24f02a0ee2b0735e309/src/lumps.lisp#L2988" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-BP:-%3ELSTM%20FUNCTION" >-&gt;lstm</a></span></span> <span class="arglist">
-inputs &amp;key name cell-init output-init size (activation-fn '-&gt;activation) (gate-fn '-&gt;sigmoid) (input-fn '-&gt;tanh) (output-fn '-&gt;tanh) (peepholes t)</span></span></p>
+inputs &amp;key name cell-init output-init size (activation-fn '-&gt;activation(<a href="#MGL-BP:-%3EACTIVATION%20CLASS" title="MGL-BP:-&gt;ACTIVATION CLASS">0</a> <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" title="MGL-BP:-&gt;ACTIVATION FUNCTION">1</a>)) (gate-fn '<a href="#MGL-BP:-%3ESIGMOID%20CLASS" title="MGL-BP:-&gt;SIGMOID CLASS">-&gt;sigmoid</a>) (input-fn '<a href="#MGL-BP:-%3ETANH%20CLASS" title="MGL-BP:-&gt;TANH CLASS">-&gt;tanh</a>) (output-fn '<a href="#MGL-BP:-%3ETANH%20CLASS" title="MGL-BP:-&gt;TANH CLASS">-&gt;tanh</a>) (peepholes t)</span></span></p>
 
 <p>Create an LSTM layer consisting of input, forget, output gates with
 which input, cell state and output are scaled. Lots of lumps are
@@ -6440,7 +6440,7 @@ t</span></span></li>
 <li><p><a href="#MGL-COMMON:COST%20GENERIC-FUNCTION" title="MGL-COMMON:COST GENERIC-FUNCTION"><code>cost</code></a> [<code>mgl-common</code>] <em>(gf)</em> ↩ <em>t</em>: <a href="#MGL-BP:-%3ESOFTMAX-XE-LOSS%20CLASS" title="MGL-BP:-&gt;SOFTMAX-XE-LOSS CLASS"><code>-&gt;softmax-xe-loss</code></a> [<code>mgl-bp</code>]</p></li>
 <li><p><a href="#MGL-CORE:COUNT-FEATURES%20FUNCTION" title="MGL-CORE:COUNT-FEATURES FUNCTION"><code>count-features</code></a> [<code>mgl-core</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-CORE:COUNTER%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER GENERIC-FUNCTION"><code>counter</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>t</em>: <a href="#MGL-CORE:MONITOR%20CLASS" title="MGL-CORE:MONITOR CLASS"><code>monitor</code></a></p></li>
-<li><p><a href="#MGL-CORE:COUNTER-RAW-VALUES%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER-RAW-VALUES GENERIC-FUNCTION"><code>counter-raw-values</code></a> [<code>mgl-core</code>] <em>(gf)</em></p></li>
+<li><p><a href="#MGL-CORE:COUNTER-RAW-VALUES%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER-RAW-VALUES GENERIC-FUNCTION"><code>counter-raw-values</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITORS FUNCTION"><code>make-step-monitor-monitors</code></a> [<code>mgl-bp</code>]</p></li>
 <li><p><a href="#MGL-CORE:COUNTER-VALUES%20GENERIC-FUNCTION" title="MGL-CORE:COUNTER-VALUES GENERIC-FUNCTION"><code>counter-values</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>t</em>: <a href="#MGL-CORE:BASIC-COUNTER%20CLASS" title="MGL-CORE:BASIC-COUNTER CLASS"><code>basic-counter</code></a>, <a href="#MGL-CORE:RMSE-COUNTER%20CLASS" title="MGL-CORE:RMSE-COUNTER CLASS"><code>rmse-counter</code></a></p></li>
 <li><p><a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" title="MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"><code>cross-validate</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-RESAMPLE:BAG-CV%20FUNCTION" title="MGL-RESAMPLE:BAG-CV FUNCTION"><code>bag-cv</code></a>, <a href="#MGL-RESAMPLE:SPLIT-FOLD%2FCONT%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/CONT FUNCTION"><code>split-fold/cont</code></a>, <a href="#MGL-RESAMPLE:SPLIT-FOLD%2FMOD%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION"><code>split-fold/mod</code></a>, <a href="#MGL-RESAMPLE:SPLIT-STRATIFIED%20FUNCTION" title="MGL-RESAMPLE:SPLIT-STRATIFIED FUNCTION"><code>split-stratified</code></a></p></li>
 <li><p><a href="#MGL-CORE:DECODE%20GENERIC-FUNCTION" title="MGL-CORE:DECODE GENERIC-FUNCTION"><code>decode</code></a> [<code>mgl-core</code>] <em>(gf)</em></p>
@@ -6490,13 +6490,13 @@ t</span></span></li>
 <li><p><a href="#MGL-OPT:INITIALIZE-GRADIENT-SOURCE*%20GENERIC-FUNCTION" title="MGL-OPT:INITIALIZE-GRADIENT-SOURCE* GENERIC-FUNCTION"><code>initialize-gradient-source*</code></a> [<code>mgl-opt</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-OPT:MINIMIZE*%20GENERIC-FUNCTION" title="MGL-OPT:MINIMIZE* GENERIC-FUNCTION"><code>minimize*</code></a></p></li>
 <li><p><a href="#MGL-OPT:INITIALIZE-OPTIMIZER*%20GENERIC-FUNCTION" title="MGL-OPT:INITIALIZE-OPTIMIZER* GENERIC-FUNCTION"><code>initialize-optimizer*</code></a> [<code>mgl-opt</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-OPT:MINIMIZE*%20GENERIC-FUNCTION" title="MGL-OPT:MINIMIZE* GENERIC-FUNCTION"><code>minimize*</code></a>, <a href="#MGL-CG:SEGMENT-FILTER%20%28MGL-PAX:READER%20MGL-CG:CG-OPTIMIZER%29" title="MGL-CG:SEGMENT-FILTER (MGL-PAX:READER MGL-CG:CG-OPTIMIZER)"><code>segment-filter</code></a> [<code>mgl-cg</code>]</p></li>
 <li><p><a href="#MGL-CORE:INSTANCE-TO-EXECUTOR-PARAMETERS%20GENERIC-FUNCTION" title="MGL-CORE:INSTANCE-TO-EXECUTOR-PARAMETERS GENERIC-FUNCTION"><code>instance-to-executor-parameters</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>t</em>: <a href="#MGL-CORE:PARAMETERIZED-EXECUTOR-CACHE-MIXIN%20CLASS" title="MGL-CORE:PARAMETERIZED-EXECUTOR-CACHE-MIXIN CLASS"><code>parameterized-executor-cache-mixin</code></a></p></li>
-<li><p><a href="#MGL-CORE:LABEL-INDEX%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX GENERIC-FUNCTION"><code>label-index</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION"><code>label-index-distribution</code></a>, <a href="#MGL-CORE:LABEL-INDICES%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDICES GENERIC-FUNCTION"><code>label-indices</code></a>, <a href="#MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS FUNCTION"><code>make-classification-accuracy-monitors</code></a></p></li>
-<li><p><a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION"><code>label-index-distribution</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"><code>label-index-distributions</code></a>, <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS FUNCTION"><code>make-cross-entropy-monitors</code></a></p></li>
+<li><p><a href="#MGL-CORE:LABEL-INDEX%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX GENERIC-FUNCTION"><code>label-index</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION"><code>label-index-distribution</code></a>, <a href="#MGL-CORE:LABEL-INDICES%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDICES GENERIC-FUNCTION"><code>label-indices</code></a>, <a href="#MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS FUNCTION"><code>make-classification-accuracy-monitors</code></a>, <a href="#MGL-CORE:MAKE-LABEL-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-LABEL-MONITORS FUNCTION"><code>make-label-monitors</code></a></p></li>
+<li><p><a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTION%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTION GENERIC-FUNCTION"><code>label-index-distribution</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"><code>label-index-distributions</code></a>, <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS FUNCTION"><code>make-cross-entropy-monitors</code></a>, <a href="#MGL-CORE:MAKE-LABEL-MONITORS%20FUNCTION" title="MGL-CORE:MAKE-LABEL-MONITORS FUNCTION"><code>make-label-monitors</code></a></p></li>
 <li><p><a href="#MGL-CORE:LABEL-INDEX-DISTRIBUTIONS%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDEX-DISTRIBUTIONS GENERIC-FUNCTION"><code>label-index-distributions</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS*%20GENERIC-FUNCTION" title="MGL-CORE:MAKE-CROSS-ENTROPY-MONITORS* GENERIC-FUNCTION"><code>make-cross-entropy-monitors*</code></a></p></li>
 <li><p><a href="#MGL-CORE:LABEL-INDICES%20GENERIC-FUNCTION" title="MGL-CORE:LABEL-INDICES GENERIC-FUNCTION"><code>label-indices</code></a> [<code>mgl-core</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS*%20GENERIC-FUNCTION" title="MGL-CORE:MAKE-CLASSIFICATION-ACCURACY-MONITORS* GENERIC-FUNCTION"><code>make-classification-accuracy-monitors*</code></a></p></li>
 <li><p><a href="#MGL-BP:LAG%20FUNCTION" title="MGL-BP:LAG FUNCTION"><code>lag</code></a> [<code>mgl-bp</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-BP:MAX-LAG%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:MAX-LAG (MGL-PAX:READER MGL-BP:RNN)"><code>max-lag</code></a>, <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a></p></li>
 <li><p><a href="#MGL-DATASET:LIST-SAMPLES%20FUNCTION" title="MGL-DATASET:LIST-SAMPLES FUNCTION"><code>list-samples</code></a> [<code>mgl-dataset</code>] <em>(fn)</em></p></li>
-<li><p><a href="#MGL-OPT:LIST-SEGMENTS%20FUNCTION" title="MGL-OPT:LIST-SEGMENTS FUNCTION"><code>list-segments</code></a> [<code>mgl-opt</code>] <em>(fn)</em></p></li>
+<li><p><a href="#MGL-OPT:LIST-SEGMENTS%20FUNCTION" title="MGL-OPT:LIST-SEGMENTS FUNCTION"><code>list-segments</code></a> [<code>mgl-opt</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-OPT:MINIMIZE%20FUNCTION" title="MGL-OPT:MINIMIZE FUNCTION"><code>minimize</code></a></p></li>
 <li><p><a href="#MGL-CORE:LOAD-STATE%20FUNCTION" title="MGL-CORE:LOAD-STATE FUNCTION"><code>load-state</code></a> [<code>mgl-core</code>] <em>(fn)</em> ↩ <em>t</em>: <a href="#MGL-BP:-%3EBATCH-NORMALIZATION%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZATION CLASS"><code>-&gt;batch-normalization</code></a> [<code>mgl-bp</code>]</p></li>
 <li><p><a href="#MGL-CG:LOG-CG-BATCH-DONE%20GENERIC-FUNCTION" title="MGL-CG:LOG-CG-BATCH-DONE GENERIC-FUNCTION"><code>log-cg-batch-done</code></a> [<code>mgl-cg</code>] <em>(gf)</em></p></li>
 <li><p><a href="#MGL-LOG:LOG-MAT-ROOM%20FUNCTION" title="MGL-LOG:LOG-MAT-ROOM FUNCTION"><code>log-mat-room</code></a> [<code>mgl-log</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-OPT:REPORT-OPTIMIZATION-PARAMETERS%20GENERIC-FUNCTION" title="MGL-OPT:REPORT-OPTIMIZATION-PARAMETERS GENERIC-FUNCTION"><code>report-optimization-parameters</code></a> [<code>mgl-opt</code>]</p></li>
@@ -6521,7 +6521,7 @@ t</span></span></li>
 <li><p><a href="#MGL-NLP:MAKE-N-GRAM-MAPPEE%20FUNCTION" title="MGL-NLP:MAKE-N-GRAM-MAPPEE FUNCTION"><code>make-n-gram-mappee</code></a> [<code>mgl-nlp</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-DATASET:MAKE-RANDOM-SAMPLER%20FUNCTION" title="MGL-DATASET:MAKE-RANDOM-SAMPLER FUNCTION"><code>make-random-sampler</code></a> [<code>mgl-dataset</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-DATASET:MAKE-SEQUENCE-SAMPLER%20FUNCTION" title="MGL-DATASET:MAKE-SEQUENCE-SAMPLER FUNCTION"><code>make-sequence-sampler</code></a> [<code>mgl-dataset</code>] <em>(fn)</em></p></li>
-<li><p><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER GENERIC-FUNCTION"><code>make-step-monitor-monitor-counter</code></a> [<code>mgl-bp</code>] <em>(gf)</em></p></li>
+<li><p><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER GENERIC-FUNCTION"><code>make-step-monitor-monitor-counter</code></a> [<code>mgl-bp</code>] <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITORS FUNCTION"><code>make-step-monitor-monitors</code></a></p></li>
 <li><p><a href="#MGL-BP:MAKE-STEP-MONITOR-MONITORS%20FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITORS FUNCTION"><code>make-step-monitor-monitors</code></a> [<code>mgl-bp</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-CORE:MAP-BATCHES-FOR-MODEL%20FUNCTION" title="MGL-CORE:MAP-BATCHES-FOR-MODEL FUNCTION"><code>map-batches-for-model</code></a> [<code>mgl-core</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-CORE:DO-BATCHES-FOR-MODEL%20MGL-PAX:MACRO" title="MGL-CORE:DO-BATCHES-FOR-MODEL MGL-PAX:MACRO"><code>do-batches-for-model</code></a></p></li>
 <li><p><a href="#MGL-CORE:MAP-CONFUSION-MATRIX%20GENERIC-FUNCTION" title="MGL-CORE:MAP-CONFUSION-MATRIX GENERIC-FUNCTION"><code>map-confusion-matrix</code></a> [<code>mgl-core</code>] <em>(gf)</em></p></li>
@@ -6621,7 +6621,7 @@ t</span></span></li>
 <li><p><a href="#MGL-CORE:SET-MAX-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:SET-MAX-N-STRIPES GENERIC-FUNCTION"><code>set-max-n-stripes</code></a> [<code>mgl-core</code>] <em>(gf)</em></p></li>
 <li><p><a href="#MGL-OPT:SET-N-INSTANCES%20FUNCTION" title="MGL-OPT:SET-N-INSTANCES FUNCTION"><code>set-n-instances</code></a> [<code>mgl-opt</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-CORE:SET-N-STRIPES%20GENERIC-FUNCTION" title="MGL-CORE:SET-N-STRIPES GENERIC-FUNCTION"><code>set-n-stripes</code></a> [<code>mgl-core</code>] <em>(gf)</em></p></li>
-<li><p><a href="#MGL-RESAMPLE:SHUFFLE%20FUNCTION" title="MGL-RESAMPLE:SHUFFLE FUNCTION"><code>shuffle</code></a> [<code>mgl-resample</code>] <em>(fn)</em></p></li>
+<li><p><a href="#MGL-RESAMPLE:SHUFFLE%20FUNCTION" title="MGL-RESAMPLE:SHUFFLE FUNCTION"><code>shuffle</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-DATASET:MAKE-RANDOM-SAMPLER%20FUNCTION" title="MGL-DATASET:MAKE-RANDOM-SAMPLER FUNCTION"><code>make-random-sampler</code></a> [<code>mgl-dataset</code>]</p></li>
 <li><p><a href="#MGL-RESAMPLE:SHUFFLE%21%20FUNCTION" title="MGL-RESAMPLE:SHUFFLE! FUNCTION"><code>shuffle!</code></a> [<code>mgl-resample</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-COMMON:SIZE%20GENERIC-FUNCTION" title="MGL-COMMON:SIZE GENERIC-FUNCTION"><code>size</code></a> [<code>mgl-common</code>] <em>(gf)</em></p>
 
@@ -6632,7 +6632,7 @@ t</span></span></li>
 </ul></li>
 <li><p><a href="#MGL-CORE:SORT-CONFUSION-CLASSES%20GENERIC-FUNCTION" title="MGL-CORE:SORT-CONFUSION-CLASSES GENERIC-FUNCTION"><code>sort-confusion-classes</code></a> [<code>mgl-core</code>] <em>(gf)</em></p></li>
 <li><p><a href="#MGL-RESAMPLE:SPLIT-FOLD%2FCONT%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/CONT FUNCTION"><code>split-fold/cont</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" title="MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"><code>cross-validate</code></a></p></li>
-<li><p><a href="#MGL-RESAMPLE:SPLIT-FOLD%2FMOD%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION"><code>split-fold/mod</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" title="MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"><code>cross-validate</code></a></p></li>
+<li><p><a href="#MGL-RESAMPLE:SPLIT-FOLD%2FMOD%20FUNCTION" title="MGL-RESAMPLE:SPLIT-FOLD/MOD FUNCTION"><code>split-fold/mod</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-RESAMPLE:BAG-CV%20FUNCTION" title="MGL-RESAMPLE:BAG-CV FUNCTION"><code>bag-cv</code></a>, <a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" title="MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"><code>cross-validate</code></a></p></li>
 <li><p><a href="#MGL-RESAMPLE:SPLIT-STRATIFIED%20FUNCTION" title="MGL-RESAMPLE:SPLIT-STRATIFIED FUNCTION"><code>split-stratified</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-RESAMPLE:CROSS-VALIDATE%20FUNCTION" title="MGL-RESAMPLE:CROSS-VALIDATE FUNCTION"><code>cross-validate</code></a></p></li>
 <li><p><a href="#MGL-RESAMPLE:SPREAD-STRATA%20FUNCTION" title="MGL-RESAMPLE:SPREAD-STRATA FUNCTION"><code>spread-strata</code></a> [<code>mgl-resample</code>] <em>(fn)</em></p></li>
 <li><p><a href="#MGL-RESAMPLE:STRATIFY%20FUNCTION" title="MGL-RESAMPLE:STRATIFY FUNCTION"><code>stratify</code></a> [<code>mgl-resample</code>] <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-RESAMPLE:FRACTURE-STRATIFIED%20FUNCTION" title="MGL-RESAMPLE:FRACTURE-STRATIFIED FUNCTION"><code>fracture-stratified</code></a>, <a href="#MGL-RESAMPLE:SAMPLE-STRATIFIED%20FUNCTION" title="MGL-RESAMPLE:SAMPLE-STRATIFIED FUNCTION"><code>sample-stratified</code></a>, <a href="#MGL-RESAMPLE:SPREAD-STRATA%20FUNCTION" title="MGL-RESAMPLE:SPREAD-STRATA FUNCTION"><code>spread-strata</code></a></p></li>
@@ -6670,14 +6670,14 @@ t</span></span></li>
 
 <ul>
 <li><p><a href="#MGL-BP:*CUDA-WINDOW-START-TIME*%20VARIABLE" title="MGL-BP:*CUDA-WINDOW-START-TIME* VARIABLE"><code>*cuda-window-start-time*</code></a> [<code>mgl-bp</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-EXT*%20VARIABLE" title="MGL-CG:*DEFAULT-EXT* VARIABLE"><code>*default-ext*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-INT*%20VARIABLE" title="MGL-CG:*DEFAULT-INT* VARIABLE"><code>*default-int*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-MAX-N-EVALUATIONS*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-EVALUATIONS* VARIABLE"><code>*default-max-n-evaluations*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH* VARIABLE"><code>*default-max-n-evaluations-per-line-search*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES* VARIABLE"><code>*default-max-n-line-searches*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-RATIO*%20VARIABLE" title="MGL-CG:*DEFAULT-RATIO* VARIABLE"><code>*default-ratio*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-RHO*%20VARIABLE" title="MGL-CG:*DEFAULT-RHO* VARIABLE"><code>*default-rho*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
-<li><p><a href="#MGL-CG:*DEFAULT-SIG*%20VARIABLE" title="MGL-CG:*DEFAULT-SIG* VARIABLE"><code>*default-sig*</code></a> [<code>mgl-cg</code>] <em>(var)</em></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-EXT*%20VARIABLE" title="MGL-CG:*DEFAULT-EXT* VARIABLE"><code>*default-ext*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-INT*%20VARIABLE" title="MGL-CG:*DEFAULT-INT* VARIABLE"><code>*default-int*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-MAX-N-EVALUATIONS*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-EVALUATIONS* VARIABLE"><code>*default-max-n-evaluations*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-EVALUATIONS-PER-LINE-SEARCH* VARIABLE"><code>*default-max-n-evaluations-per-line-search*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES*%20VARIABLE" title="MGL-CG:*DEFAULT-MAX-N-LINE-SEARCHES* VARIABLE"><code>*default-max-n-line-searches*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-RATIO*%20VARIABLE" title="MGL-CG:*DEFAULT-RATIO* VARIABLE"><code>*default-ratio*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-RHO*%20VARIABLE" title="MGL-CG:*DEFAULT-RHO* VARIABLE"><code>*default-rho*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
+<li><p><a href="#MGL-CG:*DEFAULT-SIG*%20VARIABLE" title="MGL-CG:*DEFAULT-SIG* VARIABLE"><code>*default-sig*</code></a> [<code>mgl-cg</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-CG:CG%20FUNCTION" title="MGL-CG:CG FUNCTION"><code>cg</code></a></p></li>
 <li><p><a href="#MGL-DATASET:*INFINITELY-EMPTY-DATASET*%20VARIABLE" title="MGL-DATASET:*INFINITELY-EMPTY-DATASET* VARIABLE"><code>*infinitely-empty-dataset*</code></a> [<code>mgl-dataset</code>] <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-OPT:MINIMIZE%20FUNCTION" title="MGL-OPT:MINIMIZE FUNCTION"><code>minimize</code></a> [<code>mgl-opt</code>]</p></li>
 <li><p><a href="#MGL-LOG:*LOG-FILE*%20VARIABLE" title="MGL-LOG:*LOG-FILE* VARIABLE"><code>*log-file*</code></a> [<code>mgl-log</code>] <em>(var)</em></p></li>
 <li><p><a href="#MGL-LOG:*LOG-TIME*%20VARIABLE" title="MGL-LOG:*LOG-TIME* VARIABLE"><code>*log-time*</code></a> [<code>mgl-log</code>] <em>(var)</em></p></li>
@@ -6706,7 +6706,7 @@ t</span></span></li>
 <li><p>↩ <em>t</em>: <a href="#MGL-BP:-%3EBATCH-NORMALIZED%20CLASS" title="MGL-BP:-&gt;BATCH-NORMALIZED CLASS"><code>-&gt;batch-normalized</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-GD:ADAM-OPTIMIZER%20CLASS" title="MGL-GD:ADAM-OPTIMIZER CLASS"><code>adam-optimizer</code></a> [<code>mgl-gd</code>] <em>(class)</em> ↩ <em>t</em>: <a href="#MGL-GD:BATCH-GD-OPTIMIZER%20CLASS" title="MGL-GD:BATCH-GD-OPTIMIZER CLASS"><code>batch-gd-optimizer</code></a></p></li>
-<li><p><a href="#MGL-CORE:ATTRIBUTED%20CLASS" title="MGL-CORE:ATTRIBUTED CLASS"><code>attributed</code></a> [<code>mgl-core</code>] <em>(class)</em></p></li>
+<li><p><a href="#MGL-CORE:ATTRIBUTED%20CLASS" title="MGL-CORE:ATTRIBUTED CLASS"><code>attributed</code></a> [<code>mgl-core</code>] <em>(class)</em> ↩ <em>f</em>: <a href="#MGL-COMMON:NAME%20%28METHOD%20%28MGL-CORE:ATTRIBUTED%29%29" title="MGL-COMMON:NAME (METHOD (MGL-CORE:ATTRIBUTED))"><code>name</code></a> [<code>mgl-common</code>]</p></li>
 <li><p><a href="#MGL-NLP:BAG-OF-WORDS-ENCODER%20CLASS" title="MGL-NLP:BAG-OF-WORDS-ENCODER CLASS"><code>bag-of-words-encoder</code></a> [<code>mgl-nlp</code>] <em>(class)</em> ↩ <em>f</em>: <a href="#MGL-CORE:ENCODE%20GENERIC-FUNCTION" title="MGL-CORE:ENCODE GENERIC-FUNCTION"><code>encode</code></a> [<code>mgl-core</code>]</p></li>
 <li><p><a href="#MGL-CORE:BASIC-COUNTER%20CLASS" title="MGL-CORE:BASIC-COUNTER CLASS"><code>basic-counter</code></a> [<code>mgl-core</code>] <em>(class)</em></p>
 
@@ -6756,7 +6756,7 @@ t</span></span></li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#MGL-BP:@MGL-BP-OVERVIEW%20MGL-PAX:SECTION" title="Backprop Overview">Backprop Overview</a>, <a href="#MGL-BP:@MGL-BP-EXTENSION-API%20MGL-PAX:SECTION" title="Clump API">Clump API</a>, <a href="#MGL-BP:@MGL-FNN%20MGL-PAX:SECTION" title="Feed-Forward Nets">Feed-Forward Nets</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-CORE:SET-INPUT%20%28METHOD%20%28T%20MGL-BP:RNN%29%29" title="MGL-CORE:SET-INPUT (METHOD (T MGL-BP:RNN))"><code>set-input</code></a> [<code>mgl-core</code>]</p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-BP:BUILD-FNN%20MGL-PAX:MACRO" title="MGL-BP:BUILD-FNN MGL-PAX:MACRO"><code>build-fnn</code></a>, <a href="#MGL-CORE:SET-INPUT%20%28METHOD%20%28T%20MGL-BP:RNN%29%29" title="MGL-CORE:SET-INPUT (METHOD (T MGL-BP:RNN))"><code>set-input</code></a> [<code>mgl-core</code>]</p></li>
 <li><p>↩ <em>t</em>: <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>, <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-DATASET:FUNCTION-SAMPLER%20CLASS" title="MGL-DATASET:FUNCTION-SAMPLER CLASS"><code>function-sampler</code></a> [<code>mgl-dataset</code>] <em>(class)</em></p></li>
@@ -6772,7 +6772,7 @@ t</span></span></li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#MGL-GD:@MGL-GD-BATCH-GD-OPTIMIZER%20MGL-PAX:SECTION" title="Batch Based Optimizers">Batch Based Optimizers</a>, <a href="#MGL-CORE:@MGL-MONITORING%20MGL-PAX:SECTION" title="Monitoring">Monitoring</a>, <a href="#MGL-GD:@MGL-GD-SEGMENTED-GD-OPTIMIZER%20MGL-PAX:SECTION" title="Segmented GD Optimizer">Segmented GD Optimizer</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-OPT:SET-N-INSTANCES%20FUNCTION" title="MGL-OPT:SET-N-INSTANCES FUNCTION"><code>set-n-instances</code></a>, <a href="#MGL-OPT:TERMINATE-OPTIMIZATION-P%20FUNCTION" title="MGL-OPT:TERMINATE-OPTIMIZATION-P FUNCTION"><code>terminate-optimization-p</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-OPT:RESET-OPTIMIZATION-MONITORS%20%28METHOD%20%28MGL-OPT:ITERATIVE-OPTIMIZER%20T%29%29" title="MGL-OPT:RESET-OPTIMIZATION-MONITORS (METHOD (MGL-OPT:ITERATIVE-OPTIMIZER T))"><code>reset-optimization-monitors</code></a>, <a href="#MGL-OPT:SET-N-INSTANCES%20FUNCTION" title="MGL-OPT:SET-N-INSTANCES FUNCTION"><code>set-n-instances</code></a>, <a href="#MGL-OPT:TERMINATE-OPTIMIZATION-P%20FUNCTION" title="MGL-OPT:TERMINATE-OPTIMIZATION-P FUNCTION"><code>terminate-optimization-p</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-BP:-%3ELOSS%20CLASS" title="MGL-BP:-&gt;LOSS CLASS"><code>-&gt;loss</code></a> [<code>mgl-bp</code>] <em>(class)</em></p>
 
@@ -6817,7 +6817,7 @@ t</span></span></li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#MGL-BP:@MGL-BP-OVERVIEW%20MGL-PAX:SECTION" title="Backprop Overview">Backprop Overview</a>, <a href="#MGL-BP:@MGL-BP-EXTENSION-API%20MGL-PAX:SECTION" title="Clump API">Clump API</a>, <a href="#MGL-BP:@MGL-FNN%20MGL-PAX:SECTION" title="Feed-Forward Nets">Feed-Forward Nets</a>, <a href="#MGL-BP:@MGL-RNN-TIME-WARP%20MGL-PAX:SECTION" title="Time Warp">Time Warp</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-BP:BATCH-NORMALIZATION%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZED%29" title="MGL-BP:BATCH-NORMALIZATION (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZED)"><code>batch-normalization</code></a>, <a href="#MGL-BP:CUDA-WINDOW-START-TIME%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" title="MGL-BP:CUDA-WINDOW-START-TIME (MGL-PAX:ACCESSOR MGL-BP:RNN)"><code>cuda-window-start-time</code></a>, <a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER GENERIC-FUNCTION"><code>make-step-monitor-monitor-counter</code></a>, <a href="#MGL-BP:MAX-LAG%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:MAX-LAG (MGL-PAX:READER MGL-BP:RNN)"><code>max-lag</code></a>, <a href="#MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" title="MGL-BP:STEP-MONITORS (MGL-PAX:ACCESSOR MGL-BP:RNN)"><code>step-monitors</code></a>, <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-BP:BATCH-NORMALIZATION%20%28MGL-PAX:READER%20MGL-BP:-%3EBATCH-NORMALIZED%29" title="MGL-BP:BATCH-NORMALIZATION (MGL-PAX:READER MGL-BP:-&gt;BATCH-NORMALIZED)"><code>batch-normalization</code></a>, <a href="#MGL-BP:BUILD-RNN%20MGL-PAX:MACRO" title="MGL-BP:BUILD-RNN MGL-PAX:MACRO"><code>build-rnn</code></a>, <a href="#MGL-BP:CUDA-WINDOW-START-TIME%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" title="MGL-BP:CUDA-WINDOW-START-TIME (MGL-PAX:ACCESSOR MGL-BP:RNN)"><code>cuda-window-start-time</code></a>, <a href="#MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER%20GENERIC-FUNCTION" title="MGL-BP:MAKE-STEP-MONITOR-MONITOR-COUNTER GENERIC-FUNCTION"><code>make-step-monitor-monitor-counter</code></a>, <a href="#MGL-BP:MAX-LAG%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:MAX-LAG (MGL-PAX:READER MGL-BP:RNN)"><code>max-lag</code></a>, <a href="#MGL-CORE:SET-INPUT%20%28METHOD%20%28T%20MGL-BP:RNN%29%29" title="MGL-CORE:SET-INPUT (METHOD (T MGL-BP:RNN))"><code>set-input</code></a> [<code>mgl-core</code>], <a href="#MGL-BP:STEP-MONITORS%20%28MGL-PAX:ACCESSOR%20MGL-BP:RNN%29" title="MGL-BP:STEP-MONITORS (MGL-PAX:ACCESSOR MGL-BP:RNN)"><code>step-monitors</code></a>, <a href="#MGL-BP:UNFOLDER%20%28MGL-PAX:READER%20MGL-BP:RNN%29" title="MGL-BP:UNFOLDER (MGL-PAX:READER MGL-BP:RNN)"><code>unfolder</code></a>, <a href="#MGL-BP:WARPED-TIME%20FUNCTION" title="MGL-BP:WARPED-TIME FUNCTION"><code>warped-time</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#MGL-BP:BPN%20CLASS" title="MGL-BP:BPN CLASS"><code>bpn</code></a>, <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a>, <a href="#MGL-BP:FNN%20CLASS" title="MGL-BP:FNN CLASS"><code>fnn</code></a>, <a href="#MGL-BP:-%3ESEQ-BARRIER%20CLASS" title="MGL-BP:-&gt;SEQ-BARRIER CLASS"><code>-&gt;seq-barrier</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-BP:-%3ESAMPLE-BINARY%20CLASS" title="MGL-BP:-&gt;SAMPLE-BINARY CLASS"><code>-&gt;sample-binary</code></a> [<code>mgl-bp</code>] <em>(class)</em></p></li>
@@ -6829,7 +6829,7 @@ t</span></span></li>
 <li><p><a href="#MGL-BP:-%3ESIGMOID%20CLASS" title="MGL-BP:-&gt;SIGMOID CLASS"><code>-&gt;sigmoid</code></a> [<code>mgl-bp</code>] <em>(class)</em></p>
 
 <ul>
-<li><p>↩ <em>f</em>: <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" title="MGL-BP:-&gt;ACTIVATION FUNCTION"><code>-&gt;activation</code></a>, <a href="#MGL-BP:BACKWARD%20GENERIC-FUNCTION" title="MGL-BP:BACKWARD GENERIC-FUNCTION"><code>backward</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" title="MGL-BP:-&gt;ACTIVATION FUNCTION"><code>-&gt;activation</code></a>, <a href="#MGL-BP:BACKWARD%20GENERIC-FUNCTION" title="MGL-BP:BACKWARD GENERIC-FUNCTION"><code>backward</code></a>, <a href="#MGL-BP:-%3ELSTM%20FUNCTION" title="MGL-BP:-&gt;LSTM FUNCTION"><code>-&gt;lstm</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-BP:-%3ESIN%20CLASS" title="MGL-BP:-&gt;SIN CLASS"><code>-&gt;sin</code></a> [<code>mgl-bp</code>] <em>(class)</em></p></li>
@@ -6839,7 +6839,7 @@ t</span></span></li>
 <li><p><a href="#MGL-BP:-%3ETANH%20CLASS" title="MGL-BP:-&gt;TANH CLASS"><code>-&gt;tanh</code></a> [<code>mgl-bp</code>] <em>(class)</em></p>
 
 <ul>
-<li><p>↩ <em>f</em>: <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" title="MGL-BP:-&gt;ACTIVATION FUNCTION"><code>-&gt;activation</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-BP:-%3EACTIVATION%20FUNCTION" title="MGL-BP:-&gt;ACTIVATION FUNCTION"><code>-&gt;activation</code></a>, <a href="#MGL-BP:-%3ELSTM%20FUNCTION" title="MGL-BP:-&gt;LSTM FUNCTION"><code>-&gt;lstm</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#MGL-BP:CLUMP%20CLASS" title="MGL-BP:CLUMP CLASS"><code>clump</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-BP:-%3EV*M%20CLASS" title="MGL-BP:-&gt;V*M CLASS"><code>-&gt;v*m</code></a> [<code>mgl-bp</code>] <em>(class)</em></p>
@@ -7009,7 +7009,7 @@ t</span></span></li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

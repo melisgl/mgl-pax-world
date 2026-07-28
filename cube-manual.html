@@ -508,7 +508,7 @@ link and <code>m-.</code> to) <a href="mat-manual.html#MGL-MAT:BACKING-ARRAY%20M
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cube.lisp#L420" title="View definition">[method]</a></span> <span class="dref-name"> <a href="#MGL-CUBE:CALL-WITH-FACET*%20%28METHOD%20%28MGL-CUBE:CUBE%20T%20T%20T%29%29" >call-with-facet*</a></span></span> <span class="arglist">
-(cube cube) facet-name direction fn</span></span></p>
+(cube <a href="#MGL-CUBE:CUBE%20CLASS" title="MGL-CUBE:CUBE CLASS">cube</a>) facet-name direction fn</span></span></p>
 The default implementation of <code>call-with-facet*</code> is defined in terms
 of the <a href="#MGL-CUBE:WATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:WATCH-FACET GENERIC-FUNCTION"><code>watch-facet</code></a> and the <a href="#MGL-CUBE:UNWATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:UNWATCH-FACET GENERIC-FUNCTION"><code>unwatch-facet</code></a> generic functions. These
 can be considered part of the <a href="#MGL-CUBE:@CUBE-FACET-EXTENSION-API%20MGL-PAX:SECTION" title="Facet Extension API">Facet Extension API</a>.</li>
@@ -710,7 +710,7 @@ the thread in which they were created) are destroyed.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cube.lisp#L717" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-CUBE:COUNT-BARRED-FACETS%20FUNCTION" >count-barred-facets</a></span></span> <span class="arglist">
-facet-name &amp;key (type 'cube)</span></span></p>
+facet-name &amp;key (type '<a href="#MGL-CUBE:CUBE%20CLASS" title="MGL-CUBE:CUBE CLASS">cube</a>)</span></span></p>
 Count facets with <code>facet-name</code> of cubes of <code>type</code> which will be
 destroyed by a facet barrier.</li>
 </ul>
@@ -875,7 +875,7 @@ destroyed by a facet barrier.</li>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#MGL-CUBE:@CUBE-BASICS%20MGL-PAX:SECTION" title="Basics">Basics</a>, <a href="#MGL-CUBE:@CUBE-INTRODUCTION%20MGL-PAX:SECTION" title="Introduction">Introduction</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-CUBE:REMOVE-FACET-REFERENCE%20FUNCTION" title="MGL-CUBE:REMOVE-FACET-REFERENCE FUNCTION"><code>remove-facet-reference</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-CUBE:CALL-WITH-FACET*%20%28METHOD%20%28MGL-CUBE:CUBE%20T%20T%20T%29%29" title="MGL-CUBE:CALL-WITH-FACET* (METHOD (MGL-CUBE:CUBE T T T))"><code>call-with-facet*</code></a>, <a href="#MGL-CUBE:COUNT-BARRED-FACETS%20FUNCTION" title="MGL-CUBE:COUNT-BARRED-FACETS FUNCTION"><code>count-barred-facets</code></a>, <a href="#MGL-CUBE:REMOVE-FACET-REFERENCE%20FUNCTION" title="MGL-CUBE:REMOVE-FACET-REFERENCE FUNCTION"><code>remove-facet-reference</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-CUBE:DIRECTION%20TYPE" title="MGL-CUBE:DIRECTION TYPE"><code>direction</code></a> <em>(type)</em> ↩ <em>f</em>: <a href="#MGL-CUBE:FACET-UP-TO-DATE-P*%20GENERIC-FUNCTION" title="MGL-CUBE:FACET-UP-TO-DATE-P* GENERIC-FUNCTION"><code>facet-up-to-date-p*</code></a>, <a href="#MGL-CUBE:SYNCHRONIZATION%20%28MGL-PAX:ACCESSOR%20MGL-CUBE:CUBE%29" title="MGL-CUBE:SYNCHRONIZATION (MGL-PAX:ACCESSOR MGL-CUBE:CUBE)"><code>synchronization</code></a>, <a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a></p></li>
 <li><p><a href="#MGL-CUBE:FACET%20STRUCTURE" title="MGL-CUBE:FACET STRUCTURE"><code>facet</code></a> <em>(structure)</em></p>
@@ -904,7 +904,7 @@ destroyed by a facet barrier.</li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

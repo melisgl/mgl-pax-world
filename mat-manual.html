@@ -376,7 +376,7 @@ is the number of trailing invisible elements.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L302" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" >make-mat</a></span></span> <span class="arglist">
-dimensions &amp;rest args &amp;key (ctype *default-mat-ctype*) (displacement 0) max-size initial-element initial-contents (synchronization *default-synchronization*) displaced-to (cuda-enabled *default-mat-cuda-enabled*)</span></span></p>
+dimensions &amp;rest args &amp;key (ctype <a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE">*default-mat-ctype*</a>) (displacement 0) max-size initial-element initial-contents (synchronization <a href="cube-manual.html#MGL-CUBE:*DEFAULT-SYNCHRONIZATION*%20VARIABLE" title="MGL-CUBE:*DEFAULT-SYNCHRONIZATION* VARIABLE">*default-synchronization*</a>) displaced-to (cuda-enabled <a href="#MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* VARIABLE">*default-mat-cuda-enabled*</a>)</span></span></p>
 
 <p>Return a new <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> object. If <code>initial-contents</code> is given then the
 matrix contents are initialized with <a href="#MGL-MAT:REPLACE%21%20FUNCTION" title="MGL-MAT:REPLACE! FUNCTION"><code>replace!</code></a>. See class <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> for the
@@ -397,7 +397,7 @@ and <code>initial-contents</code> must not be supplied together with
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L327" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:ARRAY-TO-MAT%20FUNCTION" >array-to-mat</a></span></span> <span class="arglist">
-array &amp;key ctype (synchronization *default-synchronization*)</span></span></p>
+array &amp;key ctype (synchronization <a href="cube-manual.html#MGL-CUBE:*DEFAULT-SYNCHRONIZATION*%20VARIABLE" title="MGL-CUBE:*DEFAULT-SYNCHRONIZATION* VARIABLE">*default-synchronization*</a>)</span></span></p>
 
 <p>Create a <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> that's equivalent to <code>array</code>. Displacement of the
 created array will be 0 and the size will be equal to
@@ -511,7 +511,7 @@ or <code>:double</code>.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/util.lisp#L196" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:COERCE-TO-CTYPE%20FUNCTION" >coerce-to-ctype</a></span></span> <span class="arglist">
-x &amp;key (ctype *default-mat-ctype*)</span></span></p>
+x &amp;key (ctype <a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE">*default-mat-ctype*</a>)</span></span></p>
 Coerce the scalar <code>x</code> to the lisp type corresponding to <code>ctype</code>.</li>
 </ul>
 
@@ -763,7 +763,7 @@ supported. All dimensions except for <code>axis</code> must be the same for all
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L767" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:STACK%20FUNCTION" >stack</a></span></span> <span class="arglist">
-axis mats &amp;key (ctype *default-mat-ctype*)</span></span></p>
+axis mats &amp;key (ctype <a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE">*default-mat-ctype*</a>)</span></span></p>
 
 <p>Like <a href="#MGL-MAT:STACK%21%20FUNCTION" title="MGL-MAT:STACK! FUNCTION"><code>stack!</code></a> but return a new <a href="#MGL-MAT:MAT%20CLASS" title="MGL-MAT:MAT CLASS"><code>mat</code></a> of <code>ctype</code>.</p>
 
@@ -801,7 +801,7 @@ particularly efficient but at least it's safe.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L808" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#MGL-MAT:WITH-THREAD-CACHED-MAT%20MGL-PAX:MACRO" >with-thread-cached-mat</a></span></span> <span class="arglist">
-(var dimensions &amp;rest args &amp;key (place :scratch) (ctype '*default-mat-ctype*) (displacement 0) max-size (initial-element 0) initial-contents) &amp;body body</span></span></p>
+(var dimensions &amp;rest args &amp;key (place :scratch) (ctype '<a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE">*default-mat-ctype*</a>) (displacement 0) max-size (initial-element 0) initial-contents) &amp;body body</span></span></p>
 
 <p>Bind <code>var</code> to a matrix of <code>dimensions</code>, <code>ctype</code>, etc. Cache this matrix,
 and possibly reuse it later by reshaping it. When <code>body</code> exits the
@@ -839,7 +839,7 @@ specs &amp;body body</span></span></p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L867" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#MGL-MAT:WITH-ONES%20MGL-PAX:MACRO" >with-ones</a></span></span> <span class="arglist">
-(var dimensions &amp;key (ctype '*default-mat-ctype*) (place :ones)) &amp;body body</span></span></p>
+(var dimensions &amp;key (ctype '<a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE">*default-mat-ctype*</a>) (place :ones)) &amp;body body</span></span></p>
 Bind <code>var</code> to a matrix of <code>dimensions</code> whose every element is 1. The
 matrix is cached for efficiency.</li>
 </ul>
@@ -862,7 +862,7 @@ initialized and enabled (see <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1476" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:ASUM%20FUNCTION" >asum</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x)) (incx 1)</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X)) (incx 1)</span></span></p>
 Return the l1 norm of <code>x</code>, that is, sum of the absolute values of its
 elements.</li>
 </ul>
@@ -872,7 +872,7 @@ elements.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1484" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:AXPY%21%20FUNCTION" >axpy!</a></span></span> <span class="arglist">
-alpha x y &amp;key (n (mat-size x)) (incx 1) (incy 1)</span></span></p>
+alpha x y &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X)) (incx 1) (incy 1)</span></span></p>
 Set <code>y</code> to <code>alpha</code> * <code>x</code> + <code>y</code>. Return <code>y</code>.</li>
 </ul>
 
@@ -881,7 +881,7 @@ Set <code>y</code> to <code>alpha</code> * <code>x</code> + <code>y</code>. Retu
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1493" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:COPY%21%20FUNCTION" >copy!</a></span></span> <span class="arglist">
-x y &amp;key (n (mat-size x)) (incx 1) (incy 1)</span></span></p>
+x y &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X)) (incx 1) (incy 1)</span></span></p>
 Copy <code>x</code> into <code>y</code>. Return <code>y</code>.</li>
 </ul>
 
@@ -890,7 +890,7 @@ Copy <code>x</code> into <code>y</code>. Return <code>y</code>.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1502" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#CL-CUDA.LANG.BUILT-IN:DOT%20FUNCTION" >dot</a></span></span> <span class="arglist">
-x y &amp;key (n (mat-size x)) (incx 1) (incy 1)</span></span></p>
+x y &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X)) (incx 1) (incy 1)</span></span></p>
 Return the dot product of <code>x</code> and <code>y</code>.</li>
 </ul>
 
@@ -899,7 +899,7 @@ Return the dot product of <code>x</code> and <code>y</code>.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1510" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:NRM2%20FUNCTION" >nrm2</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x)) (incx 1)</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X)) (incx 1)</span></span></p>
 Return the l2 norm of <code>x</code>, which is the square root of the sum of the
 squares of its elements.</li>
 </ul>
@@ -909,7 +909,7 @@ squares of its elements.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1518" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:SCAL%21%20FUNCTION" >scal!</a></span></span> <span class="arglist">
-alpha x &amp;key (n (mat-size x)) (incx 1)</span></span></p>
+alpha x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X)) (incx 1)</span></span></p>
 Set <code>x</code> to <code>alpha</code> * <code>x</code>. Return <code>x</code>.</li>
 </ul>
 
@@ -963,7 +963,7 @@ M --A--+  -C++
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L963" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.SQUARE%21%20FUNCTION" >.square!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Set <code>x</code> to its elementwise square. Return <code>x</code>.</li>
 </ul>
 
@@ -972,7 +972,7 @@ Set <code>x</code> to its elementwise square. Return <code>x</code>.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L968" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.SQRT%21%20FUNCTION" >.sqrt!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Set <code>x</code> to its elementwise square root. Return <code>x</code>.</li>
 </ul>
 
@@ -981,7 +981,7 @@ Set <code>x</code> to its elementwise square root. Return <code>x</code>.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L973" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.LOG%21%20FUNCTION" >.log!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Set <code>x</code> to its elementwise natural logarithm. Return <code>x</code>.</li>
 </ul>
 
@@ -990,7 +990,7 @@ Set <code>x</code> to its elementwise natural logarithm. Return <code>x</code>.<
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L978" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.EXP%21%20FUNCTION" >.exp!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm" title="EXP (MGL-PAX:CLHS FUNCTION)"><code>exp</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1012,7 +1012,7 @@ CUDA's pow() returns NaNs instead of complex numbers.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L983" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.INV%21%20FUNCTION" >.inv!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Set <code>x</code> to its elementwise inverse <code>(/ 1 x)</code>. Return <code>x</code>.</li>
 </ul>
 
@@ -1021,7 +1021,7 @@ Set <code>x</code> to its elementwise inverse <code>(/ 1 x)</code>. Return <code
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L988" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.LOGISTIC%21%20FUNCTION" >.logistic!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Destructively apply the logistic function to <code>x</code> in an elementwise
 manner. Return <code>x</code>.</li>
 </ul>
@@ -1112,7 +1112,7 @@ positive numbers respectively) of <code>a</code> times <code>alpha</code> to <co
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1296" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:FILL%21%20FUNCTION" >fill!</a></span></span> <span class="arglist">
-alpha x &amp;key (n (mat-size x))</span></span></p>
+alpha x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Fill matrix <code>x</code> with <code>alpha</code>. Return <code>x</code>.</li>
 </ul>
 
@@ -1133,7 +1133,7 @@ is 1 then rows are summed.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1344" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:SCALE-ROWS%21%20FUNCTION" >scale-rows!</a></span></span> <span class="arglist">
-scales a &amp;key (result a)</span></span></p>
+scales a &amp;key (result A)</span></span></p>
 Set <code>result</code> to <code>diag(scales)*a</code> and return it. <code>a</code> is an <code>MxN</code>
 matrix, <code>scales</code> is treated as a length <code>m</code> vector.</li>
 </ul>
@@ -1143,7 +1143,7 @@ matrix, <code>scales</code> is treated as a length <code>m</code> vector.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1387" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:SCALE-COLUMNS%21%20FUNCTION" >scale-columns!</a></span></span> <span class="arglist">
-scales a &amp;key (result a)</span></span></p>
+scales a &amp;key (result A)</span></span></p>
 Set <code>result</code> to <code>a*diag(scales)</code> and return it. <code>a</code> is an <code>MxN</code>
 matrix, <code>scales</code> is treated as a length <code>n</code> vector.</li>
 </ul>
@@ -1153,7 +1153,7 @@ matrix, <code>scales</code> is treated as a length <code>n</code> vector.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1429" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.SIN%21%20FUNCTION" >.sin!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="SIN (MGL-PAX:CLHS FUNCTION)"><code>sin</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1162,7 +1162,7 @@ Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1434" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.COS%21%20FUNCTION" >.cos!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="COS (MGL-PAX:CLHS FUNCTION)"><code>cos</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1171,7 +1171,7 @@ Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1439" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.TAN%21%20FUNCTION" >.tan!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm" title="TAN (MGL-PAX:CLHS FUNCTION)"><code>tan</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1180,7 +1180,7 @@ Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1444" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.SINH%21%20FUNCTION" >.sinh!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="SINH (MGL-PAX:CLHS FUNCTION)"><code>sinh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1189,7 +1189,7 @@ Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1449" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.COSH%21%20FUNCTION" >.cosh!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="COSH (MGL-PAX:CLHS FUNCTION)"><code>cosh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1198,7 +1198,7 @@ Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1454" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:.TANH%21%20FUNCTION" >.tanh!</a></span></span> <span class="arglist">
-x &amp;key (n (mat-size x))</span></span></p>
+x &amp;key (n (<a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)">mat-size</a> X))</span></span></p>
 Apply <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm" title="TANH (MGL-PAX:CLHS FUNCTION)"><code>tanh</code></a> elementwise to <code>x</code> in a destructive manner. Return <code>x</code>.</li>
 </ul>
 
@@ -1329,7 +1329,7 @@ Return the first element of <code>a</code>. <code>a</code> must be of size 1.</l
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L1643" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:SCALAR-AS-MAT%20FUNCTION" >scalar-as-mat</a></span></span> <span class="arglist">
-x &amp;key (ctype (lisp-&gt;ctype (type-of x)))</span></span></p>
+x &amp;key (ctype (lisp-&gt;ctype (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_of.htm" title="TYPE-OF (MGL-PAX:CLHS FUNCTION)">type-of</a> X)))</span></span></p>
 Return a matrix of one dimension and one element: <code>x</code>. <code>ctype</code>, the
 type of the matrix, defaults to the ctype corresponding to the type
 of <code>x</code>.</li>
@@ -1608,7 +1608,7 @@ used.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/mat.lisp#L2049" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:MAT-ROOM%20FUNCTION" >mat-room</a></span></span> <span class="arglist">
-&amp;key (stream *standard-output*) (verbose t)</span></span></p>
+&amp;key (stream <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*STANDARD-OUTPUT* (MGL-PAX:CLHS VARIABLE)">*standard-output*</a>) (verbose t)</span></span></p>
 Calls <a href="#MGL-MAT:FOREIGN-ROOM%20FUNCTION" title="MGL-MAT:FOREIGN-ROOM FUNCTION"><code>foreign-room</code></a> and <a href="#MGL-MAT:CUDA-ROOM%20FUNCTION" title="MGL-MAT:CUDA-ROOM FUNCTION"><code>cuda-room</code></a>.</li>
 </ul>
 
@@ -1846,7 +1846,7 @@ SBCL gencgc platforms.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/foreign.lisp#L23" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:FOREIGN-ROOM%20FUNCTION" >foreign-room</a></span></span> <span class="arglist">
-&amp;key (stream *standard-output*) (verbose t)</span></span></p>
+&amp;key (stream <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*STANDARD-OUTPUT* (MGL-PAX:CLHS VARIABLE)">*standard-output*</a>) (verbose t)</span></span></p>
 
 <p>Print a summary of foreign memory usage to <code>stream</code>. If <code>verbose</code>, make
 the output human easily readable, else try to present it in a very
@@ -1882,7 +1882,7 @@ thread or a device with <code>device-id</code> is available.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cuda-late.lisp#L115" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" >with-cuda*</a></span></span> <span class="arglist">
-(&amp;key (enabled '*cuda-enabled*) (device-id '*cuda-default-device-id*) (random-seed '*cuda-default-random-seed*) (n-random-states '*cuda-default-n-random-states*) n-pool-bytes) &amp;body body</span></span></p>
+(&amp;key (enabled '<a href="#MGL-MAT:*CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*CUDA-ENABLED* VARIABLE">*cuda-enabled*</a>) (device-id '<a href="#MGL-MAT:*CUDA-DEFAULT-DEVICE-ID*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-DEVICE-ID* VARIABLE">*cuda-default-device-id*</a>) (random-seed '<a href="#MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED* VARIABLE">*cuda-default-random-seed*</a>) (n-random-states '<a href="#MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES* VARIABLE">*cuda-default-n-random-states*</a>) n-pool-bytes) &amp;body body</span></span></p>
 
 <p>Initializes CUDA with with all bells and whistles before <code>body</code> and
 deinitializes it after. Simply wrapping <code>with-cuda*</code> around a piece
@@ -1908,7 +1908,7 @@ Else - that is, if CUDA is not available, <code>body</code> is simply executed.<
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cuda-late.lisp#L73" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CALL-WITH-CUDA%20FUNCTION" >call-with-cuda</a></span></span> <span class="arglist">
-fn &amp;key ((:enabled *cuda-enabled*) *cuda-enabled*) (device-id *cuda-default-device-id*) (random-seed *cuda-default-random-seed*) (n-random-states *cuda-default-n-random-states*) n-pool-bytes</span></span></p>
+fn &amp;key ((:enabled *cuda-enabled*) *cuda-enabled*) (device-id <a href="#MGL-MAT:*CUDA-DEFAULT-DEVICE-ID*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-DEVICE-ID* VARIABLE">*cuda-default-device-id*</a>) (random-seed <a href="#MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED* VARIABLE">*cuda-default-random-seed*</a>) (n-random-states <a href="#MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES* VARIABLE">*cuda-default-n-random-states*</a>) n-pool-bytes</span></span></p>
 Like <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a>, but takes a no argument function instead of the
 macro's <code>body</code>.</li>
 </ul>
@@ -2033,7 +2033,7 @@ limits being reached), then <code>cuda-out-of-memory</code> is signalled.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cuda-late.lisp#L19" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CUDA-ROOM%20FUNCTION" >cuda-room</a></span></span> <span class="arglist">
-&amp;key (stream *standard-output*) (verbose t)</span></span></p>
+&amp;key (stream <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm" title="*STANDARD-OUTPUT* (MGL-PAX:CLHS VARIABLE)">*standard-output*</a>) (verbose t)</span></span></p>
 
 <p>When CUDA is in use (see <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a>), print a summary of memory
 usage in the current CUDA context to <code>stream</code>. If <code>verbose</code>, make the
@@ -2062,7 +2062,7 @@ to do the copying concurrently with computation.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cuda-early.lisp#L210" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#MGL-MAT:WITH-SYNCING-CUDA-FACETS%20MGL-PAX:MACRO" >with-syncing-cuda-facets</a></span></span> <span class="arglist">
-(mats-to-cuda mats-to-cuda-host &amp;key (safep '*syncing-cuda-facets-safe-p*)) &amp;body body</span></span></p>
+(mats-to-cuda mats-to-cuda-host &amp;key (safep '<a href="#MGL-MAT:*SYNCING-CUDA-FACETS-SAFE-P*%20VARIABLE" title="MGL-MAT:*SYNCING-CUDA-FACETS-SAFE-P* VARIABLE">*syncing-cuda-facets-safe-p*</a>)) &amp;body body</span></span></p>
 
 <p>Update CUDA facets in a possibly asynchronous way while <code>body</code>
 executes. Behind the scenes, a separate CUDA stream is used to copy
@@ -2379,7 +2379,7 @@ handle</span></span></li>
 
 <ul>
 <li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cublas.lisp#L83" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CUBLAS-DESTROY%20FUNCTION" >cublas-destroy</a></span></span> <span class="arglist">
-&amp;key (handle *cublas-handle*)</span></span></li>
+&amp;key (handle <a href="#MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE" title="MGL-MAT:*CUBLAS-HANDLE* VARIABLE">*cublas-handle*</a>)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3AWITH-CUBLAS-HANDLE-20MGL-PAX-3AMACRO-29"></a>
@@ -2395,7 +2395,7 @@ nil &amp;body body</span></span></li>
 
 <ul>
 <li><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/a88c723260a56960edcb065fbc0549e48da4f0f3/src/cublas.lisp#L94" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CUBLAS-GET-VERSION%20FUNCTION" >cublas-get-version</a></span></span> <span class="arglist">
-version &amp;key (handle *cublas-handle*)</span></span></li>
+version &amp;key (handle <a href="#MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE" title="MGL-MAT:*CUBLAS-HANDLE* VARIABLE">*cublas-handle*</a>)</span></span></li>
 </ul>
 
 <p><a id="x-28MGL-MAT-3A-40MAT-CURAND-20MGL-PAX-3ASECTION-29"></a>
@@ -2615,20 +2615,20 @@ instead.</p>
 <p><div class="pax-index"></p>
 
 <ul>
-<li><p><a href="#MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE" title="MGL-MAT:*CUBLAS-HANDLE* VARIABLE"><code>*cublas-handle*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#MGL-MAT:*CUDA-DEFAULT-DEVICE-ID*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-DEVICE-ID* VARIABLE"><code>*cuda-default-device-id*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES* VARIABLE"><code>*cuda-default-n-random-states*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED* VARIABLE"><code>*cuda-default-random-seed*</code></a> <em>(var)</em></p></li>
+<li><p><a href="#MGL-MAT:*CUBLAS-HANDLE*%20VARIABLE" title="MGL-MAT:*CUBLAS-HANDLE* VARIABLE"><code>*cublas-handle*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:CUBLAS-DESTROY%20FUNCTION" title="MGL-MAT:CUBLAS-DESTROY FUNCTION"><code>cublas-destroy</code></a>, <a href="#MGL-MAT:CUBLAS-GET-VERSION%20FUNCTION" title="MGL-MAT:CUBLAS-GET-VERSION FUNCTION"><code>cublas-get-version</code></a></p></li>
+<li><p><a href="#MGL-MAT:*CUDA-DEFAULT-DEVICE-ID*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-DEVICE-ID* VARIABLE"><code>*cuda-default-device-id*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:CALL-WITH-CUDA%20FUNCTION" title="MGL-MAT:CALL-WITH-CUDA FUNCTION"><code>call-with-cuda</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
+<li><p><a href="#MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES* VARIABLE"><code>*cuda-default-n-random-states*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:CALL-WITH-CUDA%20FUNCTION" title="MGL-MAT:CALL-WITH-CUDA FUNCTION"><code>call-with-cuda</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
+<li><p><a href="#MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED* VARIABLE"><code>*cuda-default-random-seed*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:CALL-WITH-CUDA%20FUNCTION" title="MGL-MAT:CALL-WITH-CUDA FUNCTION"><code>call-with-cuda</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
 <li><p><a href="#MGL-MAT:*CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*CUDA-ENABLED* VARIABLE"><code>*cuda-enabled*</code></a> <em>(var)</em></p>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">CUDA Memory Management</a>, <a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">Debugging</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a>, <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a>, <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-MAT:*CURAND-STATE*%20VARIABLE" title="MGL-MAT:*CURAND-STATE* VARIABLE"><code>*curand-state*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
 <li><p><a href="#MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS*%20VARIABLE" title="MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS* VARIABLE"><code>*default-lisp-kernel-declarations*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:DEFINE-LISP-KERNEL%20MGL-PAX:MACRO" title="MGL-MAT:DEFINE-LISP-KERNEL MGL-PAX:MACRO"><code>define-lisp-kernel</code></a></p></li>
-<li><p><a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE"><code>*default-mat-ctype*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:ARRAY-TO-MAT%20FUNCTION" title="MGL-MAT:ARRAY-TO-MAT FUNCTION"><code>array-to-mat</code></a></p></li>
-<li><p><a href="#MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* VARIABLE"><code>*default-mat-cuda-enabled*</code></a> <em>(var)</em></p></li>
+<li><p><a href="#MGL-MAT:*DEFAULT-MAT-CTYPE*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CTYPE* VARIABLE"><code>*default-mat-ctype*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:ARRAY-TO-MAT%20FUNCTION" title="MGL-MAT:ARRAY-TO-MAT FUNCTION"><code>array-to-mat</code></a>, <a href="#MGL-MAT:COERCE-TO-CTYPE%20FUNCTION" title="MGL-MAT:COERCE-TO-CTYPE FUNCTION"><code>coerce-to-ctype</code></a>, <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a>, <a href="#MGL-MAT:STACK%20FUNCTION" title="MGL-MAT:STACK FUNCTION"><code>stack</code></a>, <a href="#MGL-MAT:WITH-ONES%20MGL-PAX:MACRO" title="MGL-MAT:WITH-ONES MGL-PAX:MACRO"><code>with-ones</code></a>, <a href="#MGL-MAT:WITH-THREAD-CACHED-MAT%20MGL-PAX:MACRO" title="MGL-MAT:WITH-THREAD-CACHED-MAT MGL-PAX:MACRO"><code>with-thread-cached-mat</code></a></p></li>
+<li><p><a href="#MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* VARIABLE"><code>*default-mat-cuda-enabled*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a></p></li>
 <li><p><a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a> <em>(var)</em></p>
 
 <ul>
@@ -2642,7 +2642,7 @@ instead.</p>
 <li><p><a href="#MGL-MAT:*PRINT-MAT*%20VARIABLE" title="MGL-MAT:*PRINT-MAT* VARIABLE"><code>*print-mat*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:WITH-MAT-COUNTERS%20MGL-PAX:MACRO" title="MGL-MAT:WITH-MAT-COUNTERS MGL-PAX:MACRO"><code>with-mat-counters</code></a></p></li>
 <li><p><a href="#MGL-MAT:*PRINT-MAT-FACETS*%20VARIABLE" title="MGL-MAT:*PRINT-MAT-FACETS* VARIABLE"><code>*print-mat-facets*</code></a> <em>(var)</em></p></li>
 <li><p><a href="#MGL-MAT:*SUPPORTED-CTYPES*%20VARIABLE" title="MGL-MAT:*SUPPORTED-CTYPES* VARIABLE"><code>*supported-ctypes*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-CTYPE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-ctype</code></a></p></li>
-<li><p><a href="#MGL-MAT:*SYNCING-CUDA-FACETS-SAFE-P*%20VARIABLE" title="MGL-MAT:*SYNCING-CUDA-FACETS-SAFE-P* VARIABLE"><code>*syncing-cuda-facets-safe-p*</code></a> <em>(var)</em></p></li>
+<li><p><a href="#MGL-MAT:*SYNCING-CUDA-FACETS-SAFE-P*%20VARIABLE" title="MGL-MAT:*SYNCING-CUDA-FACETS-SAFE-P* VARIABLE"><code>*syncing-cuda-facets-safe-p*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:WITH-SYNCING-CUDA-FACETS%20MGL-PAX:MACRO" title="MGL-MAT:WITH-SYNCING-CUDA-FACETS MGL-PAX:MACRO"><code>with-syncing-cuda-facets</code></a></p></li>
 </ul>
 
 <p> </div></p>
@@ -2739,7 +2739,7 @@ instead.</p>
 <li><p><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a> <em>(reader mat)</em></p>
 
 <ul>
-<li><p>↩ <em>f</em>: <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a>, <a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a>, <a href="#MGL-MAT:READ-MAT%20GENERIC-FUNCTION" title="MGL-MAT:READ-MAT GENERIC-FUNCTION"><code>read-mat</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-MAT:ASUM%20FUNCTION" title="MGL-MAT:ASUM FUNCTION"><code>asum</code></a>, <a href="#MGL-MAT:AXPY%21%20FUNCTION" title="MGL-MAT:AXPY! FUNCTION"><code>axpy!</code></a>, <a href="#MGL-MAT:COPY%21%20FUNCTION" title="MGL-MAT:COPY! FUNCTION"><code>copy!</code></a>, <a href="#MGL-MAT:.COS%21%20FUNCTION" title="MGL-MAT:.COS! FUNCTION"><code>.cos!</code></a>, <a href="#MGL-MAT:.COSH%21%20FUNCTION" title="MGL-MAT:.COSH! FUNCTION"><code>.cosh!</code></a>, <a href="#CL-CUDA.LANG.BUILT-IN:DOT%20FUNCTION" title="CL-CUDA.LANG.BUILT-IN:DOT FUNCTION"><code>dot</code></a> [<code>cl-cuda.lang.built-in</code>], <a href="#MGL-MAT:.EXP%21%20FUNCTION" title="MGL-MAT:.EXP! FUNCTION"><code>.exp!</code></a>, <a href="#MGL-MAT:FILL%21%20FUNCTION" title="MGL-MAT:FILL! FUNCTION"><code>fill!</code></a>, <a href="#MGL-MAT:.INV%21%20FUNCTION" title="MGL-MAT:.INV! FUNCTION"><code>.inv!</code></a>, <a href="#MGL-MAT:.LOG%21%20FUNCTION" title="MGL-MAT:.LOG! FUNCTION"><code>.log!</code></a>, <a href="#MGL-MAT:.LOGISTIC%21%20FUNCTION" title="MGL-MAT:.LOGISTIC! FUNCTION"><code>.logistic!</code></a>, <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a>, <a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a>, <a href="#MGL-MAT:NRM2%20FUNCTION" title="MGL-MAT:NRM2 FUNCTION"><code>nrm2</code></a>, <a href="#MGL-MAT:READ-MAT%20GENERIC-FUNCTION" title="MGL-MAT:READ-MAT GENERIC-FUNCTION"><code>read-mat</code></a>, <a href="#MGL-MAT:SCAL%21%20FUNCTION" title="MGL-MAT:SCAL! FUNCTION"><code>scal!</code></a>, <a href="#MGL-MAT:.SIN%21%20FUNCTION" title="MGL-MAT:.SIN! FUNCTION"><code>.sin!</code></a>, <a href="#MGL-MAT:.SINH%21%20FUNCTION" title="MGL-MAT:.SINH! FUNCTION"><code>.sinh!</code></a>, <a href="#MGL-MAT:.SQRT%21%20FUNCTION" title="MGL-MAT:.SQRT! FUNCTION"><code>.sqrt!</code></a>, <a href="#MGL-MAT:.SQUARE%21%20FUNCTION" title="MGL-MAT:.SQUARE! FUNCTION"><code>.square!</code></a>, <a href="#MGL-MAT:.TAN%21%20FUNCTION" title="MGL-MAT:.TAN! FUNCTION"><code>.tan!</code></a>, <a href="#MGL-MAT:.TANH%21%20FUNCTION" title="MGL-MAT:.TANH! FUNCTION"><code>.tanh!</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#MGL-MAT:*MAT-HEADERS*%20VARIABLE" title="MGL-MAT:*MAT-HEADERS* VARIABLE"><code>*mat-headers*</code></a></p></li>
 </ul></li>
 <li><p><a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-mat</code></a> <em>(asdf:system)</em></p></li>
@@ -2748,7 +2748,7 @@ instead.</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

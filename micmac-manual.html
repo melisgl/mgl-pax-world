@@ -163,7 +163,7 @@ See <code>test/test-alpha-beta.lisp</code> for an example.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/5a916a48354da4d416711b4082e34b8685007ba1/src/graph-search.lisp#L87" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MICMAC:BEAM-SEARCH%20FUNCTION" >beam-search</a></span></span> <span class="arglist">
-start-nodes &amp;key max-depth (n-solutions 1) (beam-width (length start-nodes)) expand-node-fn expand-beam-fn score-fn upper-bound-fn solutionp-fn (finishedp-fn solutionp-fn)</span></span></p>
+start-nodes &amp;key max-depth (n-solutions 1) (beam-width (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm" title="LENGTH (MGL-PAX:CLHS FUNCTION)">length</a> start-nodes)) expand-node-fn expand-beam-fn score-fn upper-bound-fn solutionp-fn (finishedp-fn solutionp-fn)</span></span></p>
 
 <p>In a graph, search for nodes that with the best scores with <a href="http://en.wikipedia.org/wiki/Beam_search" >beam
 search</a>. That is, starting
@@ -501,7 +501,7 @@ This is the current sample where the chain is.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/micmac/blob/5a916a48354da4d416711b4082e34b8685007ba1/src/metropolis-hastings.lisp#L66" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MICMAC.METROPOLIS-HASTINGS:JUMP-TO-SAMPLE%20FUNCTION" >jump-to-sample</a></span></span> <span class="arglist">
-chain jump &amp;key (result-sample (state chain))</span></span></p>
+chain jump &amp;key (result-sample (<a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" title="MICMAC.METROPOLIS-HASTINGS:STATE (MGL-PAX:READER MICMAC.METROPOLIS-HASTINGS:MC-CHAIN)">state</a> chain))</span></span></p>
 From the current state of <code>chain</code> make <code>jump</code> (from the current
 distribution of <code>chain</code>) and return the sample where we landed. Reuse
 <code>result-sample</code> when possible. </li>
@@ -839,13 +839,13 @@ equilibrium represented by the oddment vectors.</li>
 <li><p><a href="#MICMAC.UCT:EDGES%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-NODE%29" title="MICMAC.UCT:EDGES (MGL-PAX:ACCESSOR MICMAC.UCT:UCT-NODE)"><code>edges</code></a> [<code>micmac.uct</code>] <em>(accessor uct-node)</em></p></li>
 <li><p><a href="#MICMAC.UCT:FROM-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" title="MICMAC.UCT:FROM-NODE (MGL-PAX:ACCESSOR MICMAC.UCT:UCT-EDGE)"><code>from-node</code></a> [<code>micmac.uct</code>] <em>(accessor uct-edge)</em></p></li>
 <li><p><a href="#%22micmac%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;micmac&quot; ASDF/SYSTEM:SYSTEM"><code>micmac</code></a> <em>(asdf:system)</em></p></li>
-<li><p><a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" title="MICMAC.METROPOLIS-HASTINGS:STATE (MGL-PAX:READER MICMAC.METROPOLIS-HASTINGS:MC-CHAIN)"><code>state</code></a> [<code>micmac.metropolis-hastings</code>] <em>(reader mc-chain)</em> ↩ <em>f</em>: <a href="#MICMAC.METROPOLIS-HASTINGS:ACCEPTANCE-PROBABILITY%20GENERIC-FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:ACCEPTANCE-PROBABILITY GENERIC-FUNCTION"><code>acceptance-probability</code></a>, <a href="#MICMAC.METROPOLIS-HASTINGS:LOG-JUMP-PROBABILITY-RATIO%20GENERIC-FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:LOG-JUMP-PROBABILITY-RATIO GENERIC-FUNCTION"><code>log-jump-probability-ratio</code></a>, <a href="#MICMAC.METROPOLIS-HASTINGS:LOG-PROBABILITY-RATIO-TO-JUMP-TARGET%20GENERIC-FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:LOG-PROBABILITY-RATIO-TO-JUMP-TARGET GENERIC-FUNCTION"><code>log-probability-ratio-to-jump-target</code></a></p></li>
+<li><p><a href="#MICMAC.METROPOLIS-HASTINGS:STATE%20%28MGL-PAX:READER%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" title="MICMAC.METROPOLIS-HASTINGS:STATE (MGL-PAX:READER MICMAC.METROPOLIS-HASTINGS:MC-CHAIN)"><code>state</code></a> [<code>micmac.metropolis-hastings</code>] <em>(reader mc-chain)</em> ↩ <em>f</em>: <a href="#MICMAC.METROPOLIS-HASTINGS:ACCEPTANCE-PROBABILITY%20GENERIC-FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:ACCEPTANCE-PROBABILITY GENERIC-FUNCTION"><code>acceptance-probability</code></a>, <a href="#MICMAC.METROPOLIS-HASTINGS:JUMP-TO-SAMPLE%20FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:JUMP-TO-SAMPLE FUNCTION"><code>jump-to-sample</code></a>, <a href="#MICMAC.METROPOLIS-HASTINGS:LOG-JUMP-PROBABILITY-RATIO%20GENERIC-FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:LOG-JUMP-PROBABILITY-RATIO GENERIC-FUNCTION"><code>log-jump-probability-ratio</code></a>, <a href="#MICMAC.METROPOLIS-HASTINGS:LOG-PROBABILITY-RATIO-TO-JUMP-TARGET%20GENERIC-FUNCTION" title="MICMAC.METROPOLIS-HASTINGS:LOG-PROBABILITY-RATIO-TO-JUMP-TARGET GENERIC-FUNCTION"><code>log-probability-ratio-to-jump-target</code></a></p></li>
 <li><p><a href="#MICMAC.METROPOLIS-HASTINGS:TEMPERATURE%20%28MGL-PAX:ACCESSOR%20MICMAC.METROPOLIS-HASTINGS:MC-CHAIN%29" title="MICMAC.METROPOLIS-HASTINGS:TEMPERATURE (MGL-PAX:ACCESSOR MICMAC.METROPOLIS-HASTINGS:MC-CHAIN)"><code>temperature</code></a> [<code>micmac.metropolis-hastings</code>] <em>(accessor mc-chain)</em></p></li>
 <li><p><a href="#MICMAC.UCT:TO-NODE%20%28MGL-PAX:ACCESSOR%20MICMAC.UCT:UCT-EDGE%29" title="MICMAC.UCT:TO-NODE (MGL-PAX:ACCESSOR MICMAC.UCT:UCT-EDGE)"><code>to-node</code></a> [<code>micmac.uct</code>] <em>(accessor uct-edge)</em></p></li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

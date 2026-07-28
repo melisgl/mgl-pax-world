@@ -1081,7 +1081,7 @@ verdict successes and failures expected:</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/outcome.lisp#L84" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#TRY:WITH-FAILURE-EXPECTED%20MGL-PAX:MACRO" >with-failure-expected</a></span></span> <span class="arglist">
-(&amp;optional (result-expected-type t) (verdict-expected-type ''success)) &amp;body body</span></span></p>
+(&amp;optional (result-expected-type t) (verdict-expected-type ''<a href="#TRY:SUCCESS%20CONDITION" title="TRY:SUCCESS CONDITION">success</a>)) &amp;body body</span></span></p>
 A convenience macro on top of <a href="#TRY:WITH-EXPECTED-OUTCOME%20MGL-PAX:MACRO" title="TRY:WITH-EXPECTED-OUTCOME MGL-PAX:MACRO"><code>with-expected-outcome</code></a>,
 <code>with-failure-expected</code> expects <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a>s to have <code>verdict-expected-type</code>
 and <a href="#TRY:RESULT%20CONDITION" title="TRY:RESULT CONDITION"><code>result</code></a>s to have <code>result-expected-type</code>. A simple
@@ -1628,7 +1628,7 @@ dropped.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/trial.lisp#L382" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:ABORT-TRIAL%20FUNCTION" >abort-trial</a></span></span> <span class="arglist">
-&amp;optional condition (trial (current-trial))</span></span></p>
+&amp;optional condition (trial (<a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION">current-trial</a>))</span></span></p>
 
 <p>Invoke the <code>abort-trial</code> restart of a <a href="#TRY:RUNNINGP%20FUNCTION" title="TRY:RUNNINGP FUNCTION"><code>runningp</code></a> <code>trial</code>.</p>
 
@@ -1651,7 +1651,7 @@ often suffice.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/trial.lisp#L402" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:SKIP-TRIAL%20FUNCTION" >skip-trial</a></span></span> <span class="arglist">
-&amp;optional condition (trial (current-trial))</span></span></p>
+&amp;optional condition (trial (<a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION">current-trial</a>))</span></span></p>
 
 <p>Invoke the <code>skip-trial</code> restart of a <a href="#TRY:RUNNINGP%20FUNCTION" title="TRY:RUNNINGP FUNCTION"><code>runningp</code></a> <code>trial</code>.</p>
 
@@ -1690,7 +1690,7 @@ being started.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/trial.lisp#L442" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:RETRY-TRIAL%20FUNCTION" >retry-trial</a></span></span> <span class="arglist">
-&amp;optional condition (trial (current-trial))</span></span></p>
+&amp;optional condition (trial (<a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION">current-trial</a>))</span></span></p>
 
 <p>Invoke the <code>retry-trial</code> restart of <a href="#TRY:RUNNINGP%20FUNCTION" title="TRY:RUNNINGP FUNCTION"><code>runningp</code></a> <code>trial</code>. The <code>retry-trial</code>
 restart may record <code>condition</code>, then it initiates a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_n.htm#non-local_exit" title="&quot;non-local exit&quot; (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)">non-local
@@ -2624,7 +2624,7 @@ supported. If no <code>:on-length-mismatch</code> option is specified, then
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/checks.lisp#L492" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:MISMATCH%25%20FUNCTION" >mismatch%</a></span></span> <span class="arglist">
-sequence1 sequence2 &amp;key from-end (test #'eql) (start1 0) end1 (start2 0) end2 key max-prefix-length max-suffix-length</span></span></p>
+sequence1 sequence2 &amp;key from-end (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) (start1 0) end1 (start2 0) end2 key max-prefix-length max-suffix-length</span></span></p>
 
 <p>Like <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mismat.htm" title="MISMATCH (MGL-PAX:CLHS FUNCTION)"><code>cl:mismatch</code></a> but <a href="#TRY:CAPTURE%20MGL-PAX:MACRO" title="TRY:CAPTURE MGL-PAX:MACRO"><code>capture</code></a>s and returns the common prefix and
 the mismatched suffixes. The <code>test-not</code> argument is deprecated by
@@ -2660,7 +2660,7 @@ suffixes.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/checks.lisp#L555" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:DIFFERENT-ELEMENTS%20FUNCTION" >different-elements</a></span></span> <span class="arglist">
-sequence1 sequence2 &amp;key (pred #'eql) (missing :missing)</span></span></p>
+sequence1 sequence2 &amp;key (pred #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>) (missing :missing)</span></span></p>
 
 <p>Return the different elements under <code>pred</code> in the given sequences as
 a list of <code>(:index &lt;index&gt; &lt;e1&gt; &lt;e2&gt;)</code> elements, where <code>e1</code> and <code>e2</code>
@@ -2680,7 +2680,7 @@ and they may be <code>missing</code> if the corresponding sequence is too short.
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/checks.lisp#L583" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:SAME-SET-P%20FUNCTION" >same-set-p</a></span></span> <span class="arglist">
-list1 list2 &amp;key key (test #'eql)</span></span></p>
+list1 list2 &amp;key key (test #'<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm" title="EQL (MGL-PAX:CLHS NIL)">eql</a>)</span></span></p>
 
 <p>See if <code>list1</code> and <code>list2</code> represent the same set.
 See <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_di.htm" title="SET-DIFFERENCE (MGL-PAX:CLHS FUNCTION)"><code>cl:set-difference</code></a> for a description of the <code>key</code> and <code>test</code> arguments.</p>
@@ -2728,7 +2728,7 @@ that accidentally depend on the order in which subtests are called.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/floats.lisp#L17" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:FLOAT-~%3D%20FUNCTION" >float-~=</a></span></span> <span class="arglist">
-x y &amp;key (max-diff-in-value *max-diff-in-value*) (max-diff-in-ulp *max-diff-in-ulp*)</span></span></p>
+x y &amp;key (max-diff-in-value <a href="#TRY:*MAX-DIFF-IN-VALUE*%20VARIABLE" title="TRY:*MAX-DIFF-IN-VALUE* VARIABLE">*max-diff-in-value*</a>) (max-diff-in-ulp <a href="#TRY:*MAX-DIFF-IN-ULP*%20VARIABLE" title="TRY:*MAX-DIFF-IN-ULP* VARIABLE">*max-diff-in-ulp*</a>)</span></span></p>
 
 <p>Return whether two numbers, <code>x</code> and <code>y</code>, are approximately equal either
 according to <code>max-diff-in-value</code> or <code>max-diff-in-ulp</code>.</p>
@@ -2769,7 +2769,7 @@ The default value of the <code>max-diff-in-ulp</code> argument of <a href="#TRY:
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/floats.lisp#L65" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:FLOAT-~%3C%20FUNCTION" >float-~&lt;</a></span></span> <span class="arglist">
-x y &amp;key (max-diff-in-value *max-diff-in-value*) (max-diff-in-ulp *max-diff-in-ulp*)</span></span></p>
+x y &amp;key (max-diff-in-value <a href="#TRY:*MAX-DIFF-IN-VALUE*%20VARIABLE" title="TRY:*MAX-DIFF-IN-VALUE* VARIABLE">*max-diff-in-value*</a>) (max-diff-in-ulp <a href="#TRY:*MAX-DIFF-IN-ULP*%20VARIABLE" title="TRY:*MAX-DIFF-IN-ULP* VARIABLE">*max-diff-in-ulp*</a>)</span></span></p>
 Return whether <code>x</code> is approximately less than <code>y</code>. Equivalent to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm" title="&lt; (MGL-PAX:CLHS FUNCTION)"><code>&lt;</code></a>,
 but it also allows for approximate equality according to <a href="#TRY:FLOAT-~%3D%20FUNCTION" title="TRY:FLOAT-~= FUNCTION"><code>float-~=</code></a>.</li>
 </ul>
@@ -2779,7 +2779,7 @@ but it also allows for approximate equality according to <a href="#TRY:FLOAT-~%3
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/floats.lisp#L75" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:FLOAT-~%3E%20FUNCTION" >float-~&gt;</a></span></span> <span class="arglist">
-x y &amp;key (max-diff-in-value *max-diff-in-value*) (max-diff-in-ulp *max-diff-in-ulp*)</span></span></p>
+x y &amp;key (max-diff-in-value <a href="#TRY:*MAX-DIFF-IN-VALUE*%20VARIABLE" title="TRY:*MAX-DIFF-IN-VALUE* VARIABLE">*max-diff-in-value*</a>) (max-diff-in-ulp <a href="#TRY:*MAX-DIFF-IN-ULP*%20VARIABLE" title="TRY:*MAX-DIFF-IN-ULP* VARIABLE">*max-diff-in-ulp*</a>)</span></span></p>
 Return whether <code>x</code> is approximately greater than <code>y</code>. Equivalent to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm" title="&gt; (MGL-PAX:CLHS FUNCTION)"><code>&gt;</code></a>,
 but it also allows for approximate equality according to <a href="#TRY:FLOAT-~%3D%20FUNCTION" title="TRY:FLOAT-~= FUNCTION"><code>float-~=</code></a>.</li>
 </ul>
@@ -2983,7 +2983,7 @@ stored in the <code>trial</code> object to support <a href="#TRY:@RERUN%20MGL-PA
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/test.lisp#L384" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:LIST-PACKAGE-TESTS%20FUNCTION" >list-package-tests</a></span></span> <span class="arglist">
-&amp;optional (package *package*)</span></span></p>
+&amp;optional (package <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm" title="*PACKAGE* (MGL-PAX:CLHS VARIABLE)">*package*</a>)</span></span></p>
 List all symbols in <code>package</code> that name global tests in the sense of
 <a href="#TRY:TEST-BOUND-P%20FUNCTION" title="TRY:TEST-BOUND-P FUNCTION"><code>test-bound-p</code></a>.</li>
 </ul>
@@ -3005,7 +3005,7 @@ the keys have been called.</li>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/test.lisp#L416" title="View definition">[macro]</a></span> <span class="dref-name"> <a href="#TRY:WARN-ON-TESTS-NOT-RUN%20MGL-PAX:MACRO" >warn-on-tests-not-run</a></span></span> <span class="arglist">
-(&amp;optional (package *package*)) &amp;body body</span></span></p>
+(&amp;optional (package <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm" title="*PACKAGE* (MGL-PAX:CLHS VARIABLE)">*package*</a>)) &amp;body body</span></span></p>
 
 <p>A convenience utility that records the global tests run by <code>body</code>
 with <a href="#TRY:WITH-TESTS-RUN%20MGL-PAX:MACRO" title="TRY:WITH-TESTS-RUN MGL-PAX:MACRO"><code>with-tests-run</code></a> and, when <code>body</code> finishes, signals a warning for
@@ -3116,7 +3116,7 @@ in any way.</p>
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/try.lisp#L352" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:TRY%20FUNCTION" >try</a></span></span> <span class="arglist">
-testable &amp;key (debug *try-debug*) (count *try-count*) (collect *try-collect*) (rerun *try-rerun*) (print *try-print*) (describe *try-describe*) (stream *try-stream*) (printer *try-printer*)</span></span></p>
+testable &amp;key (debug <a href="#TRY:*TRY-DEBUG*%20VARIABLE" title="TRY:*TRY-DEBUG* VARIABLE">*try-debug*</a>) (count <a href="#TRY:*TRY-COUNT*%20VARIABLE" title="TRY:*TRY-COUNT* VARIABLE">*try-count*</a>) (collect <a href="#TRY:*TRY-COLLECT*%20VARIABLE" title="TRY:*TRY-COLLECT* VARIABLE">*try-collect*</a>) (rerun <a href="#TRY:*TRY-RERUN*%20VARIABLE" title="TRY:*TRY-RERUN* VARIABLE">*try-rerun*</a>) (print <a href="#TRY:*TRY-PRINT*%20VARIABLE" title="TRY:*TRY-PRINT* VARIABLE">*try-print*</a>) (describe <a href="#TRY:*TRY-DESCRIBE*%20VARIABLE" title="TRY:*TRY-DESCRIBE* VARIABLE">*try-describe*</a>) (stream <a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE">*try-stream*</a>) (printer <a href="#TRY:*TRY-PRINTER*%20VARIABLE" title="TRY:*TRY-PRINTER* VARIABLE">*try-printer*</a>)</span></span></p>
 
 <p><code>try</code> runs <a href="#TRY:@TESTABLES%20MGL-PAX:SECTION" title="Testables"><code>testable</code></a> and handles the <a href="#TRY:EVENT%20CONDITION" title="TRY:EVENT CONDITION"><code>event</code></a>s to
 <a href="#TRY:@COUNT%20MGL-PAX:SECTION" title="Counting Events">count</a>, <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">collect</a>, debug, <a href="#TRY:@PRINT%20MGL-PAX:SECTION" title="Printing Events">print</a> the
@@ -3946,7 +3946,7 @@ See <a href="#TRY:@EMACS%20MGL-PAX:SECTION" title="Emacs Integration">Emacs Inte
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/try/blob/91bd78de512c2f29d5f5d905f435432a3463ba6a/src/replay.lisp#L14" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#TRY:REPLAY-EVENTS%20FUNCTION" >replay-events</a></span></span> <span class="arglist">
-trial &amp;key (collect *try-collect*) (print *try-print*) (describe *try-describe*) (stream *try-stream*) (printer *try-printer*)</span></span></p>
+trial &amp;key (collect <a href="#TRY:*TRY-COLLECT*%20VARIABLE" title="TRY:*TRY-COLLECT* VARIABLE">*try-collect*</a>) (print <a href="#TRY:*TRY-PRINT*%20VARIABLE" title="TRY:*TRY-PRINT* VARIABLE">*try-print*</a>) (describe <a href="#TRY:*TRY-DESCRIBE*%20VARIABLE" title="TRY:*TRY-DESCRIBE* VARIABLE">*try-describe*</a>) (stream <a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE">*try-stream*</a>) (printer <a href="#TRY:*TRY-PRINTER*%20VARIABLE" title="TRY:*TRY-PRINTER* VARIABLE">*try-printer*</a>)</span></span></p>
 
 <p><code>replay-events</code> reprocesses the events <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">collected</a> in
 <code>trial</code> without actually running the tests that produced them. It
@@ -4131,7 +4131,7 @@ first nlx will not continue.</p>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#TRY:@CHECKING-CONDITIONS%20MGL-PAX:SECTION" title="Checking Conditions">Checking Conditions</a>, <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>, <a href="#TRY:@COUNT%20MGL-PAX:SECTION" title="Counting Events">Counting Events</a>, <a href="#TRY:@TRIAL-RESTARTS%20MGL-PAX:SECTION" title="Trial Restarts">Trial Restarts</a>, <a href="#TRY:@TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#TRY:ABORT-TRIAL%20FUNCTION" title="TRY:ABORT-TRIAL FUNCTION"><code>abort-trial</code></a>, <a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a>, <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL FUNCTION"><code>retry-trial</code></a>, <a href="#TRY:SKIP-TRIAL%20FUNCTION" title="TRY:SKIP-TRIAL FUNCTION"><code>skip-trial</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>, <a href="#TRY:TRIAL-START%20CONDITION" title="TRY:TRIAL-START CONDITION"><code>trial-start</code></a>, <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a></p></li>
 </ul></li>
 <li><p><a href="#TRY:DEFTEST%20MGL-PAX:MACRO" title="TRY:DEFTEST MGL-PAX:MACRO"><code>deftest</code></a> <em>(macro)</em></p>
@@ -4328,8 +4328,8 @@ first nlx will not continue.</p>
 <li><p><a href="#TRY:*IN-TIME-ELAPSED-SECONDS*%20VARIABLE" title="TRY:*IN-TIME-ELAPSED-SECONDS* VARIABLE"><code>*in-time-elapsed-seconds*</code></a> <em>(var)</em></p></li>
 <li><p><a href="#TRY:*IS-CAPTURES*%20VARIABLE" title="TRY:*IS-CAPTURES* VARIABLE"><code>*is-captures*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:IS%20MGL-PAX:MACRO" title="TRY:IS MGL-PAX:MACRO"><code>is</code></a></p></li>
 <li><p><a href="#TRY:*IS-FORM*%20VARIABLE" title="TRY:*IS-FORM* VARIABLE"><code>*is-form*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#TRY:*MAX-DIFF-IN-ULP*%20VARIABLE" title="TRY:*MAX-DIFF-IN-ULP* VARIABLE"><code>*max-diff-in-ulp*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#TRY:*MAX-DIFF-IN-VALUE*%20VARIABLE" title="TRY:*MAX-DIFF-IN-VALUE* VARIABLE"><code>*max-diff-in-value*</code></a> <em>(var)</em></p></li>
+<li><p><a href="#TRY:*MAX-DIFF-IN-ULP*%20VARIABLE" title="TRY:*MAX-DIFF-IN-ULP* VARIABLE"><code>*max-diff-in-ulp*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:FLOAT-~%3C%20FUNCTION" title="TRY:FLOAT-~&lt; FUNCTION"><code>float-~&lt;</code></a>, <a href="#TRY:FLOAT-~%3D%20FUNCTION" title="TRY:FLOAT-~= FUNCTION"><code>float-~=</code></a>, <a href="#TRY:FLOAT-~%3E%20FUNCTION" title="TRY:FLOAT-~&gt; FUNCTION"><code>float-~&gt;</code></a></p></li>
+<li><p><a href="#TRY:*MAX-DIFF-IN-VALUE*%20VARIABLE" title="TRY:*MAX-DIFF-IN-VALUE* VARIABLE"><code>*max-diff-in-value*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:FLOAT-~%3C%20FUNCTION" title="TRY:FLOAT-~&lt; FUNCTION"><code>float-~&lt;</code></a>, <a href="#TRY:FLOAT-~%3D%20FUNCTION" title="TRY:FLOAT-~= FUNCTION"><code>float-~=</code></a>, <a href="#TRY:FLOAT-~%3E%20FUNCTION" title="TRY:FLOAT-~&gt; FUNCTION"><code>float-~&gt;</code></a></p></li>
 <li><p><a href="#TRY:*N-RECENT-TRIALS*%20VARIABLE" title="TRY:*N-RECENT-TRIALS* VARIABLE"><code>*n-recent-trials*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:RECENT-TRIAL%20FUNCTION" title="TRY:RECENT-TRIAL FUNCTION"><code>recent-trial</code></a></p></li>
 <li><p><a href="#TRY:*PRINT*%20VARIABLE" title="TRY:*PRINT* VARIABLE"><code>*print*</code></a> <em>(var)</em></p>
 
@@ -4367,14 +4367,34 @@ first nlx will not continue.</p>
 </ul></li>
 <li><p><a href="#TRY:*RUN-DEFTEST-WHEN*%20VARIABLE" title="TRY:*RUN-DEFTEST-WHEN* VARIABLE"><code>*run-deftest-when*</code></a> <em>(var)</em> ↩ <em>d</em>: <a href="#TRY:@TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p><a href="#TRY:*STREAM*%20VARIABLE" title="TRY:*STREAM* VARIABLE"><code>*stream*</code></a> <em>(var)</em> ↩ <em>v</em>: <a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE"><code>*try-stream*</code></a></p></li>
-<li><p><a href="#TRY:*TRY-COLLECT*%20VARIABLE" title="TRY:*TRY-COLLECT* VARIABLE"><code>*try-collect*</code></a> <em>(var)</em> ↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>, <a href="#TRY:@EXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">Explicit <code>try</code></a></p></li>
-<li><p><a href="#TRY:*TRY-COUNT*%20VARIABLE" title="TRY:*TRY-COUNT* VARIABLE"><code>*try-count*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#TRY:*TRY-DEBUG*%20VARIABLE" title="TRY:*TRY-DEBUG* VARIABLE"><code>*try-debug*</code></a> <em>(var)</em> ↩ <em>d</em>: <a href="#TRY:@EXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">Explicit <code>try</code></a></p></li>
-<li><p><a href="#TRY:*TRY-DESCRIBE*%20VARIABLE" title="TRY:*TRY-DESCRIBE* VARIABLE"><code>*try-describe*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#TRY:*TRY-PRINT*%20VARIABLE" title="TRY:*TRY-PRINT* VARIABLE"><code>*try-print*</code></a> <em>(var)</em></p></li>
-<li><p><a href="#TRY:*TRY-PRINTER*%20VARIABLE" title="TRY:*TRY-PRINTER* VARIABLE"><code>*try-printer*</code></a> <em>(var)</em> ↩ <em>t</em>: <a href="#TRY:TREE-PRINTER%20CLASS" title="TRY:TREE-PRINTER CLASS"><code>tree-printer</code></a></p></li>
-<li><p><a href="#TRY:*TRY-RERUN*%20VARIABLE" title="TRY:*TRY-RERUN* VARIABLE"><code>*try-rerun*</code></a> <em>(var)</em> ↩ <em>d</em>: <a href="#TRY:@EMACS%20MGL-PAX:SECTION" title="Emacs Integration">Emacs Integration</a></p></li>
-<li><p><a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE"><code>*try-stream*</code></a> <em>(var)</em></p></li>
+<li><p><a href="#TRY:*TRY-COLLECT*%20VARIABLE" title="TRY:*TRY-COLLECT* VARIABLE"><code>*try-collect*</code></a> <em>(var)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>, <a href="#TRY:@EXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">Explicit <code>try</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#TRY:REPLAY-EVENTS%20FUNCTION" title="TRY:REPLAY-EVENTS FUNCTION"><code>replay-events</code></a>, <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+</ul></li>
+<li><p><a href="#TRY:*TRY-COUNT*%20VARIABLE" title="TRY:*TRY-COUNT* VARIABLE"><code>*try-count*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+<li><p><a href="#TRY:*TRY-DEBUG*%20VARIABLE" title="TRY:*TRY-DEBUG* VARIABLE"><code>*try-debug*</code></a> <em>(var)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#TRY:@EXPLICIT-TRY%20MGL-PAX:SECTION" title="Explicit `try`">Explicit <code>try</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+</ul></li>
+<li><p><a href="#TRY:*TRY-DESCRIBE*%20VARIABLE" title="TRY:*TRY-DESCRIBE* VARIABLE"><code>*try-describe*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:REPLAY-EVENTS%20FUNCTION" title="TRY:REPLAY-EVENTS FUNCTION"><code>replay-events</code></a>, <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+<li><p><a href="#TRY:*TRY-PRINT*%20VARIABLE" title="TRY:*TRY-PRINT* VARIABLE"><code>*try-print*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:REPLAY-EVENTS%20FUNCTION" title="TRY:REPLAY-EVENTS FUNCTION"><code>replay-events</code></a>, <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+<li><p><a href="#TRY:*TRY-PRINTER*%20VARIABLE" title="TRY:*TRY-PRINTER* VARIABLE"><code>*try-printer*</code></a> <em>(var)</em></p>
+
+<ul>
+<li><p>↩ <em>f</em>: <a href="#TRY:REPLAY-EVENTS%20FUNCTION" title="TRY:REPLAY-EVENTS FUNCTION"><code>replay-events</code></a>, <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+<li><p>↩ <em>t</em>: <a href="#TRY:TREE-PRINTER%20CLASS" title="TRY:TREE-PRINTER CLASS"><code>tree-printer</code></a></p></li>
+</ul></li>
+<li><p><a href="#TRY:*TRY-RERUN*%20VARIABLE" title="TRY:*TRY-RERUN* VARIABLE"><code>*try-rerun*</code></a> <em>(var)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#TRY:@EMACS%20MGL-PAX:SECTION" title="Emacs Integration">Emacs Integration</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
+</ul></li>
+<li><p><a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE"><code>*try-stream*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#TRY:REPLAY-EVENTS%20FUNCTION" title="TRY:REPLAY-EVENTS FUNCTION"><code>replay-events</code></a>, <a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a></p></li>
 </ul>
 
 <p> </div></p>
@@ -4693,7 +4713,7 @@ first nlx will not continue.</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-07-28T07:31:41Z]</h6>
+<h6>[Generated 2026-07-28T11:08:34Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>
