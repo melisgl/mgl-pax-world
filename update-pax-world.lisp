@@ -1,6 +1,6 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   ;; For more precise source locations (see DREF::@BACKENDS).
-  (load-system :swank)
+  (asdf:load-system :swank)
   (ql:quickload "mgl-pax/full"))
 
 (defvar *this-dir*
