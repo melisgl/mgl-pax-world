@@ -3349,7 +3349,7 @@ journals. Here, we go into the details.
 - \[function\] **sync-journal** *\&optional (journal (record-journal))*
 
     Durably persist changes made to `journal` if [`journal-sync`][0752] is `t`.
-    The changes that are persisted are 
+    The changes that are persisted are
 
     - [`write-event`][01fd]s and [`journal-state`][03de] changes made in an enclosing
       [`with-journaling`][6131]; and

@@ -784,7 +784,7 @@ Finally, some neural network operations.
 
 - [function] mm* m &rest args
 
-    Convenience function to multiply several matrices. 
+    Convenience function to multiply several matrices.
 
     (mm* a b c) => a * b * c
 

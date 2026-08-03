@@ -2680,7 +2680,7 @@ journals. Here, we go into the details.
 - [function] sync-journal &optional (journal (record-journal))
 
     Durably persist changes made to journal if journal-sync is t.
-    The changes that are persisted are 
+    The changes that are persisted are
 
     - write-events and journal-state changes made in an enclosing
       with-journaling; and
