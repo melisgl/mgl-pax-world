@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.7.130-f832c8e`, generated *2026-08-15 15:04:52*. See
+The output is for SBCL version `2.6.7.131-a797aed`, generated *2026-08-15 17:06:31*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -8424,9 +8424,9 @@ developer, is the only documentation. Users of a Lisp built with the
     type need not be known at compile time, but only known-type calls
     are efficiently compiled.
 
-    On Unix-like x86-64 and ARM64 systems, structures may be passed and
-    returned by value. The implementation follows the System V AMD64 ABI
-    and AAPCS64 specifications respectively.
+    On x86-64 and ARM64 systems, structures may be passed and returned
+    by value. The implementation follows the System V AMD64 / Microsoft
+    x64 and AAPCS64 specifications, respectively.
 
     Here is an example which allocates a `(struct foo)`, calls a foreign
     function to initialize it, then returns a Lisp vector of all
