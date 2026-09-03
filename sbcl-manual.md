@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.8.82-252a0b2`, generated *2026-09-02 21:25:10*. See
+The output is for SBCL version `2.6.8.87-289db46`, generated *2026-09-03 16:46:28*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1860,7 +1860,7 @@ SBCL provides hooks into the system initialization and exit.
 <a id="x-28SB-EXT-3A-2AINIT-HOOKS-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*INIT-HOOKS*%20VARIABLE"></a>
 
-- \[variable\] **sb-ext:\*init-hooks\*** *nil*
+- \[variable\] **sb-ext:\*init-hooks\*** *(sb-simd-internals::update-idispatch-indices)*
 
     A list of function designators which are called in an unspecified
     order when a saved core image starts up, after the system itself has
@@ -9599,7 +9599,7 @@ things that should work.
 
 Known differences to the ACL behaviour:
 
-- `sb-simple-streams:open` does not return a `simple-stream` by
+- [`sb-simple-streams:open`][6547] does not return a `simple-stream` by
   default. See its `:class` argument.
 
 - `write-vector` is unimplemented.
@@ -14277,7 +14277,7 @@ most appropriate version based on the instruction set extensions that
 are actually available.
 
 This kind of run time instruction set dispatch is explicitly
-supported by means of the SB-SIMD-INTERNALS:INSTRUCTION-SET-CASE
+supported by means of the `sb-simd-internals:instruction-set-case`
 macro. The code resulting from an invocation of this macro compiles
 to an efficient jump table whose index is recomputed on each startup
 of the Lisp image.
