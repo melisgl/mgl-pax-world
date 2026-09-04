@@ -42,7 +42,7 @@ on any other libraries.
 
 The official repository is
 <https://gitlab.common-lisp.net/trivial-utf-8/trivial-utf-8>, and
-this document in available in various formats on
+this document is available in various formats on
 <https://fixnum.com> for the latest version.
 
 <a id="x-28-22trivial-utf-8-22-20ASDF-2FSYSTEM-3ASYSTEM-29"></a>
