@@ -177,7 +177,9 @@
 
     - [5.11 Single Stepping][d3f5]
 
-    - [5.12 Enabling and Disabling the Debugger][721e]
+    - [5.12 `ldb`][3b91]
+
+    - [5.13 Enabling and Disabling the Debugger][721e]
 
 - [6 Efficiency][29fd]
 
@@ -563,7 +565,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.8.264-6c8dc40`, generated *2026-09-18 05:22:31*. See
+The output is for SBCL version `2.6.8.265-a6f1f3f`, generated *2026-09-18 11:56:42*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -688,14 +690,13 @@ If you run into a signal related bug, you are getting fatal errors
 such as `signal N is [un]blocked` or just hangs, and you want to
 send a useful bug report then:
 
-- Compile SBCL with `ldb` enabled (feature `:sb-ldb`, see
-  `base-target-features.lisp-expr`).
+- Compile SBCL with [`ldb`][3b91] enabled.
 
 - Isolate a smallish test case, run it.
 
 - If it just hangs kill it with `sigabrt`: `kill -ABRT <pidof sbcl>`.
 
-- Print the backtrace from ldb by typing `ba`.
+- Print the backtrace from [`ldb`][3b91] by typing `ba`.
 
 - Attach gdb: `gdb -p <pidof sbcl>` and get backtraces for all
   threads: `thread apply all ba`.
@@ -1608,7 +1609,7 @@ which is mainly useful for acting as part of a shell pipeline; doing
 so under most other circumstances would mean giving up large parts
 of the flexibility and robustness of Common Lisp. See
 [Debugger Entry][f102] and the command line option `--disable-debugger` in
-[Runtime Options][3e4d].
+[Toplevel Options][6be4].
 
 <a id="x-28SB-MANUAL-3A-40COMMAND-LINE-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMMAND-LINE-OPTIONS%20MGL-PAX:SECTION"></a>
@@ -1682,8 +1683,10 @@ system.
 
 - `--disable-ldb`
 
-    Disable the low-level debugger. Only effective if SBCL is
-    compiled with `ldb`. disabling `ldb`
+    Disable the [`ldb`][3b91], the low-level debugger. Only effective if SBCL
+    is compiled with LDB. When LDB is not available or is
+    disabled, SBCL exits with a non-zero exit code whenever it would
+    enter LDB. 
 
 - `--lose-on-corruption`
 
@@ -1693,7 +1696,7 @@ system.
     to continue and handle the error in Lisp, but this will not
     always work, and SBCL may malfunction or even hang. With this
     option, upon encountering such an error, SBCL will exit instead
-    of invoking `ldb` (if present and enabled enabling `ldb`).
+    of invoking [`ldb`][3b91] (if present and enabled).
 
 - `--script <filename>`
 
@@ -3954,29 +3957,59 @@ The following debugger commands are used for controlling single stepping.
 
     Also, see the [CLHS][e725].
 
+<a id="x-28SB-MANUAL-3A-40LDB-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LDB%20MGL-PAX:SECTION"></a>
+
+### 5.12 `ldb`
+
+LDB, the low-level debugger, is implemented in C and can work
+even when the Lisp [Debugger][825d] cannot due to e.g. heap or stack
+exhaustion. Failed assertions in the low-level runtime (see
+[Command Line Options][1294]) trigger entering LDB if it's
+
+- available (if SBCL was not compiled with `--without-sb-ldb`) and
+
+- not disabled (see `--disable-ldb` in [Runtime Options][3e4d] and
+  [`sb-ext:disable-debugger`][356e]).
+
+Else, a backtrace of at most 100 stack frames is printed, and SBCL
+exits with a non-zero exit code.
+
+The commands supported can be explored at the LDB prompt by typing
+`help` followed by an enter.
+
+Also see the related `--lose-on-corruption` option in
+[Runtime Options][3e4d].
+
 <a id="x-28SB-MANUAL-3A-40ENABLING-AND-DISABLING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ENABLING-AND-DISABLING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
 
-### 5.12 Enabling and Disabling the Debugger
+### 5.13 Enabling and Disabling the Debugger
 
 In certain contexts (e.g. non-interactive applications), it may be
-desirable to turn off the SBCL debugger (and possibly re-enable it).
-The functions here control the debugger.
+desirable to turn off the SBCL debugger and [`ldb`][3b91] (and possibly
+re-enable them).
 
 <a id="x-28SB-EXT-3ADISABLE-DEBUGGER-20FUNCTION-29"></a>
 <a id="SB-EXT:DISABLE-DEBUGGER%20FUNCTION"></a>
 
 - \[function\] **sb-ext:disable-debugger**
 
-    When invoked, this function will turn off both the SBCL debugger
-    and [`ldb`][00e9] (the low-level debugger).  See also [`enable-debugger`][adab].
+    When invoked, this function will turn off both the [Debugger][825d]
+    and [`ldb`][3b91] (the low-level debugger), similar to specifying
+    `--disable-debugger` (see [Toplevel Options][6be4]) and
+    `--disable-ldb` (see [Runtime Options][3e4d]) on the command line.
+    See also [`enable-debugger`][adab].
 
 <a id="x-28SB-EXT-3AENABLE-DEBUGGER-20FUNCTION-29"></a>
 <a id="SB-EXT:ENABLE-DEBUGGER%20FUNCTION"></a>
 
 - \[function\] **sb-ext:enable-debugger**
 
-    Restore the debugger if it has been turned off by [`disable-debugger`][356e].
+    Restore the [Debugger][825d] and [`ldb`][3b91] if they have been
+    turned off by [`disable-debugger`][356e], `--disable-debugger` (see
+    [Toplevel Options][6be4]) or `--disable-ldb` (see
+    [Runtime Options][3e4d]).
 
 <a id="x-28SB-MANUAL-3A-40EFFICIENCY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION"></a>
@@ -14798,8 +14831,6 @@ versions of SBCL, which have since then been deleted.
 
 [00a0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_mi.htm "SLOT-MISSING (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
-[00e9]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ldb.htm "LDB (MGL-PAX:CLHS FUNCTION)"
-
 [0157]: #SB-MANUAL:@CONDITIONALS%20MGL-PAX:SECTION "Conditionals"
 
 [0160]: http://www.lispworks.com/documentation/HyperSpec/Body/s_setq.htm "SETQ (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -15155,6 +15186,8 @@ versions of SBCL, which have since then been deleted.
 [3ae4]: #SB-ALIEN:WITH-ALIEN%20MGL-PAX:MACRO "SB-ALIEN:WITH-ALIEN MGL-PAX:MACRO"
 
 [3af9]: #SB-MANUAL:@OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Output stream methods"
+
+[3b91]: #SB-MANUAL:@LDB%20MGL-PAX:SECTION "`ldb`"
 
 [3c4b]: #SB-THREAD:CONDITION-NOTIFY%20FUNCTION "SB-THREAD:CONDITION-NOTIFY FUNCTION"
 

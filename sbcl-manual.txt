@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.8.264-6c8dc40, generated 2026-09-18 05:22:31. See
+The output is for SBCL version 2.6.8.265-a6f1f3f, generated 2026-09-18 11:56:42. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -115,8 +115,7 @@ If you run into a signal related bug, you are getting fatal errors
 such as signal N is [un]blocked or just hangs, and you want to
 send a useful bug report then:
 
-- Compile SBCL with ldb enabled (feature :sb-ldb, see
-  base-target-features.lisp-expr).
+- Compile SBCL with ldb enabled.
 
 - Isolate a smallish test case, run it.
 
@@ -918,7 +917,7 @@ which is mainly useful for acting as part of a shell pipeline; doing
 so under most other circumstances would mean giving up large parts
 of the flexibility and robustness of Common Lisp. See
 Debugger Entry and the command line option --disable-debugger in
-Runtime Options.
+Toplevel Options.
 
 ### Command Line Options
 
@@ -986,8 +985,10 @@ system.
 
 - --disable-ldb
 
-    Disable the low-level debugger. Only effective if SBCL is
-    compiled with ldb. disabling ldb
+    Disable the ldb, the low-level debugger. Only effective if SBCL
+    is compiled with LDB. When LDB is not available or is
+    disabled, SBCL exits with a non-zero exit code whenever it would
+    enter LDB. 
 
 - --lose-on-corruption
 
@@ -997,7 +998,7 @@ system.
     to continue and handle the error in Lisp, but this will not
     always work, and SBCL may malfunction or even hang. With this
     option, upon encountering such an error, SBCL will exit instead
-    of invoking ldb (if present and enabled enabling ldb).
+    of invoking ldb (if present and enabled).
 
 - --script <filename>
 
@@ -3042,20 +3043,47 @@ The following debugger commands are used for controlling single stepping.
 
     Also, see the CLHS.
 
+### ldb
+
+LDB, the low-level debugger, is implemented in C and can work
+even when the Lisp Debugger cannot due to e.g. heap or stack
+exhaustion. Failed assertions in the low-level runtime (see
+Command Line Options) trigger entering LDB if it's
+
+- available (if SBCL was not compiled with --without-sb-ldb) and
+
+- not disabled (see --disable-ldb in Runtime Options and
+  sb-ext:disable-debugger).
+
+Else, a backtrace of at most 100 stack frames is printed, and SBCL
+exits with a non-zero exit code.
+
+The commands supported can be explored at the LDB prompt by typing
+help followed by an enter.
+
+Also see the related --lose-on-corruption option in
+Runtime Options.
+
 ### Enabling and Disabling the Debugger
 
 In certain contexts (e.g. non-interactive applications), it may be
-desirable to turn off the SBCL debugger (and possibly re-enable it).
-The functions here control the debugger.
+desirable to turn off the SBCL debugger and ldb (and possibly
+re-enable them).
 
 - [function] sb-ext:disable-debugger
 
-    When invoked, this function will turn off both the SBCL debugger
-    and ldb (the low-level debugger).  See also enable-debugger.
+    When invoked, this function will turn off both the Debugger
+    and ldb (the low-level debugger), similar to specifying
+    --disable-debugger (see Toplevel Options) and
+    --disable-ldb (see Runtime Options) on the command line.
+    See also enable-debugger.
 
 - [function] sb-ext:enable-debugger
 
-    Restore the debugger if it has been turned off by disable-debugger.
+    Restore the Debugger and ldb if they have been
+    turned off by disable-debugger, --disable-debugger (see
+    Toplevel Options) or --disable-ldb (see
+    Runtime Options).
 
 ## Efficiency
 
