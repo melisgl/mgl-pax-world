@@ -565,7 +565,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.148-56fd6f8`, generated *2026-10-03 12:08:39*. See
+The output is for SBCL version `2.6.9.151-ec1c1a5`, generated *2026-10-03 16:49:25*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -6494,14 +6494,10 @@ Unicode codepoint.
 <a id="x-28SB-UNICODE-3ALINE-BREAK-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:LINE-BREAK-CLASS%20FUNCTION"></a>
 
-- \[function\] **sb-unicode:line-break-class** *character \&key resolve*
+- \[function\] **sb-unicode:line-break-class** *character*
 
-    Returns the line breaking class of `character`, as specified in UAX #14.
-    If `:resolve` is `nil`, returns the character class found in the property file.
-    If `:resolve` is non-`nil`, certain line-breaking classes will be mapped to other
-    classes as specified in the applicable standards. Additionally, if `:resolve`
-    is `:east-asian`, Ambigious (class `:ai`) characters will be mapped to the
-    Ideographic (`:id`) class instead of Alphabetic (`:al`).
+    Returns the line breaking class of `character`, as specified in the
+    Unicode character database.
 
 <a id="x-28SB-MANUAL-3A-40STRING-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STRING-OPERATIONS%20MGL-PAX:SECTION"></a>
