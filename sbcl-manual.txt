@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.162-820ba64, generated 2026-10-04 06:28:06. See
+The output is for SBCL version 2.6.9.163-c762175, generated 2026-10-04 12:56:39. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -36,11 +36,9 @@ good question.
 
 Before sending mail, check the list archives at either
 
-<http://sourceforge.net/mailarchive/forum.php?forum_name=sbcl-help>
+- <http://sourceforge.net/mailarchive/forum.php?forum_name=sbcl-help> or
 
-or
-
-<http://news.gmane.org/gmane.lisp.steel-bank.general>
+- the gmane.lisp.steel-bank.general news group on news.gmane.io
 
 to see if your question has been answered already. Checking the bug
 database is also worth it (see Reporting Bugs), to see if the issue
@@ -284,7 +282,7 @@ Declarations as Assertions.
 SBCL fasl-format is binary compatible only with the exact SBCL version
 it was generated with. While this is obviously suboptimal, it has
 proven more robust than trying to maintain fasl compatibility across
-versions: accidentally breaking things is far too easy, and can lead
+versions: accidentally breaking things is far too easy and can lead
 to hard to diagnose bugs.
 
 The following snippet handles fasl recompilation automatically for
