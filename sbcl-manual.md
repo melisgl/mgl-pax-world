@@ -565,7 +565,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.176-0c37e2f`, generated *2026-10-05 09:41:42*. See
+The output is for SBCL version `2.6.9.181-5002778`, generated *2026-10-05 19:28:17*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -4575,17 +4575,19 @@ support for this feature.
 with the semantics of adding the package package-local nicknames
 `<local-nickname>`s for the corresponding `<actual-package-name>`s.
 
-Example:
+In the following example, the local nickname `"BAR"` refers to the
+package `"FOO"`, and the local nickname `"B"` is added to be
+able to refer to the thus hidden `"BAR"` package:
 
     (defpackage :bar (:intern "X"))
     (defpackage :foo (:intern "X"))
-    (defpackage :quux (:use :cl) (:local-nicknames (:bar :foo) (:foo :bar)))
+    (defpackage :quux (:use :cl) (:local-nicknames (:bar :foo) (:b :bar)))
     (find-symbol "X" :foo) ; => FOO::X
     (find-symbol "X" :bar) ; => BAR::X
     (let ((*package* (find-package :quux)))
-      (find-symbol "X" :foo))               ; => BAR::X
-    (let ((*package* (find-package :quux)))
       (find-symbol "X" :bar))               ; => FOO::X
+    (let ((*package* (find-package :quux)))
+      (find-symbol "X" :b))                 ; => BAR::X
 
 <a id="x-28SB-EXT-3APACKAGE-LOCAL-NICKNAMES-20FUNCTION-29"></a>
 <a id="SB-EXT:PACKAGE-LOCAL-NICKNAMES%20FUNCTION"></a>
