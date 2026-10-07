@@ -568,6 +568,24 @@ Level 3 BLAS operations
           -----+  --++
           ++++++  ++++
 
+- [function] gemm-strided-batched! alpha a b beta c stride-a stride-b stride-c &key transpose-a? transpose-b? m n k lda ldb ldc batch-count
+
+    This is like gemm!, but it performs batch-count matrix multiplication
+    instead of one. Conceptually, it does a gemm! on a, b, c, then it
+    does another on them as if they were displaced by their respective
+    strides, and so on.
+
+    In the CUDA case, this is implemented as a single cuBLAS call, but
+    BLAS has no direct counterpart, so in that case we call gemm!
+    batch-count times with a, b, c displaced accordingly.
+
+    Note that stride-a, stride-b, and stride-c give the number of array
+    elements from one instance to the next in the batch. If one matrix
+    isn't actually batched (say a is batched, while b isn't and the same
+    matrix b gets multiplied by every instance in a), then its stride is
+    0. Aside from that, the same principles for calling gemm! apply
+    here.
+
 ## Destructive API
 
 - [function] .square! x &key (n (mat-size x))

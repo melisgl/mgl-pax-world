@@ -15,8 +15,6 @@
 
         - [1.3.1 How to Report Bugs Effectively][6ca1]
 
-        - [1.3.2 How to Report Signal-related Bugs][240e]
-
 - [2 Introduction][62fa]
 
     - [2.1 ANSI Conformance][ae38]
@@ -83,7 +81,7 @@
 
         - [3.2.4 Exit on Errors][6d34]
 
-    - [3.3 Command Line Options][1294]
+    - [3.3 Command-line Options][1294]
 
         - [3.3.1 Runtime Options][3e4d]
 
@@ -565,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.211-7dc08bd`, generated *2026-10-06 17:02:12*. See
+The output is for SBCL version `2.6.9.222-e6f8aa0`, generated *2026-10-07 14:03:50*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -625,12 +623,12 @@ directly.
 The SBCL project cannot verify the accuracy of the information or
 the competence of the people listed, and they have provided their
 own blurbs below: you must make your own judgement of suitability
-from the available information - refer to the links they provide,
-the CREDITS file, mailing list archives, CVS commit messages, and so
-on. Please feel free to ask for advice on the sbcl-help list.
+from the available information -- refer to the links they provide,
+the CREDITS file, mailing list archives, commit messages, and so on.
+Please feel free to ask for advice through [Volunteer Support][0de5].
 
 (At present, no companies or consultants wish to advertise paid
-support or custom SBCL development in this manual).
+support or custom SBCL development in this manual.)
 
 <a id="x-28SB-MANUAL-3A-40REPORTING-BUGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@REPORTING-BUGS%20MGL-PAX:SECTION"></a>
@@ -644,9 +642,8 @@ SBCL uses Launchpad to track bugs. The bug database is available at
 Reporting bugs there requires registering at Launchpad. However,
 bugs can also be reported on the mailing list `sbcl-bugs`, which is
 moderated but does *not* require subscribing. Simply send email to
-[`sbcl-bugs@lists.sourceforge.net`](mailto:sbcl-bugs@lists.sourceforge.net)
-and the bug will be checked and added to Launchpad by SBCL
-maintainers.
+[`sbcl-bugs@lists.sourceforge.net`](mailto:sbcl-bugs@lists.sourceforge.net),
+to have the bug checked and added to Launchpad by SBCL maintainers.
 
 See the `HACKING` file on how to send patches.
 
@@ -656,7 +653,7 @@ See the `HACKING` file on how to send patches.
 #### 1.3.1 How to Report Bugs Effectively
 
 Please include enough information in a bug report that someone reading
-it can reproduce the problem, i.e. don't write
+it can reproduce the problem. That is, don't write
 
     Subject: apparent bug in PRINT-OBJECT (or *PRINT-LENGTH*?)
     PRINT-OBJECT doesn't seem to work with *PRINT-LENGTH*. Is this a bug?
@@ -679,31 +676,31 @@ found at
 
 <http://www.chiark.greenend.org.uk/~sgtatham/bugs.html>.
 
-<a id="x-28SB-MANUAL-3A-40HOW-TO-REPORT-SIGNAL-RELATED-BUGS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@HOW-TO-REPORT-SIGNAL-RELATED-BUGS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40GETTING-BACKTRACES-FOR-LOW-LEVEL-ERRORS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@GETTING-BACKTRACES-FOR-LOW-LEVEL-ERRORS%20MGL-PAX:SECTION"></a>
 
-#### 1.3.2 How to Report Signal-related Bugs
+##### Getting Backtraces for Low-level Errors
 
-If you run into a signal related bug, you are getting fatal errors
-such as `signal N is [un]blocked` or just hangs, and you want to
-send a useful bug report then:
+If you get a fatal errors such as `signal N is [un]blocked` or SBCL
+just hang and you want to send a useful bug report, then:
 
-- Compile SBCL with [`ldb`][3b91] enabled.
+- Make sure SBCL is compiled and run with [`ldb`][3b91] enabled.
 
 - Isolate a smallish test case, run it.
 
-- If it just hangs kill it with `sigabrt`: `kill -ABRT <pidof sbcl>`.
+- If SBCL hangs, kill it with `sigabrt`: `kill -ABRT <pidof sbcl>`,
+  which by default enters [`ldb`][00e9].
 
-- Print the backtrace from [`ldb`][3b91] by typing `ba`.
+- Print the backtrace from `ldb` by typing `ba`.
 
-- Attach gdb: `gdb -p <pidof sbcl>` and get backtraces for all
-  threads: `thread apply all ba`.
+- Next, attach gdb with `gdb -p <pidof sbcl>`, and get backtraces
+  for all threads with `thread apply all ba`.
 
-- If multiple threads are in play then still in gdb, try to get Lisp
-  backtrace for all threads: `thread apply all call
-  backtrace_from_fp($ebp, 100, 0)`. Substitute `$ebp` with `$rbp` on
-  x86-64. The backtraces will appear in the stdout of the SBCL
-  process.
+- If multiple threads are in play, then -- still in gdb -- try to get
+  Lisp backtrace for all threads: `thread apply all call
+  backtrace_from_fp($ebp, 100, 0)` on x86. Substitute `$ebp` with
+  `$rbp` on x86-64. The backtraces will appear in the stdout of the
+  SBCL process.
 
 - Send a report with the backtraces and the output (both stdout and
   stderr) produced by SBCL.
@@ -711,7 +708,7 @@ send a useful bug report then:
 - Don't forget to include OS and SBCL version.
 
 - If available, include information on outcome of the same test with
-  other versions of SBCL, OS, ...
+  other versions of SBCL, OS, etc.
 
 <a id="x-28SB-MANUAL-3A-40INTRODUCTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTRODUCTION%20MGL-PAX:SECTION"></a>
@@ -898,11 +895,11 @@ user or system initialization file (see [Initialization Files][1016]).
 
 #### 2.3.3 Compiler-only Implementation
 
-SBCL is essentially a compiler-only implementation of Common Lisp.
+By default, SBCL is a compiler-only implementation of Common Lisp.
 That is, for all but a few special cases, [`eval`][0d6e] creates a lambda
 expression, calls [`compile`][bc41] on the lambda expression to create a
 compiled function, and then calls [`funcall`][03c7] on the resulting function
-object. A more traditional interpreter is also available on default
+object. A more traditional [Interpreter][2e79] is also available on default
 builds; it is usually only called internally. This is explicitly
 allowed by the ANSI standard but leads to some oddities; e.g. at
 default settings, [`functionp`][6f91] and [`compiled-function-p`][10e5] are equivalent,
@@ -933,9 +930,9 @@ probably meant.
 
 SBCL instead treats the undefined behavior as an error. Often such
 code can be rewritten in portable ANSI Common Lisp which has the
-desired behavior. E.g., the code above can be given an exactly
-defined meaning by replacing `defconstant` either with [`defparameter`][570e] or
-with a customized macro which does the right thing, e.g.
+desired behavior. The code above can be given an exactly defined
+meaning by replacing `defconstant` either with [`defparameter`][570e] or with a
+customized macro which does the right thing, e.g.
 
     (defmacro define-constant (name value &optional doc)
       `(defconstant ,name (if (boundp ',name) (symbol-value ',name) ,value)
@@ -968,10 +965,7 @@ as *warning, bad aesthetics detected, you have no style* but as
 as well as you might like*. That is, unless the compiler warns about
 such conditions, there's no way for the compiler to warn about some
 programming errors which would otherwise be easy to
-overlook. (Related bug: The warning about multiple `defun`s is
-pointlessly annoying when you compile and then load a function
-containing `defun` wrapped in [`eval-when`][9c9c], and ideally should be
-suppressed in that case, but still isn't as of SBCL 0.7.6.)
+overlook.
 
 <a id="x-28SB-MANUAL-3A-40DEVELOPMENT-TOOLS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEVELOPMENT-TOOLS%20MGL-PAX:SECTION"></a>
@@ -991,11 +985,11 @@ automated documentation lookup.
 
 Currently *SLIME* (Superior Lisp Interaction Mode for Emacs)
 together with Emacs is recommended for use with SBCL, though other
-options exist as well. Historically, the ILISP package at
-<http://ilisp.cons.org/> provided similar functionality, but it does
-not support modern SBCL versions.
+options exist as well. SLIME can be downloaded from
+<https://slime.common-lisp.dev/>.
 
-SLIME can be downloaded from <https://slime.common-lisp.dev/>.
+Historically, the ILISP package at <http://ilisp.cons.org/> provided
+similar functionality, but it does not support modern SBCL versions.
 
 <a id="x-28SB-MANUAL-3A-40LANGUAGE-REFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LANGUAGE-REFERENCE%20MGL-PAX:SECTION"></a>
@@ -1033,7 +1027,7 @@ The SBCL website at <http://www.sbcl.org/> has some general
 information, plus links to mailing lists devoted to SBCL, and to
 archives of these mailing lists. Subscribing to the mailing lists
 `sbcl-help` and `sbcl-announce` is recommended: both are fairly
-low-volume, and help you keep abreast with SBCL development.
+low-volume and help you keep abreast with SBCL development.
 
 <a id="x-28SB-MANUAL-3A-40ONLINE-DOCUMENTATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ONLINE-DOCUMENTATION%20MGL-PAX:SECTION"></a>
@@ -1042,22 +1036,22 @@ low-volume, and help you keep abreast with SBCL development.
 
 Documentation for non-ANSI extensions for various commands is
 available online from the SBCL executable itself. The extensions for
-functions which have their own command prompts (e.g. the debugger,
+functions that have their own command prompts (e.g. the debugger,
 and [`inspect`][a485]) are documented in text available by typing `help` at
 their command prompts. The extensions for functions which don't have
 their own command prompt (such as [`trace`][548d]) are described in their
-documentation strings, unless your SBCL was compiled with an option
-not to include documentation strings, in which case the
-documentation strings are only readable in the source code.
+documentation strings, unless your SBCL was compiled with the
+`--without-sb-doc` option to omit them, in which case they are only
+readable in the source code.
 
 <a id="x-28SB-MANUAL-3A-40ADDITIONAL-DOCUMENTATION-FILES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ADDITIONAL-DOCUMENTATION-FILES%20MGL-PAX:SECTION"></a>
 
 #### 2.5.3 Additional Documentation Files
 
-Besides this user manual both SBCL source and binary distributions
-include some other SBCL-specific documentation files, which should
-be installed along with this manual on your system, e.g. in
+Besides this user manual, some SBCL-specific documentation files are
+include in both SBCL source and binary distributions. The latter are
+often installed along with this manual, e.g. in
 `/usr/local/share/doc/sbcl/`.
 
 - `copying`: Licence and copyright summary.
@@ -1080,10 +1074,8 @@ then subscribing to
 [sbcl-devel@lists.sourceforge.net](mailto:sbcl-devel@lists.sourceforge.net)
 is a good idea.
 
-SBCL internals documentation -- besides comments in the source -- is
-available in the Web Archive:
-
-<https://web.archive.org/web/20120814000933/http://sbcl-internals.cliki.net/index>.
+The Texinfo sources for the SBCL Internals Manual are available in
+`doc/internals/`.
 
 Some low-level information describing the programming details of the
 conversion from CMUCL to SBCL is available in the
@@ -1114,7 +1106,7 @@ You can use <https://web.libera.chat> or a normal IRC client.
 
 Also, see <https://www.reddit.com/r/Common_Lisp/>, as well as
 <https://www.lisp.org> and <https://cliki.net>, which contain
-numerous pointers places in the net where lispers talks shop.
+numerous pointers places in the net where lispers talk shop.
 
 <a id="x-28SB-MANUAL-3A-40THIRD-PARTY-LIBRARIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THIRD-PARTY-LIBRARIES%20MGL-PAX:SECTION"></a>
@@ -1198,14 +1190,8 @@ Lisp, including early implementations for the Mach operating system on
 the IBM RT, back in the 1980s. Some design decisions from that time are
 still reflected in the current implementation:
 
-- The system expects to be loaded into a fixed-at-compile-time
-  location in virtual memory, and also expects the location of all
-  of its heap storage to be specified at compile time.
-
-- The system overcommits memory, allocating large amounts of address
-  space from the system (often more than the amount of virtual
-  memory available) and then failing if it ends up using too much of
-  the allocated storage.
+- Some parts of the system expect to be loaded into a
+  fixed-at-compile-time location in virtual memory.
 
 - The system is implemented as a C program which is responsible for
   supplying low-level services and loading a Lisp `.core` file.
@@ -1246,7 +1232,7 @@ data and so not collecting any Lisp objects that they point to. This
 has some negative consequences for average time efficiency (though
 possibly no worse than the negative consequences of trying to
 implement an exact GC on a processor architecture as register-poor
-as the X86) and also has potentially unlimited consequences for
+as the x86) and also has potentially unlimited consequences for
 worst-case memory efficiency. In practice, conservative GCs work
 reasonably well, not getting anywhere near the worst case. But they
 can occasionally cause odd patterns of memory usage.
@@ -1254,14 +1240,16 @@ can occasionally cause odd patterns of memory usage.
 The fork from CMUCL was based on a major rewrite of the system
 bootstrap process. CMUCL has for many years tolerated a very unusual
 "build" procedure which doesn't actually build the complete system
-from scratch, but instead progressively overwrites parts of a
-running system with new versions. This quasi-build procedure can
-cause various bizarre bootstrapping hangups, especially when a major
+from scratch but instead progressively overwrites parts of a running
+system with new versions. This quasi-build procedure can cause
+various bizarre bootstrapping hangups, especially when a major
 change is made to the system. It also makes the connection between
 the current source code and the current executable more tenuous than
 in other software systems -- it's easy to accidentally build a CMUCL
 system containing characteristics not reflected in the current
-version of the source code.
+version of the source code. See the paper *SBCL: A Sanely
+Bootstrappable Common
+Lisp* (<https://research.gold.ac.uk/id/eprint/2336/>).
 
 Other major changes since the fork from CMUCL include:
 
@@ -1309,15 +1297,15 @@ where you can interact with SBCL by typing expressions.
     * (exit)
     $
 
-Also see [Command Line Options][1294] and [Stopping SBCL][a9a5].
+Also see [Command-line Options][1294] and [Stopping SBCL][a9a5].
 
 <a id="x-28SB-MANUAL-3A-40RUNNING-FROM-EMACS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-FROM-EMACS%20MGL-PAX:SECTION"></a>
 
 #### 3.1.2 Running from Emacs
 
-To run SBCL as an `inferior-lisp` from Emacs, in your `.emacs` do
-something like:
+To run SBCL as an `inferior-lisp` from Emacs, add something like this
+to your `.emacs`:
 
     ;;; The SBCL binary and command-line arguments
     (setq inferior-lisp-program "/usr/local/bin/sbcl --noinform")
@@ -1330,10 +1318,10 @@ For more information on using SBCL with Emacs, see
 
 #### 3.1.3 Shebang Scripts
 
-Standard Unix tools that are interpreters follow a common command line
+Standard Unix tools that are interpreters follow a common command-line
 protocol that is necessary to work with "shebang scripts". SBCL
-supports this via the `--script` command line option (see
-[Command Line Options][1294]).
+supports this via the `--script` command-line option (see
+[Command-line Options][1294]).
 
 Example file (`hello.lisp`):
 
@@ -1412,9 +1400,10 @@ threads.
 
 #### 3.2.2 End of File
 
-By default SBCL also exits on end of input, caused either by user
-pressing `Control-D` on an attached terminal, or end of input when
-using SBCL as part of a shell pipeline.
+By default, SBCL also exits upon reaching the end of input. This can
+be caused either by the user pressing `Control-D` on an attached
+terminal, or by the input stream ending when SBCL is used as part of
+a shell pipeline.
 
 <a id="x-28SB-MANUAL-3A-40SAVING-A-CORE-IMAGE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SAVING-A-CORE-IMAGE%20MGL-PAX:SECTION"></a>
@@ -1428,7 +1417,7 @@ process, and is also provided as an extension to the user.
 <a id="x-28SB-EXT-3ASAVE-LISP-AND-DIE-20FUNCTION-29"></a>
 <a id="SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION"></a>
 
-- \[function\] **sb-ext:save-lisp-and-die** *core-file-name \&key (toplevel #'toplevel-init) executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression*
+- \[function\] **sb-ext:save-lisp-and-die** *core-file-name \&key toplevel executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression*
 
     Save a "core image", i.e. enough information to restart a Lisp
     process later in the same state, in the file of the specified name.
@@ -1458,12 +1447,13 @@ process, and is also provided as an extension to the user.
 
     - `:save-runtime-options`
 
-        If true, values of runtime options `--dynamic-space-size` and
-        `--control-stack-size` that were used to start SBCL are stored in
-        the standalone executable, and restored when the executable is
-        run. This also inhibits normal runtime option processing, causing
-        all command line arguments to be passed to the toplevel. If
-        `:accept-runtime-options` then `--dynamic-space-size` and
+        If true, values of [Runtime Options][3e4d]
+        `--dynamic-space-size` and `--control-stack-size` that were used
+        to start SBCL are stored in the standalone executable, and
+        restored when the executable is run. This also inhibits normal
+        runtime option processing, causing all command line arguments to
+        be passed to the toplevel. If
+        `:accept-runtime-options`, then `--dynamic-space-size` and
         `--control-stack-size` are still processed by the runtime.
         Meaningless if `:executable` is `nil`.
 
@@ -1488,14 +1478,14 @@ process, and is also provided as an extension to the user.
         This should be a list of the main entry points in any newly loaded
         systems. This need not be supplied, but locality and/or [`gc`][b50b]
         performance may be better if they are. This has two different but
-        related meanings: If `:purify` is true - and only for cheneygc - the
-        root structures are those which anchor the set of objects moved
-        into static space. On gencgc - and only on platforms supporting
-        immobile code - these are the functions and/or function-names
-        which commence a depth-first scan of code when reordering based on
-        the statically observable call chain. The complete set of
-        reachable objects is not affected per se. This argument is
-        meaningless if neither enabling precondition holds.
+        related meanings: If `:purify` is true -- and only for Cheney `gc` --
+        the root structures are those which anchor the set of objects
+        moved into static space. On gencgc -- and only on platforms
+        supporting immobile code -- these are the functions and/or
+        function-names which commence a depth-first scan of code when
+        reordering based on the statically observable call chain. The
+        complete set of reachable objects is not affected per se. This
+        argument is meaningless if neither enabling precondition holds.
 
     - `:environment-name`
 
@@ -1512,7 +1502,7 @@ process, and is also provided as an extension to the user.
 
     - `:application-type`
 
-        Present only on Windows and is meaningful only with `:executable` `t`.
+        Present only on Windows and meaningful only with `:executable` `t`.
         Specifies the subsystem of the executable, `:console` or `:gui`.
         The notable difference is that `:gui` doesn't automatically create
         a console window. The default is `:console`.
@@ -1532,7 +1522,7 @@ process, and is also provided as an extension to the user.
     `save-lisp-and-die` interacts with [`sb-alien:load-shared-object`][3c84]: see its
     documentation for details.
 
-    On threaded platforms only a single thread may remain running after
+    On threaded platforms, only a single thread may remain running after
     [`sb-ext:*save-hooks*`][bbf4] have run. Applications using multiple threads can
     be `save-lisp-and-die` friendly by registering a save-hook that quits
     any additional threads, and an init-hook that restarts them.
@@ -1557,14 +1547,15 @@ process, and is also provided as an extension to the user.
 
 - \[variable\] **sb-ext:\*save-hooks\*** *nil*
 
-    A list of function designators which are called in an unspecified
+    A list of function designators called in an unspecified
     order before creating a saved core image.
 
-    Unused by SBCL itself: reserved for user and applications.
+    Unused by SBCL itself; reserved for the user and applications.
 
-In cases where the standard initialization files have already been loaded
-into the saved core, and alternative ones should be used (or none at
-all), SBCL allows customizing the initfile pathname computation.
+In cases where the standard initialization files have already been
+loaded into the saved core and alternative ones should be used (or
+none at all), SBCL allows customizing the initfile pathname
+computation.
 
 <a id="x-28SB-EXT-3A-2ASYSINIT-PATHNAME-FUNCTION-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*SYSINIT-PATHNAME-FUNCTION*%20VARIABLE"></a>
@@ -1574,7 +1565,7 @@ all), SBCL allows customizing the initfile pathname computation.
     Designator for a function of zero arguments called to obtain a
     pathname designator for the default sysinit file, or `nil`. If the
     function returns `nil`, no sysinit file is used unless one has been
-    specified on the command-line.
+    specified on the command line.
 
 <a id="x-28SB-EXT-3A-2AUSERINIT-PATHNAME-FUNCTION-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*USERINIT-PATHNAME-FUNCTION*%20VARIABLE"></a>
@@ -1584,7 +1575,7 @@ all), SBCL allows customizing the initfile pathname computation.
     Designator for a function of zero arguments called to obtain a
     pathname designator or a stream for the default userinit file, or `nil`.
     If the function returns `nil`, no userinit file is used unless one has
-    been specified on the command-line.
+    been specified on the command line.
 
 To facilitate distribution of SBCL applications using external
 resources, the filesystem location of the SBCL core file being used
@@ -1606,25 +1597,23 @@ SBCL can also be configured to exit if an unhandled error occurs,
 which is mainly useful for acting as part of a shell pipeline; doing
 so under most other circumstances would mean giving up large parts
 of the flexibility and robustness of Common Lisp. See
-[Debugger Entry][f102] and the command line option `--disable-debugger` in
+[Debugger Entry][f102] and the command-line option `--disable-debugger` in
 [Toplevel Options][6be4].
 
 <a id="x-28SB-MANUAL-3A-40COMMAND-LINE-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMMAND-LINE-OPTIONS%20MGL-PAX:SECTION"></a>
 
-### 3.3 Command Line Options
+### 3.3 Command-line Options
 
-Command line options can be considered an advanced topic; for ordinary
-interactive use, no command line arguments should be necessary.
+Command-line options can be considered an advanced topic; for ordinary
+interactive use, no command-line arguments should be necessary.
 
-In order to understand the command line argument syntax for SBCL, it
+In order to understand the command-line argument syntax for SBCL, it
 is helpful to understand that the SBCL system is implemented as two
 components, a low-level runtime environment written in C and a
-higher-level system written in Common Lisp itself. Some command line
-arguments are processed during the initialization of the low-level
-runtime environment, some command line arguments are processed
-during the initialization of the Common Lisp system, and any
-remaining command line arguments are made available to user code via
+higher-level system written in Common Lisp. Arguments are processed
+during the respective initializations of the runtime and Lisp
+system, with any remainder available to user code via
 [`sb-ext:*posix-argv*`][a5cc].
 
 The full, unambiguous syntax for invoking SBCL at the command line
@@ -1634,16 +1623,13 @@ is:
          <toplevel-option>* --end-toplevel-options \
          <user-option>*
 
-For convenience, `--end-runtime-options` and
-`--end-toplevel-options` can be omitted, which can be convenient
-when you are running the program interactively, and you can see that
-no ambiguities are possible with the option values you are using.
-Omitting these elements is probably a bad idea for any batch file
-where any of the options are under user control, since it makes it
-impossible for SBCL to detect erroneous command line input, so that
-erroneous command line arguments will be passed on to the user
-program even if they was intended for the runtime system or the Lisp
-system.
+The `--end-runtime-options` and `--end-toplevel-options` can be
+omitted, provided that no ambiguities are possible with the option
+values used. Omitting these elements is probably a bad idea for any
+batch file where any of the options are under user control because
+it makes it impossible for SBCL to detect erroneous command-line
+arguments, which will then be passed on to the user program even if
+they were intended for the runtime system or the Lisp system.
 
 <a id="x-28SB-MANUAL-3A-40RUNTIME-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNTIME-OPTIONS%20MGL-PAX:SECTION"></a>
@@ -1654,7 +1640,7 @@ system.
 
     Run the specified Lisp core file instead of the default. Note
     that if the Lisp core file is a user-created core file, it may
-    run a nonstandard toplevel which does not recognize the standard
+    run a nonstandard toplevel that does not recognize the standard
     toplevel options.
 
 - `--dynamic-space-size <megabytes>`
@@ -1669,8 +1655,8 @@ system.
 
 - `--tls-limit <positive integer>`
 
-    Maximum number of thread-local symbols in threaded builds.
-    Default value is 4096.
+    Maximum number of thread-local [Special Variables][a8ca] in threaded
+    builds. Default value is 4096.
 
 - `--noinform`
 
@@ -1691,10 +1677,10 @@ system.
     There are some dangerous low-level errors (for instance, control
     stack exhausted, memory fault) that (or whose handlers) can
     corrupt the image. By default, SBCL prints a warning, then tries
-    to continue and handle the error in Lisp, but this will not
-    always work, and SBCL may malfunction or even hang. With this
-    option, upon encountering such an error, SBCL will exit instead
-    of invoking [`ldb`][3b91] (if present and enabled).
+    to continue and handle the error in Lisp. However, this will not
+    always work, and SBCL may subsequently malfunction or even hang.
+    With this option, upon encountering such an error, SBCL will
+    exit instead of signalling a Lisp error.
 
 - `--script <filename>`
 
@@ -1702,7 +1688,7 @@ system.
     `--disable-ldb` `--lose-on-corruption`
     `--end-runtime-options` `--script` `<filename>`. See
     the description of `--script` as a *toplevel* option below.
-    If there are no other command line arguments following
+    If there are no other command-line arguments following
     `--script`, the filename argument can be omitted.
 
 - `--merge-core-pages`
@@ -1745,7 +1731,7 @@ toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
 
 - `--sysinit <filename>`
 
-    Load `filename` instead of the default system initialization
+    Load `<filename>` instead of the default system initialization
     file (see [Initialization Files][1016]).
 
 - `--no-sysinit`
@@ -1755,8 +1741,8 @@ toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
 
 - `--userinit <filename>`
 
-    Load `filename` instead of the default user initialization file
-    (see [Initialization Files][1016].)
+    Load `<filename>` instead of the default user initialization
+    file (see [Initialization Files][1016].)
 
 - `--no-userinit`
 
@@ -1767,7 +1753,7 @@ toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
 
     After executing any initialization file, but before starting the
     read-eval-print loop on standard input, read and evaluate
-    `command`. More than one `--eval` option can be used, and all
+    `<command>`. More than one `--eval` option can be used, and all
     will be read and executed, in the order they appear on the
     command line.
 
@@ -1782,17 +1768,17 @@ toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
     When ordinarily the toplevel "read-eval-print loop" would be
     executed, execute a "read-eval loop" instead, i.e. don't print
     a prompt and don't echo results. Combined with the `--noinform`
-    runtime option, this makes it easier to write Lisp "scripts"
-    which work cleanly in Unix pipelines.
+    runtime option, this makes it easier to write Lisp scripts that
+    work cleanly in Unix pipelines.
 
 - `--disable-debugger`
 
-    By default when SBCL encounters an error, it enters the builtin
+    By default, when SBCL encounters an error, it enters the builtin
     debugger, allowing interactive diagnosis and possible
     intercession. This option disables the debugger, causing errors
     to print a backtrace and exit with status 1 instead. When given,
-    this option takes effect before loading of initialization files
-    or processing `--eval` and `--load` options. See
+    this option takes effect before loading initialization files or
+    processing `--eval` and `--load` options. See
     [`sb-ext:disable-debugger`][356e] and [Debugger Entry][f102].
 
 - `--script <filename>`
@@ -1804,16 +1790,16 @@ toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
     the read-eval-print-loop, and exit afterwards. If the file
     begins with a shebang line, it is ignored.
 
-    If there are no other command line arguments following, the
+    If there are no other command-line arguments following, the
     filename can be omitted: this causes the script to be loaded
-    from standard input instead. Shebang lines in standard input
-    script are currently *not* ignored.
+    from standard input instead. In this case, shebang lines are
+    currently *not* ignored.
 
-    In either case, if there is an unhandled error (e.g. end of
-    file, or a broken pipe) on either standard input, standard
+    In either case, if there is an unhandled error (such as an end
+    of file condition or a broken pipe) on standard input, standard
     output, or standard error, the script silently exits with code
-    0. This allows e.g. safely piping output from SBCL to `head -n1`
-    or similar.
+    0. This allows piping output from SBCL to another command
+    without unexpected errors.
 
     Additionally, the option sets [`*compile-verbose*`][0961] and
     [`*load-verbose*`][93a7] to `nil` while loading the file to avoid
@@ -1832,7 +1818,7 @@ policy.
 
 - **System Initialization File:** Defaults to `$SBCL_HOME/sbclrc`,
   or if that doesn't exist to `/etc/sbclrc`. Can be overridden with
-  the command line option `--sysinit` or `--no-sysinit` (see
+  the command-line option `--sysinit` or `--no-sysinit` (see
   [Toplevel Options][6be4]).
 
     The system initialization file is intended for system
@@ -1840,7 +1826,7 @@ policy.
     installed third party modules, etc.
 
 - **User Initialization File:** Defaults to `$HOME/.sbclrc`. Can be
-  overridden with the command line option `--userinit` or
+  overridden with the command-line option `--userinit` or
   `--no-userinit` (see [Toplevel Options][6be4]).
 
     The user initialization file is intended for personal
@@ -1863,22 +1849,22 @@ SBCL provides hooks into the system initialization and exit.
 
 - \[variable\] **sb-ext:\*init-hooks\*** *(sb-simd-internals::update-idispatch-indices)*
 
-    A list of function designators which are called in an unspecified
+    A list of function designators called in an unspecified
     order when a saved core image starts up, after the system itself has
     been initialized, but before non-user threads such as the finalizer
     thread have been started.
 
-    Unused by SBCL itself: reserved for user and applications.
+    Unused by SBCL itself; reserved for the user and applications.
 
 <a id="x-28SB-EXT-3A-2AEXIT-HOOKS-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*EXIT-HOOKS*%20VARIABLE"></a>
 
 - \[variable\] **sb-ext:\*exit-hooks\*** *nil*
 
-    A list of function designators which are called in an unspecified
+    A list of function designators called in an unspecified
     order when SBCL process exits.
 
-    Unused by SBCL itself: reserved for user and applications.
+    Unused by SBCL itself; reserved for the user and applications.
 
     Using ([`sb-ext:exit`][7f27] `:abort` `t`), or calling `exit(3)` directly circumvents
     these hooks.
@@ -1888,13 +1874,11 @@ SBCL provides hooks into the system initialization and exit.
 
 ## 4 Compiler
 
-This chapter will discuss most compiler issues other than efficiency,
-including compiler error messages, the SBCL compiler's unusual
-approach to type safety in the presence of type declarations, the
-effects of various compiler optimization policies, and the way that
-inlining and open coding may cause optimized code to differ from a
-naive translation. Efficiency issues are sufficiently varied and
-separate that they have their own chapter, [Efficiency][29fd].
+This chapter will discuss most compiler issues other than [Efficiency][29fd],
+including compiler messages, type safety in the presence of type
+declarations, the effects of various optimization policies, and the
+way that inlining and open coding may cause optimized code to differ
+from a naive translation.
 
 <a id="x-28SB-MANUAL-3A-40DIAGNOSTIC-MESSAGES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DIAGNOSTIC-MESSAGES%20MGL-PAX:SECTION"></a>
@@ -1906,13 +1890,13 @@ separate that they have their own chapter, [Efficiency][29fd].
 
 #### 4.1.1 Controlling Verbosity
 
-The compiler can be quite verbose in its diagnostic reporting, rather
-more then some users would prefer -- the amount of noise emitted can
-be controlled, however.
+The compiler can be quite verbose in its diagnostic reporting -- rather
+more than some users would prefer. However, the amount of noise
+emitted can be controlled.
 
-To control emission of compiler diagnostics (of any severity other
-than [`error`][669b]: [Diagnostic Severity][4dad]) use the [`sb-ext:muffle-conditions`][4697]
-and [`sb-ext:unmuffle-conditions`][873a] declarations, specifying the type of
+To control emission of compiler diagnostics (except those with
+[Diagnostic Severity][4dad] error) use the [`sb-ext:muffle-conditions`][4697] and
+[`sb-ext:unmuffle-conditions`][873a] declarations, specifying the type of
 condition that is to be muffled (the muffling is done using an
 associated [`muffle-warning`][6f51] restart).
 
@@ -1940,15 +1924,15 @@ Local control:
 
     Syntax: `(sb-ext:muffle-conditions &rest types)`.
 
-    Muffle the diagnostic messages that would be caused by compile-time
-    signals of [`types`][7c9f].
+    Silence the diagnostic messages that would be printed when a condition
+    matching any of [`types`][7c9f] is signalled at compile time.
 
 <a id="x-28SB-EXT-3AUNMUFFLE-CONDITIONS-20DECLARATION-29"></a>
 <a id="SB-EXT:UNMUFFLE-CONDITIONS%20DECLARATION"></a>
 
 - \[declaration\] **sb-ext:unmuffle-conditions**
 
-    Syntax: `(sb-ext:muffle-conditions &rest types)`.
+    Syntax: `(sb-ext:unmuffle-conditions &rest types)`.
 
     Cancel the effect of a previous [`sb-ext:muffle-conditions`][4697] declaration.
 
@@ -2781,13 +2765,18 @@ efficient calling convention that forbids redefinition.
 
 ### 4.6 Interpreter
 
-By default SBCL implements [`eval`][0d6e] by calling the native code
-compiler.
+By default, SBCL implements [`eval`][0d6e] by calling the native-code
+compiler. There are two, mutually exclusive interpreter
+implementations: sb-eval (the default) and sb-fasteval. These are
+intended for when using the compiler is undesirable, for example due
+to compilation overhead.
 
-SBCL also includes an interpreter for use in special cases where
-using the compiler is undesirable, for example due to compilation
-overhead. Unlike in some other Lisp implementations, in SBCL
-interpreted code is not safer or more debuggable than compiled code.
+An interpreterless SBCL can be compiled by passing
+`--without-sb-eval` to `make.sh`, while sb-fasteval can be enabled
+with `--without-sb-eval --with-sb-fasteval.`
+
+Unlike in some other Lisp implementations, in SBCL interpreted code
+is not safer or more debuggable than compiled code.
 
 <a id="x-28SB-EXT-3A-2AEVALUATOR-MODE-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*EVALUATOR-MODE*%20VARIABLE"></a>
@@ -2796,7 +2785,9 @@ interpreted code is not safer or more debuggable than compiled code.
 
     Toggle between different evaluator implementations. If set to `:compile`,
     an implementation of [`eval`][0d6e] that calls the compiler will be used. If set
-    to `:interpret`, an interpreter will be used.
+    to `:interpret`, an interpreter will be used. `:interpret` is a valid
+    value only if SBCL has been compiled with either the `sb-eval` or the
+    `sb-fasteval` feature.
 
 <a id="x-28SB-MANUAL-3A-40ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS%20MGL-PAX:SECTION"></a>
@@ -3963,7 +3954,7 @@ The following debugger commands are used for controlling single stepping.
 LDB, the low-level debugger, is implemented in C and can work
 even when the Lisp [Debugger][825d] cannot due to e.g. heap or stack
 exhaustion. Failed assertions in the low-level runtime (see
-[Command Line Options][1294]) trigger entering LDB if it's
+[Command-line Options][1294]) trigger entering LDB if it's
 
 - available (if SBCL was not compiled with `--without-sb-ldb`) and
 
@@ -5948,7 +5939,7 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
 <a id="x-28SB-EXT-3ARUN-PROGRAM-20FUNCTION-29"></a>
 <a id="SB-EXT:RUN-PROGRAM%20FUNCTION"></a>
 
-- \[function\] **sb-ext:run-program** *program args \&key env (environment (when env-p (unix-environment-sbcl-from-cmucl env))) (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn*
+- \[function\] **sb-ext:run-program** *program args \&key env environment (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn*
 
     `run-program` creates a new process specified by `program`.
     `args` is a list of strings to be passed literally to the new program.
@@ -5988,8 +5979,10 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
 
     - `:env`
 
-        An alternative lossy representation of the new Unix environment,
-        for compatibility with CMU CL.
+        An old, lossy representation of the new Unix environment, for
+        compatibility with CMU CL. If given, `:environment` defaults to
+        this (converted to the new format). It is an error to specify both
+        `:env` and `:environment`.
 
     - `:search`
 
@@ -6592,7 +6585,7 @@ Algorithm.
 
     Determines whether `string1` and `string2` are canonically equivalent according
     to Unicode. The `start` and `end` arguments behave like the arguments to [`string=`][4143].
-    If `:strict` is `nil`, `unicode=` tests compatibility equavalence instead.
+    If `:strict` is `nil`, `unicode=` tests compatibility equivalence instead.
 
 <a id="x-28SB-UNICODE-3AUNICODE-EQUAL-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE-EQUAL%20FUNCTION"></a>
@@ -6602,7 +6595,7 @@ Algorithm.
     Determines whether `string1` and `string2` are canonically equivalent after
     casefolding (that is, ignoring case differences) according to Unicode. The
     `start` and `end` arguments behave like the arguments to [`string=`][4143]. If `:strict` is
-    `nil`, [`unicode=`][03f5] tests compatibility equavalence instead.
+    `nil`, [`unicode=`][03f5] tests compatibility equivalence instead.
 
 <a id="x-28SB-UNICODE-3AUNICODE-3C-3D-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE%3C%3D%20FUNCTION"></a>
@@ -10421,8 +10414,8 @@ prints `0` and not `1`.
 
 Note, however, that there is a hard limit on the number of distinct
 symbols that can be bound dynamically in threaded builds (see
-`--tls-limit` in [Runtime Options][3e4d]). Exceeding this limit triggers
-the low-level error `Thread local storage exhausted.`
+`--tls-limit` in [Runtime Options][3e4d]). Exceeding this limit invokes
+[`ldb`][3b91] with the error `Thread local storage exhausted.`
 
 <a id="x-28SB-MANUAL-3A-40ATOMIC-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ATOMIC-OPERATIONS%20MGL-PAX:SECTION"></a>
@@ -11542,10 +11535,41 @@ more useful features of Common Lisp -- briefly:
 
     `timeout` specifies a read timeout for the stream.
 
+<a id="x-28SB-BSD-SOCKETS-3ASOCKET-MAKE-STREAM-20-28METHOD-20-28SB-BSD-SOCKETS-3ASOCKET-29-29-29"></a>
+<a id="SB-BSD-SOCKETS:SOCKET-MAKE-STREAM%20%28METHOD%20%28SB-BSD-SOCKETS:SOCKET%29%29"></a>
+
+- \[method\] **sb-bsd-sockets:socket-make-stream** *(socket socket) \&key input output (element-type 'character) (buffering :full) (external-format :default) timeout auto-close serve-events*
+
+    Default method for `socket` objects.
+
+    `element-type` defaults to [`character`][0a49], to construct a bivalent stream,
+    capable of both binary and character IO use `:default`.
+
+    Acceptable values for `buffering` are `:full`, `:line` and `:none`, default is
+    `:full`, ie. output is buffered till it is explicitly flushed using
+    [`close`][848f] or [`finish-output`][3498]. ([`force-output`][5842] forces some output to be
+    flushed: to ensure all buffered output is flushed use `finish-output`.)
+
+    Streams have no `timeout` by default. If one is provided, it is the
+    number of seconds the system will at most wait for input to appear on
+    the socket stream when trying to read from it.
+
+    If `auto-close` is true, the underlying OS socket is automatically
+    closed after the stream and the socket have been garbage collected.
+    Default is false.
+
+    If `serve-events` is true, blocking IO on the socket will dispatch to
+    the recursive event loop. Default is false.
+
+    The stream for `socket` will be cached, and a second invocation of this
+    method will return the same stream. This may lead to oddities if this
+    function is invoked with inconsistent arguments (e.g. one might
+    request an input stream and get an output stream in response).
+
 <a id="x-28SB-BSD-SOCKETS-3ASOCKET-ERROR-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKET-ERROR%20FUNCTION"></a>
 
-- \[function\] **sb-bsd-sockets:socket-error** *where \&optional (errno (socket-errno))*
+- \[function\] **sb-bsd-sockets:socket-error** *where \&optional errno*
 
     Signal an appropriate error for syscall `where` and `errno`.
 
@@ -14245,7 +14269,7 @@ into the CPU's cache.
 For each function `x.y-foo` for loading SIMD packs from an array,
 there also exists a corresponding function `(setf x.y-foo)` for
 storing a SIMD pack in the specified memory location. An exception
-to this rule is that some instruction sets (e.g., SSE) only provide
+to this rule is that some instruction sets (e.g. SSE) only provide
 functions for non-temporal stores but not for the corresponding
 non-temporal loads.
 
@@ -14827,6 +14851,8 @@ versions of SBCL, which have since then been deleted.
 
 [00a0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_mi.htm "SLOT-MISSING (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
+[00e9]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ldb.htm "LDB (MGL-PAX:CLHS FUNCTION)"
+
 [0157]: #SB-MANUAL:@CONDITIONALS%20MGL-PAX:SECTION "Conditionals"
 
 [0160]: http://www.lispworks.com/documentation/HyperSpec/Body/s_setq.htm "SETQ (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -14959,7 +14985,7 @@ versions of SBCL, which have since then been deleted.
 
 [1287]: #SB-EXT:ATOMIC-POP%20MGL-PAX:MACRO "SB-EXT:ATOMIC-POP MGL-PAX:MACRO"
 
-[1294]: #SB-MANUAL:@COMMAND-LINE-OPTIONS%20MGL-PAX:SECTION "Command Line Options"
+[1294]: #SB-MANUAL:@COMMAND-LINE-OPTIONS%20MGL-PAX:SECTION "Command-line Options"
 
 [1296]: http://www.lispworks.com/documentation/HyperSpec/Body/f_in_stm.htm "OUTPUT-STREAM-P (MGL-PAX:CLHS FUNCTION)"
 
@@ -15056,8 +15082,6 @@ versions of SBCL, which have since then been deleted.
 [23aa]: #SB-MANUAL:@SB-POSIX-FUNCTION-PARAMETERS%20MGL-PAX:SECTION "Function Parameters"
 
 [23c4]: #SB-MANUAL:@SYMBOL-NAME-NORMALIZATION%20MGL-PAX:SECTION "Symbol Name Normalization"
-
-[240e]: #SB-MANUAL:@HOW-TO-REPORT-SIGNAL-RELATED-BUGS%20MGL-PAX:SECTION "How to Report Signal-related Bugs"
 
 [2415]: pax-manual.md "PAX Manual"
 
@@ -15774,8 +15798,6 @@ versions of SBCL, which have since then been deleted.
 [9c07]: #SB-MANUAL:@PROFILING%20MGL-PAX:SECTION "Profiling"
 
 [9c6c]: #SB-MANUAL:@FUNCTION-NAMES%20MGL-PAX:SECTION "Function Names"
-
-[9c9c]: http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm "EVAL-WHEN (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [9caa]: http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_of.htm "TYPE-OF (MGL-PAX:CLHS FUNCTION)"
 
