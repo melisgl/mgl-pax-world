@@ -23,7 +23,7 @@
 
     - [2.3 Idiosyncrasies][6e7c]
 
-        - [2.3.1 Declarations][c15b]
+        - [2.3.1 Declarations as Assertions][5848]
 
         - [2.3.2 FASL format][943e]
 
@@ -95,15 +95,15 @@
 
     - [4.1 Diagnostic Messages][40b2]
 
-        - [4.1.1 Controlling Verbosity][9578]
+        - [4.1.1 Diagnostic Severity][4dad]
 
-        - [4.1.2 Diagnostic Severity][4dad]
+        - [4.1.2 Understanding Compiler Diagnostics][d5fd]
 
-        - [4.1.3 Understanding Compiler Diagnostics][d5fd]
+        - [4.1.3 Controlling Verbosity][9578]
 
     - [4.2 Handling of Types][8b52]
 
-        - [4.2.1 Declarations as Assertions][5848]
+        - [4.2.1 Type Declaration Checking][538a]
 
         - [4.2.2 Precise Type Checking][ade9]
 
@@ -163,7 +163,7 @@
 
     - [5.6 Debugger Policy Control][faf1]
 
-    - [5.7 Exiting Commands][e0fd]
+    - [5.7 Exiting the Debugger][3a4f]
 
     - [5.8 Information Commands][ccb5]
 
@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.268-c2aca59`, generated *2026-10-09 13:55:36*. See
+The output is for SBCL version `2.6.9.273-4a997df`, generated *2026-10-09 19:53:18*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -854,15 +854,15 @@ The information in this section describes some of the ways that SBCL
 deals with choices that the ANSI standard leaves to the
 implementation.
 
-<a id="x-28SB-MANUAL-3A-40DECLARATIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DECLARATIONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40DECLARATIONS-AS-ASSERTIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DECLARATIONS-AS-ASSERTIONS%20MGL-PAX:SECTION"></a>
 
-#### 2.3.1 Declarations
+#### 2.3.1 Declarations as Assertions
 
 Declarations are generally treated as assertions. This general
 principle, and its implications, and the bugs which still keep the
 compiler from quite satisfying this principle, are discussed in
-[Declarations as Assertions][5848].
+[Type Declaration Checking][538a].
 
 <a id="x-28SB-MANUAL-3A-40FASL-FORMAT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FASL-FORMAT%20MGL-PAX:SECTION"></a>
@@ -1874,7 +1874,7 @@ SBCL provides hooks into the system initialization and exit.
 
 ## 4 Compiler
 
-This chapter will discuss most compiler issues other than [Efficiency][29fd],
+This chapter discusses most compiler issues other than [Efficiency][29fd],
 including compiler messages, type safety in the presence of type
 declarations, the effects of various optimization policies, and the
 way that inlining and open coding may cause optimized code to differ
@@ -1885,85 +1885,10 @@ from a naive translation.
 
 ### 4.1 Diagnostic Messages
 
-<a id="x-28SB-MANUAL-3A-40CONTROLLING-VERBOSITY-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@CONTROLLING-VERBOSITY%20MGL-PAX:SECTION"></a>
-
-#### 4.1.1 Controlling Verbosity
-
-The compiler can be quite verbose in its diagnostic reporting -- rather
-more than some users would prefer. However, the amount of noise
-emitted can be controlled.
-
-To control emission of compiler diagnostics (except those with
-[Diagnostic Severity][4dad] error) use the [`sb-ext:muffle-conditions`][4697] and
-[`sb-ext:unmuffle-conditions`][873a] declarations, specifying the type of
-condition that is to be muffled (the muffling is done using an
-associated [`muffle-warning`][6f51] restart).
-
-Global control:
-
-    ;;; Muffle compiler-notes globally
-    (declaim (sb-ext:muffle-conditions sb-ext:compiler-note))
-
-Local control:
-
-    ;;; Muffle compiler-notes based on lexical scope
-    (defun foo (x)
-      (declare (optimize speed) (fixnum x)
-               (sb-ext:muffle-conditions sb-ext:compiler-note))
-      (values (* x 5) ; no compiler note from this
-        (locally
-          (declare (sb-ext:unmuffle-conditions sb-ext:compiler-note))
-          ;; this one gives a compiler note
-          (* x -5))))
-
-<a id="x-28SB-EXT-3AMUFFLE-CONDITIONS-20DECLARATION-29"></a>
-<a id="SB-EXT:MUFFLE-CONDITIONS%20DECLARATION"></a>
-
-- \[declaration\] **sb-ext:muffle-conditions**
-
-    Syntax: `(sb-ext:muffle-conditions &rest types)`.
-
-    Silence the diagnostic messages that would be printed when a condition
-    matching any of [`types`][7c9f] is signalled at compile time.
-
-<a id="x-28SB-EXT-3AUNMUFFLE-CONDITIONS-20DECLARATION-29"></a>
-<a id="SB-EXT:UNMUFFLE-CONDITIONS%20DECLARATION"></a>
-
-- \[declaration\] **sb-ext:unmuffle-conditions**
-
-    Syntax: `(sb-ext:unmuffle-conditions &rest types)`.
-
-    Cancel the effect of a previous [`sb-ext:muffle-conditions`][4697] declaration.
-
-Various details of *how* the compiler messages are printed can be
-controlled via the alist [`sb-ext:*compiler-print-variable-alist*`][a91a].
-
-<a id="x-28SB-EXT-3A-2ACOMPILER-PRINT-VARIABLE-ALIST-2A-20VARIABLE-29"></a>
-<a id="SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*%20VARIABLE"></a>
-
-- \[variable\] **sb-ext:\*compiler-print-variable-alist\*** *nil*
-
-    An association list describing new bindings for special variables
-    to be used by the compiler for error-reporting, etc.
-    E.g. (([`*print-length*`][8f7a8] . 10) ([`*print-level*`][215b] . 6) ([`*print-pretty*`][782a] .
-    `nil`)).
-
-    The variables in the [`car`][d5a2] positions are bound to the values in the [`cdr`][e012]
-    during the execution of some debug commands. When evaluating arbitrary
-    expressions in the debugger, the normal values of the printer control
-    variables are in effect.
-
-    Initially empty, `*compiler-print-variable-alist*` is typically used
-    to specify bindings for printer control variables.
-
-For information about muffling warnings signaled outside of the
-compiler, see [Customization Hooks for Users][b192].
-
 <a id="x-28SB-MANUAL-3A-40DIAGNOSTIC-SEVERITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION"></a>
 
-#### 4.1.2 Diagnostic Severity
+#### 4.1.1 Diagnostic Severity
 
 There are four levels of compiler diagnostic severity:
 
@@ -1982,12 +1907,12 @@ of compiler error severity occur when the compiler handles
 conditions of these classes.
 
 The fourth level of compiler error severity, *note*, corresponds to
-the [`sb-ext:compiler-note`][0e19], and is used for problems which are too
-mild for the standard condition classes, typically hints about how
-efficiency might be improved. The [`sb-ext:code-deletion-note`][93bb], a
-subtype of `sb-ext:compiler-note`, is signalled when the compiler
-deletes user-supplied code after proving that the code in question
-is unreachable.
+the [`sb-ext:compiler-note`][0e19] condition and is used for problems too mild
+for the standard condition classes, typically hints about how
+efficiency might be improved. [`sb-ext:code-deletion-note`][93bb], a subtype
+of `sb-ext:compiler-note`, is signalled when the compiler deletes
+user-supplied code after proving that the code in question is
+unreachable.
 
 Future work for SBCL includes expanding this hierarchy of types to
 allow more fine-grained control over emission of diagnostic
@@ -2013,10 +1938,10 @@ messages.
 <a id="x-28SB-MANUAL-3A-40UNDERSTANDING-COMPILER-DIAGNOSTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNDERSTANDING-COMPILER-DIAGNOSTICS%20MGL-PAX:SECTION"></a>
 
-#### 4.1.3 Understanding Compiler Diagnostics
+#### 4.1.2 Understanding Compiler Diagnostics
 
 The messages emitted by the compiler contain a lot of detail in a
-terse format, so they may be confusing at first. The messages will be
+terse format, which may be confusing at first. The messages will be
 illustrated using this example program:
 
     (defmacro zoq (x)
@@ -2107,7 +2032,7 @@ Note that each part of the message is distinctively marked:
 - Each line of the processing path is prefixed with `-->`.
 
 - The actual source form is indented like the original source, but
-  is marked by a preceding `==>` line. (FIXME: no it isn't.)
+  is marked by a preceding `==>` line.
 
 - The explanation is prefixed with the diagnostic severity, which
   can be `caught ERROR:`, `caught WARNING:`, `caught
@@ -2116,7 +2041,7 @@ Note that each part of the message is distinctively marked:
 Each part of the message is more specific than the preceding one. If
 consecutive messages are for nearby locations, then the front part
 of the messages would be the same. In this case, the compiler omits
-as much of the second message as in common with the first. For
+as much of the second message as is in common with the first. For
 example:
 
     ; file: /tmp/foo.lisp
@@ -2237,8 +2162,132 @@ In this example, the compiler descended into the [`block`][d2d8], [`let`][4853],
 and [`return-from`][3eef] to reach the [`progn`][0cc3] printed as the actual source.
 This is a place where the "actual source appears in explanation"
 rule was applied. The innermost actual source form was the symbol
-*undefined* itself, but that also appeared in the explanation, so
+`*undefined*` itself, but that also appeared in the explanation, so
 the compiler backed out one level.
+
+<a id="x-28SB-MANUAL-3A-40CONTROLLING-VERBOSITY-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CONTROLLING-VERBOSITY%20MGL-PAX:SECTION"></a>
+
+#### 4.1.3 Controlling Verbosity
+
+The compiler can be quite verbose in its diagnostic reporting -- rather
+more than some users would prefer. However, the amount of noise
+emitted can be controlled.
+
+To control emission of compiler diagnostics (except those with
+[Diagnostic Severity][4dad] error) use the [`sb-ext:muffle-conditions`][4697] and
+[`sb-ext:unmuffle-conditions`][873a] declarations, specifying the type of
+condition that is to be muffled (the muffling is done using an
+associated [`muffle-warning`][6f51] restart).
+
+Global control:
+
+    ;;; Muffle compiler-notes globally
+    (declaim (sb-ext:muffle-conditions sb-ext:compiler-note))
+
+Local control:
+
+    ;;; Muffle compiler-notes based on lexical scope
+    (defun foo (x)
+      (declare (optimize speed) (fixnum x)
+               (sb-ext:muffle-conditions sb-ext:compiler-note))
+      (values (* x 5) ; no compiler note from this
+        (locally
+          (declare (sb-ext:unmuffle-conditions sb-ext:compiler-note))
+          ;; this one gives a compiler note
+          (* x -5))))
+
+<a id="x-28SB-EXT-3AMUFFLE-CONDITIONS-20DECLARATION-29"></a>
+<a id="SB-EXT:MUFFLE-CONDITIONS%20DECLARATION"></a>
+
+- \[declaration\] **sb-ext:muffle-conditions**
+
+    Syntax: `(sb-ext:muffle-conditions &rest types)`.
+
+    Silence the diagnostic messages that would be printed when a condition
+    matching any of [`types`][7c9f] is signalled at compile time.
+
+<a id="x-28SB-EXT-3AUNMUFFLE-CONDITIONS-20DECLARATION-29"></a>
+<a id="SB-EXT:UNMUFFLE-CONDITIONS%20DECLARATION"></a>
+
+- \[declaration\] **sb-ext:unmuffle-conditions**
+
+    Syntax: `(sb-ext:unmuffle-conditions &rest types)`.
+
+    Cancel the effect of a previous [`sb-ext:muffle-conditions`][4697] declaration.
+
+For information about muffling warnings signaled outside of the
+compiler, see [Customization Hooks for Users][b192].
+
+The following variables and macros control *how* the compiler
+messages are printed.
+
+<a id="x-28SB-EXT-3A-2ACOMPILER-PRINT-VARIABLE-ALIST-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*compiler-print-variable-alist\*** *nil*
+
+    An association list describing new bindings for special variables
+    to be used by the compiler for error-reporting, etc.
+    E.g. (([`*print-length*`][8f7a8] . 10) ([`*print-level*`][215b] . 6) ([`*print-pretty*`][782a] .
+    `nil`)).
+
+    The variables in the [`car`][d5a2] positions are bound to the values in the [`cdr`][e012]
+    during the execution of some debug commands. When evaluating arbitrary
+    expressions in the debugger, the normal values of the printer control
+    variables are in effect.
+
+    Initially empty, `*compiler-print-variable-alist*` is typically used
+    to specify bindings for printer control variables.
+
+<a id="x-28SB-EXT-3A-2AENCLOSING-SOURCE-CUTOFF-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*ENCLOSING-SOURCE-CUTOFF*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*enclosing-source-cutoff\*** *1*
+
+    The maximum number of enclosing actual source forms (i.e. from
+    macroexpansion) that we print in full. For additional enclosing forms, we
+    print only the [`car`][d5a2].
+
+<a id="x-28SB-EXT-3A-2AUNDEFINED-WARNING-LIMIT-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*UNDEFINED-WARNING-LIMIT*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*undefined-warning-limit\*** *3*
+
+    If non-null, then an upper limit on the number of unknown function or type
+    warnings that the compiler will print for any given name in a single
+    compilation. This prevents excessive amounts of output when the real
+    problem is a missing definition (as opposed to a typo in the use.)
+
+<a id="x-28SB-EXT-3A-2AEFFICIENCY-NOTE-LIMIT-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*EFFICIENCY-NOTE-LIMIT*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*efficiency-note-limit\*** *2*
+
+    This is the maximum number of possible optimization alternatives will be
+    mentioned in a particular efficiency note. `nil` means no limit.
+
+<a id="x-28SB-EXT-3A-2AEFFICIENCY-NOTE-COST-THRESHOLD-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*EFFICIENCY-NOTE-COST-THRESHOLD*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*efficiency-note-cost-threshold\*** *5*
+
+    This is the minimum cost difference between the chosen implementation and
+    the next alternative that justifies an efficiency note.
+
+<a id="x-28SB-EXT-3ADEFINE-SOURCE-CONTEXT-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-EXT:DEFINE-SOURCE-CONTEXT%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-ext:define-source-context** *name lambda-list \&body body*
+
+    Define how to abbreviate a source context form whose [`car`][d5a2] is
+    `name` when it appears in the compiler input. `lambda-list` is a
+    [`defmacro`][14cb] style lambda-list used to parse the form.
+
+    `body` should return a list of subforms that fit on one line when
+    printed with the `"~{~S ~}"` format string. There are predefined
+    extractors for [`defstruct`][eac1] and [`function`][a51f] forms. If there is no
+    definition, then the first two subforms are returned.
 
 <a id="x-28SB-MANUAL-3A-40HANDLING-OF-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HANDLING-OF-TYPES%20MGL-PAX:SECTION"></a>
@@ -2260,52 +2309,34 @@ The SBCL compiler also has a greater knowledge of the Common Lisp
 type system than other compilers. Support is incomplete only for
 types involving the [`satisfies`][2b8b] type specifier.
 
-<a id="x-28SB-MANUAL-3A-40DECLARATIONS-AS-ASSERTIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DECLARATIONS-AS-ASSERTIONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40TYPE-DECLARATION-CHECKING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TYPE-DECLARATION-CHECKING%20MGL-PAX:SECTION"></a>
 
-#### 4.2.1 Declarations as Assertions
+#### 4.2.1 Type Declaration Checking
 
 The SBCL compiler treats type declarations differently from most other
-Lisp compilers. Under default compilation policy the compiler doesn't
-blindly believe type declarations, but considers them assertions about
-the program that should be checked: all type declarations that have
-not been proven to always hold are asserted at runtime.
+Lisp compilers. Under the default [Compiler Policy][2474], the compiler
+doesn't blindly believe type declarations but considers them
+assertions about the program that should be checked: all type
+declarations that have not been proven to always hold are asserted
+at runtime.
 
 *Remaining bugs in the compiler's handling of types unfortunately
-provide some exceptions to this rule, see
+provide some exceptions to this rule. See
 [Implementation Limitations][5ebc].*
-
-CLOS slot types form a notable exception. Types declared using the
-`:type` slot option in [`defclass`][ead6] are asserted if and only if the class
-was defined in *safe code*  and the slot access location is
-in *safe code* as well. This laxness does not pose any internal
-consistency issues, as the CLOS slot types are not available for the
-type inferencer, nor do CLOS slot types provide any efficiency
-benefits.
 
 There are three type checking policies available in SBCL, selectable
 via [`optimize`][4d51] declarations.
 
-- **Full Type Checks**
+- **Full Type Checks** (safe code)
 
     All declarations are considered assertions to be checked at
-    runtime, and all type checks are precise. The default
-    compilation policy provides full type checks.
+    compile or run time, and all type checks are precise. The
+    default compilation policy provides full type checks.
 
-    Used when `(or (>= safety 2) (>= safety speed 1))`.
+    Used when `(>= safety 1)`. 
 
-- **Weak Type Checks**
-
-    Declared types may be simplified into faster to check
-    supertypes: for example, `(or (integer -17 -7) (integer 7 17))`
-    is simplified into `(integer -17 17)`.
-
-    > **Warning**: It is relatively easy to corrupt the heap when
-    > weak type checks are used if the program contains type-errors.
-
-    Used when `(and (< safety 2) (< safety speed))`.
-
-- **No Type Checks**
+- **No Type Checks** (unsafe code)
 
     All declarations are believed without assertions. Also disables
     argument count and array bounds checking.
@@ -2314,6 +2345,12 @@ via [`optimize`][4d51] declarations.
     > performed are liable to corrupt the heap.
 
     Used when `(= safety 0)`.
+
+There is a third option called Weak Type Checking, where declared
+types may be simplified into faster to check supertypes: for
+example, `(or (integer -17 -7) (integer 7 17))` is simplified
+into `(integer -17 17)`. This option is also unsafe and is no longer
+available by any combination of the standard optimization qualities.
 
 <a id="x-28SB-MANUAL-3A-40PRECISE-TYPE-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION"></a>
@@ -2348,7 +2385,7 @@ if parts of the program have never been tested.
 
 Some incorrect declarations can only be detected by run-time type
 checking. It is very important to initially compile a program with
-full type checks (high safety optimization) and then test this safe
+full type checks (high `safety` optimization) and then test this safe
 version. After the checking version has been tested, then you can
 consider weakening or eliminating type checks. *This applies even to
 previously debugged programs* because the SBCL compiler does much
@@ -2395,7 +2432,7 @@ is converted into a macro. Consider this macro:
       (declare (fixnum x))
       `(the fixnum (1+ ,x)))
 
-Although legal and well-defined Common Lisp code, this meaning of
+Although legal and well-defined Common Lisp code, the meaning of
 this definition is almost certainly not what the writer intended.
 For example, this call is illegal:
 
@@ -2411,7 +2448,8 @@ evaluating a macro argument, then put a [`the`][311a] in the expansion:
       `(the fixnum (1+ (the fixnum ,x))))
 
 In this case, it would be stylistically preferable to change this
-macro back to a function and declare it inline.
+macro back to a function and declare it inline. See
+[Open Coding and Inline Expansion][469a].
 
 Some more subtle problems are caused by incorrect declarations that
 can't be detected at compile time. Consider this code:
@@ -2421,7 +2459,7 @@ can't be detected at compile time. Consider this code:
       (declare (fixnum pos))
       ...)
 
-Although `pos` is almost always a [`fixnum`][3cde], it is `nil` at the end of
+Although `pos` is almost always a `fixnum`, it is `nil` at the end of
 the loop. If this example is compiled with full type checks (the
 default), then running it will signal a type error at the end of the
 loop. If compiled without type checks, the program will go into an
@@ -2442,7 +2480,7 @@ or `nil`.)
 
 Note that there is usually little performance penalty for weakening
 a declaration in this way. Any numeric operations in the body can
-still assume that the variable is a `fixnum`, since `nil` is not a legal
+still assume that the variable is a `fixnum` since `nil` is not a legal
 numeric argument. Another possible fix would be to say:
 
     (do ((pos 0 (position #a string :start (1+ pos))))
@@ -2451,7 +2489,7 @@ numeric argument. Another possible fix would be to say:
         (declare (fixnum pos))
         ...))
 
-This would be preferable in some circumstances, since it would allow
+This would be preferable in some circumstances since it would allow
 a non-standard representation to be used for the local `pos`
 variable in the loop body.
 
@@ -2460,35 +2498,97 @@ variable in the loop body.
 
 #### 4.2.4 Implementation Limitations
 
-If an [`ftype`][05c1] is placed after the function definition the function won't
-perform any type checks, and the calls to the function will blindly
-trust the declared types.
-([`optimize`][4d51] ([`debug`][5df9] 3)) will not trust any `ftype` declarations.
+If an [`ftype`][05c1] is placed after the function definition, the function
+won't perform any type checks and the calls to the function will
+blindly trust the declared types. ([`optimize`][4d51] ([`debug`][5df9] 3)) will not
+trust any `ftype` declarations.
+
+CLOS slot types form a notable exception. Types declared using the
+`:type` slot option in [`defclass`][ead6] are asserted if and only if the class
+was defined in *safe code* and the slot access location is in *safe
+code* as well. This laxness does not pose any internal consistency
+issues, as the CLOS slot types are not available for the type
+inferencer, nor do CLOS slot types provide any efficiency benefits.
 
 <a id="x-28SB-MANUAL-3A-40COMPILER-POLICY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-POLICY%20MGL-PAX:SECTION"></a>
 
 ### 4.3 Compiler Policy
 
-Compiler policy is controlled by the [`optimize`][4d51] declaration,
-supporting all ANSI optimization qualities ([`debug`][5df9], safety, space,
-and speed). (A deprecated extension `sb-ext:inhibit-warnings` is still
-supported but liable to go away at any time.)
+The compiler policy is what tells the compiler *how* to
+compile a program. This is logically (and often textually) distinct
+from the program itself. Broad control of policy is provided by the
+[`optimize`][4d51] declaration; other declarations and variables control more
+specific aspects of compilation.
 
-For effects of various optimization qualities on type-safety and
-debuggability see [Declarations as Assertions][5848] and
-[Debugger Policy Control][faf1].
+The [`optimize`][4d51] declaration recognizes six different *qualities*. The
+qualities are conceptually independent aspects of program
+performance. In reality, increasing one quality tends to have
+adverse effects on other qualities. The compiler compares the
+relative values of qualities when it needs to make a trade-off; i.e.
+if `speed` is greater than `safety`, then improve speed at the cost of
+safety.
 
-Ordinarily, when the speed quality is high, the compiler emits notes
-to notify the programmer about its inability to apply various
-optimizations. For selective muffling of these notes, see
-[Controlling Verbosity][9578].
+All qualities take values of type `(integer 0 3)`. The default for
+all qualities is `1`. Whenever qualities are equal, ties are broken
+according to a broad idea of what a good default environment is
+supposed to be. Generally this downplays `speed`, `compilation-speed`
+and `space` in favour of `safety` and `debug`. Novice and casual users
+should stick to the default policy. Advanced users often want to
+improve speed and memory usage at the cost of safety and
+debuggability.
 
-The value of space mostly influences the compiler's decision whether
-to inline operations, which tend to increase the size of programs.
-Use the value `0` with caution, since it can cause the compiler to
-inline operations so indiscriminately that the net effect is to slow
-the program by causing cache misses or even swapping.
+If the value for a quality is `0` or `3`, then it may have a special
+interpretation. A value of `0` means totally unimportant, and a 3
+means ultimately important. These extreme optimization values enable
+"heroic" compilation strategies that are not always desirable and
+sometimes self-defeating. Specifying more than one quality as `3` is
+not desirable, since it doesn't tell the compiler which quality is
+most important.
+
+These are the optimization qualities:
+
+- `speed`: How fast the program should run. `speed 3` enables some
+  optimizations that may hurt debuggability. Ordinarily, when the
+  `speed` quality is high, the compiler emits notes to notify the
+  programmer about its inability to apply various optimizations. For
+  selective muffling of these notes, see [Controlling Verbosity][9578].
+
+- `compilation-speed`: How fast the compiler should run. If this is
+  high, then some expensive optimizations may be disabled.
+
+- `space`: How much space the compiled code should take up. Inline
+  expansion is mostly inhibited when `space` is greater than `speed`.
+  A value of `0` enables indiscriminate inline expansion. Wide use
+  of a `0` value is not recommended, as it may waste so much space
+  that run time is slowed. See [Open Coding and Inline Expansion][469a].
+
+- `debug`: How debuggable the program should be. The quality is
+  treated differently from the other qualities: each value indicates
+  a particular level of debugger information; it is not compared
+  with the other qualities. See [Debugger Policy Control][faf1] for the
+  details.
+
+- `safety`: How much error checking should be done. If `speed`, `space`
+  or `compilation-speed` is more important than `safety`, then
+  [Type Declaration Checking][538a] is weakened. `safety` `0` also
+  suppresses argument count checking, unbound-symbol checking, array
+  bounds checks, and checking of tag existence in [`return-from`][3eef] and
+  [`go`][f2e5].
+
+- `sb-ext:inhibit-warnings`: This is a deprecated extension that
+  determines how little (or how much) diagnostic output should be
+  printed during compilation. This quality is compared to other
+  qualities to determine whether to print style notes and warnings
+  concerning those qualities. If `speed` is greater than
+  `inhibit-warnings`, then notes about how to improve speed will be
+  printed, etc. The default value is `1`, so raising the value for
+  any standard quality above its default enables notes for that
+  quality. If it is `3`, then all notes and most non-serious
+  warnings are inhibited. This is useful with [`declare`][1574] to suppress
+  warnings about unavoidable problems.
+
+In the following, we discuss extensions related to compiler policies.
 
 <a id="x-28SB-EXT-3ADESCRIBE-COMPILER-POLICY-20FUNCTION-29"></a>
 <a id="SB-EXT:DESCRIBE-COMPILER-POLICY%20FUNCTION"></a>
@@ -2502,18 +2602,24 @@ the program by causing cache misses or even swapping.
 
 - \[function\] **sb-ext:restrict-compiler-policy** *\&optional quality (min 0) (max 3)*
 
-    Assign a minimum value to an optimization quality. `quality` is the name of
-    the optimization quality to restrict, `min` (defaulting to zero) is the
-    minimum allowed value, and `max` (defaults to 3) is the maximum.
+    Restrict the range of values the optimization `quality` can take.
+    The effect is that [`optimize`][4d51] declarations with `quality` are clamped to
+    the restricted range. `quality` must be a valid optimization quality or
+    `nil`. `min` is the minimum allowed value, and `max` is the maximum; both of
+    type ([`integer`][9b12] 0 3).
 
-    Returns the alist describing the current policy restrictions.
+    Returns two alists describing the current minimum and maximum policy
+    restrictions on all optimization qualities.
 
-    If `quality` is `nil` or not given, nothing is done.
+    If `quality` is `nil` or not given, nothing is done. Use this to query the
+    current restrictions.
 
-    Otherwise, if `min` is zero or `max` is 3 or neither are given, any
-    existing restrictions of `quality` are removed.
+    If `quality` is non-`nil`, `min` is 0 and `max` is 3, any existing
+    restrictions on `quality` are removed. In general, restrictions can be
+    loosened.
 
-    See also `:policy` option in [`with-compilation-unit`][e7bf].
+    See also `:policy` option in [`with-compilation-unit`][e7bf], which can impose
+    dynamic scoping on restrictions.
 
 <a id="x-28WITH-COMPILATION-UNIT-20MGL-PAX-3AMACRO-29"></a>
 <a id="WITH-COMPILATION-UNIT%20MGL-PAX:MACRO"></a>
@@ -2521,7 +2627,8 @@ the program by causing cache misses or even swapping.
 - \[macro\] **with-compilation-unit** *options \&body body*
 
     Affects compilations that take place within its dynamic extent. It is
-    intended to be eg. wrapped around the compilation of all files in the same system.
+    intended to be e.g. wrapped around the compilation of all files in the
+    same system.
 
     Following options are defined:
 
@@ -2542,26 +2649,28 @@ the program by causing cache misses or even swapping.
         [`sb-ext:restrict-compiler-policy`][72f1] to the dynamic scope of `body`.
 
         If `:override` is false, the specified `:policy` is merged with
-        current global policy. If `:override` is true, current global
+        current global policy. If `:override` is true, the current global
         policy, including any restrictions, is discarded in favor of the
-        specified
-        `:policy`.
+        specified `:policy`.
 
         Supplying `:policy` `nil` is equivalent to the option not being
         supplied at all, i.e. dynamic scoping of policy does not take
-        place.
+        place. If dynamic scoping without changing the current policy is
+        desired, use `:policy '(optimize)` with `:override` `nil`.
 
         This option is an SBCL-specific experimental extension: Interface
         subject to change.
 
     - `:source-namestring` `<namestring-form>`
 
-        Attaches the value returned by the `<namestring-form>` to the
-        internal debug-source information as the namestring of the source
-        file. Normally the namestring of the input-file for [`compile-file`][0b69]
-        is used: this option can be used to provide source-file
-        information for functions compiled using [`compile`][bc41], or to override
-        the input-file of `compile-file`.
+        Attaches the value returned by `<namestring-form>` to the internal
+        debug-source information as the namestring of the source file.
+        Normally the namestring of the `input-file` for [`compile-file`][0b69] is
+        used: this option can be used to provide source-file information
+        for functions compiled using [`compile`][bc41], or to override the
+        `input-file` argument of `compile-file`.
+
+        Can be accessed using [`sb-introspect:definition-source-pathname`][2d27].
 
         If both an outer and an inner `with-compilation-unit` provide a
         `:source-namestring`, the inner one takes precedence. Unaffected by
@@ -2571,11 +2680,11 @@ the program by causing cache misses or even swapping.
 
     - `:source-plist` `<plist-form>`
 
-        Attaches the value returned by the `<plist-form>` to internal
+        Attaches the value returned by `<plist-form>` to internal
         debug-source information of functions compiled in within the
         dynamic extent of `body`.
 
-        Primarily for use by development environments, in order to eg.
+        Primarily for use by development environments, in order to e.g.
         associate function definitions with editor-buffers. Can be
         accessed using [`sb-introspect:definition-source-plist`][84b1].
 
@@ -2699,7 +2808,7 @@ gives this error:
 #### 4.4.3 Read Errors
 
 SBCL's compiler does not attempt to recover from read errors when
-reading a source file, but instead just reports the offending
+reading a source file but instead just reports the offending
 character position and gives up on the entire source file.
 
 <a id="x-28SB-MANUAL-3A-40OPEN-CODING-AND-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
@@ -2713,7 +2822,7 @@ embedded in it. This special knowledge is used in various ways (open
 coding, inline expansion, source transformation), but the implications
 to the user are basically the same:
 
-- Attempts to redefine standard functions may be frustrated, since
+- Attempts to redefine standard functions may be frustrated since
   the function may never be called. Although it is technically
   illegal to redefine standard functions, users sometimes want to
   implicitly redefine these functions when they are debugging using
@@ -2757,7 +2866,7 @@ In general, open coding sacrifices space for speed, but some functions
 (such as [`car`][d5a2]) are so simple that they are always open-coded. Even
 when not open-coded, a call to a standard function may be
 transformed into a different function call (as in the last example)
-or compiled as *static call*. Static function call uses a more
+or compiled as *static call*. Static function calls use a more
 efficient calling convention that forbids redefinition.
 
 <a id="x-28SB-MANUAL-3A-40INTERPRETER-20MGL-PAX-3ASECTION-29"></a>
@@ -2828,57 +2937,71 @@ debug)` declarations.
 
 When you enter the debugger, it looks something like this:
 
-    debugger invoked on a TYPE-ERROR in thread 11184:
-      The value 3 is not of type LIST.
+    * (symbol-value 'x)
     
-    You can type HELP for debugger help, or (SB-EXT:QUIT) to exit from SBCL.
+    debugger invoked on a UNBOUND-VARIABLE @B80027A0C1 in thread
+    #<THREAD tid=893088 "main thread" RUNNING {1200038003}>:
+      The variable X is unbound.
+    
+    Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
     
     restarts (invokable by number or by possibly-abbreviated name):
-      0: [ABORT   ] Reduce debugger level (leaving debugger, returning to toplevel).
-      1: [TOPLEVEL] Restart at toplevel READ/EVAL/PRINT loop.
-    (CAR 1 3)
+      0: [CONTINUE   ] Retry using X.
+      1: [USE-VALUE  ] Use specified value.
+      2: [STORE-VALUE] Set specified value and use it.
+      3: [ABORT      ] Exit debugger, returning to top level.
+    
+    (SYMBOL-VALUE X)
     0]
 
 The first group of lines describe what the error was that put us in
-the debugger. In this case [`car`][d5a2] was called on `3`, causing a
-[`type-error`][abfd].
-
-This is followed by the "beginner help line", which appears only
-if `sb-debug:*debug-beginner-help-p*` is true (default).
+the debugger. This is followed by the "beginner help line", which
+appears only if [`sb-debug:*debug-beginner-help-p*`][4d76] is true (default).
 
 Next comes a listing of the active restart names, along with their
 descriptions -- the ways we can restart execution after this error.
-In this case, both options return to top-level. Restarts can be
-selected by entering the corresponding number or name.
+Restarts can be selected by entering the corresponding number or
+name. If the name coincides with the name of a debugger command or
+that of another restart, use its number.
 
 The current frame appears right underneath the restarts, immediately
-followed by the debugger prompt.
+followed by the debugger prompt, where `0` is the index of the
+current frame.
+
+<a id="x-28SB-DEBUG-3A-2ADEBUG-BEGINNER-HELP-P-2A-20VARIABLE-29"></a>
+<a id="SB-DEBUG:*DEBUG-BEGINNER-HELP-P*%20VARIABLE"></a>
+
+- \[variable\] **sb-debug:\*debug-beginner-help-p\*** *t*
+
+    Should entering the debugger print a beginner-oriented help message?
 
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-INVOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-INVOCATION%20MGL-PAX:SECTION"></a>
 
 #### 5.1.2 Debugger Invocation
 
-The debugger is invoked when:
+The debugger is invoked when
 
-- [`error`][669b] is called, and the condition it signals is not handled.
+- [`error`][669b] is called and the condition it signals is not handled, or
 
-- [`break`][7598] is called, or [`signal`][8f49] is called with a condition that matches
-  the current [`*break-on-signals*`][ee75].
+- [`break`][7598] is called, or
 
-- The debugger is explicitly entered with the [`invoke-debugger`][de5c]
-  function.
+- [`signal`][8f49] is called with a condition that matches the current
+  [`*break-on-signals*`][ee75], or
 
-When the debugger is invoked by a condition, ANSI mandates that the
-value of [`*debugger-hook*`][1cdc], if any, be called with two arguments: the
-condition that caused the debugger to be invoked and the previous
-value of `*debugger-hook*`. When this happens, `*debugger-hook*` is
-bound to `nil` to prevent recursive errors. However, ANSI also
-mandates that `*debugger-hook*` not be invoked when the debugger is to
-be entered by the [`break`][7598] function. For users who wish to provide an
-alternate debugger interface (and thus catch `break` entries into the
-debugger), SBCL provides [`sb-ext:*invoke-debugger-hook*`][4d8c], which is
-invoked during any entry into the debugger.
+- [`invoke-debugger`][de5c] is called.
+
+Unless the debugger is to be entered by `break`, ANSI mandates that
+the value of [`*debugger-hook*`][1cdc], if non-`nil`, be called with two
+arguments: the condition that caused the debugger to be invoked and
+the previous value of `*debugger-hook*`. When this happens,
+`*debugger-hook*` is bound to `nil` to prevent recursive errors.
+However, ANSI also mandates that `*debugger-hook*` not be invoked when
+the debugger is to be entered by the [`break`][7598] function. For users who
+wish to provide an alternate debugger interface (and thus catch
+`break` entries into the debugger), SBCL provides
+[`sb-ext:*invoke-debugger-hook*`][4d8c], which is invoked during any entry
+into the debugger.
 
 <a id="x-28SB-EXT-3A-2AINVOKE-DEBUGGER-HOOK-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*INVOKE-DEBUGGER-HOOK*%20VARIABLE"></a>
@@ -2920,6 +3043,10 @@ the current frame. Frames are numbered starting from zero at the
 top (most recent call), increasing down to the bottom. The current
 frame is the frame that commands refer to.
 
+The debugger can be invoked again within a debugger session
+following the normal rules (see [Debugger Invocation][6031]). In such
+nested debugger sessions, the prompt is `<frame>[<nesting-level>]`.
+
 It is possible to override the normal printing behaviour in the
 debugger by using the [`sb-ext:*debug-print-variable-alist*`][21be].
 
@@ -2928,15 +3055,18 @@ debugger by using the [`sb-ext:*debug-print-variable-alist*`][21be].
 
 - \[variable\] **sb-ext:\*debug-print-variable-alist\*** *nil*
 
-    an association list describing new bindings for special variables
-    to be used within the debugger. Eg.
+    An association list describing new bindings for special variables
+    to be used within the debugger. For example,
 
     (([`*print-length*`][8f7a8] . 10) ([`*print-level*`][215b] . 6) ([`*print-pretty*`][782a] . `nil`))
 
     The variables in the [`car`][d5a2] positions are bound to the values in the [`cdr`][e012]
-    during the execution of some debug commands. When evaluating arbitrary
-    expressions in the debugger, the normal values of the printer control
-    variables are in effect.
+    during the execution of some debug commands. When the same variable
+    has multiple bindings specified, the earliest one takes precendence.
+
+    Entering the debugger establishes these bindings, as does the
+    `backtrace` debugger command (see [Information Commands][ccb5])
+    among other things.
 
     Initially empty, `*debug-print-variable-alist*` is typically used to
     provide bindings for printer control variables.
@@ -2975,9 +3105,6 @@ function call:
 
 - `down`: Move down to the next lower frame.
 
-- `top`: Move to the highest frame, that is, the frame where the
-  debugger was entered.
-
 - `bottom`: Move to the lowest frame.
 
 - `frame [<n>]`: Move to the frame with the specified number.
@@ -2989,7 +3116,7 @@ function call:
 
 #### 5.3.2 How Arguments are Printed
 
-A frame is printed to look like a function call, but with the actual
+A frame is printed to look like a function call but with the actual
 argument values in the argument positions.  So the frame for this call
 in the source:
 
@@ -3047,7 +3174,7 @@ for any of a number of reasons the value of the variable is
 unavailable or not known to be available ([Variable Access][78b8]), then
 `#<unavailable-arg>` will be printed instead of the argument value.
 
-Note that inline expansion and open-coding affect what frames are
+Note that [Open Coding and Inline Expansion][469a] affect what frames are
 present in the debugger, see [Debugger Policy Control][faf1].
 
 <a id="x-28SB-MANUAL-3A-40FUNCTION-NAMES-20MGL-PAX-3ASECTION-29"></a>
@@ -3114,7 +3241,7 @@ be eliminated by finding the source location in the calling frame.
 See [Source Location Printing][c9e6].
 
 The elimination of tail-recursive frames can be prevented by
-disabling tail-recursion optimization, which happens when the [`debug`][5df9]
+disabling tail-recursion optimization, which happens when the `debug`
 optimization quality is greater than 2. See
 [Debugger Policy Control][faf1].
 
@@ -3135,13 +3262,13 @@ displayed.
 There are three reasons why a code location could be unknown:
 
 - There is inadequate debug information due to the value of the
-  [`debug`][5df9] optimization quality. See [Debugger Policy Control][faf1].
+  `debug` optimization quality. See [Debugger Policy Control][faf1].
 
 - The debugger was entered because of an interrupt such as `C-c`.
 
 - A hardware error  such as a bus error occurred in
-  code that was compiled unsafely due to the value of the [`safety`][f384]
-  optimization quality.
+  code that was compiled unsafely due to the value of the `safety`
+  optimization quality. See [Compiler Policy][2474].
 
 In the last two cases, the values of argument variables are
 accessible, but may be incorrect. For more details on when variable
@@ -3226,10 +3353,10 @@ incorrect values, the debugger tells you the value is unavailable.
 
 The one exception is this: if you interrupt (e.g. with `C-c`) or if
 there is an unexpected hardware error such as a bus error (which
-should only happen in unsafe code), then the values displayed for
-arguments to the interrupted frame might be incorrect. This
-exception applies only to the interrupted frame: any frame farther
-down the stack will be fine.
+should only happen in unsafe code; see [Type Declaration Checking][538a]),
+then the values displayed for arguments to the interrupted frame
+might be incorrect. This exception applies only to the interrupted
+frame: any frame farther down the stack will be fine.
 
 > *Note*: Since the location of an interrupt or hardware error will
 > always be an unknown location, non-argument variable values will
@@ -3238,10 +3365,10 @@ down the stack will be fine.
 
 The value of a variable may be unavailable for these reasons:
 
-- The value of the debug optimization quality may have omitted
+- The value of the `debug` optimization quality may have omitted
   debug information needed to determine whether the variable is
   available. Unless a variable is an argument, its value will only
-  be available when [`debug`][5df9] is at least 2.
+  be available when `debug` is at least 2.
 
 - The compiler did lifetime analysis and determined that the value
   was no longer needed, even though its scope had not been exited.
@@ -3261,7 +3388,7 @@ The value of a variable may be unavailable for these reasons:
 - The variable (or the code referencing it) was optimized out of
   existence. Variables with no reads are always optimized away. The
   degree to which the compiler deletes variables will depend on the
-  value of the [`compilation-speed`][705f] optimization quality, but most
+  value of the `compilation-speed` optimization quality, but most
   source-level optimizations are done under all compilation
   policies.
 
@@ -3277,12 +3404,12 @@ The value of a variable may be unavailable for these reasons:
   value.
 
 Since it is especially useful to be able to get the arguments to a
-function, argument variables are treated specially when the [`speed`][5ca8]
+function, argument variables are treated specially when the `speed`
 optimization quality is less than 3 and the `debug` quality is at
 least 1. With this compilation policy, the values of argument
 variables are almost always available everywhere in the function,
-even at unknown locations. For non-argument variables, `debug` must be
-at least 2 for values to be available, and even then, values are
+even at unknown locations. For non-argument variables, `debug` must
+be at least 2 for values to be available, and even then, values are
 only available at known locations.
 
 <a id="x-28SB-MANUAL-3A-40NOTE-ON-LEXICAL-VARIABLE-ACCESS-20MGL-PAX-3ASECTION-29"></a>
@@ -3422,7 +3549,7 @@ same [`eq`][5a82] list twice. If you don't define read macros and don't use
 
 #### 5.5.2 Source Location Availability
 
-Source location information is only available when the debug
+Source location information is only available when the `debug`
 optimization quality is at least 2. If source location information
 is unavailable, the source commands will give an error message.
 
@@ -3464,16 +3591,16 @@ have changed the program on you.)
 ### 5.6 Debugger Policy Control
 
 The compilation policy specified by [`optimize`][4d51] declarations
-affects the behavior seen in the debugger. The debug quality
+affects the behavior seen in the debugger. The `debug` quality
 directly affects the debugger by controlling the amount of debugger
 information dumped. Other optimization qualities have indirect but
 observable effects due to changes in the way compilation is done.
 
 Unlike the other optimization qualities (which are compared in
-relative value to evaluate tradeoffs), the [`debug`][5df9] optimization
+relative value to evaluate tradeoffs), the `debug` optimization
 quality is directly translated to a level of debug information. This
 absolute interpretation allows the user to count on a particular
-amount of debug information being available even when the values of
+amount of debug information being available, even when the values of
 the other qualities are changed during compilation. These are the
 levels of debug information that correspond to the values of the
 `debug` quality:
@@ -3483,7 +3610,7 @@ levels of debug information that correspond to the values of the
 
 - `> 0`: Any level greater than 0 gives level 0 plus all argument
   variables. Values will only be accessible if the argument variable
-  is never set and [`speed`][5ca8] is not 3. SBCL allows any real value for
+  is never set and `speed` is not 3. SBCL allows any real value for
   optimization qualities. It may be useful to specify 0.5 to get
   backtrace argument display without argument documentation.
 
@@ -3512,11 +3639,11 @@ levels of debug information that correspond to the values of the
 Inlining of local functions is inhibited so that they may be [`trace`][548d]d.
 
 - `> (max speed space)`: If `debug` is greater than both `speed` and
-  [`space`][4e8c], the command [`return`][5b0b] can be used to continue execution by
+  `space`, the command [`return`][5b0b] can be used to continue execution by
   returning a value from the current stack frame.
 
 - `> (max speed space compilation-speed)`: If `debug` is greater than
-  all of `speed`, `space` and [`compilation-speed`][705f] the code will be
+  all of `speed`, `space` and `compilation-speed` the code will be
   steppable (see [Single Stepping][d3f5]).
 
 As you can see, if the `speed` quality is 3, debugger performance is
@@ -3532,32 +3659,37 @@ then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
 *semi inline*, in which case there is a frame to represent the
 call, but the call is to an optimized local version of the function,
-not to the original function.
+not to the original function. See [Open Coding and Inline Expansion][469a]
+for more.
 
-<a id="x-28SB-MANUAL-3A-40EXITING-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@EXITING-COMMANDS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40EXITING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@EXITING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
 
-### 5.7 Exiting Commands
+### 5.7 Exiting the Debugger
 
 These commands get you out of the debugger.
 
 - `toplevel`: Throw to top level.
 
-- `restart [<n>]`: Invoke the `<n>`th restart case as displayed by
-  the [`error`][669b] command. If `<n>` is not specified, the available
-  restart cases are reported.
+- `restart [<n>]` or `<n>`: Invoke the `<n>`th restart case as
+  displayed by the [`error`][669b] command. If `<n>` is not specified, the
+  available restart cases are reported. When using the short
+  form (`<n>`), an integer for which there is no corresponding
+  restart is evaluated following normal REPL semantics.
 
-- `continue`: Call [`continue`][87a5] on the condition given to [`debug`][5df9]. If
-  there is no restart case named `continue`, then an error is
-  signaled.
+- `continue`: Call [`continue`][87a5] with the condition given that invoked
+  the debugger. If there is no restart case named `continue`, then an
+  error is signaled. This is not a debugger command but the name of
+  a commonly available restart.
 
-- `abort`: Call [`abort`][a838] on the condition given to `debug`. This is
-  useful for popping debug command loop levels or aborting to top
-  level, as the case may be.
+- `abort`: Call [`abort`][a838] on the condition that invoked the debugger.
+  This is useful for popping debug command loop levels or aborting
+  to top level, as the case may be. This is not a debugger command
+  but the name of a commonly available restart.
 
 - `return <value>`: Return `value` from the current stack frame.
   This command is available when the `debug` optimization quality is
-  greater than both [`speed`][5ca8] and [`space`][4e8c]. Care must be taken that the
+  greater than both `speed` and `space`. Care must be taken that the
   value is of the same type as SBCL expects the stack frame to
   return.
 
@@ -3577,8 +3709,8 @@ function, but a few show general information.
 
 - `help` or `?`: Display a synopsis of debugger commands.
 
-- `describe`: Call [`describe`][6651] on the current function and displays the
-  number of local variables.
+- `describe`: Call [`describe`][6651] on the current function and display
+  the number of local variables.
 
 - `print`: Display the current function call as it would be
   displayed by moving to this frame.
@@ -3598,7 +3730,7 @@ function, but a few show general information.
 SBCL supports setting of breakpoints inside compiled functions and
 stepping of compiled code. Breakpoints can only be set at known
 locations (see [Unknown Locations and Interrupts][2496]), so these commands
-are largely useless unless the [`debug`][5df9] optimize quality is at least
+are largely useless unless the `debug` optimize quality is at least
 2 (see [Debugger Policy Control][faf1]). These commands manipulate
 breakpoints:
 
@@ -3711,8 +3843,9 @@ This debugger session demonstrates the use of breakpoints:
 > commands in that it also functions in compiled code which has not
 > been compiled with stepping instrumentation. It simply steps to
 > the next compiled code location. In the future, this form of
-> stepping may be improved enough to subsume the instrumentation
-> based stepping commands, which have much higher overhead.
+> stepping may be improved enough to subsume the
+> instrumentation-based stepping commands, which have much higher
+> overhead.
 
 <a id="x-28SB-MANUAL-3A-40FUNCTION-TRACING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FUNCTION-TRACING%20MGL-PAX:SECTION"></a>
@@ -3725,20 +3858,19 @@ printing of the trace information and conditional breakpoints on
 function entry or exit.
 
 In SBCL, tracing can be done either by temporarily redefining the
-function name (encapsulation), or using breakpoints. When
-breakpoints are used, the function object itself is destructively
-modified to cause the tracing action. The advantage of using
-breakpoints is that tracing works even when the function is
-anonymously called via [`funcall`][03c7], that function object identity is
-preserved, and that anonymous and local functions can also be
-traced.
+function name (encapsulation) or using breakpoints. When breakpoints
+are used, the function object itself is destructively modified to
+cause the tracing action. The advantage of using breakpoints is that
+tracing works even when the function is anonymously called via
+[`funcall`][03c7], that function object identity is preserved, and that
+anonymous and local functions can also be traced.
 
 <a id="x-28TRACE-20MGL-PAX-3AMACRO-29"></a>
 <a id="TRACE%20MGL-PAX:MACRO"></a>
 
 - \[macro\] **trace** *\&rest specs*
 
-    `trace` `{Option Global-Value}* {Name {Option Value}*}*`
+    `trace` `{<option> <global-value>}* {<name> {<option> <local-value>}*}*`
 
     `trace` is a debugging tool that provides information when specified
     functions are called. In its simplest form:
@@ -3910,9 +4042,9 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 
 ### 5.11 Single Stepping
 
-SBCL includes an instrumentation based single-stepper for compiled
-code, that can be invoked via the [`step`][aea4] macro, or from within the
-debugger. See [Debugger Policy Control][faf1], for details on enabling
+SBCL includes an instrumentation-based single-stepper for compiled
+code, which can be invoked via the [`step`][aea4] macro or from within the
+debugger. See [Debugger Policy Control][faf1] for details on enabling
 stepping for compiled code.
 
 The following debugger commands are used for controlling single stepping.
@@ -4105,7 +4237,7 @@ of values when they are recognized as having dynamic extent:
 
     > **Warning**: Stack space is limited, so allocation of a large
     > vector may cause stack overflow. Stack overflow checks are
-    > done except in 0 safety policies.
+    > done except in 0 `safety` policies.
 
 - closures defined with [`flet`][091c] or [`labels`][c2ef] with a bound [`dynamic-extent`][0901]
   declaration;
@@ -4835,7 +4967,7 @@ Hash tables can also have weak keys and values. See
     Total CPU time spent doing garbage collection (as reported by
     [`get-internal-run-time`][e11a].) Initialized to zero on startup. It is safe to bind
     this to zero in order to measure [`gc`][b50b] time inside a certain section of code, but
-    doing so may interfere with results reported by eg. [`time`][9427].
+    doing so may interfere with results reported by e.g. [`time`][9427].
 
 <a id="x-28SB-EXT-3A-2AGC-REAL-TIME-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*GC-REAL-TIME*%20VARIABLE"></a>
@@ -8377,7 +8509,7 @@ calling [`load-shared-object`][3c84].
     Locating the shared object follows standard rules of the platform, consult the
     manual page for `dlopen(3)` for details. Typically paths specified by
     environment variables such as LD\_LIBRARY\_PATH are searched if the `pathname` has
-    no directory, but on some systems (eg. Mac OS X) search may happen even if
+    no directory, but on some systems (e.g. Mac OS X) search may happen even if
     `pathname` is absolute. (On Windows LoadLibrary is used instead of `dlopen(3)`.)
 
     On non-Windows platforms calling `load-shared-object` again with a `pathname`
@@ -8548,7 +8680,7 @@ developer, is the only documentation. Users of a Lisp built with the
     >     (declaim (inline lisp-name))
 
     > In addition to avoiding the Lisp call overhead, this allows
-    > pointers, word-integers and floats to be passed using non-descriptor
+    > pointers, word-integers and floats to be passed using unboxed
     > representations, avoiding consing.
 
     Consider the C function `cfoo` with the following calling
@@ -9203,7 +9335,7 @@ These generic functions are used to implement subclasses of
 
 - \[generic-function\] **sb-gray:stream-read-char-no-hang** *stream*
 
-    This is used to implement [`read-char-no-hang`][3a4f]. It returns either a
+    This is used to implement [`read-char-no-hang`][3a4f0]. It returns either a
     character, or `nil` if no input is currently available, or `:eof` if
     end-of-file is reached. The default method provided by
     [`fundamental-character-input-stream`][d6aa] simply calls [`stream-read-char`][61cd]; this
@@ -10286,7 +10418,7 @@ see `install` for directions.
     causing it to call [`sb-thread:abort-thread`][1d60] with `:allow-exit` `t`.
 
     The unwind caused by `terminate-thread` is asynchronous, meaning that
-    eg. thread executing
+    e.g. thread executing
 
         (let (foo)
            (unwind-protect
@@ -10300,7 +10432,7 @@ see `install` for directions.
                (release-foo foo))))
 
     might miss calling `release-foo` despite GET-FOO having returned true
-    if the interrupt occurs inside the cleanup clause, eg. during
+    if the interrupt occurs inside the cleanup clause, e.g. during
     execution of `release-foo`.
 
     Thus, in order to write an asynch unwind safe [`unwind-protect`][c93f] you need
@@ -10367,7 +10499,7 @@ see `install` for directions.
 
 - \[condition\] **sb-thread:symbol-value-in-thread-error** *[cell-error][9ad9] [sb-thread:thread-error][1286]*
 
-    Signalled when [`symbol-value-in-thread`][9bed] or its [`setf`][a138] version fails due to eg.
+    Signalled when [`symbol-value-in-thread`][9bed] or its [`setf`][a138] version fails due to e.g.
     the symbol not having a thread-local value, or the target thread having
     exited. The offending symbol can be accessed using [`cell-error-name`][8c8e], and the
     offending thread using [`thread-error-thread`][693b].
@@ -11546,7 +11678,7 @@ more useful features of Common Lisp -- briefly:
     capable of both binary and character IO use `:default`.
 
     Acceptable values for `buffering` are `:full`, `:line` and `:none`, default is
-    `:full`, ie. output is buffered till it is explicitly flushed using
+    `:full`, i.e. output is buffered till it is explicitly flushed using
     [`close`][848f] or [`finish-output`][3498]. ([`force-output`][5842] forces some output to be
     flushed: to ensure all buffered output is flushed use `finish-output`.)
 
@@ -12582,7 +12714,7 @@ multiple threads must wait for a single event before proceeding.
     [`gate`][da1d] type. Gates are synchronization constructs suitable for making
     multiple threads wait for single event before proceeding.
 
-    Use [`wait-on-gate`][e0fd1] to wait for a gate to open, [`open-gate`][1dd7] to open one,
+    Use [`wait-on-gate`][e0fd] to wait for a gate to open, [`open-gate`][1dd7] to open one,
     and [`close-gate`][a3be] to close an open gate. [`gate-open-p`][60df] can be used to test
     the state of a gate without blocking.
 
@@ -15195,7 +15327,9 @@ versions of SBCL, which have since then been deleted.
 
 [3986]: #SB-ALIEN:EXTERN-ALIEN%20MGL-PAX:MACRO "SB-ALIEN:EXTERN-ALIEN MGL-PAX:MACRO"
 
-[3a4f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_c_1.htm "READ-CHAR-NO-HANG (MGL-PAX:CLHS FUNCTION)"
+[3a4f]: #SB-MANUAL:@EXITING-THE-DEBUGGER%20MGL-PAX:SECTION "Exiting the Debugger"
+
+[3a4f0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_c_1.htm "READ-CHAR-NO-HANG (MGL-PAX:CLHS FUNCTION)"
 
 [3ac6]: #SB-ALIEN:DEFINE-ALIEN-VARIABLE%20MGL-PAX:MACRO "SB-ALIEN:DEFINE-ALIEN-VARIABLE MGL-PAX:MACRO"
 
@@ -15325,6 +15459,8 @@ versions of SBCL, which have since then been deleted.
 
 [4d55]: #SB-MANUAL:@SB-ACLREPL-USAGE%20MGL-PAX:SECTION "Usage"
 
+[4d76]: #SB-DEBUG:*DEBUG-BEGINNER-HELP-P*%20VARIABLE "SB-DEBUG:*DEBUG-BEGINNER-HELP-P* VARIABLE"
+
 [4d8c]: #SB-EXT:*INVOKE-DEBUGGER-HOOK*%20VARIABLE "SB-EXT:*INVOKE-DEBUGGER-HOOK* VARIABLE"
 
 [4dad]: #SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION "Diagnostic Severity"
@@ -15340,8 +15476,6 @@ versions of SBCL, which have since then been deleted.
 [4e63]: #SB-MANUAL:@MISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION "Miscellaneous Operations"
 
 [4e78]: #SB-MANUAL:@DETERMINISTIC-PROFILER%20MGL-PAX:SECTION "Deterministic Profiler"
-
-[4e8c]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "SPACE (MGL-PAX:CLHS DECLARATION)"
 
 [4f11]: #SB-INTROSPECT:DEFINITION-SOURCE%20STRUCTURE "SB-INTROSPECT:DEFINITION-SOURCE STRUCTURE"
 
@@ -15360,6 +15494,8 @@ versions of SBCL, which have since then been deleted.
 [52f0]: #SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION "Running external programs"
 
 [5333]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm "> (MGL-PAX:CLHS FUNCTION)"
+
+[538a]: #SB-MANUAL:@TYPE-DECLARATION-CHECKING%20MGL-PAX:SECTION "Type Declaration Checking"
 
 [53a6]: #SB-UNICODE:UNICODE%3C%20FUNCTION "SB-UNICODE:UNICODE< FUNCTION"
 
@@ -15430,8 +15566,6 @@ versions of SBCL, which have since then been deleted.
 [5c43]: #SB-MANUAL:@EXSEQ-ITERATOR-PROTOCOL%20MGL-PAX:SECTION "Iterator Protocol"
 
 [5c73]: #SB-MANUAL:@GRAY-STREAMS-EXAMPLES%20MGL-PAX:SECTION "Gray Streams Examples"
-
-[5ca8]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "SPEED (MGL-PAX:CLHS DECLARATION)"
 
 [5cbb]: #SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION "Stack Allocation"
 
@@ -15570,8 +15704,6 @@ versions of SBCL, which have since then been deleted.
 [6fdb]: pax-manual.md#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM "\"mgl-pax\" ASDF/SYSTEM:SYSTEM"
 
 [7055]: #SB-MANUAL:@STREAM-EXTERNAL-FORMATS%20MGL-PAX:SECTION "Stream External Formats"
-
-[705f]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "COMPILATION-SPEED (MGL-PAX:CLHS DECLARATION)"
 
 [71b3]: #SB-THREAD:RELEASE-MUTEX%20FUNCTION "SB-THREAD:RELEASE-MUTEX FUNCTION"
 
@@ -15885,8 +16017,6 @@ versions of SBCL, which have since then been deleted.
 
 [a917]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_ele.htm "ARRAY-ELEMENT-TYPE (MGL-PAX:CLHS FUNCTION)"
 
-[a91a]: #SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST*%20VARIABLE "SB-EXT:*COMPILER-PRINT-VARIABLE-ALIST* VARIABLE"
-
 [a9a5]: #SB-MANUAL:@STOPPING-SBCL%20MGL-PAX:SECTION "Stopping SBCL"
 
 [a9ee]: #SB-MANUAL:@NETWORKING%20MGL-PAX:SECTION "Networking"
@@ -16034,8 +16164,6 @@ versions of SBCL, which have since then been deleted.
 [c09c]: #SB-MANUAL:@MORE-COMMON-LISP-INFORMATION%20MGL-PAX:SECTION "More Common Lisp Information"
 
 [c0ba]: #ED%20FUNCTION "ED FUNCTION"
-
-[c15b]: #SB-MANUAL:@DECLARATIONS%20MGL-PAX:SECTION "Declarations"
 
 [c16f]: #SB-INTROSPECT:DEFINITION-SOURCE-FORM-PATH%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-INTROSPECT:DEFINITION-SOURCE%29 "SB-INTROSPECT:DEFINITION-SOURCE-FORM-PATH (MGL-PAX:STRUCTURE-ACCESSOR SB-INTROSPECT:DEFINITION-SOURCE)"
 
@@ -16221,9 +16349,7 @@ versions of SBCL, which have since then been deleted.
 
 [e0d9]: #SB-MANUAL:@WAITQUEUE%2FCONDITION-VARIABLES%20MGL-PAX:SECTION "Waitqueue/condition variables"
 
-[e0fd]: #SB-MANUAL:@EXITING-COMMANDS%20MGL-PAX:SECTION "Exiting Commands"
-
-[e0fd1]: #SB-CONCURRENCY:WAIT-ON-GATE%20FUNCTION "SB-CONCURRENCY:WAIT-ON-GATE FUNCTION"
+[e0fd]: #SB-CONCURRENCY:WAIT-ON-GATE%20FUNCTION "SB-CONCURRENCY:WAIT-ON-GATE FUNCTION"
 
 [e113]: http://www.lispworks.com/documentation/HyperSpec/Body/f_nthcdr.htm "NTHCDR (MGL-PAX:CLHS FUNCTION)"
 
@@ -16332,8 +16458,6 @@ versions of SBCL, which have since then been deleted.
 [f2ea]: #SB-MANUAL:@OPERATIONS-SUPPORTING-TIMEOUTS-AND-DEADLINES%20MGL-PAX:SECTION "Operations Supporting Timeouts and Deadlines"
 
 [f2f5]: http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_cn.htm "SIMPLE-CONDITION (MGL-PAX:CLHS CONDITION)"
-
-[f384]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "SAFETY (MGL-PAX:CLHS DECLARATION)"
 
 [f3cc]: #SB-INTROSPECT:FIND-DEFINITION-SOURCES-BY-NAME%20FUNCTION "SB-INTROSPECT:FIND-DEFINITION-SOURCES-BY-NAME FUNCTION"
 

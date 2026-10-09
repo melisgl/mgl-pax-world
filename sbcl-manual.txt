@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.268-c2aca59, generated 2026-10-09 13:55:36. See
+The output is for SBCL version 2.6.9.273-4a997df, generated 2026-10-09 19:53:18. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -269,12 +269,12 @@ The information in this section describes some of the ways that SBCL
 deals with choices that the ANSI standard leaves to the
 implementation.
 
-#### Declarations
+#### Declarations as Assertions
 
 Declarations are generally treated as assertions. This general
 principle, and its implications, and the bugs which still keep the
 compiler from quite satisfying this principle, are discussed in
-Declarations as Assertions.
+Type Declaration Checking.
 
 #### FASL format
 
@@ -1160,76 +1160,13 @@ SBCL provides hooks into the system initialization and exit.
 
 ## Compiler
 
-This chapter will discuss most compiler issues other than Efficiency,
+This chapter discusses most compiler issues other than Efficiency,
 including compiler messages, type safety in the presence of type
 declarations, the effects of various optimization policies, and the
 way that inlining and open coding may cause optimized code to differ
 from a naive translation.
 
 ### Diagnostic Messages
-
-#### Controlling Verbosity
-
-The compiler can be quite verbose in its diagnostic reporting -- rather
-more than some users would prefer. However, the amount of noise
-emitted can be controlled.
-
-To control emission of compiler diagnostics (except those with
-Diagnostic Severity error) use the sb-ext:muffle-conditions and
-sb-ext:unmuffle-conditions declarations, specifying the type of
-condition that is to be muffled (the muffling is done using an
-associated muffle-warning restart).
-
-Global control:
-
-    ;;; Muffle compiler-notes globally
-    (declaim (sb-ext:muffle-conditions sb-ext:compiler-note))
-
-Local control:
-
-    ;;; Muffle compiler-notes based on lexical scope
-    (defun foo (x)
-      (declare (optimize speed) (fixnum x)
-               (sb-ext:muffle-conditions sb-ext:compiler-note))
-      (values (* x 5) ; no compiler note from this
-        (locally
-          (declare (sb-ext:unmuffle-conditions sb-ext:compiler-note))
-          ;; this one gives a compiler note
-          (* x -5))))
-
-- [declaration] sb-ext:muffle-conditions
-
-    Syntax: (sb-ext:muffle-conditions &rest types).
-
-    Silence the diagnostic messages that would be printed when a condition
-    matching any of types is signalled at compile time.
-
-- [declaration] sb-ext:unmuffle-conditions
-
-    Syntax: (sb-ext:unmuffle-conditions &rest types).
-
-    Cancel the effect of a previous sb-ext:muffle-conditions declaration.
-
-Various details of how the compiler messages are printed can be
-controlled via the alist sb-ext:*compiler-print-variable-alist*.
-
-- [variable] sb-ext:*compiler-print-variable-alist* nil
-
-    An association list describing new bindings for special variables
-    to be used by the compiler for error-reporting, etc.
-    E.g. ((*print-length* . 10) (*print-level* . 6) (*print-pretty* .
-    nil)).
-
-    The variables in the car positions are bound to the values in the cdr
-    during the execution of some debug commands. When evaluating arbitrary
-    expressions in the debugger, the normal values of the printer control
-    variables are in effect.
-
-    Initially empty, *compiler-print-variable-alist* is typically used
-    to specify bindings for printer control variables.
-
-For information about muffling warnings signaled outside of the
-compiler, see Customization Hooks for Users.
 
 #### Diagnostic Severity
 
@@ -1250,12 +1187,12 @@ of compiler error severity occur when the compiler handles
 conditions of these classes.
 
 The fourth level of compiler error severity, note, corresponds to
-the sb-ext:compiler-note, and is used for problems which are too
-mild for the standard condition classes, typically hints about how
-efficiency might be improved. The sb-ext:code-deletion-note, a
-subtype of sb-ext:compiler-note, is signalled when the compiler
-deletes user-supplied code after proving that the code in question
-is unreachable.
+the sb-ext:compiler-note condition and is used for problems too mild
+for the standard condition classes, typically hints about how
+efficiency might be improved. sb-ext:code-deletion-note, a subtype
+of sb-ext:compiler-note, is signalled when the compiler deletes
+user-supplied code after proving that the code in question is
+unreachable.
 
 Future work for SBCL includes expanding this hierarchy of types to
 allow more fine-grained control over emission of diagnostic
@@ -1275,7 +1212,7 @@ messages.
 #### Understanding Compiler Diagnostics
 
 The messages emitted by the compiler contain a lot of detail in a
-terse format, so they may be confusing at first. The messages will be
+terse format, which may be confusing at first. The messages will be
 illustrated using this example program:
 
     (defmacro zoq (x)
@@ -1363,7 +1300,7 @@ Note that each part of the message is distinctively marked:
 - Each line of the processing path is prefixed with -->.
 
 - The actual source form is indented like the original source, but
-  is marked by a preceding ==> line. (FIXME: no it isn't.)
+  is marked by a preceding ==> line.
 
 - The explanation is prefixed with the diagnostic severity, which
   can be caught ERROR:, caught WARNING:, caught
@@ -1372,7 +1309,7 @@ Note that each part of the message is distinctively marked:
 Each part of the message is more specific than the preceding one. If
 consecutive messages are for nearby locations, then the front part
 of the messages would be the same. In this case, the compiler omits
-as much of the second message as in common with the first. For
+as much of the second message as is in common with the first. For
 example:
 
     ; file: /tmp/foo.lisp
@@ -1487,8 +1424,105 @@ In this example, the compiler descended into the block, let, tagbody
 and return-from to reach the progn printed as the actual source.
 This is a place where the "actual source appears in explanation"
 rule was applied. The innermost actual source form was the symbol
-undefined itself, but that also appeared in the explanation, so
+*undefined* itself, but that also appeared in the explanation, so
 the compiler backed out one level.
+
+#### Controlling Verbosity
+
+The compiler can be quite verbose in its diagnostic reporting -- rather
+more than some users would prefer. However, the amount of noise
+emitted can be controlled.
+
+To control emission of compiler diagnostics (except those with
+Diagnostic Severity error) use the sb-ext:muffle-conditions and
+sb-ext:unmuffle-conditions declarations, specifying the type of
+condition that is to be muffled (the muffling is done using an
+associated muffle-warning restart).
+
+Global control:
+
+    ;;; Muffle compiler-notes globally
+    (declaim (sb-ext:muffle-conditions sb-ext:compiler-note))
+
+Local control:
+
+    ;;; Muffle compiler-notes based on lexical scope
+    (defun foo (x)
+      (declare (optimize speed) (fixnum x)
+               (sb-ext:muffle-conditions sb-ext:compiler-note))
+      (values (* x 5) ; no compiler note from this
+        (locally
+          (declare (sb-ext:unmuffle-conditions sb-ext:compiler-note))
+          ;; this one gives a compiler note
+          (* x -5))))
+
+- [declaration] sb-ext:muffle-conditions
+
+    Syntax: (sb-ext:muffle-conditions &rest types).
+
+    Silence the diagnostic messages that would be printed when a condition
+    matching any of types is signalled at compile time.
+
+- [declaration] sb-ext:unmuffle-conditions
+
+    Syntax: (sb-ext:unmuffle-conditions &rest types).
+
+    Cancel the effect of a previous sb-ext:muffle-conditions declaration.
+
+For information about muffling warnings signaled outside of the
+compiler, see Customization Hooks for Users.
+
+The following variables and macros control how the compiler
+messages are printed.
+
+- [variable] sb-ext:*compiler-print-variable-alist* nil
+
+    An association list describing new bindings for special variables
+    to be used by the compiler for error-reporting, etc.
+    E.g. ((*print-length* . 10) (*print-level* . 6) (*print-pretty* .
+    nil)).
+
+    The variables in the car positions are bound to the values in the cdr
+    during the execution of some debug commands. When evaluating arbitrary
+    expressions in the debugger, the normal values of the printer control
+    variables are in effect.
+
+    Initially empty, *compiler-print-variable-alist* is typically used
+    to specify bindings for printer control variables.
+
+- [variable] sb-ext:*enclosing-source-cutoff* 1
+
+    The maximum number of enclosing actual source forms (i.e. from
+    macroexpansion) that we print in full. For additional enclosing forms, we
+    print only the car.
+
+- [variable] sb-ext:*undefined-warning-limit* 3
+
+    If non-null, then an upper limit on the number of unknown function or type
+    warnings that the compiler will print for any given name in a single
+    compilation. This prevents excessive amounts of output when the real
+    problem is a missing definition (as opposed to a typo in the use.)
+
+- [variable] sb-ext:*efficiency-note-limit* 2
+
+    This is the maximum number of possible optimization alternatives will be
+    mentioned in a particular efficiency note. nil means no limit.
+
+- [variable] sb-ext:*efficiency-note-cost-threshold* 5
+
+    This is the minimum cost difference between the chosen implementation and
+    the next alternative that justifies an efficiency note.
+
+- [macro] sb-ext:define-source-context name lambda-list &body body
+
+    Define how to abbreviate a source context form whose car is
+    name when it appears in the compiler input. lambda-list is a
+    defmacro style lambda-list used to parse the form.
+
+    body should return a list of subforms that fit on one line when
+    printed with the "~{~S ~}" format string. There are predefined
+    extractors for defstruct and function forms. If there is no
+    definition, then the first two subforms are returned.
 
 ### Handling of Types
 
@@ -1507,49 +1541,31 @@ The SBCL compiler also has a greater knowledge of the Common Lisp
 type system than other compilers. Support is incomplete only for
 types involving the satisfies type specifier.
 
-#### Declarations as Assertions
+#### Type Declaration Checking
 
 The SBCL compiler treats type declarations differently from most other
-Lisp compilers. Under default compilation policy the compiler doesn't
-blindly believe type declarations, but considers them assertions about
-the program that should be checked: all type declarations that have
-not been proven to always hold are asserted at runtime.
+Lisp compilers. Under the default Compiler Policy, the compiler
+doesn't blindly believe type declarations but considers them
+assertions about the program that should be checked: all type
+declarations that have not been proven to always hold are asserted
+at runtime.
 
 Remaining bugs in the compiler's handling of types unfortunately
-provide some exceptions to this rule, see
+provide some exceptions to this rule. See
 Implementation Limitations.
-
-CLOS slot types form a notable exception. Types declared using the
-:type slot option in defclass are asserted if and only if the class
-was defined in safe code  and the slot access location is
-in safe code as well. This laxness does not pose any internal
-consistency issues, as the CLOS slot types are not available for the
-type inferencer, nor do CLOS slot types provide any efficiency
-benefits.
 
 There are three type checking policies available in SBCL, selectable
 via optimize declarations.
 
-- Full Type Checks
+- Full Type Checks (safe code)
 
     All declarations are considered assertions to be checked at
-    runtime, and all type checks are precise. The default
-    compilation policy provides full type checks.
+    compile or run time, and all type checks are precise. The
+    default compilation policy provides full type checks.
 
-    Used when (or (>= safety 2) (>= safety speed 1)).
+    Used when (>= safety 1). 
 
-- Weak Type Checks
-
-    Declared types may be simplified into faster to check
-    supertypes: for example, (or (integer -17 -7) (integer 7 17))
-    is simplified into (integer -17 17).
-
-    > Warning: It is relatively easy to corrupt the heap when
-    > weak type checks are used if the program contains type-errors.
-
-    Used when (and (< safety 2) (< safety speed)).
-
-- No Type Checks
+- No Type Checks (unsafe code)
 
     All declarations are believed without assertions. Also disables
     argument count and array bounds checking.
@@ -1558,6 +1574,12 @@ via optimize declarations.
     > performed are liable to corrupt the heap.
 
     Used when (= safety 0).
+
+There is a third option called Weak Type Checking, where declared
+types may be simplified into faster to check supertypes: for
+example, (or (integer -17 -7) (integer 7 17)) is simplified
+into (integer -17 17). This option is also unsafe and is no longer
+available by any combination of the standard optimization qualities.
 
 #### Precise Type Checking
 
@@ -1633,7 +1655,7 @@ is converted into a macro. Consider this macro:
       (declare (fixnum x))
       `(the fixnum (1+ ,x)))
 
-Although legal and well-defined Common Lisp code, this meaning of
+Although legal and well-defined Common Lisp code, the meaning of
 this definition is almost certainly not what the writer intended.
 For example, this call is illegal:
 
@@ -1649,7 +1671,8 @@ evaluating a macro argument, then put a the in the expansion:
       `(the fixnum (1+ (the fixnum ,x))))
 
 In this case, it would be stylistically preferable to change this
-macro back to a function and declare it inline.
+macro back to a function and declare it inline. See
+Open Coding and Inline Expansion.
 
 Some more subtle problems are caused by incorrect declarations that
 can't be detected at compile time. Consider this code:
@@ -1680,7 +1703,7 @@ or nil.)
 
 Note that there is usually little performance penalty for weakening
 a declaration in this way. Any numeric operations in the body can
-still assume that the variable is a fixnum, since nil is not a legal
+still assume that the variable is a fixnum since nil is not a legal
 numeric argument. Another possible fix would be to say:
 
     (do ((pos 0 (position #a string :start (1+ pos))))
@@ -1689,38 +1712,100 @@ numeric argument. Another possible fix would be to say:
         (declare (fixnum pos))
         ...))
 
-This would be preferable in some circumstances, since it would allow
+This would be preferable in some circumstances since it would allow
 a non-standard representation to be used for the local pos
 variable in the loop body.
 
 #### Implementation Limitations
 
-If an ftype is placed after the function definition the function won't
-perform any type checks, and the calls to the function will blindly
-trust the declared types.
-(optimize (debug 3)) will not trust any ftype declarations.
+If an ftype is placed after the function definition, the function
+won't perform any type checks and the calls to the function will
+blindly trust the declared types. (optimize (debug 3)) will not
+trust any ftype declarations.
+
+CLOS slot types form a notable exception. Types declared using the
+:type slot option in defclass are asserted if and only if the class
+was defined in safe code and the slot access location is in safe
+code as well. This laxness does not pose any internal consistency
+issues, as the CLOS slot types are not available for the type
+inferencer, nor do CLOS slot types provide any efficiency benefits.
 
 ### Compiler Policy
 
-Compiler policy is controlled by the optimize declaration,
-supporting all ANSI optimization qualities (debug, safety, space,
-and speed). (A deprecated extension sb-ext:inhibit-warnings is still
-supported but liable to go away at any time.)
+The compiler policy is what tells the compiler how to
+compile a program. This is logically (and often textually) distinct
+from the program itself. Broad control of policy is provided by the
+optimize declaration; other declarations and variables control more
+specific aspects of compilation.
 
-For effects of various optimization qualities on type-safety and
-debuggability see Declarations as Assertions and
-Debugger Policy Control.
+The optimize declaration recognizes six different qualities. The
+qualities are conceptually independent aspects of program
+performance. In reality, increasing one quality tends to have
+adverse effects on other qualities. The compiler compares the
+relative values of qualities when it needs to make a trade-off; i.e.
+if speed is greater than safety, then improve speed at the cost of
+safety.
 
-Ordinarily, when the speed quality is high, the compiler emits notes
-to notify the programmer about its inability to apply various
-optimizations. For selective muffling of these notes, see
-Controlling Verbosity.
+All qualities take values of type (integer 0 3). The default for
+all qualities is 1. Whenever qualities are equal, ties are broken
+according to a broad idea of what a good default environment is
+supposed to be. Generally this downplays speed, compilation-speed
+and space in favour of safety and debug. Novice and casual users
+should stick to the default policy. Advanced users often want to
+improve speed and memory usage at the cost of safety and
+debuggability.
 
-The value of space mostly influences the compiler's decision whether
-to inline operations, which tend to increase the size of programs.
-Use the value 0 with caution, since it can cause the compiler to
-inline operations so indiscriminately that the net effect is to slow
-the program by causing cache misses or even swapping.
+If the value for a quality is 0 or 3, then it may have a special
+interpretation. A value of 0 means totally unimportant, and a 3
+means ultimately important. These extreme optimization values enable
+"heroic" compilation strategies that are not always desirable and
+sometimes self-defeating. Specifying more than one quality as 3 is
+not desirable, since it doesn't tell the compiler which quality is
+most important.
+
+These are the optimization qualities:
+
+- speed: How fast the program should run. speed 3 enables some
+  optimizations that may hurt debuggability. Ordinarily, when the
+  speed quality is high, the compiler emits notes to notify the
+  programmer about its inability to apply various optimizations. For
+  selective muffling of these notes, see Controlling Verbosity.
+
+- compilation-speed: How fast the compiler should run. If this is
+  high, then some expensive optimizations may be disabled.
+
+- space: How much space the compiled code should take up. Inline
+  expansion is mostly inhibited when space is greater than speed.
+  A value of 0 enables indiscriminate inline expansion. Wide use
+  of a 0 value is not recommended, as it may waste so much space
+  that run time is slowed. See Open Coding and Inline Expansion.
+
+- debug: How debuggable the program should be. The quality is
+  treated differently from the other qualities: each value indicates
+  a particular level of debugger information; it is not compared
+  with the other qualities. See Debugger Policy Control for the
+  details.
+
+- safety: How much error checking should be done. If speed, space
+  or compilation-speed is more important than safety, then
+  Type Declaration Checking is weakened. safety 0 also
+  suppresses argument count checking, unbound-symbol checking, array
+  bounds checks, and checking of tag existence in return-from and
+  go.
+
+- sb-ext:inhibit-warnings: This is a deprecated extension that
+  determines how little (or how much) diagnostic output should be
+  printed during compilation. This quality is compared to other
+  qualities to determine whether to print style notes and warnings
+  concerning those qualities. If speed is greater than
+  inhibit-warnings, then notes about how to improve speed will be
+  printed, etc. The default value is 1, so raising the value for
+  any standard quality above its default enables notes for that
+  quality. If it is 3, then all notes and most non-serious
+  warnings are inhibited. This is useful with declare to suppress
+  warnings about unavoidable problems.
+
+In the following, we discuss extensions related to compiler policies.
 
 - [function] sb-ext:describe-compiler-policy &optional spec
 
@@ -1728,23 +1813,30 @@ the program by causing cache misses or even swapping.
 
 - [function] sb-ext:restrict-compiler-policy &optional quality (min 0) (max 3)
 
-    Assign a minimum value to an optimization quality. quality is the name of
-    the optimization quality to restrict, min (defaulting to zero) is the
-    minimum allowed value, and max (defaults to 3) is the maximum.
+    Restrict the range of values the optimization quality can take.
+    The effect is that optimize declarations with quality are clamped to
+    the restricted range. quality must be a valid optimization quality or
+    nil. min is the minimum allowed value, and max is the maximum; both of
+    type (integer 0 3).
 
-    Returns the alist describing the current policy restrictions.
+    Returns two alists describing the current minimum and maximum policy
+    restrictions on all optimization qualities.
 
-    If quality is nil or not given, nothing is done.
+    If quality is nil or not given, nothing is done. Use this to query the
+    current restrictions.
 
-    Otherwise, if min is zero or max is 3 or neither are given, any
-    existing restrictions of quality are removed.
+    If quality is non-nil, min is 0 and max is 3, any existing
+    restrictions on quality are removed. In general, restrictions can be
+    loosened.
 
-    See also :policy option in with-compilation-unit.
+    See also :policy option in with-compilation-unit, which can impose
+    dynamic scoping on restrictions.
 
 - [macro] with-compilation-unit options &body body
 
     Affects compilations that take place within its dynamic extent. It is
-    intended to be eg. wrapped around the compilation of all files in the same system.
+    intended to be e.g. wrapped around the compilation of all files in the
+    same system.
 
     Following options are defined:
 
@@ -1765,26 +1857,28 @@ the program by causing cache misses or even swapping.
         sb-ext:restrict-compiler-policy to the dynamic scope of body.
 
         If :override is false, the specified :policy is merged with
-        current global policy. If :override is true, current global
+        current global policy. If :override is true, the current global
         policy, including any restrictions, is discarded in favor of the
-        specified
-        :policy.
+        specified :policy.
 
         Supplying :policy nil is equivalent to the option not being
         supplied at all, i.e. dynamic scoping of policy does not take
-        place.
+        place. If dynamic scoping without changing the current policy is
+        desired, use :policy '(optimize) with :override nil.
 
         This option is an SBCL-specific experimental extension: Interface
         subject to change.
 
     - :source-namestring <namestring-form>
 
-        Attaches the value returned by the <namestring-form> to the
-        internal debug-source information as the namestring of the source
-        file. Normally the namestring of the input-file for compile-file
-        is used: this option can be used to provide source-file
-        information for functions compiled using compile, or to override
-        the input-file of compile-file.
+        Attaches the value returned by <namestring-form> to the internal
+        debug-source information as the namestring of the source file.
+        Normally the namestring of the input-file for compile-file is
+        used: this option can be used to provide source-file information
+        for functions compiled using compile, or to override the
+        input-file argument of compile-file.
+
+        Can be accessed using sb-introspect:definition-source-pathname.
 
         If both an outer and an inner with-compilation-unit provide a
         :source-namestring, the inner one takes precedence. Unaffected by
@@ -1794,11 +1888,11 @@ the program by causing cache misses or even swapping.
 
     - :source-plist <plist-form>
 
-        Attaches the value returned by the <plist-form> to internal
+        Attaches the value returned by <plist-form> to internal
         debug-source information of functions compiled in within the
         dynamic extent of body.
 
-        Primarily for use by development environments, in order to eg.
+        Primarily for use by development environments, in order to e.g.
         associate function definitions with editor-buffers. Can be
         accessed using sb-introspect:definition-source-plist.
 
@@ -1904,7 +1998,7 @@ gives this error:
 #### Read Errors
 
 SBCL's compiler does not attempt to recover from read errors when
-reading a source file, but instead just reports the offending
+reading a source file but instead just reports the offending
 character position and gives up on the entire source file.
 
 ### Open Coding and Inline Expansion
@@ -1915,7 +2009,7 @@ embedded in it. This special knowledge is used in various ways (open
 coding, inline expansion, source transformation), but the implications
 to the user are basically the same:
 
-- Attempts to redefine standard functions may be frustrated, since
+- Attempts to redefine standard functions may be frustrated since
   the function may never be called. Although it is technically
   illegal to redefine standard functions, users sometimes want to
   implicitly redefine these functions when they are debugging using
@@ -1959,7 +2053,7 @@ In general, open coding sacrifices space for speed, but some functions
 (such as car) are so simple that they are always open-coded. Even
 when not open-coded, a call to a standard function may be
 transformed into a different function call (as in the last example)
-or compiled as static call. Static function call uses a more
+or compiled as static call. Static function calls use a more
 efficient calling convention that forbids redefinition.
 
 ### Interpreter
@@ -2012,54 +2106,65 @@ debug) declarations.
 
 When you enter the debugger, it looks something like this:
 
-    debugger invoked on a TYPE-ERROR in thread 11184:
-      The value 3 is not of type LIST.
+    * (symbol-value 'x)
     
-    You can type HELP for debugger help, or (SB-EXT:QUIT) to exit from SBCL.
+    debugger invoked on a UNBOUND-VARIABLE @B80027A0C1 in thread
+    #<THREAD tid=893088 "main thread" RUNNING {1200038003}>:
+      The variable X is unbound.
+    
+    Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
     
     restarts (invokable by number or by possibly-abbreviated name):
-      0: [ABORT   ] Reduce debugger level (leaving debugger, returning to toplevel).
-      1: [TOPLEVEL] Restart at toplevel READ/EVAL/PRINT loop.
-    (CAR 1 3)
+      0: [CONTINUE   ] Retry using X.
+      1: [USE-VALUE  ] Use specified value.
+      2: [STORE-VALUE] Set specified value and use it.
+      3: [ABORT      ] Exit debugger, returning to top level.
+    
+    (SYMBOL-VALUE X)
     0]
 
 The first group of lines describe what the error was that put us in
-the debugger. In this case car was called on 3, causing a
-type-error.
-
-This is followed by the "beginner help line", which appears only
-if sb-debug:*debug-beginner-help-p* is true (default).
+the debugger. This is followed by the "beginner help line", which
+appears only if sb-debug:*debug-beginner-help-p* is true (default).
 
 Next comes a listing of the active restart names, along with their
 descriptions -- the ways we can restart execution after this error.
-In this case, both options return to top-level. Restarts can be
-selected by entering the corresponding number or name.
+Restarts can be selected by entering the corresponding number or
+name. If the name coincides with the name of a debugger command or
+that of another restart, use its number.
 
 The current frame appears right underneath the restarts, immediately
-followed by the debugger prompt.
+followed by the debugger prompt, where 0 is the index of the
+current frame.
+
+- [variable] sb-debug:*debug-beginner-help-p* t
+
+    Should entering the debugger print a beginner-oriented help message?
 
 #### Debugger Invocation
 
-The debugger is invoked when:
+The debugger is invoked when
 
-- error is called, and the condition it signals is not handled.
+- error is called and the condition it signals is not handled, or
 
-- break is called, or signal is called with a condition that matches
-  the current *break-on-signals*.
+- break is called, or
 
-- The debugger is explicitly entered with the invoke-debugger
-  function.
+- signal is called with a condition that matches the current
+  *break-on-signals*, or
 
-When the debugger is invoked by a condition, ANSI mandates that the
-value of *debugger-hook*, if any, be called with two arguments: the
-condition that caused the debugger to be invoked and the previous
-value of *debugger-hook*. When this happens, *debugger-hook* is
-bound to nil to prevent recursive errors. However, ANSI also
-mandates that *debugger-hook* not be invoked when the debugger is to
-be entered by the break function. For users who wish to provide an
-alternate debugger interface (and thus catch break entries into the
-debugger), SBCL provides sb-ext:*invoke-debugger-hook*, which is
-invoked during any entry into the debugger.
+- invoke-debugger is called.
+
+Unless the debugger is to be entered by break, ANSI mandates that
+the value of *debugger-hook*, if non-nil, be called with two
+arguments: the condition that caused the debugger to be invoked and
+the previous value of *debugger-hook*. When this happens,
+*debugger-hook* is bound to nil to prevent recursive errors.
+However, ANSI also mandates that *debugger-hook* not be invoked when
+the debugger is to be entered by the break function. For users who
+wish to provide an alternate debugger interface (and thus catch
+break entries into the debugger), SBCL provides
+sb-ext:*invoke-debugger-hook*, which is invoked during any entry
+into the debugger.
 
 - [variable] sb-ext:*invoke-debugger-hook* nil
 
@@ -2095,20 +2200,27 @@ the current frame. Frames are numbered starting from zero at the
 top (most recent call), increasing down to the bottom. The current
 frame is the frame that commands refer to.
 
+The debugger can be invoked again within a debugger session
+following the normal rules (see Debugger Invocation). In such
+nested debugger sessions, the prompt is <frame>[<nesting-level>].
+
 It is possible to override the normal printing behaviour in the
 debugger by using the sb-ext:*debug-print-variable-alist*.
 
 - [variable] sb-ext:*debug-print-variable-alist* nil
 
-    an association list describing new bindings for special variables
-    to be used within the debugger. Eg.
+    An association list describing new bindings for special variables
+    to be used within the debugger. For example,
 
     ((*print-length* . 10) (*print-level* . 6) (*print-pretty* . nil))
 
     The variables in the car positions are bound to the values in the cdr
-    during the execution of some debug commands. When evaluating arbitrary
-    expressions in the debugger, the normal values of the printer control
-    variables are in effect.
+    during the execution of some debug commands. When the same variable
+    has multiple bindings specified, the earliest one takes precendence.
+
+    Entering the debugger establishes these bindings, as does the
+    backtrace debugger command (see Information Commands)
+    among other things.
 
     Initially empty, *debug-print-variable-alist* is typically used to
     provide bindings for printer control variables.
@@ -2141,9 +2253,6 @@ function call:
 
 - down: Move down to the next lower frame.
 
-- top: Move to the highest frame, that is, the frame where the
-  debugger was entered.
-
 - bottom: Move to the lowest frame.
 
 - frame [<n>]: Move to the frame with the specified number.
@@ -2152,7 +2261,7 @@ function call:
 
 #### How Arguments are Printed
 
-A frame is printed to look like a function call, but with the actual
+A frame is printed to look like a function call but with the actual
 argument values in the argument positions.  So the frame for this call
 in the source:
 
@@ -2210,7 +2319,7 @@ for any of a number of reasons the value of the variable is
 unavailable or not known to be available (Variable Access), then
 #<unavailable-arg> will be printed instead of the argument value.
 
-Note that inline expansion and open-coding affect what frames are
+Note that Open Coding and Inline Expansion affect what frames are
 present in the debugger, see Debugger Policy Control.
 
 #### Function Names
@@ -2292,7 +2401,7 @@ There are three reasons why a code location could be unknown:
 
 - A hardware error  such as a bus error occurred in
   code that was compiled unsafely due to the value of the safety
-  optimization quality.
+  optimization quality. See Compiler Policy.
 
 In the last two cases, the values of argument variables are
 accessible, but may be incorrect. For more details on when variable
@@ -2368,10 +2477,10 @@ incorrect values, the debugger tells you the value is unavailable.
 
 The one exception is this: if you interrupt (e.g. with C-c) or if
 there is an unexpected hardware error such as a bus error (which
-should only happen in unsafe code), then the values displayed for
-arguments to the interrupted frame might be incorrect. This
-exception applies only to the interrupted frame: any frame farther
-down the stack will be fine.
+should only happen in unsafe code; see Type Declaration Checking),
+then the values displayed for arguments to the interrupted frame
+might be incorrect. This exception applies only to the interrupted
+frame: any frame farther down the stack will be fine.
 
 > Note: Since the location of an interrupt or hardware error will
 > always be an unknown location, non-argument variable values will
@@ -2423,8 +2532,8 @@ function, argument variables are treated specially when the speed
 optimization quality is less than 3 and the debug quality is at
 least 1. With this compilation policy, the values of argument
 variables are almost always available everywhere in the function,
-even at unknown locations. For non-argument variables, debug must be
-at least 2 for values to be available, and even then, values are
+even at unknown locations. For non-argument variables, debug must
+be at least 2 for values to be available, and even then, values are
 only available at known locations.
 
 #### Note On Lexical Variable Access
@@ -2600,7 +2709,7 @@ Unlike the other optimization qualities (which are compared in
 relative value to evaluate tradeoffs), the debug optimization
 quality is directly translated to a level of debug information. This
 absolute interpretation allows the user to count on a particular
-amount of debug information being available even when the values of
+amount of debug information being available, even when the values of
 the other qualities are changed during compilation. These are the
 levels of debug information that correspond to the values of the
 debug quality:
@@ -2659,25 +2768,30 @@ then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
 semi inline, in which case there is a frame to represent the
 call, but the call is to an optimized local version of the function,
-not to the original function.
+not to the original function. See Open Coding and Inline Expansion
+for more.
 
-### Exiting Commands
+### Exiting the Debugger
 
 These commands get you out of the debugger.
 
 - toplevel: Throw to top level.
 
-- restart [<n>]: Invoke the <n>th restart case as displayed by
-  the error command. If <n> is not specified, the available
-  restart cases are reported.
+- restart [<n>] or <n>: Invoke the <n>th restart case as
+  displayed by the error command. If <n> is not specified, the
+  available restart cases are reported. When using the short
+  form (<n>), an integer for which there is no corresponding
+  restart is evaluated following normal REPL semantics.
 
-- continue: Call continue on the condition given to debug. If
-  there is no restart case named continue, then an error is
-  signaled.
+- continue: Call continue with the condition given that invoked
+  the debugger. If there is no restart case named continue, then an
+  error is signaled. This is not a debugger command but the name of
+  a commonly available restart.
 
-- abort: Call abort on the condition given to debug. This is
-  useful for popping debug command loop levels or aborting to top
-  level, as the case may be.
+- abort: Call abort on the condition that invoked the debugger.
+  This is useful for popping debug command loop levels or aborting
+  to top level, as the case may be. This is not a debugger command
+  but the name of a commonly available restart.
 
 - return <value>: Return value from the current stack frame.
   This command is available when the debug optimization quality is
@@ -2698,8 +2812,8 @@ function, but a few show general information.
 
 - help or ?: Display a synopsis of debugger commands.
 
-- describe: Call describe on the current function and displays the
-  number of local variables.
+- describe: Call describe on the current function and display
+  the number of local variables.
 
 - print: Display the current function call as it would be
   displayed by moving to this frame.
@@ -2826,8 +2940,9 @@ This debugger session demonstrates the use of breakpoints:
 > commands in that it also functions in compiled code which has not
 > been compiled with stepping instrumentation. It simply steps to
 > the next compiled code location. In the future, this form of
-> stepping may be improved enough to subsume the instrumentation
-> based stepping commands, which have much higher overhead.
+> stepping may be improved enough to subsume the
+> instrumentation-based stepping commands, which have much higher
+> overhead.
 
 ### Function Tracing
 
@@ -2837,17 +2952,16 @@ printing of the trace information and conditional breakpoints on
 function entry or exit.
 
 In SBCL, tracing can be done either by temporarily redefining the
-function name (encapsulation), or using breakpoints. When
-breakpoints are used, the function object itself is destructively
-modified to cause the tracing action. The advantage of using
-breakpoints is that tracing works even when the function is
-anonymously called via funcall, that function object identity is
-preserved, and that anonymous and local functions can also be
-traced.
+function name (encapsulation) or using breakpoints. When breakpoints
+are used, the function object itself is destructively modified to
+cause the tracing action. The advantage of using breakpoints is that
+tracing works even when the function is anonymously called via
+funcall, that function object identity is preserved, and that
+anonymous and local functions can also be traced.
 
 - [macro] trace &rest specs
 
-    trace {Option Global-Value}* {Name {Option Value}*}*
+    trace {<option> <global-value>}* {<name> {<option> <local-value>}*}*
 
     trace is a debugging tool that provides information when specified
     functions are called. In its simplest form:
@@ -3001,9 +3115,9 @@ in such cases we recommend using (TRACE FOO :ENCAPSULATE t).
 
 ### Single Stepping
 
-SBCL includes an instrumentation based single-stepper for compiled
-code, that can be invoked via the step macro, or from within the
-debugger. See Debugger Policy Control, for details on enabling
+SBCL includes an instrumentation-based single-stepper for compiled
+code, which can be invoked via the step macro or from within the
+debugger. See Debugger Policy Control for details on enabling
 stepping for compiled code.
 
 The following debugger commands are used for controlling single stepping.
@@ -3786,7 +3900,7 @@ Hash Table Extensions.
     Total CPU time spent doing garbage collection (as reported by
     get-internal-run-time.) Initialized to zero on startup. It is safe to bind
     this to zero in order to measure gc time inside a certain section of code, but
-    doing so may interfere with results reported by eg. time.
+    doing so may interfere with results reported by e.g. time.
 
 - [variable] sb-ext:*gc-real-time* 0
 
@@ -6647,7 +6761,7 @@ calling load-shared-object.
     Locating the shared object follows standard rules of the platform, consult the
     manual page for dlopen(3) for details. Typically paths specified by
     environment variables such as LD_LIBRARY_PATH are searched if the pathname has
-    no directory, but on some systems (eg. Mac OS X) search may happen even if
+    no directory, but on some systems (e.g. Mac OS X) search may happen even if
     pathname is absolute. (On Windows LoadLibrary is used instead of dlopen(3).)
 
     On non-Windows platforms calling load-shared-object again with a pathname
@@ -6803,7 +6917,7 @@ Threading.
     >     (declaim (inline lisp-name))
 
     > In addition to avoiding the Lisp call overhead, this allows
-    > pointers, word-integers and floats to be passed using non-descriptor
+    > pointers, word-integers and floats to be passed using unboxed
     > representations, avoiding consing.
 
     Consider the C function cfoo with the following calling
@@ -8212,7 +8326,7 @@ see install for directions.
     causing it to call sb-thread:abort-thread with :allow-exit t.
 
     The unwind caused by terminate-thread is asynchronous, meaning that
-    eg. thread executing
+    e.g. thread executing
 
         (let (foo)
            (unwind-protect
@@ -8226,7 +8340,7 @@ see install for directions.
                (release-foo foo))))
 
     might miss calling release-foo despite GET-FOO having returned true
-    if the interrupt occurs inside the cleanup clause, eg. during
+    if the interrupt occurs inside the cleanup clause, e.g. during
     execution of release-foo.
 
     Thus, in order to write an asynch unwind safe unwind-protect you need
@@ -8275,7 +8389,7 @@ see install for directions.
 
 - [condition] sb-thread:symbol-value-in-thread-error cell-error thread-error
 
-    Signalled when symbol-value-in-thread or its setf version fails due to eg.
+    Signalled when symbol-value-in-thread or its setf version fails due to e.g.
     the symbol not having a thread-local value, or the target thread having
     exited. The offending symbol can be accessed using cell-error-name, and the
     offending thread using thread-error-thread.
@@ -9229,7 +9343,7 @@ more useful features of Common Lisp -- briefly:
     capable of both binary and character IO use :default.
 
     Acceptable values for buffering are :full, :line and :none, default is
-    :full, ie. output is buffered till it is explicitly flushed using
+    :full, i.e. output is buffered till it is explicitly flushed using
     close or finish-output. (force-output forces some output to be
     flushed: to ensure all buffered output is flushed use finish-output.)
 
