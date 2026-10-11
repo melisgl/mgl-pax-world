@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.306-a546cd0, generated 2026-10-11 06:35:22. See
+The output is for SBCL version 2.6.9.311-719ad38, generated 2026-10-11 13:38:46. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1238,7 +1238,10 @@ When processing this program, the compiler will produce this warning:
     ;   (+ Y 3)
     ;
     ; caught WARNING:
-    ;   Asserted type NUMBER conflicts with derived type (VALUES SYMBOL &OPTIONAL).
+    ;   Derived type of COMMON-LISP-USER::Y is
+    ;     (VALUES SYMBOL &OPTIONAL),
+    ;   conflicting with its asserted type
+    ;     NUMBER.
 
 In this example we see each of the six possible parts of a compiler
 diagnostic:
@@ -1400,7 +1403,7 @@ Compiling results in this error message:
     ;   (PROGN *UNDEFINED*)
     ;
     ; caught WARNING:
-    ;   undefined variable: *UNDEFINED*
+    ;   undefined variable: COMMON-LISP-USER::*UNDEFINED*
 
 Note that do appears in the processing path. This is because
 dotimes expands into:
@@ -1930,46 +1933,41 @@ In the following, we discuss extensions related to compiler policies.
 
 If the compiler can prove at compile time that some portion of the
 program cannot be executed without a type error, then it will give a
-warning at compile time.
-
-It is possible that the offending code would never actually be
-executed at run-time due to some higher level consistency constraint
-unknown to the compiler, so a type warning doesn't always indicate an
-incorrect program.
+style-warning at compile time. This sort of type warning happens
+moderately often in the expansion of complex macros and in inline
+functions.
 
 For example, consider this code fragment:
 
     (defun raz (foo)
-      (let ((x (case foo
-                  (:this 13)
-                  (:that 9)
-                  (:the-other 42))))
+      (let ((x (if foo 13 "str")))
         (declare (fixnum x))
-        (foo x)))
+        (print x)))
 
 Compilation produces this warning:
 
     ; in: DEFUN RAZ
-    ;     (CASE FOO (:THIS 13) (:THAT 9) (:THE-OTHER 42))
-    ; --> LET COND IF COND IF COND IF
-    ; ==>
-    ;   (COND)
+    ;     (LET ((X (IF FOO 13 "str")))
+    ;       (DECLARE (FIXNUM X))
+    ;       (PRINT X))
     ;
-    ; caught WARNING:
-    ;   This is not a FIXNUM:
-    ;   NIL
+    ; caught STYLE-WARNING:
+    ;   Constant "str" conflicts with its asserted type FIXNUM.
 
-In this case, the warning means that if foo isn't any of :this,
-:that or :the-other, then x will be initialized to nil, which
-the fixnum declaration makes illegal. The warning will go away if
-ecase is used instead of case, or if :the-other is changed to t.
+The warning means that if foo is nil, then x will be initialized
+to "str", which the fixnum declaration makes illegal.
 
-This sort of spurious type warning happens moderately often in the
-expansion of complex macros and in inline functions. In such cases,
-there may be dead code that is impossible to correctly execute. The
-compiler can't always prove this code is dead (could never be
-executed), so it compiles the erroneous code (which will always signal
-an error if it is executed) and gives a warning.
+This warning doesn't always indicate an incorrect program because
+
+- it is possible that the offending code would never actually be
+  executed at run-time due to some higher level consistency constraint
+  unknown to the compiler; and
+
+- in rare cases, the type error is actually intended and part of the
+  normal control flow.
+
+> Note: In the common situation where the value triggering the
+> type error is nil, this warning is suppressed.
 
 #### Errors During Macroexpansion
 

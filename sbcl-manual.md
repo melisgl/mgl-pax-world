@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.306-a546cd0`, generated *2026-10-11 06:35:22*. See
+The output is for SBCL version `2.6.9.311-719ad38`, generated *2026-10-11 13:38:46*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1970,7 +1970,10 @@ When processing this program, the compiler will produce this warning:
     ;   (+ Y 3)
     ;
     ; caught WARNING:
-    ;   Asserted type NUMBER conflicts with derived type (VALUES SYMBOL &OPTIONAL).
+    ;   Derived type of COMMON-LISP-USER::Y is
+    ;     (VALUES SYMBOL &OPTIONAL),
+    ;   conflicting with its asserted type
+    ;     NUMBER.
 
 In this example we see each of the six possible parts of a compiler
 diagnostic:
@@ -2138,7 +2141,7 @@ Compiling results in this error message:
     ;   (PROGN *UNDEFINED*)
     ;
     ; caught WARNING:
-    ;   undefined variable: *UNDEFINED*
+    ;   undefined variable: COMMON-LISP-USER::*UNDEFINED*
 
 Note that [`do`][5d2b] appears in the processing path. This is because
 [`dotimes`][aa56] expands into:
@@ -2734,46 +2737,41 @@ In the following, we discuss extensions related to compiler policies.
 
 If the compiler can prove at compile time that some portion of the
 program cannot be executed without a type error, then it will give a
-warning at compile time.
-
-It is possible that the offending code would never actually be
-executed at run-time due to some higher level consistency constraint
-unknown to the compiler, so a type warning doesn't always indicate an
-incorrect program.
+[`style-warning`][2056] at compile time. This sort of type warning happens
+moderately often in the expansion of complex macros and in inline
+functions.
 
 For example, consider this code fragment:
 
     (defun raz (foo)
-      (let ((x (case foo
-                  (:this 13)
-                  (:that 9)
-                  (:the-other 42))))
+      (let ((x (if foo 13 "str")))
         (declare (fixnum x))
-        (foo x)))
+        (print x)))
 
 Compilation produces this warning:
 
     ; in: DEFUN RAZ
-    ;     (CASE FOO (:THIS 13) (:THAT 9) (:THE-OTHER 42))
-    ; --> LET COND IF COND IF COND IF
-    ; ==>
-    ;   (COND)
+    ;     (LET ((X (IF FOO 13 "str")))
+    ;       (DECLARE (FIXNUM X))
+    ;       (PRINT X))
     ;
-    ; caught WARNING:
-    ;   This is not a FIXNUM:
-    ;   NIL
+    ; caught STYLE-WARNING:
+    ;   Constant "str" conflicts with its asserted type FIXNUM.
 
-In this case, the warning means that if `foo` isn't any of `:this`,
-`:that` or `:the-other`, then `x` will be initialized to `nil`, which
-the [`fixnum`][3cde] declaration makes illegal. The warning will go away if
-[`ecase`][c036] is used instead of [`case`][b23d], or if `:the-other` is changed to `t`.
+The warning means that if `foo` is `nil`, then `x` will be initialized
+to `"str"`, which the [`fixnum`][3cde] declaration makes illegal.
 
-This sort of spurious type warning happens moderately often in the
-expansion of complex macros and in inline functions. In such cases,
-there may be dead code that is impossible to correctly execute. The
-compiler can't always prove this code is dead (could never be
-executed), so it compiles the erroneous code (which will always signal
-an error if it is executed) and gives a warning.
+This warning doesn't always indicate an incorrect program because
+
+- it is possible that the offending code would never actually be
+  executed at run-time due to some higher level consistency constraint
+  unknown to the compiler; and
+
+- in rare cases, the type error is actually intended and part of the
+  normal control flow.
+
+> *Note*: In the common situation where the value triggering the
+> type error is `nil`, this warning is suppressed.
 
 <a id="x-28SB-MANUAL-3A-40ERRORS-DURING-MACROEXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ERRORS-DURING-MACROEXPANSION%20MGL-PAX:SECTION"></a>
@@ -16077,8 +16075,6 @@ versions of SBCL, which have since then been deleted.
 
 [b235]: #SB-MANUAL:@FINALIZATION%20MGL-PAX:SECTION "Finalization"
 
-[b23d]: http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm "CASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
-
 [b2c8]: #SB-MANUAL:@IMPLEMENTATION-ON-LINUX-X86OIDS%20MGL-PAX:SECTION "Implementation on Linux x86oids"
 
 [b2f8]: http://www.lispworks.com/documentation/HyperSpec/Body/c_sequen.htm "\"17.3\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
@@ -16150,8 +16146,6 @@ versions of SBCL, which have since then been deleted.
 [bff9]: #SB-MANUAL:@UNICODE-PROPERTY-ACCESS%20MGL-PAX:SECTION "Unicode property access"
 
 [bffa]: #SB-MANUAL:@DEFAULT-EXTERNAL-FORMAT%20MGL-PAX:SECTION "The Default External Format"
-
-[c036]: http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm "ECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [c052]: #SB-POSIX:FILENAME%20TYPE "SB-POSIX:FILENAME TYPE"
 
