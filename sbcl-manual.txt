@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.312-0ecffce, generated 2026-10-11 19:17:02. See
+The output is for SBCL version 2.6.9.322-8e3a790, generated 2026-10-12 00:05:01. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -947,15 +947,19 @@ they were intended for the runtime system or the Lisp system.
     run a nonstandard toplevel that does not recognize the standard
     toplevel options.
 
-- --dynamic-space-size <megabytes>
+- --dynamic-space-size <size>
 
-    Size of the dynamic space reserved on startup in megabytes.
-    Default value is platform dependent.
+    Size of the dynamic space reserved on startup. The default value
+    is platform-dependent. The units supported are kb (or KiB),
+    mb (or MiB), gb (or GiB), and tb (or TiB). The names
+    are compared case-insensitively, and the default unit is
+    megabytes. Thus, 8, 8mb, and 8mib all mean 8 * 2^20 bytes.
 
-- --control-stack-size <megabytes>
+- --control-stack-size <size>
 
-    Size of control stack reserved for each thread in megabytes.
-    Default value is 2.
+    Size of control stack reserved for each thread. The <size>
+    argument has the same format as in --dynamic-space-size. The
+    default is 2MB.
 
 - --tls-limit <positive integer>
 
@@ -1218,7 +1222,7 @@ illustrated using this example program:
     (defmacro zoq (x)
       `(roq (ploq (+ ,x 3))))
     
-    (defun foo (y)
+    (defun froq (y)
       (declare (symbol y))
       (zoq y))
 
@@ -1228,37 +1232,40 @@ defined anywhere.
 
 ##### Parts of a Compiler Diagnostic
 
-When processing this program, the compiler will produce this warning:
+When processing the above program, the compiler will first output this
+warning:
 
-    ; file: /tmp/foo.lisp
-    ; in: DEFUN FOO
+    ; file: /tmp/froq.lisp
+    ; in: DEFUN FROQ
     ;     (ZOQ Y)
     ; --> ROQ PLOQ
     ; ==>
     ;   (+ Y 3)
     ;
     ; caught WARNING:
-    ;   Derived type of COMMON-LISP-USER::Y is
+    ;   Derived type of Y is
     ;     (VALUES SYMBOL &OPTIONAL),
     ;   conflicting with its asserted type
     ;     NUMBER.
+    ;   See also:
+    ;     The SBCL Manual, Node "Handling of Types"
 
 In this example we see each of the six possible parts of a compiler
 diagnostic:
 
-- file: /tmp/foo.lisp is the name of the file that the compiler
+- file: /tmp/froq.lisp is the name of the file that the compiler
   read the relevant code from. The file name is displayed because it
   may not be immediately obvious when there is an error during
   compilation of a large system, especially when
   with-compilation-unit is used to delay undefined warnings.
 
-- in: DEFUN FOO is the definition top level form responsible for
+- in: DEFUN FROQ is the definition top level form responsible for
   the diagnostic. It is obtained by taking the first two elements of
   the enclosing form whose first element is a symbol beginning with
   def. If there is no such enclosing def form, then the
   outermost form is used. If there are multiple def forms, then
   they are all printed from the outside in, separated by =>s. In
-  this example, the problem was in the defun for foo.
+  this example, the problem was in the defun for froq.
 
 - (zoq y) is the original source form responsible for the
   diagnostic. Original source means that the form directly appeared
@@ -1286,11 +1293,11 @@ diagnostic:
   the problem is with the evaluation of the reference to the
   variable y.
 
-- caught WARNING: Asserted type NUMBER conflicts with derived type
-  (VALUES SYMBOL &OPTIONAL). is the explanation of the problem.
-  In this example, the problem is that, while the call to +
-  requires that its arguments are all of type number, the compiler
-  has derived that Y will evaluate to a symbol. Note that
+- The warning about the derived type symbol conflicting with the
+  asserted type number is the explanation of the problem. In this
+  example, the problem is that, while the call to + requires that
+  its arguments are all of type number, the compiler has derived
+  that Y will evaluate to a symbol. Note that
   (values symbol &optional) expresses that y evaluates to
   precisely one value.
 
@@ -1309,27 +1316,27 @@ Note that each part of the message is distinctively marked:
   can be caught ERROR:, caught WARNING:, caught
   STYLE-WARNING:, or note:.
 
-Each part of the message is more specific than the preceding one. If
-consecutive messages are for nearby locations, then the front part
-of the messages would be the same. In this case, the compiler omits
-as much of the second message as is in common with the first. For
-example:
+After the type warning, the compiler prints the two undefined
+function warnings. Each part of the message is more specific than
+the preceding one. If consecutive messages are for nearby locations,
+then the front part of the messages would be the same. In this case,
+the compiler omits as much of the second message as is in common
+with the first. For example:
 
-    ; file: /tmp/foo.lisp
-    ; in: DEFUN FOO
+    ; in: DEFUN FROQ
     ;     (ZOQ Y)
     ; --> ROQ
     ; ==>
     ;   (PLOQ (+ Y 3))
     ;
     ; caught STYLE-WARNING:
-    ;   undefined function: PLOQ
+    ;   undefined function: COMMON-LISP-USER::PLOQ
     
     ; ==>
     ;   (ROQ (PLOQ (+ Y 3)))
     ;
     ; caught STYLE-WARNING:
-    ;   undefined function: ROQ
+    ;   undefined function: COMMON-LISP-USER::ROQ
 
 In this example, the file, definition and original source are
 identical for the two messages, so the compiler omits them in the
@@ -1347,11 +1354,11 @@ the processing path will also be omitted.
 ##### Original and Actual Source
 
 The original source displayed will almost always be a list. If
-the actual source for an message is a symbol, the original source will
-be the immediately enclosing evaluated list form. So even if the
-offending symbol does appear in the original source, the compiler will
-print the enclosing list and then print the symbol as the actual
-source (as though the symbol were introduced by a macro.)
+the actual source for a message is a symbol, the original source
+will be the immediately enclosing evaluated list form. So even if
+the offending symbol does appear in the original source, the
+compiler will print the enclosing list and then print the symbol as
+the actual source (as though the symbol were introduced by a macro.)
 
 When the actual source is displayed (and is not a symbol), it will
 always be code that resulted from the expansion of a macro or a
@@ -1366,20 +1373,21 @@ responsible form. For example, compiling this function
     (defun bar (x)
       (let (a)
         (declare (fixnum a))
-        (setq a (foo x))
+        (setq a x)
         a))
 
 gives this error message
 
-    ; file: /tmp/foo.lisp
     ; in: DEFUN BAR
     ;     (LET (A)
-    ;     (DECLARE (FIXNUM A))
-    ;     (SETQ A (FOO X))
-    ;     A)
+    ;       (DECLARE (FIXNUM A))
+    ;       (SETQ A X)
+    ;       A)
+    ;
+    ; note: deleting unreachable code
     ;
     ; caught WARNING:
-    ;   Asserted type FIXNUM conflicts with derived type (VALUES NULL &OPTIONAL).
+    ;   Constant NIL conflicts with its asserted type FIXNUM.
 
 This message is not saying that there is a problem somewhere in this
 let -- it is saying that there is a problem with the let itself. In
@@ -1391,12 +1399,12 @@ fixnum.
 The processing path is mainly useful for debugging macros, so if you
 don't write macros, you can probably ignore it. Consider this example:
 
-    (defun foo (n)
+    (defun frox (n)
       (dotimes (i n *undefined*)))
 
 Compiling results in this error message:
 
-    ; in: DEFUN FOO
+    ; in: DEFUN FROX
     ;     (DOTIMES (I N *UNDEFINED*))
     ; --> DO BLOCK LET TAGBODY RETURN-FROM
     ; ==>
@@ -3271,7 +3279,7 @@ of values when they are recognized as having dynamic extent:
 
 - the result of simple forms of make-array: stack allocation is
   possible only if the resulting array is known to be both simple
-  and one-dimensional, and has a constant :element-type;
+  and one-dimensional, and it has a constant :element-type;
 
     > Warning: Stack space is limited, so allocation of a large
     > vector may cause stack overflow. Stack overflow checks are
@@ -3481,12 +3489,12 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 - [macro] sb-ext:defglobal name value &optional doc
 
     Defines name as a global variable that is always bound. value is evaluated
-    and assigned to name both at compile- and load-time, but only if name is not
-    already bound.
+    and assigned to name both at compile- and load-time but only if name
+    is not already bound.
 
-    Global variables share their values between all threads, and cannot be
-    locally bound, declared special, defined as constants, and neither bound
-    nor defined as symbol macros.
+    Global variables share their values between all threads. They cannot
+    be locally bound, declared special, defined as constants, or defined
+    as symbol macros.
 
     See also the declarations sb-ext:global and sb-ext:always-bound.
 
