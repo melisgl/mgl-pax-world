@@ -1931,7 +1931,7 @@ Else - that is, if CUDA is not available, <code>body</code> is simply executed.<
 
 <ul>
 <li><p><span class=dref-bullet><span class=dref><span class="locative-type"><a href="https://github.com/melisgl/mgl-mat/blob/c07e2b9008be572b1b0f933c41688f6028f910c7/src/cuda-late.lisp#L73" title="View definition">[function]</a></span> <span class="dref-name"> <a href="#MGL-MAT:CALL-WITH-CUDA%20FUNCTION" >call-with-cuda</a></span></span> <span class="arglist">
-fn &amp;key ((:enabled *cuda-enabled*) *cuda-enabled*) (device-id <a href="#MGL-MAT:*CUDA-DEFAULT-DEVICE-ID*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-DEVICE-ID* VARIABLE">*cuda-default-device-id*</a>) (random-seed <a href="#MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED* VARIABLE">*cuda-default-random-seed*</a>) (n-random-states <a href="#MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES* VARIABLE">*cuda-default-n-random-states*</a>) n-pool-bytes</span></span></p>
+fn &amp;key (enabled <a href="#MGL-MAT:*CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*CUDA-ENABLED* VARIABLE">*cuda-enabled*</a>) (device-id <a href="#MGL-MAT:*CUDA-DEFAULT-DEVICE-ID*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-DEVICE-ID* VARIABLE">*cuda-default-device-id*</a>) (random-seed <a href="#MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-RANDOM-SEED* VARIABLE">*cuda-default-random-seed*</a>) (n-random-states <a href="#MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES*%20VARIABLE" title="MGL-MAT:*CUDA-DEFAULT-N-RANDOM-STATES* VARIABLE">*cuda-default-n-random-states*</a>) n-pool-bytes</span></span></p>
 Like <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a>, but takes a no argument function instead of the
 macro's <code>body</code>.</li>
 </ul>
@@ -2647,7 +2647,7 @@ instead.</p>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">CUDA Memory Management</a>, <a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">Debugging</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a>, <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-MAT:CALL-WITH-CUDA%20FUNCTION" title="MGL-MAT:CALL-WITH-CUDA FUNCTION"><code>call-with-cuda</code></a>, <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a>, <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-MAT:*CURAND-STATE*%20VARIABLE" title="MGL-MAT:*CURAND-STATE* VARIABLE"><code>*curand-state*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a></p></li>
 <li><p><a href="#MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS*%20VARIABLE" title="MGL-MAT:*DEFAULT-LISP-KERNEL-DECLARATIONS* VARIABLE"><code>*default-lisp-kernel-declarations*</code></a> <em>(var)</em> ↩ <em>f</em>: <a href="#MGL-MAT:DEFINE-LISP-KERNEL%20MGL-PAX:MACRO" title="MGL-MAT:DEFINE-LISP-KERNEL MGL-PAX:MACRO"><code>define-lisp-kernel</code></a></p></li>
@@ -2772,7 +2772,7 @@ instead.</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-13T07:14:12Z]</h6>
+<h6>[Generated 2026-10-13T16:32:22Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.338-27ee6df`, generated *2026-10-13 07:13:08*. See
+The output is for SBCL version `2.6.9.341-891c646`, generated *2026-10-13 16:31:37*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -4838,7 +4838,7 @@ specified by ANSI.
 <a id="x-28SB-EXT-3AGC-20FUNCTION-29"></a>
 <a id="SB-EXT:GC%20FUNCTION"></a>
 
-- \[function\] **sb-ext:gc** *\&key sb-kernel::full (gen 0) \&allow-other-keys*
+- \[function\] **sb-ext:gc** *\&key full (gen 0) \&allow-other-keys*
 
     Initiate a garbage collection.
 
@@ -12251,7 +12251,7 @@ two levels is only supported on x86 and x86-64.
 <a id="x-28SB-SPROF-3AREPORT-20FUNCTION-29"></a>
 <a id="SB-SPROF:REPORT%20FUNCTION"></a>
 
-- \[function\] **sb-sprof:report** *\&key (type :graph) max min-percent call-graph ((:sort-by \*report-sort-by\*) \*report-sort-by\*) ((:sort-order \*report-sort-order\*) \*report-sort-order\*) (stream \*standard-output\*) ((:show-progress \*show-progress\*))*
+- \[function\] **sb-sprof:report** *\&key (type :graph) max min-percent call-graph (sort-by \*report-sort-by\*) (sort-order \*report-sort-order\*) (stream \*standard-output\*) show-progress*
 
     Report statistical profiling results.  The following keyword
        args are recognized:
@@ -12940,7 +12940,7 @@ How to use it:
 <a id="x-28SB-COVER-3AREPORT-20FUNCTION-29"></a>
 <a id="SB-COVER:REPORT%20FUNCTION"></a>
 
-- \[function\] **sb-cover:report** *directory \&key ((:form-mode \*source-path-mode\*) :whole) (if-matches 'identity) (external-format :default)*
+- \[function\] **sb-cover:report** *directory \&key (form-mode :whole) (if-matches 'identity) (external-format :default)*
 
     Print a code coverage report of all instrumented files into `directory`.
     If `directory` does not exist, it will be created. The main report will be

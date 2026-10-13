@@ -5188,11 +5188,19 @@ encoded in an unspecified format internal to `document`.
 
         - If it is a list, then it is must be a [lambda list][98ff] and
           is printed without the outermost parens and with the package
-          names removed from the argument names. [Keywords][88a0] are
-          printed with a leading colon.
+          names removed from the argument names.
 
-            [`&aux`][4336] variables and `supplied-p-parameter`s of [`&optional`][4336] and
-            [`&key`][4336] arguments are considered internal and are not printed.
+            [`&aux`][4336] variables, `supplied-p-parameter`s, and `var` in
+            the ([`keyword`][077a] `var`) form of keyword arguments f are considered
+            internal and are not printed. If the default value of an
+            optional or keyword argument is `nil`, then it is not printed.
+            See [Ordinary Lambda List][059c]. Thus,
+
+                (x &key a (b nil) (c nil cp) ((:d *d*) 4) (e 5 ep) &aux f g)
+
+            is documented as
+
+                x &key a b c (d 4) (e 5)
 
         - If it is a string, then it must be valid Markdown.
 
@@ -5379,11 +5387,15 @@ they are presented.
 
 [051b]: http://www.lispworks.com/documentation/HyperSpec/Body/22_chb.htm "\"22.3.8.2\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
 
+[059c]: http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_o.htm#ordinary_lambda_list "\"ordinary lambda list\" (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)"
+
 [0617]: dref-manual.md#DREF:XREF%3D%20FUNCTION "DREF:XREF= FUNCTION"
 
 [0684]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cac.htm "\"22.3.1.3\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
 
 [0702]: #MGL-PAX:@DOCUMENTABLE%20MGL-PAX:SECTION "`documentable`"
+
+[077a]: http://www.lispworks.com/documentation/HyperSpec/Body/t_kwd.htm "KEYWORD (MGL-PAX:CLHS TYPE)"
 
 [090c]: dref-manual.md#MGL-PAX:STRUCTURE-ACCESSOR%20MGL-PAX:LOCATIVE "MGL-PAX:STRUCTURE-ACCESSOR MGL-PAX:LOCATIVE"
 
@@ -5818,8 +5830,6 @@ they are presented.
 [886c]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cge.htm "\"22.3.7.5\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
 
 [8894]: #MGL-PAX:*DOCUMENT-INDICES*%20VARIABLE "MGL-PAX:*DOCUMENT-INDICES* VARIABLE"
-
-[88a0]: http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_k.htm#keyword "\"keyword\" (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)"
 
 [88a7]: #MGL-PAX:SECTION-READTABLE%20%28MGL-PAX:READER%20MGL-PAX:SECTION%29 "MGL-PAX:SECTION-READTABLE (MGL-PAX:READER MGL-PAX:SECTION)"
 

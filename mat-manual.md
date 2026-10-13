@@ -1673,7 +1673,7 @@ allocated in foreign memory depending on [`*foreign-array-strategy*`][7400].
 <a id="x-28MGL-MAT-3ACALL-WITH-CUDA-20FUNCTION-29"></a>
 <a id="MGL-MAT:CALL-WITH-CUDA%20FUNCTION"></a>
 
-- \[function\] **call-with-cuda** *fn \&key ((:enabled \*cuda-enabled\*) \*cuda-enabled\*) (device-id \*cuda-default-device-id\*) (random-seed \*cuda-default-random-seed\*) (n-random-states \*cuda-default-n-random-states\*) n-pool-bytes*
+- \[function\] **call-with-cuda** *fn \&key (enabled \*cuda-enabled\*) (device-id \*cuda-default-device-id\*) (random-seed \*cuda-default-random-seed\*) (n-random-states \*cuda-default-n-random-states\*) n-pool-bytes*
 
     Like [`with-cuda*`][3db3], but takes a no argument function instead of the
     macro's `body`.
