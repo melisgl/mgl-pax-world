@@ -563,7 +563,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.334-c061510`, generated *2026-10-12 23:20:01*. See
+The output is for SBCL version `2.6.9.338-27ee6df`, generated *2026-10-13 07:13:08*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
