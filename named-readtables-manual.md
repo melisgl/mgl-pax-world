@@ -335,7 +335,7 @@ and the API of packages.
 
     - Everything `in-readtable` does is also performed at [compile time][27c6] if the call appears as a [top level form][0f52].
 
-    - The effects of `in-readtable` are file-local since both [`compile-file`][0b69]
+    - The effects of `in-readtable` are file-local since both [`compile-file`][0bd1]
       and [`load`][b5ec] rebind `*readtable*`.
 
 <a id="x-28EDITOR-HINTS-2ENAMED-READTABLES-3AMAKE-READTABLE-20FUNCTION-29"></a>
@@ -479,7 +479,7 @@ and the API of packages.
 
 [02bf]: #EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-NOT-EXIST%20CONDITION "EDITOR-HINTS.NAMED-READTABLES:READTABLE-DOES-NOT-EXIST CONDITION"
 
-[0b69]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp_fi.htm "COMPILE-FILE (MGL-PAX:CLHS FUNCTION)"
+[0bd1]: sbcl-manual.md#COMPILE-FILE%20FUNCTION "COMPILE-FILE FUNCTION"
 
 [0f52]: http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_t.htm#top_level_form "\"top level form\" (MGL-PAX:CLHS MGL-PAX:GLOSSARY-TERM)"
 

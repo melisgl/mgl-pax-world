@@ -176,7 +176,7 @@ individuals.
     A function of two arguments: the
     [`evolutionary-algorithm`][f5ee] object and an individual. It must return
     the fitness of the individual. For [Genetic Programming][0d2f], the evaluator often
-    simply calls [`eval`][0d6e], or [`compile`][bc41] + [`funcall`][03c7], and compares the result
+    simply calls [`eval`][0d6e], or [`compile`][8c75] + [`funcall`][03c7], and compares the result
     to some gold standard. It is also typical to slightly penalize
     solutions with too many nodes to control complexity and evaluation
     cost (see [`count-nodes`][d237]). For [Differential Evolution][db20], individuals are
@@ -863,6 +863,8 @@ Neighborhood Search][1].
 
 [8ae0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm "IDENTITY (MGL-PAX:CLHS FUNCTION)"
 
+[8c75]: sbcl-manual.md#COMPILE%20FUNCTION "COMPILE FUNCTION"
+
 [9085]: #MGL-GPR:@GPR-GP-SEARCH-SPACE%20MGL-PAX:SECTION "Search Space"
 
 [92ab]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm "MAKE-ARRAY (MGL-PAX:CLHS FUNCTION)"
@@ -884,8 +886,6 @@ Neighborhood Search][1].
 [b60a]: #MGL-GPR:@GPR-EA-EVALUATION%20MGL-PAX:SECTION "Evaluation"
 
 [b75b]: #MGL-GPR:OPERATOR%20CLASS "MGL-GPR:OPERATOR CLASS"
-
-[bc41]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm "COMPILE (MGL-PAX:CLHS FUNCTION)"
 
 [be13]: #MGL-GPR:ADVANCE%20GENERIC-FUNCTION "MGL-GPR:ADVANCE GENERIC-FUNCTION"
 

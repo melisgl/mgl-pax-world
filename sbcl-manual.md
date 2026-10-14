@@ -93,113 +93,127 @@
 
 - [4 Compiler][eab4]
 
-    - [4.1 Diagnostic Messages][40b2]
+    - [4.1 Calling the Compiler][b905]
 
-        - [4.1.1 Diagnostic Severity][4dad]
+    - [4.2 Diagnostic Messages][40b2]
 
-        - [4.1.2 Understanding Compiler Diagnostics][d5fd]
+        - [4.2.1 Diagnostic Severity][4dad]
 
-        - [4.1.3 Controlling Verbosity][9578]
+        - [4.2.2 Understanding Compiler Diagnostics][d5fd]
 
-    - [4.2 Handling of Types][8b52]
+        - [4.2.3 Controlling Verbosity][9578]
 
-        - [4.2.1 Type Declaration Checking][538a]
+    - [4.3 Handling of Types][8b52]
 
-        - [4.2.2 Precise Type Checking][ade9]
+        - [4.3.1 Type Declaration Checking][538a]
 
-        - [4.2.3 Getting Existing Programs to Run][57a6]
+        - [4.3.2 Precise Type Checking][ade9]
 
-        - [4.2.4 Implementation Limitations][5ebc]
+        - [4.3.3 Getting Existing Programs to Run][57a6]
 
-    - [4.3 Compiler Policy][2474]
+        - [4.3.4 Implementation Limitations][5ebc]
 
-    - [4.4 Compiler Errors][1857]
+    - [4.4 Compiler Policy][2474]
 
-        - [4.4.1 Type Errors at Compile Time][60a9]
+    - [4.5 Compiler Errors][1857]
 
-        - [4.4.2 Errors During Macroexpansion][92e5]
+        - [4.5.1 Type Errors at Compile Time][60a9]
 
-        - [4.4.3 Read Errors][6cf6]
+        - [4.5.2 Errors During Macroexpansion][92e5]
 
-    - [4.5 Open Coding and Inline Expansion][469a]
+        - [4.5.3 Read Errors][6cf6]
 
-    - [4.6 Interpreter][2e79]
+    - [4.6 Open Coding and Inline Expansion][469a]
 
-    - [4.7 Advanced Compiler Use and Efficiency Hints][10a0]
+    - [4.7 Interpreter][2e79]
 
-- [5 Debugger][825d]
+    - [4.8 Advanced Compiler Use and Efficiency Hints][10a0]
 
-    - [5.1 Debugger Entry][f102]
+- [5 Debugging][3d82]
 
-        - [5.1.1 Debugger Banner][c503]
+    - [5.1 Debugger][825d]
 
-        - [5.1.2 Debugger Invocation][6031]
+        - [5.1.1 Debugger Entry][f102]
 
-    - [5.2 Debugger Command Loop][afd9]
+        - [5.1.2 Debugger Command Loop][afd9]
 
-    - [5.3 Stack Frames][67c8]
+        - [5.1.3 Stack Frames][67c8]
 
-        - [5.3.1 Stack Motion][98b0]
+        - [5.1.4 Variable Access][78b8]
 
-        - [5.3.2 How Arguments are Printed][c066]
+        - [5.1.5 Source Location Printing][c9e6]
 
-        - [5.3.3 Function Names][9c6c]
+        - [5.1.6 Debug Information][c397]
 
-        - [5.3.4 Debug Tail Recursion][fb6f]
+        - [5.1.7 Exiting the Debugger][3a4f]
 
-        - [5.3.5 Unknown Locations and Interrupts][2496]
+        - [5.1.8 Information Commands][ccb5]
 
-    - [5.4 Variable Access][78b8]
+        - [5.1.9 Breakpoint Commands][cfa8]
 
-        - [5.4.1 Variable Value Availability][1298]
+        - [5.1.10 Single Stepping][d3f5]
 
-        - [5.4.2 Note On Lexical Variable Access][45f3]
+    - [5.2 `ldb`][3b91]
 
-    - [5.5 Source Location Printing][c9e6]
+    - [5.3 Enabling and Disabling the Debugger][721e]
 
-        - [5.5.1 How the Source is Found][a8c7]
-
-        - [5.5.2 Source Location Availability][f044]
-
-    - [5.6 Debugger Policy Control][faf1]
-
-    - [5.7 Exiting the Debugger][3a4f]
-
-    - [5.8 Information Commands][ccb5]
-
-    - [5.9 Breakpoint Commands][cfa8]
-
-        - [5.9.1 Breakpoint Example][81da]
-
-    - [5.10 Function Tracing][668f]
-
-    - [5.11 Single Stepping][d3f5]
-
-    - [5.12 `ldb`][3b91]
-
-    - [5.13 Enabling and Disabling the Debugger][721e]
+    - [5.4 Function Tracing][668f]
 
 - [6 Efficiency][29fd]
 
-    - [6.1 Slot Access][37e3]
+    - [6.1 Tail Call][ec2e]
 
-        - [6.1.1 Structure Object Slot Access][b229]
+        - [6.1.1 Tail Call Optimization][3074]
 
-        - [6.1.2 Standard Object Slot Access][72a3]
+        - [6.1.2 Tail Position][c6d1]
 
-    - [6.2 Stack Allocation][5cbb]
+        - [6.1.3 Tail Recursion][7f39]
 
-    - [6.3 Modular Arithmetic][1a1b]
+    - [6.2 Local Call][3d65]
 
-        - [6.3.1 Signed Modular Arithmetic][cce0]
+        - [6.2.1 Local Self-recursive Call][7426]
 
-    - [6.4 Recognized Idioms][44af]
+        - [6.2.2 Let Call][eaf9]
 
-        - [6.4.1 Count Trailing Zeros][af2a]
+        - [6.2.3 Local Calls to Closures][8e47]
 
-    - [6.5 Global and Always-bound Variables][560e]
+        - [6.2.4 Local Tail Call][06b6]
 
-    - [6.6 Miscellaneous Efficiency Issues][b81a]
+        - [6.2.5 Local Call Return Values][64ff]
+
+    - [6.3 Block Compilation][1143]
+
+        - [6.3.1 Block Compilation Semantics][8294]
+
+        - [6.3.2 Block Compilation Declarations][6ef5]
+
+        - [6.3.3 Block Compilation Difficulties][286e]
+
+    - [6.4 Inline Expansion][2ccb]
+
+        - [6.4.1 Inline Expansion Recording][c276]
+
+        - [6.4.2 Semi-inline Expansion][c6ad]
+
+    - [6.5 Slot Access][37e3]
+
+        - [6.5.1 Structure Object Slot Access][b229]
+
+        - [6.5.2 Standard Object Slot Access][72a3]
+
+    - [6.6 Stack Allocation][5cbb]
+
+    - [6.7 Modular Arithmetic][1a1b]
+
+        - [6.7.1 Signed Modular Arithmetic][cce0]
+
+    - [6.8 Recognized Idioms][44af]
+
+        - [6.8.1 Count Trailing Zeros][af2a]
+
+    - [6.9 Global and Always-bound Variables][560e]
+
+    - [6.10 Miscellaneous Efficiency Issues][b81a]
 
 - [7 Beyond the ANSI Standard][8723]
 
@@ -563,7 +577,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the `clhs`, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.360-49f6a4c`, generated *2026-10-14 08:07:44*. See
+The output is for SBCL version `2.6.9.369-2b6ce6e`, generated *2026-10-14 14:07:25*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -897,7 +911,7 @@ user or system initialization file (see [Initialization Files][1016]).
 
 By default, SBCL is a compiler-only implementation of Common Lisp.
 That is, for all but a few special cases, [`eval`][0d6e] creates a lambda
-expression, calls [`compile`][bc41] on the lambda expression to create a
+expression, calls [`compile`][8c75] on the lambda expression to create a
 compiled function, and then calls [`funcall`][03c7] on the resulting function
 object. A more traditional [Interpreter][2e79] is also available on default
 builds; it is usually only called internally. This is explicitly
@@ -1010,7 +1024,7 @@ See <https://www.lispworks.com/documentation/HyperSpec/Front/index.htm>.
 SBCL can generate stand-alone executables. The generated executables
 include the SBCL runtime itself, so no restrictions are placed on
 program functionality. For example, a deployed program can call
-[`compile`][bc41] and [`load`][b5ec], which requires the compiler to be present in the
+[`compile`][8c75] and [`load`][b5ec], which requires the compiler to be present in the
 executable. For further information, [`sb-ext:save-lisp-and-die`][9e55].
 
 <a id="x-28SB-MANUAL-3A-40MORE-SBCL-INFORMATION-20MGL-PAX-3ASECTION-29"></a>
@@ -1214,7 +1228,7 @@ the way that SBCL doesn't have many bugs which behave differently in
 interpreted code than in compiled code.) What it means is that in
 SBCL, the [`eval`][0d6e] function only truly "interprets" a few easy kinds
 of forms, such as symbols which are [`boundp`][6c37]. More complicated forms
-are evaluated by calling [`compile`][bc41] and then calling [`funcall`][03c7] on the
+are evaluated by calling [`compile`][8c75] and then calling [`funcall`][03c7] on the
 returned result.
 
 The direct ancestor of SBCL is the x86 port of CMUCL. This port was in
@@ -1884,15 +1898,221 @@ declarations, the effects of various optimization policies, and the
 way that inlining and open coding may cause optimized code to differ
 from a naive translation.
 
+<a id="x-28SB-MANUAL-3A-40CALLING-THE-COMPILER-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CALLING-THE-COMPILER%20MGL-PAX:SECTION"></a>
+
+### 4.1 Calling the Compiler
+
+<a id="x-28COMPILE-20FUNCTION-29"></a>
+<a id="COMPILE%20FUNCTION"></a>
+
+- \[function\] **compile** *name \&optional (definition (or (and (symbolp name) (macro-function name)) (fdefinition name)))*
+
+    Produce a compiled function from `definition`.
+
+    - If `definition` is a lambda-expression, it is coerced to a function.
+
+    - If `definition` is an interpreted function, it is compiled.
+
+    - If `definition` is already a compiled function, it is returned
+      as-is. (Future versions of SBCL might try to recompile the existing
+      definition, but this is not currently supported.)
+
+    If `name` is `nil`, the compiled function is returned as the primary
+    value. Otherwise, the resulting compiled function replaces existing
+    function definition of `name`, and `name` is returned as primary value; if
+    `name` is a symbol that names a macro, its [`macro-function`][e924] is replaced
+    and `name` is returned as primary value.
+
+    Also returns a secondary value which is true if any conditions of type
+    [`warning`][bcb6] occur during the compilation, and `nil` otherwise.
+
+    Tertiary value is true if any conditions of type [`error`][d162] or `warning` that
+    are not [`style-warning`][2056]s occur during compilation, and `nil` otherwise.
+
+    Also, see the [CLHS][bc41].
+
+<a id="x-28COMPILE-FILE-20FUNCTION-29"></a>
+<a id="COMPILE-FILE%20FUNCTION"></a>
+
+- \[function\] **compile-file** *input-file \&key (output-file "") (verbose \*compile-verbose\*) (print \*compile-print\*) (external-format :default) (progress \*compile-progress\*) trace-file (block-compile \*block-compile-default\*) entry-points (emit-cfasl \*emit-cfasl\*)*
+
+    Compile `input-file`, producing a corresponding fasl file and
+    returning its filename.
+
+    - `:output-file`
+
+        The name of the FASL to output. The returned pathname of the
+        output file may differ from the pathname of the `:output-file`
+        parameter, e.g. when the latter is a designator for a directory.
+
+    - `:verbose`
+
+        If true, information indicating what file is being compiled is
+        printed to [`*standard-output*`][e7ee].
+
+    - `:print`
+
+        If true, each top level form in the file is printed to `*standard-output*`.
+
+    - `:external-format`
+
+        The external format to use when opening the source file. The
+        default is `:default` which uses the
+        [`sb-ext:*default-source-external-format*`][3fde].
+
+    - `:block-compile` {`nil` | `:specified` | `t`}
+
+        Determines whether multiple functions are compiled together as a
+        unit, resolving function references at compile time. `nil` means
+        that global function names are never resolved at compilation time.
+        `:specified` means that names are resolved at compile-time when
+        convenient (as in a self-recursive call), but the compiler doesn't
+        combine top-level [`defun`][f472]s. With `:specified`, an explicit [`start-block`][8679]
+        declaration will enable block compilation. A value of `t` indicates
+        that all forms in the file(s) should be compiled as a unit. The
+        default is the value of [`sb-ext:*block-compile-default*`][e1d1], which is
+        initially `nil`.
+
+    - `:entry-points`
+
+        This specifies a list of function names for functions in the
+        file(s) that must be given global definitions. This only applies
+        to block compilation and is useful mainly when `:block-compile` `t` is
+        specified on a file that lacks `start-block` declarations. If the
+        value is `nil` (the default), then all functions will be globally
+        defined.
+
+    - `:trace-file`
+
+        If given, internal data structures are dumped to the specified
+        file, or if a value of `t` is given, to a file of `.trace` type
+        derived from the input file name. (non-standard)
+
+    - `:emit-cfasl`
+
+        (Experimental). If true, outputs the toplevel compile-time effects
+        of this file into a separate `.cfasl` file.
+
+    Also, see the [CLHS][0b69].
+
+<a id="x-28SB-EXT-3A-2ABLOCK-COMPILE-DEFAULT-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*BLOCK-COMPILE-DEFAULT*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*block-compile-default\*** *nil*
+
+    The default value for the `:block-compile` argument to [`compile-file`][0bd1].
+
+<a id="x-28WITH-COMPILATION-UNIT-20MGL-PAX-3AMACRO-29"></a>
+<a id="WITH-COMPILATION-UNIT%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **with-compilation-unit** *options \&body body*
+
+    Affects compilations that take place within its dynamic extent. It is
+    intended to be e.g. wrapped around the compilation of all files in the
+    same system.
+
+    Following options are defined:
+
+    - `:override` `<boolean-form>`
+
+        One of the effects of this form is to delay undefined warnings
+        until the end of the form, instead of giving them at the end of
+        each compilation. If `override` is `nil` (the default), then the
+        outermost `with-compilation-unit` form grabs the undefined warnings.
+        Specifying `:override` true causes that form to grab any enclosed
+        warnings, even if it is enclosed by another `with-compilation-unit`.
+
+    - `:policy` `<optimize-declaration-form>`
+
+        Provides dynamic scoping for global compiler optimization
+        qualities and restrictions, limiting effects of subsequent
+        [`optimize`][4d51] proclamations and calls to
+        [`sb-ext:restrict-compiler-policy`][72f1] to the dynamic scope of `body`.
+
+        If `:override` is false, the specified `:policy` is merged with
+        current global policy. If `:override` is true, the current global
+        policy, including any restrictions, is discarded in favor of the
+        specified `:policy`.
+
+        Supplying `:policy` `nil` is equivalent to the option not being
+        supplied at all, i.e. dynamic scoping of policy does not take
+        place. If dynamic scoping without changing the current policy is
+        desired, use `:policy '(optimize)` with `:override` `nil`.
+
+        This option is an SBCL-specific experimental extension: Interface
+        subject to change.
+
+    - `:source-namestring` `<namestring-form>`
+
+        Attaches the value returned by `<namestring-form>` to the internal
+        debug-source information as the namestring of the source file.
+        Normally the namestring of the `input-file` for [`compile-file`][0bd1] is
+        used: this option can be used to provide source-file information
+        for functions compiled using [`compile`][8c75], or to override the
+        `input-file` argument of `compile-file`.
+
+        Can be accessed using [`sb-introspect:definition-source-pathname`][2d27].
+
+        If both an outer and an inner `with-compilation-unit` provide a
+        `:source-namestring`, the inner one takes precedence. Unaffected by
+        `:override`.
+
+        This is an SBCL-specific extension.
+
+    - `:source-plist` `<plist-form>`
+
+        Attaches the value returned by `<plist-form>` to internal
+        debug-source information of functions compiled in within the
+        dynamic extent of `body`.
+
+        Primarily for use by development environments, in order to e.g.
+        associate function definitions with editor-buffers. Can be
+        accessed using [`sb-introspect:definition-source-plist`][84b1].
+
+        If an outer `with-compilation-unit` form also provide a
+        `source-plist`, it is appended to the end of the provided
+        `source-plist`. Unaffected by `:override`.
+
+        This is an SBCL-specific extension.
+
+    Examples:
+
+    ```
+    ;; Prevent proclamations from the file leaking, and restrict
+    ;; SAFETY to 3 -- otherwise uses the current global policy.
+    (with-compilation-unit (:policy '(optimize))
+      (restrict-compiler-policy 'safety 3)
+      (load "foo.lisp"))
+    ```
+
+    ```
+    ;; Using default policy instead of the current global one,
+    ;; except for DEBUG 3.
+    (with-compilation-unit (:policy '(optimize debug)
+                            :override t)
+      (load "foo.lisp"))
+    ```
+
+    ```
+    ;; Same as if :POLICY had not been specified at all: SAFETY 3
+    ;; proclamation leaks out from WITH-COMPILATION-UNIT.
+    (with-compilation-unit (:policy nil)
+      (declaim (optimize safety))
+      (load "foo.lisp"))
+    ```
+
+    Also, see the [CLHS][6166].
+
 <a id="x-28SB-MANUAL-3A-40DIAGNOSTIC-MESSAGES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DIAGNOSTIC-MESSAGES%20MGL-PAX:SECTION"></a>
 
-### 4.1 Diagnostic Messages
+### 4.2 Diagnostic Messages
 
 <a id="x-28SB-MANUAL-3A-40DIAGNOSTIC-SEVERITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION"></a>
 
-#### 4.1.1 Diagnostic Severity
+#### 4.2.1 Diagnostic Severity
 
 There are four levels of compiler diagnostic severity:
 
@@ -1906,7 +2126,7 @@ There are four levels of compiler diagnostic severity:
 
 The first three levels correspond to condition classes which are
 defined in the ANSI standard for Common Lisp and which have special
-significance to the [`compile`][bc41] and [`compile-file`][0b69] functions. These levels
+significance to the [`compile`][8c75] and [`compile-file`][0bd1] functions. These levels
 of compiler error severity occur when the compiler handles
 conditions of these classes.
 
@@ -1942,7 +2162,7 @@ messages.
 <a id="x-28SB-MANUAL-3A-40UNDERSTANDING-COMPILER-DIAGNOSTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNDERSTANDING-COMPILER-DIAGNOSTICS%20MGL-PAX:SECTION"></a>
 
-#### 4.1.2 Understanding Compiler Diagnostics
+#### 4.2.2 Understanding Compiler Diagnostics
 
 The messages emitted by the compiler contain a lot of detail in a
 terse format, which may be confusing at first. The messages will be
@@ -2002,7 +2222,7 @@ diagnostic:
 - `(zoq y)` is the *original source* form responsible for the
   diagnostic. Original source means that the form directly appeared
   in the original input to the compiler, i.e. in the lambda passed
-  to [`compile`][bc41] or in the top level form read from the source file. In
+  to [`compile`][8c75] or in the top level form read from the source file. In
   this example, the expansion of the `zoq` macro was responsible for
   the message.
 
@@ -2179,7 +2399,7 @@ the compiler backed out one level.
 <a id="x-28SB-MANUAL-3A-40CONTROLLING-VERBOSITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONTROLLING-VERBOSITY%20MGL-PAX:SECTION"></a>
 
-#### 4.1.3 Controlling Verbosity
+#### 4.2.3 Controlling Verbosity
 
 The compiler can be quite verbose in its diagnostic reporting -- rather
 more than some users would prefer. However, the amount of noise
@@ -2286,6 +2506,15 @@ messages are printed.
     This is the minimum cost difference between the chosen implementation and
     the next alternative that justifies an efficiency note.
 
+<a id="x-28SB-EXT-3A-2ACOMPILE-PROGRESS-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*COMPILE-PROGRESS*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*compile-progress\*** *nil*
+
+    When this is true, the compiler prints to [`*standard-output*`][e7ee] progress
+    information about the phases of compilation of each function. (This
+    is useful mainly in large block-compilations.)
+
 <a id="x-28SB-EXT-3ADEFINE-SOURCE-CONTEXT-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:DEFINE-SOURCE-CONTEXT%20MGL-PAX:MACRO"></a>
 
@@ -2303,7 +2532,7 @@ messages are printed.
 <a id="x-28SB-MANUAL-3A-40HANDLING-OF-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HANDLING-OF-TYPES%20MGL-PAX:SECTION"></a>
 
-### 4.2 Handling of Types
+### 4.3 Handling of Types
 
 One of the most important features of the SBCL compiler (similar to
 the original CMUCL compiler, also known as *Python*) is its fairly
@@ -2323,7 +2552,7 @@ types involving the [`satisfies`][2b8b] type specifier.
 <a id="x-28SB-MANUAL-3A-40TYPE-DECLARATION-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TYPE-DECLARATION-CHECKING%20MGL-PAX:SECTION"></a>
 
-#### 4.2.1 Type Declaration Checking
+#### 4.3.1 Type Declaration Checking
 
 The SBCL compiler treats type declarations differently from most other
 Lisp compilers. Under the default [Compiler Policy][2474], the compiler
@@ -2366,7 +2595,7 @@ available by any combination of the standard optimization qualities.
 <a id="x-28SB-MANUAL-3A-40PRECISE-TYPE-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION"></a>
 
-#### 4.2.2 Precise Type Checking
+#### 4.3.2 Precise Type Checking
 
 Precise checking means that the check is done as though [`typep`][0895]
 had been called with the exact type specifier that appeared in the
@@ -2386,7 +2615,7 @@ slots as precisely as possible. This often involves the use of [`or`][8808],
 <a id="x-28SB-MANUAL-3A-40GETTING-EXISTING-PROGRAMS-TO-RUN-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GETTING-EXISTING-PROGRAMS-TO-RUN%20MGL-PAX:SECTION"></a>
 
-#### 4.2.3 Getting Existing Programs to Run
+#### 4.3.3 Getting Existing Programs to Run
 
 Since SBCL's compiler does much more comprehensive type checking than
 most Lisp compilers, SBCL may detect type errors in programs that have
@@ -2507,7 +2736,7 @@ variable in the loop body.
 <a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-LIMITATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@IMPLEMENTATION-LIMITATIONS%20MGL-PAX:SECTION"></a>
 
-#### 4.2.4 Implementation Limitations
+#### 4.3.4 Implementation Limitations
 
 If an [`ftype`][05c1] is placed after the function definition, the function
 won't perform any type checks and the calls to the function will
@@ -2524,7 +2753,7 @@ inferencer, nor do CLOS slot types provide any efficiency benefits.
 <a id="x-28SB-MANUAL-3A-40COMPILER-POLICY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-POLICY%20MGL-PAX:SECTION"></a>
 
-### 4.3 Compiler Policy
+### 4.4 Compiler Policy
 
 The compiler policy is what tells the compiler *how* to
 compile a program. This is logically (and often textually) distinct
@@ -2568,17 +2797,15 @@ These are the optimization qualities:
 - `compilation-speed`: How fast the compiler should run. If this is
   high, then some expensive optimizations may be disabled.
 
-- `space`: How much space the compiled code should take up. Inline
-  expansion is mostly inhibited when `space` is greater than `speed`.
-  A value of `0` enables indiscriminate inline expansion. Wide use
-  of a `0` value is not recommended, as it may waste so much space
-  that run time is slowed. See [Open Coding and Inline Expansion][469a].
+- `space`: How much space the compiled code should take up. A high
+  value makes [`inline`][9fb4] functions semi-inlined, and `0` enables
+  semi-inlining of [`sb-ext:maybe-inline`][bd0a] functions (see
+  [Semi-inline Expansion][c6ad]).
 
 - `debug`: How debuggable the program should be. The quality is
   treated differently from the other qualities: each value indicates
   a particular level of debugger information; it is not compared
-  with the other qualities. See [Debugger Policy Control][faf1] for the
-  details.
+  with the other qualities. See [Debug Information][c397] for the details.
 
 - `safety`: How much error checking should be done. If `speed`, `space`
   or `compilation-speed` is more important than `safety`, then
@@ -2598,6 +2825,8 @@ These are the optimization qualities:
   quality. If it is `3`, then all notes and most non-serious
   warnings are inhibited. This is useful with [`declare`][1574] to suppress
   warnings about unavoidable problems.
+
+See also the `:policy` argument of [`with-compilation-unit`][e7bf].
 
 In the following, we discuss extensions related to compiler policies.
 
@@ -2632,116 +2861,15 @@ In the following, we discuss extensions related to compiler policies.
     See also `:policy` option in [`with-compilation-unit`][e7bf], which can impose
     dynamic scoping on restrictions.
 
-<a id="x-28WITH-COMPILATION-UNIT-20MGL-PAX-3AMACRO-29"></a>
-<a id="WITH-COMPILATION-UNIT%20MGL-PAX:MACRO"></a>
-
-- \[macro\] **with-compilation-unit** *options \&body body*
-
-    Affects compilations that take place within its dynamic extent. It is
-    intended to be e.g. wrapped around the compilation of all files in the
-    same system.
-
-    Following options are defined:
-
-    - `:override` `<boolean-form>`
-
-        One of the effects of this form is to delay undefined warnings
-        until the end of the form, instead of giving them at the end of
-        each compilation. If `override` is `nil` (the default), then the
-        outermost `with-compilation-unit` form grabs the undefined warnings.
-        Specifying `:override` true causes that form to grab any enclosed
-        warnings, even if it is enclosed by another `with-compilation-unit`.
-
-    - `:policy` `<optimize-declaration-form>`
-
-        Provides dynamic scoping for global compiler optimization
-        qualities and restrictions, limiting effects of subsequent
-        [`optimize`][4d51] proclamations and calls to
-        [`sb-ext:restrict-compiler-policy`][72f1] to the dynamic scope of `body`.
-
-        If `:override` is false, the specified `:policy` is merged with
-        current global policy. If `:override` is true, the current global
-        policy, including any restrictions, is discarded in favor of the
-        specified `:policy`.
-
-        Supplying `:policy` `nil` is equivalent to the option not being
-        supplied at all, i.e. dynamic scoping of policy does not take
-        place. If dynamic scoping without changing the current policy is
-        desired, use `:policy '(optimize)` with `:override` `nil`.
-
-        This option is an SBCL-specific experimental extension: Interface
-        subject to change.
-
-    - `:source-namestring` `<namestring-form>`
-
-        Attaches the value returned by `<namestring-form>` to the internal
-        debug-source information as the namestring of the source file.
-        Normally the namestring of the `input-file` for [`compile-file`][0b69] is
-        used: this option can be used to provide source-file information
-        for functions compiled using [`compile`][bc41], or to override the
-        `input-file` argument of `compile-file`.
-
-        Can be accessed using [`sb-introspect:definition-source-pathname`][2d27].
-
-        If both an outer and an inner `with-compilation-unit` provide a
-        `:source-namestring`, the inner one takes precedence. Unaffected by
-        `:override`.
-
-        This is an SBCL-specific extension.
-
-    - `:source-plist` `<plist-form>`
-
-        Attaches the value returned by `<plist-form>` to internal
-        debug-source information of functions compiled in within the
-        dynamic extent of `body`.
-
-        Primarily for use by development environments, in order to e.g.
-        associate function definitions with editor-buffers. Can be
-        accessed using [`sb-introspect:definition-source-plist`][84b1].
-
-        If an outer `with-compilation-unit` form also provide a
-        `source-plist`, it is appended to the end of the provided
-        `source-plist`. Unaffected by `:override`.
-
-        This is an SBCL-specific extension.
-
-    Examples:
-
-    ```
-    ;; Prevent proclamations from the file leaking, and restrict
-    ;; SAFETY to 3 -- otherwise uses the current global policy.
-    (with-compilation-unit (:policy '(optimize))
-      (restrict-compiler-policy 'safety 3)
-      (load "foo.lisp"))
-    ```
-
-    ```
-    ;; Using default policy instead of the current global one,
-    ;; except for DEBUG 3.
-    (with-compilation-unit (:policy '(optimize debug)
-                            :override t)
-      (load "foo.lisp"))
-    ```
-
-    ```
-    ;; Same as if :POLICY had not been specified at all: SAFETY 3
-    ;; proclamation leaks out from WITH-COMPILATION-UNIT.
-    (with-compilation-unit (:policy nil)
-      (declaim (optimize safety))
-      (load "foo.lisp"))
-    ```
-
-    Also, see the [CLHS][6166].
-
 <a id="x-28SB-MANUAL-3A-40COMPILER-ERRORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-ERRORS%20MGL-PAX:SECTION"></a>
 
-### 4.4 Compiler Errors
+### 4.5 Compiler Errors
 
 <a id="x-28SB-MANUAL-3A-40TYPE-ERRORS-AT-COMPILE-TIME-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TYPE-ERRORS-AT-COMPILE-TIME%20MGL-PAX:SECTION"></a>
 
-#### 4.4.1 Type Errors at Compile Time
+#### 4.5.1 Type Errors at Compile Time
 
 If the compiler can prove at compile time that some portion of the
 program cannot be executed without a type error, then it will give a
@@ -2784,7 +2912,7 @@ This warning doesn't always indicate an incorrect program because
 <a id="x-28SB-MANUAL-3A-40ERRORS-DURING-MACROEXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ERRORS-DURING-MACROEXPANSION%20MGL-PAX:SECTION"></a>
 
-#### 4.4.2 Errors During Macroexpansion
+#### 4.5.2 Errors During Macroexpansion
 
 The compiler handles errors that happen during macroexpansion, turning
 them into compiler errors. If you want to debug the error (to debug
@@ -2811,7 +2939,7 @@ gives this error:
 <a id="x-28SB-MANUAL-3A-40READ-ERRORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@READ-ERRORS%20MGL-PAX:SECTION"></a>
 
-#### 4.4.3 Read Errors
+#### 4.5.3 Read Errors
 
 SBCL's compiler does not attempt to recover from read errors when
 reading a source file but instead just reports the offending
@@ -2820,13 +2948,13 @@ character position and gives up on the entire source file.
 <a id="x-28SB-MANUAL-3A-40OPEN-CODING-AND-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPEN-CODING-AND-INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-### 4.5 Open Coding and Inline Expansion
+### 4.6 Open Coding and Inline Expansion
 
 Since Common Lisp forbids the redefinition of standard functions, the
 compiler can have special knowledge of these standard functions
 embedded in it. This special knowledge is used in various ways (open
-coding, inline expansion, source transformation), but the implications
-to the user are basically the same:
+coding, [Inline Expansion][2ccb], source transformation), but the
+implications to the user are basically the same:
 
 - Attempts to redefine standard functions may be frustrated since
   the function may never be called. Although it is technically
@@ -2878,7 +3006,7 @@ efficient calling convention that forbids redefinition.
 <a id="x-28SB-MANUAL-3A-40INTERPRETER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTERPRETER%20MGL-PAX:SECTION"></a>
 
-### 4.6 Interpreter
+### 4.7 Interpreter
 
 By default, SBCL implements [`eval`][0d6e] by calling the native-code
 compiler. There are two, mutually exclusive interpreter
@@ -2907,7 +3035,7 @@ is not safer or more debuggable than compiled code.
 <a id="x-28SB-MANUAL-3A-40ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS%20MGL-PAX:SECTION"></a>
 
-### 4.7 Advanced Compiler Use and Efficiency Hints
+### 4.8 Advanced Compiler Use and Efficiency Hints
 
 For more advanced usages of the compiler, please see the chapter of the
 same name in the CMUCL manual. Many aspects of the compiler have stayed
@@ -2919,27 +3047,32 @@ whole program optimization and increased use of the local call
 convention.
 
 Unlike CMUCL, SBCL is able to open-code forward-referenced type
-tests while block compiling. This helps for mutually referential
+tests while block compiling. This helps with mutually referential
 [`defstruct`][eac1]s in particular.
 
-<a id="x-28SB-MANUAL-3A-40DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DEBUGGER%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40DEBUGGING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEBUGGING%20MGL-PAX:SECTION"></a>
 
-## 5 Debugger
+## 5 Debugging
 
 This chapter documents the debugging facilities of SBCL, including
 the debugger, single-stepper and [`trace`][548d], and the effect of `(optimize
 debug)` declarations.
 
+<a id="x-28SB-MANUAL-3A-40DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEBUGGER%20MGL-PAX:SECTION"></a>
+
+### 5.1 Debugger
+
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-ENTRY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-ENTRY%20MGL-PAX:SECTION"></a>
 
-### 5.1 Debugger Entry
+#### 5.1.1 Debugger Entry
 
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-BANNER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-BANNER%20MGL-PAX:SECTION"></a>
 
-#### 5.1.1 Debugger Banner
+##### Debugger Banner
 
 When you enter the debugger, it looks something like this:
 
@@ -2984,7 +3117,7 @@ current frame.
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-INVOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-INVOCATION%20MGL-PAX:SECTION"></a>
 
-#### 5.1.2 Debugger Invocation
+##### Debugger Invocation
 
 The debugger is invoked when
 
@@ -3028,7 +3161,7 @@ into the debugger.
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-COMMAND-LOOP-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-COMMAND-LOOP%20MGL-PAX:SECTION"></a>
 
-### 5.2 Debugger Command Loop
+#### 5.1.2 Debugger Command Loop
 
 The debugger is an interactive read-eval-print loop much like the
 normal top level, but some symbols are interpreted as debugger
@@ -3080,7 +3213,7 @@ debugger by using the [`sb-ext:*debug-print-variable-alist*`][21be].
 <a id="x-28SB-MANUAL-3A-40STACK-FRAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-FRAMES%20MGL-PAX:SECTION"></a>
 
-### 5.3 Stack Frames
+#### 5.1.3 Stack Frames
 
 A *stack frame* is the run-time representation of a call to a
 function; the frame stores the state that a function needs to
@@ -3100,7 +3233,7 @@ remember what it is doing. Frames have:
 <a id="x-28SB-MANUAL-3A-40STACK-MOTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-MOTION%20MGL-PAX:SECTION"></a>
 
-#### 5.3.1 Stack Motion
+##### Stack Motion
 
 These commands move to a new stack frame and print the name of the
 function and the values of its arguments in the style of a Lisp
@@ -3120,7 +3253,7 @@ function call:
 <a id="x-28SB-MANUAL-3A-40HOW-ARGUMENTS-ARE-PRINTED-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HOW-ARGUMENTS-ARE-PRINTED%20MGL-PAX:SECTION"></a>
 
-#### 5.3.2 How Arguments are Printed
+##### How Arguments are Printed
 
 A frame is printed to look like a function call but with the actual
 argument values in the argument positions.  So the frame for this call
@@ -3181,12 +3314,12 @@ unavailable or not known to be available ([Variable Access][78b8]), then
 `#<unavailable-arg>` will be printed instead of the argument value.
 
 Note that [Open Coding and Inline Expansion][469a] affect what frames are
-present in the debugger, see [Debugger Policy Control][faf1].
+present in the debugger, see [Debug Information][c397].
 
 <a id="x-28SB-MANUAL-3A-40FUNCTION-NAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FUNCTION-NAMES%20MGL-PAX:SECTION"></a>
 
-#### 5.3.3 Function Names
+##### Function Names
 
 If a function is defined by [`defun`][f472] it will appear in backtrace
 by that name. Functions defined by [`labels`][c2ef] and [`flet`][091c] will appear as
@@ -3199,7 +3332,7 @@ lambdas will appear as `(lambda <lambda-list>)`.
 ##### Entry Point Details
 
 Sometimes the compiler introduces new functions that are used to
-implement a user function, but are not directly specified in the
+implement a user function but are not directly specified in the
 source. This is mostly done for argument type and count checking.
 
 With recursive or block compiled functions, an additional `external`
@@ -3210,23 +3343,19 @@ your program. You may also see `cleanup` frames during the execution
 of [`unwind-protect`][c93f] cleanup code, and `optional` for variable argument
 entry points.
 
-<a id="x-28SB-MANUAL-3A-40DEBUG-TAIL-RECURSION-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DEBUG-TAIL-RECURSION%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40DEBUGGING-TAIL-CALLS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEBUGGING-TAIL-CALLS%20MGL-PAX:SECTION"></a>
 
-#### 5.3.4 Debug Tail Recursion
+##### Debugging Tail Calls
 
-The compiler is *properly tail recursive*. If a function call is
-in a tail recursive position, the stack frame will be deallocated
-*at the time of the call*, rather than after the call returns.
-Consider this backtrace:
+[Tail Call Optimization][3074] can eliminate frames. Consider this backtrace:
 
     (BAR ...)
     (FOO ...)
 
-Because of tail recursion, it is not necessarily the case that `foo`
+Because of tail calls, it is not necessarily the case that `foo`
 directly called `bar`. It may be that `foo` called some other
-function `foo2`, which then called `bar` tail-recursively, as in
-this example:
+function `foo2`, which then tail-called `bar`, as in this example:
 
     (defun foo ()
       ...
@@ -3240,21 +3369,14 @@ this example:
     (defun bar (...)
       ...)
 
-Usually the elimination of tail-recursive frames makes debugging
-more pleasant, since these frames are mostly uninformative. If there
-is any doubt about how one function called another, it can usually
-be eliminated by finding the source location in the calling frame.
-See [Source Location Printing][c9e6].
-
-The elimination of tail-recursive frames can be prevented by
-disabling tail-recursion optimization, which happens when the `debug`
-optimization quality is greater than 2. See
-[Debugger Policy Control][faf1].
+If there is any doubt about how one function called another, it can
+usually be eliminated by finding the source location in the calling
+frame. See [Source Location Printing][c9e6].
 
 <a id="x-28SB-MANUAL-3A-40UNKNOWN-LOCATIONS-AND-INTERRUPTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNKNOWN-LOCATIONS-AND-INTERRUPTS%20MGL-PAX:SECTION"></a>
 
-#### 5.3.5 Unknown Locations and Interrupts
+##### Unknown Locations and Interrupts
 
 The debugger operates using special debugging information attached to
 the compiled code. This debug information tells the debugger what it
@@ -3267,8 +3389,8 @@ displayed.
 
 There are three reasons why a code location could be unknown:
 
-- There is inadequate debug information due to the value of the
-  `debug` optimization quality. See [Debugger Policy Control][faf1].
+- There is inadequate [Debug Information][c397] due to the value of the
+  `debug` optimization quality.
 
 - The debugger was entered because of an interrupt such as `C-c`.
 
@@ -3290,7 +3412,7 @@ again.
 <a id="x-28SB-MANUAL-3A-40VARIABLE-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@VARIABLE-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 5.4 Variable Access
+#### 5.1.4 Variable Access
 
 There are two ways to access the current frame's local variables in
 the debugger: `list-locals` and [`sb-debug:var`][a625].
@@ -3348,7 +3470,7 @@ identifier 0 (which is not printed), the second one has identifier
 <a id="x-28SB-MANUAL-3A-40VARIABLE-VALUE-AVAILABILITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@VARIABLE-VALUE-AVAILABILITY%20MGL-PAX:SECTION"></a>
 
-#### 5.4.1 Variable Value Availability
+##### Variable Value Availability
 
 The value of a variable may be unavailable to the debugger in portions
 of the program where Lisp says that the variable is defined. If a
@@ -3369,7 +3491,8 @@ frame: any frame farther down the stack will be fine.
 > never be available in the interrupted frame. See
 > [Unknown Locations and Interrupts][2496].)
 
-The value of a variable may be unavailable for these reasons:
+If the necessary [Debug Information][c397] was not recorded, the value of a
+variable is unavailable. This can happen for the following reasons:
 
 - The value of the `debug` optimization quality may have omitted
   debug information needed to determine whether the variable is
@@ -3384,6 +3507,8 @@ The value of a variable may be unavailable for these reasons:
 - The variable's name is an uninterned symbol (gensym). To save
   space, the compiler only dumps debug information about uninterned
   variables when the `debug` optimization quality is 3.
+
+The value of a variables may be unavailable also for other reasons:
 
 - The frame's location is unknown (see
   [Unknown Locations and Interrupts][2496]) because the debugger was
@@ -3400,7 +3525,7 @@ The value of a variable may be unavailable for these reasons:
 
 - The variable is never set and its definition looks like
 
-        (LET ((var1 var2))
+        (let ((var1 var2))
            ...)
 
     In this case, `var1` is substituted with `var2`.
@@ -3409,19 +3534,18 @@ The value of a variable may be unavailable for these reasons:
   case, the reference is substituted with the variable initial
   value.
 
-Since it is especially useful to be able to get the arguments to a
-function, argument variables are treated specially when the `speed`
-optimization quality is less than 3 and the `debug` quality is at
-least 1. With this compilation policy, the values of argument
-variables are almost always available everywhere in the function,
-even at unknown locations. For non-argument variables, `debug` must
-be at least 2 for values to be available, and even then, values are
-only available at known locations.
+To summarize, since it is especially useful to be able to get the
+arguments to a function, values of argument variables are
+available (even at unknown locations) when the `speed` optimization
+quality is less than 3 and the `debug` quality is at least 1. For
+non-argument variables, `debug` must be at least 2 for values to be
+available, and even then, values are only available at known
+locations.
 
 <a id="x-28SB-MANUAL-3A-40NOTE-ON-LEXICAL-VARIABLE-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@NOTE-ON-LEXICAL-VARIABLE-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 5.4.2 Note On Lexical Variable Access
+##### Note On Lexical Variable Access
 
 When the debugger command loop establishes variable bindings for
 available variables, these variable bindings have lexical scope and
@@ -3442,7 +3566,7 @@ things happening.
 <a id="x-28SB-MANUAL-3A-40SOURCE-LOCATION-PRINTING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SOURCE-LOCATION-PRINTING%20MGL-PAX:SECTION"></a>
 
-### 5.5 Source Location Printing
+#### 5.1.5 Source Location Printing
 
 One of the debugger's capabilities is source level debugging of
 compiled code.  These commands display the source location for the
@@ -3505,11 +3629,11 @@ list whose first element is `#:***here***`. In the previous example,
 <a id="x-28SB-MANUAL-3A-40HOW-THE-SOURCE-IS-FOUND-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HOW-THE-SOURCE-IS-FOUND%20MGL-PAX:SECTION"></a>
 
-#### 5.5.1 How the Source is Found
+##### How the Source is Found
 
-If the code was defined from Lisp by [`compile`][bc41] or [`eval`][0d6e], then the source
+If the code was defined from Lisp by [`compile`][8c75] or [`eval`][0d6e], then the source
 can always be reliably located. If the code was defined from a FASL
-file created by [`compile-file`][0b69], then the debugger gets the source
+file created by [`compile-file`][0bd1], then the debugger gets the source
 forms it prints by reading them from the original source file. This
 is a potential problem, since the source file might have moved or
 changed since the time it was compiled.
@@ -3553,7 +3677,7 @@ same [`eq`][5a82] list twice. If you don't define read macros and don't use
 <a id="x-28SB-MANUAL-3A-40SOURCE-LOCATION-AVAILABILITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SOURCE-LOCATION-AVAILABILITY%20MGL-PAX:SECTION"></a>
 
-#### 5.5.2 Source Location Availability
+##### Source Location Availability
 
 Source location information is only available when the `debug`
 optimization quality is at least 2. If source location information
@@ -3591,12 +3715,12 @@ In other words, the true location lies between the printed location
 and the next conditional (but watch out because the compiler may
 have changed the program on you.)
 
-<a id="x-28SB-MANUAL-3A-40DEBUGGER-POLICY-CONTROL-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DEBUGGER-POLICY-CONTROL%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40DEBUG-INFORMATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEBUG-INFORMATION%20MGL-PAX:SECTION"></a>
 
-### 5.6 Debugger Policy Control
+#### 5.1.6 Debug Information
 
-The compilation policy specified by [`optimize`][4d51] declarations
+The [Compiler Policy][2474] specified by [`optimize`][4d51] declarations
 affects the behavior seen in the debugger. The `debug` quality
 directly affects the debugger by controlling the amount of debugger
 information dumped. Other optimization qualities have indirect but
@@ -3607,40 +3731,36 @@ relative value to evaluate tradeoffs), the `debug` optimization
 quality is directly translated to a level of debug information. This
 absolute interpretation allows the user to count on a particular
 amount of debug information being available, even when the values of
-the other qualities are changed during compilation. These are the
-levels of debug information that correspond to the values of the
-`debug` quality:
+the other qualities are changed during compilation. We list what
+debug information is available at different levels of the `debug`
+quality:
 
-- `0`: Only the function name and enough information to allow the
+- `0<=`: Only the function name and enough information to allow the
   stack to be parsed.
 
-- `> 0`: Any level greater than 0 gives level 0 plus all argument
-  variables. Values will only be accessible if the argument variable
-  is never set and `speed` is not 3. SBCL allows any real value for
-  optimization qualities. It may be useful to specify 0.5 to get
-  backtrace argument display without argument documentation.
+- `1<=`: Argument variables. The value will only be available if the
+  argument variable is never set and `speed` is not 3.
 
-- `1`: Level 1 provides argument documentation (printed argument
-  lists) and derived argument/result type information. This makes
-  [`describe`][6651] more informative, and allows the compiler to do
-  compile-time argument count and type checking for any calls
-  compiled at run-time. This is the default.
+    Also, argument documentation (printed argument lists) and
+    derived argument/result type information. This makes [`describe`][6651]
+    more informative and allows the compiler to do compile-time
+    argument count and type checking for any calls compiled at
+    run-time.
 
-- `2`: Level 1 plus all interned local variables, source location
-  information, and lifetime information that tells the debugger when
-  arguments are available (even when `speed` is 3 or the argument is
-  set).
+- `2<=`: Interned local variables, source location information, and
+  lifetime information that tells the debugger when arguments are
+  available (even when `speed` is 3 or the argument is set).
 
-- `> 2`: Any level greater than 2 gives level 2 and in addition
-  disables tail-call optimization, so that the backtrace will
-  contain frames for all invoked functions, even those in tail
-  positions.
+- `3`: Uninterned variables.
 
-- `3`: Level 2 plus all uninterned variables. In addition, lifetime
-  analysis is disabled (even when `speed` is 3), ensuring that all
-  variable values are available at any known location within the
-  scope of the binding. This has a speed penalty in addition to the
-  obvious space penalty.
+    - In addition, lifetime analysis is disabled (even when `speed`
+      is 3), ensuring that all variable values are available at any
+      known location within the scope of the binding. This has a
+      speed penalty in addition to the obvious space penalty.
+
+    - [Tail Call Optimization][3074] is disabled. Thus, backtraces will
+      contain frames for all invoked functions, even those in tail
+      positions.
 
 Inlining of local functions is inhibited so that they may be [`trace`][548d]d.
 
@@ -3663,15 +3783,15 @@ values of the `speed` and `space` qualities also change whether
 functions are inline expanded. If a function is inline expanded,
 then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
-*semi inline*, in which case there is a frame to represent the
-call, but the call is to an optimized local version of the function,
-not to the original function. See [Open Coding and Inline Expansion][469a]
-for more.
+semi inline (see [Semi-inline Expansion][c6ad]), in which case there is a
+frame to represent the call, but the call is to an optimized local
+version of the function, not to the original function. See
+[Open Coding and Inline Expansion][469a] for more.
 
 <a id="x-28SB-MANUAL-3A-40EXITING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXITING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
 
-### 5.7 Exiting the Debugger
+#### 5.1.7 Exiting the Debugger
 
 These commands get you out of the debugger.
 
@@ -3708,7 +3828,7 @@ These commands get you out of the debugger.
 <a id="x-28SB-MANUAL-3A-40INFORMATION-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION"></a>
 
-### 5.8 Information Commands
+#### 5.1.8 Information Commands
 
 Most of these commands print information about the current frame or
 function, but a few show general information.
@@ -3731,14 +3851,13 @@ function, but a few show general information.
 <a id="x-28SB-MANUAL-3A-40BREAKPOINT-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BREAKPOINT-COMMANDS%20MGL-PAX:SECTION"></a>
 
-### 5.9 Breakpoint Commands
+#### 5.1.9 Breakpoint Commands
 
 SBCL supports setting of breakpoints inside compiled functions and
 stepping of compiled code. Breakpoints can only be set at known
 locations (see [Unknown Locations and Interrupts][2496]), so these commands
 are largely useless unless the `debug` optimize quality is at least
-2 (see [Debugger Policy Control][faf1]). These commands manipulate
-breakpoints:
+2 (see [Debug Information][c397]). These commands manipulate breakpoints:
 
 - `breakpoint <location> [<option> <value>]*`: Set a breakpoint in
   some function. `<location>` may be an integer code location
@@ -3776,7 +3895,7 @@ breakpoints:
 <a id="x-28SB-MANUAL-3A-40BREAKPOINT-EXAMPLE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BREAKPOINT-EXAMPLE%20MGL-PAX:SECTION"></a>
 
-#### 5.9.1 Breakpoint Example
+##### Breakpoint Example
 
 Consider this definition of the factorial function:
 
@@ -3853,10 +3972,105 @@ This debugger session demonstrates the use of breakpoints:
 > instrumentation-based stepping commands, which have much higher
 > overhead.
 
+<a id="x-28SB-MANUAL-3A-40SINGLE-STEPPING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SINGLE-STEPPING%20MGL-PAX:SECTION"></a>
+
+#### 5.1.10 Single Stepping
+
+SBCL includes an instrumentation-based single-stepper for compiled
+code, which can be invoked via the [`step`][aea4] macro or from within the
+debugger. See [Debug Information][c397] for details on enabling stepping
+for compiled code.
+
+The following debugger commands are used for controlling single stepping.
+
+- `start`: Select the [`continue`][1867] restart if one exists and starts
+  single stepping. None of the other single stepping commands can be
+  used before stepping has been started either by using `start` or
+  by using the standard [`step`][aea4] macro.
+
+- `step`: Step into the current form. Stepping will be resumed when
+  the next form that has been compiled with stepper instrumentation
+  is evaluated.
+
+- `next`: Step over the current form. Stepping will be disabled
+  until evaluation of the form is complete.
+
+- `out`: Step out of the current frame. Stepping will be disabled
+  until the topmost stack frame that had been stepped into returns.
+
+- `stop`: Stop the single stepper and resumes normal execution.
+
+<a id="x-28STEP-20MGL-PAX-3AMACRO-29"></a>
+<a id="STEP%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **step** *form*
+
+    The form is evaluated with single stepping enabled. Function calls
+    outside the lexical scope of the form can be stepped into only if the
+    functions in question have been compiled with sufficient [`debug`][5df9] policy
+    to be at least partially steppable.
+
+    Also, see the [CLHS][e725].
+
+<a id="x-28SB-MANUAL-3A-40LDB-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LDB%20MGL-PAX:SECTION"></a>
+
+### 5.2 `ldb`
+
+LDB, the low-level debugger, is implemented in C and can work
+even when the Lisp [Debugger][825d] cannot due to e.g. heap or stack
+exhaustion. Failed assertions in the low-level runtime (see
+[Command-line Options][1294]) trigger entering LDB if it's
+
+- available (if SBCL was not compiled with `--without-sb-ldb`) and
+
+- not disabled (see `--disable-ldb` in [Runtime Options][3e4d] and
+  [`sb-ext:disable-debugger`][356e]).
+
+Else, a backtrace of at most 100 stack frames is printed, and SBCL
+exits with a non-zero exit code.
+
+The commands supported can be explored at the LDB prompt by typing
+`help` followed by an enter.
+
+Also see the related `--lose-on-corruption` option in
+[Runtime Options][3e4d].
+
+<a id="x-28SB-MANUAL-3A-40ENABLING-AND-DISABLING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@ENABLING-AND-DISABLING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
+
+### 5.3 Enabling and Disabling the Debugger
+
+In certain contexts (e.g. non-interactive applications), it may be
+desirable to turn off the SBCL debugger and [`ldb`][3b91] (and possibly
+re-enable them).
+
+<a id="x-28SB-EXT-3ADISABLE-DEBUGGER-20FUNCTION-29"></a>
+<a id="SB-EXT:DISABLE-DEBUGGER%20FUNCTION"></a>
+
+- \[function\] **sb-ext:disable-debugger**
+
+    When invoked, this function will turn off both the [Debugger][825d]
+    and [`ldb`][3b91] (the low-level debugger), similar to specifying
+    `--disable-debugger` (see [Toplevel Options][6be4]) and
+    `--disable-ldb` (see [Runtime Options][3e4d]) on the command line.
+    See also [`enable-debugger`][adab].
+
+<a id="x-28SB-EXT-3AENABLE-DEBUGGER-20FUNCTION-29"></a>
+<a id="SB-EXT:ENABLE-DEBUGGER%20FUNCTION"></a>
+
+- \[function\] **sb-ext:enable-debugger**
+
+    Restore the [Debugger][825d] and [`ldb`][3b91] if they have been
+    turned off by [`disable-debugger`][356e], `--disable-debugger` (see
+    [Toplevel Options][6be4]) or `--disable-ldb` (see
+    [Runtime Options][3e4d]).
+
 <a id="x-28SB-MANUAL-3A-40FUNCTION-TRACING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FUNCTION-TRACING%20MGL-PAX:SECTION"></a>
 
-### 5.10 Function Tracing
+### 5.4 Function Tracing
 
 The tracer causes selected functions to print their arguments and
 their results whenever they are called.  Options allow conditional
@@ -4043,115 +4257,663 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 
     The default value for the `:report` option to [`trace`][548d].
 
-<a id="x-28SB-MANUAL-3A-40SINGLE-STEPPING-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@SINGLE-STEPPING%20MGL-PAX:SECTION"></a>
-
-### 5.11 Single Stepping
-
-SBCL includes an instrumentation-based single-stepper for compiled
-code, which can be invoked via the [`step`][aea4] macro or from within the
-debugger. See [Debugger Policy Control][faf1] for details on enabling
-stepping for compiled code.
-
-The following debugger commands are used for controlling single stepping.
-
-- `start`: Select the [`continue`][1867] restart if one exists and starts
-  single stepping. None of the other single stepping commands can be
-  used before stepping has been started either by using `start` or
-  by using the standard [`step`][aea4] macro.
-
-- `step`: Step into the current form. Stepping will be resumed when
-  the next form that has been compiled with stepper instrumentation
-  is evaluated.
-
-- `next`: Step over the current form. Stepping will be disabled
-  until evaluation of the form is complete.
-
-- `out`: Step out of the current frame. Stepping will be disabled
-  until the topmost stack frame that had been stepped into returns.
-
-- `stop`: Stop the single stepper and resumes normal execution.
-
-<a id="x-28STEP-20MGL-PAX-3AMACRO-29"></a>
-<a id="STEP%20MGL-PAX:MACRO"></a>
-
-- \[macro\] **step** *form*
-
-    The form is evaluated with single stepping enabled. Function calls
-    outside the lexical scope of the form can be stepped into only if the
-    functions in question have been compiled with sufficient [`debug`][5df9] policy
-    to be at least partially steppable.
-
-    Also, see the [CLHS][e725].
-
-<a id="x-28SB-MANUAL-3A-40LDB-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@LDB%20MGL-PAX:SECTION"></a>
-
-### 5.12 `ldb`
-
-LDB, the low-level debugger, is implemented in C and can work
-even when the Lisp [Debugger][825d] cannot due to e.g. heap or stack
-exhaustion. Failed assertions in the low-level runtime (see
-[Command-line Options][1294]) trigger entering LDB if it's
-
-- available (if SBCL was not compiled with `--without-sb-ldb`) and
-
-- not disabled (see `--disable-ldb` in [Runtime Options][3e4d] and
-  [`sb-ext:disable-debugger`][356e]).
-
-Else, a backtrace of at most 100 stack frames is printed, and SBCL
-exits with a non-zero exit code.
-
-The commands supported can be explored at the LDB prompt by typing
-`help` followed by an enter.
-
-Also see the related `--lose-on-corruption` option in
-[Runtime Options][3e4d].
-
-<a id="x-28SB-MANUAL-3A-40ENABLING-AND-DISABLING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@ENABLING-AND-DISABLING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
-
-### 5.13 Enabling and Disabling the Debugger
-
-In certain contexts (e.g. non-interactive applications), it may be
-desirable to turn off the SBCL debugger and [`ldb`][3b91] (and possibly
-re-enable them).
-
-<a id="x-28SB-EXT-3ADISABLE-DEBUGGER-20FUNCTION-29"></a>
-<a id="SB-EXT:DISABLE-DEBUGGER%20FUNCTION"></a>
-
-- \[function\] **sb-ext:disable-debugger**
-
-    When invoked, this function will turn off both the [Debugger][825d]
-    and [`ldb`][3b91] (the low-level debugger), similar to specifying
-    `--disable-debugger` (see [Toplevel Options][6be4]) and
-    `--disable-ldb` (see [Runtime Options][3e4d]) on the command line.
-    See also [`enable-debugger`][adab].
-
-<a id="x-28SB-EXT-3AENABLE-DEBUGGER-20FUNCTION-29"></a>
-<a id="SB-EXT:ENABLE-DEBUGGER%20FUNCTION"></a>
-
-- \[function\] **sb-ext:enable-debugger**
-
-    Restore the [Debugger][825d] and [`ldb`][3b91] if they have been
-    turned off by [`disable-debugger`][356e], `--disable-debugger` (see
-    [Toplevel Options][6be4]) or `--disable-ldb` (see
-    [Runtime Options][3e4d]).
-
 <a id="x-28SB-MANUAL-3A-40EFFICIENCY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION"></a>
 
 ## 6 Efficiency
 
+<a id="x-28SB-MANUAL-3A-40TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TAIL-CALL%20MGL-PAX:SECTION"></a>
+
+### 6.1 Tail Call
+
+A call to a function is a tail call if nothing has to be done after
+the call returns. That is, when the call returns, the returned
+values are immediately returned from the calling function. Tail
+calls can be compiled to much more efficient code than normal code.
+See <https://en.wikipedia.org/wiki/Tail_call> for more.
+
+Note that both [Local Call][3d65]s and full calls can be tail calls.
+
+<a id="x-28SB-MANUAL-3A-40TAIL-CALL-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TAIL-CALL-OPTIMIZATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.1 Tail Call Optimization
+
+SBCL performs tail call optimization (TCO) although this is not
+required by the Common Lisp standard.
+
+In Lisp terms, you can think of TCO as converting a function call to
+a [`psetq`][93f7] that assigns the argument values to the called function's
+variables, followed by a [`go`][f2e5] to the start of the called function.
+This makes clear an inherent efficiency advantage of tail calls: in
+addition to not having to allocate a stack frame, there is no need
+to prepare for the call to return (e.g. by computing a return PC).
+
+Consider the following trivial example:
+
+    (defun fun1 (x)
+      (fun2 x x))
+
+FUN1 is compiled to native code that modifies its frame
+(to have the arguments of `fun2` in the right places) and control is
+transferred via a single jump instruction to `fun2`.
+
+In general, a call is compiled to a tail call if it is in
+[Tail Position][c6d1] and the `debug` optimization quality is at most 2.
+Thus, by default, all calls in tail position are compiled to tail
+calls. See [Debugging Tail Calls][22a1].
+
+<a id="x-28SB-MANUAL-3A-40TAIL-POSITION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TAIL-POSITION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.2 Tail Position
+
+A call is said to be in tail position unless it is enclosed by at
+least one of the following:
+
+- a special binding (e.g. by [`let`][4853], [`progv`][327a]),
+
+- a [`catch`][392d],
+
+- an [`unwind-protect`][c93f],
+
+- a [`block`][d2d8] and the block name has been closed over,
+
+- a [`tagbody`][7fae] and a [`go`][f2e5] tag has been closed over.
+
+These inhibit tail calls because they require cleanups when the
+stack is unwound.
+
+<a id="x-28SB-MANUAL-3A-40TAIL-RECURSION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TAIL-RECURSION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.3 Tail Recursion
+
+Tail recursion is when a function makes a [Tail Call][ec2e] to itself.
+In this example, the recursive call to `myfun` is tail-recursive:
+
+    (defun myfun (x)
+      (if (oddp (random x))
+          (isqrt x)
+          (myfun (1- x))))
+
+Because it is a [Tail Call][ec2e], tail recursion can be compiled to much
+more efficient code than general recursion. In fact, tail recursion
+is equivalent to iteration both semantically and in efficiency.
+
+Why would you want to write a program recursively when you can write
+it using a loop? Well, the main answer is that recursion is a more
+general mechanism, so it can express some solutions simply that are
+awkward to write as a loop. Some programmers also feel that
+recursion is a stylistically preferable way to write loops because
+it avoids assigning variables. For example, instead of writing
+
+    (defun fun1 (x)
+      (something x))
+    
+    (defun fun2 (y)
+      (other-thing y))
+    
+    (do ((x 7 (fun2 (fun1 x))))
+        (nil))
+
+... you can write
+
+    (defun fun1 (x)
+      (fun2 (something x)))
+    
+    (defun fun2 (y)
+      (fun1 (other-thing y)))
+    
+    (fun1 7)
+
+The tail-recursive definition is actually more efficient, in
+addition to being (arguably) clearer. As the number of functions and
+the complexity of their call graph increases, the simplicity of
+using recursion becomes compelling. Consider the advantages of
+writing a large finite-state machine with separate tail-recursive
+functions instead of using a single huge [`prog`][9a0c].
+
+<a id="x-28SB-MANUAL-3A-40LOCAL-CALL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LOCAL-CALL%20MGL-PAX:SECTION"></a>
+
+### 6.2 Local Call
+
+The compiler supports two kinds of function call: full call and local
+call. Full call is the standard calling convention; its late binding
+and generality make Lisp what it is but create unavoidable
+overheads. When the compiler can compile the calling function and
+the called function simultaneously, it can use local call to avoid
+some of this overhead. Local call is really a collection of
+compilation strategies that omit some aspect of full call. In some
+cases, local call can be totally free.
+
+Local call makes the use of the lexical function binding forms [`flet`][091c]
+and [`labels`][c2ef] much more efficient. A local call is always faster than a
+full call, and in many cases it is much faster. Similarly, local
+call is a natural approach to block compilation (see [`compile-file`][0bd1]),
+a compilation technique that resolves function references at compile
+time. Block compilation speeds up function calls but increases
+compilation times and prevents function redefinition.
+
+<a id="x-28SB-MANUAL-3A-40LOCAL-SELF-RECURSIVE-CALL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LOCAL-SELF-RECURSIVE-CALL%20MGL-PAX:SECTION"></a>
+
+#### 6.2.1 Local Self-recursive Call
+
+[Local Call][3d65] is used when a function defined by [`defun`][f472] calls
+itself and block compilation is used (see [`compile-file`][0bd1]). For
+example:
+
+    (defun fact (n)
+      (if (zerop n)
+          1
+          (* n (fact (1- n)))))
+
+This use of local call speeds recursion but can also complicate
+debugging since [`trace`][548d] will only show the first call to FACT and not
+the recursive calls. This is because the recursive calls directly
+jump to the start of the function and don't indirect through
+[`symbol-function`][9048]. This is similar to [Debugging Tail Calls][22a1].
+
+<a id="x-28SB-MANUAL-3A-40LET-CALL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LET-CALL%20MGL-PAX:SECTION"></a>
+
+#### 6.2.2 Let Call
+
+Because [Local Call][3d65] avoids unnecessary call overheads, the compiler
+internally uses local call to implement some macros and special
+forms that are not normally thought of as involving a function call.
+For example, this [`let`][4853]:
+
+    (let ((a (foo))
+          (b (bar)))
+      ...)
+
+is internally represented as though it was macroexpanded into:
+
+    (funcall #'(lambda (a b)
+                 ...)
+             (foo)
+             (bar))
+
+which results in just as good code as compiling `let` directly, but it
+also benefits local calls that are semantically the same as `let`. For
+example, these definitions are all the same as far as the compiler
+is concerned:
+
+    (defun foo ()
+      ...some other stuff...
+      (let ((a something))
+        ...some stuff...))
+    
+    (defun foo ()
+      (flet ((localfun (a)
+               ...some stuff...))
+        ...some other stuff...
+        (localfun something)))
+    
+    (defun foo ()
+      (let ((funvar #'(lambda (a)
+                        ...some stuff...)))
+        ...some other stuff...
+        (funcall funvar something)))
+
+Although local call is most efficient when the function is called
+only once, a call doesn't have to be equivalent to a `let` to be more
+efficient than full call. All local calls avoid the overhead of
+argument count checking and keyword argument parsing, and there are
+a number of other advantages that apply in many common situations.
+
+<a id="x-28SB-MANUAL-3A-40LOCAL-CALLS-TO-CLOSURES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION"></a>
+
+#### 6.2.3 Local Calls to Closures
+
+[Local Call][3d65] allows for much more efficient use of closures, since the
+closure environment doesn't need to be allocated on the heap or even
+stored in memory at all. In this example, there is no penalty for
+`localfun` referencing `a` and `b`:
+
+    (defun foo (a b)
+      (flet ((localfun (x)
+               (1+ (* a b x))))
+        (if (= a b)
+            (localfun (- a))
+            (localfun a))))
+
+In local call, the compiler effectively passes closed-over values as
+extra arguments, so there is no need for you to "optimize"
+`localfun` by explicitly passing in lexically visible values.
+
+> *Note*: indirect value cells are currently always allocated on the
+> heap when a variable is both assigned to (with [`setq`][0160] or [`setf`][a138]) and
+> closed over, regardless of whether the closure is a local function
+> or not. This is another reason to avoid setting variables when you
+> don't have to.
+
+<a id="x-28SB-MANUAL-3A-40LOCAL-TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION"></a>
+
+#### 6.2.4 Local Tail Call
+
+Local tail calls are particularly efficient because they combine the
+benefits of [Local Call][3d65]s (simplified calling convention) and
+[Tail Call][ec2e]s (reusing the stack frame). Scheme programmers write
+loops with tail-recursive local calls instead of using the
+imperative [`go`][f2e5] and [`setq`][0160]. This has not caught on in the Common Lisp
+community for historical reasons and because the standard does not
+require tail calls. In SBCL, users can choose to write loops such as
+
+    (defun recurse-fact (n)
+      (labels ((loop* (n total)
+                 (if (zerop n)
+                     total
+                     (loop* (1- n) (* n total)))))
+        (loop* n 1)))
+
+which is compiled to just as efficient code as
+
+    (defun loop-fact (n)
+      (let ((r 1))
+        (loop for i downfrom n above 0
+              do (setq r (* i r)))
+         r))
+
+<a id="x-28SB-MANUAL-3A-40LOCAL-CALL-RETURN-VALUES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LOCAL-CALL-RETURN-VALUES%20MGL-PAX:SECTION"></a>
+
+#### 6.2.5 Local Call Return Values
+
+
+One of the more subtle costs of full call comes from allowing
+arbitrary numbers of return values. This overhead can be avoided in
+[Local Call][3d65]s to functions that always return the same
+number of values. For efficiency reasons (as well as stylistic
+ones), you should write functions so that they always return the
+same number of values. This may require passing extra `nil` arguments
+to [`values`][5cc0] in some cases, but the result is more efficient, not less
+so.
+
+<a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BLOCK-COMPILATION%20MGL-PAX:SECTION"></a>
+
+### 6.3 Block Compilation
+
+Block compilation allows calls to global functions defined by
+[`defun`][f472] to be compiled as [Local Call][3d65]s. The function call can be in a
+different top-level form than the `defun` or even in a different file.
+
+In addition, block compilation allows the declaration of the *entry
+points* to the block-compiled portion. An entry point is a function
+that may be called from outside the block-compiled unit. If a
+function is not an entry point, then it can be compiled more
+efficiently since all calls are known at compile time. In
+particular, if a function is only called in one place, then it will
+be let converted. This effectively inline expands the function but
+without the code duplication that results from defining the function
+normally and then declaring it inline.
+
+The main advantage of block compilation is that it preserves
+efficiency in programs even when (for readability and syntactic
+convenience) they are broken up into many small functions. There is
+absolutely no overhead for calling a non-entry point function that
+is defined purely for modularity (i.e. called only in one place).
+
+Block compilation also allows for more unboxed and non-descriptor
+arguments and return values in non-trivial programs.
+
+<a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-SEMANTICS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION"></a>
+
+#### 6.3.1 Block Compilation Semantics
+
+The effect of block compilation can be envisioned as the compiler
+turning all the [`defun`][f472]s in the block-compiled unit into a single
+[`labels`][c2ef] form. For example,
+
+    (declaim (sb-ext:start-block fun1 fun3))
+    
+    (defun fun1 ()
+      ...)
+    
+    (defun fun2 ()
+      ...
+      (fun1)
+      ...)
+    
+    (defun fun3 (x)
+      (if x
+          (fun1)
+          (fun2)))
+    
+    (declaim (sb-ext:end-block))
+
+becomes
+
+    (labels ((fun1 ()
+               ...)
+             (fun2 ()
+               ...
+               (fun1)
+               ...)
+             (fun3 (x)
+               (if x
+                   (fun1)
+                   (fun2))))
+      (setf (fdefinition 'fun1) #'fun1)
+      (setf (fdefinition 'fun3) #'fun3))
+
+Calls between the block-compiled functions are [Local Call][3d65]s, so
+changing the global definition of `fun1` will have no effect on what
+`fun2` does; `fun2` will keep calling the old `fun1`.
+
+The entry points `fun1` and `fun3` are still installed in
+[`symbol-function`][9048] as the global definitions of the functions, so a
+full call to an entry point works just as before. However, `fun2`
+is not an entry point, so it is not globally defined. In addition,
+`fun2` is only called in one place, so it will be let converted.
+
+<a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DECLARATIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BLOCK-COMPILATION-DECLARATIONS%20MGL-PAX:SECTION"></a>
+
+#### 6.3.2 Block Compilation Declarations
+
+The following declarations allow fine-grained control of block
+compilation. They are only legal as global declarations ([`declaim`][ebea] or
+[`proclaim`][d3e1]).
+
+<a id="x-28SB-EXT-3ASTART-BLOCK-20DECLARATION-29"></a>
+<a id="SB-EXT:START-BLOCK%20DECLARATION"></a>
+
+- \[declaration\] **sb-ext:start-block**
+
+    Syntax: `(sb-ext:start-block &rest entry-point-names)`
+
+    Only valid as a global proclamation.
+
+    When processed by the compiler, this declaration marks the start of a
+    [Block Compilation][1143] unit and specifies the entry points to
+    that block. If no entry points are specified, then all functions are
+    made into entry points. If already block compiling, then the compiler
+    ends the current block and starts a new one.
+
+<a id="x-28SB-EXT-3AEND-BLOCK-20DECLARATION-29"></a>
+<a id="SB-EXT:END-BLOCK%20DECLARATION"></a>
+
+- \[declaration\] **sb-ext:end-block**
+
+    Syntax: `(sb-ext:end-block &rest symbols)`
+
+    Only valid as a global proclamation.
+
+    This declaration ends a [Block Compilation][1143] unit without
+    starting a new one. This is useful mainly when only a portion of a
+    file is worth block compiling.
+
+<a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DIFFICULTIES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION"></a>
+
+#### 6.3.3 Block Compilation Difficulties
+
+The main problem with block compilation is that the compiler uses
+large amounts of memory when it is block compiling. This places an
+upper limit on the amount of code that can be block compiled as a
+unit. To make best use of block compilation, it is necessary to
+locate the parts of the program containing many internal calls, and
+then add the appropriate [`sb-ext:start-block`][8679] declarations. When
+writing new code, it is a good idea to put in block compilation
+declarations from the very beginning, since writing block
+declarations correctly requires accurate knowledge of the program's
+function call structure. If you want to initially develop code with
+full incremental redefinition, you can compile with
+[`sb-ext:*block-compile-default*`][e1d1] set to `nil` (the default).
+
+Note that if a [`defun`][f472] appears in a non-null lexical environment, then
+calls to it cannot be block compiled.
+
+Unless files are very small, it is probably impractical to block
+compile multiple files as a unit by specifying a list of files to
+[`compile-file`][0bd1]. [Semi-inline Expansion][c6ad] provides another way to extend
+block compilation across file boundaries.
+
+<a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
+
+### 6.4 Inline Expansion
+
+SBCL can expand almost any function inline, including functions
+with keyword arguments. The only restrictions are that keyword
+argument keywords in the call must be constant, and that global
+function definitions ([`defun`][f472]) must be done in a null lexical
+environment (not nested in a [`let`][4853] or other binding form.) Local
+functions (e.g. [`flet`][091c]) can be inline expanded in any environment.
+Combined with source-level optimization, inline expansion can be
+used for things that would otherwise require macros for efficient
+implementation. In SBCL, macros don't have any efficiency advantage,
+so they need only be used where a macro's syntactic flexibility is
+required.
+
+Inline expansion is a compiler optimization technique that reduces
+the overhead of a function call by simply not doing the call:
+instead, the compiler effectively rewrites the program to appear as
+though the definition of the called function was inserted at each
+call site. In Lisp, this is straightforwardly expressed by inserting
+the [`lambda`][650d] corresponding to the original definition. Consider
+
+    (declaim (inline my-1+))
+    (defun my-1+ (x)
+      (+ x 1))
+
+With this definition, `(my-1+ someval)` is equivalent
+to `((lambda (x) (+ x 1)) someval)`.
+
+<a id="x-28SB-EXT-3A-2AINLINE-EXPANSION-LIMIT-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*INLINE-EXPANSION-LIMIT*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*inline-expansion-limit\*** *50*
+
+    An upper limit on the number of inline function calls that will be
+    expanded in any given component (single function or block
+    compilation unit).
+
+Regardless of this limit, expanding a large function inline can
+increase the size of a program considerably. If the program becomes
+too large, inline expansion hurts speed rather than helping it,
+since hardware resources such as physical memory and cache will be
+exhausted. Inline expansion is called for:
+
+- When profiling has shown that a relatively simple function is
+  called so often that a large amount of time is being wasted in the
+  calling of that function (as opposed to running in that function).
+  If a function is complex, it will take a long time to run relative
+  the time spent in call, so the speed advantage of inline expansion
+  is diminished at the same time the space cost of inline expansion
+  is increased. Of course, if a function is rarely called, then the
+  overhead of calling it is also insignificant.
+
+- With functions so simple that they take less space to inline
+  expand than would be taken to call the function (such as `my-1+`
+  above). It would require intimate knowledge of the compiler to be
+  certain when inline expansion would reduce space, but it is
+  generally safe to inline expand functions whose definition is a
+  single function call, or a few calls to simple functions.
+
+In addition to this speed/space tradeoff from inline expansion's
+avoidance of the call, inline expansion can also reveal
+opportunities for optimization. SBCL's extensive source-level
+optimization can make use of context information from the caller to
+tremendously simplify the code resulting from the inline expansion
+of a function.
+
+The main form of caller context is local information about the
+actual argument values: what the argument types are and whether the
+arguments are constant. Knowledge about argument types can eliminate
+run-time type tests (e.g. for generic arithmetic). Constant
+arguments in a call provide opportunities for constant folding
+optimization after inline expansion.
+
+A hidden way that constant arguments are often supplied to functions
+is through the defaulting of unsupplied optional or keyword arguments.
+There can be a huge efficiency advantage to inline expanding functions
+that have complex keyword-based interfaces, such as this definition of
+the [`member`][82ae] function:
+
+    (declaim (inline member))
+    (defun member (item list &key
+                   (key #'identity)
+                   (test #'eql testp)
+                   (test-not nil notp))
+      (do ((list list (cdr list)))
+          ((null list) nil)
+        (let ((car (car list)))
+          (if (cond (testp
+                     (funcall test item (funcall key car)))
+                    (notp
+                     (not (funcall test-not item (funcall key car))))
+                    (t
+                     (funcall test item (funcall key car))))
+              (return list)))))
+
+After inline expansion,
+
+    (member a l :key #'foo-a :test #'char=)
+
+is simplified to the obvious code:
+
+    (do ((list list (cdr list)))
+        ((null list) nil)
+      (let ((car (car list)))
+        (if (char= item (foo-a car))
+            (return list))))
+
+In this example, there could easily be more than an order of
+magnitude improvement in speed. In addition to eliminating the
+original call to `member`, inline expansion also allows the calls to
+[`char=`][48fa] and `foo-a` to be open-coded. We go from a loop with three
+tests and two calls to a loop with one test and no calls.
+
+<a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-RECORDING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@INLINE-EXPANSION-RECORDING%20MGL-PAX:SECTION"></a>
+
+#### 6.4.1 Inline Expansion Recording
+
+Inline expansion requires that the source for the inline expanded
+function to be available when calls to the function are compiled.
+The compiler doesn't remember the inline expansion of every
+function, since that would take an excessive amount of space.
+Instead, the programmer must tell the compiler to record the inline
+expansion before the definition of the inline expanded function is
+compiled. This is done by globally declaring the function inline
+before the function is defined, by using the [`inline`][9fb4] and
+[`sb-ext:maybe-inline`][bd0a] declarations.
+
+In addition to recording the inline expansion of inline functions at
+the time the function is compiled, [`compile-file`][0bd1] also puts the inline
+expansion in the output file. When the output file is loaded, the
+inline expansion is made available for subsequent compilations;
+there is no need to compile the definition again to record the
+inline expansion.
+
+If a function is declared inline, but no expansion is recorded, then
+the compiler will give style warning like
+
+```
+; caught STYLE-WARNING:
+;   Call to MY-1+ could not be inlined because its source code
+;   was not saved. A global INLINE or SB-EXT:MAYBE-INLINE proclamation must be
+;   in effect to save function definitions for inlining.
+```
+
+If you get this, check that the [`inline`][9fb4] declaration appears before
+the [`defun`][f472], which in turn is before the calls that are to be inline
+expanded. Alternatively, the style warning can be silenced by
+declaring the function [`notinline`][9514] at the call site.
+
+This style warning will also be given if the inline expansion could
+not be recorded because the `defun` was in a non-null lexical
+environment.
+
+<a id="x-28SB-MANUAL-3A-40SEMI-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SEMI-INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
+
+#### 6.4.2 Semi-inline Expansion
+
+Semi-inline expansion shares a single copy of a function across all
+the calls in a component by converting the inline expansion into a
+[Local Call][3d65]. This takes up less space when there are multiple calls
+but also provides less opportunity for context-dependent
+optimization. When there is only one call, the result is identical
+to normal [Inline Expansion][2ccb].
+
+The inlining decision takes into account the inlining declaration of
+the function to be called and the optimization qualities in effect,
+where both are taken at the call site.
+
+- [`sb-ext:maybe-inline`][bd0a]: Semi-inlined if `space` is `0`; else, not
+  inlined at all.
+
+- [`inline`][9fb4]: Semi-inlined if (\< `speed` `space`) or (\< `speed`
+  `compilation-speed`); else, inlined normally.
+
+<a id="x-28SB-EXT-3AMAYBE-INLINE-20DECLARATION-29"></a>
+<a id="SB-EXT:MAYBE-INLINE%20DECLARATION"></a>
+
+- \[declaration\] **sb-ext:maybe-inline**
+
+    Syntax: `(sb-ext:maybe-inline &rest function-names)`
+
+    The [`maybe-inline`][bd0a] declaration is similar to [`inline`][9fb4] but indicates that
+    inline expansion may sometimes be desirable, rather than saying that
+    inline expansion should almost always be done. When used in a global
+    declaration, it causes the expansions for the named functions to be
+    recorded by [`defun`][f472].
+
+    When its expansion is recorded, a call to a function that is
+    `maybe-inline` is semi-inlined if [`space`][4e8c] is `0`, where both the
+    [`maybe-inline`][bd0a] declaration and the value of the `space` optimization
+    quality is at the call site. If `space` is non-zero, then the call is
+    not inlined.
+
+Note that the use of the [`sb-ext:maybe-inline`][bd0a] declaration followed by
+the [`defun`][f472] is preferable to the standard idiom of
+
+    (declaim (inline myfun))
+    (defun myfun () ...)
+    (declaim (notinline myfun))
+    
+    ;; Calls to MYFUN here are not inline expanded.
+    
+    (defun somefun ()
+      (declare (inline myfun))
+      ;; Calls to MYFUN here are inline expanded.
+      ...)
+
+The problem with using [`notinline`][9514] in this way is that it does more
+than just suppress inline expansion: it also forbids the compiler to
+use any knowledge of `myfun` until a later [`inline`][9fb4] declaration
+overrides the `notinline`. This prevents compiler warnings about
+incorrect calls to the function and also prevents
+[Block Compilation][1143].
+
+When the goal is merely to control whether inline expansion is done
+by default, it is preferable to use `sb-ext:maybe-inline` rather than
+`notinline`. The [`notinline`][9514] declaration should be reserved for those
+special occasions when a function may be redefined at run-time, so
+the compiler must be told that the obvious definition of a function
+is not necessarily the one that will be in effect at the time of the
+call.
+
 <a id="x-28SB-MANUAL-3A-40SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 6.1 Slot Access
+### 6.5 Slot Access
 
 <a id="x-28SB-MANUAL-3A-40STRUCTURE-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STRUCTURE-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.1.1 Structure Object Slot Access
+#### 6.5.1 Structure Object Slot Access
 
 Structure slot accessors are efficient only if the compiler is
 able to open code them: compiling a call to a structure slot
@@ -4162,7 +4924,7 @@ severe performance degradation.
 <a id="x-28SB-MANUAL-3A-40STANDARD-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STANDARD-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.1.2 Standard Object Slot Access
+#### 6.5.2 Standard Object Slot Access
 
 The most efficient way to access a slot of a [`standard-object`][a843] is
 by using [`slot-value`][5a85] with a constant slot name argument inside a
@@ -4171,8 +4933,8 @@ specializer parameter of the method and is never assigned to. The
 cost is roughly 1.6 times that of an open coded structure slot
 accessor.
 
-Second most efficient way is to use a CLOS slot accessor, or
-`slot-value` with a constant slot name argument, but in circumstances
+Second most efficient way is to use a CLOS slot accessor or
+`slot-value` with a constant slot name argument but in circumstances
 other than specified above. This may be up to 3 times as slow as the
 method described above.
 
@@ -4207,7 +4969,7 @@ lazily set up during those calls.
 <a id="x-28SB-MANUAL-3A-40STACK-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION"></a>
 
-### 6.2 Stack Allocation
+### 6.6 Stack Allocation
 
 SBCL has fairly extensive support for performing allocations on the
 stack when a variable or function is declared [`dynamic-extent`][0901]. The
@@ -4389,7 +5151,7 @@ detect incorrect usage of dynamic extent declarations.
 <a id="x-28SB-MANUAL-3A-40MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-### 6.3 Modular Arithmetic
+### 6.7 Modular Arithmetic
 
 Some numeric functions have a property: n lower bits of the
 result depend only on n lower bits of (all or some) arguments. If
@@ -4424,7 +5186,7 @@ currently this is not implemented.
 <a id="x-28SB-MANUAL-3A-40SIGNED-MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SIGNED-MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-#### 6.3.1 Signed Modular Arithmetic
+#### 6.7.1 Signed Modular Arithmetic
 
 Sign-extending the result in the following way will be
 translated into signed modular arithmetic:
@@ -4437,7 +5199,7 @@ translated into signed modular arithmetic:
 <a id="x-28SB-MANUAL-3A-40RECOGNIZED-IDIOMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RECOGNIZED-IDIOMS%20MGL-PAX:SECTION"></a>
 
-### 6.4 Recognized Idioms
+### 6.8 Recognized Idioms
 
 Common Lisp doesn't directly expose all features present in
 modern hardware. Some code patterns are recognized and turned into
@@ -4447,7 +5209,7 @@ internal features.
 <a id="x-28SB-MANUAL-3A-40COUNT-TRAILING-ZEROS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COUNT-TRAILING-ZEROS%20MGL-PAX:SECTION"></a>
 
-#### 6.4.1 Count Trailing Zeros
+#### 6.8.1 Count Trailing Zeros
 
     (defun ctz (n)
       (declare (type (unsigned-byte 64) n))
@@ -4459,7 +5221,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40GLOBAL-AND-ALWAYS-BOUND-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GLOBAL-AND-ALWAYS-BOUND-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 6.5 Global and Always-bound Variables
+### 6.9 Global and Always-bound Variables
 
 <a id="x-28SB-EXT-3ADEFGLOBAL-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO"></a>
@@ -4508,7 +5270,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EFFICIENCY-ISSUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION"></a>
 
-### 6.6 Miscellaneous Efficiency Issues
+### 6.10 Miscellaneous Efficiency Issues
 
 FIXME: The material in the CMUCL manual about getting good
 performance from the compiler should be reviewed, reformatted in
@@ -4526,14 +5288,6 @@ sections
 - Type Inference
 
 - Source Optimization
-
-- Tail Recursion
-
-- Local Call
-
-- Block Compilation
-
-- Inline Expansion
 
 - Object Representation
 
@@ -4670,7 +5424,7 @@ the rational with the exact value of the decimal number expressed as
 a float.
 
 In addition, setting or binding the value of
-[`*read-default-float-format*`][88f1] to [`rational`][f0444] around a call to [`read`][fe58] or
+[`*read-default-float-format*`][88f1] to [`rational`][f044] around a call to [`read`][fe58] or
 [`read-from-string`][d813] has the effect that floating-point numbers without
 exponent markers are read as rational numbers, as if there had been
 an explicit `r` or `r` marker.
@@ -12910,7 +13664,7 @@ multiple threads must wait for a single event before proceeding.
 The `sb-cover` module provides a code coverage tool for SBCL. The
 tool has support for expression coverage, and for some branch
 coverage. Coverage reports are only generated for code compiled
-using [`compile-file`][0b69] with the value of the
+using [`compile-file`][0bd1] with the value of the
 `sb-cover:store-coverage-data` optimization quality set to 3.
 
 As of SBCL 1.0.6, `sb-cover` is still experimental, and the
@@ -15027,6 +15781,8 @@ versions of SBCL, which have since then been deleted.
 
 [05c1]: http://www.lispworks.com/documentation/HyperSpec/Body/d_ftype.htm "FTYPE (MGL-PAX:CLHS DECLARATION)"
 
+[06b6]: #SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION "Local Tail Call"
+
 [073a]: #SB-MANUAL:@CONSTRUCTORS%20MGL-PAX:SECTION "Constructors"
 
 [0759]: #SB-COVER:SAVE-COVERAGE%20FUNCTION "SB-COVER:SAVE-COVERAGE FUNCTION"
@@ -15060,6 +15816,8 @@ versions of SBCL, which have since then been deleted.
 [0b69]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp_fi.htm "COMPILE-FILE (MGL-PAX:CLHS FUNCTION)"
 
 [0baf]: #SB-MANUAL:@FANCY-DOCUMENTATION-WITH-PAX%20MGL-PAX:SECTION "Fancy Documentation with PAX"
+
+[0bd1]: #COMPILE-FILE%20FUNCTION "COMPILE-FILE FUNCTION"
 
 [0bd4]: http://www.lispworks.com/documentation/HyperSpec/Body/d_specia.htm "SPECIAL (MGL-PAX:CLHS DECLARATION)"
 
@@ -15108,6 +15866,8 @@ versions of SBCL, which have since then been deleted.
 [10e5]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmpd_f.htm "COMPILED-FUNCTION-P (MGL-PAX:CLHS FUNCTION)"
 
 [10ff]: http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm "*DEBUG-IO* (MGL-PAX:CLHS VARIABLE)"
+
+[1143]: #SB-MANUAL:@BLOCK-COMPILATION%20MGL-PAX:SECTION "Block Compilation"
 
 [1159]: #SB-SEQUENCE:DOSEQUENCE%20MGL-PAX:MACRO "SB-SEQUENCE:DOSEQUENCE MGL-PAX:MACRO"
 
@@ -15215,6 +15975,8 @@ versions of SBCL, which have since then been deleted.
 
 [229c]: http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm "CONS (MGL-PAX:CLHS NIL)"
 
+[22a1]: #SB-MANUAL:@DEBUGGING-TAIL-CALLS%20MGL-PAX:SECTION "Debugging Tail Calls"
+
 [22df]: #SB-MANUAL:@END-OF-FILE%20MGL-PAX:SECTION "End of File"
 
 [23aa]: #SB-MANUAL:@SB-POSIX-FUNCTION-PARAMETERS%20MGL-PAX:SECTION "Function Parameters"
@@ -15237,6 +15999,8 @@ versions of SBCL, which have since then been deleted.
 
 [2789]: #SB-MANUAL:@USING-PAX%20MGL-PAX:SECTION "Using PAX"
 
+[286e]: #SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION "Block Compilation Difficulties"
+
 [28e7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ensure.htm "ENSURE-GENERIC-FUNCTION (MGL-PAX:CLHS FUNCTION)"
 
 [292d]: #SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION "Historical Interfaces"
@@ -15254,6 +16018,8 @@ versions of SBCL, which have since then been deleted.
 [2c92]: http://www.lispworks.com/documentation/HyperSpec/Body/03_a.htm "\"3.1\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
 
 [2cb9]: http://www.lispworks.com/documentation/HyperSpec/Body/m_push.htm "PUSH (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
+[2ccb]: #SB-MANUAL:@INLINE-EXPANSION%20MGL-PAX:SECTION "Inline Expansion"
 
 [2d20]: #SB-MANUAL:@SB-POSIX-LISP-NAMES%20MGL-PAX:SECTION "Lisp names for C names"
 
@@ -15275,6 +16041,8 @@ versions of SBCL, which have since then been deleted.
 
 [3002]: http://www.lispworks.com/documentation/HyperSpec/Body/m_prog1c.htm "PROG2 (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[3074]: #SB-MANUAL:@TAIL-CALL-OPTIMIZATION%20MGL-PAX:SECTION "Tail Call Optimization"
+
 [309c]: #SB-MANUAL:@HASH-TABLE-EXTENSIONS%20MGL-PAX:SECTION "Hash Table Extensions"
 
 [30e2]: #SB-EXT:PROCESS-OUTPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29 "SB-EXT:PROCESS-OUTPUT (MGL-PAX:STRUCTURE-ACCESSOR SB-IMPL::PROCESS)"
@@ -15292,6 +16060,8 @@ versions of SBCL, which have since then been deleted.
 [3235]: #SB-EXT:*ED-FUNCTIONS*%20VARIABLE "SB-EXT:*ED-FUNCTIONS* VARIABLE"
 
 [326d]: #SB-MANUAL:@STEP-BY-STEP-EXAMPLE-OF-THE-FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION "Step-By-Step Example of the Foreign Function Interface"
+
+[327a]: http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm "PROGV (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [3289]: #SB-GRAY:STREAM-FRESH-LINE%20GENERIC-FUNCTION "SB-GRAY:STREAM-FRESH-LINE GENERIC-FUNCTION"
 
@@ -15331,6 +16101,8 @@ versions of SBCL, which have since then been deleted.
 
 [38d2]: #SB-MANUAL:@LOADS-AND-STORES%20MGL-PAX:SECTION "Loads and Stores"
 
+[392d]: http://www.lispworks.com/documentation/HyperSpec/Body/s_catch.htm "CATCH (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
 [3986]: #SB-ALIEN:EXTERN-ALIEN%20MGL-PAX:MACRO "SB-ALIEN:EXTERN-ALIEN MGL-PAX:MACRO"
 
 [3a4f]: #SB-MANUAL:@EXITING-THE-DEBUGGER%20MGL-PAX:SECTION "Exiting the Debugger"
@@ -15359,6 +16131,10 @@ versions of SBCL, which have since then been deleted.
 
 [3d3c]: #SB-EXT:WITH-LOCKED-HASH-TABLE%20MGL-PAX:MACRO "SB-EXT:WITH-LOCKED-HASH-TABLE MGL-PAX:MACRO"
 
+[3d65]: #SB-MANUAL:@LOCAL-CALL%20MGL-PAX:SECTION "Local Call"
+
+[3d82]: #SB-MANUAL:@DEBUGGING%20MGL-PAX:SECTION "Debugging"
+
 [3ddd]: #SB-MANUAL:@SB-POSIX%20MGL-PAX:SECTION "sb-posix"
 
 [3df6]: #SB-MANUAL:@BIVALENT-STREAMS%20MGL-PAX:SECTION "Bivalent Streams"
@@ -15376,6 +16152,8 @@ versions of SBCL, which have since then been deleted.
 [3f2e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pr_obj.htm "PRINT-OBJECT (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
 [3fb5]: http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm "EQUAL (MGL-PAX:CLHS FUNCTION)"
+
+[3fde]: #SB-EXT:*DEFAULT-SOURCE-EXTERNAL-FORMAT*%20VARIABLE "SB-EXT:*DEFAULT-SOURCE-EXTERNAL-FORMAT* VARIABLE"
 
 [406a]: #SB-THREAD:CONDITION-WAIT%20FUNCTION "SB-THREAD:CONDITION-WAIT FUNCTION"
 
@@ -15415,8 +16193,6 @@ versions of SBCL, which have since then been deleted.
 
 [45ed]: #SB-MANUAL:@ROUNDING%20MGL-PAX:SECTION "Rounding"
 
-[45f3]: #SB-MANUAL:@NOTE-ON-LEXICAL-VARIABLE-ACCESS%20MGL-PAX:SECTION "Note On Lexical Variable Access"
-
 [460c]: #SB-SEQUENCE:PROTOCOL-UNIMPLEMENTED%20CONDITION "SB-SEQUENCE:PROTOCOL-UNIMPLEMENTED CONDITION"
 
 [4619]: #SB-MANUAL:@INTRODUCTION-TO-THE-FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION "Introduction to the Foreign Function Interface"
@@ -15438,6 +16214,8 @@ versions of SBCL, which have since then been deleted.
 [4853]: http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm "LET (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [48f6]: #SB-MANUAL:@SB-ACLREPL-CUSTOMIZATION%20MGL-PAX:SECTION "Customization"
+
+[48fa]: http://www.lispworks.com/documentation/HyperSpec/Body/f_chareq.htm "CHAR= (MGL-PAX:CLHS FUNCTION)"
 
 [4912]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get_in.htm "GET-INTERNAL-REAL-TIME (MGL-PAX:CLHS FUNCTION)"
 
@@ -15482,6 +16260,8 @@ versions of SBCL, which have since then been deleted.
 [4e63]: #SB-MANUAL:@MISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION "Miscellaneous Operations"
 
 [4e78]: #SB-MANUAL:@DETERMINISTIC-PROFILER%20MGL-PAX:SECTION "Deterministic Profiler"
+
+[4e8c]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "SPACE (MGL-PAX:CLHS DECLARATION)"
 
 [4f11]: #SB-INTROSPECT:DEFINITION-SOURCE%20STRUCTURE "SB-INTROSPECT:DEFINITION-SOURCE STRUCTURE"
 
@@ -15575,6 +16355,8 @@ versions of SBCL, which have since then been deleted.
 
 [5cbb]: #SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION "Stack Allocation"
 
+[5cc0]: http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm "VALUES (MGL-PAX:CLHS NIL)"
+
 [5cde]: #SB-MANUAL:@SB-INTROSPECT-TYPES%20MGL-PAX:SECTION "Types and Classes"
 
 [5d2b]: http://www.lispworks.com/documentation/HyperSpec/Body/m_do_do.htm "DO (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -15639,6 +16421,8 @@ versions of SBCL, which have since then been deleted.
 
 [64fa]: #SB-MANUAL:@FOREIGN-TYPES%20MGL-PAX:SECTION "Foreign Types"
 
+[64ff]: #SB-MANUAL:@LOCAL-CALL-RETURN-VALUES%20MGL-PAX:SECTION "Local Call Return Values"
+
 [650d]: http://www.lispworks.com/documentation/HyperSpec/Body/a_lambda.htm "LAMBDA (MGL-PAX:CLHS NIL)"
 
 [6534]: #SB-CONCURRENCY:RECEIVE-PENDING-MESSAGES%20FUNCTION "SB-CONCURRENCY:RECEIVE-PENDING-MESSAGES FUNCTION"
@@ -15697,6 +16481,8 @@ versions of SBCL, which have since then been deleted.
 
 [6ec7]: #SB-MANUAL:@THREADING%20MGL-PAX:SECTION "Threading"
 
+[6ef5]: #SB-MANUAL:@BLOCK-COMPILATION-DECLARATIONS%20MGL-PAX:SECTION "Block Compilation Declarations"
+
 [6f34]: #SB-MANUAL:@SBCL-HOMEPAGE%20MGL-PAX:SECTION "SBCL Homepage"
 
 [6f51]: http://www.lispworks.com/documentation/HyperSpec/Body/r_muffle.htm "MUFFLE-WARNING (MGL-PAX:CLHS RESTART)"
@@ -15728,6 +16514,8 @@ versions of SBCL, which have since then been deleted.
 [738e]: #SB-PROFILE:UNPROFILE%20MGL-PAX:MACRO "SB-PROFILE:UNPROFILE MGL-PAX:MACRO"
 
 [739b]: #SB-MANUAL:@EXIT%20MGL-PAX:SECTION "Exit"
+
+[7426]: #SB-MANUAL:@LOCAL-SELF-RECURSIVE-CALL%20MGL-PAX:SECTION "Local Self-recursive Call"
 
 [7460]: #SB-MANUAL:@SAVING-A-CORE-IMAGE%20MGL-PAX:SECTION "Saving a Core Image"
 
@@ -15783,6 +16571,8 @@ versions of SBCL, which have since then been deleted.
 
 [7f27]: #SB-EXT:EXIT%20FUNCTION "SB-EXT:EXIT FUNCTION"
 
+[7f39]: #SB-MANUAL:@TAIL-RECURSION%20MGL-PAX:SECTION "Tail Recursion"
+
 [7f6c]: #SB-MANUAL:@FOREIGN-THREADS%20MGL-PAX:SECTION "Foreign threads"
 
 [7f9a]: http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm "DEFTYPE (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -15791,9 +16581,11 @@ versions of SBCL, which have since then been deleted.
 
 [80ef]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_by.htm "WRITE-BYTE (MGL-PAX:CLHS FUNCTION)"
 
-[81da]: #SB-MANUAL:@BREAKPOINT-EXAMPLE%20MGL-PAX:SECTION "Breakpoint Example"
-
 [825d]: #SB-MANUAL:@DEBUGGER%20MGL-PAX:SECTION "Debugger"
+
+[8294]: #SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION "Block Compilation Semantics"
+
+[82ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mem_m.htm "MEMBER (MGL-PAX:CLHS FUNCTION)"
 
 [83e1]: http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm "CONDITION (MGL-PAX:CLHS CONDITION)"
 
@@ -15804,6 +16596,8 @@ versions of SBCL, which have since then been deleted.
 [85de]: #SB-ALIEN:DEREF%20FUNCTION "SB-ALIEN:DEREF FUNCTION"
 
 [8607]: #SB-MANUAL:@SB-POSIX-IDIOSYNCRACIES%20MGL-PAX:SECTION "Functions with Idiosyncratic Bindings"
+
+[8679]: #SB-EXT:START-BLOCK%20DECLARATION "SB-EXT:START-BLOCK DECLARATION"
 
 [86d8]: http://www.lispworks.com/documentation/HyperSpec/Body/t_base_s.htm "BASE-STRING (MGL-PAX:CLHS TYPE)"
 
@@ -15839,9 +16633,13 @@ versions of SBCL, which have since then been deleted.
 
 [8c3b]: #SB-MANUAL:@SUPPORT-FOR-UNIX%20MGL-PAX:SECTION "Support For Unix"
 
+[8c75]: #COMPILE%20FUNCTION "COMPILE FUNCTION"
+
 [8c8e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cell_e.htm "CELL-ERROR-NAME (MGL-PAX:CLHS FUNCTION)"
 
 [8cb6]: #STREAM-ELEMENT-TYPE%20GENERIC-FUNCTION "STREAM-ELEMENT-TYPE GENERIC-FUNCTION"
+
+[8e47]: #SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION "Local Calls to Closures"
 
 [8e5b]: #SB-EXT:ADD-IMPLEMENTATION-PACKAGE%20FUNCTION "SB-EXT:ADD-IMPLEMENTATION-PACKAGE FUNCTION"
 
@@ -15852,6 +16650,8 @@ versions of SBCL, which have since then been deleted.
 [8f7a]: #SB-MANUAL:@READER-EXTENSIONS%20MGL-PAX:SECTION "Reader Extensions"
 
 [8f7a8]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_lev.htm "*PRINT-LENGTH* (MGL-PAX:CLHS VARIABLE)"
+
+[9048]: http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_1.htm "SYMBOL-FUNCTION (MGL-PAX:CLHS FUNCTION)"
 
 [90ca]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ash.htm "ASH (MGL-PAX:CLHS FUNCTION)"
 
@@ -15878,6 +16678,8 @@ versions of SBCL, which have since then been deleted.
 [93d2]: #SB-MANUAL:@INPUT-STREAM-METHODS%20MGL-PAX:SECTION "Input stream methods"
 
 [93f4]: #SB-GRAY:FUNDAMENTAL-STREAM%20CLASS "SB-GRAY:FUNDAMENTAL-STREAM CLASS"
+
+[93f7]: http://www.lispworks.com/documentation/HyperSpec/Body/m_psetq.htm "PSETQ (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [9427]: http://www.lispworks.com/documentation/HyperSpec/Body/m_time.htm "TIME (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -15909,11 +16711,11 @@ versions of SBCL, which have since then been deleted.
 
 [986c]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm "DELETE (MGL-PAX:CLHS FUNCTION)"
 
-[98b0]: #SB-MANUAL:@STACK-MOTION%20MGL-PAX:SECTION "Stack Motion"
-
 [99a3]: #SB-SEQUENCE:EMPTYP%20GENERIC-FUNCTION "SB-SEQUENCE:EMPTYP GENERIC-FUNCTION"
 
 [99b6]: http://www.lispworks.com/documentation/HyperSpec/Body/t_float.htm "FLOAT (MGL-PAX:CLHS CLASS)"
+
+[9a0c]: http://www.lispworks.com/documentation/HyperSpec/Body/m_prog_.htm "PROG (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [9a2a]: #SB-SYS:WITH-DEADLINE%20MGL-PAX:MACRO "SB-SYS:WITH-DEADLINE MGL-PAX:MACRO"
 
@@ -15934,8 +16736,6 @@ versions of SBCL, which have since then been deleted.
 [9bed]: #SB-THREAD:SYMBOL-VALUE-IN-THREAD%20FUNCTION "SB-THREAD:SYMBOL-VALUE-IN-THREAD FUNCTION"
 
 [9c07]: #SB-MANUAL:@PROFILING%20MGL-PAX:SECTION "Profiling"
-
-[9c6c]: #SB-MANUAL:@FUNCTION-NAMES%20MGL-PAX:SECTION "Function Names"
 
 [9caa]: http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_of.htm "TYPE-OF (MGL-PAX:CLHS FUNCTION)"
 
@@ -16016,8 +16816,6 @@ versions of SBCL, which have since then been deleted.
 [a867]: #SB-MANUAL:@SB-ACLREPL-EXAMPLE-INITIALIZATION%20MGL-PAX:SECTION "Example Initialization"
 
 [a887]: #SB-ALIEN:ALIEN-CALLABLE-FUNCTION%20FUNCTION "SB-ALIEN:ALIEN-CALLABLE-FUNCTION FUNCTION"
-
-[a8c7]: #SB-MANUAL:@HOW-THE-SOURCE-IS-FOUND%20MGL-PAX:SECTION "How the Source is Found"
 
 [a8ca]: #SB-MANUAL:@SPECIAL-VARIABLES%20MGL-PAX:SECTION "Special Variables"
 
@@ -16117,6 +16915,8 @@ versions of SBCL, which have since then been deleted.
 
 [b81a]: #SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION "Miscellaneous Efficiency Issues"
 
+[b905]: #SB-MANUAL:@CALLING-THE-COMPILER%20MGL-PAX:SECTION "Calling the Compiler"
+
 [b93c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm "STRING (MGL-PAX:CLHS CLASS)"
 
 [ba6a]: #SB-CONCURRENCY:FRLOCK-READ%20MGL-PAX:MACRO "SB-CONCURRENCY:FRLOCK-READ MGL-PAX:MACRO"
@@ -16147,6 +16947,8 @@ versions of SBCL, which have since then been deleted.
 
 [bcf9]: #SB-THREAD:JOIN-THREAD%20FUNCTION "SB-THREAD:JOIN-THREAD FUNCTION"
 
+[bd0a]: #SB-EXT:MAYBE-INLINE%20DECLARATION "SB-EXT:MAYBE-INLINE DECLARATION"
+
 [bd70]: #SB-THREAD:CONDITION-BROADCAST%20FUNCTION "SB-THREAD:CONDITION-BROADCAST FUNCTION"
 
 [bfc5]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ban.htm "BOOLEAN (MGL-PAX:CLHS TYPE)"
@@ -16156,8 +16958,6 @@ versions of SBCL, which have since then been deleted.
 [bffa]: #SB-MANUAL:@DEFAULT-EXTERNAL-FORMAT%20MGL-PAX:SECTION "The Default External Format"
 
 [c052]: #SB-POSIX:FILENAME%20TYPE "SB-POSIX:FILENAME TYPE"
-
-[c066]: #SB-MANUAL:@HOW-ARGUMENTS-ARE-PRINTED%20MGL-PAX:SECTION "How Arguments are Printed"
 
 [c072]: #SB-GRAY:STREAM-LISTEN%20GENERIC-FUNCTION "SB-GRAY:STREAM-LISTEN GENERIC-FUNCTION"
 
@@ -16172,6 +16972,8 @@ versions of SBCL, which have since then been deleted.
 [c1bc]: #SB-EXT:COMPARE-AND-SWAP%20MGL-PAX:MACRO "SB-EXT:COMPARE-AND-SWAP MGL-PAX:MACRO"
 
 [c241]: http://www.lispworks.com/documentation/HyperSpec/Body/t_file_s.htm "FILE-STREAM (MGL-PAX:CLHS CLASS)"
+
+[c276]: #SB-MANUAL:@INLINE-EXPANSION-RECORDING%20MGL-PAX:SECTION "Inline Expansion Recording"
 
 [c27f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm "FLOOR (MGL-PAX:CLHS FUNCTION)"
 
@@ -16189,6 +16991,8 @@ versions of SBCL, which have since then been deleted.
 
 [c381]: #SB-MANUAL:@CALLING-LISP-FROM-C%20MGL-PAX:SECTION "Calling Lisp From C"
 
+[c397]: #SB-MANUAL:@DEBUG-INFORMATION%20MGL-PAX:SECTION "Debug Information"
+
 [c3a0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm "< (MGL-PAX:CLHS FUNCTION)"
 
 [c3d5]: #SB-MANUAL:@LOCAL-FOREIGN-VARIABLES%20MGL-PAX:SECTION "Local Foreign Variables"
@@ -16196,8 +17000,6 @@ versions of SBCL, which have since then been deleted.
 [c3fd]: #SB-THREAD:WITH-MUTEX%20MGL-PAX:MACRO "SB-THREAD:WITH-MUTEX MGL-PAX:MACRO"
 
 [c474]: http://www.lispworks.com/documentation/HyperSpec/Body/t_sgn_by.htm "SIGNED-BYTE (MGL-PAX:CLHS TYPE)"
-
-[c503]: #SB-MANUAL:@DEBUGGER-BANNER%20MGL-PAX:SECTION "Debugger Banner"
 
 [c54e]: #SB-MANUAL:@IMPLEMENTATION-PACKAGES%20MGL-PAX:SECTION "Implementation Packages"
 
@@ -16208,6 +17010,10 @@ versions of SBCL, which have since then been deleted.
 [c624]: #SB-MANUAL:@ASSOCIATIVES%20MGL-PAX:SECTION "Associatives"
 
 [c665]: #SB-MANUAL:@SOCKETS-OVERVIEW%20MGL-PAX:SECTION "Sockets Overview"
+
+[c6ad]: #SB-MANUAL:@SEMI-INLINE-EXPANSION%20MGL-PAX:SECTION "Semi-inline Expansion"
+
+[c6d1]: #SB-MANUAL:@TAIL-POSITION%20MGL-PAX:SECTION "Tail Position"
 
 [c77f]: http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm "STANDARD-CLASS (MGL-PAX:CLHS CLASS)"
 
@@ -16272,6 +17078,8 @@ versions of SBCL, which have since then been deleted.
 [d3c0]: #SB-MANUAL:@COMMERCIAL-SUPPORT%20MGL-PAX:SECTION "Commercial Support"
 
 [d3da]: http://www.lispworks.com/documentation/HyperSpec/Body/f_provid.htm "REQUIRE (MGL-PAX:CLHS FUNCTION)"
+
+[d3e1]: http://www.lispworks.com/documentation/HyperSpec/Body/f_procla.htm "PROCLAIM (MGL-PAX:CLHS FUNCTION)"
 
 [d3ed]: #SB-POSIX:FILENAME-DESIGNATOR%20TYPE "SB-POSIX:FILENAME-DESIGNATOR TYPE"
 
@@ -16357,6 +17165,8 @@ versions of SBCL, which have since then been deleted.
 
 [e11a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get__1.htm "GET-INTERNAL-RUN-TIME (MGL-PAX:CLHS FUNCTION)"
 
+[e1d1]: #SB-EXT:*BLOCK-COMPILE-DEFAULT*%20VARIABLE "SB-EXT:*BLOCK-COMPILE-DEFAULT* VARIABLE"
+
 [e22b]: http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm "AREF (MGL-PAX:CLHS FUNCTION)"
 
 [e297]: #SB-THREAD:MUTEX-OWNER%20FUNCTION "SB-THREAD:MUTEX-OWNER FUNCTION"
@@ -16405,6 +17215,8 @@ versions of SBCL, which have since then been deleted.
 
 [e8d7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_endp.htm "ENDP (MGL-PAX:CLHS FUNCTION)"
 
+[e924]: http://www.lispworks.com/documentation/HyperSpec/Body/f_macro_.htm "MACRO-FUNCTION (MGL-PAX:CLHS FUNCTION)"
+
 [e945]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_by.htm "READ-BYTE (MGL-PAX:CLHS FUNCTION)"
 
 [e964]: http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_ma.htm "SLOT-MAKUNBOUND (MGL-PAX:CLHS FUNCTION)"
@@ -16421,11 +17233,15 @@ versions of SBCL, which have since then been deleted.
 
 [ead6]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm "DEFCLASS (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[eaf9]: #SB-MANUAL:@LET-CALL%20MGL-PAX:SECTION "Let Call"
+
 [ebb7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_5.htm "HASH-TABLE-TEST (MGL-PAX:CLHS FUNCTION)"
 
 [ebea]: http://www.lispworks.com/documentation/HyperSpec/Body/m_declai.htm "DECLAIM (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [ebf7]: #SB-POSIX:FILE-DESCRIPTOR-DESIGNATOR%20TYPE "SB-POSIX:FILE-DESCRIPTOR-DESIGNATOR TYPE"
+
+[ec2e]: #SB-MANUAL:@TAIL-CALL%20MGL-PAX:SECTION "Tail Call"
 
 [edce]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm "LOGNOT (MGL-PAX:CLHS FUNCTION)"
 
@@ -16443,9 +17259,7 @@ versions of SBCL, which have since then been deleted.
 
 [efe2]: http://www.lispworks.com/documentation/HyperSpec/Body/t_generi.htm "GENERIC-FUNCTION (MGL-PAX:CLHS CLASS)"
 
-[f044]: #SB-MANUAL:@SOURCE-LOCATION-AVAILABILITY%20MGL-PAX:SECTION "Source Location Availability"
-
-[f0444]: http://www.lispworks.com/documentation/HyperSpec/Body/a_ration.htm "RATIONAL (MGL-PAX:CLHS NIL)"
+[f044]: http://www.lispworks.com/documentation/HyperSpec/Body/a_ration.htm "RATIONAL (MGL-PAX:CLHS NIL)"
 
 [f0db]: #SB-MANUAL:@PACKAGE-LOCK-VIOLATIONS%20MGL-PAX:SECTION "Package Lock Violations"
 
@@ -16494,10 +17308,6 @@ versions of SBCL, which have since then been deleted.
 [fab8]: #SB-SPROF:PROFILE-CALL-COUNTS%20FUNCTION "SB-SPROF:PROFILE-CALL-COUNTS FUNCTION"
 
 [fae5]: #SB-MANUAL:@INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION "Introspection and Tuning"
-
-[faf1]: #SB-MANUAL:@DEBUGGER-POLICY-CONTROL%20MGL-PAX:SECTION "Debugger Policy Control"
-
-[fb6f]: #SB-MANUAL:@DEBUG-TAIL-RECURSION%20MGL-PAX:SECTION "Debug Tail Recursion"
 
 [fb92]: #SB-ALIEN:MAKE-ALIEN%20MGL-PAX:MACRO "SB-ALIEN:MAKE-ALIEN MGL-PAX:MACRO"
 

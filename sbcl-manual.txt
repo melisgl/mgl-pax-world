@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the clhs, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.360-49f6a4c, generated 2026-10-14 08:07:44. See
+The output is for SBCL version 2.6.9.369-2b6ce6e, generated 2026-10-14 14:07:25. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1170,6 +1170,191 @@ declarations, the effects of various optimization policies, and the
 way that inlining and open coding may cause optimized code to differ
 from a naive translation.
 
+### Calling the Compiler
+
+- [function] compile name &optional (definition (or (and (symbolp name) (macro-function name)) (fdefinition name)))
+
+    Produce a compiled function from definition.
+
+    - If definition is a lambda-expression, it is coerced to a function.
+
+    - If definition is an interpreted function, it is compiled.
+
+    - If definition is already a compiled function, it is returned
+      as-is. (Future versions of SBCL might try to recompile the existing
+      definition, but this is not currently supported.)
+
+    If name is nil, the compiled function is returned as the primary
+    value. Otherwise, the resulting compiled function replaces existing
+    function definition of name, and name is returned as primary value; if
+    name is a symbol that names a macro, its macro-function is replaced
+    and name is returned as primary value.
+
+    Also returns a secondary value which is true if any conditions of type
+    warning occur during the compilation, and nil otherwise.
+
+    Tertiary value is true if any conditions of type error or warning that
+    are not style-warnings occur during compilation, and nil otherwise.
+
+    Also, see the CLHS.
+
+- [function] compile-file input-file &key (output-file "") (verbose *compile-verbose*) (print *compile-print*) (external-format :default) (progress *compile-progress*) trace-file (block-compile *block-compile-default*) entry-points (emit-cfasl *emit-cfasl*)
+
+    Compile input-file, producing a corresponding fasl file and
+    returning its filename.
+
+    - :output-file
+
+        The name of the FASL to output. The returned pathname of the
+        output file may differ from the pathname of the :output-file
+        parameter, e.g. when the latter is a designator for a directory.
+
+    - :verbose
+
+        If true, information indicating what file is being compiled is
+        printed to *standard-output*.
+
+    - :print
+
+        If true, each top level form in the file is printed to *standard-output*.
+
+    - :external-format
+
+        The external format to use when opening the source file. The
+        default is :default which uses the
+        sb-ext:*default-source-external-format*.
+
+    - :block-compile {nil | :specified | t}
+
+        Determines whether multiple functions are compiled together as a
+        unit, resolving function references at compile time. nil means
+        that global function names are never resolved at compilation time.
+        :specified means that names are resolved at compile-time when
+        convenient (as in a self-recursive call), but the compiler doesn't
+        combine top-level defuns. With :specified, an explicit start-block
+        declaration will enable block compilation. A value of t indicates
+        that all forms in the file(s) should be compiled as a unit. The
+        default is the value of sb-ext:*block-compile-default*, which is
+        initially nil.
+
+    - :entry-points
+
+        This specifies a list of function names for functions in the
+        file(s) that must be given global definitions. This only applies
+        to block compilation and is useful mainly when :block-compile t is
+        specified on a file that lacks start-block declarations. If the
+        value is nil (the default), then all functions will be globally
+        defined.
+
+    - :trace-file
+
+        If given, internal data structures are dumped to the specified
+        file, or if a value of t is given, to a file of .trace type
+        derived from the input file name. (non-standard)
+
+    - :emit-cfasl
+
+        (Experimental). If true, outputs the toplevel compile-time effects
+        of this file into a separate .cfasl file.
+
+    Also, see the CLHS.
+
+- [variable] sb-ext:*block-compile-default* nil
+
+    The default value for the :block-compile argument to compile-file.
+
+- [macro] with-compilation-unit options &body body
+
+    Affects compilations that take place within its dynamic extent. It is
+    intended to be e.g. wrapped around the compilation of all files in the
+    same system.
+
+    Following options are defined:
+
+    - :override <boolean-form>
+
+        One of the effects of this form is to delay undefined warnings
+        until the end of the form, instead of giving them at the end of
+        each compilation. If override is nil (the default), then the
+        outermost with-compilation-unit form grabs the undefined warnings.
+        Specifying :override true causes that form to grab any enclosed
+        warnings, even if it is enclosed by another with-compilation-unit.
+
+    - :policy <optimize-declaration-form>
+
+        Provides dynamic scoping for global compiler optimization
+        qualities and restrictions, limiting effects of subsequent
+        optimize proclamations and calls to
+        sb-ext:restrict-compiler-policy to the dynamic scope of body.
+
+        If :override is false, the specified :policy is merged with
+        current global policy. If :override is true, the current global
+        policy, including any restrictions, is discarded in favor of the
+        specified :policy.
+
+        Supplying :policy nil is equivalent to the option not being
+        supplied at all, i.e. dynamic scoping of policy does not take
+        place. If dynamic scoping without changing the current policy is
+        desired, use :policy '(optimize) with :override nil.
+
+        This option is an SBCL-specific experimental extension: Interface
+        subject to change.
+
+    - :source-namestring <namestring-form>
+
+        Attaches the value returned by <namestring-form> to the internal
+        debug-source information as the namestring of the source file.
+        Normally the namestring of the input-file for compile-file is
+        used: this option can be used to provide source-file information
+        for functions compiled using compile, or to override the
+        input-file argument of compile-file.
+
+        Can be accessed using sb-introspect:definition-source-pathname.
+
+        If both an outer and an inner with-compilation-unit provide a
+        :source-namestring, the inner one takes precedence. Unaffected by
+        :override.
+
+        This is an SBCL-specific extension.
+
+    - :source-plist <plist-form>
+
+        Attaches the value returned by <plist-form> to internal
+        debug-source information of functions compiled in within the
+        dynamic extent of body.
+
+        Primarily for use by development environments, in order to e.g.
+        associate function definitions with editor-buffers. Can be
+        accessed using sb-introspect:definition-source-plist.
+
+        If an outer with-compilation-unit form also provide a
+        source-plist, it is appended to the end of the provided
+        source-plist. Unaffected by :override.
+
+        This is an SBCL-specific extension.
+
+    Examples:
+
+        ;; Prevent proclamations from the file leaking, and restrict
+        ;; SAFETY to 3 -- otherwise uses the current global policy.
+        (with-compilation-unit (:policy '(optimize))
+          (restrict-compiler-policy 'safety 3)
+          (load "foo.lisp"))
+
+        ;; Using default policy instead of the current global one,
+        ;; except for DEBUG 3.
+        (with-compilation-unit (:policy '(optimize debug)
+                                :override t)
+          (load "foo.lisp"))
+
+        ;; Same as if :POLICY had not been specified at all: SAFETY 3
+        ;; proclamation leaks out from WITH-COMPILATION-UNIT.
+        (with-compilation-unit (:policy nil)
+          (declaim (optimize safety))
+          (load "foo.lisp"))
+
+    Also, see the CLHS.
+
 ### Diagnostic Messages
 
 #### Diagnostic Severity
@@ -1524,6 +1709,12 @@ messages are printed.
     This is the minimum cost difference between the chosen implementation and
     the next alternative that justifies an efficiency note.
 
+- [variable] sb-ext:*compile-progress* nil
+
+    When this is true, the compiler prints to *standard-output* progress
+    information about the phases of compilation of each function. (This
+    is useful mainly in large block-compilations.)
+
 - [macro] sb-ext:define-source-context name lambda-list &body body
 
     Define how to abbreviate a source context form whose car is
@@ -1785,17 +1976,15 @@ These are the optimization qualities:
 - compilation-speed: How fast the compiler should run. If this is
   high, then some expensive optimizations may be disabled.
 
-- space: How much space the compiled code should take up. Inline
-  expansion is mostly inhibited when space is greater than speed.
-  A value of 0 enables indiscriminate inline expansion. Wide use
-  of a 0 value is not recommended, as it may waste so much space
-  that run time is slowed. See Open Coding and Inline Expansion.
+- space: How much space the compiled code should take up. A high
+  value makes inline functions semi-inlined, and 0 enables
+  semi-inlining of sb-ext:maybe-inline functions (see
+  Semi-inline Expansion).
 
 - debug: How debuggable the program should be. The quality is
   treated differently from the other qualities: each value indicates
   a particular level of debugger information; it is not compared
-  with the other qualities. See Debugger Policy Control for the
-  details.
+  with the other qualities. See Debug Information for the details.
 
 - safety: How much error checking should be done. If speed, space
   or compilation-speed is more important than safety, then
@@ -1815,6 +2004,8 @@ These are the optimization qualities:
   quality. If it is 3, then all notes and most non-serious
   warnings are inhibited. This is useful with declare to suppress
   warnings about unavoidable problems.
+
+See also the :policy argument of with-compilation-unit.
 
 In the following, we discuss extensions related to compiler policies.
 
@@ -1842,98 +2033,6 @@ In the following, we discuss extensions related to compiler policies.
 
     See also :policy option in with-compilation-unit, which can impose
     dynamic scoping on restrictions.
-
-- [macro] with-compilation-unit options &body body
-
-    Affects compilations that take place within its dynamic extent. It is
-    intended to be e.g. wrapped around the compilation of all files in the
-    same system.
-
-    Following options are defined:
-
-    - :override <boolean-form>
-
-        One of the effects of this form is to delay undefined warnings
-        until the end of the form, instead of giving them at the end of
-        each compilation. If override is nil (the default), then the
-        outermost with-compilation-unit form grabs the undefined warnings.
-        Specifying :override true causes that form to grab any enclosed
-        warnings, even if it is enclosed by another with-compilation-unit.
-
-    - :policy <optimize-declaration-form>
-
-        Provides dynamic scoping for global compiler optimization
-        qualities and restrictions, limiting effects of subsequent
-        optimize proclamations and calls to
-        sb-ext:restrict-compiler-policy to the dynamic scope of body.
-
-        If :override is false, the specified :policy is merged with
-        current global policy. If :override is true, the current global
-        policy, including any restrictions, is discarded in favor of the
-        specified :policy.
-
-        Supplying :policy nil is equivalent to the option not being
-        supplied at all, i.e. dynamic scoping of policy does not take
-        place. If dynamic scoping without changing the current policy is
-        desired, use :policy '(optimize) with :override nil.
-
-        This option is an SBCL-specific experimental extension: Interface
-        subject to change.
-
-    - :source-namestring <namestring-form>
-
-        Attaches the value returned by <namestring-form> to the internal
-        debug-source information as the namestring of the source file.
-        Normally the namestring of the input-file for compile-file is
-        used: this option can be used to provide source-file information
-        for functions compiled using compile, or to override the
-        input-file argument of compile-file.
-
-        Can be accessed using sb-introspect:definition-source-pathname.
-
-        If both an outer and an inner with-compilation-unit provide a
-        :source-namestring, the inner one takes precedence. Unaffected by
-        :override.
-
-        This is an SBCL-specific extension.
-
-    - :source-plist <plist-form>
-
-        Attaches the value returned by <plist-form> to internal
-        debug-source information of functions compiled in within the
-        dynamic extent of body.
-
-        Primarily for use by development environments, in order to e.g.
-        associate function definitions with editor-buffers. Can be
-        accessed using sb-introspect:definition-source-plist.
-
-        If an outer with-compilation-unit form also provide a
-        source-plist, it is appended to the end of the provided
-        source-plist. Unaffected by :override.
-
-        This is an SBCL-specific extension.
-
-    Examples:
-
-        ;; Prevent proclamations from the file leaking, and restrict
-        ;; SAFETY to 3 -- otherwise uses the current global policy.
-        (with-compilation-unit (:policy '(optimize))
-          (restrict-compiler-policy 'safety 3)
-          (load "foo.lisp"))
-
-        ;; Using default policy instead of the current global one,
-        ;; except for DEBUG 3.
-        (with-compilation-unit (:policy '(optimize debug)
-                                :override t)
-          (load "foo.lisp"))
-
-        ;; Same as if :POLICY had not been specified at all: SAFETY 3
-        ;; proclamation leaks out from WITH-COMPILATION-UNIT.
-        (with-compilation-unit (:policy nil)
-          (declaim (optimize safety))
-          (load "foo.lisp"))
-
-    Also, see the CLHS.
 
 ### Compiler Errors
 
@@ -2012,8 +2111,8 @@ character position and gives up on the entire source file.
 Since Common Lisp forbids the redefinition of standard functions, the
 compiler can have special knowledge of these standard functions
 embedded in it. This special knowledge is used in various ways (open
-coding, inline expansion, source transformation), but the implications
-to the user are basically the same:
+coding, Inline Expansion, source transformation), but the
+implications to the user are basically the same:
 
 - Attempts to redefine standard functions may be frustrated since
   the function may never be called. Although it is technically
@@ -2097,18 +2196,20 @@ whole program optimization and increased use of the local call
 convention.
 
 Unlike CMUCL, SBCL is able to open-code forward-referenced type
-tests while block compiling. This helps for mutually referential
+tests while block compiling. This helps with mutually referential
 defstructs in particular.
 
-## Debugger
+## Debugging
 
 This chapter documents the debugging facilities of SBCL, including
 the debugger, single-stepper and trace, and the effect of (optimize
 debug) declarations.
 
-### Debugger Entry
+### Debugger
 
-#### Debugger Banner
+#### Debugger Entry
+
+##### Debugger Banner
 
 When you enter the debugger, it looks something like this:
 
@@ -2147,7 +2248,7 @@ current frame.
 
     Should entering the debugger print a beginner-oriented help message?
 
-#### Debugger Invocation
+##### Debugger Invocation
 
 The debugger is invoked when
 
@@ -2185,7 +2286,7 @@ into the debugger.
     In contrast to *debugger-hook*, it is observed by invoke-debugger even when
     called by break.
 
-### Debugger Command Loop
+#### Debugger Command Loop
 
 The debugger is an interactive read-eval-print loop much like the
 normal top level, but some symbols are interpreted as debugger
@@ -2231,7 +2332,7 @@ debugger by using the sb-ext:*debug-print-variable-alist*.
     Initially empty, *debug-print-variable-alist* is typically used to
     provide bindings for printer control variables.
 
-### Stack Frames
+#### Stack Frames
 
 A stack frame is the run-time representation of a call to a
 function; the frame stores the state that a function needs to
@@ -2248,7 +2349,7 @@ remember what it is doing. Frames have:
   stopped to call another function, or because of an interrupt or
   error.
 
-#### Stack Motion
+##### Stack Motion
 
 These commands move to a new stack frame and print the name of the
 function and the values of its arguments in the style of a Lisp
@@ -2265,7 +2366,7 @@ function call:
   Prompts for the number if not supplied. The frame with number 0 is
   the frame where the debugger was entered.
 
-#### How Arguments are Printed
+##### How Arguments are Printed
 
 A frame is printed to look like a function call but with the actual
 argument values in the argument positions.  So the frame for this call
@@ -2326,9 +2427,9 @@ unavailable or not known to be available (Variable Access), then
 #<unavailable-arg> will be printed instead of the argument value.
 
 Note that Open Coding and Inline Expansion affect what frames are
-present in the debugger, see Debugger Policy Control.
+present in the debugger, see Debug Information.
 
-#### Function Names
+##### Function Names
 
 If a function is defined by defun it will appear in backtrace
 by that name. Functions defined by labels and flet will appear as
@@ -2338,7 +2439,7 @@ lambdas will appear as (lambda <lambda-list>).
 ##### Entry Point Details
 
 Sometimes the compiler introduces new functions that are used to
-implement a user function, but are not directly specified in the
+implement a user function but are not directly specified in the
 source. This is mostly done for argument type and count checking.
 
 With recursive or block compiled functions, an additional external
@@ -2349,20 +2450,16 @@ your program. You may also see cleanup frames during the execution
 of unwind-protect cleanup code, and optional for variable argument
 entry points.
 
-#### Debug Tail Recursion
+##### Debugging Tail Calls
 
-The compiler is properly tail recursive. If a function call is
-in a tail recursive position, the stack frame will be deallocated
-at the time of the call, rather than after the call returns.
-Consider this backtrace:
+Tail Call Optimization can eliminate frames. Consider this backtrace:
 
     (BAR ...)
     (FOO ...)
 
-Because of tail recursion, it is not necessarily the case that foo
+Because of tail calls, it is not necessarily the case that foo
 directly called bar. It may be that foo called some other
-function foo2, which then called bar tail-recursively, as in
-this example:
+function foo2, which then tail-called bar, as in this example:
 
     (defun foo ()
       ...
@@ -2376,18 +2473,11 @@ this example:
     (defun bar (...)
       ...)
 
-Usually the elimination of tail-recursive frames makes debugging
-more pleasant, since these frames are mostly uninformative. If there
-is any doubt about how one function called another, it can usually
-be eliminated by finding the source location in the calling frame.
-See Source Location Printing.
+If there is any doubt about how one function called another, it can
+usually be eliminated by finding the source location in the calling
+frame. See Source Location Printing.
 
-The elimination of tail-recursive frames can be prevented by
-disabling tail-recursion optimization, which happens when the debug
-optimization quality is greater than 2. See
-Debugger Policy Control.
-
-#### Unknown Locations and Interrupts
+##### Unknown Locations and Interrupts
 
 The debugger operates using special debugging information attached to
 the compiled code. This debug information tells the debugger what it
@@ -2400,8 +2490,8 @@ displayed.
 
 There are three reasons why a code location could be unknown:
 
-- There is inadequate debug information due to the value of the
-  debug optimization quality. See Debugger Policy Control.
+- There is inadequate Debug Information due to the value of the
+  debug optimization quality.
 
 - The debugger was entered because of an interrupt such as C-c.
 
@@ -2420,7 +2510,7 @@ reached, when the real problem is that the current stack frame can't
 be located. If this happens, return from the interrupt and try
 again.
 
-### Variable Access
+#### Variable Access
 
 There are two ways to access the current frame's local variables in
 the debugger: list-locals and sb-debug:var.
@@ -2472,7 +2562,7 @@ identifier 0 (which is not printed), the second one has identifier
     The result of this function is limited to the availability of
     variable information. This is setfable.
 
-#### Variable Value Availability
+##### Variable Value Availability
 
 The value of a variable may be unavailable to the debugger in portions
 of the program where Lisp says that the variable is defined. If a
@@ -2493,7 +2583,8 @@ frame: any frame farther down the stack will be fine.
 > never be available in the interrupted frame. See
 > Unknown Locations and Interrupts.)
 
-The value of a variable may be unavailable for these reasons:
+If the necessary Debug Information was not recorded, the value of a
+variable is unavailable. This can happen for the following reasons:
 
 - The value of the debug optimization quality may have omitted
   debug information needed to determine whether the variable is
@@ -2508,6 +2599,8 @@ The value of a variable may be unavailable for these reasons:
 - The variable's name is an uninterned symbol (gensym). To save
   space, the compiler only dumps debug information about uninterned
   variables when the debug optimization quality is 3.
+
+The value of a variables may be unavailable also for other reasons:
 
 - The frame's location is unknown (see
   Unknown Locations and Interrupts) because the debugger was
@@ -2524,7 +2617,7 @@ The value of a variable may be unavailable for these reasons:
 
 - The variable is never set and its definition looks like
 
-        (LET ((var1 var2))
+        (let ((var1 var2))
            ...)
 
     In this case, var1 is substituted with var2.
@@ -2533,16 +2626,15 @@ The value of a variable may be unavailable for these reasons:
   case, the reference is substituted with the variable initial
   value.
 
-Since it is especially useful to be able to get the arguments to a
-function, argument variables are treated specially when the speed
-optimization quality is less than 3 and the debug quality is at
-least 1. With this compilation policy, the values of argument
-variables are almost always available everywhere in the function,
-even at unknown locations. For non-argument variables, debug must
-be at least 2 for values to be available, and even then, values are
-only available at known locations.
+To summarize, since it is especially useful to be able to get the
+arguments to a function, values of argument variables are
+available (even at unknown locations) when the speed optimization
+quality is less than 3 and the debug quality is at least 1. For
+non-argument variables, debug must be at least 2 for values to be
+available, and even then, values are only available at known
+locations.
 
-#### Note On Lexical Variable Access
+##### Note On Lexical Variable Access
 
 When the debugger command loop establishes variable bindings for
 available variables, these variable bindings have lexical scope and
@@ -2560,7 +2652,7 @@ variables is that you may assign a value of a type that the compiler
 proved the variable could never take on. This may result in bad
 things happening.
 
-### Source Location Printing
+#### Source Location Printing
 
 One of the debugger's capabilities is source level debugging of
 compiled code.  These commands display the source location for the
@@ -2620,7 +2712,7 @@ source 1 would print:
        (MYMAC))
       ...)
 
-#### How the Source is Found
+##### How the Source is Found
 
 If the code was defined from Lisp by compile or eval, then the source
 can always be reliably located. If the code was defined from a FASL
@@ -2665,7 +2757,7 @@ expand into something different, or if a read-macro ever returns the
 same eq list twice. If you don't define read macros and don't use
 ## in perverted ways, you don't need to worry about this.
 
-#### Source Location Availability
+##### Source Location Availability
 
 Source location information is only available when the debug
 optimization quality is at least 2. If source location information
@@ -2703,9 +2795,9 @@ In other words, the true location lies between the printed location
 and the next conditional (but watch out because the compiler may
 have changed the program on you.)
 
-### Debugger Policy Control
+#### Debug Information
 
-The compilation policy specified by optimize declarations
+The Compiler Policy specified by optimize declarations
 affects the behavior seen in the debugger. The debug quality
 directly affects the debugger by controlling the amount of debugger
 information dumped. Other optimization qualities have indirect but
@@ -2716,40 +2808,36 @@ relative value to evaluate tradeoffs), the debug optimization
 quality is directly translated to a level of debug information. This
 absolute interpretation allows the user to count on a particular
 amount of debug information being available, even when the values of
-the other qualities are changed during compilation. These are the
-levels of debug information that correspond to the values of the
-debug quality:
+the other qualities are changed during compilation. We list what
+debug information is available at different levels of the debug
+quality:
 
-- 0: Only the function name and enough information to allow the
+- 0<=: Only the function name and enough information to allow the
   stack to be parsed.
 
-- > 0: Any level greater than 0 gives level 0 plus all argument
-  variables. Values will only be accessible if the argument variable
-  is never set and speed is not 3. SBCL allows any real value for
-  optimization qualities. It may be useful to specify 0.5 to get
-  backtrace argument display without argument documentation.
+- 1<=: Argument variables. The value will only be available if the
+  argument variable is never set and speed is not 3.
 
-- 1: Level 1 provides argument documentation (printed argument
-  lists) and derived argument/result type information. This makes
-  describe more informative, and allows the compiler to do
-  compile-time argument count and type checking for any calls
-  compiled at run-time. This is the default.
+    Also, argument documentation (printed argument lists) and
+    derived argument/result type information. This makes describe
+    more informative and allows the compiler to do compile-time
+    argument count and type checking for any calls compiled at
+    run-time.
 
-- 2: Level 1 plus all interned local variables, source location
-  information, and lifetime information that tells the debugger when
-  arguments are available (even when speed is 3 or the argument is
-  set).
+- 2<=: Interned local variables, source location information, and
+  lifetime information that tells the debugger when arguments are
+  available (even when speed is 3 or the argument is set).
 
-- > 2: Any level greater than 2 gives level 2 and in addition
-  disables tail-call optimization, so that the backtrace will
-  contain frames for all invoked functions, even those in tail
-  positions.
+- 3: Uninterned variables.
 
-- 3: Level 2 plus all uninterned variables. In addition, lifetime
-  analysis is disabled (even when speed is 3), ensuring that all
-  variable values are available at any known location within the
-  scope of the binding. This has a speed penalty in addition to the
-  obvious space penalty.
+    - In addition, lifetime analysis is disabled (even when speed
+      is 3), ensuring that all variable values are available at any
+      known location within the scope of the binding. This has a
+      speed penalty in addition to the obvious space penalty.
+
+    - Tail Call Optimization is disabled. Thus, backtraces will
+      contain frames for all invoked functions, even those in tail
+      positions.
 
 Inlining of local functions is inhibited so that they may be traced.
 
@@ -2772,12 +2860,12 @@ values of the speed and space qualities also change whether
 functions are inline expanded. If a function is inline expanded,
 then there will be no frame to represent the call, and the arguments
 will be treated like any other local variable. Functions may also be
-semi inline, in which case there is a frame to represent the
-call, but the call is to an optimized local version of the function,
-not to the original function. See Open Coding and Inline Expansion
-for more.
+semi inline (see Semi-inline Expansion), in which case there is a
+frame to represent the call, but the call is to an optimized local
+version of the function, not to the original function. See
+Open Coding and Inline Expansion for more.
 
-### Exiting the Debugger
+#### Exiting the Debugger
 
 These commands get you out of the debugger.
 
@@ -2811,7 +2899,7 @@ These commands get you out of the debugger.
   global function. If the function is redefined in the debugger
   before the frame is restarted, the new function will be used.
 
-### Information Commands
+#### Information Commands
 
 Most of these commands print information about the current frame or
 function, but a few show general information.
@@ -2831,14 +2919,13 @@ function, but a few show general information.
   bottom. Only shows <n> frames if specified. The printing is
   controlled by sb-debug:*debug-print-variable-alist*.
 
-### Breakpoint Commands
+#### Breakpoint Commands
 
 SBCL supports setting of breakpoints inside compiled functions and
 stepping of compiled code. Breakpoints can only be set at known
 locations (see Unknown Locations and Interrupts), so these commands
 are largely useless unless the debug optimize quality is at least
-2 (see Debugger Policy Control). These commands manipulate
-breakpoints:
+2 (see Debug Information). These commands manipulate breakpoints:
 
 - breakpoint <location> [<option> <value>]*: Set a breakpoint in
   some function. <location> may be an integer code location
@@ -2873,7 +2960,7 @@ breakpoints:
   current function. This always steps over function calls, instead
   of stepping into them.
 
-#### Breakpoint Example
+##### Breakpoint Example
 
 Consider this definition of the factorial function:
 
@@ -2949,6 +3036,83 @@ This debugger session demonstrates the use of breakpoints:
 > stepping may be improved enough to subsume the
 > instrumentation-based stepping commands, which have much higher
 > overhead.
+
+#### Single Stepping
+
+SBCL includes an instrumentation-based single-stepper for compiled
+code, which can be invoked via the step macro or from within the
+debugger. See Debug Information for details on enabling stepping
+for compiled code.
+
+The following debugger commands are used for controlling single stepping.
+
+- start: Select the continue restart if one exists and starts
+  single stepping. None of the other single stepping commands can be
+  used before stepping has been started either by using start or
+  by using the standard step macro.
+
+- step: Step into the current form. Stepping will be resumed when
+  the next form that has been compiled with stepper instrumentation
+  is evaluated.
+
+- next: Step over the current form. Stepping will be disabled
+  until evaluation of the form is complete.
+
+- out: Step out of the current frame. Stepping will be disabled
+  until the topmost stack frame that had been stepped into returns.
+
+- stop: Stop the single stepper and resumes normal execution.
+
+- [macro] step form
+
+    The form is evaluated with single stepping enabled. Function calls
+    outside the lexical scope of the form can be stepped into only if the
+    functions in question have been compiled with sufficient debug policy
+    to be at least partially steppable.
+
+    Also, see the CLHS.
+
+### ldb
+
+LDB, the low-level debugger, is implemented in C and can work
+even when the Lisp Debugger cannot due to e.g. heap or stack
+exhaustion. Failed assertions in the low-level runtime (see
+Command-line Options) trigger entering LDB if it's
+
+- available (if SBCL was not compiled with --without-sb-ldb) and
+
+- not disabled (see --disable-ldb in Runtime Options and
+  sb-ext:disable-debugger).
+
+Else, a backtrace of at most 100 stack frames is printed, and SBCL
+exits with a non-zero exit code.
+
+The commands supported can be explored at the LDB prompt by typing
+help followed by an enter.
+
+Also see the related --lose-on-corruption option in
+Runtime Options.
+
+### Enabling and Disabling the Debugger
+
+In certain contexts (e.g. non-interactive applications), it may be
+desirable to turn off the SBCL debugger and ldb (and possibly
+re-enable them).
+
+- [function] sb-ext:disable-debugger
+
+    When invoked, this function will turn off both the Debugger
+    and ldb (the low-level debugger), similar to specifying
+    --disable-debugger (see Toplevel Options) and
+    --disable-ldb (see Runtime Options) on the command line.
+    See also enable-debugger.
+
+- [function] sb-ext:enable-debugger
+
+    Restore the Debugger and ldb if they have been
+    turned off by disable-debugger, --disable-debugger (see
+    Toplevel Options) or --disable-ldb (see
+    Runtime Options).
 
 ### Function Tracing
 
@@ -3119,84 +3283,585 @@ in such cases we recommend using (TRACE FOO :ENCAPSULATE t).
 
     The default value for the :report option to trace.
 
-### Single Stepping
-
-SBCL includes an instrumentation-based single-stepper for compiled
-code, which can be invoked via the step macro or from within the
-debugger. See Debugger Policy Control for details on enabling
-stepping for compiled code.
-
-The following debugger commands are used for controlling single stepping.
-
-- start: Select the continue restart if one exists and starts
-  single stepping. None of the other single stepping commands can be
-  used before stepping has been started either by using start or
-  by using the standard step macro.
-
-- step: Step into the current form. Stepping will be resumed when
-  the next form that has been compiled with stepper instrumentation
-  is evaluated.
-
-- next: Step over the current form. Stepping will be disabled
-  until evaluation of the form is complete.
-
-- out: Step out of the current frame. Stepping will be disabled
-  until the topmost stack frame that had been stepped into returns.
-
-- stop: Stop the single stepper and resumes normal execution.
-
-- [macro] step form
-
-    The form is evaluated with single stepping enabled. Function calls
-    outside the lexical scope of the form can be stepped into only if the
-    functions in question have been compiled with sufficient debug policy
-    to be at least partially steppable.
-
-    Also, see the CLHS.
-
-### ldb
-
-LDB, the low-level debugger, is implemented in C and can work
-even when the Lisp Debugger cannot due to e.g. heap or stack
-exhaustion. Failed assertions in the low-level runtime (see
-Command-line Options) trigger entering LDB if it's
-
-- available (if SBCL was not compiled with --without-sb-ldb) and
-
-- not disabled (see --disable-ldb in Runtime Options and
-  sb-ext:disable-debugger).
-
-Else, a backtrace of at most 100 stack frames is printed, and SBCL
-exits with a non-zero exit code.
-
-The commands supported can be explored at the LDB prompt by typing
-help followed by an enter.
-
-Also see the related --lose-on-corruption option in
-Runtime Options.
-
-### Enabling and Disabling the Debugger
-
-In certain contexts (e.g. non-interactive applications), it may be
-desirable to turn off the SBCL debugger and ldb (and possibly
-re-enable them).
-
-- [function] sb-ext:disable-debugger
-
-    When invoked, this function will turn off both the Debugger
-    and ldb (the low-level debugger), similar to specifying
-    --disable-debugger (see Toplevel Options) and
-    --disable-ldb (see Runtime Options) on the command line.
-    See also enable-debugger.
-
-- [function] sb-ext:enable-debugger
-
-    Restore the Debugger and ldb if they have been
-    turned off by disable-debugger, --disable-debugger (see
-    Toplevel Options) or --disable-ldb (see
-    Runtime Options).
-
 ## Efficiency
+
+### Tail Call
+
+A call to a function is a tail call if nothing has to be done after
+the call returns. That is, when the call returns, the returned
+values are immediately returned from the calling function. Tail
+calls can be compiled to much more efficient code than normal code.
+See <https://en.wikipedia.org/wiki/Tail_call> for more.
+
+Note that both Local Calls and full calls can be tail calls.
+
+#### Tail Call Optimization
+
+SBCL performs tail call optimization (TCO) although this is not
+required by the Common Lisp standard.
+
+In Lisp terms, you can think of TCO as converting a function call to
+a psetq that assigns the argument values to the called function's
+variables, followed by a go to the start of the called function.
+This makes clear an inherent efficiency advantage of tail calls: in
+addition to not having to allocate a stack frame, there is no need
+to prepare for the call to return (e.g. by computing a return PC).
+
+Consider the following trivial example:
+
+    (defun fun1 (x)
+      (fun2 x x))
+
+FUN1 is compiled to native code that modifies its frame
+(to have the arguments of fun2 in the right places) and control is
+transferred via a single jump instruction to fun2.
+
+In general, a call is compiled to a tail call if it is in
+Tail Position and the debug optimization quality is at most 2.
+Thus, by default, all calls in tail position are compiled to tail
+calls. See Debugging Tail Calls.
+
+#### Tail Position
+
+A call is said to be in tail position unless it is enclosed by at
+least one of the following:
+
+- a special binding (e.g. by let, progv),
+
+- a catch,
+
+- an unwind-protect,
+
+- a block and the block name has been closed over,
+
+- a tagbody and a go tag has been closed over.
+
+These inhibit tail calls because they require cleanups when the
+stack is unwound.
+
+#### Tail Recursion
+
+Tail recursion is when a function makes a Tail Call to itself.
+In this example, the recursive call to myfun is tail-recursive:
+
+    (defun myfun (x)
+      (if (oddp (random x))
+          (isqrt x)
+          (myfun (1- x))))
+
+Because it is a Tail Call, tail recursion can be compiled to much
+more efficient code than general recursion. In fact, tail recursion
+is equivalent to iteration both semantically and in efficiency.
+
+Why would you want to write a program recursively when you can write
+it using a loop? Well, the main answer is that recursion is a more
+general mechanism, so it can express some solutions simply that are
+awkward to write as a loop. Some programmers also feel that
+recursion is a stylistically preferable way to write loops because
+it avoids assigning variables. For example, instead of writing
+
+    (defun fun1 (x)
+      (something x))
+    
+    (defun fun2 (y)
+      (other-thing y))
+    
+    (do ((x 7 (fun2 (fun1 x))))
+        (nil))
+
+... you can write
+
+    (defun fun1 (x)
+      (fun2 (something x)))
+    
+    (defun fun2 (y)
+      (fun1 (other-thing y)))
+    
+    (fun1 7)
+
+The tail-recursive definition is actually more efficient, in
+addition to being (arguably) clearer. As the number of functions and
+the complexity of their call graph increases, the simplicity of
+using recursion becomes compelling. Consider the advantages of
+writing a large finite-state machine with separate tail-recursive
+functions instead of using a single huge prog.
+
+### Local Call
+
+The compiler supports two kinds of function call: full call and local
+call. Full call is the standard calling convention; its late binding
+and generality make Lisp what it is but create unavoidable
+overheads. When the compiler can compile the calling function and
+the called function simultaneously, it can use local call to avoid
+some of this overhead. Local call is really a collection of
+compilation strategies that omit some aspect of full call. In some
+cases, local call can be totally free.
+
+Local call makes the use of the lexical function binding forms flet
+and labels much more efficient. A local call is always faster than a
+full call, and in many cases it is much faster. Similarly, local
+call is a natural approach to block compilation (see compile-file),
+a compilation technique that resolves function references at compile
+time. Block compilation speeds up function calls but increases
+compilation times and prevents function redefinition.
+
+#### Local Self-recursive Call
+
+Local Call is used when a function defined by defun calls
+itself and block compilation is used (see compile-file). For
+example:
+
+    (defun fact (n)
+      (if (zerop n)
+          1
+          (* n (fact (1- n)))))
+
+This use of local call speeds recursion but can also complicate
+debugging since trace will only show the first call to FACT and not
+the recursive calls. This is because the recursive calls directly
+jump to the start of the function and don't indirect through
+symbol-function. This is similar to Debugging Tail Calls.
+
+#### Let Call
+
+Because Local Call avoids unnecessary call overheads, the compiler
+internally uses local call to implement some macros and special
+forms that are not normally thought of as involving a function call.
+For example, this let:
+
+    (let ((a (foo))
+          (b (bar)))
+      ...)
+
+is internally represented as though it was macroexpanded into:
+
+    (funcall #'(lambda (a b)
+                 ...)
+             (foo)
+             (bar))
+
+which results in just as good code as compiling let directly, but it
+also benefits local calls that are semantically the same as let. For
+example, these definitions are all the same as far as the compiler
+is concerned:
+
+    (defun foo ()
+      ...some other stuff...
+      (let ((a something))
+        ...some stuff...))
+    
+    (defun foo ()
+      (flet ((localfun (a)
+               ...some stuff...))
+        ...some other stuff...
+        (localfun something)))
+    
+    (defun foo ()
+      (let ((funvar #'(lambda (a)
+                        ...some stuff...)))
+        ...some other stuff...
+        (funcall funvar something)))
+
+Although local call is most efficient when the function is called
+only once, a call doesn't have to be equivalent to a let to be more
+efficient than full call. All local calls avoid the overhead of
+argument count checking and keyword argument parsing, and there are
+a number of other advantages that apply in many common situations.
+
+#### Local Calls to Closures
+
+Local Call allows for much more efficient use of closures, since the
+closure environment doesn't need to be allocated on the heap or even
+stored in memory at all. In this example, there is no penalty for
+localfun referencing a and b:
+
+    (defun foo (a b)
+      (flet ((localfun (x)
+               (1+ (* a b x))))
+        (if (= a b)
+            (localfun (- a))
+            (localfun a))))
+
+In local call, the compiler effectively passes closed-over values as
+extra arguments, so there is no need for you to "optimize"
+localfun by explicitly passing in lexically visible values.
+
+> Note: indirect value cells are currently always allocated on the
+> heap when a variable is both assigned to (with setq or setf) and
+> closed over, regardless of whether the closure is a local function
+> or not. This is another reason to avoid setting variables when you
+> don't have to.
+
+#### Local Tail Call
+
+Local tail calls are particularly efficient because they combine the
+benefits of Local Calls (simplified calling convention) and
+Tail Calls (reusing the stack frame). Scheme programmers write
+loops with tail-recursive local calls instead of using the
+imperative go and setq. This has not caught on in the Common Lisp
+community for historical reasons and because the standard does not
+require tail calls. In SBCL, users can choose to write loops such as
+
+    (defun recurse-fact (n)
+      (labels ((loop* (n total)
+                 (if (zerop n)
+                     total
+                     (loop* (1- n) (* n total)))))
+        (loop* n 1)))
+
+which is compiled to just as efficient code as
+
+    (defun loop-fact (n)
+      (let ((r 1))
+        (loop for i downfrom n above 0
+              do (setq r (* i r)))
+         r))
+
+#### Local Call Return Values
+
+
+One of the more subtle costs of full call comes from allowing
+arbitrary numbers of return values. This overhead can be avoided in
+Local Calls to functions that always return the same
+number of values. For efficiency reasons (as well as stylistic
+ones), you should write functions so that they always return the
+same number of values. This may require passing extra nil arguments
+to values in some cases, but the result is more efficient, not less
+so.
+
+### Block Compilation
+
+Block compilation allows calls to global functions defined by
+defun to be compiled as Local Calls. The function call can be in a
+different top-level form than the defun or even in a different file.
+
+In addition, block compilation allows the declaration of the entry
+points to the block-compiled portion. An entry point is a function
+that may be called from outside the block-compiled unit. If a
+function is not an entry point, then it can be compiled more
+efficiently since all calls are known at compile time. In
+particular, if a function is only called in one place, then it will
+be let converted. This effectively inline expands the function but
+without the code duplication that results from defining the function
+normally and then declaring it inline.
+
+The main advantage of block compilation is that it preserves
+efficiency in programs even when (for readability and syntactic
+convenience) they are broken up into many small functions. There is
+absolutely no overhead for calling a non-entry point function that
+is defined purely for modularity (i.e. called only in one place).
+
+Block compilation also allows for more unboxed and non-descriptor
+arguments and return values in non-trivial programs.
+
+#### Block Compilation Semantics
+
+The effect of block compilation can be envisioned as the compiler
+turning all the defuns in the block-compiled unit into a single
+labels form. For example,
+
+    (declaim (sb-ext:start-block fun1 fun3))
+    
+    (defun fun1 ()
+      ...)
+    
+    (defun fun2 ()
+      ...
+      (fun1)
+      ...)
+    
+    (defun fun3 (x)
+      (if x
+          (fun1)
+          (fun2)))
+    
+    (declaim (sb-ext:end-block))
+
+becomes
+
+    (labels ((fun1 ()
+               ...)
+             (fun2 ()
+               ...
+               (fun1)
+               ...)
+             (fun3 (x)
+               (if x
+                   (fun1)
+                   (fun2))))
+      (setf (fdefinition 'fun1) #'fun1)
+      (setf (fdefinition 'fun3) #'fun3))
+
+Calls between the block-compiled functions are Local Calls, so
+changing the global definition of fun1 will have no effect on what
+fun2 does; fun2 will keep calling the old fun1.
+
+The entry points fun1 and fun3 are still installed in
+symbol-function as the global definitions of the functions, so a
+full call to an entry point works just as before. However, fun2
+is not an entry point, so it is not globally defined. In addition,
+fun2 is only called in one place, so it will be let converted.
+
+#### Block Compilation Declarations
+
+The following declarations allow fine-grained control of block
+compilation. They are only legal as global declarations (declaim or
+proclaim).
+
+- [declaration] sb-ext:start-block
+
+    Syntax: (sb-ext:start-block &rest entry-point-names)
+
+    Only valid as a global proclamation.
+
+    When processed by the compiler, this declaration marks the start of a
+    Block Compilation unit and specifies the entry points to
+    that block. If no entry points are specified, then all functions are
+    made into entry points. If already block compiling, then the compiler
+    ends the current block and starts a new one.
+
+- [declaration] sb-ext:end-block
+
+    Syntax: (sb-ext:end-block &rest symbols)
+
+    Only valid as a global proclamation.
+
+    This declaration ends a Block Compilation unit without
+    starting a new one. This is useful mainly when only a portion of a
+    file is worth block compiling.
+
+#### Block Compilation Difficulties
+
+The main problem with block compilation is that the compiler uses
+large amounts of memory when it is block compiling. This places an
+upper limit on the amount of code that can be block compiled as a
+unit. To make best use of block compilation, it is necessary to
+locate the parts of the program containing many internal calls, and
+then add the appropriate sb-ext:start-block declarations. When
+writing new code, it is a good idea to put in block compilation
+declarations from the very beginning, since writing block
+declarations correctly requires accurate knowledge of the program's
+function call structure. If you want to initially develop code with
+full incremental redefinition, you can compile with
+sb-ext:*block-compile-default* set to nil (the default).
+
+Note that if a defun appears in a non-null lexical environment, then
+calls to it cannot be block compiled.
+
+Unless files are very small, it is probably impractical to block
+compile multiple files as a unit by specifying a list of files to
+compile-file. Semi-inline Expansion provides another way to extend
+block compilation across file boundaries.
+
+### Inline Expansion
+
+SBCL can expand almost any function inline, including functions
+with keyword arguments. The only restrictions are that keyword
+argument keywords in the call must be constant, and that global
+function definitions (defun) must be done in a null lexical
+environment (not nested in a let or other binding form.) Local
+functions (e.g. flet) can be inline expanded in any environment.
+Combined with source-level optimization, inline expansion can be
+used for things that would otherwise require macros for efficient
+implementation. In SBCL, macros don't have any efficiency advantage,
+so they need only be used where a macro's syntactic flexibility is
+required.
+
+Inline expansion is a compiler optimization technique that reduces
+the overhead of a function call by simply not doing the call:
+instead, the compiler effectively rewrites the program to appear as
+though the definition of the called function was inserted at each
+call site. In Lisp, this is straightforwardly expressed by inserting
+the lambda corresponding to the original definition. Consider
+
+    (declaim (inline my-1+))
+    (defun my-1+ (x)
+      (+ x 1))
+
+With this definition, (my-1+ someval) is equivalent
+to ((lambda (x) (+ x 1)) someval).
+
+- [variable] sb-ext:*inline-expansion-limit* 50
+
+    An upper limit on the number of inline function calls that will be
+    expanded in any given component (single function or block
+    compilation unit).
+
+Regardless of this limit, expanding a large function inline can
+increase the size of a program considerably. If the program becomes
+too large, inline expansion hurts speed rather than helping it,
+since hardware resources such as physical memory and cache will be
+exhausted. Inline expansion is called for:
+
+- When profiling has shown that a relatively simple function is
+  called so often that a large amount of time is being wasted in the
+  calling of that function (as opposed to running in that function).
+  If a function is complex, it will take a long time to run relative
+  the time spent in call, so the speed advantage of inline expansion
+  is diminished at the same time the space cost of inline expansion
+  is increased. Of course, if a function is rarely called, then the
+  overhead of calling it is also insignificant.
+
+- With functions so simple that they take less space to inline
+  expand than would be taken to call the function (such as my-1+
+  above). It would require intimate knowledge of the compiler to be
+  certain when inline expansion would reduce space, but it is
+  generally safe to inline expand functions whose definition is a
+  single function call, or a few calls to simple functions.
+
+In addition to this speed/space tradeoff from inline expansion's
+avoidance of the call, inline expansion can also reveal
+opportunities for optimization. SBCL's extensive source-level
+optimization can make use of context information from the caller to
+tremendously simplify the code resulting from the inline expansion
+of a function.
+
+The main form of caller context is local information about the
+actual argument values: what the argument types are and whether the
+arguments are constant. Knowledge about argument types can eliminate
+run-time type tests (e.g. for generic arithmetic). Constant
+arguments in a call provide opportunities for constant folding
+optimization after inline expansion.
+
+A hidden way that constant arguments are often supplied to functions
+is through the defaulting of unsupplied optional or keyword arguments.
+There can be a huge efficiency advantage to inline expanding functions
+that have complex keyword-based interfaces, such as this definition of
+the member function:
+
+    (declaim (inline member))
+    (defun member (item list &key
+                   (key #'identity)
+                   (test #'eql testp)
+                   (test-not nil notp))
+      (do ((list list (cdr list)))
+          ((null list) nil)
+        (let ((car (car list)))
+          (if (cond (testp
+                     (funcall test item (funcall key car)))
+                    (notp
+                     (not (funcall test-not item (funcall key car))))
+                    (t
+                     (funcall test item (funcall key car))))
+              (return list)))))
+
+After inline expansion,
+
+    (member a l :key #'foo-a :test #'char=)
+
+is simplified to the obvious code:
+
+    (do ((list list (cdr list)))
+        ((null list) nil)
+      (let ((car (car list)))
+        (if (char= item (foo-a car))
+            (return list))))
+
+In this example, there could easily be more than an order of
+magnitude improvement in speed. In addition to eliminating the
+original call to member, inline expansion also allows the calls to
+char= and foo-a to be open-coded. We go from a loop with three
+tests and two calls to a loop with one test and no calls.
+
+#### Inline Expansion Recording
+
+Inline expansion requires that the source for the inline expanded
+function to be available when calls to the function are compiled.
+The compiler doesn't remember the inline expansion of every
+function, since that would take an excessive amount of space.
+Instead, the programmer must tell the compiler to record the inline
+expansion before the definition of the inline expanded function is
+compiled. This is done by globally declaring the function inline
+before the function is defined, by using the inline and
+sb-ext:maybe-inline declarations.
+
+In addition to recording the inline expansion of inline functions at
+the time the function is compiled, compile-file also puts the inline
+expansion in the output file. When the output file is loaded, the
+inline expansion is made available for subsequent compilations;
+there is no need to compile the definition again to record the
+inline expansion.
+
+If a function is declared inline, but no expansion is recorded, then
+the compiler will give style warning like
+
+    ; caught STYLE-WARNING:
+    ;   Call to MY-1+ could not be inlined because its source code
+    ;   was not saved. A global INLINE or SB-EXT:MAYBE-INLINE proclamation must be
+    ;   in effect to save function definitions for inlining.
+
+If you get this, check that the inline declaration appears before
+the defun, which in turn is before the calls that are to be inline
+expanded. Alternatively, the style warning can be silenced by
+declaring the function notinline at the call site.
+
+This style warning will also be given if the inline expansion could
+not be recorded because the defun was in a non-null lexical
+environment.
+
+#### Semi-inline Expansion
+
+Semi-inline expansion shares a single copy of a function across all
+the calls in a component by converting the inline expansion into a
+Local Call. This takes up less space when there are multiple calls
+but also provides less opportunity for context-dependent
+optimization. When there is only one call, the result is identical
+to normal Inline Expansion.
+
+The inlining decision takes into account the inlining declaration of
+the function to be called and the optimization qualities in effect,
+where both are taken at the call site.
+
+- sb-ext:maybe-inline: Semi-inlined if space is 0; else, not
+  inlined at all.
+
+- inline: Semi-inlined if (< speed space) or (< speed
+  compilation-speed); else, inlined normally.
+
+- [declaration] sb-ext:maybe-inline
+
+    Syntax: (sb-ext:maybe-inline &rest function-names)
+
+    The maybe-inline declaration is similar to inline but indicates that
+    inline expansion may sometimes be desirable, rather than saying that
+    inline expansion should almost always be done. When used in a global
+    declaration, it causes the expansions for the named functions to be
+    recorded by defun.
+
+    When its expansion is recorded, a call to a function that is
+    maybe-inline is semi-inlined if space is 0, where both the
+    maybe-inline declaration and the value of the space optimization
+    quality is at the call site. If space is non-zero, then the call is
+    not inlined.
+
+Note that the use of the sb-ext:maybe-inline declaration followed by
+the defun is preferable to the standard idiom of
+
+    (declaim (inline myfun))
+    (defun myfun () ...)
+    (declaim (notinline myfun))
+    
+    ;; Calls to MYFUN here are not inline expanded.
+    
+    (defun somefun ()
+      (declare (inline myfun))
+      ;; Calls to MYFUN here are inline expanded.
+      ...)
+
+The problem with using notinline in this way is that it does more
+than just suppress inline expansion: it also forbids the compiler to
+use any knowledge of myfun until a later inline declaration
+overrides the notinline. This prevents compiler warnings about
+incorrect calls to the function and also prevents
+Block Compilation.
+
+When the goal is merely to control whether inline expansion is done
+by default, it is preferable to use sb-ext:maybe-inline rather than
+notinline. The notinline declaration should be reserved for those
+special occasions when a function may be redefined at run-time, so
+the compiler must be told that the obvious definition of a function
+is not necessarily the one that will be in effect at the time of the
+call.
 
 ### Slot Access
 
@@ -3217,8 +3882,8 @@ specializer parameter of the method and is never assigned to. The
 cost is roughly 1.6 times that of an open coded structure slot
 accessor.
 
-Second most efficient way is to use a CLOS slot accessor, or
-slot-value with a constant slot name argument, but in circumstances
+Second most efficient way is to use a CLOS slot accessor or
+slot-value with a constant slot name argument but in circumstances
 other than specified above. This may be up to 3 times as slow as the
 method described above.
 
@@ -3539,14 +4204,6 @@ sections
 - Type Inference
 
 - Source Optimization
-
-- Tail Recursion
-
-- Local Call
-
-- Block Compilation
-
-- Inline Expansion
 
 - Object Representation
 
