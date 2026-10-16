@@ -5,10 +5,10 @@
 This is an unofficial rendering of the SBCL Manual
 using MGL-PAX with the same content as the
 official version at <https://www.sbcl.org/> but with heavy linking
-internally, to the clhs, and to the source code on
+internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.396-dd3739d, generated 2026-10-16 17:04:38. See
+The output is for SBCL version 2.6.9.404-6a2151c, generated 2026-10-16 21:47:36. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -60,8 +60,9 @@ The SBCL project cannot verify the accuracy of the information or
 the competence of the people listed, and they have provided their
 own blurbs below: you must make your own judgement of suitability
 from the available information -- refer to the links they provide,
-the CREDITS file, mailing list archives, commit messages, and so on.
-Please feel free to ask for advice through Volunteer Support.
+the CREDITS file, mailing list archives, commit messages, and
+so on. Please feel free to ask for advice through
+Volunteer Support.
 
 (At present, no companies or consultants wish to advertise paid
 support or custom SBCL development in this manual.)
@@ -276,7 +277,7 @@ principle, and its implications, and the bugs which still keep the
 compiler from quite satisfying this principle, are discussed in
 Type Declaration Checking.
 
-#### FASL format
+#### Fasl Format
 
 SBCL fasl-format is binary compatible only with the exact SBCL version
 it was generated with. While this is obviously suboptimal, it has
@@ -285,7 +286,7 @@ versions: accidentally breaking things is far too easy and can lead
 to hard to diagnose bugs.
 
 The following snippet handles fasl recompilation automatically for
-ASDF-based systems, and makes a good candidate for inclusion in the
+ASDF-based systems and makes a good candidate for inclusion in the
 user or system initialization file (see Initialization Files).
 
     (require :asdf)
@@ -420,8 +421,8 @@ and inspect) are documented in text available by typing help at
 their command prompts. The extensions for functions which don't have
 their own command prompt (such as trace) are described in their
 documentation strings, unless your SBCL was compiled with the
---without-sb-doc option to omit them, in which case they are only
-readable in the source code.
+--without-sb-doc option to omit them (see Customizing the Build),
+in which case they are only readable in the source code.
 
 #### Additional Documentation Files
 
@@ -430,15 +431,15 @@ include in both SBCL source and binary distributions. The latter are
 often installed along with this manual, e.g. in
 /usr/local/share/doc/sbcl/.
 
-- copying: Licence and copyright summary.
+- COPYING: Licence and copyright summary.
 
-- credits: Authorship information on various parts of SBCL.
+- CREDITS: Authorship information on various parts of SBCL.
 
-- install: Covers installing SBCL from both source and binary
+- INSTALL: Covers installing SBCL from both source and binary
    distributions on your system, and also has some installation
    related troubleshooting information.
 
-- news: Summarizes changes between various SBCL versions.
+- NEWS: Summarizes changes between various SBCL versions.
 
 #### Internals Documentation
 
@@ -460,14 +461,14 @@ doc/FOR-CMUCL-DEVELOPERS file.
 
 IRC channels on <https://libera.chat/>:
 
-- #common-lisp: "Common Lisp, the #1=(programmable . #1#)
-  programming language"
+- #common-lisp: Common Lisp, the #1=(programmable . #1#)
+  programming language
 
-- #lispcafe: "The Lisp Café; sit down, have a drink, chat about
+- #lispcafe: The Lisp Café; sit down, have a drink, chat about
   anything, and enjoy your stay. | <https://www.cliki.net/lispcafe> |
-  Be insuperable to each other".
+  Be insuperable to each other
 
-- #sbcl: "Steel Bank Common Lisp Dev Hangout"
+- #sbcl: Steel Bank Common Lisp Dev Hangout
 
 You can use <https://web.libera.chat> or a normal IRC client.
 
@@ -492,20 +493,20 @@ standout favorites.
 If you are an experienced programmer in other languages but need to
 learn about Common Lisp, some books stand out:
 
-- Practical Common Lisp, by Peter Seibel
+- Practical Common Lisp by Peter Seibel
 
     An excellent introduction to the language, covering both the
     basics and "advanced topics" like macros, CLOS, and packages.
     Available both in print format and on the web:
     <https://gigamonkeys.com/book/>.
 
-- Paradigms Of Artificial Intelligence Programming, by Peter Norvig
+- Paradigms Of Artificial Intelligence Programming by Peter Norvig
 
     Good information on general Common Lisp programming, and many
     nontrivial examples. Whether or not your work is AI, it's a very
     good book to look at.
 
-- On Lisp, by Paul Graham
+- On Lisp by Paul Graham
 
     An in-depth treatment of macros, but not recommended as a first
     Common Lisp book, since it is slightly pre-ANSI so you need to
@@ -514,7 +515,7 @@ learn about Common Lisp, some books stand out:
     focusing solely on macros. Downloadable from
     <https://www.paulgraham.com/onlisp.html>.
 
-- Object-Oriented Programming In Common Lisp, by Sonya Keene
+- Object-Oriented Programming In Common Lisp by Sonya Keene
 
     With the exception of Practical Common Lisp, most introductory
     books don't emphasize CLOS. This one does. Even if you're very
@@ -525,7 +526,7 @@ learn about Common Lisp, some books stand out:
     there are a number of lesser differences as well. This book
     tends to help with the culture shock.
 
-- Art Of Metaobject Programming, by Gregor Kiczales et al.
+- Art Of Metaobject Programming by Gregor Kiczales et al.
 
     Currently the prime source of information on the Common Lisp
     Metaobject Protocol, which is supported by SBCL. Section
@@ -622,16 +623,500 @@ Other major changes since the fork from CMUCL include:
   implements memory pooling internally (and so is simpler and more
   maintainable, but generates more garbage and runs more slowly).
 
+## Getting Started
+
+### Supported Platforms
+
+See <https://sbcl.org/platform-table.html> for the list of supported
+operating systems and architectures.
+
+Some operating systems are more equal than others: most of the
+development and testing is done on x86-64 Linux and x86-64/arm64 Mac
+OS X.
+
+If an underprivileged platform is important to you, you can help by
+e.g. testing during the monthly freeze periods and, most
+importantly, by reporting any problems. See Getting Support and Reporting Bugs.
+
+### Obtaining SBCL
+
+Your package manager may provide prepackaged binaries. On Debian, for
+example, you can install a stable, though possibly older, version of
+SBCL with apt install sbcl. The exact details vary depending on
+your system.
+
+#### Binary Distribution
+
+The latest official binary distributions (tar and zip archives of
+pre-compiled SBCL and its documentation) for selected platforms can
+be downloaded from
+
+- <https://sbcl.org/platform-table.html>
+
+Some older binaries are available at
+
+- <https://sourceforge.net/projects/sbcl/files/sbcl/>
+
+Note that many platforms do not have recent binaries released. In
+that case, get a Source Distribution or check out the
+SBCL Repository, and build SBCL.
+
+If you were lucky enough to have new enough binary distributions,
+unpack the archive with
+
+    bzip2 -cd sbcl-2.6.9-x86-linux-binary.tar.bz2 | tar xvf -
+
+replacing sbcl-2.6.9-x86-linux-binary.tar.bz2 with the name of the
+tarball you downloaded. Now, you can immediately try
+Running without Installation.
+
+Then, enter the directory which was unpacked and skip ahead to
+Installing SBCL to put SBCL in its proper place.
+
+On Windows, you may want to use the MSI installer to unpack and
+install in one step:
+
+    msiexec /i sbcl-2.6.9-x86-64-windows.msi
+
+#### Source Distribution
+
+If there is no suitable Binary Distribution for your platform,
+your next choice is to download a source distribution (a tar or zip
+file with the SBCL sources) from
+
+- <https://sourceforge.net/projects/sbcl/files/sbcl/> or
+
+- <https://github.com/sbcl/sbcl/releases>.
+
+See Building SBCL for the next steps.
+
+#### SBCL Repository
+
+If you want to be on the bleeding edge, you can check out the sources
+of the latest development version (or any previous development
+version, for that matter) by using anonymous GIT to SourceForge:
+
+    $ git clone git://git.code.sf.net/p/sbcl/sbcl sbcl
+
+See <https://sourceforge.net/p/sbcl/sbcl/ci/master/tree/> for
+instructions.
+
+Alternatively, check out the official GitHub mirror at
+<https://github.com/sbcl/sbcl>:
+
+    $ git clone https://github.com/sbcl/sbcl.git
+
+See Building SBCL for the next steps.
+
+> Note: Tracking the repository is not recommended if you're just
+> using SBCL as a tool for other work, but if you're interested in
+> working on SBCL itself, it's a good idea.
+
+### Building SBCL
+
+To build SBCL, you need a Source Distribution or the SBCL Repository
+checked out. In any case, the instructions are the same.
+
+You also need a working C toolchain and a Common Lisp system
+(see Build Prerequisites). You also need approximately 128 MB of
+free RAM+swap.
+
+To build SBCL using another, already installed SBCL version:
+
+    $ sh make.sh
+
+To configure SBCL to install to a non-standard
+location, you can use the --prefix option:
+
+    $ sh make.sh --prefix=/opt/mysbcl
+
+To configure SBCL with a non-standard default dynamic-space size,
+use the --dynamic-space-size option:
+
+    $ sh make.sh --dynamic-space-size=4gb
+    $ sh make.sh --dynamic-space-size=800mb
+
+If mega- or gigabytes are not specified, the number is taken to be
+in megabytes. The standard default is 512Mb for 32-bit systems, and
+1GB for 64-bit systems (with the exception of OpenBSD where 444MB
+are used to fit under default ulimits.)
+
+If you don't already have an SBCL binary installed as sbcl on your
+system, you'll need to tell make.sh what Lisp to use as the
+cross-compilation host (cf. make.sh for detailed instructions on how
+to cross compile). For example, to use CMUCL (assuming it has been
+installed under its default name lisp) as the
+cross-compilation host:
+
+    $ sh make.sh --xc-host='lisp -batch -noinit'
+
+The build may take a long time, especially on older hardware. A
+successful build ends with a message beginning: "The build seems to
+have finished successfully...".
+
+To run the regression tests:
+
+    $ cd ./tests && sh run-tests.sh
+
+To build documentation:
+
+    $ cd ./doc/manual && make
+
+This builds the Info, HTML and PDF documentation from the sb-manual
+contrib. The manual includes documentation strings from the built
+SBCL. If SBCL itself has not been built yet, but an installed one is
+found, documentation strings from the installed version are used.
+
+Now you should have the same src/runtime/sbcl and
+obj/sbcl-home/sbcl.core files that come with the binary
+distribution, the next thing is Installing SBCL.
+
+#### Customizing the Build
+
+You can tweak the *features* set for the resulting Lisp system,
+enabling or disabling features like documentation strings, threads,
+or extra debugging code.
+
+The preferred way to do this is using command-line arguments to
+make.sh:
+
+    --fancy                    Enables a curated set of features.
+    --with-<feature>           Enables a specific feature.
+    --without-<feature>        Disables a specific feature.
+
+#### Build Options
+
+- :sb-doc
+
+    Retain documentation strings found in the system sources in the
+    target SBCL executable. Traditional Common Lisp folk will want this
+    option set.
+
+- :sb-show
+
+    Make more debugging information available (for debugging SBCL
+     itself). If you aren't hacking or troubleshooting SBCL itself, you
+     probably don't want this set.
+
+    At least two varieties of debugging information are enabled by this
+     option:
+
+    - SBCL is compiled with a higher level of optimize debug, so that
+       the debugger can tell more about the state of the system.
+
+    - Various code to print debugging messages, and similar debugging
+       code, is compiled only when this feature is present.
+
+    Note that the extra information recorded by the compiler at this
+     higher level of optimize debug includes the source location forms.
+     In order for the debugger to use this information, it has to re-read
+     the source file. In an ordinary installation of SBCL, this
+     re-reading may not work very well, for either of two reasons:
+
+    - The sources aren't present on the system in the same location that
+       they were on the system where SBCL was compiled.
+
+    - SBCL is using the standard readtable, without the added hackage
+       which allows it to handle things like target features.
+
+    If you want to be able to use the extra debugging information,
+    therefore, be sure to keep the sources around, and run with the
+    readtable configured so that the system sources can be read.
+
+- :sb-ldb
+
+    Enable the ldb, the low-level debugger. In the ideal world you
+    would not need this unless you are messing with SBCL at a very low
+    level (e.g. trying to diagnose GC problems, or trying to debug
+    assembly code for a port to a new CPU). However, experience shows
+    that sooner or later everyone lose()s, in which case sb-ldb can
+    at least provide an informative backtrace.
+
+- :sb-after-xc-core
+
+    This isn't really a target Lisp feature at all but controls
+    whether the build process produces an after-xc.core file. This can
+    be useful for shortening the edit/compile/debug cycle when you
+    modify SBCL's own source code, as in slam.sh. Otherwise you don't
+    need it.
+
+- :sb-show-assem
+
+    Enable extra debugging output in the assem.lisp assembler /
+    scheduler code.
+
+- :sb-dyncount
+
+    Enable code for collecting statistics on usage of various
+    operations, useful for performance tuning of the SBCL system itself.
+    This code is probably pretty stale (having not been tested since the
+    fork from base CMUCL) but might nonetheless be a useful starting
+    point for anyone who wants to collect such statistics in the future.
+
+- :sb-simd-pack
+
+    Enabled automatically by make-config.sh for platforms which
+    implement short vector SIMD intrinsics.
+
+- :cycle-counter
+
+    Enabled automatically by make-config.sh for platforms which
+    implement the %read-cycle-counter VOP. Can be disabled manually:
+    affects time.
+
+- :immobile-space
+
+    Build with support for an additional dynamic heap differing from
+    the main dynamic heap in two ways:
+
+    1. It is guaranteed to reside below 4GB so that all pointers into it
+       fit in 32 bits. (Only an issue for >32 bit address space)
+
+    2. All objects therein are immovable, and space is reclaimed by a
+       mark-and-sweep collector.
+
+    That combination of aspects potentially allows various efficiencies
+    in code generation, especially for the x86-64 backend. The extra
+    space has a fixed size which can only be changed by a rebuild, and
+    out-of-space conditions are not easily preventable, so the space is
+    sized rather generously to sidestep the issue. Additionally, it is
+    assumed that for all objects in the immobile heap, speed of
+    allocation of those objects is relatively unimportant. If unexpected
+    performance regressions are observed, consider disabling this
+    feature and reporting a bug.
+
+- :immobile-code
+
+    Allocate most functions in the immobile space.
+    Enabled by default if supported. The down-side of this feature is
+    that the allocator is significantly slower than the allocator for
+    movable code. If a particular application is performance-constrained
+    by speed of creation of compiled functions (not including closures),
+    the feature can be disabled.
+
+- :compact-instance-header
+
+    Combine the layout pointer, instance-length, and widetag of
+    an instance into a single machine word. This represents a space
+    savings of anywhere from 4% to 8% in typical applications. (Your
+    mileage may vary.)
+
+- :sb-thread
+
+    Enable low-level thread primitives support. See Threading.
+
+    As of SBCL 2.6.9, threads are part of the default build on x86oid
+    Linux, Darwin, and Windows. In fact, threads are mandatory on
+    Windows. Other platforms that support them include FreeBSD, Solaris.
+
+- :sb-futex
+
+    Use futexes as our locking primitive. Only available on Linux.
+
+- :sb-package-locks
+
+    Enable detection of unportable code (when applied to the
+    common-lisp package or SBCL-internal packages) or bad-neighbourly
+    code (when applied to user-level packages), relating to material
+    alteration to packages or to bindings in symbols in packages. See
+    Package Locks.
+
+- :sb-unicode
+
+    Support for the entirety of the 21-bit character space defined by
+    the Unicode consortium, rather than the classical 8-bit ISO-8859-1
+    character set. See Unicode Support.
+
+- :sb-eval
+
+    Support for a full evaluator that can execute all the CL special
+    forms, as opposed to the traditional SBCL evaluator, which called
+    compile for everything complicated. See Interpreter.
+
+- :sb-fasteval
+
+    Support for a different evaluator (interpreter) with improved
+    performance. You can have only one of :sb-eval and :sb-fasteval. See
+    Interpreter.
+
+- :sb-source-locations
+
+    Record source location information for variables, classes,
+    conditions, packages, etc. Gives much better information on
+    M-. in Slime but increases core size by about 100kB.
+
+- :sb-xref-for-internals
+
+    Record xref data for SBCL internals. This can be rather useful for
+    people who want to develop on SBCL itself because it will make
+    M-? (slime-edit-uses) work which lists call/expansion/etc.
+    sites. It will increase the core size by major 5-6MB, though.
+
+- :ansi-compliant-load-truename
+
+    clhs says that *load-truename* has to be bound whenever
+    *load-pathname* is because obviously the spec wanted to mandate that
+     one system call turn into an unlimited number. At least you're
+     correct in saying "it's not my code, it's the OS that's slow".
+     Remove this feature if you want to ignore the technical requirement
+     that *load-truename* be a variable (as opposed to a symbol-macro).
+
+- :largefile
+
+    Some platforms don't use a 32-bit off_t by default, and thus can't
+    handle files larger than 2GB. This feature will control whether
+    we'll try to use platform-specific compilation options to enable a
+    64-bit off_t. The intent is for this feature to be automatically
+    enabled by make-config.sh on platforms where it's needed and known
+    to work, you shouldn't be enabling it manually. You might however
+    want to disable it, if you need to pass file descriptors to foreign
+    code that uses a 32-bit off_t.
+
+- :relocatable-static-space
+
+    Allow static space to be relocatable on start-up.
+
+- :aslr
+
+    Allow Lisp spaces to be randomly allocated anywhere in virtual address
+    space, i.e. the behavior of passing mmap an address of zero.
+    Requires all spaces to be relocatable on start-up.
+
+- :sb-core-compression
+
+    Support zstd-based compressed core files. Enable this feature to
+    compile it in. Obviously, doing so adds a dependency on zstd.
+
+- :sb-safepoint
+
+    On certain thread-enabled platforms, synchronization between
+    threads for the purpose of stopping and starting the world around GC
+    can be performed using safepoints instead of signals. Enable this
+    feature to compile with safepoints and to use them for GC. This is
+    always enabled on :win32.
+
+- :sb-cover-for-internals
+
+    Build the SBCL system itself with code coverage data marks (and
+    sequences in the compiled code to set those marks). Inevitably,
+    this makes the system as a whole slower, but allows coverage of
+    tests to be measured.
+
+#### Troubleshooting the Build
+
+- "GNU Make not found"
+
+    If the GNU make command is not available under the names make,
+    gmake, or gnumake, then define the environment variable
+    GNUMAKE to a name where it can be found.
+
+- Segfaults on Linux with ASLR
+
+    If SBCL segfaults immediately upon startup due to Address Space
+    Layout Randomization (ASLR), you can bypass it by executing the
+    host compiler binary via setarch:
+
+        setarch x86_64 -R sbcl
+
+    See also :aslr in Build Options.
+
+- Build crashes mysteriously, machine becomes unstable, etc
+
+    You may be running out of memory. Try increasing swap, or
+    building SBCL with fewer other programs running simultaneously.
+
+- Other
+
+    - Check that the host lisp you're building with is known to work
+      as an SBCL build host, and that your operating system is
+      supported.
+
+    - Try to do a build without loading any initialization files for
+      the cross-compilation host (for example
+      sh make.sh 'sbcl --userinit /dev/null --sysinit /dev/null').
+
+    - Some GCC versions are known to have bugs that affect SBCL
+      compilation: if the error you're encountering seems related to
+      files under src/runtime, down- or upgrading GCC may help.
+
+    - Ask for help on the mailing lists referenced in
+      Getting Support and Reporting Bugs.
+
+#### Build Prerequisites
+
+All of the following platforms are supported in the sense of
+"should work", but some things like loading foreign object files
+may lag behind on less-used operating systems.
+
+Supported toolchains:
+
+- GNU toolchain
+
+- Sun toolchain with GCC
+
+SBCL can be compiled from source code using (as the host compiler)
+another ANSI-compliant Common Lisp implementation such as
+
+- SBCL
+
+- CMUCL
+
+- CCL (formerly known as OpenMCL)
+
+- CLISP (only some versions: 2.44.1 is OK, 2.47 is not)
+
+- ECL
+
+- XCL
+
+- ABCL (recent versions only, very slow)
+
+Often, it is most convenient to install an SBCL with your system's
+package manager to use as the host.
+
+Note that not every release is tested with every possible host
+compiler. You're most likely to get a clean build with SBCL itself
+as host, otherwise CCL on a PPC and CMUCL elsewhere.
+
+### Installing SBCL
+
+The installation instructions are the same whether you are have
+downloaded a Binary Distribution or built SBCL
+yourself.
+
+The following command installs SBCL and related documentation under
+the /usr/local directory (typically run as root):
+
+    # INSTALL_ROOT=/usr/local sh install.sh
+
+You can also install SBCL as a user, under your home directory:
+
+    $ INSTALL_ROOT=/home/me sh install.sh
+
+That is, install.sh installs SBCL under the directory named by the
+environment variable INSTALL_ROOT.
+
+If INSTALL_ROOT is not specified, SBCL is installed into
+location configured when Building SBCL with the --prefix argument
+of make.sh: for official binary distributions, this is the
+/usr/local directory.
+
+The standard installation procedure, outlined above, is to run
+install.sh, which copies all the files to right places, including
+documentation and contrib modules that have passed their tests. If
+you need to install by hand, see install.sh for details.
+
+Documentation consists of a man page, the SBCL Manual (in info, pdf
+and html formats), and a few additional text files.
+
 ## Starting and Stopping
 
 ### Starting SBCL
 
-#### Running from Shell
-
-To run SBCL, type sbcl at the command line.
-
-You should end up in the toplevel REPL (read-eval-print loop),
-where you can interact with SBCL by typing expressions.
+If SBCL is installed properly and it is in your path, you can simply
+type sbcl at the command line. You should end up in the toplevel
+REPL (read-eval-print loop), where you can interact with SBCL by
+typing expressions.
 
     $ sbcl
     This is SBCL 0.8.13.60, an implementation of ANSI Common Lisp.
@@ -646,7 +1131,15 @@ where you can interact with SBCL by typing expressions.
     * (exit)
     $
 
-Also see Command-line Options and Stopping SBCL.
+See also Command-line Options and Stopping SBCL.
+
+#### Running without Installation
+
+You can quickly run SBCL without installing it by invoking the
+run-sbcl.sh script. This works both with an unpacked
+Binary Distribution and after Building SBCL yourself:
+
+    $ sh run-sbcl.sh
 
 #### Running from Emacs
 
@@ -680,6 +1173,104 @@ Note that SBCL skips the shebang line when it reads the file:
 
     $ sbcl --script hello.lisp
     Hello, World!
+
+#### Parts of SBCL
+
+If you only ever use SBCL packaged for your operating system,
+run it from an installation created with install.sh, run it with run-sbcl.sh, there is no need to worry about the
+files necessary at run-time. If you, for example, want to install
+SBCL manually, package it in a way that deviates from the file
+hierarchy created by install.sh, or run SBCL with your own core
+file saved by sb-ext:save-lisp-and-die, then read on.
+
+The following files play a part in running SBCL.
+
+- The sbcl binary
+
+    This is a standard executable built by compiling and linking an
+    ordinary C program. It provides the runtime environment for the
+    running Lisp image, but it doesn't know much about high-level
+    Lisp stuff (like symbols and printing and objects), so it's
+    pretty useless by itself.
+
+    The binary is src/runtime/sbcl in Binary Distributions and
+    Source Distributions; and it is installed
+    to /usr/local/bin/sbcl by default.
+
+- The sbcl.core file
+
+    This is an image dump written in a
+    special SBCL format that only SBCL understands, and it contains
+    all the high-level Lisp stuff.
+
+    The core file is obj/sbcl-home/sbcl.core in distributions;
+    installed to /usr/local/lib/sbcl/sbcl.core by default. In
+    addition, there are a number of Contributed Modules that extend
+    the basic SBCL functionality.
+
+- The contrib/ directory
+
+    This holds the compiled fasl files for the Contributed Modules,
+    to be loaded on demand.
+
+    The contrib fasl files are in obj/sbcl-home/contrib/ in
+    distributions; installed to /usr/local/lib/sbcl/contrib/ by
+    default.
+
+> Note: Only the binary and the core file are absolutely necessary
+> to start SBCL; the contrib fasls are optional.
+
+#### Finding Parts of SBCL
+
+When you invoke the SBCL binary, it needs to be able to find the other
+Parts of SBCL, namely the sbcl.core file and the
+Contributed Modules in the contrib/ directory.
+
+- Finding sbcl.core
+
+    If the --core runtime option is specified,
+    then its value is used. Example:
+
+        $ sbcl --core /foo/bar/sbcl.core
+
+    Else, the runtime looks for sbcl.core in the following
+    directories until the first match.
+
+    - The directory denoted by the SBCL_HOME environment
+      variable if it is set
+
+    - The current directory
+
+    - The directory of the sbcl binary
+
+    - The ../lib/sbcl/ directory relative to the sbcl binary
+
+    If no core file was found by the above rules, then the runtime
+    exits with an error message.
+
+- Finding contrib/
+
+    Once the runtime loads the core file, the Lisp looks for
+    contrib/ in the following directories until the first match.
+
+    - The directory denoted by the SBCL_HOME environment
+      variable if it is set
+
+    - The directory of sbcl.core
+
+    - The directory ../lib/sbcl relative to sbcl.core
+
+    - The current directory
+
+    - The directory of the sbcl binary
+
+    - The directory ../lib/sbcl relative to the sbcl binary
+
+    The list of directories is the same as for finding the core file
+    except here we also try directories relative to sbcl.core.
+
+    If the contrib/ directory is not found, then no error is
+    signalled immediately, but loading modules will fail.
 
 ### Stopping SBCL
 
@@ -736,171 +1327,6 @@ be caused either by the user pressing Control-D on an attached
 terminal, or by the input stream ending when SBCL is used as part of
 a shell pipeline.
 
-#### Saving a Core Image
-
-SBCL has the ability to save its state as a file for later
-execution. This functionality is important for its bootstrapping
-process, and is also provided as an extension to the user.
-
-- [function] sb-ext:save-lisp-and-die core-file-name &key toplevel executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression
-
-    Save a "core image", i.e. enough information to restart a Lisp
-    process later in the same state, in the file of the specified name.
-    Only global state is preserved: the stack is unwound in the process.
-
-    The following &key arguments are defined:
-
-    - :toplevel
-
-        The function to run when the created core file is resumed. The
-        default function handles command line toplevel option
-        processing (see Toplevel Options) and runs the top
-        level read-eval-print loop. This function returning is equivalent
-        to (sb-ext:exit :code 0) being called.
-
-        toplevel functions should always provide an abort restart:
-        otherwise code they call will run without one.
-
-    - :executable
-
-        If true, arrange to combine the SBCL runtime and the core image to
-        create a standalone executable. If false (the default), the core
-        image will not be executable on its own. Executable images always
-        behave as if they were passed the --noinform runtime option.
-         If :executable is :elf-object, then the resulting core will be
-         wrapped in a .o which requires further linking. (EXPERIMENTAL)
-
-    - :save-runtime-options
-
-        If true, values of Runtime Options
-        --dynamic-space-size and --control-stack-size that were used
-        to start SBCL are stored in the standalone executable, and
-        restored when the executable is run. This also inhibits normal
-        runtime option processing, causing all command line arguments to
-        be passed to the toplevel. If
-        :accept-runtime-options, then --dynamic-space-size and
-        --control-stack-size are still processed by the runtime.
-        Meaningless if :executable is nil.
-
-    - :callable-exports
-
-        This should be a list of symbols to be initialized to the
-        appropriate alien callables on startup. All exported symbols
-        should be present as global symbols in the symbol table of the
-        runtime before the saved core is loaded. When this list is
-        non-empty, the :toplevel argument cannot be supplied.
-
-    - :purify
-
-        If true (the default), then some objects in the restarted core
-        will be memory-mapped as read-only. Among those objects are
-        numeric vectors that were determined to be compile-time constants,
-        and any immutable values according to the language specification
-        such as symbol names.
-
-    - :root-structures
-
-        This should be a list of the main entry points in any newly loaded
-        systems. This need not be supplied, but locality and/or gc
-        performance may be better if they are. This has two different but
-        related meanings: If :purify is true -- and only for Cheney gc --
-        the root structures are those which anchor the set of objects
-        moved into static space. On gencgc -- and only on platforms
-        supporting immobile code -- these are the functions and/or
-        function-names which commence a depth-first scan of code when
-        reordering based on the statically observable call chain. The
-        complete set of reachable objects is not affected per se. This
-        argument is meaningless if neither enabling precondition holds.
-
-    - :environment-name
-
-        This has no purpose; it is accepted only for legacy compatibility.
-
-    - :compression
-
-        This is only meaningful if the runtime was built with the
-        :sb-core-compression feature enabled. If nil (the default),
-        saves to uncompressed core files. If :sb-core-compression was
-        enabled at build-time, the argument may also be an integer from -7
-        to 22, corresponding to zstd compression levels, or t (which is
-        equivalent to the default compression level, 9).
-
-    - :application-type
-
-        Present only on Windows and meaningful only with :executable t.
-        Specifies the subsystem of the executable, :console or :gui.
-        The notable difference is that :gui doesn't automatically create
-        a console window. The default is :console.
-
-    The save/load process changes the values of some global variables:
-
-    - *standard-output*, *debug-io*, etc
-
-        Everything related to open streams is necessarily changed, since
-        the OS won't let us preserve a stream across save and load.
-
-    - *default-pathname-defaults*
-
-        This is reinitialized to reflect the working directory where the
-        saved core is loaded.
-
-    save-lisp-and-die interacts with sb-alien:load-shared-object: see its
-    documentation for details.
-
-    On threaded platforms, only a single thread may remain running after
-    sb-ext:*save-hooks* have run. Applications using multiple threads can
-    be save-lisp-and-die friendly by registering a save-hook that quits
-    any additional threads, and an init-hook that restarts them.
-
-    This implementation is not as polished and painless as you might like:
-
-    - It corrupts the current Lisp image enough that the current process
-      needs to be killed afterwards. This can be worked around by forking
-      another process that saves the core.
-
-    - There is absolutely no binary compatibility of core images between
-      different runtime support programs. Even runtimes built from the
-      same sources at different times are treated as incompatible for this
-      purpose.
-
-    This isn't because we like it this way, but just because there don't
-    seem to be good quick fixes for either limitation and no one has been
-    sufficiently motivated to do lengthy fixes.
-
-- [variable] sb-ext:*save-hooks* nil
-
-    A list of function designators called in an unspecified
-    order before creating a saved core image.
-
-    Unused by SBCL itself; reserved for the user and applications.
-
-In cases where the standard initialization files have already been
-loaded into the saved core and alternative ones should be used (or
-none at all), SBCL allows customizing the initfile pathname
-computation.
-
-- [variable] sb-ext:*sysinit-pathname-function* #<function sb-impl::sysinit-pathname>
-
-    Designator for a function of zero arguments called to obtain a
-    pathname designator for the default sysinit file, or nil. If the
-    function returns nil, no sysinit file is used unless one has been
-    specified on the command line.
-
-- [variable] sb-ext:*userinit-pathname-function* #<function sb-impl::userinit-pathname>
-
-    Designator for a function of zero arguments called to obtain a
-    pathname designator or a stream for the default userinit file, or nil.
-    If the function returns nil, no userinit file is used unless one has
-    been specified on the command line.
-
-To facilitate distribution of SBCL applications using external
-resources, the filesystem location of the SBCL core file being used
-is available from Lisp.
-
-- [variable] sb-ext:*core-pathname* "<site-specific>"
-
-    The absolute pathname of the running SBCL core.
-
 #### Exit on Errors
 
 SBCL can also be configured to exit if an unhandled error occurs,
@@ -950,10 +1376,10 @@ they were intended for the runtime system or the Lisp system.
 - --dynamic-space-size <size>
 
     Size of the dynamic space reserved on startup. The default value
-    is platform-dependent. The units supported are kb (or KiB),
-    mb (or MiB), gb (or GiB), and tb (or TiB). The names
-    are compared case-insensitively, and the default unit is
-    megabytes. Thus, 8, 8mb, and 8mib all mean 8 * 2^20 bytes.
+    is platform-dependent. The units supported are kB (or KiB),
+    MB (or MiB), GB (or GiB), and TB (or TiB). The names are
+    compared case-insensitively, and the default unit is megabytes.
+    Thus, 8, 8mb, and 8mib all mean 8 * 2^20 bytes.
 
 - --control-stack-size <size>
 
@@ -1022,17 +1448,19 @@ they were intended for the runtime system or the Lisp system.
 
     Print SBCL's version information, then exit.
 
+- --end-runtime-options
+
+    End processing of runtime options and pass the rest of the
+    command-line arguments to the toplevel function.
+
 In the future, runtime options may be added to control behaviour
 such as lazy allocation of memory.
 
-Runtime options, including any --end-runtime-options option, are
-stripped out of the command line before the Lisp toplevel logic gets
-a chance to see it.
-
 #### Toplevel Options
 
-The following options are processed and removed by the default
-toplevel (see sb-ext:save-lisp-and-die).
+The following options are supported by the Default Toplevel. If the
+toplevel function was overriden with sb-ext:save-lisp-and-die, the
+set of available toplevel options is likely very different.
 
 - --sysinit <filename>
 
@@ -1111,17 +1539,24 @@ toplevel (see sb-ext:save-lisp-and-die).
     potentially verbose diagnostic messages printed on the standard
     output.
 
+- --end-toplevel-options
+
+    End processing of toplevel options, leaving the rest of the
+    command-line arguments in sb-ext:*posix-argv*.
+
 ### Initialization Files
 
-SBCL processes initialization files with read and eval,
-not load; hence initialization files can be used to set startup
-*package* and *readtable*, and for proclaiming a global optimization
-policy.
+The Default Toplevel supports customization via the system and user
+initialization files. These files with read and eval, not load;
+hence initialization files can be used to set startup *package* and
+*readtable*, and for proclaiming a global optimization policy.
 
-- System Initialization File: Defaults to $SBCL_HOME/sbclrc,
+- System Initialization File: Defaults to sbclrc in the
+  directory where contrib/ is found (see Finding Parts of SBCL),
   or if that doesn't exist to /etc/sbclrc. Can be overridden with
   the command-line option --sysinit or --no-sysinit (see
-  Toplevel Options).
+  Toplevel Options). Set sb-ext:*sysinit-pathname-function* to
+  override the above defaulting behavior.
 
     The system initialization file is intended for system
     administrators and software packagers to configure locations of
@@ -1129,38 +1564,223 @@ policy.
 
 - User Initialization File: Defaults to $HOME/.sbclrc. Can be
   overridden with the command-line option --userinit or
-  --no-userinit (see Toplevel Options).
+  --no-userinit (see Toplevel Options). Set
+  sb-ext:*userinit-pathname-function* to override the above
+  defaulting behavior.
 
     The user initialization file is intended for personal
     customizations, such as loading certain modules at startup,
-    defining convenience functions to use in the REPL,
-    handling automatic recompilation of FASLs (see FASL format),
-    etc.
+    defining convenience functions to use in the REPL, handling
+    automatic recompilation of fasls (see Fasl Format), etc.
 
 Neither initialization file is required.
+
+- [variable] sb-ext:*sysinit-pathname-function* nil
+
+    Controls the sysinit file defaulting of the
+    Default Toplevel. This is nil or a designator for a
+    function of zero arguments.
+
+    - If nil, the default behavior described in
+      Initialization Files is in effect.
+
+    - If a function, it is called by the default toplevel to obtain a
+      pathname designator for the default sysinit file or nil. If the
+      function returns nil, no sysinit file is used unless one has been
+      specified on the command line.
+
+- [variable] sb-ext:*userinit-pathname-function* nil
+
+    Controls the userinit file defaulting of the
+    Default Toplevel. This is nil or a designator for a
+    function of zero arguments.
+
+    - If nil, the default behavior described in
+      Initialization Files is in effect.
+
+    - If a function, it is called by the default toplevel to obtain a
+      pathname designator for the default userinit file or nil. If the
+      function returns nil, no sysinit file is used unless one has been
+      specified on the command line.
 
 ### Initialization and Exit Hooks
 
 SBCL provides hooks into the system initialization and exit.
 
-- [variable] sb-ext:*init-hooks* (sb-simd-internals::update-idispatch-indices)
+- [variable] sb-ext:*init-hooks* nil
 
     A list of function designators called in an unspecified
     order when a saved core image starts up, after the system itself has
     been initialized, but before non-user threads such as the finalizer
     thread have been started.
 
-    Unused by SBCL itself; reserved for the user and applications.
+    Unused by SBCL itself; reserved for the user, contribs and applications.
 
 - [variable] sb-ext:*exit-hooks* nil
 
     A list of function designators called in an unspecified
     order when SBCL process exits.
 
-    Unused by SBCL itself; reserved for the user and applications.
+    Unused by SBCL itself; reserved for the user, contribs and applications.
 
     Using (sb-ext:exit :abort t), or calling exit(3) directly circumvents
     these hooks.
+
+### Core Images
+
+#### Saving a Core Image
+
+SBCL has the ability to save its state as a file for later
+execution. This functionality is important for its bootstrapping
+process and is also provided as an extension to the user.
+
+- [function] sb-ext:save-lisp-and-die core-file-name &key toplevel executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression
+
+    Save a "core image", i.e. enough information to restart a Lisp
+    process later in the same state, in the file of the specified name.
+    Only global state is preserved: the stack is unwound in the process.
+
+    The following &key arguments are defined:
+
+    - :toplevel
+
+        The function to run when the created core file is resumed. The
+        default function handles command line toplevel option
+        processing (see Toplevel Options) and runs the top
+        level read-eval-print loop. This function returning is equivalent
+        to (sb-ext:exit :code 0) being called.
+
+        toplevel functions should always provide an abort restart:
+        otherwise code they call will run without one.
+
+    - :executable
+
+        If true, arrange to combine the SBCL runtime and the core image to
+        create a standalone executable. If false (the default), the core
+        image will not be executable on its own. Executable images always
+        behave as if they were passed the --noinform runtime option.
+         If :executable is :elf-object, then the resulting core will be
+         wrapped in a .o which requires further linking. (EXPERIMENTAL)
+
+    - :save-runtime-options
+
+        If true, values of Runtime Options
+        --dynamic-space-size and --control-stack-size that were used
+        to start SBCL are stored in the standalone executable, and
+        restored when the executable is run. This also inhibits normal
+        runtime option processing, causing all command line arguments to
+        be passed to the toplevel. If
+        :accept-runtime-options, then --dynamic-space-size and
+        --control-stack-size are still processed by the runtime.
+        Meaningless if :executable is nil.
+
+    - :callable-exports
+
+        This should be a list of symbols to be initialized to the
+        appropriate alien callables on startup. All exported symbols
+        should be present as global symbols in the symbol table of the
+        runtime before the saved core is loaded. When this list is
+        non-empty, the :toplevel argument cannot be supplied.
+
+    - :purify
+
+        If true (the default), then some objects in the restarted core
+        will be memory-mapped as read-only. Among those objects are
+        numeric vectors that were determined to be compile-time constants,
+        and any immutable values according to the language specification
+        such as symbol names.
+
+    - :root-structures
+
+        This should be a list of the main entry points in any newly loaded
+        systems. This need not be supplied, but locality and/or gc
+        performance may be better if they are. This has two different but
+        related meanings: If :purify is true -- and only for CheneyGC --
+        the root structures are those which anchor the set of objects
+        moved into static space. On GENCGC -- and only on platforms
+        supporting immobile code -- these are the functions and/or
+        function-names which commence a depth-first scan of code when
+        reordering based on the statically observable call chain. The
+        complete set of reachable objects is not affected per se. This
+        argument is meaningless if neither enabling precondition holds.
+
+    - :environment-name
+
+        This has no purpose; it is accepted only for legacy compatibility.
+
+    - :compression
+
+        This is only meaningful if the runtime was built with the
+        :sb-core-compression feature enabled. If nil (the default),
+        saves to uncompressed core files. If :sb-core-compression was
+        enabled at build-time, the argument may also be an integer from -7
+        to 22, corresponding to zstd compression levels, or t (which is
+        equivalent to the default compression level, 9).
+
+    - :application-type
+
+        Present only on Windows and meaningful only with :executable t.
+        Specifies the subsystem of the executable, :console or :gui.
+        The notable difference is that :gui doesn't automatically create
+        a console window. The default is :console.
+
+    The save/load process changes the values of some global variables:
+
+    - *standard-output*, *debug-io*, etc
+
+        Everything related to open streams is necessarily changed, since
+        the OS won't let us preserve a stream across save and load.
+
+    - *default-pathname-defaults*
+
+        This is reinitialized to reflect the working directory where the
+        saved core is loaded.
+
+    save-lisp-and-die interacts with sb-alien:load-shared-object: see its
+    documentation for details.
+
+    On threaded platforms, only a single thread may remain running after
+    sb-ext:*save-hooks* have run. Applications using multiple threads can
+    be save-lisp-and-die friendly by registering a save-hook that quits
+    any additional threads, and an init-hook that restarts them.
+
+    This implementation is not as polished and painless as you might like:
+
+    - It corrupts the current Lisp image enough that the current process
+      needs to be killed afterwards. This can be worked around by forking
+      another process that saves the core.
+
+    - There is absolutely no binary compatibility of core images between
+      different runtime support programs. Even runtimes built from the
+      same sources at different times are treated as incompatible for this
+      purpose.
+
+    This isn't because we like it this way, but just because there don't
+    seem to be good quick fixes for either limitation and no one has been
+    sufficiently motivated to do lengthy fixes.
+
+- [variable] sb-ext:*save-hooks* nil
+
+    A list of function designators called in an unspecified
+    order before creating a saved core image.
+
+    Unused by SBCL itself; reserved for the user and applications.
+
+To facilitate distribution of SBCL applications using external
+resources, the filesystem location of the SBCL core file being used
+is available from Lisp.
+
+- [variable] sb-ext:*core-pathname* "<varies>"
+
+    The absolute pathname of the running SBCL core.
+
+#### Default Toplevel
+
+SBCL's default toplevel function processes Toplevel Options,
+runs Initialization Files, and provides a REPL.
+
+The toplevel function of Core Images can be specified with the
+:toplevel argument of sb-ext:save-lisp-and-die.
 
 ## Compiler
 
@@ -1205,7 +1825,7 @@ from a naive translation.
 
     - :output-file
 
-        The name of the FASL to output. The returned pathname of the
+        The name of the fasl to output. The returned pathname of the
         output file may differ from the pathname of the :output-file
         parameter, e.g. when the latter is a designator for a directory.
 
@@ -1728,10 +2348,10 @@ messages are printed.
 
 ### Handling of Types
 
-One of the most important features of the SBCL compiler (similar to
-the original CMUCL compiler, also known as Python) is its fairly
-sophisticated understanding of the Common Lisp type system and its
-conservative approach to the implementation of type declarations.
+The most important features of the SBCL compiler (similar
+to the original CMUCL compiler) are its fairly sophisticated
+understanding of the Common Lisp type system and its conservative
+approach to the implementation of type declarations.
 
 These two features reward the use of type declarations throughout
 development, even when high performance is not a concern. Also, as
@@ -1759,23 +2379,21 @@ Implementation Limitations.
 There are three type checking policies available in SBCL, selectable
 via optimize declarations.
 
-- Full Type Checks (safe code)
+- Safe code (>= safety 1) 
 
-    All declarations are considered assertions to be checked at
-    compile or run time, and all type checks are precise. The
-    default compilation policy provides full type checks.
+    Full type checks. All declarations are considered assertions to
+    be checked at compile or run time, and all type checks are
+    precise. The default compilation policy provides full type
+    checks.
 
-    Used when (>= safety 1). 
+- Unsafe code (= safety 0)
 
-- No Type Checks (unsafe code)
-
-    All declarations are believed without assertions. Also disables
-    argument count and array bounds checking.
+    No type checks. All declarations are believed without
+    assertions. Also disables argument count and array bounds
+    checking.
 
     > Warning: Any type errors in code where type checks are not
     > performed are liable to corrupt the heap.
-
-    Used when (= safety 0).
 
 There is a third option called Weak Type Checking, where declared
 types may be simplified into faster to check supertypes: for
@@ -2171,9 +2789,10 @@ to compilation overhead.
 
 An interpreterless SBCL can be compiled by passing
 --without-sb-eval to make.sh, while sb-fasteval can be enabled
-with --without-sb-eval --with-sb-fasteval.
+with --without-sb-eval --with-sb-fasteval (see
+Customizing the Build).
 
-Unlike in some other Lisp implementations, in SBCL interpreted code
+Unlike in some other Lisp implementations, in SBCL, interpreted code
 is not safer or more debuggable than compiled code.
 
 - [variable] sb-ext:*evaluator-mode* :compile
@@ -2453,6 +3072,7 @@ entry points.
 ##### Debugging Tail Calls
 
 Tail Call Optimization can eliminate frames. Consider this backtrace:
+ 
 
     (BAR ...)
     (FOO ...)
@@ -2715,7 +3335,7 @@ source 1 would print:
 ##### How the Source is Found
 
 If the code was defined from Lisp by compile or eval, then the source
-can always be reliably located. If the code was defined from a FASL
+can always be reliably located. If the code was defined from a fasl
 file created by compile-file, then the debugger gets the source
 forms it prints by reading them from the original source file. This
 is a potential problem, since the source file might have moved or
@@ -2837,7 +3457,7 @@ quality:
 
     - Tail Call Optimization is disabled. Thus, backtraces will
       contain frames for all invoked functions, even those in tail
-      positions.
+      positions. 
 
 Inlining of local functions is inhibited so that they may be traced.
 
@@ -3079,7 +3699,8 @@ even when the Lisp Debugger cannot due to e.g. heap or stack
 exhaustion. Failed assertions in the low-level runtime (see
 Command-line Options) trigger entering LDB if it's
 
-- available (if SBCL was not compiled with --without-sb-ldb) and
+- available (if SBCL was not compiled with --without-sb-ldb; see
+  Customizing the Build) and
 
 - not disabled (see --disable-ldb in Runtime Options and
   sb-ext:disable-debugger).
@@ -3090,8 +3711,7 @@ exits with a non-zero exit code.
 The commands supported can be explored at the LDB prompt by typing
 help followed by an enter.
 
-Also see the related --lose-on-corruption option in
-Runtime Options.
+See the related --lose-on-corruption option in Runtime Options.
 
 ### Enabling and Disabling the Debugger
 
@@ -3336,13 +3956,14 @@ least one of the following:
 
 - a tagbody and a go tag has been closed over.
 
-These inhibit tail calls because they require cleanups when the
-stack is unwound.
+These inhibit Tail Call Optimization because they require cleanups
+when the stack is unwound. 
 
 #### Tail Recursion
 
-Tail recursion is when a function makes a Tail Call to itself.
-In this example, the recursive call to myfun is tail-recursive:
+Tail recursion is when a function makes a Tail Call to
+itself. In this example, the recursive call to myfun is
+tail-recursive:
 
     (defun myfun (x)
       (if (oddp (random x))
@@ -3496,8 +4117,8 @@ localfun by explicitly passing in lexically visible values.
 
 Local tail calls are particularly efficient because they combine the
 benefits of Local Calls (simplified calling convention) and
-Tail Calls (reusing the stack frame). Scheme programmers write
-loops with tail-recursive local calls instead of using the
+Tail Calls  (reusing the stack frame). Scheme programmers
+write loops with tail-recursive local calls instead of using the
 imperative go and setq. This has not caught on in the Common Lisp
 community for historical reasons and because the standard does not
 require tail calls. In SBCL, users can choose to write loops such as
@@ -4188,12 +4809,10 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 
 ### Miscellaneous Efficiency Issues
 
-FIXME: The material in the CMUCL manual about getting good
-performance from the compiler should be reviewed, reformatted in
-Texinfo, lightly edited for SBCL, and substituted into this
-manual. In the meantime, the original CMUCL manual is still 95+%
-correct for the SBCL version of the Python compiler. See the
-sections
+FIXME: The remaining material in the CMUCL manual about getting good
+performance from the compiler should be reviewed, and added to this
+section. In the meantime, the original CMUCL manual is still 95+%
+correct for the SBCL's compiler. See the sections
 
 - Advanced Compiler Use and Efficiency Hints
 
@@ -4216,18 +4835,19 @@ sections
 Besides this information from the CMUCL manual, there are a few other
 points to keep in mind.
 
-- The CMUCL manual doesn't seem to state it explicitly, but Python
-  has a mental block about type inference when assignment is
-  involved. Python is very aggressive and clever about inferring the
-  types of values bound with let, let*, inline function call, and so
-  forth. However, it's much more passive and dumb about inferring
-  the types of values assigned with setq, setf, and friends. It
-  would be nice to fix this, but in the meantime don't expect that
-  just because it's very smart about types in most respects it will
-  be smart about types involved in assignments. (This doesn't affect
-  its ability to benefit from explicit type declarations involving
-  the assigned variables, only its ability to get by without
-  explicit type declarations.)
+- The CMUCL manual doesn't seem to state it explicitly, but
+  Python (the CMUCL compiler, not the language) has a mental block
+  about type inference when assignment is involved. Python is very
+  aggressive and clever about inferring the types of values bound
+  with let, let*, inline function call, and so forth. However, it's
+  much more passive and dumb about inferring the types of values
+  assigned with setq, setf, and friends. It would be nice to fix
+  this, but in the meantime don't expect that just because it's very
+  smart about types in most respects it will be smart about types
+  involved in assignments. (This doesn't affect its ability to
+  benefit from explicit type declarations involving the assigned
+  variables, only its ability to get by without explicit type
+  declarations.)
 
 - Since the time the CMUCL manual was written, CMUCL (and thus SBCL)
   has gotten a generational GC. This means that there are some
@@ -4332,7 +4952,7 @@ marker while the value of *read-default-float-format* is rational;
 however, rational numbers are printed in their standard syntax,
 irrespective of the value of *read-default-float-format*.
 
-### Package-Local Nicknames
+### Package-local Nicknames
 
 SBCL allows giving packages local nicknames: they allow short and
 easy-to-use names to be used without fear of name conflict associated
@@ -4602,7 +5222,7 @@ Hash Table Extensions.
 
 - [function] sb-ext:generation-average-age generation
 
-    Average age of memory allocated to GENERATION: average number of times
+    Average age of memory allocated to generation: average number of times
     objects allocated to the generation have seen younger objects promoted to it.
     Available on GENCGC platforms only.
 
@@ -4610,14 +5230,14 @@ Hash Table Extensions.
 
 - [function] sb-ext:generation-bytes-allocated generation
 
-    Number of bytes allocated to GENERATION currently. Available on GENCGC
+    Number of bytes allocated to generation currently. Available on GENCGC
     platforms only.
 
     Experimental: interface subject to change.
 
 - [function] sb-ext:generation-bytes-consed-between-gcs generation
 
-    Number of bytes that can be allocated to GENERATION before that
+    Number of bytes that can be allocated to generation before that
     generation is considered for garbage collection. This value is meaningless for
     generation 0 (the nursery): see bytes-consed-between-gcs instead. Default is
     5% of the dynamic space size divided by the number of non-nursery generations.
@@ -4627,25 +5247,25 @@ Hash Table Extensions.
 
 - [function] sb-ext:generation-minimum-age-before-gc generation
 
-    Minimum average age of objects allocated to GENERATION before that
+    Minimum average age of objects allocated to generation before that
     generation is may be garbage collected. Default is 0.75. See also
     generation-average-age. Can be assigned to using setf. Available on GENCGC
     platforms only.
 
     Experimental: interface subject to change.
 
-- [function] sb-ext:generation-number-of-gcs-before-promotion generation
+- [function] sb-ext:generation-number-of-gcs generation
 
-    Number of times garbage collection is done on GENERATION before
-    automatic promotion to the next generation is triggered. Default is 1. Can be
-    assigned to using setf. Available on GENCGC platforms only.
+    Number of times garbage collection has been done on generation without
+    promotion. Available on GENCGC platforms only.
 
     Experimental: interface subject to change.
 
-- [function] sb-ext:generation-number-of-gcs generation
+- [function] sb-ext:generation-number-of-gcs-before-promotion generation
 
-    Number of times garbage collection has been done on GENERATION without
-    promotion. Available on GENCGC platforms only.
+    Number of times garbage collection is done on generation before
+    automatic promotion to the next generation is triggered. Default is 1. Can be
+    assigned to using setf. Available on GENCGC platforms only.
 
     Experimental: interface subject to change.
 
@@ -5393,8 +6013,8 @@ created by calling the following generic function:
     A list of strings related to the UNIX command line (argv in C).
 
     Runtime Options are processed and removed by the runtime.
-    The default toplevel (see sb-ext:save-lisp-and-die) also removes the
-    Toplevel Options that it processes.
+    The default toplevel also removes Toplevel Options that it
+    processes.
 
 - [function] sb-ext:posix-getenv name
 
@@ -5441,8 +6061,8 @@ External programs can be run with sb-ext:run-program.
     Notes about Unix environments (as in the :environment and :env args):
 
     - The SBCL implementation of run-program, like Perl and many other
-      programs, but unlike the original CMU CL implementation, copies the
-      Unix environment by default.
+      programs, but unlike the original CMUCL implementation, copies
+      the Unix environment by default.
 
     - Running Unix programs from a setuid process, or in any other
       situation where the Unix environment is under the control of someone
@@ -5462,14 +6082,15 @@ External programs can be run with sb-ext:run-program.
     - :env
 
         An old, lossy representation of the new Unix environment, for
-        compatibility with CMU CL. If given, :environment defaults to
+        compatibility with CMUCL. If given, :environment defaults to
         this (converted to the new format). It is an error to specify both
         :env and :environment.
 
     - :search
 
-        Look for program in each of the directories in the child's $PATH
-        environment variable. Otherwise an absolute pathname is required.
+        Look for program in each of the directories in the child's
+        $PATH environment variable. Otherwise an absolute pathname
+        is required.
 
     - :wait
 
@@ -6611,7 +7232,7 @@ code and bring it up on the developers' mailing list.
 
 ### Efficiency Hacks
 
-The sb-ext:purify function (available when #+cheneygc) causes
+The sb-ext:purify function (available with conservative GC) causes
 SBCL first to collect all garbage, then to mark all uncollected
 objects as permanent, never again attempting to collect them as
 garbage. This can cause a large increase in efficiency when using a
@@ -7421,11 +8042,12 @@ calling load-shared-object.
     Load a shared library / dynamic shared object file / similar foreign
     container specified by designated pathname, such as a .so on an ELF platform.
 
-    Locating the shared object follows standard rules of the platform, consult the
-    manual page for dlopen(3) for details. Typically paths specified by
-    environment variables such as LD_LIBRARY_PATH are searched if the pathname has
-    no directory, but on some systems (e.g. Mac OS X) search may happen even if
-    pathname is absolute. (On Windows LoadLibrary is used instead of dlopen(3).)
+    Locating the shared object follows standard rules of the platform,
+    consult the manual page for dlopen(3) for details. Typically paths
+    specified by environment variables such as LD_LIBRARY_PATH are
+    searched if the pathname has no directory, but on some systems (e.g.
+    Mac OS X) search may happen even if pathname is absolute. (On Windows
+    LoadLibrary is used instead of dlopen(3).)
 
     On non-Windows platforms calling load-shared-object again with a pathname
     equal to the designated pathname of a previous call will replace the old
@@ -7689,7 +8311,7 @@ program.
 > Note: There is currently no way to run exit hooks or otherwise
 > undo Lisp initialization gracefully from C.
 
-### Step-By-Step Example of the Foreign Function Interface
+### Step-by-step Example of the Foreign Function Interface
 
 This section presents a complete example of an interface to a somewhat
 complicated C function.
@@ -8949,7 +9571,7 @@ see install for directions.
 
     With those caveats in mind, what you need to know when using it:
 
-    - If calling function causes a non-local transfer of control (ie. an
+    - If calling function causes a non-local transfer of control (i.e. an
       unwind), all normal cleanup forms will be executed.
 
         However, if the interrupt occurs during cleanup forms of an
@@ -10990,7 +11612,7 @@ How to use it:
 - [function] sb-cover:clear-coverage
 
     Clear all files from the coverage database. The files will be re-entered
-    into the database when the FASL files (produced by compiling
+    into the database when the fasl files (produced by compiling
     store-coverage-data optimization policy set to 3) are loaded again into the
     image.
 
@@ -11043,7 +11665,7 @@ sb-grovel is used in a few contributed modules, and it is
 currently compatible only to SBCL. However, if you want to use it,
 here are a few directions.
 
-#### Using sb-grovel in your own ASDF System
+#### Using sb-grovel in Your Own ASDF System
 
 - Create a Lisp package for the foreign constants/functions to go
 into.
@@ -11186,7 +11808,7 @@ structure member.
                                           (argument alien-type)
                                           (argument2 alien-type)))
 
-#### Programming with sb-grovel's structure types
+#### Programming with sb-grovel's Structure Types
 
 Let us assume that you have a grovelled structure definition:
 
@@ -11544,8 +12166,9 @@ as querying their properties and relationships in the running image.
     indirect containers: fdefinitions, eql specializers, classes, and
     thread-local symbol values in other threads fall into this category.
 
-    > Note: calling map-root with a THREAD does not currently map over
-    > conservative roots from the thread registers and interrupt contexts.
+    > Note: calling map-root with a sb-thread:thread does not currently
+    > map over conservative roots from the thread registers and interrupt
+    > contexts.
 
     Experimental: interface subject to change.
 
@@ -11657,7 +12280,7 @@ Algorithm.
 - [function] sb-md5:md5sum-sequence sequence &key (start 0) end
 
     Calculate the MD5 message-digest of data in sequence, which should
-    be a 1d simple-array with element type (unsigned-byte 8). On CMU CL
+    be a 1d simple-array with element type (unsigned-byte 8). On CMUCL
     and SBCL non-simple and non-1d arrays with this element-type are also
     supported.
 
@@ -11736,7 +12359,7 @@ The user is encouraged not to (use-package :sb-posix) but instead
 to use the sb-posix: prefix on all references, as some of the
 symbols symbols contained in the sb-posix package have the same
 name as CL symbols (e.g. open, close, signal). Also, see
-Package-Local Nicknames.
+Package-local Nicknames.
 
 #### Types
 
@@ -12511,7 +13134,7 @@ This sections lists legacy interfaces in various stages of deprecation.
     into late deprecation in November 2012.
 
     This compiler policy was never functional: SBCL has always
-    merged tail calls when it could, regardless of this policy
+    merged Tail Calls when it could, regardless of this policy
     setting. (It was also never officially supported, but several
     code-bases have historically used it.)
 

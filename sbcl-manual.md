@@ -25,7 +25,7 @@
 
         - [2.3.1 Declarations as Assertions][5848]
 
-        - [2.3.2 FASL format][943e]
+        - [2.3.2 Fasl Format][943e]
 
         - [2.3.3 Compiler-only Implementation][0ea6]
 
@@ -61,523 +61,555 @@
 
     - [2.7 History and Implementation of SBCL][2703]
 
-- [3 Starting and Stopping][74c7]
+- [3 Getting Started][361d]
 
-    - [3.1 Starting SBCL][615c]
+    - [3.1 Supported Platforms][aab4]
 
-        - [3.1.1 Running from Shell][984d]
+    - [3.2 Obtaining SBCL][293c]
 
-        - [3.1.2 Running from Emacs][9d96]
+        - [3.2.1 Binary Distribution][91e1]
 
-        - [3.1.3 Shebang Scripts][c7f3]
+        - [3.2.2 Source Distribution][dcf3]
 
-    - [3.2 Stopping SBCL][a9a5]
+        - [3.2.3 SBCL Repository][a820]
 
-        - [3.2.1 Exit][739b]
+    - [3.3 Building SBCL][9015]
 
-        - [3.2.2 End of File][22df]
+        - [3.3.1 Customizing the Build][deed]
 
-        - [3.2.3 Saving a Core Image][7460]
+        - [3.3.2 Build Options][9119]
 
-        - [3.2.4 Exit on Errors][6d34]
+        - [3.3.3 Troubleshooting the Build][01c3]
 
-    - [3.3 Command-line Options][1294]
+        - [3.3.4 Build Prerequisites][b934]
 
-        - [3.3.1 Runtime Options][3e4d]
+    - [3.4 Installing SBCL][36f6]
 
-        - [3.3.2 Toplevel Options][6be4]
+- [4 Starting and Stopping][74c7]
 
-    - [3.4 Initialization Files][1016]
+    - [4.1 Starting SBCL][615c]
 
-    - [3.5 Initialization and Exit Hooks][e494]
+        - [4.1.1 Running without Installation][8936]
 
-- [4 Compiler][eab4]
+        - [4.1.2 Running from Emacs][9d96]
 
-    - [4.1 Calling the Compiler][b905]
+        - [4.1.3 Shebang Scripts][c7f3]
 
-    - [4.2 Diagnostic Messages][40b2]
+        - [4.1.4 Parts of SBCL][6fc8]
 
-        - [4.2.1 Diagnostic Severity][4dad]
+        - [4.1.5 Finding Parts of SBCL][0638]
 
-        - [4.2.2 Understanding Compiler Diagnostics][d5fd]
+    - [4.2 Stopping SBCL][a9a5]
 
-        - [4.2.3 Controlling Verbosity][9578]
+        - [4.2.1 Exit][739b]
 
-    - [4.3 Handling of Types][8b52]
+        - [4.2.2 End of File][22df]
 
-        - [4.3.1 Type Declaration Checking][538a]
+        - [4.2.3 Exit on Errors][6d34]
 
-        - [4.3.2 Precise Type Checking][ade9]
+    - [4.3 Command-line Options][1294]
 
-        - [4.3.3 Getting Existing Programs to Run][57a6]
+        - [4.3.1 Runtime Options][3e4d]
 
-        - [4.3.4 Implementation Limitations][5ebc]
+        - [4.3.2 Toplevel Options][6be4]
 
-    - [4.4 Compiler Policy][2474]
+    - [4.4 Initialization Files][1016]
 
-    - [4.5 Compiler Errors][1857]
+    - [4.5 Initialization and Exit Hooks][e494]
 
-        - [4.5.1 Type Errors at Compile Time][60a9]
+    - [4.6 Core Images][7ced]
 
-        - [4.5.2 Errors During Macroexpansion][92e5]
+        - [4.6.1 Saving a Core Image][7460]
 
-        - [4.5.3 Read Errors][6cf6]
+        - [4.6.2 Default Toplevel][f474]
 
-    - [4.6 Open Coding and Inline Expansion][469a]
+- [5 Compiler][eab4]
 
-    - [4.7 Interpreter][2e79]
+    - [5.1 Calling the Compiler][b905]
 
-    - [4.8 Advanced Compiler Use and Efficiency Hints][10a0]
+    - [5.2 Diagnostic Messages][40b2]
 
-- [5 Debugging][3d82]
+        - [5.2.1 Diagnostic Severity][4dad]
 
-    - [5.1 Debugger][825d]
+        - [5.2.2 Understanding Compiler Diagnostics][d5fd]
 
-        - [5.1.1 Debugger Entry][f102]
+        - [5.2.3 Controlling Verbosity][9578]
 
-        - [5.1.2 Debugger Command Loop][afd9]
+    - [5.3 Handling of Types][8b52]
 
-        - [5.1.3 Stack Frames][67c8]
+        - [5.3.1 Type Declaration Checking][538a]
 
-        - [5.1.4 Variable Access][78b8]
+        - [5.3.2 Precise Type Checking][ade9]
 
-        - [5.1.5 Source Location Printing][c9e6]
+        - [5.3.3 Getting Existing Programs to Run][57a6]
 
-        - [5.1.6 Debug Information][c397]
+        - [5.3.4 Implementation Limitations][5ebc]
 
-        - [5.1.7 Exiting the Debugger][3a4f]
+    - [5.4 Compiler Policy][2474]
 
-        - [5.1.8 Information Commands][ccb5]
+    - [5.5 Compiler Errors][1857]
 
-        - [5.1.9 Breakpoint Commands][cfa8]
+        - [5.5.1 Type Errors at Compile Time][60a9]
 
-        - [5.1.10 Single Stepping][d3f5]
+        - [5.5.2 Errors During Macroexpansion][92e5]
 
-    - [5.2 `ldb`][3b91]
+        - [5.5.3 Read Errors][6cf6]
 
-    - [5.3 Enabling and Disabling the Debugger][721e]
+    - [5.6 Open Coding and Inline Expansion][469a]
 
-    - [5.4 Function Tracing][668f]
+    - [5.7 Interpreter][2e79]
 
-- [6 Efficiency][29fd]
+    - [5.8 Advanced Compiler Use and Efficiency Hints][10a0]
 
-    - [6.1 Tail Call][ec2e]
+- [6 Debugging][3d82]
 
-        - [6.1.1 Tail Call Optimization][3074]
+    - [6.1 Debugger][825d]
 
-        - [6.1.2 Tail Position][c6d1]
+        - [6.1.1 Debugger Entry][f102]
 
-        - [6.1.3 Tail Recursion][7f39]
+        - [6.1.2 Debugger Command Loop][afd9]
 
-    - [6.2 Local Call][3d65]
+        - [6.1.3 Stack Frames][67c8]
 
-        - [6.2.1 Local Self-recursive Call][7426]
+        - [6.1.4 Variable Access][78b8]
 
-        - [6.2.2 Let Call][eaf9]
+        - [6.1.5 Source Location Printing][c9e6]
 
-        - [6.2.3 Local Calls to Closures][8e47]
+        - [6.1.6 Debug Information][c397]
 
-        - [6.2.4 Local Tail Call][06b6]
+        - [6.1.7 Exiting the Debugger][3a4f]
 
-        - [6.2.5 Local Call Return Values][64ff]
+        - [6.1.8 Information Commands][ccb5]
 
-    - [6.3 Block Compilation][1143]
+        - [6.1.9 Breakpoint Commands][cfa8]
 
-        - [6.3.1 Block Compilation Semantics][8294]
+        - [6.1.10 Single Stepping][d3f5]
 
-        - [6.3.2 Block Compilation Declarations][6ef5]
+    - [6.2 `ldb`][3b91]
 
-        - [6.3.3 Block Compilation Difficulties][286e]
+    - [6.3 Enabling and Disabling the Debugger][721e]
 
-    - [6.4 Inline Expansion][2ccb]
+    - [6.4 Function Tracing][668f]
 
-        - [6.4.1 Inline Expansion Recording][c276]
+- [7 Efficiency][29fd]
 
-        - [6.4.2 Semi-inline Expansion][c6ad]
+    - [7.1 Tail Call][ec2e]
 
-    - [6.5 Slot Access][37e3]
+        - [7.1.1 Tail Call Optimization][3074]
 
-        - [6.5.1 Structure Object Slot Access][b229]
+        - [7.1.2 Tail Position][c6d1]
 
-        - [6.5.2 Standard Object Slot Access][72a3]
+        - [7.1.3 Tail Recursion][7f39]
 
-    - [6.6 Stack Allocation][5cbb]
+    - [7.2 Local Call][3d65]
 
-    - [6.7 Modular Arithmetic][1a1b]
+        - [7.2.1 Local Self-recursive Call][7426]
 
-        - [6.7.1 Signed Modular Arithmetic][cce0]
+        - [7.2.2 Let Call][eaf9]
 
-    - [6.8 Recognized Idioms][44af]
+        - [7.2.3 Local Calls to Closures][8e47]
 
-        - [6.8.1 Count Trailing Zeros][af2a]
+        - [7.2.4 Local Tail Call][06b6]
 
-    - [6.9 Global and Always-bound Variables][560e]
+        - [7.2.5 Local Call Return Values][64ff]
 
-    - [6.10 Miscellaneous Efficiency Issues][b81a]
+    - [7.3 Block Compilation][1143]
 
-- [7 Beyond the ANSI Standard][8723]
+        - [7.3.1 Block Compilation Semantics][8294]
 
-    - [7.1 Reader Extensions][8f7a]
+        - [7.3.2 Block Compilation Declarations][6ef5]
 
-        - [7.1.1 Extended Package Prefix Syntax][029c]
+        - [7.3.3 Block Compilation Difficulties][286e]
 
-        - [7.1.2 Symbol Name Normalization][23c4]
+    - [7.4 Inline Expansion][2ccb]
 
-        - [7.1.3 Decimal Syntax for Rationals][76ca]
+        - [7.4.1 Inline Expansion Recording][c276]
 
-    - [7.2 Package-Local Nicknames][24fb]
+        - [7.4.2 Semi-inline Expansion][c6ad]
 
-    - [7.3 Package Variance][30f8]
+    - [7.5 Slot Access][37e3]
 
-    - [7.4 Garbage Collection][b7da]
+        - [7.5.1 Structure Object Slot Access][b229]
 
-        - [7.4.1 Finalization][b235]
+        - [7.5.2 Standard Object Slot Access][72a3]
 
-        - [7.4.2 Weak Pointers][4dff]
+    - [7.6 Stack Allocation][5cbb]
 
-        - [7.4.3 Introspection and Tuning][fae5]
+    - [7.7 Modular Arithmetic][1a1b]
 
-        - [7.4.4 Tracing Live Objects Back to Roots][fe9c]
+        - [7.7.1 Signed Modular Arithmetic][cce0]
 
-    - [7.5 Generic Function Dispatch][f69b]
+    - [7.8 Recognized Idioms][44af]
 
-    - [7.6 Extended Slot Access][e030]
+        - [7.8.1 Count Trailing Zeros][af2a]
 
-    - [7.7 Metaobject Protocol][e30a]
+    - [7.9 Global and Always-bound Variables][560e]
 
-        - [7.7.1 AMOP Compatibility of Metaobject Protocol][dd74]
+    - [7.10 Miscellaneous Efficiency Issues][b81a]
 
-        - [7.7.2 Metaobject Protocol Extensions][7d66]
+- [8 Beyond the ANSI Standard][8723]
 
-    - [7.8 Extensible Sequences][5f65]
+    - [8.1 Reader Extensions][8f7a]
 
-        - [7.8.1 Iterator Protocol][5c43]
+        - [8.1.1 Extended Package Prefix Syntax][029c]
 
-        - [7.8.2 Simple Iterator Protocol][e761]
+        - [8.1.2 Symbol Name Normalization][23c4]
 
-    - [7.9 Support For Unix][8c3b]
+        - [8.1.3 Decimal Syntax for Rationals][76ca]
 
-        - [7.9.1 Running external programs][52f0]
+    - [8.2 Package-local Nicknames][24fb]
 
-    - [7.10 Unicode Support][cecd]
+    - [8.3 Package Variance][30f8]
 
-        - [7.10.1 Unicode property access][bff9]
+    - [8.4 Garbage Collection][b7da]
 
-        - [7.10.2 String operations][ea13]
+        - [8.4.1 Finalization][b235]
 
-        - [7.10.3 Breaking strings][5e27]
+        - [8.4.2 Weak Pointers][4dff]
 
-    - [7.11 Customization Hooks for Users][b192]
+        - [8.4.3 Introspection and Tuning][fae5]
 
-    - [7.12 Tools To Help Developers][f0e6]
+        - [8.4.4 Tracing Live Objects Back to Roots][fe9c]
 
-    - [7.13 Resolution of Name Conflicts][47c4]
+    - [8.5 Generic Function Dispatch][f69b]
 
-    - [7.14 Hash Table Extensions][309c]
+    - [8.6 Extended Slot Access][e030]
 
-    - [7.15 Random Number Generation][a837]
+    - [8.7 Metaobject Protocol][e30a]
 
-    - [7.16 Timeouts and Deadlines][f53d]
+        - [8.7.1 AMOP Compatibility of Metaobject Protocol][dd74]
 
-        - [7.16.1 Timeout Parameters][63f3]
+        - [8.7.2 Metaobject Protocol Extensions][7d66]
 
-        - [7.16.2 Synchronous Timeouts][6494]
+    - [8.8 Extensible Sequences][5f65]
 
-        - [7.16.3 Asynchronous Timeouts][2050]
+        - [8.8.1 Iterator Protocol][5c43]
 
-        - [7.16.4 Operations Supporting Timeouts and Deadlines][f2ea]
+        - [8.8.2 Simple Iterator Protocol][e761]
 
-    - [7.17 Miscellaneous Extensions][1847]
+    - [8.9 Support For Unix][8c3b]
 
-    - [7.18 Stale Extensions][55e8]
+        - [8.9.1 Running external programs][52f0]
 
-    - [7.19 Efficiency Hacks][5aba]
+    - [8.10 Unicode Support][cecd]
 
-- [8 External Formats][d293]
+        - [8.10.1 Unicode property access][bff9]
 
-    - [8.1 The Default External Format][bffa]
+        - [8.10.2 String operations][ea13]
 
-    - [8.2 External Format Designators][d283]
+        - [8.10.3 Breaking strings][5e27]
 
-    - [8.3 Character Coding Conditions][a5e7]
+    - [8.11 Customization Hooks for Users][b192]
 
-    - [8.4 Converting between Strings and Octet Vectors][6154]
+    - [8.12 Tools To Help Developers][f0e6]
 
-    - [8.5 Supported External Formats][11f9]
+    - [8.13 Resolution of Name Conflicts][47c4]
 
-- [9 Foreign Function Interface][4be1]
+    - [8.14 Hash Table Extensions][309c]
 
-    - [9.1 Introduction to the Foreign Function Interface][4619]
+    - [8.15 Random Number Generation][a837]
 
-    - [9.2 Foreign Types][64fa]
+    - [8.16 Timeouts and Deadlines][f53d]
 
-        - [9.2.1 Defining Foreign Types][7cc7]
+        - [8.16.1 Timeout Parameters][63f3]
 
-        - [9.2.2 Foreign Types and Lisp Types][7edc]
+        - [8.16.2 Synchronous Timeouts][6494]
 
-        - [9.2.3 Foreign Type Specifiers][47c0]
+        - [8.16.3 Asynchronous Timeouts][2050]
 
-    - [9.3 Operations On Foreign Values][3eaf]
+        - [8.16.4 Operations Supporting Timeouts and Deadlines][f2ea]
 
-        - [9.3.1 Accessing Foreign Values][7ce6]
+    - [8.17 Miscellaneous Extensions][1847]
 
-        - [9.3.2 Coercing Foreign Values][f432]
+    - [8.18 Stale Extensions][55e8]
 
-        - [9.3.3 Foreign Dynamic Allocation][f4ff]
+    - [8.19 Efficiency Hacks][5aba]
 
-    - [9.4 Foreign Variables][339d]
+- [9 External Formats][d293]
 
-        - [9.4.1 Local Foreign Variables][c3d5]
+    - [9.1 The Default External Format][bffa]
 
-        - [9.4.2 External Foreign Variables][2e9a]
+    - [9.2 External Format Designators][d283]
 
-    - [9.5 Foreign Data Structure Examples][a005]
+    - [9.3 Character Coding Conditions][a5e7]
 
-    - [9.6 Loading Shared Object Files][b555]
+    - [9.4 Converting between Strings and Octet Vectors][6154]
 
-    - [9.7 Foreign Function Calls][f4c5]
+    - [9.5 Supported External Formats][11f9]
 
-    - [9.8 Calling Lisp From C][c381]
+- [10 Foreign Function Interface][4be1]
 
-        - [9.8.1 Lisp as a Shared Library][afdd]
+    - [10.1 Introduction to the Foreign Function Interface][4619]
 
-    - [9.9 Step-By-Step Example of the Foreign Function Interface][326d]
+    - [10.2 Foreign Types][64fa]
 
-- [10 Pathnames][cc69]
+        - [10.2.1 Defining Foreign Types][7cc7]
 
-    - [10.1 Lisp Pathnames][d375]
+        - [10.2.2 Foreign Types and Lisp Types][7edc]
 
-        - [10.1.1 Home Directory Specifiers][1fcc]
+        - [10.2.3 Foreign Type Specifiers][47c0]
 
-        - [10.1.2 The SYS Logical Pathname Host][4b71]
+    - [10.3 Operations On Foreign Values][3eaf]
 
-    - [10.2 Native Filenames][2776]
+        - [10.3.1 Accessing Foreign Values][7ce6]
 
-- [11 Streams][f64d]
+        - [10.3.2 Coercing Foreign Values][f432]
 
-    - [11.1 Stream External Formats][7055]
+        - [10.3.3 Foreign Dynamic Allocation][f4ff]
 
-    - [11.2 Bivalent Streams][3df6]
+    - [10.4 Foreign Variables][339d]
 
-    - [11.3 Gray Streams][5165]
+        - [10.4.1 Local Foreign Variables][c3d5]
 
-        - [11.3.1 Gray Streams classes][d41e]
+        - [10.4.2 External Foreign Variables][2e9a]
 
-        - [11.3.2 Methods common to all streams][c60f]
+    - [10.5 Foreign Data Structure Examples][a005]
 
-        - [11.3.3 Input stream methods][93d2]
+    - [10.6 Loading Shared Object Files][b555]
 
-        - [11.3.4 Character input stream methods][0f57]
+    - [10.7 Foreign Function Calls][f4c5]
 
-        - [11.3.5 Output stream methods][3af9]
+    - [10.8 Calling Lisp From C][c381]
 
-        - [11.3.6 Character output stream methods][a3b7]
+        - [10.8.1 Lisp as a Shared Library][afdd]
 
-        - [11.3.7 Binary stream methods][a530]
+    - [10.9 Step-by-step Example of the Foreign Function Interface][326d]
 
-        - [11.3.8 Gray Streams Examples][5c73]
+- [11 Pathnames][cc69]
 
-    - [11.4 Simple Streams][c2e4]
+    - [11.1 Lisp Pathnames][d375]
 
-- [12 Package Locks][5746]
+        - [11.1.1 Home Directory Specifiers][1fcc]
 
-    - [12.1 Package Lock Concepts][6239]
+        - [11.1.2 The SYS Logical Pathname Host][4b71]
 
-        - [12.1.1 Implementation Packages][c54e]
+    - [11.2 Native Filenames][2776]
 
-        - [12.1.2 Package Lock Violations][f0db]
+- [12 Streams][f64d]
 
-        - [12.1.3 Package Locks in Compiled Code][15fc]
+    - [12.1 Stream External Formats][7055]
 
-        - [12.1.4 Operations Violating Package Locks][4a85]
+    - [12.2 Bivalent Streams][3df6]
 
-    - [12.2 Package Lock Dictionary][2e37]
+    - [12.3 Gray Streams][5165]
 
-- [13 Threading][6ec7]
+        - [12.3.1 Gray Streams classes][d41e]
 
-    - [13.1 Threading Basics][9d2b]
+        - [12.3.2 Methods common to all streams][c60f]
 
-        - [13.1.1 Thread Objects][037a]
+        - [12.3.3 Input stream methods][93d2]
 
-        - [13.1.2 Running Threads][c9ed]
+        - [12.3.4 Character input stream methods][0f57]
 
-        - [13.1.3 Asynchronous Operations][bc04]
+        - [12.3.5 Output stream methods][3af9]
 
-        - [13.1.4 Miscellaneous Operations][4e63]
+        - [12.3.6 Character output stream methods][a3b7]
 
-        - [13.1.5 Error Conditions][a378]
+        - [12.3.7 Binary stream methods][a530]
 
-    - [13.2 Special Variables][a8ca]
+        - [12.3.8 Gray Streams Examples][5c73]
 
-    - [13.3 Atomic Operations][37bb]
+    - [12.4 Simple Streams][c2e4]
 
-    - [13.4 Mutex Support][53db]
+- [13 Package Locks][5746]
 
-    - [13.5 Semaphores][75d3]
+    - [13.1 Package Lock Concepts][6239]
 
-    - [13.6 Waitqueue/condition variables][e0d9]
+        - [13.1.1 Implementation Packages][c54e]
 
-    - [13.7 Barriers][cfdf]
+        - [13.1.2 Package Lock Violations][f0db]
 
-    - [13.8 Sessions/Debugging][a016]
+        - [13.1.3 Package Locks in Compiled Code][15fc]
 
-    - [13.9 Foreign threads][7f6c]
+        - [13.1.4 Operations Violating Package Locks][4a85]
 
-    - [13.10 Implementation on Linux x86oids][b2c8]
+    - [13.2 Package Lock Dictionary][2e37]
 
-- [14 Timers][5a9f]
+- [14 Threading][6ec7]
 
-- [15 Networking][a9ee]
+    - [14.1 Threading Basics][9d2b]
 
-    - [15.1 Sockets Overview][c665]
+        - [14.1.1 Thread Objects][037a]
 
-    - [15.2 General Sockets][f709]
+        - [14.1.2 Running Threads][c9ed]
 
-    - [15.3 Socket Options][e299]
+        - [14.1.3 Asynchronous Operations][bc04]
 
-    - [15.4 INET Domain Sockets][fef5]
+        - [14.1.4 Miscellaneous Operations][4e63]
 
-    - [15.5 Local Domain Sockets][2090]
+        - [14.1.5 Error Conditions][a378]
 
-    - [15.6 Name Service][11bf]
+    - [14.2 Special Variables][a8ca]
 
-- [16 Profiling][9c07]
+    - [14.3 Atomic Operations][37bb]
 
-    - [16.1 Deterministic Profiler][4e78]
+    - [14.4 Mutex Support][53db]
 
-    - [16.2 Statistical Profiler][db7a]
+    - [14.5 Semaphores][75d3]
 
-- [17 Contributed Modules][6a68]
+    - [14.6 Waitqueue/condition variables][e0d9]
 
-    - [17.1 sb-aclrepl][bb66]
+    - [14.7 Barriers][cfdf]
 
-        - [17.1.1 Usage][4d55]
+    - [14.8 Sessions/Debugging][a016]
 
-        - [17.1.2 Customization][48f6]
+    - [14.9 Foreign threads][7f6c]
 
-        - [17.1.3 Example Initialization][a867]
+    - [14.10 Implementation on Linux x86oids][b2c8]
 
-    - [17.2 sb-concurrency][f634]
+- [15 Timers][5a9f]
 
-        - [17.2.1 Queue][2771]
+- [16 Networking][a9ee]
 
-        - [17.2.2 Mailbox (lock-free)][507d]
+    - [16.1 Sockets Overview][c665]
 
-        - [17.2.3 Gates][6227]
+    - [16.2 General Sockets][f709]
 
-        - [17.2.4 Frlocks, aka Fast Read Locks][d59d]
+    - [16.3 Socket Options][e299]
 
-    - [17.3 sb-cover][959f]
+    - [16.4 INET Domain Sockets][fef5]
 
-    - [17.4 sb-grovel][6bfb]
+    - [16.5 Local Domain Sockets][2090]
 
-        - [17.4.1 Using sb-grovel in your own ASDF System][df9e]
+    - [16.6 Name Service][11bf]
 
-        - [17.4.2 Contents of a grovel-constants-file][b1d8]
+- [17 Profiling][9c07]
 
-        - [17.4.3 Programming with sb-grovel's structure types][a72b]
+    - [17.1 Deterministic Profiler][4e78]
 
-        - [17.4.4 Traps and Pitfalls][a064]
+    - [17.2 Statistical Profiler][db7a]
 
-    - [17.5 sb-introspect][f942]
+- [18 Contributed Modules][6a68]
 
-        - [17.5.1 Finding Definitions][a270]
+    - [18.1 sb-aclrepl][bb66]
 
-        - [17.5.2 Special Variables][b607]
+        - [18.1.1 Usage][4d55]
 
-        - [17.5.3 Functions][4491]
+        - [18.1.2 Customization][48f6]
 
-        - [17.5.4 Types and Classes][5cde]
+        - [18.1.3 Example Initialization][a867]
 
-        - [17.5.5 Allocation][5da8]
+    - [18.2 sb-concurrency][f634]
 
-    - [17.6 sb-manual][bb9e]
+        - [18.2.1 Queue][2771]
 
-        - [17.6.1 Using PAX][2789]
+        - [18.2.2 Mailbox (lock-free)][507d]
 
-        - [17.6.2 Browsing Live with PAX][4a74]
+        - [18.2.3 Gates][6227]
 
-        - [17.6.3 Fancy Documentation with PAX][0baf]
+        - [18.2.4 Frlocks, aka Fast Read Locks][d59d]
 
-    - [17.7 sb-md5][4321]
+    - [18.3 sb-cover][959f]
 
-    - [17.8 sb-posix][3ddd]
+    - [18.4 sb-grovel][6bfb]
 
-        - [17.8.1 Lisp names for C names][2d20]
+        - [18.4.1 Using sb-grovel in Your Own ASDF System][df9e]
 
-        - [17.8.2 Types][ca58]
+        - [18.4.2 Contents of a grovel-constants-file][b1d8]
 
-        - [17.8.3 Function Parameters][23aa]
+        - [18.4.3 Programming with sb-grovel's Structure Types][a72b]
 
-        - [17.8.4 Function Return Values][bc041]
+        - [18.4.4 Traps and Pitfalls][a064]
 
-        - [17.8.5 Lisp Objects and C structures][d4fc]
+    - [18.5 sb-introspect][f942]
 
-        - [17.8.6 Functions with Idiosyncratic Bindings][8607]
+        - [18.5.1 Finding Definitions][a270]
 
-        - [17.8.7 Extensions to POSIX][6c6d]
+        - [18.5.2 Special Variables][b607]
 
-    - [17.9 sb-queue][bb6c]
+        - [18.5.3 Functions][4491]
 
-    - [17.10 sb-rotate-byte][0da4]
+        - [18.5.4 Types and Classes][5cde]
 
-    - [17.11 sb-simd][e89e]
+        - [18.5.5 Allocation][5da8]
 
-        - [17.11.1 Data Types][a47b]
+    - [18.6 sb-manual][bb9e]
 
-        - [17.11.2 Casts][1e30]
+        - [18.6.1 Using PAX][2789]
 
-        - [17.11.3 Constructors][073a]
+        - [18.6.2 Browsing Live with PAX][4a74]
 
-        - [17.11.4 Unpackers][e577]
+        - [18.6.3 Fancy Documentation with PAX][0baf]
 
-        - [17.11.5 Reinterpret Casts][0928]
+    - [18.7 sb-md5][4321]
 
-        - [17.11.6 Associatives][c624]
+    - [18.8 sb-posix][3ddd]
 
-        - [17.11.7 Reducers][6c6de]
+        - [18.8.1 Lisp names for C names][2d20]
 
-        - [17.11.8 Rounding][45ed]
+        - [18.8.2 Types][ca58]
 
-        - [17.11.9 Comparisons][ef38]
+        - [18.8.3 Function Parameters][23aa]
 
-        - [17.11.10 Conditionals][0157]
+        - [18.8.4 Function Return Values][bc041]
 
-        - [17.11.11 Loads and Stores][38d2]
+        - [18.8.5 Lisp Objects and C structures][d4fc]
 
-        - [17.11.12 Specialized Scalar Operations][554f]
+        - [18.8.6 Functions with Idiosyncratic Bindings][8607]
 
-        - [17.11.13 Instruction Set Dispatch][65f6]
+        - [18.8.7 Extensions to POSIX][6c6d]
 
-- [18 Deprecation][c297]
+    - [18.9 sb-queue][bb6c]
 
-    - [18.1 Why Deprecate?][d8d0]
+    - [18.10 sb-rotate-byte][0da4]
 
-    - [18.2 The Deprecation Pipeline][21f2]
+    - [18.11 sb-simd][e89e]
 
-    - [18.3 Deprecation Conditions][335f]
+        - [18.11.1 Data Types][a47b]
 
-    - [18.4 Introspecting Deprecation Information][c7f6]
+        - [18.11.2 Casts][1e30]
 
-    - [18.5 Deprecation Declaration][449e]
+        - [18.11.3 Constructors][073a]
 
-    - [18.6 Deprecation Examples][ce81]
+        - [18.11.4 Unpackers][e577]
 
-    - [18.7 Deprecated Interfaces in SBCL][94f7]
+        - [18.11.5 Reinterpret Casts][0928]
 
-        - [18.7.1 List of Deprecated Interfaces][b013]
+        - [18.11.6 Associatives][c624]
 
-        - [18.7.2 Historical Interfaces][292d]
+        - [18.11.7 Reducers][6c6de]
+
+        - [18.11.8 Rounding][45ed]
+
+        - [18.11.9 Comparisons][ef38]
+
+        - [18.11.10 Conditionals][0157]
+
+        - [18.11.11 Loads and Stores][38d2]
+
+        - [18.11.12 Specialized Scalar Operations][554f]
+
+        - [18.11.13 Instruction Set Dispatch][65f6]
+
+- [19 Deprecation][c297]
+
+    - [19.1 Why Deprecate?][d8d0]
+
+    - [19.2 The Deprecation Pipeline][21f2]
+
+    - [19.3 Deprecation Conditions][335f]
+
+    - [19.4 Introspecting Deprecation Information][c7f6]
+
+    - [19.5 Deprecation Declaration][449e]
+
+    - [19.6 Deprecation Examples][ce81]
+
+    - [19.7 Deprecated Interfaces in SBCL][94f7]
+
+        - [19.7.1 List of Deprecated Interfaces][b013]
+
+        - [19.7.2 Historical Interfaces][292d]
 
 ###### \[in package SB-MANUAL\]
 
 This is an unofficial rendering of the SBCL Manual
 using [MGL-PAX][2415] with the same content as the
 official version at <https://www.sbcl.org/> but with heavy linking
-internally, to the `clhs`, and to the source code on
+internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.396-dd3739d`, generated *2026-10-16 17:04:38*. See
+The output is for SBCL version `2.6.9.404-6a2151c`, generated *2026-10-16 21:47:36*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -638,8 +670,9 @@ The SBCL project cannot verify the accuracy of the information or
 the competence of the people listed, and they have provided their
 own blurbs below: you must make your own judgement of suitability
 from the available information -- refer to the links they provide,
-the CREDITS file, mailing list archives, commit messages, and so on.
-Please feel free to ask for advice through [Volunteer Support][0de5].
+the `CREDITS` file, mailing list archives, commit messages, and
+so on. Please feel free to ask for advice through
+[Volunteer Support][0de5].
 
 (At present, no companies or consultants wish to advertise paid
 support or custom SBCL development in this manual.)
@@ -881,7 +914,7 @@ compiler from quite satisfying this principle, are discussed in
 <a id="x-28SB-MANUAL-3A-40FASL-FORMAT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FASL-FORMAT%20MGL-PAX:SECTION"></a>
 
-#### 2.3.2 FASL format
+#### 2.3.2 Fasl Format
 
 SBCL fasl-format is binary compatible only with the exact SBCL version
 it was generated with. While this is obviously suboptimal, it has
@@ -890,7 +923,7 @@ versions: accidentally breaking things is far too easy and can lead
 to hard to diagnose bugs.
 
 The following snippet handles fasl recompilation automatically for
-ASDF-based systems, and makes a good candidate for inclusion in the
+ASDF-based systems and makes a good candidate for inclusion in the
 user or system initialization file (see [Initialization Files][1016]).
 
     (require :asdf)
@@ -1055,8 +1088,8 @@ and [`inspect`][a485]) are documented in text available by typing `help` at
 their command prompts. The extensions for functions which don't have
 their own command prompt (such as [`trace`][548d]) are described in their
 documentation strings, unless your SBCL was compiled with the
-`--without-sb-doc` option to omit them, in which case they are only
-readable in the source code.
+`--without-sb-doc` option to omit them (see [Customizing the Build][deed]),
+in which case they are only readable in the source code.
 
 <a id="x-28SB-MANUAL-3A-40ADDITIONAL-DOCUMENTATION-FILES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ADDITIONAL-DOCUMENTATION-FILES%20MGL-PAX:SECTION"></a>
@@ -1068,15 +1101,15 @@ include in both SBCL source and binary distributions. The latter are
 often installed along with this manual, e.g. in
 `/usr/local/share/doc/sbcl/`.
 
-- `copying`: Licence and copyright summary.
+- `COPYING`: Licence and copyright summary.
 
-- `credits`: Authorship information on various parts of SBCL.
+- `CREDITS`: Authorship information on various parts of SBCL.
 
-- `install`: Covers installing SBCL from both source and binary
+- `INSTALL`: Covers installing SBCL from both source and binary
    distributions on your system, and also has some installation
    related troubleshooting information.
 
-- `news`: Summarizes changes between various SBCL versions.
+- `NEWS`: Summarizes changes between various SBCL versions.
 
 <a id="x-28SB-MANUAL-3A-40INTERNALS-DOCUMENTATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTERNALS-DOCUMENTATION%20MGL-PAX:SECTION"></a>
@@ -1107,14 +1140,14 @@ conversion from CMUCL to SBCL is available in the
 
 IRC channels on <https://libera.chat/>:
 
-- `#common-lisp`: "Common Lisp, the #1=(programmable . #1#)
-  programming language"
+- `#common-lisp`: *Common Lisp, the #1=(programmable . #1#)
+  programming language*
 
-- `#lispcafe`: "The Lisp Café; sit down, have a drink, chat about
+- `#lispcafe`: *The Lisp Café; sit down, have a drink, chat about
   anything, and enjoy your stay. | <https://www.cliki.net/lispcafe> |
-  Be insuperable to each other".
+  Be insuperable to each other*
 
-- `#sbcl`: "Steel Bank Common Lisp Dev Hangout"
+- `#sbcl`: *Steel Bank Common Lisp Dev Hangout*
 
 You can use <https://web.libera.chat> or a normal IRC client.
 
@@ -1145,20 +1178,20 @@ standout favorites.
 If you are an experienced programmer in other languages but need to
 learn about Common Lisp, some books stand out:
 
-- Practical Common Lisp, by Peter Seibel
+- *Practical Common Lisp* by Peter Seibel
 
     An excellent introduction to the language, covering both the
     basics and "advanced topics" like macros, CLOS, and packages.
     Available both in print format and on the web:
     <https://gigamonkeys.com/book/>.
 
-- Paradigms Of Artificial Intelligence Programming, by Peter Norvig
+- *Paradigms Of Artificial Intelligence Programming* by Peter Norvig
 
     Good information on general Common Lisp programming, and many
     nontrivial examples. Whether or not your work is AI, it's a very
     good book to look at.
 
-- On Lisp, by Paul Graham
+- *On Lisp* by Paul Graham
 
     An in-depth treatment of macros, but not recommended as a first
     Common Lisp book, since it is slightly pre-ANSI so you need to
@@ -1167,7 +1200,7 @@ learn about Common Lisp, some books stand out:
     focusing solely on macros. Downloadable from
     <https://www.paulgraham.com/onlisp.html>.
 
-- Object-Oriented Programming In Common Lisp, by Sonya Keene
+- *Object-Oriented Programming In Common Lisp* by Sonya Keene
 
     With the exception of *Practical Common Lisp*, most introductory
     books don't emphasize CLOS. This one does. Even if you're very
@@ -1178,7 +1211,7 @@ learn about Common Lisp, some books stand out:
     there are a number of lesser differences as well. This book
     tends to help with the culture shock.
 
-- Art Of Metaobject Programming, by Gregor Kiczales et al.
+- *Art Of Metaobject Programming* by Gregor Kiczales et al.
 
     Currently the prime source of information on the Common Lisp
     Metaobject Protocol, which is supported by SBCL. Section
@@ -1278,25 +1311,542 @@ Other major changes since the fork from CMUCL include:
   implements memory pooling internally (and so is simpler and more
   maintainable, but generates more garbage and runs more slowly).
 
+<a id="x-28SB-MANUAL-3A-40GETTING-STARTED-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@GETTING-STARTED%20MGL-PAX:SECTION"></a>
+
+## 3 Getting Started
+
+<a id="x-28SB-MANUAL-3A-40SUPPORTED-PLATFORMS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SUPPORTED-PLATFORMS%20MGL-PAX:SECTION"></a>
+
+### 3.1 Supported Platforms
+
+See <https://sbcl.org/platform-table.html> for the list of supported
+operating systems and architectures.
+
+Some operating systems are more equal than others: most of the
+development and testing is done on x86-64 Linux and x86-64/arm64 Mac
+OS X.
+
+If an underprivileged platform is important to you, you can help by
+e.g. testing during the monthly freeze periods and, most
+importantly, by reporting any problems. See [Getting Support and Reporting Bugs][ac46].
+
+<a id="x-28SB-MANUAL-3A-40OBTAINING-SBCL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@OBTAINING-SBCL%20MGL-PAX:SECTION"></a>
+
+### 3.2 Obtaining SBCL
+
+Your package manager may provide prepackaged binaries. On Debian, for
+example, you can install a stable, though possibly older, version of
+SBCL with `apt install sbcl`. The exact details vary depending on
+your system.
+
+<a id="x-28SB-MANUAL-3A-40BINARY-DISTRIBUTION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BINARY-DISTRIBUTION%20MGL-PAX:SECTION"></a>
+
+#### 3.2.1 Binary Distribution
+
+The latest official binary distributions (tar and zip archives of
+pre-compiled SBCL and its documentation) for selected platforms can
+be downloaded from
+
+- <https://sbcl.org/platform-table.html>
+
+Some older binaries are available at
+
+- <https://sourceforge.net/projects/sbcl/files/sbcl/>
+
+Note that many platforms do not have recent binaries released. In
+that case, get a [Source Distribution][dcf3] or check out the
+[SBCL Repository][a820], and [build SBCL][9015].
+
+If you were lucky enough to have new enough binary distributions,
+unpack the archive with
+
+    bzip2 -cd sbcl-2.6.9-x86-linux-binary.tar.bz2 | tar xvf -
+
+replacing `sbcl-2.6.9-x86-linux-binary.tar.bz2` with the name of the
+tarball you downloaded. Now, you can immediately try
+[Running without Installation][8936].
+
+Then, enter the directory which was unpacked and skip ahead to
+[Installing SBCL][36f6] to put SBCL in its proper place.
+
+On Windows, you may want to use the MSI installer to unpack and
+install in one step:
+
+    msiexec /i sbcl-2.6.9-x86-64-windows.msi
+
+<a id="x-28SB-MANUAL-3A-40SOURCE-DISTRIBUTION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SOURCE-DISTRIBUTION%20MGL-PAX:SECTION"></a>
+
+#### 3.2.2 Source Distribution
+
+If there is no suitable [Binary Distribution][91e1] for your platform,
+your next choice is to download a source distribution (a tar or zip
+file with the SBCL sources) from
+
+- <https://sourceforge.net/projects/sbcl/files/sbcl/> or
+
+- <https://github.com/sbcl/sbcl/releases>.
+
+See [Building SBCL][9015] for the next steps.
+
+<a id="x-28SB-MANUAL-3A-40SBCL-REPOSITORY-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SBCL-REPOSITORY%20MGL-PAX:SECTION"></a>
+
+#### 3.2.3 SBCL Repository
+
+If you want to be on the bleeding edge, you can check out the sources
+of the latest development version (or any previous development
+version, for that matter) by using anonymous GIT to SourceForge:
+
+    $ git clone git://git.code.sf.net/p/sbcl/sbcl sbcl
+
+See <https://sourceforge.net/p/sbcl/sbcl/ci/master/tree/> for
+instructions.
+
+Alternatively, check out the official GitHub mirror at
+<https://github.com/sbcl/sbcl>:
+
+    $ git clone https://github.com/sbcl/sbcl.git
+
+See [Building SBCL][9015] for the next steps.
+
+> *Note*: Tracking the repository is not recommended if you're just
+> using SBCL as a tool for other work, but if you're interested in
+> working on SBCL itself, it's a good idea.
+
+<a id="x-28SB-MANUAL-3A-40BUILDING-SBCL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BUILDING-SBCL%20MGL-PAX:SECTION"></a>
+
+### 3.3 Building SBCL
+
+To build SBCL, you need a [Source Distribution][dcf3] or the [SBCL Repository][a820]
+checked out. In any case, the instructions are the same.
+
+You also need a working C toolchain and a Common Lisp system
+(see [Build Prerequisites][b934]). You also need approximately 128 MB of
+free RAM+swap.
+
+To build SBCL using another, already installed SBCL version:
+
+    $ sh make.sh
+
+To configure SBCL to [install][36f6] to a non-standard
+location, you can use the `--prefix` option:
+
+    $ sh make.sh --prefix=/opt/mysbcl
+
+To configure SBCL with a non-standard default dynamic-space size,
+use the `--dynamic-space-size` option:
+
+    $ sh make.sh --dynamic-space-size=4gb
+    $ sh make.sh --dynamic-space-size=800mb
+
+If mega- or gigabytes are not specified, the number is taken to be
+in megabytes. The standard default is 512Mb for 32-bit systems, and
+1GB for 64-bit systems (with the exception of OpenBSD where 444MB
+are used to fit under default ulimits.)
+
+If you don't already have an SBCL binary installed as `sbcl` on your
+system, you'll need to tell `make.sh` what Lisp to use as the
+cross-compilation host (cf. `make.sh` for detailed instructions on how
+to cross compile). For example, to use CMUCL (assuming it has been
+installed under its default name `lisp`) as the
+cross-compilation host:
+
+    $ sh make.sh --xc-host='lisp -batch -noinit'
+
+The build may take a long time, especially on older hardware. A
+successful build ends with a message beginning: "The build seems to
+have finished successfully...".
+
+To run the regression tests:
+
+    $ cd ./tests && sh run-tests.sh
+
+To build documentation:
+
+    $ cd ./doc/manual && make
+
+This builds the Info, HTML and PDF documentation from the [sb-manual][bb9e]
+contrib. The manual includes documentation strings from the built
+SBCL. If SBCL itself has not been built yet, but an installed one is
+found, documentation strings from the installed version are used.
+
+Now you should have the same `src/runtime/sbcl` and
+`obj/sbcl-home/sbcl.core` files that come with the binary
+distribution, the next thing is [Installing SBCL][36f6].
+
+<a id="x-28SB-MANUAL-3A-40CUSTOMIZING-THE-BUILD-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CUSTOMIZING-THE-BUILD%20MGL-PAX:SECTION"></a>
+
+#### 3.3.1 Customizing the Build
+
+You can tweak the [`*features*`][6234] set for the resulting Lisp system,
+enabling or disabling features like documentation strings, threads,
+or extra debugging code.
+
+The preferred way to do this is using command-line arguments to
+`make.sh`:
+
+    --fancy                    Enables a curated set of features.
+    --with-<feature>           Enables a specific feature.
+    --without-<feature>        Disables a specific feature.
+
+<a id="x-28SB-MANUAL-3A-40BUILD-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BUILD-OPTIONS%20MGL-PAX:SECTION"></a>
+
+#### 3.3.2 Build Options
+
+- `:sb-doc`
+
+    Retain documentation strings found in the system sources in the
+    target SBCL executable. Traditional Common Lisp folk will want this
+    option set.
+
+- `:sb-show`
+
+    Make more debugging information available (for debugging SBCL
+     itself). If you aren't hacking or troubleshooting SBCL itself, you
+     probably don't want this set.
+
+    At least two varieties of debugging information are enabled by this
+     option:
+
+    - SBCL is compiled with a higher level of [`optimize`][4d51] [`debug`][5df9], so that
+       the debugger can tell more about the state of the system.
+
+    - Various code to print debugging messages, and similar debugging
+       code, is compiled only when this feature is present.
+
+    Note that the extra information recorded by the compiler at this
+     higher level of `optimize` `debug` includes the source location forms.
+     In order for the debugger to use this information, it has to re-[`read`][fe58]
+     the source file. In an ordinary installation of SBCL, this
+     re-`read`ing may not work very well, for either of two reasons:
+
+    - The sources aren't present on the system in the same location that
+       they were on the system where SBCL was compiled.
+
+    - SBCL is using the standard readtable, without the added hackage
+       which allows it to handle things like target features.
+
+    If you want to be able to use the extra debugging information,
+    therefore, be sure to keep the sources around, and run with the
+    readtable configured so that the system sources can be read.
+
+- `:sb-ldb`
+
+    Enable the [`ldb`][3b91], the low-level debugger. In the ideal world you
+    would not need this unless you are messing with SBCL at a very low
+    level (e.g. trying to diagnose GC problems, or trying to debug
+    assembly code for a port to a new CPU). However, experience shows
+    that sooner or later everyone `lose()`s, in which case `sb-ldb` can
+    at least provide an informative backtrace.
+
+- `:sb-after-xc-core`
+
+    This isn't really a target Lisp feature at all but controls
+    whether the build process produces an `after-xc.core` file. This can
+    be useful for shortening the edit/compile/debug cycle when you
+    modify SBCL's own source code, as in `slam.sh`. Otherwise you don't
+    need it.
+
+- `:sb-show-assem`
+
+    Enable extra debugging output in the `assem.lisp` assembler /
+    scheduler code.
+
+- `:sb-dyncount`
+
+    Enable code for collecting statistics on usage of various
+    operations, useful for performance tuning of the SBCL system itself.
+    This code is probably pretty stale (having not been tested since the
+    fork from base CMUCL) but might nonetheless be a useful starting
+    point for anyone who wants to collect such statistics in the future.
+
+- `:sb-simd-pack`
+
+    Enabled automatically by `make-config.sh` for platforms which
+    implement short vector SIMD intrinsics.
+
+- `:cycle-counter`
+
+    Enabled automatically by `make-config.sh` for platforms which
+    implement the `%read-cycle-counter` VOP. Can be disabled manually:
+    affects [`time`][9427].
+
+- `:immobile-space`
+
+    Build with support for an additional dynamic heap differing from
+    the main dynamic heap in two ways:
+
+    1. It is guaranteed to reside below 4GB so that all pointers into it
+       fit in 32 bits. (Only an issue for >32 bit address space)
+
+    2. All objects therein are immovable, and space is reclaimed by a
+       mark-and-sweep collector.
+
+    That combination of aspects potentially allows various efficiencies
+    in code generation, especially for the x86-64 backend. The extra
+    space has a fixed size which can only be changed by a rebuild, and
+    out-of-space conditions are not easily preventable, so the space is
+    sized rather generously to sidestep the issue. Additionally, it is
+    assumed that for all objects in the immobile heap, speed of
+    allocation of those objects is relatively unimportant. If unexpected
+    performance regressions are observed, consider disabling this
+    feature and reporting a bug.
+
+- `:immobile-code`
+
+    Allocate most functions in the immobile space.
+    Enabled by default if supported. The down-side of this feature is
+    that the allocator is significantly slower than the allocator for
+    movable code. If a particular application is performance-constrained
+    by speed of creation of compiled functions (not including closures),
+    the feature can be disabled.
+
+- `:compact-instance-header`
+
+    Combine the layout pointer, instance-length, and widetag of
+    an `instance` into a single machine word. This represents a space
+    savings of anywhere from 4% to 8% in typical applications. (Your
+    mileage may vary.)
+
+- `:sb-thread`
+
+    Enable low-level thread primitives support. See [Threading][6ec7].
+
+    As of SBCL 2.6.9, threads are part of the default build on x86oid
+    Linux, Darwin, and Windows. In fact, threads are mandatory on
+    Windows. Other platforms that support them include FreeBSD, Solaris.
+
+- `:sb-futex`
+
+    Use `futex`es as our locking primitive. Only available on Linux.
+
+- `:sb-package-locks`
+
+    Enable detection of unportable code (when applied to the
+    `common-lisp` package or SBCL-internal packages) or bad-neighbourly
+    code (when applied to user-level packages), relating to material
+    alteration to packages or to bindings in symbols in packages. See
+    [Package Locks][5746].
+
+- `:sb-unicode`
+
+    Support for the entirety of the 21-bit character space defined by
+    the Unicode consortium, rather than the classical 8-bit ISO-8859-1
+    character set. See [Unicode Support][cecd].
+
+- `:sb-eval`
+
+    Support for a full evaluator that can execute all the CL special
+    forms, as opposed to the traditional SBCL evaluator, which called
+    [`compile`][8c75] for everything complicated. See [Interpreter][2e79].
+
+- `:sb-fasteval`
+
+    Support for a different evaluator (interpreter) with improved
+    performance. You can have only one of `:sb-eval` [`and`][94b8] `:sb-fasteval`. See
+    [Interpreter][2e79].
+
+- `:sb-source-locations`
+
+    Record source location information for variables, classes,
+    conditions, packages, etc. Gives much better information on
+    `M-.` in Slime but increases core size by about 100kB.
+
+- `:sb-xref-for-internals`
+
+    Record xref data for SBCL internals. This can be rather useful for
+    people who want to develop on SBCL itself because it will make
+    `M-?` (`slime-edit-uses`) work which lists call/expansion/etc.
+    sites. It will increase the core size by major 5-6MB, though.
+
+- `:ansi-compliant-load-truename`
+
+    `clhs` says that [`*load-truename*`][d234] has to be bound whenever
+    [`*load-pathname*`][a11d] is because obviously the spec wanted to mandate that
+     one system call turn into an unlimited number. At least you're
+     correct in saying "it's not my code, it's the OS that's slow".
+     Remove this feature if you want to ignore the technical requirement
+     that `*load-truename*` be a variable (as opposed to a symbol-macro).
+
+- `:largefile`
+
+    Some platforms don't use a 32-bit `off_t` by default, and thus can't
+    handle files larger than 2GB. This feature will control whether
+    we'll try to use platform-specific compilation options to enable a
+    64-bit `off_t`. The intent is for this feature to be automatically
+    enabled by `make-config.sh` on platforms where it's needed and known
+    to work, you shouldn't be enabling it manually. You might however
+    want to disable it, if you need to pass file descriptors to foreign
+    code that uses a 32-bit `off_t`.
+
+- `:relocatable-static-space`
+
+    Allow static space to be relocatable on start-up.
+
+- `:aslr`
+
+    Allow Lisp spaces to be randomly allocated anywhere in virtual address
+    space, i.e. the behavior of passing `mmap` an address of zero.
+    Requires all spaces to be relocatable on start-up.
+
+- `:sb-core-compression`
+
+    Support zstd-based compressed core files. Enable this feature to
+    compile it in. Obviously, doing so adds a dependency on zstd.
+
+- `:sb-safepoint`
+
+    On certain thread-enabled platforms, synchronization between
+    threads for the purpose of stopping and starting the world around GC
+    can be performed using safepoints instead of signals. Enable this
+    feature to compile with safepoints and to use them for GC. This is
+    always enabled on `:win32`.
+
+- `:sb-cover-for-internals`
+
+    Build the SBCL system itself with code coverage data marks (and
+    sequences in the compiled code to set those marks). Inevitably,
+    this makes the system as a whole slower, but allows coverage of
+    tests to be measured.
+
+<a id="x-28SB-MANUAL-3A-40TROUBLESHOOTING-THE-BUILD-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TROUBLESHOOTING-THE-BUILD%20MGL-PAX:SECTION"></a>
+
+#### 3.3.3 Troubleshooting the Build
+
+- "GNU Make not found"
+
+    If the GNU make command is not available under the names `make`,
+    `gmake`, or `gnumake`, then define the environment variable
+    `GNUMAKE` to a name where it can be found.
+
+- Segfaults on Linux with ASLR
+
+    If SBCL segfaults immediately upon startup due to Address Space
+    Layout Randomization (ASLR), you can bypass it by executing the
+    host compiler binary via `setarch`:
+
+        setarch x86_64 -R sbcl
+
+    See also `:aslr` in [Build Options][9119].
+
+- Build crashes mysteriously, machine becomes unstable, etc
+
+    You may be running out of memory. Try increasing swap, or
+    building SBCL with fewer other programs running simultaneously.
+
+- Other
+
+    - Check that the host lisp you're building with is known to work
+      as an SBCL build host, and that your operating system is
+      supported.
+
+    - Try to do a build without loading any initialization files for
+      the cross-compilation host (for example
+      `sh make.sh 'sbcl --userinit /dev/null --sysinit /dev/null'`).
+
+    - Some GCC versions are known to have bugs that affect SBCL
+      compilation: if the error you're encountering seems related to
+      files under `src/runtime`, down- or upgrading GCC may help.
+
+    - Ask for help on the mailing lists referenced in
+      [Getting Support and Reporting Bugs][ac46].
+
+<a id="x-28SB-MANUAL-3A-40BUILD-PREREQUISITES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BUILD-PREREQUISITES%20MGL-PAX:SECTION"></a>
+
+#### 3.3.4 Build Prerequisites
+
+All of the following platforms are supported in the sense of
+"should work", but some things like loading foreign object files
+may lag behind on less-used operating systems.
+
+Supported toolchains:
+
+- GNU toolchain
+
+- Sun toolchain with GCC
+
+SBCL can be compiled from source code using (as the host compiler)
+another ANSI-compliant Common Lisp implementation such as
+
+- SBCL
+
+- CMUCL
+
+- CCL (formerly known as OpenMCL)
+
+- CLISP (only some versions: 2.44.1 is OK, 2.47 is not)
+
+- ECL
+
+- XCL
+
+- ABCL (recent versions only, very slow)
+
+Often, it is most convenient to install an SBCL with your system's
+package manager to use as the host.
+
+Note that not every release is tested with every possible host
+compiler. You're most likely to get a clean build with SBCL itself
+as host, otherwise CCL on a PPC and CMUCL elsewhere.
+
+<a id="x-28SB-MANUAL-3A-40INSTALLING-SBCL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@INSTALLING-SBCL%20MGL-PAX:SECTION"></a>
+
+### 3.4 Installing SBCL
+
+The installation instructions are the same whether you are have
+downloaded a [Binary Distribution][91e1] or [built SBCL][9015]
+yourself.
+
+The following command installs SBCL and related documentation under
+the `/usr/local` directory (typically run as root):
+
+    # INSTALL_ROOT=/usr/local sh install.sh
+
+You can also install SBCL as a user, under your home directory:
+
+    $ INSTALL_ROOT=/home/me sh install.sh
+
+That is, `install.sh` installs SBCL under the directory named by the
+environment variable `INSTALL_ROOT`.
+
+If `INSTALL_ROOT` is not specified, SBCL is installed into
+location configured when [Building SBCL][9015] with the `--prefix` argument
+of `make.sh`: for official binary distributions, this is the
+`/usr/local` directory.
+
+The standard installation procedure, outlined above, is to run
+`install.sh`, which copies all the files to right places, including
+documentation and contrib modules that have passed their tests. If
+you need to install by hand, see `install.sh` for details.
+
+Documentation consists of a man page, the SBCL Manual (in info, pdf
+and html formats), and a few additional text files.
+
 <a id="x-28SB-MANUAL-3A-40STARTING-AND-STOPPING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STARTING-AND-STOPPING%20MGL-PAX:SECTION"></a>
 
-## 3 Starting and Stopping
+## 4 Starting and Stopping
 
 <a id="x-28SB-MANUAL-3A-40STARTING-SBCL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STARTING-SBCL%20MGL-PAX:SECTION"></a>
 
-### 3.1 Starting SBCL
+### 4.1 Starting SBCL
 
-<a id="x-28SB-MANUAL-3A-40RUNNING-FROM-SHELL-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@RUNNING-FROM-SHELL%20MGL-PAX:SECTION"></a>
-
-#### 3.1.1 Running from Shell
-
-To run SBCL, type `sbcl` at the command line.
-
-You should end up in the toplevel *REPL* (read-eval-print loop),
-where you can interact with SBCL by typing expressions.
+If SBCL is installed properly and it is in your `path`, you can simply
+type `sbcl` at the command line. You should end up in the toplevel
+*REPL* (read-eval-print loop), where you can interact with SBCL by
+typing expressions.
 
     $ sbcl
     This is SBCL 0.8.13.60, an implementation of ANSI Common Lisp.
@@ -1311,12 +1861,23 @@ where you can interact with SBCL by typing expressions.
     * (exit)
     $
 
-Also see [Command-line Options][1294] and [Stopping SBCL][a9a5].
+See also [Command-line Options][1294] and [Stopping SBCL][a9a5].
+
+<a id="x-28SB-MANUAL-3A-40RUNNING-WITHOUT-INSTALLATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@RUNNING-WITHOUT-INSTALLATION%20MGL-PAX:SECTION"></a>
+
+#### 4.1.1 Running without Installation
+
+You can quickly run SBCL without installing it by invoking the
+`run-sbcl.sh` script. This works both with an unpacked
+[Binary Distribution][91e1] and after [Building SBCL][9015] yourself:
+
+    $ sh run-sbcl.sh
 
 <a id="x-28SB-MANUAL-3A-40RUNNING-FROM-EMACS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-FROM-EMACS%20MGL-PAX:SECTION"></a>
 
-#### 3.1.2 Running from Emacs
+#### 4.1.2 Running from Emacs
 
 To run SBCL as an `inferior-lisp` from Emacs, add something like this
 to your `.emacs`:
@@ -1330,7 +1891,7 @@ For more information on using SBCL with Emacs, see
 <a id="x-28SB-MANUAL-3A-40SHEBANG-SCRIPTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SHEBANG-SCRIPTS%20MGL-PAX:SECTION"></a>
 
-#### 3.1.3 Shebang Scripts
+#### 4.1.3 Shebang Scripts
 
 Standard Unix tools that are interpreters follow a common command-line
 protocol that is necessary to work with "shebang scripts". SBCL
@@ -1352,15 +1913,119 @@ Note that SBCL skips the shebang line when it reads the file:
     $ sbcl --script hello.lisp
     Hello, World!
 
+<a id="x-28SB-MANUAL-3A-40PARTS-OF-SBCL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@PARTS-OF-SBCL%20MGL-PAX:SECTION"></a>
+
+#### 4.1.4 Parts of SBCL
+
+If you only ever use SBCL packaged for your operating system,
+run it from an installation created with [`install.sh`][36f6], run it with [`run-sbcl.sh`][8936], there is no need to worry about the
+files necessary at run-time. If you, for example, want to install
+SBCL manually, package it in a way that deviates from the file
+hierarchy created by `install.sh`, or run SBCL with your own core
+file saved by [`sb-ext:save-lisp-and-die`][9e55], then read on.
+
+The following files play a part in running SBCL.
+
+- *The `sbcl` binary*
+
+    This is a standard executable built by compiling and linking an
+    ordinary C program. It provides the runtime environment for the
+    running Lisp image, but it doesn't know much about high-level
+    Lisp stuff (like symbols and printing and objects), so it's
+    pretty useless by itself.
+
+    The binary is `src/runtime/sbcl` in [Binary Distribution][91e1]s and
+    [Source Distribution][dcf3]s; and it is [installed][36f6]
+    to `/usr/local/bin/sbcl` by default.
+
+- *The `sbcl.core` file*
+
+    This is an [image dump][9e55] written in a
+    special SBCL format that only SBCL understands, and it contains
+    all the high-level Lisp stuff.
+
+    The core file is `obj/sbcl-home/sbcl.core` in distributions;
+    installed to `/usr/local/lib/sbcl/sbcl.core` by default. In
+    addition, there are a number of [Contributed Modules][6a68] that extend
+    the basic SBCL functionality.
+
+- *The `contrib/` directory*
+
+    This holds the compiled fasl files for the [Contributed Modules][6a68],
+    to be loaded on demand.
+
+    The contrib fasl files are in `obj/sbcl-home/contrib/` in
+    distributions; installed to `/usr/local/lib/sbcl/contrib/` by
+    default.
+
+> *Note*: Only the binary and the core file are absolutely necessary
+> to start SBCL; the contrib fasls are optional.
+
+<a id="x-28SB-MANUAL-3A-40FINDING-PARTS-OF-SBCL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FINDING-PARTS-OF-SBCL%20MGL-PAX:SECTION"></a>
+
+#### 4.1.5 Finding Parts of SBCL
+
+When you invoke the SBCL binary, it needs to be able to find the other
+[Parts of SBCL][6fc8], namely the `sbcl.core` file and the
+[Contributed Modules][6a68] in the `contrib/` directory.
+
+- Finding `sbcl.core`
+
+    If the `--core` [runtime option][3e4d] is specified,
+    then its value is used. Example:
+
+        $ sbcl --core /foo/bar/sbcl.core
+
+    Else, the runtime looks for `sbcl.core` in the following
+    directories until the first match.
+
+    - The directory denoted by the `SBCL_HOME` environment
+      variable if it is set
+
+    - The current directory
+
+    - The directory of the `sbcl` binary
+
+    - The `../lib/sbcl/` directory relative to the `sbcl` binary
+
+    If no core file was found by the above rules, then the runtime
+    exits with an error message.
+
+- Finding `contrib/`
+
+    Once the runtime loads the core file, the Lisp looks for
+    `contrib/` in the following directories until the first match.
+
+    - The directory denoted by the `SBCL_HOME` environment
+      variable if it is set
+
+    - *The directory of `sbcl.core`*
+
+    - *The directory `../lib/sbcl` relative to `sbcl.core`*
+
+    - The current directory
+
+    - The directory of the `sbcl` binary
+
+    - The directory `../lib/sbcl` relative to the `sbcl` binary
+
+    The list of directories is the same as for finding the core file
+    except here we also try directories relative to `sbcl.core`.
+
+    If the `contrib/` directory is not found, then no error is
+    signalled immediately, but loading modules will fail.
+
 <a id="x-28SB-MANUAL-3A-40STOPPING-SBCL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STOPPING-SBCL%20MGL-PAX:SECTION"></a>
 
-### 3.2 Stopping SBCL
+### 4.2 Stopping SBCL
 
 <a id="x-28SB-MANUAL-3A-40EXIT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXIT%20MGL-PAX:SECTION"></a>
 
-#### 3.2.1 Exit
+#### 4.2.1 Exit
 
 SBCL can be stopped at any time by calling [`sb-ext:exit`][7f27],
 optionally returning a specified numeric value to the calling
@@ -1412,200 +2077,17 @@ threads.
 <a id="x-28SB-MANUAL-3A-40END-OF-FILE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@END-OF-FILE%20MGL-PAX:SECTION"></a>
 
-#### 3.2.2 End of File
+#### 4.2.2 End of File
 
 By default, SBCL also exits upon reaching the end of input. This can
 be caused either by the user pressing `Control-D` on an attached
 terminal, or by the input stream ending when SBCL is used as part of
 a shell pipeline.
 
-<a id="x-28SB-MANUAL-3A-40SAVING-A-CORE-IMAGE-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@SAVING-A-CORE-IMAGE%20MGL-PAX:SECTION"></a>
-
-#### 3.2.3 Saving a Core Image
-
-SBCL has the ability to save its state as a file for later
-execution. This functionality is important for its bootstrapping
-process, and is also provided as an extension to the user.
-
-<a id="x-28SB-EXT-3ASAVE-LISP-AND-DIE-20FUNCTION-29"></a>
-<a id="SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION"></a>
-
-- \[function\] **sb-ext:save-lisp-and-die** *core-file-name \&key toplevel executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression*
-
-    Save a "core image", i.e. enough information to restart a Lisp
-    process later in the same state, in the file of the specified name.
-    Only global state is preserved: the stack is unwound in the process.
-
-    The following [`&key`][4336] arguments are defined:
-
-    - `:toplevel`
-
-        The function to run when the created core file is resumed. The
-        default function handles command line toplevel option
-        processing (see [Toplevel Options][6be4]) and runs the top
-        level read-eval-print loop. This function returning is equivalent
-        to ([`sb-ext:exit`][7f27] `:code` 0) being called.
-
-        `toplevel` functions should always provide an [`abort`][ae44] restart:
-        otherwise code they call will run without one.
-
-    - `:executable`
-
-        If true, arrange to combine the SBCL runtime and the core image to
-        create a standalone executable. If false (the default), the core
-        image will not be executable on its own. Executable images always
-        behave as if they were passed the `--noinform` runtime option.
-         If `:executable` is `:elf-object`, then the resulting core will be
-         wrapped in a .o which requires further linking. (EXPERIMENTAL)
-
-    - `:save-runtime-options`
-
-        If true, values of [Runtime Options][3e4d]
-        `--dynamic-space-size` and `--control-stack-size` that were used
-        to start SBCL are stored in the standalone executable, and
-        restored when the executable is run. This also inhibits normal
-        runtime option processing, causing all command line arguments to
-        be passed to the toplevel. If
-        `:accept-runtime-options`, then `--dynamic-space-size` and
-        `--control-stack-size` are still processed by the runtime.
-        Meaningless if `:executable` is `nil`.
-
-    - `:callable-exports`
-
-        This should be a list of symbols to be initialized to the
-        appropriate alien callables on startup. All exported symbols
-        should be present as global symbols in the symbol table of the
-        runtime before the saved core is loaded. When this list is
-        non-empty, the `:toplevel` argument cannot be supplied.
-
-    - `:purify`
-
-        If true (the default), then some objects in the restarted core
-        will be memory-mapped as read-only. Among those objects are
-        numeric vectors that were determined to be compile-time constants,
-        and any immutable values according to the language specification
-        such as symbol names.
-
-    - `:root-structures`
-
-        This should be a list of the main entry points in any newly loaded
-        systems. This need not be supplied, but locality and/or [`gc`][b50b]
-        performance may be better if they are. This has two different but
-        related meanings: If `:purify` is true -- and only for Cheney `gc` --
-        the root structures are those which anchor the set of objects
-        moved into static space. On gencgc -- and only on platforms
-        supporting immobile code -- these are the functions and/or
-        function-names which commence a depth-first scan of code when
-        reordering based on the statically observable call chain. The
-        complete set of reachable objects is not affected per se. This
-        argument is meaningless if neither enabling precondition holds.
-
-    - `:environment-name`
-
-        This has no purpose; it is accepted only for legacy compatibility.
-
-    - `:compression`
-
-        This is only meaningful if the runtime was built with the
-        `:sb-core-compression` feature enabled. If `nil` (the default),
-        saves to uncompressed core files. If `:sb-core-compression` was
-        enabled at build-time, the argument may also be an integer from -7
-        to 22, corresponding to zstd compression levels, or `t` (which is
-        equivalent to the default compression level, 9).
-
-    - `:application-type`
-
-        Present only on Windows and meaningful only with `:executable` `t`.
-        Specifies the subsystem of the executable, `:console` or `:gui`.
-        The notable difference is that `:gui` doesn't automatically create
-        a console window. The default is `:console`.
-
-    The save/load process changes the values of some global variables:
-
-    - [`*standard-output*`][e7ee], [`*debug-io*`][10ff], etc
-
-        Everything related to open streams is necessarily changed, since
-        the OS won't let us preserve a stream across save and load.
-
-    - [`*default-pathname-defaults*`][752f]
-
-        This is reinitialized to reflect the working directory where the
-        saved core is loaded.
-
-    `save-lisp-and-die` interacts with [`sb-alien:load-shared-object`][3c84]: see its
-    documentation for details.
-
-    On threaded platforms, only a single thread may remain running after
-    [`sb-ext:*save-hooks*`][bbf4] have run. Applications using multiple threads can
-    be `save-lisp-and-die` friendly by registering a save-hook that quits
-    any additional threads, and an init-hook that restarts them.
-
-    This implementation is not as polished and painless as you might like:
-
-    - It corrupts the current Lisp image enough that the current process
-      needs to be killed afterwards. This can be worked around by forking
-      another process that saves the core.
-
-    - There is absolutely no binary compatibility of core images between
-      different runtime support programs. Even runtimes built from the
-      same sources at different times are treated as incompatible for this
-      purpose.
-
-    This isn't because we like it this way, but just because there don't
-    seem to be good quick fixes for either limitation and no one has been
-    sufficiently motivated to do lengthy fixes.
-
-<a id="x-28SB-EXT-3A-2ASAVE-HOOKS-2A-20VARIABLE-29"></a>
-<a id="SB-EXT:*SAVE-HOOKS*%20VARIABLE"></a>
-
-- \[variable\] **sb-ext:\*save-hooks\*** *nil*
-
-    A list of function designators called in an unspecified
-    order before creating a saved core image.
-
-    Unused by SBCL itself; reserved for the user and applications.
-
-In cases where the standard initialization files have already been
-loaded into the saved core and alternative ones should be used (or
-none at all), SBCL allows customizing the initfile pathname
-computation.
-
-<a id="x-28SB-EXT-3A-2ASYSINIT-PATHNAME-FUNCTION-2A-20VARIABLE-29"></a>
-<a id="SB-EXT:*SYSINIT-PATHNAME-FUNCTION*%20VARIABLE"></a>
-
-- \[variable\] **sb-ext:\*sysinit-pathname-function\*** *#\<function sb-impl::sysinit-pathname>*
-
-    Designator for a function of zero arguments called to obtain a
-    pathname designator for the default sysinit file, or `nil`. If the
-    function returns `nil`, no sysinit file is used unless one has been
-    specified on the command line.
-
-<a id="x-28SB-EXT-3A-2AUSERINIT-PATHNAME-FUNCTION-2A-20VARIABLE-29"></a>
-<a id="SB-EXT:*USERINIT-PATHNAME-FUNCTION*%20VARIABLE"></a>
-
-- \[variable\] **sb-ext:\*userinit-pathname-function\*** *#\<function sb-impl::userinit-pathname>*
-
-    Designator for a function of zero arguments called to obtain a
-    pathname designator or a stream for the default userinit file, or `nil`.
-    If the function returns `nil`, no userinit file is used unless one has
-    been specified on the command line.
-
-To facilitate distribution of SBCL applications using external
-resources, the filesystem location of the SBCL core file being used
-is available from Lisp.
-
-<a id="x-28SB-EXT-3A-2ACORE-PATHNAME-2A-20VARIABLE-29"></a>
-<a id="SB-EXT:*CORE-PATHNAME*%20VARIABLE"></a>
-
-- \[variable\] **sb-ext:\*core-pathname\*** *"\<site-specific>"*
-
-    The absolute pathname of the running SBCL core.
-
 <a id="x-28SB-MANUAL-3A-40EXIT-ON-ERRORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXIT-ON-ERRORS%20MGL-PAX:SECTION"></a>
 
-#### 3.2.4 Exit on Errors
+#### 4.2.3 Exit on Errors
 
 SBCL can also be configured to exit if an unhandled error occurs,
 which is mainly useful for acting as part of a shell pipeline; doing
@@ -1617,7 +2099,7 @@ of the flexibility and robustness of Common Lisp. See
 <a id="x-28SB-MANUAL-3A-40COMMAND-LINE-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMMAND-LINE-OPTIONS%20MGL-PAX:SECTION"></a>
 
-### 3.3 Command-line Options
+### 4.3 Command-line Options
 
 Command-line options can be considered an advanced topic; for ordinary
 interactive use, no command-line arguments should be necessary.
@@ -1648,7 +2130,7 @@ they were intended for the runtime system or the Lisp system.
 <a id="x-28SB-MANUAL-3A-40RUNTIME-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNTIME-OPTIONS%20MGL-PAX:SECTION"></a>
 
-#### 3.3.1 Runtime Options
+#### 4.3.1 Runtime Options
 
 - `--core <corefilename>`
 
@@ -1660,10 +2142,10 @@ they were intended for the runtime system or the Lisp system.
 - `--dynamic-space-size <size>`
 
     Size of the dynamic space reserved on startup. The default value
-    is platform-dependent. The units supported are `kb` (or `KiB`),
-    `mb` (or `MiB`), `gb` (or `GiB`), and `tb` (or `TiB`). The names
-    are compared case-insensitively, and the default unit is
-    megabytes. Thus, `8`, `8mb`, and `8mib` all mean 8 \* 2^20 bytes.
+    is platform-dependent. The units supported are kB (or KiB),
+    MB (or MiB), GB (or GiB), and TB (or TiB). The names are
+    compared case-insensitively, and the default unit is megabytes.
+    Thus, `8`, `8mb`, and `8mib` all mean 8 \* 2^20 bytes.
 
 - `--control-stack-size <size>`
 
@@ -1732,20 +2214,22 @@ they were intended for the runtime system or the Lisp system.
 
     Print SBCL's version information, then exit.
 
+- `--end-runtime-options`
+
+    End processing of runtime options and pass the rest of the
+    command-line arguments to the toplevel function.
+
 In the future, runtime options may be added to control behaviour
 such as lazy allocation of memory.
-
-Runtime options, including any `--end-runtime-options` option, are
-stripped out of the command line before the Lisp toplevel logic gets
-a chance to see it.
 
 <a id="x-28SB-MANUAL-3A-40TOPLEVEL-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TOPLEVEL-OPTIONS%20MGL-PAX:SECTION"></a>
 
-#### 3.3.2 Toplevel Options
+#### 4.3.2 Toplevel Options
 
-The following options are processed and removed by the default
-toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
+The following options are supported by the [Default Toplevel][f474]. If the
+toplevel function was overriden with [`sb-ext:save-lisp-and-die`][9e55], the
+set of available toplevel options is likely very different.
 
 - `--sysinit <filename>`
 
@@ -1824,20 +2308,27 @@ toplevel (see [`sb-ext:save-lisp-and-die`][9e55]).
     potentially verbose diagnostic messages printed on the standard
     output.
 
+- `--end-toplevel-options`
+
+    End processing of toplevel options, leaving the rest of the
+    command-line arguments in [`sb-ext:*posix-argv*`][a5cc].
+
 <a id="x-28SB-MANUAL-3A-40INITIALIZATION-FILES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INITIALIZATION-FILES%20MGL-PAX:SECTION"></a>
 
-### 3.4 Initialization Files
+### 4.4 Initialization Files
 
-SBCL processes initialization files with [`read`][fe58] and [`eval`][0d6e],
-not [`load`][b5ec]; hence initialization files can be used to set startup
-[`*package*`][5ed1] and [`*readtable*`][b79a], and for proclaiming a global optimization
-policy.
+The [Default Toplevel][f474] supports customization via the system and user
+initialization files. These files with [`read`][fe58] and [`eval`][0d6e], not [`load`][b5ec];
+hence initialization files can be used to set startup [`*package*`][5ed1] and
+[`*readtable*`][b79a], and for proclaiming a global optimization policy.
 
-- **System Initialization File:** Defaults to `$SBCL_HOME/sbclrc`,
+- **System Initialization File:** Defaults to `sbclrc` in the
+  directory where `contrib/` is found (see [Finding Parts of SBCL][0638]),
   or if that doesn't exist to `/etc/sbclrc`. Can be overridden with
   the command-line option `--sysinit` or `--no-sysinit` (see
-  [Toplevel Options][6be4]).
+  [Toplevel Options][6be4]). Set [`sb-ext:*sysinit-pathname-function*`][82b0] to
+  override the above defaulting behavior.
 
     The system initialization file is intended for system
     administrators and software packagers to configure locations of
@@ -1845,34 +2336,69 @@ policy.
 
 - **User Initialization File:** Defaults to `$HOME/.sbclrc`. Can be
   overridden with the command-line option `--userinit` or
-  `--no-userinit` (see [Toplevel Options][6be4]).
+  `--no-userinit` (see [Toplevel Options][6be4]). Set
+  [`sb-ext:*userinit-pathname-function*`][c09b9] to override the above
+  defaulting behavior.
 
     The user initialization file is intended for personal
     customizations, such as loading certain modules at startup,
-    defining convenience functions to use in the REPL,
-    handling automatic recompilation of FASLs (see [FASL format][943e]),
-    etc.
+    defining convenience functions to use in the REPL, handling
+    automatic recompilation of fasls (see [Fasl Format][943e]), etc.
 
 Neither initialization file is required.
+
+<a id="x-28SB-EXT-3A-2ASYSINIT-PATHNAME-FUNCTION-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*SYSINIT-PATHNAME-FUNCTION*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*sysinit-pathname-function\*** *nil*
+
+    Controls the sysinit file defaulting of the
+    [Default Toplevel][f474]. This is `nil` or a designator for a
+    function of zero arguments.
+
+    - If `nil`, the default behavior described in
+      [Initialization Files][1016] is in effect.
+
+    - If a function, it is called by the default toplevel to obtain a
+      pathname designator for the default sysinit file or `nil`. If the
+      function returns `nil`, no sysinit file is used unless one has been
+      specified on the command line.
+
+<a id="x-28SB-EXT-3A-2AUSERINIT-PATHNAME-FUNCTION-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*USERINIT-PATHNAME-FUNCTION*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*userinit-pathname-function\*** *nil*
+
+    Controls the userinit file defaulting of the
+    [Default Toplevel][f474]. This is `nil` or a designator for a
+    function of zero arguments.
+
+    - If `nil`, the default behavior described in
+      [Initialization Files][1016] is in effect.
+
+    - If a function, it is called by the default toplevel to obtain a
+      pathname designator for the default userinit file or `nil`. If the
+      function returns `nil`, no sysinit file is used unless one has been
+      specified on the command line.
 
 <a id="x-28SB-MANUAL-3A-40INITIALIZATION-AND-EXIT-HOOKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INITIALIZATION-AND-EXIT-HOOKS%20MGL-PAX:SECTION"></a>
 
-### 3.5 Initialization and Exit Hooks
+### 4.5 Initialization and Exit Hooks
 
 SBCL provides hooks into the system initialization and exit.
 
 <a id="x-28SB-EXT-3A-2AINIT-HOOKS-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*INIT-HOOKS*%20VARIABLE"></a>
 
-- \[variable\] **sb-ext:\*init-hooks\*** *(sb-simd-internals::update-idispatch-indices)*
+- \[variable\] **sb-ext:\*init-hooks\*** *nil*
 
     A list of function designators called in an unspecified
     order when a saved core image starts up, after the system itself has
     been initialized, but before non-user threads such as the finalizer
     thread have been started.
 
-    Unused by SBCL itself; reserved for the user and applications.
+    Unused by SBCL itself; reserved for the user, contribs and applications.
 
 <a id="x-28SB-EXT-3A-2AEXIT-HOOKS-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*EXIT-HOOKS*%20VARIABLE"></a>
@@ -1882,15 +2408,189 @@ SBCL provides hooks into the system initialization and exit.
     A list of function designators called in an unspecified
     order when SBCL process exits.
 
-    Unused by SBCL itself; reserved for the user and applications.
+    Unused by SBCL itself; reserved for the user, contribs and applications.
 
     Using ([`sb-ext:exit`][7f27] `:abort` `t`), or calling `exit(3)` directly circumvents
     these hooks.
 
+<a id="x-28SB-MANUAL-3A-40CORE-IMAGES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CORE-IMAGES%20MGL-PAX:SECTION"></a>
+
+### 4.6 Core Images
+
+<a id="x-28SB-MANUAL-3A-40SAVING-A-CORE-IMAGE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SAVING-A-CORE-IMAGE%20MGL-PAX:SECTION"></a>
+
+#### 4.6.1 Saving a Core Image
+
+SBCL has the ability to save its state as a file for later
+execution. This functionality is important for its bootstrapping
+process and is also provided as an extension to the user.
+
+<a id="x-28SB-EXT-3ASAVE-LISP-AND-DIE-20FUNCTION-29"></a>
+<a id="SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION"></a>
+
+- \[function\] **sb-ext:save-lisp-and-die** *core-file-name \&key toplevel executable save-runtime-options callable-exports (purify t) root-structures (environment-name "auxiliary") compression*
+
+    Save a "core image", i.e. enough information to restart a Lisp
+    process later in the same state, in the file of the specified name.
+    Only global state is preserved: the stack is unwound in the process.
+
+    The following [`&key`][4336] arguments are defined:
+
+    - `:toplevel`
+
+        The function to run when the created core file is resumed. The
+        default function handles command line toplevel option
+        processing (see [Toplevel Options][6be4]) and runs the top
+        level read-eval-print loop. This function returning is equivalent
+        to ([`sb-ext:exit`][7f27] `:code` 0) being called.
+
+        `toplevel` functions should always provide an [`abort`][ae44] restart:
+        otherwise code they call will run without one.
+
+    - `:executable`
+
+        If true, arrange to combine the SBCL runtime and the core image to
+        create a standalone executable. If false (the default), the core
+        image will not be executable on its own. Executable images always
+        behave as if they were passed the `--noinform` runtime option.
+         If `:executable` is `:elf-object`, then the resulting core will be
+         wrapped in a .o which requires further linking. (EXPERIMENTAL)
+
+    - `:save-runtime-options`
+
+        If true, values of [Runtime Options][3e4d]
+        `--dynamic-space-size` and `--control-stack-size` that were used
+        to start SBCL are stored in the standalone executable, and
+        restored when the executable is run. This also inhibits normal
+        runtime option processing, causing all command line arguments to
+        be passed to the toplevel. If
+        `:accept-runtime-options`, then `--dynamic-space-size` and
+        `--control-stack-size` are still processed by the runtime.
+        Meaningless if `:executable` is `nil`.
+
+    - `:callable-exports`
+
+        This should be a list of symbols to be initialized to the
+        appropriate alien callables on startup. All exported symbols
+        should be present as global symbols in the symbol table of the
+        runtime before the saved core is loaded. When this list is
+        non-empty, the `:toplevel` argument cannot be supplied.
+
+    - `:purify`
+
+        If true (the default), then some objects in the restarted core
+        will be memory-mapped as read-only. Among those objects are
+        numeric vectors that were determined to be compile-time constants,
+        and any immutable values according to the language specification
+        such as symbol names.
+
+    - `:root-structures`
+
+        This should be a list of the main entry points in any newly loaded
+        systems. This need not be supplied, but locality and/or [`gc`][b50b]
+        performance may be better if they are. This has two different but
+        related meanings: If `:purify` is true -- and only for CheneyGC --
+        the root structures are those which anchor the set of objects
+        moved into static space. On GENCGC -- and only on platforms
+        supporting immobile code -- these are the functions and/or
+        function-names which commence a depth-first scan of code when
+        reordering based on the statically observable call chain. The
+        complete set of reachable objects is not affected per se. This
+        argument is meaningless if neither enabling precondition holds.
+
+    - `:environment-name`
+
+        This has no purpose; it is accepted only for legacy compatibility.
+
+    - `:compression`
+
+        This is only meaningful if the runtime was built with the
+        `:sb-core-compression` feature enabled. If `nil` (the default),
+        saves to uncompressed core files. If `:sb-core-compression` was
+        enabled at build-time, the argument may also be an integer from -7
+        to 22, corresponding to zstd compression levels, or `t` (which is
+        equivalent to the default compression level, 9).
+
+    - `:application-type`
+
+        Present only on Windows and meaningful only with `:executable` `t`.
+        Specifies the subsystem of the executable, `:console` or `:gui`.
+        The notable difference is that `:gui` doesn't automatically create
+        a console window. The default is `:console`.
+
+    The save/load process changes the values of some global variables:
+
+    - [`*standard-output*`][e7ee], [`*debug-io*`][10ff], etc
+
+        Everything related to open streams is necessarily changed, since
+        the OS won't let us preserve a stream across save and load.
+
+    - [`*default-pathname-defaults*`][752f]
+
+        This is reinitialized to reflect the working directory where the
+        saved core is loaded.
+
+    `save-lisp-and-die` interacts with [`sb-alien:load-shared-object`][3c84]: see its
+    documentation for details.
+
+    On threaded platforms, only a single thread may remain running after
+    [`sb-ext:*save-hooks*`][bbf4] have run. Applications using multiple threads can
+    be `save-lisp-and-die` friendly by registering a save-hook that quits
+    any additional threads, and an init-hook that restarts them.
+
+    This implementation is not as polished and painless as you might like:
+
+    - It corrupts the current Lisp image enough that the current process
+      needs to be killed afterwards. This can be worked around by forking
+      another process that saves the core.
+
+    - There is absolutely no binary compatibility of core images between
+      different runtime support programs. Even runtimes built from the
+      same sources at different times are treated as incompatible for this
+      purpose.
+
+    This isn't because we like it this way, but just because there don't
+    seem to be good quick fixes for either limitation and no one has been
+    sufficiently motivated to do lengthy fixes.
+
+<a id="x-28SB-EXT-3A-2ASAVE-HOOKS-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*SAVE-HOOKS*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*save-hooks\*** *nil*
+
+    A list of function designators called in an unspecified
+    order before creating a saved core image.
+
+    Unused by SBCL itself; reserved for the user and applications.
+
+To facilitate distribution of SBCL applications using external
+resources, the filesystem location of the SBCL core file being used
+is available from Lisp.
+
+<a id="x-28SB-EXT-3A-2ACORE-PATHNAME-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*CORE-PATHNAME*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*core-pathname\*** *"\<varies>"*
+
+    The absolute pathname of the running SBCL core.
+
+<a id="x-28SB-MANUAL-3A-40DEFAULT-TOPLEVEL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEFAULT-TOPLEVEL%20MGL-PAX:SECTION"></a>
+
+#### 4.6.2 Default Toplevel
+
+SBCL's default toplevel function processes [Toplevel Options][6be4],
+runs [Initialization Files][1016], and provides a REPL.
+
+The toplevel function of [Core Images][7ced] can be specified with the
+`:toplevel` argument of [`sb-ext:save-lisp-and-die`][9e55].
+
 <a id="x-28SB-MANUAL-3A-40COMPILER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER%20MGL-PAX:SECTION"></a>
 
-## 4 Compiler
+## 5 Compiler
 
 This chapter discusses most compiler issues other than [Efficiency][29fd],
 including compiler messages, type safety in the presence of type
@@ -1901,7 +2601,7 @@ from a naive translation.
 <a id="x-28SB-MANUAL-3A-40CALLING-THE-COMPILER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CALLING-THE-COMPILER%20MGL-PAX:SECTION"></a>
 
-### 4.1 Calling the Compiler
+### 5.1 Calling the Compiler
 
 <a id="x-28COMPILE-20FUNCTION-29"></a>
 <a id="COMPILE%20FUNCTION"></a>
@@ -1942,7 +2642,7 @@ from a naive translation.
 
     - `:output-file`
 
-        The name of the FASL to output. The returned pathname of the
+        The name of the fasl to output. The returned pathname of the
         output file may differ from the pathname of the `:output-file`
         parameter, e.g. when the latter is a designator for a directory.
 
@@ -2107,12 +2807,12 @@ from a naive translation.
 <a id="x-28SB-MANUAL-3A-40DIAGNOSTIC-MESSAGES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DIAGNOSTIC-MESSAGES%20MGL-PAX:SECTION"></a>
 
-### 4.2 Diagnostic Messages
+### 5.2 Diagnostic Messages
 
 <a id="x-28SB-MANUAL-3A-40DIAGNOSTIC-SEVERITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DIAGNOSTIC-SEVERITY%20MGL-PAX:SECTION"></a>
 
-#### 4.2.1 Diagnostic Severity
+#### 5.2.1 Diagnostic Severity
 
 There are four levels of compiler diagnostic severity:
 
@@ -2162,7 +2862,7 @@ messages.
 <a id="x-28SB-MANUAL-3A-40UNDERSTANDING-COMPILER-DIAGNOSTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNDERSTANDING-COMPILER-DIAGNOSTICS%20MGL-PAX:SECTION"></a>
 
-#### 4.2.2 Understanding Compiler Diagnostics
+#### 5.2.2 Understanding Compiler Diagnostics
 
 The messages emitted by the compiler contain a lot of detail in a
 terse format, which may be confusing at first. The messages will be
@@ -2399,7 +3099,7 @@ the compiler backed out one level.
 <a id="x-28SB-MANUAL-3A-40CONTROLLING-VERBOSITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONTROLLING-VERBOSITY%20MGL-PAX:SECTION"></a>
 
-#### 4.2.3 Controlling Verbosity
+#### 5.2.3 Controlling Verbosity
 
 The compiler can be quite verbose in its diagnostic reporting -- rather
 more than some users would prefer. However, the amount of noise
@@ -2532,12 +3232,12 @@ messages are printed.
 <a id="x-28SB-MANUAL-3A-40HANDLING-OF-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HANDLING-OF-TYPES%20MGL-PAX:SECTION"></a>
 
-### 4.3 Handling of Types
+### 5.3 Handling of Types
 
-One of the most important features of the SBCL compiler (similar to
-the original CMUCL compiler, also known as *Python*) is its fairly
-sophisticated understanding of the Common Lisp type system and its
-conservative approach to the implementation of type declarations.
+The most important features of the SBCL compiler (similar
+to the original CMUCL compiler) are its fairly sophisticated
+understanding of the Common Lisp type system and its conservative
+approach to the implementation of type declarations.
 
 These two features reward the use of type declarations throughout
 development, even when high performance is not a concern. Also, as
@@ -2552,7 +3252,7 @@ types involving the [`satisfies`][2b8b] type specifier.
 <a id="x-28SB-MANUAL-3A-40TYPE-DECLARATION-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TYPE-DECLARATION-CHECKING%20MGL-PAX:SECTION"></a>
 
-#### 4.3.1 Type Declaration Checking
+#### 5.3.1 Type Declaration Checking
 
 The SBCL compiler treats type declarations differently from most other
 Lisp compilers. Under the default [Compiler Policy][2474], the compiler
@@ -2568,23 +3268,21 @@ provide some exceptions to this rule. See
 There are three type checking policies available in SBCL, selectable
 via [`optimize`][4d51] declarations.
 
-- **Full Type Checks** (safe code)
+- **Safe code** `(>= safety 1)` 
 
-    All declarations are considered assertions to be checked at
-    compile or run time, and all type checks are precise. The
-    default compilation policy provides full type checks.
+    Full type checks. All declarations are considered assertions to
+    be checked at compile or run time, and all type checks are
+    precise. The default compilation policy provides full type
+    checks.
 
-    Used when `(>= safety 1)`. 
+- **Unsafe code** `(= safety 0)`
 
-- **No Type Checks** (unsafe code)
-
-    All declarations are believed without assertions. Also disables
-    argument count and array bounds checking.
+    No type checks. All declarations are believed without
+    assertions. Also disables argument count and array bounds
+    checking.
 
     > **Warning**: Any type errors in code where type checks are not
     > performed are liable to corrupt the heap.
-
-    Used when `(= safety 0)`.
 
 There is a third option called Weak Type Checking, where declared
 types may be simplified into faster to check supertypes: for
@@ -2595,7 +3293,7 @@ available by any combination of the standard optimization qualities.
 <a id="x-28SB-MANUAL-3A-40PRECISE-TYPE-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION"></a>
 
-#### 4.3.2 Precise Type Checking
+#### 5.3.2 Precise Type Checking
 
 Precise checking means that the check is done as though [`typep`][0895]
 had been called with the exact type specifier that appeared in the
@@ -2615,7 +3313,7 @@ slots as precisely as possible. This often involves the use of [`or`][8808],
 <a id="x-28SB-MANUAL-3A-40GETTING-EXISTING-PROGRAMS-TO-RUN-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GETTING-EXISTING-PROGRAMS-TO-RUN%20MGL-PAX:SECTION"></a>
 
-#### 4.3.3 Getting Existing Programs to Run
+#### 5.3.3 Getting Existing Programs to Run
 
 Since SBCL's compiler does much more comprehensive type checking than
 most Lisp compilers, SBCL may detect type errors in programs that have
@@ -2736,7 +3434,7 @@ variable in the loop body.
 <a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-LIMITATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@IMPLEMENTATION-LIMITATIONS%20MGL-PAX:SECTION"></a>
 
-#### 4.3.4 Implementation Limitations
+#### 5.3.4 Implementation Limitations
 
 If an [`ftype`][05c1] is placed after the function definition, the function
 won't perform any type checks and the calls to the function will
@@ -2753,7 +3451,7 @@ inferencer, nor do CLOS slot types provide any efficiency benefits.
 <a id="x-28SB-MANUAL-3A-40COMPILER-POLICY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-POLICY%20MGL-PAX:SECTION"></a>
 
-### 4.4 Compiler Policy
+### 5.4 Compiler Policy
 
 The compiler policy is what tells the compiler *how* to
 compile a program. This is logically (and often textually) distinct
@@ -2864,12 +3562,12 @@ In the following, we discuss extensions related to compiler policies.
 <a id="x-28SB-MANUAL-3A-40COMPILER-ERRORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-ERRORS%20MGL-PAX:SECTION"></a>
 
-### 4.5 Compiler Errors
+### 5.5 Compiler Errors
 
 <a id="x-28SB-MANUAL-3A-40TYPE-ERRORS-AT-COMPILE-TIME-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TYPE-ERRORS-AT-COMPILE-TIME%20MGL-PAX:SECTION"></a>
 
-#### 4.5.1 Type Errors at Compile Time
+#### 5.5.1 Type Errors at Compile Time
 
 If the compiler can prove at compile time that some portion of the
 program cannot be executed without a type error, then it will give a
@@ -2912,7 +3610,7 @@ This warning doesn't always indicate an incorrect program because
 <a id="x-28SB-MANUAL-3A-40ERRORS-DURING-MACROEXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ERRORS-DURING-MACROEXPANSION%20MGL-PAX:SECTION"></a>
 
-#### 4.5.2 Errors During Macroexpansion
+#### 5.5.2 Errors During Macroexpansion
 
 The compiler handles errors that happen during macroexpansion, turning
 them into compiler errors. If you want to debug the error (to debug
@@ -2939,7 +3637,7 @@ gives this error:
 <a id="x-28SB-MANUAL-3A-40READ-ERRORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@READ-ERRORS%20MGL-PAX:SECTION"></a>
 
-#### 4.5.3 Read Errors
+#### 5.5.3 Read Errors
 
 SBCL's compiler does not attempt to recover from read errors when
 reading a source file but instead just reports the offending
@@ -2948,7 +3646,7 @@ character position and gives up on the entire source file.
 <a id="x-28SB-MANUAL-3A-40OPEN-CODING-AND-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPEN-CODING-AND-INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-### 4.6 Open Coding and Inline Expansion
+### 5.6 Open Coding and Inline Expansion
 
 Since Common Lisp forbids the redefinition of standard functions, the
 compiler can have special knowledge of these standard functions
@@ -3006,7 +3704,7 @@ efficient calling convention that forbids redefinition.
 <a id="x-28SB-MANUAL-3A-40INTERPRETER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTERPRETER%20MGL-PAX:SECTION"></a>
 
-### 4.7 Interpreter
+### 5.7 Interpreter
 
 By default, SBCL implements [`eval`][0d6e] by calling the native-code
 compiler. There are two, mutually exclusive interpreter
@@ -3016,9 +3714,10 @@ to compilation overhead.
 
 An interpreterless SBCL can be compiled by passing
 `--without-sb-eval` to `make.sh`, while sb-fasteval can be enabled
-with `--without-sb-eval --with-sb-fasteval.`
+with `--without-sb-eval --with-sb-fasteval` (see
+[Customizing the Build][deed]).
 
-Unlike in some other Lisp implementations, in SBCL interpreted code
+Unlike in some other Lisp implementations, in SBCL, interpreted code
 is not safer or more debuggable than compiled code.
 
 <a id="x-28SB-EXT-3A-2AEVALUATOR-MODE-2A-20VARIABLE-29"></a>
@@ -3035,7 +3734,7 @@ is not safer or more debuggable than compiled code.
 <a id="x-28SB-MANUAL-3A-40ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS%20MGL-PAX:SECTION"></a>
 
-### 4.8 Advanced Compiler Use and Efficiency Hints
+### 5.8 Advanced Compiler Use and Efficiency Hints
 
 For more advanced usages of the compiler, please see the chapter of the
 same name in the CMUCL manual. Many aspects of the compiler have stayed
@@ -3053,7 +3752,7 @@ tests while block compiling. This helps with mutually referential
 <a id="x-28SB-MANUAL-3A-40DEBUGGING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGING%20MGL-PAX:SECTION"></a>
 
-## 5 Debugging
+## 6 Debugging
 
 This chapter documents the debugging facilities of SBCL, including
 the debugger, single-stepper and [`trace`][548d], and the effect of `(optimize
@@ -3062,12 +3761,12 @@ debug)` declarations.
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER%20MGL-PAX:SECTION"></a>
 
-### 5.1 Debugger
+### 6.1 Debugger
 
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-ENTRY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-ENTRY%20MGL-PAX:SECTION"></a>
 
-#### 5.1.1 Debugger Entry
+#### 6.1.1 Debugger Entry
 
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-BANNER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-BANNER%20MGL-PAX:SECTION"></a>
@@ -3161,7 +3860,7 @@ into the debugger.
 <a id="x-28SB-MANUAL-3A-40DEBUGGER-COMMAND-LOOP-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGER-COMMAND-LOOP%20MGL-PAX:SECTION"></a>
 
-#### 5.1.2 Debugger Command Loop
+#### 6.1.2 Debugger Command Loop
 
 The debugger is an interactive read-eval-print loop much like the
 normal top level, but some symbols are interpreted as debugger
@@ -3213,7 +3912,7 @@ debugger by using the [`sb-ext:*debug-print-variable-alist*`][21be].
 <a id="x-28SB-MANUAL-3A-40STACK-FRAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-FRAMES%20MGL-PAX:SECTION"></a>
 
-#### 5.1.3 Stack Frames
+#### 6.1.3 Stack Frames
 
 A *stack frame* is the run-time representation of a call to a
 function; the frame stores the state that a function needs to
@@ -3349,6 +4048,7 @@ entry points.
 ##### Debugging Tail Calls
 
 [Tail Call Optimization][3074] can eliminate frames. Consider this backtrace:
+ 
 
     (BAR ...)
     (FOO ...)
@@ -3412,7 +4112,7 @@ again.
 <a id="x-28SB-MANUAL-3A-40VARIABLE-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@VARIABLE-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 5.1.4 Variable Access
+#### 6.1.4 Variable Access
 
 There are two ways to access the current frame's local variables in
 the debugger: `list-locals` and [`sb-debug:var`][a625].
@@ -3566,7 +4266,7 @@ things happening.
 <a id="x-28SB-MANUAL-3A-40SOURCE-LOCATION-PRINTING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SOURCE-LOCATION-PRINTING%20MGL-PAX:SECTION"></a>
 
-#### 5.1.5 Source Location Printing
+#### 6.1.5 Source Location Printing
 
 One of the debugger's capabilities is source level debugging of
 compiled code.  These commands display the source location for the
@@ -3632,7 +4332,7 @@ list whose first element is `#:***here***`. In the previous example,
 ##### How the Source is Found
 
 If the code was defined from Lisp by [`compile`][8c75] or [`eval`][0d6e], then the source
-can always be reliably located. If the code was defined from a FASL
+can always be reliably located. If the code was defined from a fasl
 file created by [`compile-file`][0bd1], then the debugger gets the source
 forms it prints by reading them from the original source file. This
 is a potential problem, since the source file might have moved or
@@ -3718,7 +4418,7 @@ have changed the program on you.)
 <a id="x-28SB-MANUAL-3A-40DEBUG-INFORMATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUG-INFORMATION%20MGL-PAX:SECTION"></a>
 
-#### 5.1.6 Debug Information
+#### 6.1.6 Debug Information
 
 The [Compiler Policy][2474] specified by [`optimize`][4d51] declarations
 affects the behavior seen in the debugger. The `debug` quality
@@ -3760,7 +4460,7 @@ quality:
 
     - [Tail Call Optimization][3074] is disabled. Thus, backtraces will
       contain frames for all invoked functions, even those in tail
-      positions.
+      positions. 
 
 Inlining of local functions is inhibited so that they may be [`trace`][548d]d.
 
@@ -3791,7 +4491,7 @@ version of the function, not to the original function. See
 <a id="x-28SB-MANUAL-3A-40EXITING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXITING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
 
-#### 5.1.7 Exiting the Debugger
+#### 6.1.7 Exiting the Debugger
 
 These commands get you out of the debugger.
 
@@ -3828,7 +4528,7 @@ These commands get you out of the debugger.
 <a id="x-28SB-MANUAL-3A-40INFORMATION-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION"></a>
 
-#### 5.1.8 Information Commands
+#### 6.1.8 Information Commands
 
 Most of these commands print information about the current frame or
 function, but a few show general information.
@@ -3851,7 +4551,7 @@ function, but a few show general information.
 <a id="x-28SB-MANUAL-3A-40BREAKPOINT-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BREAKPOINT-COMMANDS%20MGL-PAX:SECTION"></a>
 
-#### 5.1.9 Breakpoint Commands
+#### 6.1.9 Breakpoint Commands
 
 SBCL supports setting of breakpoints inside compiled functions and
 stepping of compiled code. Breakpoints can only be set at known
@@ -3975,7 +4675,7 @@ This debugger session demonstrates the use of breakpoints:
 <a id="x-28SB-MANUAL-3A-40SINGLE-STEPPING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SINGLE-STEPPING%20MGL-PAX:SECTION"></a>
 
-#### 5.1.10 Single Stepping
+#### 6.1.10 Single Stepping
 
 SBCL includes an instrumentation-based single-stepper for compiled
 code, which can be invoked via the [`step`][aea4] macro or from within the
@@ -4016,14 +4716,15 @@ The following debugger commands are used for controlling single stepping.
 <a id="x-28SB-MANUAL-3A-40LDB-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LDB%20MGL-PAX:SECTION"></a>
 
-### 5.2 `ldb`
+### 6.2 `ldb`
 
 LDB, the low-level debugger, is implemented in C and can work
 even when the Lisp [Debugger][825d] cannot due to e.g. heap or stack
 exhaustion. Failed assertions in the low-level runtime (see
 [Command-line Options][1294]) trigger entering LDB if it's
 
-- available (if SBCL was not compiled with `--without-sb-ldb`) and
+- available (if SBCL was not compiled with `--without-sb-ldb`; see
+  [Customizing the Build][deed]) and
 
 - not disabled (see `--disable-ldb` in [Runtime Options][3e4d] and
   [`sb-ext:disable-debugger`][356e]).
@@ -4034,13 +4735,12 @@ exits with a non-zero exit code.
 The commands supported can be explored at the LDB prompt by typing
 `help` followed by an enter.
 
-Also see the related `--lose-on-corruption` option in
-[Runtime Options][3e4d].
+See the related `--lose-on-corruption` option in [Runtime Options][3e4d].
 
 <a id="x-28SB-MANUAL-3A-40ENABLING-AND-DISABLING-THE-DEBUGGER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ENABLING-AND-DISABLING-THE-DEBUGGER%20MGL-PAX:SECTION"></a>
 
-### 5.3 Enabling and Disabling the Debugger
+### 6.3 Enabling and Disabling the Debugger
 
 In certain contexts (e.g. non-interactive applications), it may be
 desirable to turn off the SBCL debugger and [`ldb`][3b91] (and possibly
@@ -4070,7 +4770,7 @@ re-enable them).
 <a id="x-28SB-MANUAL-3A-40FUNCTION-TRACING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FUNCTION-TRACING%20MGL-PAX:SECTION"></a>
 
-### 5.4 Function Tracing
+### 6.4 Function Tracing
 
 The tracer causes selected functions to print their arguments and
 their results whenever they are called.  Options allow conditional
@@ -4260,12 +4960,12 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 <a id="x-28SB-MANUAL-3A-40EFFICIENCY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION"></a>
 
-## 6 Efficiency
+## 7 Efficiency
 
 <a id="x-28SB-MANUAL-3A-40TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-CALL%20MGL-PAX:SECTION"></a>
 
-### 6.1 Tail Call
+### 7.1 Tail Call
 
 A call to a function is a tail call if nothing has to be done after
 the call returns. That is, when the call returns, the returned
@@ -4278,7 +4978,7 @@ Note that both [Local Call][3d65]s and full calls can be tail calls.
 <a id="x-28SB-MANUAL-3A-40TAIL-CALL-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-CALL-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.1 Tail Call Optimization
+#### 7.1.1 Tail Call Optimization
 
 SBCL performs tail call optimization (TCO) although this is not
 required by the Common Lisp standard.
@@ -4307,7 +5007,7 @@ calls. See [Debugging Tail Calls][22a1].
 <a id="x-28SB-MANUAL-3A-40TAIL-POSITION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-POSITION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.2 Tail Position
+#### 7.1.2 Tail Position
 
 A call is said to be in tail position unless it is enclosed by at
 least one of the following:
@@ -4322,16 +5022,17 @@ least one of the following:
 
 - a [`tagbody`][7fae] and a [`go`][f2e5] tag has been closed over.
 
-These inhibit tail calls because they require cleanups when the
-stack is unwound.
+These inhibit [Tail Call Optimization][3074] because they require cleanups
+when the stack is unwound. 
 
 <a id="x-28SB-MANUAL-3A-40TAIL-RECURSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-RECURSION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.3 Tail Recursion
+#### 7.1.3 Tail Recursion
 
-Tail recursion is when a function makes a [Tail Call][ec2e] to itself.
-In this example, the recursive call to `myfun` is tail-recursive:
+Tail recursion is when a function makes a [Tail Call][ec2e] to
+itself. In this example, the recursive call to `myfun` is
+tail-recursive:
 
     (defun myfun (x)
       (if (oddp (random x))
@@ -4378,7 +5079,7 @@ functions instead of using a single huge [`prog`][9a0c].
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALL%20MGL-PAX:SECTION"></a>
 
-### 6.2 Local Call
+### 7.2 Local Call
 
 The compiler supports two kinds of function call: full call and local
 call. Full call is the standard calling convention; its late binding
@@ -4400,7 +5101,7 @@ compilation times and prevents function redefinition.
 <a id="x-28SB-MANUAL-3A-40LOCAL-SELF-RECURSIVE-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-SELF-RECURSIVE-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.2.1 Local Self-recursive Call
+#### 7.2.1 Local Self-recursive Call
 
 [Local Call][3d65] is used when a function defined by [`defun`][f472] calls
 itself and block compilation is used (see [`compile-file`][0bd1]). For
@@ -4420,7 +5121,7 @@ jump to the start of the function and don't indirect through
 <a id="x-28SB-MANUAL-3A-40LET-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LET-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.2.2 Let Call
+#### 7.2.2 Let Call
 
 Because [Local Call][3d65] avoids unnecessary call overheads, the compiler
 internally uses local call to implement some macros and special
@@ -4469,7 +5170,7 @@ a number of other advantages that apply in many common situations.
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALLS-TO-CLOSURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION"></a>
 
-#### 6.2.3 Local Calls to Closures
+#### 7.2.3 Local Calls to Closures
 
 [Local Call][3d65] allows for much more efficient use of closures, since the
 closure environment doesn't need to be allocated on the heap or even
@@ -4496,12 +5197,12 @@ extra arguments, so there is no need for you to "optimize"
 <a id="x-28SB-MANUAL-3A-40LOCAL-TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.2.4 Local Tail Call
+#### 7.2.4 Local Tail Call
 
 Local tail calls are particularly efficient because they combine the
 benefits of [Local Call][3d65]s (simplified calling convention) and
-[Tail Call][ec2e]s (reusing the stack frame). Scheme programmers write
-loops with tail-recursive local calls instead of using the
+[Tail Call][ec2e]s  (reusing the stack frame). Scheme programmers
+write loops with tail-recursive local calls instead of using the
 imperative [`go`][f2e5] and [`setq`][0160]. This has not caught on in the Common Lisp
 community for historical reasons and because the standard does not
 require tail calls. In SBCL, users can choose to write loops such as
@@ -4524,7 +5225,7 @@ which is compiled to just as efficient code as
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALL-RETURN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALL-RETURN-VALUES%20MGL-PAX:SECTION"></a>
 
-#### 6.2.5 Local Call Return Values
+#### 7.2.5 Local Call Return Values
 
 
 One of the more subtle costs of full call comes from allowing
@@ -4539,7 +5240,7 @@ so.
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION%20MGL-PAX:SECTION"></a>
 
-### 6.3 Block Compilation
+### 7.3 Block Compilation
 
 Block compilation allows calls to global functions defined by
 [`defun`][f472] to be compiled as [Local Call][3d65]s. The function call can be in a
@@ -4567,7 +5268,7 @@ arguments and return values in non-trivial programs.
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-SEMANTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION"></a>
 
-#### 6.3.1 Block Compilation Semantics
+#### 7.3.1 Block Compilation Semantics
 
 The effect of block compilation can be envisioned as the compiler
 turning all the [`defun`][f472]s in the block-compiled unit into a single
@@ -4618,7 +5319,7 @@ is not an entry point, so it is not globally defined. In addition,
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DECLARATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-DECLARATIONS%20MGL-PAX:SECTION"></a>
 
-#### 6.3.2 Block Compilation Declarations
+#### 7.3.2 Block Compilation Declarations
 
 The following declarations allow fine-grained control of block
 compilation. They are only legal as global declarations ([`declaim`][ebea] or
@@ -4655,7 +5356,7 @@ compilation. They are only legal as global declarations ([`declaim`][ebea] or
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DIFFICULTIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION"></a>
 
-#### 6.3.3 Block Compilation Difficulties
+#### 7.3.3 Block Compilation Difficulties
 
 The main problem with block compilation is that the compiler uses
 large amounts of memory when it is block compiling. This places an
@@ -4681,7 +5382,7 @@ block compilation across file boundaries.
 <a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-### 6.4 Inline Expansion
+### 7.4 Inline Expansion
 
 SBCL can expand almost any function inline, including functions
 with keyword arguments. The only restrictions are that keyword
@@ -4797,7 +5498,7 @@ tests and two calls to a loop with one test and no calls.
 <a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-RECORDING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INLINE-EXPANSION-RECORDING%20MGL-PAX:SECTION"></a>
 
-#### 6.4.1 Inline Expansion Recording
+#### 7.4.1 Inline Expansion Recording
 
 Inline expansion requires that the source for the inline expanded
 function to be available when calls to the function are compiled.
@@ -4838,7 +5539,7 @@ environment.
 <a id="x-28SB-MANUAL-3A-40SEMI-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SEMI-INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-#### 6.4.2 Semi-inline Expansion
+#### 7.4.2 Semi-inline Expansion
 
 Semi-inline expansion shares a single copy of a function across all
 the calls in a component by converting the inline expansion into a
@@ -4908,12 +5609,12 @@ call.
 <a id="x-28SB-MANUAL-3A-40SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 6.5 Slot Access
+### 7.5 Slot Access
 
 <a id="x-28SB-MANUAL-3A-40STRUCTURE-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STRUCTURE-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.5.1 Structure Object Slot Access
+#### 7.5.1 Structure Object Slot Access
 
 Structure slot accessors are efficient only if the compiler is
 able to open code them: compiling a call to a structure slot
@@ -4924,7 +5625,7 @@ severe performance degradation.
 <a id="x-28SB-MANUAL-3A-40STANDARD-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STANDARD-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.5.2 Standard Object Slot Access
+#### 7.5.2 Standard Object Slot Access
 
 The most efficient way to access a slot of a [`standard-object`][a843] is
 by using [`slot-value`][5a85] with a constant slot name argument inside a
@@ -4969,7 +5670,7 @@ lazily set up during those calls.
 <a id="x-28SB-MANUAL-3A-40STACK-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION"></a>
 
-### 6.6 Stack Allocation
+### 7.6 Stack Allocation
 
 SBCL has fairly extensive support for performing allocations on the
 stack when a variable or function is declared [`dynamic-extent`][0901]. The
@@ -5151,7 +5852,7 @@ detect incorrect usage of dynamic extent declarations.
 <a id="x-28SB-MANUAL-3A-40MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-### 6.7 Modular Arithmetic
+### 7.7 Modular Arithmetic
 
 Some numeric functions have a property: n lower bits of the
 result depend only on n lower bits of (all or some) arguments. If
@@ -5186,7 +5887,7 @@ currently this is not implemented.
 <a id="x-28SB-MANUAL-3A-40SIGNED-MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SIGNED-MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-#### 6.7.1 Signed Modular Arithmetic
+#### 7.7.1 Signed Modular Arithmetic
 
 Sign-extending the result in the following way will be
 translated into signed modular arithmetic:
@@ -5199,7 +5900,7 @@ translated into signed modular arithmetic:
 <a id="x-28SB-MANUAL-3A-40RECOGNIZED-IDIOMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RECOGNIZED-IDIOMS%20MGL-PAX:SECTION"></a>
 
-### 6.8 Recognized Idioms
+### 7.8 Recognized Idioms
 
 Common Lisp doesn't directly expose all features present in
 modern hardware. Some code patterns are recognized and turned into
@@ -5209,7 +5910,7 @@ internal features.
 <a id="x-28SB-MANUAL-3A-40COUNT-TRAILING-ZEROS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COUNT-TRAILING-ZEROS%20MGL-PAX:SECTION"></a>
 
-#### 6.8.1 Count Trailing Zeros
+#### 7.8.1 Count Trailing Zeros
 
     (defun ctz (n)
       (declare (type (unsigned-byte 64) n))
@@ -5221,7 +5922,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40GLOBAL-AND-ALWAYS-BOUND-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GLOBAL-AND-ALWAYS-BOUND-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 6.9 Global and Always-bound Variables
+### 7.9 Global and Always-bound Variables
 
 <a id="x-28SB-EXT-3ADEFGLOBAL-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO"></a>
@@ -5270,14 +5971,12 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EFFICIENCY-ISSUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION"></a>
 
-### 6.10 Miscellaneous Efficiency Issues
+### 7.10 Miscellaneous Efficiency Issues
 
-FIXME: The material in the CMUCL manual about getting good
-performance from the compiler should be reviewed, reformatted in
-Texinfo, lightly edited for SBCL, and substituted into this
-manual. In the meantime, the original CMUCL manual is still 95+%
-correct for the SBCL version of the Python compiler. See the
-sections
+FIXME: The remaining material in the CMUCL manual about getting good
+performance from the compiler should be reviewed, and added to this
+section. In the meantime, the original CMUCL manual is still 95+%
+correct for the SBCL's compiler. See the sections
 
 - Advanced Compiler Use and Efficiency Hints
 
@@ -5300,18 +5999,19 @@ sections
 Besides this information from the CMUCL manual, there are a few other
 points to keep in mind.
 
-- The CMUCL manual doesn't seem to state it explicitly, but Python
-  has a mental block about type inference when assignment is
-  involved. Python is very aggressive and clever about inferring the
-  types of values bound with [`let`][4853], [`let*`][49f5], inline function call, and so
-  forth. However, it's much more passive and dumb about inferring
-  the types of values assigned with [`setq`][0160], [`setf`][a138], and friends. It
-  would be nice to fix this, but in the meantime don't expect that
-  just because it's very smart about types in most respects it will
-  be smart about types involved in assignments. (This doesn't affect
-  its ability to benefit from explicit type declarations involving
-  the assigned variables, only its ability to get by without
-  explicit type declarations.)
+- The CMUCL manual doesn't seem to state it explicitly, but
+  Python (the CMUCL compiler, not the language) has a mental block
+  about type inference when assignment is involved. Python is very
+  aggressive and clever about inferring the types of values bound
+  with [`let`][4853], [`let*`][49f5], inline function call, and so forth. However, it's
+  much more passive and dumb about inferring the types of values
+  assigned with [`setq`][0160], [`setf`][a138], and friends. It would be nice to fix
+  this, but in the meantime don't expect that just because it's very
+  smart about types in most respects it will be smart about types
+  involved in assignments. (This doesn't affect its ability to
+  benefit from explicit type declarations involving the assigned
+  variables, only its ability to get by without explicit type
+  declarations.)
 
 - Since the time the CMUCL manual was written, CMUCL (and thus SBCL)
   has gotten a generational GC. This means that there are some
@@ -5360,7 +6060,7 @@ examples (some straightforward, some less so).
 <a id="x-28SB-MANUAL-3A-40BEYOND-THE-ANSI-STANDARD-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BEYOND-THE-ANSI-STANDARD%20MGL-PAX:SECTION"></a>
 
-## 7 Beyond the ANSI Standard
+## 8 Beyond the ANSI Standard
 
 SBCL is derived from CMUCL, which implements many extensions to the
 ANSI standard. SBCL doesn't support as many extensions as CMUCL, but
@@ -5369,12 +6069,12 @@ it still has quite a few. See [Contributed Modules][6a68].
 <a id="x-28SB-MANUAL-3A-40READER-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@READER-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
-### 7.1 Reader Extensions
+### 8.1 Reader Extensions
 
 <a id="x-28SB-MANUAL-3A-40EXTENDED-PACKAGE-PREFIX-SYNTAX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTENDED-PACKAGE-PREFIX-SYNTAX%20MGL-PAX:SECTION"></a>
 
-#### 7.1.1 Extended Package Prefix Syntax
+#### 8.1.1 Extended Package Prefix Syntax
 
 SBCL supports extended package prefix syntax, which allows specifying
 an alternate package instead of [`*package*`][5ed1] for the reader to use as
@@ -5393,7 +6093,7 @@ read-time package lock violation, so does `foo::(bar)`.
 <a id="x-28SB-MANUAL-3A-40SYMBOL-NAME-NORMALIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SYMBOL-NAME-NORMALIZATION%20MGL-PAX:SECTION"></a>
 
-#### 7.1.2 Symbol Name Normalization
+#### 8.1.2 Symbol Name Normalization
 
 SBCL also extends the reader to normalize all symbols to *Normalization
 Form KC* in builds with Unicode enabled. Whether symbols are
@@ -5414,7 +6114,7 @@ are not normalized are escaped during printing.
 <a id="x-28SB-MANUAL-3A-40DECIMAL-SYNTAX-FOR-RATIONALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DECIMAL-SYNTAX-FOR-RATIONALS%20MGL-PAX:SECTION"></a>
 
-#### 7.1.3 Decimal Syntax for Rationals
+#### 8.1.3 Decimal Syntax for Rationals
 
 SBCL supports a decimal syntax for rationals, modelled after the
 standard syntax for floating-point numbers. If a number with
@@ -5437,7 +6137,7 @@ irrespective of the value of `*read-default-float-format*`.
 <a id="x-28SB-MANUAL-3A-40PACKAGE-LOCAL-NICKNAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION"></a>
 
-### 7.2 Package-Local Nicknames
+### 8.2 Package-local Nicknames
 
 SBCL allows giving packages local nicknames: they allow short and
 easy-to-use names to be used without fear of name conflict associated
@@ -5543,7 +6243,7 @@ able to refer to the thus hidden `"BAR"` package:
 <a id="x-28SB-MANUAL-3A-40PACKAGE-VARIANCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-VARIANCE%20MGL-PAX:SECTION"></a>
 
-### 7.3 Package Variance
+### 8.3 Package Variance
 
 [`defpackage`][9b43] `clhs` specifies that *if the new definition is at
 variance with the current state of that package, the consequences
@@ -5584,7 +6284,7 @@ the following variable.
 <a id="x-28SB-MANUAL-3A-40GARBAGE-COLLECTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GARBAGE-COLLECTION%20MGL-PAX:SECTION"></a>
 
-### 7.4 Garbage Collection
+### 8.4 Garbage Collection
 
 SBCL provides additional garbage collection functionality not
 specified by ANSI.
@@ -5613,7 +6313,7 @@ specified by ANSI.
 <a id="x-28SB-MANUAL-3A-40FINALIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FINALIZATION%20MGL-PAX:SECTION"></a>
 
-#### 7.4.1 Finalization
+#### 8.4.1 Finalization
 
 Finalization allows code to be executed after an object has been
 garbage collected. This is useful for example for releasing foreign
@@ -5689,7 +6389,7 @@ memory associated with a Lisp object.
 <a id="x-28SB-MANUAL-3A-40WEAK-POINTERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@WEAK-POINTERS%20MGL-PAX:SECTION"></a>
 
-#### 7.4.2 Weak Pointers
+#### 8.4.2 Weak Pointers
 
 Weak pointers allow references to objects to be maintained without
 keeping them from being garbage collected: useful for building caches
@@ -5717,7 +6417,7 @@ Hash tables can also have weak keys and values. See
 <a id="x-28SB-MANUAL-3A-40INTROSPECTION-AND-TUNING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION"></a>
 
-#### 7.4.3 Introspection and Tuning
+#### 8.4.3 Introspection and Tuning
 
 <a id="x-28SB-EXT-3A-2AGC-RUN-TIME-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*GC-RUN-TIME*%20VARIABLE"></a>
@@ -5784,7 +6484,7 @@ Hash tables can also have weak keys and values. See
 
 - \[function\] **sb-ext:generation-average-age** *generation*
 
-    Average age of memory allocated to GENERATION: average number of times
+    Average age of memory allocated to `generation`: average number of times
     objects allocated to the generation have seen younger objects promoted to it.
     Available on GENCGC platforms only.
 
@@ -5795,7 +6495,7 @@ Hash tables can also have weak keys and values. See
 
 - \[function\] **sb-ext:generation-bytes-allocated** *generation*
 
-    Number of bytes allocated to GENERATION currently. Available on GENCGC
+    Number of bytes allocated to `generation` currently. Available on GENCGC
     platforms only.
 
     Experimental: interface subject to change.
@@ -5805,7 +6505,7 @@ Hash tables can also have weak keys and values. See
 
 - \[function\] **sb-ext:generation-bytes-consed-between-gcs** *generation*
 
-    Number of bytes that can be allocated to GENERATION before that
+    Number of bytes that can be allocated to `generation` before that
     generation is considered for garbage collection. This value is meaningless for
     generation 0 (the nursery): see [`bytes-consed-between-gcs`][54ac] instead. Default is
     5% of the dynamic space size divided by the number of non-nursery generations.
@@ -5818,21 +6518,10 @@ Hash tables can also have weak keys and values. See
 
 - \[function\] **sb-ext:generation-minimum-age-before-gc** *generation*
 
-    Minimum average age of objects allocated to GENERATION before that
+    Minimum average age of objects allocated to `generation` before that
     generation is may be garbage collected. Default is 0.75. See also
     [`generation-average-age`][b1d89]. Can be assigned to using [`setf`][a138]. Available on GENCGC
     platforms only.
-
-    Experimental: interface subject to change.
-
-<a id="x-28SB-EXT-3AGENERATION-NUMBER-OF-GCS-BEFORE-PROMOTION-20FUNCTION-29"></a>
-<a id="SB-EXT:GENERATION-NUMBER-OF-GCS-BEFORE-PROMOTION%20FUNCTION"></a>
-
-- \[function\] **sb-ext:generation-number-of-gcs-before-promotion** *generation*
-
-    Number of times garbage collection is done on GENERATION before
-    automatic promotion to the next generation is triggered. Default is 1. Can be
-    assigned to using [`setf`][a138]. Available on GENCGC platforms only.
 
     Experimental: interface subject to change.
 
@@ -5841,15 +6530,26 @@ Hash tables can also have weak keys and values. See
 
 - \[function\] **sb-ext:generation-number-of-gcs** *generation*
 
-    Number of times garbage collection has been done on GENERATION without
+    Number of times garbage collection has been done on `generation` without
     promotion. Available on GENCGC platforms only.
+
+    Experimental: interface subject to change.
+
+<a id="x-28SB-EXT-3AGENERATION-NUMBER-OF-GCS-BEFORE-PROMOTION-20FUNCTION-29"></a>
+<a id="SB-EXT:GENERATION-NUMBER-OF-GCS-BEFORE-PROMOTION%20FUNCTION"></a>
+
+- \[function\] **sb-ext:generation-number-of-gcs-before-promotion** *generation*
+
+    Number of times garbage collection is done on `generation` before
+    automatic promotion to the next generation is triggered. Default is 1. Can be
+    assigned to using [`setf`][a138]. Available on GENCGC platforms only.
 
     Experimental: interface subject to change.
 
 <a id="x-28SB-MANUAL-3A-40TRACING-LIVE-OBJECTS-BACK-TO-ROOTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TRACING-LIVE-OBJECTS-BACK-TO-ROOTS%20MGL-PAX:SECTION"></a>
 
-#### 7.4.4 Tracing Live Objects Back to Roots
+#### 8.4.4 Tracing Live Objects Back to Roots
 
 This feature is intended to help expert users diagnose rare low-level
 issues and should not be needed during normal usage. On top of that,
@@ -5984,7 +6684,7 @@ path shows the symbol and the three cons cells.
 <a id="x-28SB-MANUAL-3A-40GENERIC-FUNCTION-DISPATCH-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GENERIC-FUNCTION-DISPATCH%20MGL-PAX:SECTION"></a>
 
-### 7.5 Generic Function Dispatch
+### 8.5 Generic Function Dispatch
 
 If a generic function with standard or short method combination is
 called, and the set of applicable methods does not include any
@@ -5998,7 +6698,7 @@ define methods on it.
 <a id="x-28SB-MANUAL-3A-40EXTENDED-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTENDED-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 7.6 Extended Slot Access
+### 8.6 Extended Slot Access
 
 The slot access functions [`slot-value`][5a85], `(setf slot-value)`,
 [`slot-boundp`][4a9d] and [`slot-makunbound`][e964] are defined to function as expected
@@ -6032,12 +6732,12 @@ For structures:
 <a id="x-28SB-MANUAL-3A-40METAOBJECT-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@METAOBJECT-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-### 7.7 Metaobject Protocol
+### 8.7 Metaobject Protocol
 
 <a id="x-28SB-MANUAL-3A-40AMOP-COMPATIBILITY-OF-METAOBJECT-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@AMOP-COMPATIBILITY-OF-METAOBJECT-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-#### 7.7.1 AMOP Compatibility of Metaobject Protocol
+#### 8.7.1 AMOP Compatibility of Metaobject Protocol
 
 SBCL supports a metaobject protocol which is intended to be compatible
 with AMOP; present exceptions to this (as distinct from current bugs)
@@ -6198,7 +6898,7 @@ are:
 <a id="x-28SB-MANUAL-3A-40METAOBJECT-PROTOCOL-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@METAOBJECT-PROTOCOL-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
-#### 7.7.2 Metaobject Protocol Extensions
+#### 8.7.2 Metaobject Protocol Extensions
 
 In addition, SBCL supports extensions to the Metaobject protocol from
 AMOP; at present, they are:
@@ -6234,7 +6934,7 @@ AMOP; at present, they are:
 <a id="x-28SB-MANUAL-3A-40EXTENSIBLE-SEQUENCES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTENSIBLE-SEQUENCES%20MGL-PAX:SECTION"></a>
 
-### 7.8 Extensible Sequences
+### 8.8 Extensible Sequences
 
 ANSI Common Lisp has a class [`sequence`][ae23] with subclasses [`list`][9271] and
 [`vector`][64b3], on which the sequence functions like [`find`][4e46], [`subseq`][4a86], etc.
@@ -6622,7 +7322,7 @@ Removing duplicates:
 <a id="x-28SB-MANUAL-3A-40EXSEQ-ITERATOR-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXSEQ-ITERATOR-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-#### 7.8.1 Iterator Protocol
+#### 8.8.1 Iterator Protocol
 
 The general iterator protocol allows subsequently accessing some or
 all elements of a sequence in forward or reverse direction. Users
@@ -6703,7 +7403,7 @@ iterators:
 <a id="x-28SB-MANUAL-3A-40EXSEQ-SIMPLE-ITERATOR-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXSEQ-SIMPLE-ITERATOR-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-#### 7.8.2 Simple Iterator Protocol
+#### 8.8.2 Simple Iterator Protocol
 
 For cases in which the full flexibility and performance of the general
 sequence iterator protocol is not required, there is a simplified
@@ -6781,7 +7481,7 @@ created by calling the following generic function:
 <a id="x-28SB-MANUAL-3A-40SUPPORT-FOR-UNIX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SUPPORT-FOR-UNIX%20MGL-PAX:SECTION"></a>
 
-### 7.9 Support For Unix
+### 8.9 Support For Unix
 
 <a id="x-28SB-EXT-3A-2APOSIX-ARGV-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*POSIX-ARGV*%20VARIABLE"></a>
@@ -6791,8 +7491,8 @@ created by calling the following generic function:
     A list of strings related to the UNIX command line (`argv` in C).
 
     [Runtime Options][3e4d] are processed and removed by the runtime.
-    The default toplevel (see [`sb-ext:save-lisp-and-die`][9e55]) also removes the
-    [Toplevel Options][6be4] that it processes.
+    The default toplevel also removes [Toplevel Options][6be4] that it
+    processes.
 
 <a id="x-28SB-EXT-3APOSIX-GETENV-20FUNCTION-29"></a>
 <a id="SB-EXT:POSIX-GETENV%20FUNCTION"></a>
@@ -6812,7 +7512,7 @@ created by calling the following generic function:
 <a id="x-28SB-MANUAL-3A-40RUNNING-EXTERNAL-PROGRAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION"></a>
 
-#### 7.9.1 Running external programs
+#### 8.9.1 Running external programs
 
 External programs can be run with [`sb-ext:run-program`][e0d4].
 
@@ -6851,8 +7551,8 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
     Notes about Unix environments (as in the `:environment` and `:env` args):
 
     - The SBCL implementation of `run-program`, like Perl and many other
-      programs, but unlike the original CMU CL implementation, copies the
-      Unix environment by default.
+      programs, but unlike the original CMUCL implementation, copies
+      the Unix environment by default.
 
     - Running Unix programs from a setuid process, or in any other
       situation where the Unix environment is under the control of someone
@@ -6872,14 +7572,15 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
     - `:env`
 
         An old, lossy representation of the new Unix environment, for
-        compatibility with CMU CL. If given, `:environment` defaults to
+        compatibility with CMUCL. If given, `:environment` defaults to
         this (converted to the new format). It is an error to specify both
         `:env` and `:environment`.
 
     - `:search`
 
-        Look for `program` in each of the directories in the child's ​\$PATH
-        environment variable. Otherwise an absolute pathname is required.
+        Look for `program` in each of the directories in the child's
+        `$PATH` environment variable. Otherwise an absolute pathname
+        is required.
 
     - `:wait`
 
@@ -7091,7 +7792,7 @@ processes:
 <a id="x-28SB-MANUAL-3A-40UNICODE-SUPPORT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNICODE-SUPPORT%20MGL-PAX:SECTION"></a>
 
-### 7.10 Unicode Support
+### 8.10 Unicode Support
 
 SBCL provides support for working with Unicode text and querying the
 standard Unicode database for information about individual codepoints.
@@ -7132,7 +7833,7 @@ Letter A With Acute*) as
 <a id="x-28SB-MANUAL-3A-40UNICODE-PROPERTY-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNICODE-PROPERTY-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 7.10.1 Unicode property access
+#### 8.10.1 Unicode property access
 
 The following functions can be used to find information about a
 Unicode codepoint.
@@ -7387,7 +8088,7 @@ Unicode codepoint.
 <a id="x-28SB-MANUAL-3A-40STRING-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STRING-OPERATIONS%20MGL-PAX:SECTION"></a>
 
-#### 7.10.2 String operations
+#### 8.10.2 String operations
 
 SBCL can normalize strings using:
 
@@ -7524,7 +8225,7 @@ confusable strings:
 <a id="x-28SB-MANUAL-3A-40BREAKING-STRINGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BREAKING-STRINGS%20MGL-PAX:SECTION"></a>
 
-#### 7.10.3 Breaking strings
+#### 8.10.3 Breaking strings
 
 The `sb-unicode` package includes several functions for breaking a
 Unicode string into useful parts.
@@ -7567,7 +8268,7 @@ Unicode string into useful parts.
 <a id="x-28SB-MANUAL-3A-40CUSTOMIZATION-HOOKS-FOR-USERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CUSTOMIZATION-HOOKS-FOR-USERS%20MGL-PAX:SECTION"></a>
 
-### 7.11 Customization Hooks for Users
+### 8.11 Customization Hooks for Users
 
 The toplevel repl prompt may be customized, and the function
 that reads user input may be replaced completely. See the `:toplevel`
@@ -7640,7 +8341,7 @@ SBCL provides a variable [`sb-ext:*muffled-warnings*`][ef88]:
 <a id="x-28SB-MANUAL-3A-40TOOLS-TO-HELP-DEVELOPERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TOOLS-TO-HELP-DEVELOPERS%20MGL-PAX:SECTION"></a>
 
-### 7.12 Tools To Help Developers
+### 8.12 Tools To Help Developers
 
 SBCL provides a profiler and other extensions to the [`trace`][548d]
 facility.
@@ -7654,7 +8355,7 @@ Documentation for the command `inspect` is accessed by typing
 <a id="x-28SB-MANUAL-3A-40RESOLUTION-OF-NAME-CONFLICTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RESOLUTION-OF-NAME-CONFLICTS%20MGL-PAX:SECTION"></a>
 
-### 7.13 Resolution of Name Conflicts
+### 8.13 Resolution of Name Conflicts
 
 `clhs` [`11.1.1.2.5`][5d5b] requires that name conflicts in packages be
 resolvable in favour of any of the conflicting symbols. In the
@@ -7667,7 +8368,7 @@ the condition accessor `sb-ext:name-conflict-symbols`.
 <a id="x-28SB-MANUAL-3A-40HASH-TABLE-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HASH-TABLE-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
-### 7.14 Hash Table Extensions
+### 8.14 Hash Table Extensions
 
 hash table extensions supported by SBCL are all controlled by keyword
 arguments to [`make-hash-table`][e826].
@@ -7840,7 +8541,7 @@ arguments to [`make-hash-table`][e826].
 <a id="x-28SB-MANUAL-3A-40RANDOM-NUMBER-GENERATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RANDOM-NUMBER-GENERATION%20MGL-PAX:SECTION"></a>
 
-### 7.15 Random Number Generation
+### 8.15 Random Number Generation
 
 The initial value of [`*random-state*`][acd7] is the same each time SBCL
 is started. This makes it possible for user code to obtain
@@ -7952,7 +8653,7 @@ aspect should use a different type of generator.
 <a id="x-28SB-MANUAL-3A-40TIMEOUTS-AND-DEADLINES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TIMEOUTS-AND-DEADLINES%20MGL-PAX:SECTION"></a>
 
-### 7.16 Timeouts and Deadlines
+### 8.16 Timeouts and Deadlines
 
 SBCL supports three different ways of restricting the execution time
 available to individual operations or parts of computations:
@@ -7975,7 +8676,7 @@ available to individual operations or parts of computations:
 <a id="x-28SB-MANUAL-3A-40TIMEOUT-PARAMETERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TIMEOUT-PARAMETERS%20MGL-PAX:SECTION"></a>
 
-#### 7.16.1 Timeout Parameters
+#### 8.16.1 Timeout Parameters
 
 Certain operations accept `:timeout` keyword arguments. These only
 affect the specific operation and must be specified at each call
@@ -8022,7 +8723,7 @@ To wait for an arbitrary condition, optionally with a timeout, the
 <a id="x-28SB-MANUAL-3A-40SYNCHRONOUS-TIMEOUTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SYNCHRONOUS-TIMEOUTS%20MGL-PAX:SECTION"></a>
 
-#### 7.16.2 Synchronous Timeouts
+#### 8.16.2 Synchronous Timeouts
 
 Deadlines, in contrast to timeout parameters, are established for a
 dynamic scope using the [`sb-sys:with-deadline`][9a2a] macro and indirectly
@@ -8109,7 +8810,7 @@ after the `sleep` call has been executing for one second.
 <a id="x-28SB-MANUAL-3A-40ASYNCHRONOUS-TIMEOUTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ASYNCHRONOUS-TIMEOUTS%20MGL-PAX:SECTION"></a>
 
-#### 7.16.3 Asynchronous Timeouts
+#### 8.16.3 Asynchronous Timeouts
 
 Asynchronous timeouts are established for a dynamic scope using the
 [`sb-ext:with-timeout`][5434] macro:
@@ -8156,7 +8857,7 @@ and its context.
 <a id="x-28SB-MANUAL-3A-40OPERATIONS-SUPPORTING-TIMEOUTS-AND-DEADLINES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-SUPPORTING-TIMEOUTS-AND-DEADLINES%20MGL-PAX:SECTION"></a>
 
-#### 7.16.4 Operations Supporting Timeouts and Deadlines
+#### 8.16.4 Operations Supporting Timeouts and Deadlines
 
 ```
 | Operation              | Timeout parameter | Affected by deadlines |
@@ -8178,7 +8879,7 @@ and its context.
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
-### 7.17 Miscellaneous Extensions
+### 8.17 Miscellaneous Extensions
 
 <a id="x-28SB-EXT-3AARRAY-STORAGE-VECTOR-20FUNCTION-29"></a>
 <a id="SB-EXT:ARRAY-STORAGE-VECTOR%20FUNCTION"></a>
@@ -8301,7 +9002,7 @@ and its context.
 <a id="x-28SB-MANUAL-3A-40STALE-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STALE-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
-### 7.18 Stale Extensions
+### 8.18 Stale Extensions
 
 SBCL has inherited from CMUCL various hooks to allow the user to
 tweak and monitor the garbage collection process. These are somewhat
@@ -8322,9 +9023,9 @@ code and bring it up on the developers' mailing list.
 <a id="x-28SB-MANUAL-3A-40EFFICIENCY-HACKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EFFICIENCY-HACKS%20MGL-PAX:SECTION"></a>
 
-### 7.19 Efficiency Hacks
+### 8.19 Efficiency Hacks
 
-The `sb-ext:purify` function (available when `#+cheneygc`) causes
+The `sb-ext:purify` function (available with conservative GC) causes
 SBCL first to collect all garbage, then to mark all uncollected
 objects as permanent, never again attempting to collect them as
 garbage. This can cause a large increase in efficiency when using a
@@ -8347,7 +9048,7 @@ for structure types.
 <a id="x-28SB-MANUAL-3A-40EXTERNAL-FORMATS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTERNAL-FORMATS%20MGL-PAX:SECTION"></a>
 
-## 8 External Formats
+## 9 External Formats
 
 External formats determine the coding of characters from/to sequences
 of octets when exchanging data with the outside world. Examples of
@@ -8376,7 +9077,7 @@ formats internally.
 <a id="x-28SB-MANUAL-3A-40DEFAULT-EXTERNAL-FORMAT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEFAULT-EXTERNAL-FORMAT%20MGL-PAX:SECTION"></a>
 
-### 8.1 The Default External Format
+### 9.1 The Default External Format
 
 <a id="x-28SB-EXT-3A-2ADEFAULT-EXTERNAL-FORMAT-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*DEFAULT-EXTERNAL-FORMAT*%20VARIABLE"></a>
@@ -8399,7 +9100,7 @@ formats internally.
 <a id="x-28SB-MANUAL-3A-40EXTERNAL-FORMAT-DESIGNATORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTERNAL-FORMAT-DESIGNATORS%20MGL-PAX:SECTION"></a>
 
-### 8.2 External Format Designators
+### 9.2 External Format Designators
 
 In situations where an external format designator is required, such as
 the `:external-format` argument in calls to [`open`][6547] or [`with-open-file`][9ac2],
@@ -8458,7 +9159,7 @@ question mark character.
 <a id="x-28SB-MANUAL-3A-40CHARACTER-CODING-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CHARACTER-CODING-CONDITIONS%20MGL-PAX:SECTION"></a>
 
-### 8.3 Character Coding Conditions
+### 9.3 Character Coding Conditions
 
 De- or encoding characters using a given external format is not always
 possible:
@@ -8480,7 +9181,7 @@ versions.
 <a id="x-28SB-MANUAL-3A-40CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS%20MGL-PAX:SECTION"></a>
 
-### 8.4 Converting between Strings and Octet Vectors
+### 9.4 Converting between Strings and Octet Vectors
 
 To encode Lisp strings as octet vectors and decode octet vectors as
 Lisp strings, the following SBCL-specific functions can be used:
@@ -8531,7 +9232,7 @@ Lisp strings, the following SBCL-specific functions can be used:
 <a id="x-28SB-MANUAL-3A-40SUPPORTED-EXTERNAL-FORMATS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SUPPORTED-EXTERNAL-FORMATS%20MGL-PAX:SECTION"></a>
 
-### 8.5 Supported External Formats
+### 9.5 Supported External Formats
 
 The following lists the external formats supported by SBCL in
 the form of the respective canonical name followed by the list of aliases:
@@ -8583,7 +9284,7 @@ the form of the respective canonical name followed by the list of aliases:
 <a id="x-28SB-MANUAL-3A-40FOREIGN-FUNCTION-INTERFACE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION"></a>
 
-## 9 Foreign Function Interface
+## 10 Foreign Function Interface
 
 This chapter describes SBCL's interface to C programs and
 libraries (and, since C interfaces are a sort of *lingua franca*
@@ -8601,7 +9302,7 @@ of the Unix world, to other programs and libraries in general).
 <a id="x-28SB-MANUAL-3A-40INTRODUCTION-TO-THE-FOREIGN-FUNCTION-INTERFACE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTRODUCTION-TO-THE-FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION"></a>
 
-### 9.1 Introduction to the Foreign Function Interface
+### 10.1 Introduction to the Foreign Function Interface
 
 Because of Lisp's emphasis on dynamic memory allocation and garbage
 collection, Lisp implementations use non-C-like memory
@@ -8648,7 +9349,7 @@ similar to those of the C language.
 <a id="x-28SB-MANUAL-3A-40FOREIGN-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-TYPES%20MGL-PAX:SECTION"></a>
 
-### 9.2 Foreign Types
+### 10.2 Foreign Types
 
 Alien types have a description language based on nested list
 structure. For example the C type
@@ -8667,7 +9368,7 @@ has the corresponding SBCL FFI type
 <a id="x-28SB-MANUAL-3A-40DEFINING-FOREIGN-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEFINING-FOREIGN-TYPES%20MGL-PAX:SECTION"></a>
 
-#### 9.2.1 Defining Foreign Types
+#### 10.2.1 Defining Foreign Types
 
 Types may be either named or anonymous. With structure and union
 types, the name is part of the type specifier, allowing recursively
@@ -8683,7 +9384,7 @@ can be given named abbreviations using the `define-alien-type` macro.
 <a id="x-28SB-MANUAL-3A-40FOREIGN-TYPES-AND-LISP-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-TYPES-AND-LISP-TYPES%20MGL-PAX:SECTION"></a>
 
-#### 9.2.2 Foreign Types and Lisp Types
+#### 10.2.2 Foreign Types and Lisp Types
 
 The foreign types form a subsystem of the SBCL type system. An
 `alien` type specifier provides a way to use any foreign type as a
@@ -8708,7 +9409,7 @@ automatically converted to a Lisp value, then it will return an
 <a id="x-28SB-MANUAL-3A-40FOREIGN-TYPE-SPECIFIERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-TYPE-SPECIFIERS%20MGL-PAX:SECTION"></a>
 
-#### 9.2.3 Foreign Type Specifiers
+#### 10.2.3 Foreign Type Specifiers
 
 > *Note*: All foreign type names are exported from the `sb-alien`
 > package. Some foreign type names are also symbols in the
@@ -8874,7 +9575,7 @@ specifiers as foreign type specifiers:
 <a id="x-28SB-MANUAL-3A-40OPERATIONS-ON-FOREIGN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-ON-FOREIGN-VALUES%20MGL-PAX:SECTION"></a>
 
-### 9.3 Operations On Foreign Values
+### 10.3 Operations On Foreign Values
 
 This section describes how to read foreign values as Lisp values,
 how to coerce foreign values to different kinds of foreign values,
@@ -8883,7 +9584,7 @@ and how to dynamically allocate and free foreign variables.
 <a id="x-28SB-MANUAL-3A-40ACCESSING-FOREIGN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ACCESSING-FOREIGN-VALUES%20MGL-PAX:SECTION"></a>
 
-#### 9.3.1 Accessing Foreign Values
+#### 10.3.1 Accessing Foreign Values
 
 <a id="x-28SB-ALIEN-3ADEREF-20FUNCTION-29"></a>
 <a id="SB-ALIEN:DEREF%20FUNCTION"></a>
@@ -8950,7 +9651,7 @@ use [`apropos`][b5f2] and [`describe`][6651] for more details:
 <a id="x-28SB-MANUAL-3A-40COERCING-FOREIGN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COERCING-FOREIGN-VALUES%20MGL-PAX:SECTION"></a>
 
-#### 9.3.2 Coercing Foreign Values
+#### 10.3.2 Coercing Foreign Values
 
 <a id="x-28SB-ALIEN-3AADDR-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-ALIEN:ADDR%20MGL-PAX:MACRO"></a>
@@ -8992,7 +9693,7 @@ use [`apropos`][b5f2] and [`describe`][6651] for more details:
 <a id="x-28SB-MANUAL-3A-40FOREIGN-DYNAMIC-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-DYNAMIC-ALLOCATION%20MGL-PAX:SECTION"></a>
 
-#### 9.3.3 Foreign Dynamic Allocation
+#### 10.3.3 Foreign Dynamic Allocation
 
 Lisp code can call the C standard library functions `malloc`
 and `free` to dynamically allocate and deallocate foreign variables.
@@ -9063,7 +9764,7 @@ C code.
 <a id="x-28SB-MANUAL-3A-40FOREIGN-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 9.4 Foreign Variables
+### 10.4 Foreign Variables
 
 Both local (stack allocated) and external (C global) foreign
 variables are supported.
@@ -9071,7 +9772,7 @@ variables are supported.
 <a id="x-28SB-MANUAL-3A-40LOCAL-FOREIGN-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-FOREIGN-VARIABLES%20MGL-PAX:SECTION"></a>
 
-#### 9.4.1 Local Foreign Variables
+#### 10.4.1 Local Foreign Variables
 
 <a id="x-28SB-ALIEN-3AWITH-ALIEN-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-ALIEN:WITH-ALIEN%20MGL-PAX:MACRO"></a>
@@ -9116,7 +9817,7 @@ variables are supported.
 <a id="x-28SB-MANUAL-3A-40EXTERNAL-FOREIGN-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTERNAL-FOREIGN-VARIABLES%20MGL-PAX:SECTION"></a>
 
-#### 9.4.2 External Foreign Variables
+#### 10.4.2 External Foreign Variables
 
 External foreign names are strings, and Lisp names are symbols. When
 an external foreign value is represented using a Lisp variable, there
@@ -9191,7 +9892,7 @@ macros [`extern-alien`][3986], [`define-alien-variable`][3ac6] and
 <a id="x-28SB-MANUAL-3A-40FOREIGN-DATA-STRUCTURE-EXAMPLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-DATA-STRUCTURE-EXAMPLES%20MGL-PAX:SECTION"></a>
 
-### 9.5 Foreign Data Structure Examples
+### 10.5 Foreign Data Structure Examples
 
 Now that we have alien types, operations and variables, we can
 manipulate foreign data structures. This C declaration
@@ -9253,7 +9954,7 @@ which can be manipulated in Lisp like this:
 <a id="x-28SB-MANUAL-3A-40LOADING-SHARED-OBJECT-FILES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOADING-SHARED-OBJECT-FILES%20MGL-PAX:SECTION"></a>
 
-### 9.6 Loading Shared Object Files
+### 10.6 Loading Shared Object Files
 
 Foreign object files can be loaded into the running Lisp process by
 calling [`load-shared-object`][3c84].
@@ -9266,11 +9967,12 @@ calling [`load-shared-object`][3c84].
     Load a shared library / dynamic shared object file / similar foreign
     container specified by designated `pathname`, such as a .so on an ELF platform.
 
-    Locating the shared object follows standard rules of the platform, consult the
-    manual page for `dlopen(3)` for details. Typically paths specified by
-    environment variables such as LD\_LIBRARY\_PATH are searched if the `pathname` has
-    no directory, but on some systems (e.g. Mac OS X) search may happen even if
-    `pathname` is absolute. (On Windows LoadLibrary is used instead of `dlopen(3)`.)
+    Locating the shared object follows standard rules of the platform,
+    consult the manual page for `dlopen(3)` for details. Typically paths
+    specified by environment variables such as `LD_LIBRARY_PATH` are
+    searched if the `pathname` has no directory, but on some systems (e.g.
+    Mac OS X) search may happen even if `pathname` is absolute. (On Windows
+    LoadLibrary is used instead of `dlopen(3)`.)
 
     On non-Windows platforms calling `load-shared-object` again with a `pathname`
     [`equal`][3fb5] to the designated pathname of a previous call will replace the old
@@ -9304,7 +10006,7 @@ calling [`load-shared-object`][3c84].
 <a id="x-28SB-MANUAL-3A-40FOREIGN-FUNCTION-CALLS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-FUNCTION-CALLS%20MGL-PAX:SECTION"></a>
 
-### 9.7 Foreign Function Calls
+### 10.7 Foreign Function Calls
 
 The foreign function call interface allows a Lisp program to call
 many functions written in languages that use the C calling convention.
@@ -9468,7 +10170,7 @@ developer, is the only documentation. Users of a Lisp built with the
 <a id="x-28SB-MANUAL-3A-40CALLING-LISP-FROM-C-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CALLING-LISP-FROM-C%20MGL-PAX:SECTION"></a>
 
-### 9.8 Calling Lisp From C
+### 10.8 Calling Lisp From C
 
 SBCL supports the calling of Lisp functions using the C calling
 convention. This is useful for both defining callbacks and for creating
@@ -9547,7 +10249,7 @@ coping with this:
 <a id="x-28SB-MANUAL-3A-40LISP-AS-A-SHARED-LIBRARY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LISP-AS-A-SHARED-LIBRARY%20MGL-PAX:SECTION"></a>
 
-#### 9.8.1 Lisp as a Shared Library
+#### 10.8.1 Lisp as a Shared Library
 
 SBCL supports the use of Lisp as a shared library that can be used by
 C programs using the [`define-alien-callable`][d32d] interface. See the
@@ -9567,7 +10269,7 @@ program.
 <a id="x-28SB-MANUAL-3A-40STEP-BY-STEP-EXAMPLE-OF-THE-FOREIGN-FUNCTION-INTERFACE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STEP-BY-STEP-EXAMPLE-OF-THE-FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION"></a>
 
-### 9.9 Step-By-Step Example of the Foreign Function Interface
+### 10.9 Step-by-step Example of the Foreign Function Interface
 
 This section presents a complete example of an interface to a somewhat
 complicated C function.
@@ -9710,12 +10412,12 @@ Lisp read-eval-print loop should print the following return values:
 <a id="x-28SB-MANUAL-3A-40PATHNAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PATHNAMES%20MGL-PAX:SECTION"></a>
 
-## 10 Pathnames
+## 11 Pathnames
 
 <a id="x-28SB-MANUAL-3A-40LISP-PATHNAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LISP-PATHNAMES%20MGL-PAX:SECTION"></a>
 
-### 10.1 Lisp Pathnames
+### 11.1 Lisp Pathnames
 
 There are many aspects of ANSI Common Lisp's pathname support
 which are implementation-defined and so need documentation.
@@ -9723,7 +10425,7 @@ which are implementation-defined and so need documentation.
 <a id="x-28SB-MANUAL-3A-40HOME-DIRECTORY-SPECIFIERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HOME-DIRECTORY-SPECIFIERS%20MGL-PAX:SECTION"></a>
 
-#### 10.1.1 Home Directory Specifiers
+#### 11.1.1 Home Directory Specifiers
 
 SBCL accepts the keyword `:home` and a list of the form
 `(:home` `"username")` as a directory component immediately
@@ -9743,7 +10445,7 @@ Using `(:home` `"user")` form on Windows signals an error.
 <a id="x-28SB-MANUAL-3A-40THE-SYS-LOGICAL-PATHNAME-HOST-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THE-SYS-LOGICAL-PATHNAME-HOST%20MGL-PAX:SECTION"></a>
 
-#### 10.1.2 The SYS Logical Pathname Host
+#### 11.1.2 The SYS Logical Pathname Host
 
 The logical pathname host named by `"SYS"` exists in SBCL.
 Its [`logical-pathname-translations`][8a67] may be set by the site or the user
@@ -9765,7 +10467,7 @@ files match `"SYS:CONTRIB;**;*.*.*"`.
 <a id="x-28SB-MANUAL-3A-40NATIVE-FILENAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@NATIVE-FILENAMES%20MGL-PAX:SECTION"></a>
 
-### 10.2 Native Filenames
+### 11.2 Native Filenames
 
 In some circumstances, what is wanted is a Lisp pathname object which
 corresponds to a string produced by the Operating System. In this
@@ -9860,7 +10562,7 @@ to force a pathname to unparse as a file. For example,
 <a id="x-28SB-MANUAL-3A-40STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STREAMS%20MGL-PAX:SECTION"></a>
 
-## 11 Streams
+## 12 Streams
 
 Streams which read or write Lisp character data from or to the outside
 world -- files, sockets or other external entities -- require the
@@ -9888,7 +10590,7 @@ streams:
 <a id="x-28SB-MANUAL-3A-40STREAM-EXTERNAL-FORMATS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STREAM-EXTERNAL-FORMATS%20MGL-PAX:SECTION"></a>
 
-### 11.1 Stream External Formats
+### 12.1 Stream External Formats
 
 The function [`stream-external-format`][3d00] returns the canonical name of
 the external format (see [External Formats][d293]) used by the stream for
@@ -9902,7 +10604,7 @@ designator (see [External Format Designators][d283]).
 <a id="x-28SB-MANUAL-3A-40BIVALENT-STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BIVALENT-STREAMS%20MGL-PAX:SECTION"></a>
 
-### 11.2 Bivalent Streams
+### 12.2 Bivalent Streams
 
 A *bivalent stream* can be used to read and write both
 [`character`][0a49] and `(unsigned-byte 8)` values. A bivalent stream is
@@ -9918,7 +10620,7 @@ octets to characters and implements a fast path through [`read-char`][dd7a].
 <a id="x-28SB-MANUAL-3A-40GRAY-STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GRAY-STREAMS%20MGL-PAX:SECTION"></a>
 
-### 11.3 Gray Streams
+### 12.3 Gray Streams
 
 The Gray Streams interface is a widely supported extension that
 provides for definition of CLOS-extensible stream classes. Gray
@@ -9931,7 +10633,7 @@ been implemented suitably.
 <a id="x-28SB-MANUAL-3A-40GRAY-STREAMS-CLASSES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GRAY-STREAMS-CLASSES%20MGL-PAX:SECTION"></a>
 
-#### 11.3.1 Gray Streams classes
+#### 12.3.1 Gray Streams classes
 
 The defined Gray Stream classes are these:
 
@@ -10016,7 +10718,7 @@ function [`stream-element-type`][8cb6].
 <a id="x-28SB-MANUAL-3A-40METHODS-COMMON-TO-ALL-STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@METHODS-COMMON-TO-ALL-STREAMS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.2 Methods common to all streams
+#### 12.3.2 Methods common to all streams
 
 These generic functions can be specialized on any generalized instance
 of fundamental-stream.
@@ -10053,7 +10755,7 @@ of fundamental-stream.
 <a id="x-28SB-MANUAL-3A-40INPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.3 Input stream methods
+#### 12.3.3 Input stream methods
 
 These generic functions may be specialized on any generalized instance
 of fundamental-input-stream.
@@ -10076,7 +10778,7 @@ of fundamental-input-stream.
 <a id="x-28SB-MANUAL-3A-40CHARACTER-INPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CHARACTER-INPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.4 Character input stream methods
+#### 12.3.4 Character input stream methods
 
 These generic functions are used to implement subclasses of
 [`sb-gray:fundamental-input-stream`][5667]:
@@ -10144,7 +10846,7 @@ These generic functions are used to implement subclasses of
 <a id="x-28SB-MANUAL-3A-40OUTPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.5 Output stream methods
+#### 12.3.5 Output stream methods
 
 These generic functions are used to implement subclasses of
 [`sb-gray:fundamental-output-stream`][87b6]:
@@ -10184,7 +10886,7 @@ These generic functions are used to implement subclasses of
 <a id="x-28SB-MANUAL-3A-40CHARACTER-OUTPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CHARACTER-OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.6 Character output stream methods
+#### 12.3.6 Character output stream methods
 
 These generic functions are used to implement subclasses of
 [`sb-gray:fundamental-character-output-stream`][bb44]:
@@ -10281,7 +10983,7 @@ These generic functions are used to implement subclasses of
 <a id="x-28SB-MANUAL-3A-40BINARY-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BINARY-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.7 Binary stream methods
+#### 12.3.7 Binary stream methods
 
 The following generic functions are available for subclasses of
 [`sb-gray:fundamental-binary-stream`][e5a1]:
@@ -10305,7 +11007,7 @@ The following generic functions are available for subclasses of
 <a id="x-28SB-MANUAL-3A-40GRAY-STREAMS-EXAMPLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GRAY-STREAMS-EXAMPLES%20MGL-PAX:SECTION"></a>
 
-#### 11.3.8 Gray Streams Examples
+#### 12.3.8 Gray Streams Examples
 
 Below are two classes of stream that can be conveniently defined as
 wrappers for Common Lisp streams. These are meant to serve as
@@ -10496,7 +11198,7 @@ Output:
 <a id="x-28SB-MANUAL-3A-40SB-SIMPLE-STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-SIMPLE-STREAMS%20MGL-PAX:SECTION"></a>
 
-### 11.4 Simple Streams
+### 12.4 Simple Streams
 
 Simple streams are an extensible streams protocol that avoids some
 problems with [Gray Streams][5165].
@@ -10521,7 +11223,7 @@ Known differences to the ACL behaviour:
 <a id="x-28SB-MANUAL-3A-40PACKAGE-LOCKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-LOCKS%20MGL-PAX:SECTION"></a>
 
-## 12 Package Locks
+## 13 Package Locks
 
 None of the following sections apply to SBCL built without package
 locking support.
@@ -10535,7 +11237,7 @@ be added to the list of operations violating package locks.
 <a id="x-28SB-MANUAL-3A-40PACKAGE-LOCK-CONCEPTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-LOCK-CONCEPTS%20MGL-PAX:SECTION"></a>
 
-### 12.1 Package Lock Concepts
+### 13.1 Package Lock Concepts
 
 Package locks protect against unintentional modifications of a package:
 they provide similar protection to user packages as is mandated to
@@ -10555,7 +11257,7 @@ not currently done by default.
 <a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-PACKAGES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@IMPLEMENTATION-PACKAGES%20MGL-PAX:SECTION"></a>
 
-#### 12.1.1 Implementation Packages
+#### 13.1.1 Implementation Packages
 
 Each package has a list of associated implementation packages. A
 locked package, and the symbols whose home package it is, can be
@@ -10570,7 +11272,7 @@ Unless explicitly altered by [`defpackage`][9b43],
 <a id="x-28SB-MANUAL-3A-40PACKAGE-LOCK-VIOLATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-LOCK-VIOLATIONS%20MGL-PAX:SECTION"></a>
 
-#### 12.1.2 Package Lock Violations
+#### 13.1.2 Package Lock Violations
 
 <a id="x-28SB-MANUAL-3A-40LEXICAL-BINDINGS-AND-DECLARATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LEXICAL-BINDINGS-AND-DECLARATIONS%20MGL-PAX:SECTION"></a>
@@ -10622,7 +11324,7 @@ of type [`sb-ext:symbol-package-locked-error`][c892].
 <a id="x-28SB-MANUAL-3A-40PACKAGE-LOCKS-IN-COMPILED-CODE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-LOCKS-IN-COMPILED-CODE%20MGL-PAX:SECTION"></a>
 
-#### 12.1.3 Package Locks in Compiled Code
+#### 13.1.3 Package Locks in Compiled Code
 
 If file-compiled code contains interned symbols, then loading that
 code into an image without the said symbols will not cause a package
@@ -10645,7 +11347,7 @@ violated.
 <a id="x-28SB-MANUAL-3A-40OPERATIONS-VIOLATING-PACKAGE-LOCKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-VIOLATING-PACKAGE-LOCKS%20MGL-PAX:SECTION"></a>
 
-#### 12.1.4 Operations Violating Package Locks
+#### 13.1.4 Operations Violating Package Locks
 
 <a id="x-28SB-MANUAL-3A-40OPERATIONS-ON-PACKAGES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-ON-PACKAGES%20MGL-PAX:SECTION"></a>
@@ -10759,7 +11461,7 @@ Example:
 <a id="x-28SB-MANUAL-3A-40PACKAGE-LOCK-DICTIONARY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PACKAGE-LOCK-DICTIONARY%20MGL-PAX:SECTION"></a>
 
-### 12.2 Package Lock Dictionary
+### 13.2 Package Lock Dictionary
 
 <a id="x-28SB-EXT-3ADISABLE-PACKAGE-LOCKS-20DECLARATION-29"></a>
 <a id="SB-EXT:DISABLE-PACKAGE-LOCKS%20DECLARATION"></a>
@@ -10923,7 +11625,7 @@ Example:
 <a id="x-28SB-MANUAL-3A-40THREADING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THREADING%20MGL-PAX:SECTION"></a>
 
-## 13 Threading
+## 14 Threading
 
 SBCL supports a fairly low-level threading interface that maps onto
 the host operating system's concept of threads or lightweight
@@ -10943,7 +11645,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40THREADING-BASICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THREADING-BASICS%20MGL-PAX:SECTION"></a>
 
-### 13.1 Threading Basics
+### 14.1 Threading Basics
 
 ```
 (make-thread (lambda () (write-line "Hello, world")))
@@ -10952,7 +11654,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40THREAD-OBJECTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THREAD-OBJECTS%20MGL-PAX:SECTION"></a>
 
-#### 13.1.1 Thread Objects
+#### 14.1.1 Thread Objects
 
 <a id="x-28SB-THREAD-3ATHREAD-20STRUCTURE-29"></a>
 <a id="SB-THREAD:THREAD%20STRUCTURE"></a>
@@ -11012,7 +11714,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40RUNNING-THREADS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-THREADS%20MGL-PAX:SECTION"></a>
 
-#### 13.1.2 Running Threads
+#### 14.1.2 Running Threads
 
 <a id="x-28SB-THREAD-3AMAKE-THREAD-20FUNCTION-29"></a>
 <a id="SB-THREAD:MAKE-THREAD%20FUNCTION"></a>
@@ -11106,7 +11808,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40ASYNCHRONOUS-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ASYNCHRONOUS-OPERATIONS%20MGL-PAX:SECTION"></a>
 
-#### 13.1.3 Asynchronous Operations
+#### 14.1.3 Asynchronous Operations
 
 <a id="x-28SB-THREAD-3AINTERRUPT-THREAD-20FUNCTION-29"></a>
 <a id="SB-THREAD:INTERRUPT-THREAD%20FUNCTION"></a>
@@ -11135,7 +11837,7 @@ see `install` for directions.
 
     With those caveats in mind, what you need to know when using it:
 
-    - If calling `function` causes a non-local transfer of control (ie. an
+    - If calling `function` causes a non-local transfer of control (i.e. an
       unwind), all normal cleanup forms will be executed.
 
         However, if the interrupt occurs during cleanup forms of an
@@ -11215,7 +11917,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION"></a>
 
-#### 13.1.4 Miscellaneous Operations
+#### 14.1.4 Miscellaneous Operations
 
 <a id="x-28SB-THREAD-3ASYMBOL-VALUE-IN-THREAD-20FUNCTION-29"></a>
 <a id="SB-THREAD:SYMBOL-VALUE-IN-THREAD%20FUNCTION"></a>
@@ -11238,7 +11940,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40ERROR-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ERROR-CONDITIONS%20MGL-PAX:SECTION"></a>
 
-#### 13.1.5 Error Conditions
+#### 14.1.5 Error Conditions
 
 <a id="x-28SB-THREAD-3ATHREAD-ERROR-20CONDITION-29"></a>
 <a id="SB-THREAD:THREAD-ERROR%20CONDITION"></a>
@@ -11284,7 +11986,7 @@ see `install` for directions.
 <a id="x-28SB-MANUAL-3A-40SPECIAL-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SPECIAL-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 13.2 Special Variables
+### 14.2 Special Variables
 
 The interaction of special variables with multiple threads is mostly
 as one would expect, with behaviour very similar to other
@@ -11312,7 +12014,7 @@ symbols that can be bound dynamically in threaded builds (see
 <a id="x-28SB-MANUAL-3A-40ATOMIC-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ATOMIC-OPERATIONS%20MGL-PAX:SECTION"></a>
 
-### 13.3 Atomic Operations
+### 14.3 Atomic Operations
 
 Following atomic operations are particularly useful for implementing
 lockless algorithms.
@@ -11545,7 +12247,7 @@ places.
 <a id="x-28SB-MANUAL-3A-40MUTEX-SUPPORT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MUTEX-SUPPORT%20MGL-PAX:SECTION"></a>
 
-### 13.4 Mutex Support
+### 14.4 Mutex Support
 
 Mutexes are used for controlling access to a shared resource. One
 thread is allowed to hold the mutex, others which attempt to take it
@@ -11708,7 +12410,7 @@ that they go to sleep.
 <a id="x-28SB-MANUAL-3A-40SEMAPHORES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SEMAPHORES%20MGL-PAX:SECTION"></a>
 
-### 13.5 Semaphores
+### 14.5 Semaphores
 
 Semaphores are among other things useful for keeping track of a
 countable resource, e.g. messages in a queue, and sleep when the
@@ -11820,7 +12522,7 @@ resource is exhausted.
 <a id="x-28SB-MANUAL-3A-40WAITQUEUE-2FCONDITION-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@WAITQUEUE%2FCONDITION-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 13.6 Waitqueue/condition variables
+### 14.6 Waitqueue/condition variables
 
 These are based on the POSIX condition variable design, hence the
 annoyingly CL-conflicting name. For use when you want to check a
@@ -11969,7 +12671,7 @@ Important stuff to be aware of:
 <a id="x-28SB-MANUAL-3A-40BARRIERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BARRIERS%20MGL-PAX:SECTION"></a>
 
-### 13.7 Barriers
+### 14.7 Barriers
 
 These are based on the Linux kernel barrier design, which is in turn
 based on the Alpha CPU memory model. They are presently implemented for
@@ -12029,7 +12731,7 @@ following functions and macros also serve as `:memory` barriers:
 <a id="x-28SB-MANUAL-3A-40SESSIONS-2FDEBUGGING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SESSIONS%2FDEBUGGING%20MGL-PAX:SECTION"></a>
 
-### 13.8 Sessions/Debugging
+### 14.8 Sessions/Debugging
 
 If the user has multiple views onto the same Lisp image (for example,
 using multiple terminals, or a windowing system, or network access)
@@ -12078,7 +12780,7 @@ for the input stream is managed by calls to
 <a id="x-28SB-MANUAL-3A-40FOREIGN-THREADS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-THREADS%20MGL-PAX:SECTION"></a>
 
-### 13.9 Foreign threads
+### 14.9 Foreign threads
 
 Direct calls to `pthread_create(3)` (instead of [`sb-thread:make-thread`][1f38])
 create threads that SBCL is not aware of, these are called foreign
@@ -12100,7 +12802,7 @@ synchronously triggered signals in foreign threads is subject to
 <a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-ON-LINUX-X86OIDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@IMPLEMENTATION-ON-LINUX-X86OIDS%20MGL-PAX:SECTION"></a>
 
-### 13.10 Implementation on Linux x86oids
+### 14.10 Implementation on Linux x86oids
 
 Threading is implemented using pthreads and some Linux specific bits
 like futexes.
@@ -12148,7 +12850,7 @@ to be embarrassing.
 <a id="x-28SB-MANUAL-3A-40TIMERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TIMERS%20MGL-PAX:SECTION"></a>
 
-## 14 Timers
+## 15 Timers
 
 SBCL supports a system-wide event scheduler implemented on top of
 `setitimer(2)` that also works with threads but does not require a
@@ -12258,7 +12960,7 @@ serve as a cautionary tale:
 <a id="x-28SB-MANUAL-3A-40NETWORKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@NETWORKING%20MGL-PAX:SECTION"></a>
 
-## 15 Networking
+## 16 Networking
 
 The `sb-bsd-sockets` module provides a thinly disguised BSD
 socket API for SBCL. Ideas have been stolen from the BSD socket API
@@ -12271,7 +12973,7 @@ style.
 <a id="x-28SB-MANUAL-3A-40SOCKETS-OVERVIEW-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SOCKETS-OVERVIEW%20MGL-PAX:SECTION"></a>
 
-### 15.1 Sockets Overview
+### 16.1 Sockets Overview
 
 Most of the functions are modelled on the BSD socket API. BSD sockets
 are widely supported, portably (by Unix standards, at least)
@@ -12296,7 +12998,7 @@ more useful features of Common Lisp -- briefly:
 <a id="x-28SB-MANUAL-3A-40GENERAL-SOCKETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GENERAL-SOCKETS%20MGL-PAX:SECTION"></a>
 
-### 15.2 General Sockets
+### 16.2 General Sockets
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKET-20CLASS-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKET%20CLASS"></a>
@@ -12481,7 +13183,7 @@ more useful features of Common Lisp -- briefly:
 <a id="x-28SB-MANUAL-3A-40SOCKET-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SOCKET-OPTIONS%20MGL-PAX:SECTION"></a>
 
-### 15.3 Socket Options
+### 16.3 Socket Options
 
 A subset of socket options are supported, using a fairly general
 framework which should make it simple to add more as required -- see
@@ -12565,7 +13267,7 @@ sb-bsd-sockets:sockopt-receive-low-water)`.
 <a id="x-28SB-MANUAL-3A-40INET-DOMAIN-SOCKETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INET-DOMAIN-SOCKETS%20MGL-PAX:SECTION"></a>
 
-### 15.4 INET Domain Sockets
+### 16.4 INET Domain Sockets
 
 The TCP and UDP sockets that you know and love. Some representation
 issues:
@@ -12640,7 +13342,7 @@ issues:
 <a id="x-28SB-MANUAL-3A-40LOCAL-DOMAIN-SOCKETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-DOMAIN-SOCKETS%20MGL-PAX:SECTION"></a>
 
-### 15.5 Local Domain Sockets
+### 16.5 Local Domain Sockets
 
 Local domain (`AF_LOCAL`) sockets are also known as Unix-domain
 sockets but were renamed by POSIX presumably on the basis that they
@@ -12673,7 +13375,7 @@ is no corresponding filesystem node.
 <a id="x-28SB-MANUAL-3A-40NAME-SERVICE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@NAME-SERVICE%20MGL-PAX:SECTION"></a>
 
-### 15.6 Name Service
+### 16.6 Name Service
 
 Presently name service is implemented by calling out to the
 `getaddrinfo(3)` and `gethostinfo(3)`, or to `gethostbyname(3)` and
@@ -12722,7 +13424,7 @@ lookup) are platform dependent.
 <a id="x-28SB-MANUAL-3A-40PROFILING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PROFILING%20MGL-PAX:SECTION"></a>
 
-## 16 Profiling
+## 17 Profiling
 
 SBCL includes both a deterministic profiler, that can collect
 statistics on individual functions, and a more "modern",
@@ -12733,7 +13435,7 @@ Inlined functions do not appear in the results reported by either.
 <a id="x-28SB-MANUAL-3A-40DETERMINISTIC-PROFILER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DETERMINISTIC-PROFILER%20MGL-PAX:SECTION"></a>
 
-### 16.1 Deterministic Profiler
+### 17.1 Deterministic Profiler
 
 The package `sb-profile` provides a classic, per-function-call
 profiler.
@@ -12791,7 +13493,7 @@ profiler.
 <a id="x-28SB-MANUAL-3A-40STATISTICAL-PROFILER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STATISTICAL-PROFILER%20MGL-PAX:SECTION"></a>
 
-### 16.2 Statistical Profiler
+### 17.2 Statistical Profiler
 
 The `sb-sprof` module, loadable by
 
@@ -13150,7 +13852,7 @@ statistical profiler for CMUCL.
 <a id="x-28SB-MANUAL-3A-40CONTRIBUTED-MODULES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONTRIBUTED-MODULES%20MGL-PAX:SECTION"></a>
 
-## 17 Contributed Modules
+## 18 Contributed Modules
 
 SBCL comes with a number of modules that are not part of the core
 system. These are loaded via `(require :<modulename>)`
@@ -13161,7 +13863,7 @@ contributed modules.
 <a id="x-28SB-MANUAL-3A-40SB-ACLREPL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-ACLREPL%20MGL-PAX:SECTION"></a>
 
-### 17.1 sb-aclrepl
+### 18.1 sb-aclrepl
 
 The `sb-aclrepl` module offers an Allegro CL-style
 Read-Eval-Print Loop for SBCL, with integrated inspector. Adding a
@@ -13172,7 +13874,7 @@ Allegro CL is a registered trademark of Franz Inc.
 <a id="x-28SB-MANUAL-3A-40SB-ACLREPL-USAGE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-ACLREPL-USAGE%20MGL-PAX:SECTION"></a>
 
-#### 17.1.1 Usage
+#### 18.1.1 Usage
 
 To start `sb-aclrepl` as your read-eval-print loop, put the form
 
@@ -13183,7 +13885,7 @@ in your `~/.sbclrc`, one of your [Initialization Files][1016].
 <a id="x-28SB-MANUAL-3A-40SB-ACLREPL-CUSTOMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-ACLREPL-CUSTOMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 17.1.2 Customization
+#### 18.1.2 Customization
 
 The following customization variables are available:
 
@@ -13225,7 +13927,7 @@ The following customization variables are available:
 <a id="x-28SB-MANUAL-3A-40SB-ACLREPL-EXAMPLE-INITIALIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-ACLREPL-EXAMPLE-INITIALIZATION%20MGL-PAX:SECTION"></a>
 
-#### 17.1.3 Example Initialization
+#### 18.1.3 Example Initialization
 
 Here's a longer example of a `~/.sbclrc` file that shows off
 some of the features of sb-aclrepl:
@@ -13254,7 +13956,7 @@ Questions, comments, or bug reports should be sent to Kevin Rosenberg
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY%20MGL-PAX:SECTION"></a>
 
-### 17.2 sb-concurrency
+### 18.2 sb-concurrency
 
 Additional data structures, synchronization primitives and tools for
 concurrent programming. Similiar to Java's `java.util.concurrent`
@@ -13263,7 +13965,7 @@ package.
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-QUEUE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-QUEUE%20MGL-PAX:SECTION"></a>
 
-#### 17.2.1 Queue
+#### 18.2.1 Queue
 
 [`sb-concurrency:queue`][cb60] is a lock-free, thread-safe FIFO queue
 datatype.
@@ -13352,7 +14054,7 @@ backwards-compatibility, but which has since been deprecated.
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-MAILBOX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-MAILBOX%20MGL-PAX:SECTION"></a>
 
-#### 17.2.2 Mailbox (lock-free)
+#### 18.2.2 Mailbox (lock-free)
 
 [`sb-concurrency:mailbox`][96b9] is a lock-free message queue where one or
 multiple ends can send messages to one or multiple receivers. The
@@ -13461,7 +14163,7 @@ Built on top of the [Queue][2771] implementation.
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-GATES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-GATES%20MGL-PAX:SECTION"></a>
 
-#### 17.2.3 Gates
+#### 18.2.3 Gates
 
 [`sb-concurrency:gate`][da1d] is a synchronization object suitable for when
 multiple threads must wait for a single event before proceeding.
@@ -13535,7 +14237,7 @@ multiple threads must wait for a single event before proceeding.
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-FRLOCKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-FRLOCKS%20MGL-PAX:SECTION"></a>
 
-#### 17.2.4 Frlocks, aka Fast Read Locks
+#### 18.2.4 Frlocks, aka Fast Read Locks
 
 <a id="x-28SB-CONCURRENCY-3AFRLOCK-20STRUCTURE-29"></a>
 <a id="SB-CONCURRENCY:FRLOCK%20STRUCTURE"></a>
@@ -13659,7 +14361,7 @@ multiple threads must wait for a single event before proceeding.
 <a id="x-28SB-MANUAL-3A-40SB-COVER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-COVER%20MGL-PAX:SECTION"></a>
 
-### 17.3 sb-cover
+### 18.3 sb-cover
 
 The `sb-cover` module provides a code coverage tool for SBCL. The
 tool has support for expression coverage, and for some branch
@@ -13725,7 +14427,7 @@ How to use it:
 - \[function\] **sb-cover:clear-coverage**
 
     Clear all files from the coverage database. The files will be re-entered
-    into the database when the FASL files (produced by compiling
+    into the database when the fasl files (produced by compiling
     `store-coverage-data` optimization policy set to 3) are loaded again into the
     image.
 
@@ -13783,7 +14485,7 @@ How to use it:
 <a id="x-28SB-MANUAL-3A-40SB-GROVEL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-GROVEL%20MGL-PAX:SECTION"></a>
 
-### 17.4 sb-grovel
+### 18.4 sb-grovel
 
 The `sb-grovel` module helps in generation of foreign function
 interfaces. It aids in extracting constants' values from the C
@@ -13802,7 +14504,7 @@ here are a few directions.
 <a id="x-28SB-MANUAL-3A-40USING-SB-GROVEL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@USING-SB-GROVEL%20MGL-PAX:SECTION"></a>
 
-#### 17.4.1 Using sb-grovel in your own ASDF System
+#### 18.4.1 Using sb-grovel in Your Own ASDF System
 
 - Create a Lisp package for the foreign constants/functions to go
 into.
@@ -13839,7 +14541,7 @@ Make sure to specify the package you chose in step 1.
 <a id="x-28SB-MANUAL-3A-40SB-GROVEL-CONSTANTS-FILE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-GROVEL-CONSTANTS-FILE%20MGL-PAX:SECTION"></a>
 
-#### 17.4.2 Contents of a grovel-constants-file
+#### 18.4.2 Contents of a grovel-constants-file
 
 The grovel-constants-file, typically named `constants.lisp`,
 comprises lisp expressions describing the foreign things that you
@@ -13951,7 +14653,7 @@ structure member.
 <a id="x-28SB-MANUAL-3A-40SB-GROVEL-STRUCTURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-GROVEL-STRUCTURES%20MGL-PAX:SECTION"></a>
 
-#### 17.4.3 Programming with sb-grovel's structure types
+#### 18.4.3 Programming with sb-grovel's Structure Types
 
 Let us assume that you have a grovelled structure definition:
 
@@ -13985,7 +14687,7 @@ What can you do with it? Here's a short interface document:
 <a id="x-28SB-MANUAL-3A-40SB-GROVEL-TRAPS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-GROVEL-TRAPS%20MGL-PAX:SECTION"></a>
 
-#### 17.4.4 Traps and Pitfalls
+#### 18.4.4 Traps and Pitfalls
 
 Basically, you can treat functions and data structure definitions that
 sb-grovel spits out as if they were alien routines and types. This has
@@ -14004,7 +14706,7 @@ use alien types):
 <a id="x-28SB-MANUAL-3A-40SB-INTROSPECT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-INTROSPECT%20MGL-PAX:SECTION"></a>
 
-### 17.5 sb-introspect
+### 18.5 sb-introspect
 
 The `sb-introspect` module is about finding definitions, as well
 as querying their properties and relationships in the running image.
@@ -14012,7 +14714,7 @@ as querying their properties and relationships in the running image.
 <a id="x-28SB-MANUAL-3A-40FINDING-DEFINITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FINDING-DEFINITIONS%20MGL-PAX:SECTION"></a>
 
-#### 17.5.1 Finding Definitions
+#### 18.5.1 Finding Definitions
 
 <a id="x-28SB-INTROSPECT-3ADEFINITION-SOURCE-20STRUCTURE-29"></a>
 <a id="SB-INTROSPECT:DEFINITION-SOURCE%20STRUCTURE"></a>
@@ -14167,7 +14869,7 @@ as querying their properties and relationships in the running image.
 <a id="x-28SB-MANUAL-3A-40SB-INTROSPECT-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-INTROSPECT-VARIABLES%20MGL-PAX:SECTION"></a>
 
-#### 17.5.2 Special Variables
+#### 18.5.2 Special Variables
 
 <a id="x-28SB-INTROSPECT-3AWHO-BINDS-20FUNCTION-29"></a>
 <a id="SB-INTROSPECT:WHO-BINDS%20FUNCTION"></a>
@@ -14199,7 +14901,7 @@ as querying their properties and relationships in the running image.
 <a id="x-28SB-MANUAL-3A-40SB-INTROSPECT-FUNCTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-INTROSPECT-FUNCTIONS%20MGL-PAX:SECTION"></a>
 
-#### 17.5.3 Functions
+#### 18.5.3 Functions
 
 <a id="x-28SB-INTROSPECT-3AFUNCTION-LAMBDA-LIST-20FUNCTION-29"></a>
 <a id="SB-INTROSPECT:FUNCTION-LAMBDA-LIST%20FUNCTION"></a>
@@ -14280,7 +14982,7 @@ as querying their properties and relationships in the running image.
 <a id="x-28SB-MANUAL-3A-40SB-INTROSPECT-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-INTROSPECT-TYPES%20MGL-PAX:SECTION"></a>
 
-#### 17.5.4 Types and Classes
+#### 18.5.4 Types and Classes
 
 <a id="x-28SB-INTROSPECT-3ADEFTYPE-LAMBDA-LIST-20FUNCTION-29"></a>
 <a id="SB-INTROSPECT:DEFTYPE-LAMBDA-LIST%20FUNCTION"></a>
@@ -14332,7 +15034,7 @@ as querying their properties and relationships in the running image.
 <a id="x-28SB-MANUAL-3A-40SB-INTROSPECT-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-INTROSPECT-ALLOCATION%20MGL-PAX:SECTION"></a>
 
-#### 17.5.5 Allocation
+#### 18.5.5 Allocation
 
 <a id="x-28SB-INTROSPECT-3AALLOCATION-INFORMATION-20FUNCTION-29"></a>
 <a id="SB-INTROSPECT:ALLOCATION-INFORMATION%20FUNCTION"></a>
@@ -14405,15 +15107,16 @@ as querying their properties and relationships in the running image.
     indirect containers: [`fdefinition`][eea4]s, [`eql`][38a2] specializers, classes, and
     thread-local symbol values in other threads fall into this category.
 
-    > *Note*: calling `map-root` with a THREAD does not currently map over
-    > conservative roots from the thread registers and interrupt contexts.
+    > *Note*: calling `map-root` with a [`sb-thread:thread`][5ef5] does not currently
+    > map over conservative roots from the thread registers and interrupt
+    > contexts.
 
     Experimental: interface subject to change.
 
 <a id="x-28SB-MANUAL-3A-40SB-MANUAL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-MANUAL%20MGL-PAX:SECTION"></a>
 
-### 17.6 sb-manual
+### 18.6 sb-manual
 
 The `sb-manual` module has the SBCL user manual in forms
 mimicking [`pax:defsection`][72b4]:
@@ -14439,7 +15142,7 @@ Texinfo generated from these definitions.
 <a id="x-28SB-MANUAL-3A-40USING-PAX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@USING-PAX%20MGL-PAX:SECTION"></a>
 
-#### 17.6.1 Using PAX
+#### 18.6.1 Using PAX
 
 However, [`sb-manual::defsection`][72b4] is but a dummy implementation of
 `pax:defsection` to avoid a hard dependency on PAX.
@@ -14471,7 +15174,7 @@ real, so that PAX can work with them.
 <a id="x-28SB-MANUAL-3A-40BROWSING-LIVE-WITH-PAX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BROWSING-LIVE-WITH-PAX%20MGL-PAX:SECTION"></a>
 
-#### 17.6.2 Browsing Live with PAX
+#### 18.6.2 Browsing Live with PAX
 
 With PAX, you can browse the manual live. The documentation of this
 feature is available at
@@ -14509,7 +15212,7 @@ Loop, when working on documentation.
 <a id="x-28SB-MANUAL-3A-40FANCY-DOCUMENTATION-WITH-PAX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FANCY-DOCUMENTATION-WITH-PAX%20MGL-PAX:SECTION"></a>
 
-#### 17.6.3 Fancy Documentation with PAX
+#### 18.6.3 Fancy Documentation with PAX
 
 PAX can generate dead documentation, too. In the SBCL sources,
 `contrib/sb-manual/make-pax-docs.sh` generates the manual in plain
@@ -14524,7 +15227,7 @@ Also, you can generate documentation yourself with e.g.
 <a id="x-28SB-MANUAL-3A-40SB-MD5-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-MD5%20MGL-PAX:SECTION"></a>
 
-### 17.7 sb-md5
+### 18.7 sb-md5
 
 The `sb-md5` module implements the RFC1321 MD5 Message Digest
 Algorithm.
@@ -14542,7 +15245,7 @@ Algorithm.
 - \[function\] **sb-md5:md5sum-sequence** *sequence \&key (start 0) end*
 
     Calculate the MD5 message-digest of data in `sequence`, which should
-    be a 1d [`simple-array`][451a] with element type ([`unsigned-byte`][561a] 8). On CMU CL
+    be a 1d [`simple-array`][451a] with element type ([`unsigned-byte`][561a] 8). On CMUCL
     and SBCL non-simple and non-1d arrays with this element-type are also
     supported.
 
@@ -14580,7 +15283,7 @@ terms, apart from the use of [sb-rotate-byte][0da4] for bitwise rotation.
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX%20MGL-PAX:SECTION"></a>
 
-### 17.8 sb-posix
+### 18.8 sb-posix
 
 Sb-posix is the supported interface for calling out to the operating
 system.
@@ -14613,7 +15316,7 @@ see [Extensions to POSIX][6c6d]).
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-LISP-NAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-LISP-NAMES%20MGL-PAX:SECTION"></a>
 
-#### 17.8.1 Lisp names for C names
+#### 18.8.1 Lisp names for C names
 
 All symbols are in the `sb-posix` package. This package contains a
 Lisp function for each supported Unix system call or function, a
@@ -14633,12 +15336,12 @@ The user is encouraged not to `(use-package :sb-posix)` but instead
 to use the `sb-posix:` prefix on all references, as some of the
 symbols symbols contained in the `sb-posix` package have the same
 name as CL symbols (e.g. [`open`][6547], [`close`][848f], [`signal`][8f49]). Also, see
-[Package-Local Nicknames][24fb].
+[Package-local Nicknames][24fb].
 
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-TYPES%20MGL-PAX:SECTION"></a>
 
-#### 17.8.2 Types
+#### 18.8.2 Types
 
 Generally, marshalling between Lisp and C data types is done using
 SBCL's FFI. See [Foreign Function Interface][4be1].
@@ -14735,7 +15438,7 @@ both pathnames and strings as its arguments.
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-FUNCTION-PARAMETERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-FUNCTION-PARAMETERS%20MGL-PAX:SECTION"></a>
 
-#### 17.8.3 Function Parameters
+#### 18.8.3 Function Parameters
 
 The calling convention is modelled after that of CMUCL's `unix`
 package: in particular, it's like the C interface except that:
@@ -14763,7 +15466,7 @@ package: in particular, it's like the C interface except that:
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-FUNCTION-RETURN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-FUNCTION-RETURN-VALUES%20MGL-PAX:SECTION"></a>
 
-#### 17.8.4 Function Return Values
+#### 18.8.4 Function Return Values
 
 The return value is usually the same as for the C binding, except in
 error cases: where the C function is defined as returning some
@@ -14780,7 +15483,7 @@ macros) do not return a C integer but instead a Lisp boolean.
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-LISP-OBJECTS-AND-C-STRUCTURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-LISP-OBJECTS-AND-C-STRUCTURES%20MGL-PAX:SECTION"></a>
 
-#### 17.8.5 Lisp Objects and C structures
+#### 18.8.5 Lisp Objects and C structures
 
 Sb-posix provides various Lisp object types to stand in for C
 structures in the POSIX library. Lisp bindings to C functions that
@@ -14850,7 +15553,7 @@ supported slots for those structures.
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-IDIOSYNCRACIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-IDIOSYNCRACIES%20MGL-PAX:SECTION"></a>
 
-#### 17.8.6 Functions with Idiosyncratic Bindings
+#### 18.8.6 Functions with Idiosyncratic Bindings
 
 A few functions in sb-posix don't correspond directly to their C
 counterparts.
@@ -14881,7 +15584,7 @@ counterparts.
 <a id="x-28SB-MANUAL-3A-40SB-POSIX-EXTENSIONS-TO-POSIX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-POSIX-EXTENSIONS-TO-POSIX%20MGL-PAX:SECTION"></a>
 
-#### 17.8.7 Extensions to POSIX
+#### 18.8.7 Extensions to POSIX
 
 Some of POSIX's standardized operators are not safe to use on their
 own, so `sb-posix` exports a few helpers that do not correspond
@@ -14924,7 +15627,7 @@ running until iteration completes.
 <a id="x-28SB-MANUAL-3A-40SB-QUEUE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-QUEUE%20MGL-PAX:SECTION"></a>
 
-### 17.9 sb-queue
+### 18.9 sb-queue
 
 Since SBCL 1.0.38, the `sb-queue` module has been merged into the
 `sb-concurrency` module. See [sb-concurrency][f634].
@@ -14932,7 +15635,7 @@ Since SBCL 1.0.38, the `sb-queue` module has been merged into the
 <a id="x-28SB-MANUAL-3A-40SB-ROTATE-BYTE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-ROTATE-BYTE%20MGL-PAX:SECTION"></a>
 
-### 17.10 sb-rotate-byte
+### 18.10 sb-rotate-byte
 
 The `sb-rotate-byte` module offers an interface to bitwise
 rotation, with an efficient implementation for operations which can
@@ -14956,7 +15659,7 @@ on 32-bit rings.
 <a id="x-28SB-MANUAL-3A-40SB-SIMD-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-SIMD%20MGL-PAX:SECTION"></a>
 
-### 17.11 sb-simd
+### 18.11 sb-simd
 
 The `sb-simd` module provides a convenient interface for SIMD
 programming in SBCL. It provides one package per SIMD instruction
@@ -14966,7 +15669,7 @@ set is available and what functions and data types it exports.
 <a id="x-28SB-MANUAL-3A-40DATA-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DATA-TYPES%20MGL-PAX:SECTION"></a>
 
-#### 17.11.1 Data Types
+#### 18.11.1 Data Types
 
 The central data type in sb-simd is the SIMD pack. A SIMD pack
 is very similar to a specialized vector, except that its length must
@@ -15000,7 +15703,7 @@ arguments.
 <a id="x-28SB-MANUAL-3A-40CASTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CASTS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.2 Casts
+#### 18.11.2 Casts
 
 For each scalar data type `x`, there is a function named `x`
 that is equivalent to `(lambda (v) (coerce v 'x))`. For each SIMD
@@ -15020,7 +15723,7 @@ of the cast function named `x.y`.
 <a id="x-28SB-MANUAL-3A-40CONSTRUCTORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONSTRUCTORS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.3 Constructors
+#### 18.11.3 Constructors
 
 For each SIMD data type `x.y`, there is a constructor named
 `make-x.y` that takes `y` arguments of type `x` and returns a SIMD
@@ -15029,7 +15732,7 @@ pack whose elements are the supplied values.
 <a id="x-28SB-MANUAL-3A-40UNPACKERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNPACKERS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.4 Unpackers
+#### 18.11.4 Unpackers
 
 For each SIMD data type `x.y`, there is a function named
 `x.y-values` that returns, as `y` multiple values, the elements of
@@ -15038,7 +15741,7 @@ the supplied SIMD pack of type `x.y`.
 <a id="x-28SB-MANUAL-3A-40REINTERPRET-CASTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@REINTERPRET-CASTS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.5 Reinterpret Casts
+#### 18.11.5 Reinterpret Casts
 
 For each SIMD data type `x.y`, there is a function named
 `x.y!` that takes any SIMD pack or scalar datum and interprets its
@@ -15050,7 +15753,7 @@ bits are assumed to be zero.
 <a id="x-28SB-MANUAL-3A-40ASSOCIATIVES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ASSOCIATIVES%20MGL-PAX:SECTION"></a>
 
-#### 17.11.6 Associatives
+#### 18.11.6 Associatives
 
 For each associative binary function, e.g. `two-arg-x.y-op`, there
 is a function `x.y-op` that takes any number of arguments and
@@ -15068,7 +15771,7 @@ one or more 256 bit packs of 8 bit integers.
 <a id="x-28SB-MANUAL-3A-40REDUCERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@REDUCERS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.7 Reducers
+#### 18.11.7 Reducers
 
 For binary functions `two-arg-x.y-op` that are not associative but
 have a neutral element, there are functions `x.y-op` that take any
@@ -15089,7 +15792,7 @@ the pack.
 <a id="x-28SB-MANUAL-3A-40ROUNDING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@ROUNDING%20MGL-PAX:SECTION"></a>
 
-#### 17.11.8 Rounding
+#### 18.11.8 Rounding
 
 For each floating-point SIMD data type `x.y`, there are several
 functions that round the values of a supplied SIMD pack to nearby
@@ -15102,7 +15805,7 @@ respectively.
 <a id="x-28SB-MANUAL-3A-40COMPARISONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPARISONS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.9 Comparisons
+#### 18.11.9 Comparisons
 
 For each SIMD data type `x.y`, there exist conversion functions
 `x.y<`, `x.y<=`, `x.y>`, `x.y>=`, and `x.y=` that check whether the
@@ -15119,7 +15822,7 @@ they don't. We call a SIMD packs of such unsigned integers a mask.
 <a id="x-28SB-MANUAL-3A-40CONDITIONALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONDITIONALS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.10 Conditionals
+#### 18.11.10 Conditionals
 
 The SIMD paradigm is inherently incompatible with fine-grained control
 flow. A piece of code containing an [`if`][02ad] special form cannot be
@@ -15146,7 +15849,7 @@ the third operand if the corresponding mask bits are not set.
 <a id="x-28SB-MANUAL-3A-40LOADS-AND-STORES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOADS-AND-STORES%20MGL-PAX:SECTION"></a>
 
-#### 17.11.11 Loads and Stores
+#### 18.11.11 Loads and Stores
 
 In practice, a SIMD pack `x.y` is usually not constructed by
 calling its constructor but by loading `y` consecutive elements from
@@ -15181,7 +15884,7 @@ array in memory.
 <a id="x-28SB-MANUAL-3A-40SPECIALIZED-SCALAR-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SPECIALIZED-SCALAR-OPERATIONS%20MGL-PAX:SECTION"></a>
 
-#### 17.11.12 Specialized Scalar Operations
+#### 18.11.12 Specialized Scalar Operations
 
 Finally, for each SIMD function `x.y-op` that applies a certain
 operation `op` element-wise to the `y` elements of type `x`, there
@@ -15204,7 +15907,7 @@ the life of tools for automatic vectorization.
 <a id="x-28SB-MANUAL-3A-40INSTRUCTION-SET-DISPATCH-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION"></a>
 
-#### 17.11.13 Instruction Set Dispatch
+#### 18.11.13 Instruction Set Dispatch
 
 One challenge that is unique to image-based programming systems such as
 Lisp is that a program can run on one machine, be dumped as an image,
@@ -15230,7 +15933,7 @@ of the Lisp image.
 <a id="x-28SB-MANUAL-3A-40DEPRECATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATION%20MGL-PAX:SECTION"></a>
 
-## 18 Deprecation
+## 19 Deprecation
 
 In order to support evolution of interfaces in SBCL as well as in user
 code, SBCL allows declaring functions, variables and types as
@@ -15250,7 +15953,7 @@ interfaces are subject to censure.
 <a id="x-28SB-MANUAL-3A-40WHY-DEPRECATE-3F-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@WHY-DEPRECATE%3F%20MGL-PAX:SECTION"></a>
 
-### 18.1 Why Deprecate?
+### 19.1 Why Deprecate?
 
 While generally speaking we try to keep SBCL changes as backwards
 compatible as feasible, there are situations when existing interfaces
@@ -15315,7 +16018,7 @@ are deprecated:
 <a id="x-28SB-MANUAL-3A-40THE-DEPRECATION-PIPELINE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THE-DEPRECATION-PIPELINE%20MGL-PAX:SECTION"></a>
 
-### 18.2 The Deprecation Pipeline
+### 19.2 The Deprecation Pipeline
 
 SBCL uses a *deprecation pipeline* with multiplestages: as
 time time goes by, deprecated things move from earlier stages of
@@ -15375,7 +16078,7 @@ when applicable.
 <a id="x-28SB-MANUAL-3A-40DEPRECATION-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATION-CONDITIONS%20MGL-PAX:SECTION"></a>
 
-### 18.3 Deprecation Conditions
+### 19.3 Deprecation Conditions
 
 [`sb-ext:deprecation-condition`][9cb3] is the superclass of all
 deprecation-related warning and error conditions. All common slots and
@@ -15430,7 +16133,7 @@ readers are defined in this condition class.
 <a id="x-28SB-MANUAL-3A-40INTROSPECTING-DEPRECATION-INFORMATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTROSPECTING-DEPRECATION-INFORMATION%20MGL-PAX:SECTION"></a>
 
-### 18.4 Introspecting Deprecation Information
+### 19.4 Introspecting Deprecation Information
 
 The deprecation status of functions and variables can be inspected
 using the `sb-cltl2:function-information` and
@@ -15440,7 +16143,7 @@ contributed module.
 <a id="x-28SB-MANUAL-3A-40DEPRECATION-DECLARATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATION-DECLARATION%20MGL-PAX:SECTION"></a>
 
-### 18.5 Deprecation Declaration
+### 19.5 Deprecation Declaration
 
 The [`sb-ext:deprecated`][5888] declaration can be used to declare objects
 in various namespaces as deprecated.
@@ -15494,7 +16197,7 @@ in various namespaces as deprecated.
 <a id="x-28SB-MANUAL-3A-40DEPRECATION-EXAMPLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATION-EXAMPLES%20MGL-PAX:SECTION"></a>
 
-### 18.6 Deprecation Examples
+### 19.6 Deprecation Examples
 
 Marking functions as deprecated:
 
@@ -15527,14 +16230,14 @@ Attempting to use the deprecated functions:
 <a id="x-28SB-MANUAL-3A-40DEPRECATED-INTERFACES-IN-SBCL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATED-INTERFACES-IN-SBCL%20MGL-PAX:SECTION"></a>
 
-### 18.7 Deprecated Interfaces in SBCL
+### 19.7 Deprecated Interfaces in SBCL
 
 This sections lists legacy interfaces in various stages of deprecation.
 
 <a id="x-28SB-MANUAL-3A-40LIST-OF-DEPRECATED-INTERFACES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LIST-OF-DEPRECATED-INTERFACES%20MGL-PAX:SECTION"></a>
 
-#### 18.7.1 List of Deprecated Interfaces
+#### 19.7.1 List of Deprecated Interfaces
 
 <a id="x-28SB-MANUAL-3A-40EARLY-DEPRECATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EARLY-DEPRECATION%20MGL-PAX:SECTION"></a>
@@ -15582,7 +16285,7 @@ This sections lists legacy interfaces in various stages of deprecation.
     into late deprecation in November 2012.
 
     This compiler policy was never functional: SBCL has always
-    merged tail calls when it could, regardless of this policy
+    merged [Tail Call][ec2e]s when it could, regardless of this policy
     setting. (It was also never officially supported, but several
     code-bases have historically used it.)
 
@@ -15719,7 +16422,7 @@ No interfaces are currently in final deprecation.
 <a id="x-28SB-MANUAL-3A-40HISTORICAL-INTERFACES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION"></a>
 
-#### 18.7.2 Historical Interfaces
+#### 19.7.2 Historical Interfaces
 
 The following is a partial list of interfaces present in historical
 versions of SBCL, which have since then been deleted.
@@ -15751,6 +16454,8 @@ versions of SBCL, which have since then been deleted.
 
 [01ad]: #SB-THREAD:TRY-SEMAPHORE%20FUNCTION "SB-THREAD:TRY-SEMAPHORE FUNCTION"
 
+[01c3]: #SB-MANUAL:@TROUBLESHOOTING-THE-BUILD%20MGL-PAX:SECTION "Troubleshooting the Build"
+
 [025a]: #SB-SPROF:*SAMPLE-INTERVAL*%20VARIABLE "SB-SPROF:*SAMPLE-INTERVAL* VARIABLE"
 
 [029c]: #SB-MANUAL:@EXTENDED-PACKAGE-PREFIX-SYNTAX%20MGL-PAX:SECTION "Extended Package Prefix Syntax"
@@ -15780,6 +16485,8 @@ versions of SBCL, which have since then been deleted.
 [0525]: http://www.lispworks.com/documentation/HyperSpec/Body/f_no_app.htm "NO-APPLICABLE-METHOD (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
 [05c1]: http://www.lispworks.com/documentation/HyperSpec/Body/d_ftype.htm "FTYPE (MGL-PAX:CLHS DECLARATION)"
+
+[0638]: #SB-MANUAL:@FINDING-PARTS-OF-SBCL%20MGL-PAX:SECTION "Finding Parts of SBCL"
 
 [06b6]: #SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION "Local Tail Call"
 
@@ -15989,7 +16696,7 @@ versions of SBCL, which have since then been deleted.
 
 [2496]: #SB-MANUAL:@UNKNOWN-LOCATIONS-AND-INTERRUPTS%20MGL-PAX:SECTION "Unknown Locations and Interrupts"
 
-[24fb]: #SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION "Package-Local Nicknames"
+[24fb]: #SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION "Package-local Nicknames"
 
 [2703]: #SB-MANUAL:@HISTORY-AND-IMPLEMENTATION-OF-SBCL%20MGL-PAX:SECTION "History and Implementation of SBCL"
 
@@ -16004,6 +16711,8 @@ versions of SBCL, which have since then been deleted.
 [28e7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ensure.htm "ENSURE-GENERIC-FUNCTION (MGL-PAX:CLHS FUNCTION)"
 
 [292d]: #SB-MANUAL:@HISTORICAL-INTERFACES%20MGL-PAX:SECTION "Historical Interfaces"
+
+[293c]: #SB-MANUAL:@OBTAINING-SBCL%20MGL-PAX:SECTION "Obtaining SBCL"
 
 [29fd]: #SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION "Efficiency"
 
@@ -16059,7 +16768,7 @@ versions of SBCL, which have since then been deleted.
 
 [3235]: #SB-EXT:*ED-FUNCTIONS*%20VARIABLE "SB-EXT:*ED-FUNCTIONS* VARIABLE"
 
-[326d]: #SB-MANUAL:@STEP-BY-STEP-EXAMPLE-OF-THE-FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION "Step-By-Step Example of the Foreign Function Interface"
+[326d]: #SB-MANUAL:@STEP-BY-STEP-EXAMPLE-OF-THE-FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION "Step-by-step Example of the Foreign Function Interface"
 
 [327a]: http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm "PROGV (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -16083,7 +16792,11 @@ versions of SBCL, which have since then been deleted.
 
 [360d]: #REQUIRE%20FUNCTION "REQUIRE FUNCTION"
 
+[361d]: #SB-MANUAL:@GETTING-STARTED%20MGL-PAX:SECTION "Getting Started"
+
 [3646]: #SB-THREAD:GET-FOREGROUND%20FUNCTION "SB-THREAD:GET-FOREGROUND FUNCTION"
+
+[36f6]: #SB-MANUAL:@INSTALLING-SBCL%20MGL-PAX:SECTION "Installing SBCL"
 
 [36fc]: http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm "ROUND (MGL-PAX:CLHS FUNCTION)"
 
@@ -16493,6 +17206,8 @@ versions of SBCL, which have since then been deleted.
 
 [6f95]: http://www.lispworks.com/documentation/HyperSpec/Body/f_file_p.htm "FILE-POSITION (MGL-PAX:CLHS FUNCTION)"
 
+[6fc8]: #SB-MANUAL:@PARTS-OF-SBCL%20MGL-PAX:SECTION "Parts of SBCL"
+
 [6fdb]: pax-manual.md#%22mgl-pax%22%20ASDF%2FSYSTEM:SYSTEM "\"mgl-pax\" ASDF/SYSTEM:SYSTEM"
 
 [7055]: #SB-MANUAL:@STREAM-EXTERNAL-FORMATS%20MGL-PAX:SECTION "Stream External Formats"
@@ -16561,6 +17276,8 @@ versions of SBCL, which have since then been deleted.
 
 [7ce6]: #SB-MANUAL:@ACCESSING-FOREIGN-VALUES%20MGL-PAX:SECTION "Accessing Foreign Values"
 
+[7ced]: #SB-MANUAL:@CORE-IMAGES%20MGL-PAX:SECTION "Core Images"
+
 [7d66]: #SB-MANUAL:@METAOBJECT-PROTOCOL-EXTENSIONS%20MGL-PAX:SECTION "Metaobject Protocol Extensions"
 
 [7dc0]: http://www.lispworks.com/documentation/HyperSpec/Body/v_char_c.htm "CHAR-CODE-LIMIT (MGL-PAX:CLHS MGL-PAX:CONSTANT)"
@@ -16586,6 +17303,8 @@ versions of SBCL, which have since then been deleted.
 [8294]: #SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION "Block Compilation Semantics"
 
 [82ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mem_m.htm "MEMBER (MGL-PAX:CLHS FUNCTION)"
+
+[82b0]: #SB-EXT:*SYSINIT-PATHNAME-FUNCTION*%20VARIABLE "SB-EXT:*SYSINIT-PATHNAME-FUNCTION* VARIABLE"
 
 [83e1]: http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm "CONDITION (MGL-PAX:CLHS CONDITION)"
 
@@ -16619,6 +17338,8 @@ versions of SBCL, which have since then been deleted.
 
 [8934]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defcon.htm "DEFCONSTANT (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[8936]: #SB-MANUAL:@RUNNING-WITHOUT-INSTALLATION%20MGL-PAX:SECTION "Running without Installation"
+
 [8a24]: #SB-GRAY:STREAM-CLEAR-INPUT%20GENERIC-FUNCTION "SB-GRAY:STREAM-CLEAR-INPUT GENERIC-FUNCTION"
 
 [8a51]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_lin.htm "READ-LINE (MGL-PAX:CLHS FUNCTION)"
@@ -16651,11 +17372,17 @@ versions of SBCL, which have since then been deleted.
 
 [8f7a8]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_lev.htm "*PRINT-LENGTH* (MGL-PAX:CLHS VARIABLE)"
 
+[9015]: #SB-MANUAL:@BUILDING-SBCL%20MGL-PAX:SECTION "Building SBCL"
+
 [9048]: http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_1.htm "SYMBOL-FUNCTION (MGL-PAX:CLHS FUNCTION)"
 
 [90ca]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ash.htm "ASH (MGL-PAX:CLHS FUNCTION)"
 
+[9119]: #SB-MANUAL:@BUILD-OPTIONS%20MGL-PAX:SECTION "Build Options"
+
 [9172]: http://www.lispworks.com/documentation/HyperSpec/Body/t_t.htm "T (MGL-PAX:CLHS CLASS)"
+
+[91e1]: #SB-MANUAL:@BINARY-DISTRIBUTION%20MGL-PAX:SECTION "Binary Distribution"
 
 [9236]: http://www.lispworks.com/documentation/HyperSpec/Body/f_in_stm.htm "INPUT-STREAM-P (MGL-PAX:CLHS FUNCTION)"
 
@@ -16683,7 +17410,7 @@ versions of SBCL, which have since then been deleted.
 
 [9427]: http://www.lispworks.com/documentation/HyperSpec/Body/m_time.htm "TIME (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
-[943e]: #SB-MANUAL:@FASL-FORMAT%20MGL-PAX:SECTION "FASL format"
+[943e]: #SB-MANUAL:@FASL-FORMAT%20MGL-PAX:SECTION "Fasl Format"
 
 [94b8]: http://www.lispworks.com/documentation/HyperSpec/Body/a_and.htm "AND (MGL-PAX:CLHS NIL)"
 
@@ -16704,8 +17431,6 @@ versions of SBCL, which have since then been deleted.
 [96b9]: #SB-CONCURRENCY:MAILBOX%20STRUCTURE "SB-CONCURRENCY:MAILBOX STRUCTURE"
 
 [980e]: #SB-EXT:PROCESS-EXIT-CODE%20FUNCTION "SB-EXT:PROCESS-EXIT-CODE FUNCTION"
-
-[984d]: #SB-MANUAL:@RUNNING-FROM-SHELL%20MGL-PAX:SECTION "Running from Shell"
 
 [9867]: #SB-THREAD:INTERRUPT-THREAD%20FUNCTION "SB-THREAD:INTERRUPT-THREAD FUNCTION"
 
@@ -16765,6 +17490,8 @@ versions of SBCL, which have since then been deleted.
 
 [a064]: #SB-MANUAL:@SB-GROVEL-TRAPS%20MGL-PAX:SECTION "Traps and Pitfalls"
 
+[a11d]: http://www.lispworks.com/documentation/HyperSpec/Body/v_ld_pns.htm "*LOAD-PATHNAME* (MGL-PAX:CLHS VARIABLE)"
+
 [a138]: http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm "SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [a160]: #SB-MANUAL:@INTERNALS-DOCUMENTATION%20MGL-PAX:SECTION "Internals Documentation"
@@ -16801,9 +17528,11 @@ versions of SBCL, which have since then been deleted.
 
 [a64e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm ">= (MGL-PAX:CLHS FUNCTION)"
 
-[a72b]: #SB-MANUAL:@SB-GROVEL-STRUCTURES%20MGL-PAX:SECTION "Programming with sb-grovel's structure types"
+[a72b]: #SB-MANUAL:@SB-GROVEL-STRUCTURES%20MGL-PAX:SECTION "Programming with sb-grovel's Structure Types"
 
 [a78a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm "MAP-INTO (MGL-PAX:CLHS FUNCTION)"
+
+[a820]: #SB-MANUAL:@SBCL-REPOSITORY%20MGL-PAX:SECTION "SBCL Repository"
 
 [a831]: #SB-MANUAL:@MORE-SBCL-INFORMATION%20MGL-PAX:SECTION "More SBCL Information"
 
@@ -16828,6 +17557,8 @@ versions of SBCL, which have since then been deleted.
 [aa56]: http://www.lispworks.com/documentation/HyperSpec/Body/m_dotime.htm "DOTIMES (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [aa84]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm "LOGXOR (MGL-PAX:CLHS FUNCTION)"
+
+[aab4]: #SB-MANUAL:@SUPPORTED-PLATFORMS%20MGL-PAX:SECTION "Supported Platforms"
 
 [ab6d]: http://www.lispworks.com/documentation/HyperSpec/Body/f_tn.htm "TRUENAME (MGL-PAX:CLHS FUNCTION)"
 
@@ -16917,6 +17648,8 @@ versions of SBCL, which have since then been deleted.
 
 [b905]: #SB-MANUAL:@CALLING-THE-COMPILER%20MGL-PAX:SECTION "Calling the Compiler"
 
+[b934]: #SB-MANUAL:@BUILD-PREREQUISITES%20MGL-PAX:SECTION "Build Prerequisites"
+
 [b93c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm "STRING (MGL-PAX:CLHS CLASS)"
 
 [ba6a]: #SB-CONCURRENCY:FRLOCK-READ%20MGL-PAX:MACRO "SB-CONCURRENCY:FRLOCK-READ MGL-PAX:MACRO"
@@ -16962,6 +17695,8 @@ versions of SBCL, which have since then been deleted.
 [c072]: #SB-GRAY:STREAM-LISTEN%20GENERIC-FUNCTION "SB-GRAY:STREAM-LISTEN GENERIC-FUNCTION"
 
 [c09b]: #SB-MANUAL:@THIRD-PARTY-LIBRARIES%20MGL-PAX:SECTION "Third-party Libraries"
+
+[c09b9]: #SB-EXT:*USERINIT-PATHNAME-FUNCTION*%20VARIABLE "SB-EXT:*USERINIT-PATHNAME-FUNCTION* VARIABLE"
 
 [c09c]: #SB-MANUAL:@MORE-COMMON-LISP-INFORMATION%20MGL-PAX:SECTION "More Common Lisp Information"
 
@@ -17063,6 +17798,8 @@ versions of SBCL, which have since then been deleted.
 
 [d162]: http://www.lispworks.com/documentation/HyperSpec/Body/e_error.htm "ERROR (MGL-PAX:CLHS CONDITION)"
 
+[d234]: http://www.lispworks.com/documentation/HyperSpec/Body/v_ld_pns.htm "*LOAD-TRUENAME* (MGL-PAX:CLHS VARIABLE)"
+
 [d240]: #SB-GRAY:STREAM-WRITE-SEQUENCE%20GENERIC-FUNCTION "SB-GRAY:STREAM-WRITE-SEQUENCE GENERIC-FUNCTION"
 
 [d283]: #SB-MANUAL:@EXTERNAL-FORMAT-DESIGNATORS%20MGL-PAX:SECTION "External Format Designators"
@@ -17133,6 +17870,8 @@ versions of SBCL, which have since then been deleted.
 
 [dccb]: #SB-CONCURRENCY:SEND-MESSAGE%20FUNCTION "SB-CONCURRENCY:SEND-MESSAGE FUNCTION"
 
+[dcf3]: #SB-MANUAL:@SOURCE-DISTRIBUTION%20MGL-PAX:SECTION "Source Distribution"
+
 [dd55]: http://www.lispworks.com/documentation/HyperSpec/Body/t_and.htm "AND (MGL-PAX:CLHS TYPE)"
 
 [dd74]: #SB-MANUAL:@AMOP-COMPATIBILITY-OF-METAOBJECT-PROTOCOL%20MGL-PAX:SECTION "AMOP Compatibility of Metaobject Protocol"
@@ -17147,7 +17886,9 @@ versions of SBCL, which have since then been deleted.
 
 [deca]: #SB-EXT:ATOMIC-INCF%20MGL-PAX:MACRO "SB-EXT:ATOMIC-INCF MGL-PAX:MACRO"
 
-[df9e]: #SB-MANUAL:@USING-SB-GROVEL%20MGL-PAX:SECTION "Using sb-grovel in your own ASDF System"
+[deed]: #SB-MANUAL:@CUSTOMIZING-THE-BUILD%20MGL-PAX:SECTION "Customizing the Build"
+
+[df9e]: #SB-MANUAL:@USING-SB-GROVEL%20MGL-PAX:SECTION "Using sb-grovel in Your Own ASDF System"
 
 [e009]: #SB-EXT:SEED-RANDOM-STATE%20FUNCTION "SB-EXT:SEED-RANDOM-STATE FUNCTION"
 
@@ -17282,6 +18023,8 @@ versions of SBCL, which have since then been deleted.
 [f442]: #SB-EXT:PROCESS-INPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29 "SB-EXT:PROCESS-INPUT (MGL-PAX:STRUCTURE-ACCESSOR SB-IMPL::PROCESS)"
 
 [f472]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm "DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
+[f474]: #SB-MANUAL:@DEFAULT-TOPLEVEL%20MGL-PAX:SECTION "Default Toplevel"
 
 [f4c5]: #SB-MANUAL:@FOREIGN-FUNCTION-CALLS%20MGL-PAX:SECTION "Foreign Function Calls"
 
