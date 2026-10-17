@@ -58,9 +58,7 @@ jobs:
           mkdir -p ~/quicklisp/local-projects/
           cd ~/quicklisp/local-projects/
           # Dependencies
-          # FIXME: remove later
-          git clone --branch fix-code-markdown-printer --depth 1 https://github.com/melisgl/3bmd
-          # git clone --depth 1 https://github.com/3b/3bmd
+          git clone --depth 1 https://github.com/3b/3bmd
           git clone --depth 1 https://github.com/melisgl/autoload
           git clone --depth 1 https://github.com/melisgl/named-readtables
           git clone --depth 1 https://github.com/melisgl/dref
