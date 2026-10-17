@@ -595,7 +595,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.420-d10ecb6`, generated *2026-10-17 11:16:51*. See
+The output is for SBCL version `2.6.9.425-6046d93`, generated *2026-10-17 16:01:13*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -916,9 +916,8 @@ distribution, the next thing is [Installing SBCL][36f6].
 
 #### 2.3.1 Customizing the Build
 
-You can tweak the [`*features*`][6234] set for the resulting Lisp system,
-enabling or disabling features like documentation strings, threads,
-or extra debugging code.
+You can tweak the build options, enabling or disabling things like
+documentation strings, thread support, or extra debugging code.
 
 The preferred way to do this is using command-line arguments to
 `make.sh`:
@@ -926,6 +925,28 @@ The preferred way to do this is using command-line arguments to
     --fancy                    Enables a curated set of features.
     --with-<feature>           Enables a specific feature.
     --without-<feature>        Disables a specific feature.
+
+When tracking the [SBCL Repository][a820], it may be annoying having to
+supply the same arguments to `make.sh` over and over again. You can
+avoid this by creating a file named `customize-target-features.lisp`
+in the base directory of the SBCL tree and putting a single lambda
+expression like this in it:
+
+    (lambda (list)
+      (flet ((enable (x) (pushnew x list))
+             (disable (x) (setf list (remove x list))))
+        #+nil (enable :sb-show)
+        (enable :sb-after-xc-core)
+        #+nil (disable :sb-doc)
+        list))
+
+This function gets a list of features from `make.sh` and returns the
+transformed list to be used for the build.
+
+> *Note*: There is no direct correspondance between [Build Options][9119]
+> and [`*features*`][6234] in the compiled SBCL. Some build options do make it
+> to `*features*`, while others are dropped, and there are features
+> such as `:ansi-cl` and `:sbcl` with no corresponding build option.
 
 <a id="x-28SB-MANUAL-3A-40BUILD-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BUILD-OPTIONS%20MGL-PAX:SECTION"></a>
