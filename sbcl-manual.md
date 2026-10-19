@@ -143,59 +143,77 @@
 
 - [6 Efficiency][29fd]
 
-    - [6.1 Tail Call][ec2e]
+    - [6.1 Source Optimization][8459]
 
-        - [6.1.1 Tail Call Optimization][3074]
+        - [6.1.1 Let Optimization][6385]
 
-        - [6.1.2 Tail Position][c6d1]
+        - [6.1.2 Constant Folding][7866]
 
-        - [6.1.3 Tail Recursion][7f39]
+        - [6.1.3 Unused Expression Elimination][de7a]
 
-    - [6.2 Local Call][3d65]
+        - [6.1.4 Control Optimization][6ba7]
 
-        - [6.2.1 Local Self-recursive Call][7426]
+        - [6.1.5 Dead Code Elimination][01df]
 
-        - [6.2.2 Let Call][eaf9]
+        - [6.1.6 Multiple Values Optimization][4c23]
 
-        - [6.2.3 Local Calls to Closures][8e47]
+        - [6.1.7 Source-to-source Transformation][0664]
 
-        - [6.2.4 Local Tail Call][06b6]
+        - [6.1.8 Style Recommendations][46a0]
 
-        - [6.2.5 Local Call Return Values][64ff]
+    - [6.2 Tail Call][ec2e]
 
-    - [6.3 Block Compilation][1143]
+        - [6.2.1 Tail Call Optimization][3074]
 
-        - [6.3.1 Block Compilation Semantics][8294]
+        - [6.2.2 Tail Position][c6d1]
 
-        - [6.3.2 Block Compilation Declarations][6ef5]
+        - [6.2.3 Tail Recursion][7f39]
 
-        - [6.3.3 Block Compilation Difficulties][286e]
+    - [6.3 Local Call][3d65]
 
-    - [6.4 Inline Expansion][2ccb]
+        - [6.3.1 Local Self-recursive Call][7426]
 
-        - [6.4.1 Inline Expansion Recording][c276]
+        - [6.3.2 Let Call][eaf9]
 
-        - [6.4.2 Semi-inline Expansion][c6ad]
+        - [6.3.3 Local Calls to Closures][8e47]
 
-    - [6.5 Slot Access][37e3]
+        - [6.3.4 Local Tail Call][06b6]
 
-        - [6.5.1 Structure Object Slot Access][b229]
+        - [6.3.5 Local Call Return Values][64ff]
 
-        - [6.5.2 Standard Object Slot Access][72a3]
+    - [6.4 Block Compilation][1143]
 
-    - [6.6 Stack Allocation][5cbb]
+        - [6.4.1 Block Compilation Semantics][8294]
 
-    - [6.7 Modular Arithmetic][1a1b]
+        - [6.4.2 Block Compilation Declarations][6ef5]
 
-        - [6.7.1 Signed Modular Arithmetic][cce0]
+        - [6.4.3 Block Compilation Difficulties][286e]
 
-    - [6.8 Recognized Idioms][44af]
+    - [6.5 Inline Expansion][2ccb]
 
-        - [6.8.1 Count Trailing Zeros][af2a]
+        - [6.5.1 Inline Expansion Recording][c276]
 
-    - [6.9 Global and Always-bound Variables][560e]
+        - [6.5.2 Semi-inline Expansion][c6ad]
 
-    - [6.10 Miscellaneous Efficiency Issues][b81a]
+    - [6.6 Slot Access][37e3]
+
+        - [6.6.1 Structure Object Slot Access][b229]
+
+        - [6.6.2 Standard Object Slot Access][72a3]
+
+    - [6.7 Stack Allocation][5cbb]
+
+    - [6.8 Modular Arithmetic][1a1b]
+
+        - [6.8.1 Signed Modular Arithmetic][cce0]
+
+    - [6.9 Recognized Idioms][44af]
+
+        - [6.9.1 Count Trailing Zeros][af2a]
+
+    - [6.10 Global and Always-bound Variables][560e]
+
+    - [6.11 Miscellaneous Efficiency Issues][b81a]
 
 - [7 Beyond the ANSI Standard][8723]
 
@@ -595,7 +613,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.448-13c92bf`, generated *2026-10-19 05:27:31*. See
+The output is for SBCL version `2.6.9.453-e55bda7`, generated *2026-10-19 14:04:52*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -4372,10 +4390,419 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 
 ## 6 Efficiency
 
+<a id="x-28SB-MANUAL-3A-40SOURCE-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SOURCE-OPTIMIZATION%20MGL-PAX:SECTION"></a>
+
+### 6.1 Source Optimization
+
+This section describes source-level transformations that the SBCL
+compiler does on programs in an attempt to make them more efficient.
+Although source-level optimizations can make existing programs more
+efficient, the biggest advantage of this sort of optimization is
+that it makes it easier to write efficient programs. If a clean,
+straightforward implementation can be transformed into an efficient
+one, then there is no need for tricky and dangerous hand
+optimization.
+
+<a id="x-28SB-MANUAL-3A-40LET-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LET-OPTIMIZATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.1 Let Optimization
+
+The primary optimization of let variables is to delete them when they
+are unnecessary. Whenever the value of a let variable is a constant,
+a constant variable or a constant (local or non-notinline) function,
+the variable is deleted, and references to the variable are replaced
+with references to the constant expression. This is useful primarily
+in the expansion of macros or inline functions, where argument
+values are often constant in any given call but are, in general,
+non-constant expressions that must be bound to preserve order of
+evaluation. Let variable optimization eliminates the need for macros
+to carefully avoid spurious bindings and also makes inline functions
+just as efficient as macros.
+
+A particularly interesting class of constant is a local function.
+Substituting for lexical variables that are bound to a function can
+substantially improve the efficiency of functional programming
+styles. For example,
+
+    (let ((a #'(lambda (x) (zow x))))
+      (funcall a 3))
+
+effectively transforms to
+
+    (zow 3)
+
+This transformation is done even when the function is a closure, as in
+
+    (let ((a (let ((y (zug)))
+               #'(lambda (x) (zow x y)))))
+      (funcall a 3))
+
+becoming
+
+    (zow 3 (zug))
+
+A constant variable is a lexical variable that is never assigned to,
+always keeping its initial value. Whenever possible, avoid setting
+lexical variables -- instead bind a new variable to the new value.
+Except for loop variables, it is almost always possible to avoid
+setting lexical variables. This form:
+
+    (let ((x (f x)))
+      ...)
+
+is more efficient than
+
+    (setq x (f x))
+    ...
+
+Setting variables makes the program more difficult to understand,
+both to the compiler and to the programmer. SBCL compiles
+assignments very efficiently, but most let optimizations are only
+done on constant variables.
+
+Constant variables with only a single use are also optimized away,
+even when the initial value is not constant (modulo side effects).
+For example, this expansion of [`incf`][e258]:
+
+    (let ((#:g3 (+ x 1)))
+      (setq x #:g3))
+
+becomes
+
+    (setq x (+ x 1))
+
+The type semantics of this transformation are more important than
+the elimination of the variable itself. Consider what happens when
+`x` is declared to be a [`fixnum`][3cde]. After the transformation, the
+compiler can infer that a non-fixnum result would be a type error.
+This allows it to completely eliminate the code path for [`bignum`][db8c]s,
+restricting the math exclusively to fast, register-level
+operations (though an overflow check may still be retained depending
+on [Type Declaration Checking][538a]).
+
+Another variable optimization deletes any variable that is never
+read. This causes the initial value and any assigned values to be
+unused, allowing those expressions to be deleted if they have no
+side-effects.
+
+Note that a [`let`][4853] is actually a degenerate case of [Local Call][3d65], and
+that let optimization can be done on calls that weren't created by a
+`let`. Also, local call allows an applicative style of iteration that
+is totally assignment-free.
+
+<a id="x-28SB-MANUAL-3A-40CONSTANT-FOLDING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CONSTANT-FOLDING%20MGL-PAX:SECTION"></a>
+
+#### 6.1.2 Constant Folding
+
+Constant folding is an optimization that replaces a call of constant
+arguments with the constant result of that call. Constant folding is
+done on all standard functions for which it is legal. Inline
+expansion allows folding of any constant parts of the definition and
+can be done even on functions that have side-effects.
+
+It is convenient to rely on constant folding when programming, as in
+this example:
+
+    (defconstant limit 42)
+    
+    (defun foo ()
+      (... (1- limit) ...))
+
+Constant folding is also helpful when writing macros or inline
+functions, since it usually eliminates the need to write a macro
+that special-cases constant arguments.
+
+<a id="x-28SB-MANUAL-3A-40UNUSED-EXPRESSION-ELIMINATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@UNUSED-EXPRESSION-ELIMINATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.3 Unused Expression Elimination
+
+If the value of any expression is not used, and the expression has no
+side-effects, then it is deleted. As with [Constant Folding][7866], this
+optimization applies most often when cleaning up after inline
+expansion and other optimizations.
+
+Note that the compiler will eliminate parts of unused expressions
+known to be side-effect free, even if there are other unknown parts.
+For example, [`list`][9271] has no side-effects, so
+
+    (let ((a (list (foo) (bar))))
+      (if t
+          (zow)
+          (raz a)))
+
+becomes
+
+    (progn (foo) (bar))
+    (zow)
+
+<a id="x-28SB-MANUAL-3A-40CONTROL-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CONTROL-OPTIMIZATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.4 Control Optimization
+
+The most important optimization of control is recognizing when an
+[`if`][02ad] test is known at compile time, then deleting the `if`, the test
+expression, and the unreachable branch. This can be considered a
+special case of constant folding, although the test doesn't have to
+be truly constant as long as it is definitely false or definitely
+not false. Note also, that type inference propagates the result of
+an `if` test to the true and false branches.
+
+A related [`if`][02ad] optimization transforming
+
+    (if (if a b c) x y)
+
+into
+
+    (if a
+        (if b x y)
+        (if c x y))
+
+The opportunity for this sort of optimization usually results from a
+conditional macro. For example,
+
+    (if (not a) x y)
+
+is actually implemented as
+
+    (if (if a nil t) x y)
+
+which is transformed to
+
+    (if a
+        (if nil x y)
+        (if t x y))
+
+which is then optimized to
+
+    (if a y x)
+
+Note that due to the compiler's internal representations, the IF-IF
+situation will be recognized even if other forms are wrapped around
+the inner `if` as in
+
+    (if (let ((g ...))
+          (loop
+            ...
+            (return (not g))
+            ...))
+        x y)
+
+In SBCL, all the Common Lisp macros really are macros written in
+terms of `if`, [`block`][d2d8] and [`tagbody`][7fae], so user-defined control macros can
+be just as efficient as the standard ones. The compiler emits basic
+blocks using a heuristic that minimizes the number of unconditional
+branches. The code in a `tagbody` will not be emitted in the order it
+appeared in the source, so there is no point in arranging the code
+to make control drop through to the target.
+
+<a id="x-28SB-MANUAL-3A-40UNREACHABLE-CODE-DELETION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@UNREACHABLE-CODE-DELETION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.5 Dead Code Elimination
+
+The compiler will delete code whenever it can prove that the code can
+never be executed. Code becomes unreachable when
+
+- an [`if`][02ad] is optimized away, or
+
+- there is an explicit unconditional control transfer such as [`go`][f2e5] or
+  [`return-from`][3eef], or
+
+- the last reference to a local function is deleted (or there never
+  was any reference).
+
+When code that appeared in the original source is deleted, the
+compiler prints a note to indicate a possible problem (or at least
+unnecessary code.) For example:
+
+    (defun foo ()
+      (if t
+          (write-line "True.")
+          (write-line "False.")))
+
+will result in this note:
+
+    ; in: DEFUN FOO
+    ;    (WRITE-LINE "False.")
+    ;
+    ; note: deleting unreachable code
+
+It is important to pay attention to unreachable code notes, since
+they often indicate a subtle type error. For example,
+
+    (defstruct foo a b)
+    
+    (defun lose (x)
+      (let ((a (foo-a x))
+            (b (if x (foo-b x) "never")))
+        (values a b)))
+
+results in this note:
+
+    ; in: DEFUN LOSE
+    ;     (IF X
+    ;         (FOO-B X)
+    ;         "never")
+    ; ==>
+    ;   "never"
+    ;
+    ; note: deleting unreachable code
+
+The `"never"` branch is unreachable because type inference knows
+that the argument to `foo-a` must be a `foo` and thus can't be `nil`.
+Presumably the programmer forgot that `x` could be `nil` when writing
+the binding for `a`.
+
+Here is an example with an incorrect declaration:
+
+    (defun count-a (string)
+      (do ((pos 0 (position #\a string :start (1+ pos)))
+           (count 0 (1+ count)))
+          ((null pos) count)
+        (declare (fixnum pos))))
+
+This time our note is:
+
+    ; in: DEFUN COUNT-A
+    ;     (DO ((POS 0 (POSITION #\a STRING :START (1+ POS)))
+    ;          (COUNT 0 (1+ COUNT)))
+    ;         ((NULL POS) COUNT)
+    ;       (DECLARE (FIXNUM POS)))
+    ; --> BLOCK LET TAGBODY RETURN-FROM PROGN
+    ; ==>
+    ;   COUNT
+    ;
+    ; note: deleting unreachable code
+
+The problem here is that `pos` can never be null since it is
+declared a [`fixnum`][3cde].
+
+It takes some experience with unreachable code notes to be able to
+tell what they are trying to say. In non-obvious cases, the best
+thing to do is to call the function in a way that should cause the
+unreachable code to be executed. Either you will get a type error,
+or you will find that there truly is no way for the code to be
+executed.
+
+Not all unreachable code results in a note:
+
+- A note is only given when the unreachable code textually appears
+  in the original source. This prevents spurious notes due to the
+  optimization of macros and inline functions but sometimes also
+  foregoes a note that would have been useful.
+
+- Since accurate source information is not available for non-list
+  forms, there is an element of heuristic in determining whether or
+  not to give a note about an atom. Spurious notes may be given when
+  a macro or inline function defines a variable that is also present
+  in the calling function. Notes about easily introduced constants
+  are never given since it is too easy to confuse them in expanded
+  code with ones in the original source. These constants are `nil`, `t`,
+  keywords and unboxed values such as `fixnum`s, [`character`][0a49]s, and
+  [`single-float`][31a6]s on 64-bit platforms.
+
+- Notes are only given about code unreachable due to control flow.
+  There is no note when an expression is deleted because its value
+  is unused, since this is a common consequence of other
+  optimizations.
+
+<a id="x-28SB-MANUAL-3A-40MULTIPLE-VALUES-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@MULTIPLE-VALUES-OPTIMIZATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.6 Multiple Values Optimization
+
+Within a function, the compiler implements uses of multiple values
+particularly efficiently. Multiple values can be kept in arbitrary
+registers, so using multiple values doesn't imply stack manipulation
+and representation conversion. For example,
+
+    (let ((a (if x (foo x) u))
+          (b (if x (bar x) v)))
+      ...)
+
+is actually more efficient when written as
+
+    (multiple-value-bind (a b)
+        (if x
+            (values (foo x) (bar x))
+            (values u v))
+      ...)
+
+Also, see [Local Call Return Values][64ff] for information on how local
+call provides efficient support for multiple function return values.
+
+<a id="x-28SB-MANUAL-3A-40SOURCE-TO-SOURCE-TRANSFORMATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SOURCE-TO-SOURCE-TRANSFORMATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.7 Source-to-source Transformation
+
+The compiler implements a number of operation-specific optimizations
+as source-to-source transformations. You will often see unfamiliar
+code in error messages. For example,
+
+    (defun plus-3 (x y z)
+      (declare (optimize speed)
+               (type fixnum x y))
+      (+ x y z))
+
+gives this note:
+
+    ; in: DEFUN PLUS-3
+    ;     (+ X Y Z)
+    ; ==>
+    ;   (+ (+ X Y) Z)
+    ;
+    ; note: unable to
+    ;   optimize
+    ; due to type uncertainty:
+    ;   The second argument is a NUMBER, not a RATIONAL.
+
+Here, the original `(+ x y z)` has been transformed into `(+ (+ x y)
+z)`. This transformation is indicated with the same `==>` used to
+mark macro and function inline expansion (see
+[Original and Actual Source][e1d9]). Although the actual source may
+sometimes be confusing, displaying it is important since it is the
+context in which notes and warnings can be understood.
+
+<a id="x-28SB-MANUAL-3A-40STYLE-RECOMMENDATIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION"></a>
+
+#### 6.1.8 Style Recommendations
+
+Source level optimization makes possible a clearer and more relaxed
+programming style:
+
+- Don't use macros purely to avoid function call. If you want an
+  inline function, write it as a function and declare it [`inline`][9fb4].
+  It's clearer, less error-prone, and works just as well.
+
+- Don't write macros that try to "optimize" their expansion in
+  trivial ways such as avoiding binding variables for simple
+  expressions. The compiler does these optimizations too and is less
+  likely to make a mistake.
+
+- Make use of local functions (i.e. [`labels`][c2ef] and [`flet`][091c]) and [Tail Call][ec2e]s
+  in places where it is clearer. [Local Call][3d65] is faster than full
+  call.
+
+- Avoid setting local variables when possible. Binding a new [`let`][4853]
+  variable is at least as efficient as setting an existing variable
+  and is easier to understand, both for the compiler and the
+  programmer.
+
+- Instead of writing similar code over and over again so that it can
+  be hand customized for each use, define a macro or inline
+  function, and let the compiler do the work.
+
 <a id="x-28SB-MANUAL-3A-40TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-CALL%20MGL-PAX:SECTION"></a>
 
-### 6.1 Tail Call
+### 6.2 Tail Call
 
 A call to a function is a tail call if nothing has to be done after
 the call returns. That is, when the call returns, the returned
@@ -4388,7 +4815,7 @@ Note that both [Local Call][3d65]s and full calls can be tail calls.
 <a id="x-28SB-MANUAL-3A-40TAIL-CALL-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-CALL-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.1 Tail Call Optimization
+#### 6.2.1 Tail Call Optimization
 
 SBCL performs tail call optimization (TCO) although this is not
 required by the Common Lisp standard.
@@ -4417,7 +4844,7 @@ calls. See [Debugging Tail Calls][22a1].
 <a id="x-28SB-MANUAL-3A-40TAIL-POSITION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-POSITION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.2 Tail Position
+#### 6.2.2 Tail Position
 
 A call is said to be in tail position unless it is enclosed by at
 least one of the following:
@@ -4438,7 +4865,7 @@ when the stack is unwound.
 <a id="x-28SB-MANUAL-3A-40TAIL-RECURSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-RECURSION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.3 Tail Recursion
+#### 6.2.3 Tail Recursion
 
 Tail recursion is when a function makes a [Tail Call][ec2e] to
 itself. In this example, the recursive call to `myfun` is
@@ -4489,7 +4916,7 @@ functions instead of using a single huge [`prog`][9a0c].
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALL%20MGL-PAX:SECTION"></a>
 
-### 6.2 Local Call
+### 6.3 Local Call
 
 The compiler supports two kinds of function call: full call and local
 call. Full call is the standard calling convention; its late binding
@@ -4511,7 +4938,7 @@ compilation times and prevents function redefinition.
 <a id="x-28SB-MANUAL-3A-40LOCAL-SELF-RECURSIVE-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-SELF-RECURSIVE-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.2.1 Local Self-recursive Call
+#### 6.3.1 Local Self-recursive Call
 
 [Local Call][3d65] is used when a function defined by [`defun`][f472] calls
 itself and block compilation is used (see [`compile-file`][0bd1]). For
@@ -4531,7 +4958,7 @@ jump to the start of the function and don't indirect through
 <a id="x-28SB-MANUAL-3A-40LET-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LET-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.2.2 Let Call
+#### 6.3.2 Let Call
 
 Because [Local Call][3d65] avoids unnecessary call overheads, the compiler
 internally uses local call to implement some macros and special
@@ -4576,11 +5003,13 @@ only once, a call doesn't have to be equivalent to a `let` to be more
 efficient than full call. All local calls avoid the overhead of
 argument count checking and keyword argument parsing, and there are
 a number of other advantages that apply in many common situations.
+See [Let Optimization][6385] for a discussion of the optimizations done on
+let calls.
 
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALLS-TO-CLOSURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION"></a>
 
-#### 6.2.3 Local Calls to Closures
+#### 6.3.3 Local Calls to Closures
 
 [Local Call][3d65] allows for much more efficient use of closures, since the
 closure environment doesn't need to be allocated on the heap or even
@@ -4597,6 +5026,7 @@ stored in memory at all. In this example, there is no penalty for
 In local call, the compiler effectively passes closed-over values as
 extra arguments, so there is no need for you to "optimize"
 `localfun` by explicitly passing in lexically visible values.
+Closures may also be subject to [Let Optimization][6385].
 
 > *Note*: indirect value cells are currently always allocated on the
 > heap when a variable is both assigned to (with [`setq`][0160] or [`setf`][a138]) and
@@ -4607,7 +5037,7 @@ extra arguments, so there is no need for you to "optimize"
 <a id="x-28SB-MANUAL-3A-40LOCAL-TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.2.4 Local Tail Call
+#### 6.3.4 Local Tail Call
 
 Local tail calls are particularly efficient because they combine the
 benefits of [Local Call][3d65]s (simplified calling convention) and
@@ -4635,7 +5065,7 @@ which is compiled to just as efficient code as
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALL-RETURN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALL-RETURN-VALUES%20MGL-PAX:SECTION"></a>
 
-#### 6.2.5 Local Call Return Values
+#### 6.3.5 Local Call Return Values
 
 
 One of the more subtle costs of full call comes from allowing
@@ -4650,7 +5080,7 @@ so.
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION%20MGL-PAX:SECTION"></a>
 
-### 6.3 Block Compilation
+### 6.4 Block Compilation
 
 Block compilation allows calls to global functions defined by
 [`defun`][f472] to be compiled as [Local Call][3d65]s. The function call can be in a
@@ -4678,7 +5108,7 @@ arguments and return values in non-trivial programs.
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-SEMANTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION"></a>
 
-#### 6.3.1 Block Compilation Semantics
+#### 6.4.1 Block Compilation Semantics
 
 The effect of block compilation can be envisioned as the compiler
 turning all the [`defun`][f472]s in the block-compiled unit into a single
@@ -4729,7 +5159,7 @@ is not an entry point, so it is not globally defined. In addition,
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DECLARATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-DECLARATIONS%20MGL-PAX:SECTION"></a>
 
-#### 6.3.2 Block Compilation Declarations
+#### 6.4.2 Block Compilation Declarations
 
 The following declarations allow fine-grained control of block
 compilation. They are only legal as global declarations ([`declaim`][ebea] or
@@ -4766,7 +5196,7 @@ compilation. They are only legal as global declarations ([`declaim`][ebea] or
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DIFFICULTIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION"></a>
 
-#### 6.3.3 Block Compilation Difficulties
+#### 6.4.3 Block Compilation Difficulties
 
 The main problem with block compilation is that the compiler uses
 large amounts of memory when it is block compiling. This places an
@@ -4792,7 +5222,7 @@ block compilation across file boundaries.
 <a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-### 6.4 Inline Expansion
+### 6.5 Inline Expansion
 
 SBCL can expand almost any function inline, including functions
 with keyword arguments. The only restrictions are that keyword
@@ -4905,10 +5335,12 @@ original call to `member`, inline expansion also allows the calls to
 [`char=`][48fa] and `foo-a` to be open-coded. We go from a loop with three
 tests and two calls to a loop with one test and no calls.
 
+See also [Source Optimization][8459].
+
 <a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-RECORDING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INLINE-EXPANSION-RECORDING%20MGL-PAX:SECTION"></a>
 
-#### 6.4.1 Inline Expansion Recording
+#### 6.5.1 Inline Expansion Recording
 
 Inline expansion requires that the source for the inline expanded
 function to be available when calls to the function are compiled.
@@ -4949,7 +5381,7 @@ environment.
 <a id="x-28SB-MANUAL-3A-40SEMI-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SEMI-INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-#### 6.4.2 Semi-inline Expansion
+#### 6.5.2 Semi-inline Expansion
 
 Semi-inline expansion shares a single copy of a function across all
 the calls in a component by converting the inline expansion into a
@@ -5019,12 +5451,12 @@ call.
 <a id="x-28SB-MANUAL-3A-40SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 6.5 Slot Access
+### 6.6 Slot Access
 
 <a id="x-28SB-MANUAL-3A-40STRUCTURE-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STRUCTURE-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.5.1 Structure Object Slot Access
+#### 6.6.1 Structure Object Slot Access
 
 Structure slot accessors are efficient only if the compiler is
 able to open code them: compiling a call to a structure slot
@@ -5035,7 +5467,7 @@ severe performance degradation.
 <a id="x-28SB-MANUAL-3A-40STANDARD-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STANDARD-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.5.2 Standard Object Slot Access
+#### 6.6.2 Standard Object Slot Access
 
 The most efficient way to access a slot of a [`standard-object`][a843] is
 by using [`slot-value`][5a85] with a constant slot name argument inside a
@@ -5080,7 +5512,7 @@ lazily set up during those calls.
 <a id="x-28SB-MANUAL-3A-40STACK-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION"></a>
 
-### 6.6 Stack Allocation
+### 6.7 Stack Allocation
 
 SBCL has fairly extensive support for performing allocations on the
 stack when a variable or function is declared [`dynamic-extent`][0901]. The
@@ -5262,7 +5694,7 @@ detect incorrect usage of dynamic extent declarations.
 <a id="x-28SB-MANUAL-3A-40MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-### 6.7 Modular Arithmetic
+### 6.8 Modular Arithmetic
 
 Some numeric functions have a property: n lower bits of the
 result depend only on n lower bits of (all or some) arguments. If
@@ -5297,7 +5729,7 @@ currently this is not implemented.
 <a id="x-28SB-MANUAL-3A-40SIGNED-MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SIGNED-MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-#### 6.7.1 Signed Modular Arithmetic
+#### 6.8.1 Signed Modular Arithmetic
 
 Sign-extending the result in the following way will be
 translated into signed modular arithmetic:
@@ -5310,7 +5742,7 @@ translated into signed modular arithmetic:
 <a id="x-28SB-MANUAL-3A-40RECOGNIZED-IDIOMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RECOGNIZED-IDIOMS%20MGL-PAX:SECTION"></a>
 
-### 6.8 Recognized Idioms
+### 6.9 Recognized Idioms
 
 Common Lisp doesn't directly expose all features present in
 modern hardware. Some code patterns are recognized and turned into
@@ -5320,7 +5752,7 @@ internal features.
 <a id="x-28SB-MANUAL-3A-40COUNT-TRAILING-ZEROS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COUNT-TRAILING-ZEROS%20MGL-PAX:SECTION"></a>
 
-#### 6.8.1 Count Trailing Zeros
+#### 6.9.1 Count Trailing Zeros
 
     (defun ctz (n)
       (declare (type (unsigned-byte 64) n))
@@ -5332,7 +5764,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40GLOBAL-AND-ALWAYS-BOUND-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GLOBAL-AND-ALWAYS-BOUND-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 6.9 Global and Always-bound Variables
+### 6.10 Global and Always-bound Variables
 
 <a id="x-28SB-EXT-3ADEFGLOBAL-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO"></a>
@@ -5381,7 +5813,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EFFICIENCY-ISSUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION"></a>
 
-### 6.10 Miscellaneous Efficiency Issues
+### 6.11 Miscellaneous Efficiency Issues
 
 The `sb-ext:purify` function (available with conservative GC) causes
 SBCL first to collect all garbage, then to mark all uncollected
@@ -5415,8 +5847,6 @@ correct for the SBCL's compiler. See the sections
 - More About Types in Python
 
 - Type Inference
-
-- Source Optimization
 
 - Object Representation
 
@@ -16417,6 +16847,8 @@ learn about Common Lisp, some books stand out:
 
 [01c3]: #SB-MANUAL:@TROUBLESHOOTING-THE-BUILD%20MGL-PAX:SECTION "Troubleshooting the Build"
 
+[01df]: #SB-MANUAL:@UNREACHABLE-CODE-DELETION%20MGL-PAX:SECTION "Dead Code Elimination"
+
 [025a]: #SB-SPROF:*SAMPLE-INTERVAL*%20VARIABLE "SB-SPROF:*SAMPLE-INTERVAL* VARIABLE"
 
 [029c]: #SB-MANUAL:@EXTENDED-PACKAGE-PREFIX-SYNTAX%20MGL-PAX:SECTION "Extended Package Prefix Syntax"
@@ -16446,6 +16878,8 @@ learn about Common Lisp, some books stand out:
 [05c1]: http://www.lispworks.com/documentation/HyperSpec/Body/d_ftype.htm "FTYPE (MGL-PAX:CLHS DECLARATION)"
 
 [0638]: #SB-MANUAL:@FINDING-PARTS-OF-SBCL%20MGL-PAX:SECTION "Finding Parts of SBCL"
+
+[0664]: #SB-MANUAL:@SOURCE-TO-SOURCE-TRANSFORMATION%20MGL-PAX:SECTION "Source-to-source Transformation"
 
 [06b6]: #SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION "Local Tail Call"
 
@@ -16871,6 +17305,8 @@ learn about Common Lisp, some books stand out:
 
 [469a]: #SB-MANUAL:@OPEN-CODING-AND-INLINE-EXPANSION%20MGL-PAX:SECTION "Open Coding and Inline Expansion"
 
+[46a0]: #SB-MANUAL:@STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION "Style Recommendations"
+
 [46c0]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defi_1.htm "DEFINE-SYMBOL-MACRO (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [4707]: #SB-GRAY:STREAM-PEEK-CHAR%20GENERIC-FUNCTION "SB-GRAY:STREAM-PEEK-CHAR GENERIC-FUNCTION"
@@ -16904,6 +17340,8 @@ learn about Common Lisp, some books stand out:
 [4be1]: #SB-MANUAL:@FOREIGN-FUNCTION-INTERFACE%20MGL-PAX:SECTION "Foreign Function Interface"
 
 [4be3]: #SB-THREAD:WAITQUEUE%20STRUCTURE "SB-THREAD:WAITQUEUE STRUCTURE"
+
+[4c23]: #SB-MANUAL:@MULTIPLE-VALUES-OPTIMIZATION%20MGL-PAX:SECTION "Multiple Values Optimization"
 
 [4d23]: #SB-THREAD:TERMINATE-THREAD%20FUNCTION "SB-THREAD:TERMINATE-THREAD FUNCTION"
 
@@ -17073,6 +17511,8 @@ learn about Common Lisp, some books stand out:
 
 [62fa]: #SB-MANUAL:@INTRODUCTION%20MGL-PAX:SECTION "Introduction"
 
+[6385]: #SB-MANUAL:@LET-OPTIMIZATION%20MGL-PAX:SECTION "Let Optimization"
+
 [6389]: #SB-EXT:ATOMIC-PUSH%20MGL-PAX:MACRO "SB-EXT:ATOMIC-PUSH MGL-PAX:MACRO"
 
 [63b7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_upper_.htm "BOTH-CASE-P (MGL-PAX:CLHS FUNCTION)"
@@ -17122,6 +17562,8 @@ learn about Common Lisp, some books stand out:
 [6af6]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm "PPRINT (MGL-PAX:CLHS FUNCTION)"
 
 [6b7c]: #SB-EXT:NATIVE-NAMESTRING%20FUNCTION "SB-EXT:NATIVE-NAMESTRING FUNCTION"
+
+[6ba7]: #SB-MANUAL:@CONTROL-OPTIMIZATION%20MGL-PAX:SECTION "Control Optimization"
 
 [6be4]: #SB-MANUAL:@TOPLEVEL-OPTIONS%20MGL-PAX:SECTION "Toplevel Options"
 
@@ -17207,6 +17649,8 @@ learn about Common Lisp, some books stand out:
 
 [783a]: http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm "PATHNAME (MGL-PAX:CLHS NIL)"
 
+[7866]: #SB-MANUAL:@CONSTANT-FOLDING%20MGL-PAX:SECTION "Constant Folding"
+
 [78b8]: #SB-MANUAL:@VARIABLE-ACCESS%20MGL-PAX:SECTION "Variable Access"
 
 [78dd]: #SB-BSD-SOCKETS:LOCAL-SOCKET%20CLASS "SB-BSD-SOCKETS:LOCAL-SOCKET CLASS"
@@ -17262,6 +17706,8 @@ learn about Common Lisp, some books stand out:
 [82b0]: #SB-EXT:*SYSINIT-PATHNAME-FUNCTION*%20VARIABLE "SB-EXT:*SYSINIT-PATHNAME-FUNCTION* VARIABLE"
 
 [83e1]: http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm "CONDITION (MGL-PAX:CLHS CONDITION)"
+
+[8459]: #SB-MANUAL:@SOURCE-OPTIMIZATION%20MGL-PAX:SECTION "Source Optimization"
 
 [848f]: #CLOSE%20GENERIC-FUNCTION "CLOSE GENERIC-FUNCTION"
 
@@ -17819,6 +18265,8 @@ learn about Common Lisp, some books stand out:
 
 [db7a]: #SB-MANUAL:@STATISTICAL-PROFILER%20MGL-PAX:SECTION "Statistical Profiler"
 
+[db8c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_bignum.htm "BIGNUM (MGL-PAX:CLHS TYPE)"
+
 [dccb]: #SB-CONCURRENCY:SEND-MESSAGE%20FUNCTION "SB-CONCURRENCY:SEND-MESSAGE FUNCTION"
 
 [dcf3]: #SB-MANUAL:@SOURCE-DISTRIBUTION%20MGL-PAX:SECTION "Source Distribution"
@@ -17834,6 +18282,8 @@ learn about Common Lisp, some books stand out:
 [de40]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_seq.htm "COPY-SEQ (MGL-PAX:CLHS FUNCTION)"
 
 [de5c]: http://www.lispworks.com/documentation/HyperSpec/Body/f_invoke.htm "INVOKE-DEBUGGER (MGL-PAX:CLHS FUNCTION)"
+
+[de7a]: #SB-MANUAL:@UNUSED-EXPRESSION-ELIMINATION%20MGL-PAX:SECTION "Unused Expression Elimination"
 
 [deca]: #SB-EXT:ATOMIC-INCF%20MGL-PAX:MACRO "SB-EXT:ATOMIC-INCF MGL-PAX:MACRO"
 
@@ -17859,7 +18309,11 @@ learn about Common Lisp, some books stand out:
 
 [e1d1]: #SB-EXT:*BLOCK-COMPILE-DEFAULT*%20VARIABLE "SB-EXT:*BLOCK-COMPILE-DEFAULT* VARIABLE"
 
+[e1d9]: #SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION "Original and Actual Source"
+
 [e22b]: http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm "AREF (MGL-PAX:CLHS FUNCTION)"
+
+[e258]: http://www.lispworks.com/documentation/HyperSpec/Body/m_incf_.htm "INCF (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [e297]: #SB-THREAD:MUTEX-OWNER%20FUNCTION "SB-THREAD:MUTEX-OWNER FUNCTION"
 
