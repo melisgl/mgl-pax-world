@@ -157,9 +157,7 @@
 
         - [6.1.6 Multiple Values Optimization][4c23]
 
-        - [6.1.7 Source-to-source Transformation][0664]
-
-        - [6.1.8 Style Recommendations][46a0]
+        - [6.1.7 Style Recommendations][46a0]
 
     - [6.2 Tail Call][ec2e]
 
@@ -613,7 +611,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.9.460-5861251`, generated *2026-10-19 20:19:19*. See
+The output is for SBCL version `2.6.9.467-fb42c6e`, generated *2026-10-20 00:02:11*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -4736,43 +4734,10 @@ is actually more efficient when written as
 Also, see [Local Call Return Values][64ff] for information on how local
 call provides efficient support for multiple function return values.
 
-<a id="x-28SB-MANUAL-3A-40SOURCE-TO-SOURCE-TRANSFORMATION-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@SOURCE-TO-SOURCE-TRANSFORMATION%20MGL-PAX:SECTION"></a>
-
-#### 6.1.7 Source-to-source Transformation
-
-The compiler implements a number of operation-specific optimizations
-as source-to-source transformations. You will often see unfamiliar
-code in error messages. For example,
-
-    (defun plus-3 (x y z)
-      (declare (optimize speed)
-               (type fixnum x y))
-      (+ x y z))
-
-gives this note:
-
-    ; in: DEFUN PLUS-3
-    ;     (+ X Y Z)
-    ; ==>
-    ;   (+ (+ X Y) Z)
-    ;
-    ; note: unable to
-    ;   optimize
-    ; due to type uncertainty:
-    ;   The second argument is a NUMBER, not a RATIONAL.
-
-Here, the original `(+ x y z)` has been transformed into `(+ (+ x y)
-z)`. This transformation is indicated with the same `==>` used to
-mark macro and function inline expansion (see
-[Original and Actual Source][e1d9]). Although the actual source may
-sometimes be confusing, displaying it is important since it is the
-context in which notes and warnings can be understood.
-
 <a id="x-28SB-MANUAL-3A-40STYLE-RECOMMENDATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION"></a>
 
-#### 6.1.8 Style Recommendations
+#### 6.1.7 Style Recommendations
 
 Source level optimization makes possible a clearer and more relaxed
 programming style:
@@ -16879,8 +16844,6 @@ learn about Common Lisp, some books stand out:
 
 [0638]: #SB-MANUAL:@FINDING-PARTS-OF-SBCL%20MGL-PAX:SECTION "Finding Parts of SBCL"
 
-[0664]: #SB-MANUAL:@SOURCE-TO-SOURCE-TRANSFORMATION%20MGL-PAX:SECTION "Source-to-source Transformation"
-
 [06b6]: #SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION "Local Tail Call"
 
 [073a]: #SB-MANUAL:@CONSTRUCTORS%20MGL-PAX:SECTION "Constructors"
@@ -18308,8 +18271,6 @@ learn about Common Lisp, some books stand out:
 [e11a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get__1.htm "GET-INTERNAL-RUN-TIME (MGL-PAX:CLHS FUNCTION)"
 
 [e1d1]: #SB-EXT:*BLOCK-COMPILE-DEFAULT*%20VARIABLE "SB-EXT:*BLOCK-COMPILE-DEFAULT* VARIABLE"
-
-[e1d9]: #SB-MANUAL:@ORIGINAL-AND-ACTUAL-SOURCE%20MGL-PAX:SECTION "Original and Actual Source"
 
 [e22b]: http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm "AREF (MGL-PAX:CLHS FUNCTION)"
 

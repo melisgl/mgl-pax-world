@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.9.460-5861251, generated 2026-10-19 20:19:19. See
+The output is for SBCL version 2.6.9.467-fb42c6e, generated 2026-10-20 00:02:11. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -3734,36 +3734,6 @@ is actually more efficient when written as
 
 Also, see Local Call Return Values for information on how local
 call provides efficient support for multiple function return values.
-
-#### Source-to-source Transformation
-
-The compiler implements a number of operation-specific optimizations
-as source-to-source transformations. You will often see unfamiliar
-code in error messages. For example,
-
-    (defun plus-3 (x y z)
-      (declare (optimize speed)
-               (type fixnum x y))
-      (+ x y z))
-
-gives this note:
-
-    ; in: DEFUN PLUS-3
-    ;     (+ X Y Z)
-    ; ==>
-    ;   (+ (+ X Y) Z)
-    ;
-    ; note: unable to
-    ;   optimize
-    ; due to type uncertainty:
-    ;   The second argument is a NUMBER, not a RATIONAL.
-
-Here, the original (+ x y z) has been transformed into (+ (+ x y)
-z). This transformation is indicated with the same ==> used to
-mark macro and function inline expansion (see
-Original and Actual Source). Although the actual source may
-sometimes be confusing, displaying it is important since it is the
-context in which notes and warnings can be understood.
 
 #### Style Recommendations
 
