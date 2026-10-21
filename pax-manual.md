@@ -17,7 +17,9 @@
 
     - [3.3 Loading PAX][d3fc]
 
-    - [3.4 Setting up Keys][cfab]
+    - [3.4 Emacs Backends][07c3]
+
+    - [3.5 Setting up Keys][cfab]
 
 - [4 Background][f74b]
 
@@ -181,7 +183,7 @@ Like the one above, sections can have docstrings and
 definitions (e.g. `(uniform-random function)`). These are the glue.
 To support interactive development, PAX
 
-- makes [SLIME][6be7]'s [`M-.`][cb15] work with references and
+- makes [SLIME][6be7]'s or [SLY][0146]'s [`M-.`][cb15] work with references and
 
 - adds a documentation browser.
 
@@ -385,8 +387,8 @@ PAX is built on top of the [DRef library][5225]. See <https://github.com/melisgl
 
 - \[system\] **"mgl-pax/navigate"**
 
-    - *Description:* Support for [Navigating Sources in Emacs][3386] via Slime's
-    [`M-.`][cb15] in [MGL-PAX][2415].
+    - *Description:* Support for [Navigating Sources in Emacs][3386] via SLIME's
+    or SLY's [`M-.`][cb15] in [MGL-PAX][2415].
 
     - *Depends on:* alexandria, [autoload-doc][af7b], [dref/full][0c7e], [mgl-pax][6fdb], swank(?)
 
@@ -445,10 +447,11 @@ PAX is built on top of the [DRef library][5225]. See <https://github.com/melisgl
 
 ## 3 Emacs Setup
 
-Here is a quick recipe for setting up PAX for use via [SLIME][6be7] to
-take advantage of the [conveniences on offer][d4a9].
-Conversely, there is no need to do any of this just to use
-[`defsection`][72b4], write docstrings and for [Generating Documentation][2c93].
+Here is a quick recipe for setting up PAX for use via [SLIME][6be7] or
+[SLY][0146] to take advantage of the [conveniences on
+offer][d4a9]. Conversely, there is no need to do any
+of this just to use [`defsection`][72b4], write docstrings and for
+[Generating Documentation][2c93].
 
 If PAX was installed from [Quicklisp][1539], then evaluate this in CL to
 [install][1aed] the Elisp code in a stable location:
@@ -471,13 +474,11 @@ Alternatively, with `use-package`:
 ```elisp
 (use-package mgl-pax
   :load-path "~/quicklisp"
-  :after slime
+  :after (:any slime sly)
   :demand t
   :bind (("C-." . mgl-pax-document)
          ("s-x t" . mgl-pax-transcribe-last-expression)
-         ("s-x r" . mgl-pax-retranscribe-region))
-  :config
-  (mgl-pax-hijack-slime-doc-keys))
+         ("s-x r" . mgl-pax-retranscribe-region)))
 ```
 
 When [Browsing with Other Browsers][c434], for clicking on the locative
@@ -488,15 +489,23 @@ Emacs, permission needs to be given:
 (setq slime-enable-evaluate-in-emacs t)
 ```
 
+or, with [SLY][0146]:
+
+```elisp
+(setq sly-enable-evaluate-in-emacs t)
+```
+
+See [Emacs Backends][07c3] for how PAX chooses between them, and for what
+SLY needs on the Lisp side.
+
 <a id="x-28MGL-PAX-3A-40EMACS-FUNCTIONALITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@EMACS-FUNCTIONALITY%20MGL-PAX:SECTION"></a>
 
 ### 3.1 Functionality Provided
 
-- For [Navigating Sources in Emacs][3386], loading `mgl-pax` extends
-  `slime-edit-definitions` ([`M-.`][cb15]) by adding
-  `mgl-pax-edit-definitions` to `slime-edit-definition-hooks`. There
-  are no related variables to customize.
+- For [Navigating Sources in Emacs][3386], loading `mgl-pax` extends the client's
+  [`M-.`][cb15] (`slime-edit-definition` or `sly-edit-definition`) to handle
+  references. There are no related variables to customize.
 
 - For [Browsing Live Documentation][a595], `mgl-pax-browser-function` and
   `mgl-pax-web-server-port` can be customized in Elisp. To browse
@@ -521,8 +530,8 @@ strings, or comments.
 
 If you installed PAX with Quicklisp, the location of `mgl-pax.el`
 may change with updates, and you may want to copy the current
-version of `mgl-pax.el` to a stable location by evaluating this in
-CL:
+version of `mgl-pax.el` and the distributed Elisp files to a stable
+location by evaluating this in CL:
 
     (mgl-pax:install-pax-elisp "~/quicklisp/")
 
@@ -534,7 +543,8 @@ step.
 
 - \[function\] **install-pax-elisp** *target-dir*
 
-    Install `mgl-pax.el` distributed with this package in `target-dir`.
+    Install `mgl-pax.el` and the [Emacs Backends][07c3] it may load
+    (`mgl-pax-slime.el` and `mgl-pax-sly.el`) in `target-dir`.
 
 <a id="x-28MGL-PAX-3A-40EMACS-LOADING-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@EMACS-LOADING%20MGL-PAX:SECTION"></a>
@@ -550,15 +560,39 @@ something like this to your `.emacs`:
 ```
 
 If the Elisp variable `mgl-pax-autoload` is true (the default), then
-PAX will be loaded in the connected Lisp on-demand via [SLIME][6be7].
+PAX will be loaded in the connected Lisp on-demand via [SLIME][6be7] or [SLY][0146].
 
 If loading fails, `mgl-pax` will be unloaded from Emacs and any
-[overridden Slime key bindings][cfab] restored.
+[overridden key bindings][cfab] restored.
+
+<a id="x-28MGL-PAX-3A-40EMACS-BACKENDS-20MGL-PAX-3ASECTION-29"></a>
+<a id="MGL-PAX:@EMACS-BACKENDS%20MGL-PAX:SECTION"></a>
+
+### 3.4 Emacs Backends
+
+Client-specific code is loaded when the corresponding client
+([SLIME][6be7] or [SLY][0146]) is loaded into Emacs.
+
+When `mgl-pax` is loaded into Emacs, it loads the backends for
+[SLIME][6be7] and [SLY][0146] (in that order) if the `slime` and `sly` features
+are loaded. If they are not yet available, loading the corresponding
+backends is deferred until they are.
+
+When a backend is loaded into Emacs and `mgl-pax-backend` is `nil`,
+`mgl-pax-backend` is set to `:slime` or `:sly` appropriately.
+
+One may also choose explicitly by setting the Elisp variable
+`mgl-pax-backend` to either `:slime` or `:sly`. However, PAX never
+loads SLIME or SLY itself.
+
+> *Note*: When using [SLY][0146], Swank is still used but only for
+> introspection via the [DRef][5225] library. No Swank
+> server is started.
 
 <a id="x-28MGL-PAX-3A-40EMACS-KEYS-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@EMACS-KEYS%20MGL-PAX:SECTION"></a>
 
-### 3.4 Setting up Keys
+### 3.5 Setting up Keys
 
 The recommended key bindings are
 
@@ -570,7 +604,8 @@ The recommended key bindings are
 
 The global key bindings above are global because their commands work
 in any mode. If that's not desired, one may bind `C-.` locally in
-all Slime related modes like this:
+all [SLIME][6be7] related modes like this (swap out `slime` for `sly` if
+using [SLY][0146]):
 
 ```elisp
 (slime-bind-keys slime-parent-map nil '(("C-." mgl-pax-document)))
@@ -597,6 +632,14 @@ true, then upon loading `mgl-pax`, the following changes are made to
 
 Calling `mgl-pax-unhijack-slime-doc-keys` reverts these changes.
 
+For [SLY][0146], the function `mgl-pax-hijack-sly-doc-keys` (controlled by
+the variable `mgl-pax-hijack-sly-doc-keys` the same way) makes the
+same changes to `sly-doc-map` with `sly-apropos` and so on in place
+of the `slime-` commands, and `mgl-pax-unhijack-sly-doc-keys`
+reverts them. [SLY][0146] binds only the control variants (e.g. `C-c C-d
+C-a`), so PAX binds the plain ones (`C-c C-d a`) as well where they
+are free.
+
 <a id="x-28MGL-PAX-3A-40BACKGROUND-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@BACKGROUND%20MGL-PAX:SECTION"></a>
 
@@ -604,8 +647,9 @@ Calling `mgl-pax-unhijack-slime-doc-keys` reverts these changes.
 
 As a user, I frequently run into documentation that's incomplete
 and out of date, so I tend to stay in the editor and explore the
-code by jumping around with [SLIME][6be7]'s [`M-.`][cb15] (`slime-edit-definition`).
-As a library author, I spend a great deal of time polishing code but
+code by jumping around with [SLIME][6be7]'s or [SLY][0146]'s
+[`M-.`][cb15] (`slime-edit-definition` or `sly-edit-definition`). As a
+library author, I spend a great deal of time polishing code but
 precious little writing documentation.
 
 In fact, I rarely write anything more comprehensive than docstrings
@@ -1260,13 +1304,15 @@ in the context of [Generating Documentation][2c93]).
 
 ## 7 Navigating Sources in Emacs
 
-Integration into [SLIME][6be7]'s [`M-.`][cb15] (`slime-edit-definition`) allows
-one to visit the [`source-location`][32da] of a [definition][2143]. PAX extends
-standard Slime functionality by
+Integration into [SLIME][6be7]'s or [SLY][0146]'s
+[`M-.`][cb15] (`slime-edit-definition`) allows one to visit the
+[`source-location`][32da] of a [definition][2143]. PAX extends standard SLIME /
+SLY functionality by
 
 - adding support for all kinds of definitions (see e.g.
   [`asdf:system`][c097], [`readtable`][7506] in
-  [Basic Locative Types][1d1d]), not just the ones Slime knows about,
+  [Basic Locative Types][1d1d]), not just the ones the client knows
+  about,
 
 - providing a portable way to refer to even standard definitions,
 
@@ -1295,14 +1341,15 @@ When [`M-.`][cb15] is invoked, it first tries to find a [name][88cf] in the
 current buffer at point. If no name is found, then it
 [prompts][ed46].
 
-First, `(slime-sexp-at-point)` is taken as a [word][d7b0], from which the
-[name][88cf] will be [parsed][378f]. Then, candidate locatives are
-looked for before and after the [word][d7b0]. Thus, if a locative is the
-previous or the next expression, then `M-.` will go straight to the
-definition which corresponds to the locative. If that fails, `M-.`
-will try to find the definitions in the normal way, which may
-involve popping up an xref buffer and letting the user interactively
-select one of possible definitions.
+First, the sexp at point `(slime-sexp-at-point)` or
+`(sly-sexp-at-point)` is taken as a [word][d7b0],from which the [name][88cf] will
+be [parsed][378f]. Then, candidate locatives are looked for
+before and after the [word][d7b0]. Thus, if a locative is the previous or
+the next expression, then `M-.` will go straight to the definition
+which corresponds to the locative. If that fails, `M-.` will try
+to find the definitions in the normal way, which may involve popping
+up an xref buffer and letting the user interactively select one of
+possible definitions.
 
 `M-.` works on parenthesized references, such as those in
 [`defsection`][72b4]:
@@ -1385,8 +1432,9 @@ In all of the above `name` is a [raw name][f5af], meaning that `print`
 will be recognized as `print` and `pax` as `"PAX"`.
 
 The package in which symbols are read is the Elisp
-`slime-current-package`. In Lisp buffers, this is the buffer's
-package, else it's the package of the Slime repl buffer.
+`slime-current-package` or `sly-current-package`. In Lisp
+buffers,this is the buffer's package, else it's the package of the
+client repl buffer.
 
 <a id="x-28MGL-PAX-3A-40M--2E-COMPLETION-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@M-.-COMPLETION%20MGL-PAX:SECTION"></a>
@@ -1399,7 +1447,7 @@ clutter, string names are completed only if they are typed
 explicitly with an opening quotation mark, and they are
 case-sensitive. Examples:
 
-- `pri<TAB>` invokes the usual Slime completion.
+- `pri<TAB>` invokes the usual client completion.
 
 - `print <TAB>` (note the space) lists [`function`][a51f] and (`pax:clhs`
   [`function`][aeb6]) as locatives.
@@ -1755,8 +1803,8 @@ exploration of the Lisp, much like `describe-function`,
 `apropos-command` and other online help commands in Emacs, for which
 direct parallels are provided.
 
-Still, even without Emacs and [SLIME][6be7], limited functionality is
-available through the [PAX Live Home Page][9d50] by starting the live
+Still, even without Emacs and [SLIME][6be7] or [SLY][0146], limited functionality
+is available through the [PAX Live Home Page][9d50] by starting the live
 documentation web server [manually][72cc].
 
 If [Emacs Setup][8541] has been done, the Elisp function
@@ -1814,7 +1862,8 @@ In interactive use, `mgl-pax-document` behaves similarly to
     entire PAX manual as a single page and scroll to the very
     section you are reading within it:
 
-        pax::@pax-manual pax:section pax::@browsing-live-documentation pax:section
+        pax::@pax-manual pax:section pax::@browsing-live-documentation
+        pax:section
 
 - If the empty string is entered at the prompt, and there is no
   existing w3m buffer or w3m is not used, then [PAX Live Home Page][9d50]
@@ -1926,10 +1975,10 @@ The Elisp functions `mgl-pax-apropos`, `mgl-pax-apropos-all`, and
 `mgl-pax-apropos-package` can display the results of [`dref-apropos`][65b4] in
 the [live documentation browser][a595].
 These extend the functionality of `slime-apropos`,
-`slime-apropos-all` and `slime-apropos-package` to support more
-kinds of [definition][2143]s in an extensible way. The correspondence
-is so close that the PAX versions might [take over the Slime key
-bindings][8541].
+`slime-apropos-all` and `slime-apropos-package` (and their `sly-`
+versions) to support more kinds of [definition][2143]s in an
+extensible way. The correspondence is so close that the PAX versions
+might [take over the client key bindings][8541].
 
 Note that apropos functionality is also exposed via the
 [PAX Live Home Page][9d50].
@@ -4804,11 +4853,11 @@ locative)` syntax in [`defsection`][72b4].
 - \[glossary-term\] **word**
 
     A *word* is a string from which we want to extract a [name][88cf]. When
-    [Navigating][3386], the word is
-    `slime-sexp-at-point` or the label of a [Markdown reference link][8c00] if point
-    is over one. Similarly, when [Generating Documentation][2c93], it is a
-    non-empty string between whitespace characters in a docstring or the
-    label of a [Markdown reference link][8c00].
+    [Navigating][3386], the word is the sexp or
+    the label of a [Markdown reference link][8c00] if point is over one. Similarly,
+    when [Generating Documentation][2c93], it is a non-empty string between
+    whitespace characters in a docstring or the label of a
+    [Markdown reference link][8c00].
 
 <a id="x-28MGL-PAX-3A-40RAW-NAME-20MGL-PAX-3AGLOSSARY-TERM-29"></a>
 <a id="MGL-PAX:@RAW-NAME%20MGL-PAX:GLOSSARY-TERM"></a>
@@ -5371,6 +5420,8 @@ they are presented.
 
 [00d4]: dref-manual.md#MGL-PAX:ACCESSOR%20MGL-PAX:LOCATIVE "MGL-PAX:ACCESSOR MGL-PAX:LOCATIVE"
 
+[0146]: https://github.com/joaotavora/sly "SLY"
+
 [0165]: http://www.lispworks.com/documentation/HyperSpec/Body/22_cic.htm "\"22.3.9.3\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
 
 [016d]: #MGL-PAX:@NAMES-IN-RAW-NAMES%20MGL-PAX:SECTION "Names in Raw Names"
@@ -5396,6 +5447,8 @@ they are presented.
 [0702]: #MGL-PAX:@DOCUMENTABLE%20MGL-PAX:SECTION "`documentable`"
 
 [077a]: http://www.lispworks.com/documentation/HyperSpec/Body/t_kwd.htm "KEYWORD (MGL-PAX:CLHS TYPE)"
+
+[07c3]: #MGL-PAX:@EMACS-BACKENDS%20MGL-PAX:SECTION "Emacs Backends"
 
 [090c]: dref-manual.md#MGL-PAX:STRUCTURE-ACCESSOR%20MGL-PAX:LOCATIVE "MGL-PAX:STRUCTURE-ACCESSOR MGL-PAX:LOCATIVE"
 
