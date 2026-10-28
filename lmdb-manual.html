@@ -2585,20 +2585,34 @@ refer to the parent transaction:</p>
 <li><p>↩ <em>d</em>: <a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">Basic cursor operations</a>, <a href="#LMDB:@LMDB%2FDEVIATIONS-FROM-THE-LMDB-API%20MGL-PAX:SECTION" title="Deviations from the C lmdb API">Deviations from the C lmdb API</a>, <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">Safety</a></p></li>
 <li><p>↩ <em>f</em>: <a href="#LMDB:GET-DB%20FUNCTION" title="LMDB:GET-DB FUNCTION"><code>get-db</code></a></p></li>
 </ul></li>
+<li><p><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" title="LMDB:DB-KEY-ENCODING (MGL-PAX:READER LMDB:DB)"><code>db-key-encoding</code></a> <em>(reader db)</em></p></li>
+<li><p><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" title="LMDB:DB-NAME (MGL-PAX:READER LMDB:DB)"><code>db-name</code></a> <em>(reader db)</em></p></li>
 <li><p><a href="#LMDB:DB-STATISTICS%20FUNCTION" title="LMDB:DB-STATISTICS FUNCTION"><code>db-statistics</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" title="LMDB:DB-VALUE-ENCODING (MGL-PAX:READER LMDB:DB)"><code>db-value-encoding</code></a> <em>(reader db)</em></p></li>
 <li><p><a href="#LMDB:DEL%20FUNCTION" title="LMDB:DEL FUNCTION"><code>del</code></a> <em>(fn)</em> ↩ <em>d</em>: <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a>, <a href="#LMDB:@LMDB%2FBASIC-CURSOR-OPERATIONS%20MGL-PAX:SECTION" title="Basic cursor operations">Basic cursor operations</a>, <a href="#LMDB:@LMDB%2FNESTING-TRANSACTIONS%20MGL-PAX:SECTION" title="Nesting transactions">Nesting transactions</a></p></li>
 <li><p><a href="#LMDB:DO-CURSOR%20MGL-PAX:MACRO" title="LMDB:DO-CURSOR MGL-PAX:MACRO"><code>do-cursor</code></a> <em>(macro)</em></p></li>
 <li><p><a href="#LMDB:DO-CURSOR-DUP%20MGL-PAX:MACRO" title="LMDB:DO-CURSOR-DUP MGL-PAX:MACRO"><code>do-cursor-dup</code></a> <em>(macro)</em></p></li>
 <li><p><a href="#LMDB:DO-DB%20MGL-PAX:MACRO" title="LMDB:DO-DB MGL-PAX:MACRO"><code>do-db</code></a> <em>(macro)</em></p></li>
 <li><p><a href="#LMDB:DO-DB-DUP%20MGL-PAX:MACRO" title="LMDB:DO-DB-DUP MGL-PAX:MACRO"><code>do-db-dup</code></a> <em>(macro)</em> ↩ <em>f</em>: <a href="#LMDB:LIST-DUPS%20FUNCTION" title="LMDB:LIST-DUPS FUNCTION"><code>list-dups</code></a></p></li>
 <li><p><a href="#LMDB:DROP-DB%20FUNCTION" title="LMDB:DROP-DB FUNCTION"><code>drop-db</code></a> <em>(fn)</em> ↩ <em>d</em>: <a href="#LMDB:@LMDB%2FSAFETY%20MGL-PAX:SECTION" title="Safety">Safety</a></p></li>
+<li><p><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-FLAGS (MGL-PAX:READER LMDB:ENV)"><code>env-flags</code></a> <em>(reader env)</em> ↩ <em>f</em>: <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a></p></li>
 <li><p><a href="#LMDB:ENV-INFO%20FUNCTION" title="LMDB:ENV-INFO FUNCTION"><code>env-info</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAP-SIZE (MGL-PAX:READER LMDB:ENV)"><code>env-map-size</code></a> <em>(reader env)</em> ↩ <em>t</em>: <a href="#LMDB:LMDB-MAP-FULL-ERROR%20CONDITION" title="LMDB:LMDB-MAP-FULL-ERROR CONDITION"><code>lmdb-map-full-error</code></a>, <a href="#LMDB:LMDB-MAP-RESIZED-ERROR%20CONDITION" title="LMDB:LMDB-MAP-RESIZED-ERROR CONDITION"><code>lmdb-map-resized-error</code></a></p></li>
+<li><p><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAX-DBS (MGL-PAX:READER LMDB:ENV)"><code>env-max-dbs</code></a> <em>(reader env)</em> ↩ <em>t</em>: <a href="#LMDB:LMDB-DBS-FULL-ERROR%20CONDITION" title="LMDB:LMDB-DBS-FULL-ERROR CONDITION"><code>lmdb-dbs-full-error</code></a></p></li>
 <li><p><a href="#LMDB:ENV-MAX-KEY-SIZE%20FUNCTION" title="LMDB:ENV-MAX-KEY-SIZE FUNCTION"><code>env-max-key-size</code></a> <em>(fn)</em></p>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#LMDB:@DUPSORT%20MGL-PAX:SECTION" title="`dupsort`"><code>dupsort</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#LMDB:LMDB-BAD-VALSIZE-ERROR%20CONDITION" title="LMDB:LMDB-BAD-VALSIZE-ERROR CONDITION"><code>lmdb-bad-valsize-error</code></a></p></li>
 </ul></li>
+<li><p><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAX-READERS (MGL-PAX:READER LMDB:ENV)"><code>env-max-readers</code></a> <em>(reader env)</em></p>
+
+<ul>
+<li><p>↩ <em>f</em>: <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a></p></li>
+<li><p>↩ <em>t</em>: <a href="#LMDB:LMDB-READERS-FULL-ERROR%20CONDITION" title="LMDB:LMDB-READERS-FULL-ERROR CONDITION"><code>lmdb-readers-full-error</code></a></p></li>
+</ul></li>
+<li><p><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MODE (MGL-PAX:READER LMDB:ENV)"><code>env-mode</code></a> <em>(reader env)</em></p></li>
+<li><p><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-PATH (MGL-PAX:READER LMDB:ENV)"><code>env-path</code></a> <em>(reader env)</em> ↩ <em>f</em>: <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a></p></li>
 <li><p><a href="#LMDB:ENV-STATISTICS%20FUNCTION" title="LMDB:ENV-STATISTICS FUNCTION"><code>env-statistics</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#LMDB:G3T%20FUNCTION" title="LMDB:G3T FUNCTION"><code>g3t</code></a> <em>(fn)</em></p>
 
@@ -2816,21 +2830,7 @@ refer to the parent transaction:</p>
 <p><div class="pax-index"></p>
 
 <ul>
-<li><p><a href="#LMDB:DB-KEY-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" title="LMDB:DB-KEY-ENCODING (MGL-PAX:READER LMDB:DB)"><code>db-key-encoding</code></a> <em>(reader db)</em></p></li>
-<li><p><a href="#LMDB:DB-NAME%20%28MGL-PAX:READER%20LMDB:DB%29" title="LMDB:DB-NAME (MGL-PAX:READER LMDB:DB)"><code>db-name</code></a> <em>(reader db)</em></p></li>
-<li><p><a href="#LMDB:DB-VALUE-ENCODING%20%28MGL-PAX:READER%20LMDB:DB%29" title="LMDB:DB-VALUE-ENCODING (MGL-PAX:READER LMDB:DB)"><code>db-value-encoding</code></a> <em>(reader db)</em></p></li>
-<li><p><a href="#LMDB:ENV-FLAGS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-FLAGS (MGL-PAX:READER LMDB:ENV)"><code>env-flags</code></a> <em>(reader env)</em> ↩ <em>f</em>: <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a></p></li>
-<li><p><a href="#LMDB:ENV-MAP-SIZE%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAP-SIZE (MGL-PAX:READER LMDB:ENV)"><code>env-map-size</code></a> <em>(reader env)</em> ↩ <em>t</em>: <a href="#LMDB:LMDB-MAP-FULL-ERROR%20CONDITION" title="LMDB:LMDB-MAP-FULL-ERROR CONDITION"><code>lmdb-map-full-error</code></a>, <a href="#LMDB:LMDB-MAP-RESIZED-ERROR%20CONDITION" title="LMDB:LMDB-MAP-RESIZED-ERROR CONDITION"><code>lmdb-map-resized-error</code></a></p></li>
-<li><p><a href="#LMDB:ENV-MAX-DBS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAX-DBS (MGL-PAX:READER LMDB:ENV)"><code>env-max-dbs</code></a> <em>(reader env)</em> ↩ <em>t</em>: <a href="#LMDB:LMDB-DBS-FULL-ERROR%20CONDITION" title="LMDB:LMDB-DBS-FULL-ERROR CONDITION"><code>lmdb-dbs-full-error</code></a></p></li>
-<li><p><a href="#LMDB:ENV-MAX-READERS%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MAX-READERS (MGL-PAX:READER LMDB:ENV)"><code>env-max-readers</code></a> <em>(reader env)</em></p>
-
-<ul>
-<li><p>↩ <em>f</em>: <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a></p></li>
-<li><p>↩ <em>t</em>: <a href="#LMDB:LMDB-READERS-FULL-ERROR%20CONDITION" title="LMDB:LMDB-READERS-FULL-ERROR CONDITION"><code>lmdb-readers-full-error</code></a></p></li>
-</ul></li>
-<li><p><a href="#LMDB:ENV-MODE%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-MODE (MGL-PAX:READER LMDB:ENV)"><code>env-mode</code></a> <em>(reader env)</em></p></li>
-<li><p><a href="#LMDB:ENV-PATH%20%28MGL-PAX:READER%20LMDB:ENV%29" title="LMDB:ENV-PATH (MGL-PAX:READER LMDB:ENV)"><code>env-path</code></a> <em>(reader env)</em> ↩ <em>f</em>: <a href="#LMDB:OPEN-ENV%20FUNCTION" title="LMDB:OPEN-ENV FUNCTION"><code>open-env</code></a></p></li>
-<li><p><a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM"><code>lmdb</code></a> <em>(asdf:system)</em></p></li>
+<li><a href="#%22lmdb%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;lmdb&quot; ASDF/SYSTEM:SYSTEM"><code>lmdb</code></a> <em>(asdf:system)</em></li>
 </ul>
 
 <p> </div></p>
@@ -2856,7 +2856,7 @@ refer to the parent transaction:</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-28T09:05:31Z]</h6>
+<h6>[Generated 2026-10-28T16:54:30Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

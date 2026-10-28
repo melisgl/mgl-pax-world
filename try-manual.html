@@ -4112,6 +4112,7 @@ first nlx will not continue.</p>
 <li><p>↩ <em>t</em>: <a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a>, <a href="#TRY:NLX%20CONDITION" title="TRY:NLX CONDITION"><code>nlx</code></a></p></li>
 </ul></li>
 <li><p><a href="#TRY:ASCII-STD-CATEGORIES%20FUNCTION" title="TRY:ASCII-STD-CATEGORIES FUNCTION"><code>ascii-std-categories</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" title="TRY:BACKTRACE-OF (MGL-PAX:READER TRY:UNHANDLED-ERROR)"><code>backtrace-of</code></a> <em>(reader unhandled-error)</em> ↩ <em>v</em>: <a href="#TRY:*GATHER-BACKTRACE*%20VARIABLE" title="TRY:*GATHER-BACKTRACE* VARIABLE"><code>*gather-backtrace*</code></a></p></li>
 <li><p><a href="#TRY:CANONICALIZE-FORMAT-SPECIFIER-FORM%20FUNCTION" title="TRY:CANONICALIZE-FORMAT-SPECIFIER-FORM FUNCTION"><code>canonicalize-format-specifier-form</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#TRY:CAPTURE%20MGL-PAX:MACRO" title="TRY:CAPTURE MGL-PAX:MACRO"><code>capture</code></a> <em>(macro)</em></p>
 
@@ -4126,6 +4127,7 @@ first nlx will not continue.</p>
 <li><p>↩ <em>?</em>: <a href="#TRY:%25%25%20MACROLET" title="TRY:%% MACROLET"><code>%%</code></a></p></li>
 <li><p>↩ <em>d</em>: <a href="#TRY:@EXPLICIT-CAPTURES%20MGL-PAX:SECTION" title="Explicit Captures">Explicit Captures</a></p></li>
 </ul></li>
+<li><p><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:CHILDREN (MGL-PAX:READER TRY:TRIAL)"><code>children</code></a> <em>(reader trial)</em> ↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>, <a href="#TRY:@TRIAL-VERDICTS%20MGL-PAX:SECTION" title="Trial Verdicts">Trial Verdicts</a></p></li>
 <li><p><a href="#TRY:CONCRETE-EVENTS-OF-TYPE%20FUNCTION" title="TRY:CONCRETE-EVENTS-OF-TYPE FUNCTION"><code>concrete-events-of-type</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#TRY:CURRENT-TRIAL%20FUNCTION" title="TRY:CURRENT-TRIAL FUNCTION"><code>current-trial</code></a> <em>(fn)</em></p>
 
@@ -4134,6 +4136,7 @@ first nlx will not continue.</p>
 <li><p>↩ <em>f</em>: <a href="#TRY:ABORT-TRIAL%20FUNCTION" title="TRY:ABORT-TRIAL FUNCTION"><code>abort-trial</code></a>, <a href="#TRY:INVOKES-DEBUGGER%20MGL-PAX:MACRO" title="TRY:INVOKES-DEBUGGER MGL-PAX:MACRO"><code>invokes-debugger</code></a>, <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a>, <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL FUNCTION"><code>retry-trial</code></a>, <a href="#TRY:SKIP-TRIAL%20FUNCTION" title="TRY:SKIP-TRIAL FUNCTION"><code>skip-trial</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#TRY:TRIAL%20CLASS" title="TRY:TRIAL CLASS"><code>trial</code></a>, <a href="#TRY:TRIAL-START%20CONDITION" title="TRY:TRIAL-START CONDITION"><code>trial-start</code></a>, <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a></p></li>
 </ul></li>
+<li><p><a href="#TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" title="TRY:DEBUGGER-INVOKED-P (MGL-PAX:READER TRY:UNHANDLED-ERROR)"><code>debugger-invoked-p</code></a> <em>(reader unhandled-error)</em></p></li>
 <li><p><a href="#TRY:DEFTEST%20MGL-PAX:MACRO" title="TRY:DEFTEST MGL-PAX:MACRO"><code>deftest</code></a> <em>(macro)</em></p>
 
 <ul>
@@ -4181,6 +4184,8 @@ first nlx will not continue.</p>
 <li><p><a href="#TRY:MAKE-SUB%20FUNCTION" title="TRY:MAKE-SUB FUNCTION"><code>make-sub</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#TRY:MATCH-VALUES%20MGL-PAX:MACRO" title="TRY:MATCH-VALUES MGL-PAX:MACRO"><code>match-values</code></a> <em>(macro)</em> ↩ <em>d</em>: <a href="#TRY:@AUTOMATIC-CAPTURES%20MGL-PAX:SECTION" title="Automatic Captures">Automatic Captures</a>, <a href="#TRY:@IS%20MGL-PAX:SECTION" title="The `is` Macro">The <code>is</code> Macro</a>, <a href="#TRY:@TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p><a href="#TRY:MISMATCH%25%20FUNCTION" title="TRY:MISMATCH% FUNCTION"><code>mismatch%</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:N-RETRIES (MGL-PAX:READER TRY:TRIAL)"><code>n-retries</code></a> <em>(reader trial)</em> ↩ <em>f</em>: <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL FUNCTION"><code>retry-trial</code></a></p></li>
+<li><p><a href="#TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" title="TRY:NESTED-CONDITION (MGL-PAX:READER TRY:UNHANDLED-ERROR)"><code>nested-condition</code></a> <em>(reader unhandled-error)</em> ↩ <em>t</em>: <a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION"><code>unhandled-error</code></a></p></li>
 <li><p><a href="#TRY:ON-VALUES%20MGL-PAX:MACRO" title="TRY:ON-VALUES MGL-PAX:MACRO"><code>on-values</code></a> <em>(macro)</em> ↩ <em>f</em>: <a href="#TRY:MATCH-VALUES%20MGL-PAX:MACRO" title="TRY:MATCH-VALUES MGL-PAX:MACRO"><code>match-values</code></a></p></li>
 <li><p><a href="#TRY:PASSEDP%20FUNCTION" title="TRY:PASSEDP FUNCTION"><code>passedp</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#TRY:RECENT-TRIAL%20FUNCTION" title="TRY:RECENT-TRIAL FUNCTION"><code>recent-trial</code></a> <em>(fn)</em></p></li>
@@ -4233,6 +4238,13 @@ first nlx will not continue.</p>
 <li><p>↩ <em>d</em>: <a href="#TRY:@TESTABLES%20MGL-PAX:SECTION" title="Testables">Testables</a></p></li>
 <li><p>↩ <em>f</em>: <a href="#TRY:LIST-PACKAGE-TESTS%20FUNCTION" title="TRY:LIST-PACKAGE-TESTS FUNCTION"><code>list-package-tests</code></a></p></li>
 </ul></li>
+<li><p><a href="#TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29" title="TRY:TEST-NAME (MGL-PAX:READER TRY:ERROR*)"><code>test-name</code></a> <em>(reader error*)</em></p></li>
+<li><p><a href="#TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29" title="TRY:TRIAL (MGL-PAX:READER TRY:TRIAL-EVENT)"><code>trial</code></a> <em>(reader trial-event)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a></p></li>
+<li><p>↩ <em>t</em>: <a href="#TRY:TRIAL-START%20CONDITION" title="TRY:TRIAL-START CONDITION"><code>trial-start</code></a>, <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a></p></li>
+</ul></li>
 <li><p><a href="#TRY:TRY%20FUNCTION" title="TRY:TRY FUNCTION"><code>try</code></a> <em>(fn)</em></p>
 
 <ul>
@@ -4240,6 +4252,12 @@ first nlx will not continue.</p>
 <li><p>↩ <em>f</em>: <a href="#TRY:ABORT-TRIAL%20FUNCTION" title="TRY:ABORT-TRIAL FUNCTION"><code>abort-trial</code></a>, <a href="#TRY:RECENT-TRIAL%20FUNCTION" title="TRY:RECENT-TRIAL FUNCTION"><code>recent-trial</code></a>, <a href="#TRY:RECORD-EVENT%20FUNCTION" title="TRY:RECORD-EVENT FUNCTION"><code>record-event</code></a>, <a href="#TRY:REPLAY-EVENTS%20FUNCTION" title="TRY:REPLAY-EVENTS FUNCTION"><code>replay-events</code></a>, <a href="#TRY:SET-TRY-DEBUG%20FUNCTION" title="TRY:SET-TRY-DEBUG FUNCTION"><code>set-try-debug</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#TRY:ERROR*%20CONDITION" title="TRY:ERROR* CONDITION"><code>error*</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#TRY:*DEBUG*%20VARIABLE" title="TRY:*DEBUG* VARIABLE"><code>*debug*</code></a>, <a href="#TRY:*DEFER-DESCRIBE*%20VARIABLE" title="TRY:*DEFER-DESCRIBE* VARIABLE"><code>*defer-describe*</code></a>, <a href="#TRY:*PRINT-PARENT*%20VARIABLE" title="TRY:*PRINT-PARENT* VARIABLE"><code>*print-parent*</code></a>, <a href="#TRY:*RERUN-CONTEXT*%20VARIABLE" title="TRY:*RERUN-CONTEXT* VARIABLE"><code>*rerun-context*</code></a>, <a href="#TRY:*TRY-COLLECT*%20VARIABLE" title="TRY:*TRY-COLLECT* VARIABLE"><code>*try-collect*</code></a>, <a href="#TRY:*TRY-COUNT*%20VARIABLE" title="TRY:*TRY-COUNT* VARIABLE"><code>*try-count*</code></a>, <a href="#TRY:*TRY-DEBUG*%20VARIABLE" title="TRY:*TRY-DEBUG* VARIABLE"><code>*try-debug*</code></a>, <a href="#TRY:*TRY-DESCRIBE*%20VARIABLE" title="TRY:*TRY-DESCRIBE* VARIABLE"><code>*try-describe*</code></a>, <a href="#TRY:*TRY-PRINT*%20VARIABLE" title="TRY:*TRY-PRINT* VARIABLE"><code>*try-print*</code></a>, <a href="#TRY:*TRY-PRINTER*%20VARIABLE" title="TRY:*TRY-PRINTER* VARIABLE"><code>*try-printer*</code></a>, <a href="#TRY:*TRY-RERUN*%20VARIABLE" title="TRY:*TRY-RERUN* VARIABLE"><code>*try-rerun*</code></a>, <a href="#TRY:*TRY-STREAM*%20VARIABLE" title="TRY:*TRY-STREAM* VARIABLE"><code>*try-stream*</code></a></p></li>
+</ul></li>
+<li><p><a href="#TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:VERDICT (MGL-PAX:READER TRY:TRIAL)"><code>verdict</code></a> <em>(reader trial)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#TRY:FAILEDP%20FUNCTION" title="TRY:FAILEDP FUNCTION"><code>failedp</code></a>, <a href="#TRY:PASSEDP%20FUNCTION" title="TRY:PASSEDP FUNCTION"><code>passedp</code></a></p></li>
 </ul></li>
 <li><p><a href="#TRY:WARN-ON-TESTS-NOT-RUN%20MGL-PAX:MACRO" title="TRY:WARN-ON-TESTS-NOT-RUN MGL-PAX:MACRO"><code>warn-on-tests-not-run</code></a> <em>(macro)</em> ↩ <em>d</em>: <a href="#TRY:@TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p><a href="#TRY:WITH-EXPECTED-OUTCOME%20MGL-PAX:MACRO" title="TRY:WITH-EXPECTED-OUTCOME MGL-PAX:MACRO"><code>with-expected-outcome</code></a> <em>(macro)</em></p>
@@ -4669,25 +4687,7 @@ first nlx will not continue.</p>
 <li><p>↩ <em>d</em>: <a href="#TRY:@EXPLICIT-CAPTURES%20MGL-PAX:SECTION" title="Explicit Captures">Explicit Captures</a></p></li>
 <li><p>↩ <em>f</em>: <a href="#TRY:CAPTURE-VALUES%20MGL-PAX:MACRO" title="TRY:CAPTURE-VALUES MGL-PAX:MACRO"><code>capture-values</code></a></p></li>
 </ul></li>
-<li><p><a href="#TRY:BACKTRACE-OF%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" title="TRY:BACKTRACE-OF (MGL-PAX:READER TRY:UNHANDLED-ERROR)"><code>backtrace-of</code></a> <em>(reader unhandled-error)</em> ↩ <em>v</em>: <a href="#TRY:*GATHER-BACKTRACE*%20VARIABLE" title="TRY:*GATHER-BACKTRACE* VARIABLE"><code>*gather-backtrace*</code></a></p></li>
-<li><p><a href="#TRY:CHILDREN%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:CHILDREN (MGL-PAX:READER TRY:TRIAL)"><code>children</code></a> <em>(reader trial)</em> ↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a>, <a href="#TRY:@TRIAL-VERDICTS%20MGL-PAX:SECTION" title="Trial Verdicts">Trial Verdicts</a></p></li>
-<li><p><a href="#TRY:DEBUGGER-INVOKED-P%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" title="TRY:DEBUGGER-INVOKED-P (MGL-PAX:READER TRY:UNHANDLED-ERROR)"><code>debugger-invoked-p</code></a> <em>(reader unhandled-error)</em></p></li>
-<li><p><a href="#TRY:N-RETRIES%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:N-RETRIES (MGL-PAX:READER TRY:TRIAL)"><code>n-retries</code></a> <em>(reader trial)</em> ↩ <em>f</em>: <a href="#TRY:RETRY-TRIAL%20FUNCTION" title="TRY:RETRY-TRIAL FUNCTION"><code>retry-trial</code></a></p></li>
-<li><p><a href="#TRY:NESTED-CONDITION%20%28MGL-PAX:READER%20TRY:UNHANDLED-ERROR%29" title="TRY:NESTED-CONDITION (MGL-PAX:READER TRY:UNHANDLED-ERROR)"><code>nested-condition</code></a> <em>(reader unhandled-error)</em> ↩ <em>t</em>: <a href="#TRY:UNHANDLED-ERROR%20CONDITION" title="TRY:UNHANDLED-ERROR CONDITION"><code>unhandled-error</code></a></p></li>
-<li><p><a href="#TRY:TEST-NAME%20%28MGL-PAX:READER%20TRY:ERROR*%29" title="TRY:TEST-NAME (MGL-PAX:READER TRY:ERROR*)"><code>test-name</code></a> <em>(reader error*)</em></p></li>
-<li><p><a href="#TRY:TRIAL%20%28MGL-PAX:READER%20TRY:TRIAL-EVENT%29" title="TRY:TRIAL (MGL-PAX:READER TRY:TRIAL-EVENT)"><code>trial</code></a> <em>(reader trial-event)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a></p></li>
-<li><p>↩ <em>t</em>: <a href="#TRY:TRIAL-START%20CONDITION" title="TRY:TRIAL-START CONDITION"><code>trial-start</code></a>, <a href="#TRY:VERDICT%20CONDITION" title="TRY:VERDICT CONDITION"><code>verdict</code></a></p></li>
-</ul></li>
 <li><p><a href="#%22try%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;try&quot; ASDF/SYSTEM:SYSTEM"><code>try</code></a> <em>(asdf:system)</em></p></li>
-<li><p><a href="#TRY:VERDICT%20%28MGL-PAX:READER%20TRY:TRIAL%29" title="TRY:VERDICT (MGL-PAX:READER TRY:TRIAL)"><code>verdict</code></a> <em>(reader trial)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#TRY:@COLLECT%20MGL-PAX:SECTION" title="Collecting Events">Collecting Events</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#TRY:FAILEDP%20FUNCTION" title="TRY:FAILEDP FUNCTION"><code>failedp</code></a>, <a href="#TRY:PASSEDP%20FUNCTION" title="TRY:PASSEDP FUNCTION"><code>passedp</code></a></p></li>
-</ul></li>
 </ul>
 
 <p> </div></p>
@@ -4713,7 +4713,7 @@ first nlx will not continue.</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-28T09:05:31Z]</h6>
+<h6>[Generated 2026-10-28T16:54:30Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

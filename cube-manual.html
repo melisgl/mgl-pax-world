@@ -759,6 +759,7 @@ destroyed by a facet barrier.</li>
 <li><p>↩ <em>f</em>: <a href="#MGL-CUBE:UNWATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:UNWATCH-FACET GENERIC-FUNCTION"><code>unwatch-facet</code></a>, <a href="#MGL-CUBE:WATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:WATCH-FACET GENERIC-FUNCTION"><code>watch-facet</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#MGL-CUBE:*LET-INPUT-THROUGH-P*%20VARIABLE" title="MGL-CUBE:*LET-INPUT-THROUGH-P* VARIABLE"><code>*let-input-through-p*</code></a>, <a href="#MGL-CUBE:*LET-OUTPUT-THROUGH-P*%20VARIABLE" title="MGL-CUBE:*LET-OUTPUT-THROUGH-P* VARIABLE"><code>*let-output-through-p*</code></a></p></li>
 </ul></li>
+<li><p><a href="#MGL-CUBE:CALL-WITH-FACET*%20%28METHOD%20%28MGL-CUBE:CUBE%20T%20T%20T%29%29" title="MGL-CUBE:CALL-WITH-FACET* (METHOD (MGL-CUBE:CUBE T T T))"><code>call-with-facet*</code></a> <em>(method (cube t t t))</em></p></li>
 <li><p><a href="#MGL-CUBE:CHECK-NO-WATCHERS%20FUNCTION" title="MGL-CUBE:CHECK-NO-WATCHERS FUNCTION"><code>check-no-watchers</code></a> <em>(fn)</em></p>
 
 <ul>
@@ -828,6 +829,7 @@ destroyed by a facet barrier.</li>
 <li><p>↩ <em>f</em>: <a href="#MGL-CUBE:COPY-FACET*%20GENERIC-FUNCTION" title="MGL-CUBE:COPY-FACET* GENERIC-FUNCTION"><code>copy-facet*</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#MGL-CUBE:DIRECTION%20TYPE" title="MGL-CUBE:DIRECTION TYPE"><code>direction</code></a></p></li>
 </ul></li>
+<li><p><a href="#MGL-CUBE:SYNCHRONIZATION%20%28MGL-PAX:ACCESSOR%20MGL-CUBE:CUBE%29" title="MGL-CUBE:SYNCHRONIZATION (MGL-PAX:ACCESSOR MGL-CUBE:CUBE)"><code>synchronization</code></a> <em>(accessor cube)</em> ↩ <em>v</em>: <a href="#MGL-CUBE:*DEFAULT-SYNCHRONIZATION*%20VARIABLE" title="MGL-CUBE:*DEFAULT-SYNCHRONIZATION* VARIABLE"><code>*default-synchronization*</code></a>, <a href="#MGL-CUBE:*MAYBE-SYNCHRONIZE-CUBE*%20VARIABLE" title="MGL-CUBE:*MAYBE-SYNCHRONIZE-CUBE* VARIABLE"><code>*maybe-synchronize-cube*</code></a></p></li>
 <li><p><a href="#MGL-CUBE:UNWATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:UNWATCH-FACET GENERIC-FUNCTION"><code>unwatch-facet</code></a> <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CUBE:CALL-WITH-FACET*%20%28METHOD%20%28MGL-CUBE:CUBE%20T%20T%20T%29%29" title="MGL-CUBE:CALL-WITH-FACET* (METHOD (MGL-CUBE:CUBE T T T))"><code>call-with-facet*</code></a>, <a href="#MGL-CUBE:FACET-N-WATCHERS%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-N-WATCHERS (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-n-watchers</code></a></p></li>
 <li><p><a href="#MGL-CUBE:WATCH-FACET%20GENERIC-FUNCTION" title="MGL-CUBE:WATCH-FACET GENERIC-FUNCTION"><code>watch-facet</code></a> <em>(gf)</em> ↩ <em>f</em>: <a href="#MGL-CUBE:CALL-WITH-FACET*%20%28METHOD%20%28MGL-CUBE:CUBE%20T%20T%20T%29%29" title="MGL-CUBE:CALL-WITH-FACET* (METHOD (MGL-CUBE:CUBE T T T))"><code>call-with-facet*</code></a>, <a href="#MGL-CUBE:COPY-FACET*%20GENERIC-FUNCTION" title="MGL-CUBE:COPY-FACET* GENERIC-FUNCTION"><code>copy-facet*</code></a>, <a href="#MGL-CUBE:FACET-N-WATCHERS%20%28MGL-PAX:STRUCTURE-ACCESSOR%20MGL-CUBE:FACET%29" title="MGL-CUBE:FACET-N-WATCHERS (MGL-PAX:STRUCTURE-ACCESSOR MGL-CUBE:FACET)"><code>facet-n-watchers</code></a>, <a href="#MGL-CUBE:MAKE-FACET*%20GENERIC-FUNCTION" title="MGL-CUBE:MAKE-FACET* GENERIC-FUNCTION"><code>make-facet*</code></a></p></li>
 <li><p><a href="#MGL-CUBE:WITH-FACET%20MGL-PAX:MACRO" title="MGL-CUBE:WITH-FACET MGL-PAX:MACRO"><code>with-facet</code></a> <em>(macro)</em></p>
@@ -898,13 +900,11 @@ destroyed by a facet barrier.</li>
 <p><div class="pax-index"></p>
 
 <ul>
-<li><p><a href="#MGL-CUBE:CALL-WITH-FACET*%20%28METHOD%20%28MGL-CUBE:CUBE%20T%20T%20T%29%29" title="MGL-CUBE:CALL-WITH-FACET* (METHOD (MGL-CUBE:CUBE T T T))"><code>call-with-facet*</code></a> <em>(method (cube t t t))</em></p></li>
-<li><p><a href="#MGL-CUBE:FACET-NAME%20MGL-PAX:LOCATIVE" title="MGL-CUBE:FACET-NAME MGL-PAX:LOCATIVE"><code>facet-name</code></a> <em>(locative)</em> ↩ <em>f</em>: <a href="#MGL-CUBE:DEFINE-FACET-NAME%20MGL-PAX:MACRO" title="MGL-CUBE:DEFINE-FACET-NAME MGL-PAX:MACRO"><code>define-facet-name</code></a></p></li>
-<li><p><a href="#MGL-CUBE:SYNCHRONIZATION%20%28MGL-PAX:ACCESSOR%20MGL-CUBE:CUBE%29" title="MGL-CUBE:SYNCHRONIZATION (MGL-PAX:ACCESSOR MGL-CUBE:CUBE)"><code>synchronization</code></a> <em>(accessor cube)</em> ↩ <em>v</em>: <a href="#MGL-CUBE:*DEFAULT-SYNCHRONIZATION*%20VARIABLE" title="MGL-CUBE:*DEFAULT-SYNCHRONIZATION* VARIABLE"><code>*default-synchronization*</code></a>, <a href="#MGL-CUBE:*MAYBE-SYNCHRONIZE-CUBE*%20VARIABLE" title="MGL-CUBE:*MAYBE-SYNCHRONIZE-CUBE* VARIABLE"><code>*maybe-synchronize-cube*</code></a></p></li>
+<li><a href="#MGL-CUBE:FACET-NAME%20MGL-PAX:LOCATIVE" title="MGL-CUBE:FACET-NAME MGL-PAX:LOCATIVE"><code>facet-name</code></a> <em>(locative)</em> ↩ <em>f</em>: <a href="#MGL-CUBE:DEFINE-FACET-NAME%20MGL-PAX:MACRO" title="MGL-CUBE:DEFINE-FACET-NAME MGL-PAX:MACRO"><code>define-facet-name</code></a></li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-28T09:05:31Z]</h6>
+<h6>[Generated 2026-10-28T16:54:30Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

@@ -4321,6 +4321,7 @@ be readable.</li>
 <li><p>↩ <em>f</em>: <a href="#JOURNAL:FLET-INVOKED%20MGL-PAX:MACRO" title="JOURNAL:FLET-INVOKED MGL-PAX:MACRO"><code>flet-invoked</code></a></p></li>
 </ul></li>
 <li><p><a href="#JOURNAL:DELETE-FILE-BUNDLE%20FUNCTION" title="JOURNAL:DELETE-FILE-BUNDLE FUNCTION"><code>delete-file-bundle</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:DEFINE-FILE-BUNDLE-TEST%20MGL-PAX:MACRO" title="JOURNAL:DEFINE-FILE-BUNDLE-TEST MGL-PAX:MACRO"><code>define-file-bundle-test</code></a></p></li>
+<li><p><a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" title="JOURNAL:DIRECTORY-OF (MGL-PAX:READER JOURNAL:FILE-BUNDLE)"><code>directory-of</code></a> <em>(reader file-bundle)</em></p></li>
 <li><p><a href="#JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P%20GENERIC-FUNCTION" title="JOURNAL:EQUIVALENT-REPLAY-JOURNALS-P GENERIC-FUNCTION"><code>equivalent-replay-journals-p</code></a> <em>(gf)</em></p>
 
 <ul>
@@ -4385,12 +4386,30 @@ be readable.</li>
 <li><p><a href="#JOURNAL:IN-EVENT-P%20FUNCTION" title="JOURNAL:IN-EVENT-P FUNCTION"><code>in-event-p</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#JOURNAL:INPUT-STREAMLET-P%20FUNCTION" title="JOURNAL:INPUT-STREAMLET-P FUNCTION"><code>input-streamlet-p</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:READ-EVENT%20GENERIC-FUNCTION" title="JOURNAL:READ-EVENT GENERIC-FUNCTION"><code>read-event</code></a></p></li>
 <li><p><a href="#JOURNAL:INSTALL-JOURNAL-ELISP%20FUNCTION" title="JOURNAL:INSTALL-JOURNAL-ELISP FUNCTION"><code>install-journal-elisp</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" title="JOURNAL:JOURNAL (MGL-PAX:READER JOURNAL:STREAMLET)"><code>journal</code></a> <em>(reader streamlet)</em></p></li>
 <li><p><a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" title="JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"><code>journal-divergent-p</code></a> <em>(fn)</em></p>
 
 <ul>
 <li><p>↩ <em>d</em>: <a href="#JOURNAL:@COMPARING-JOURNALS%20MGL-PAX:SECTION" title="Comparing journals">Comparing journals</a>, <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">Synchronization with in-memory journals</a></p></li>
 <li><p>↩ <em>f</em>: <a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-REPLAY-MISMATCH (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-replay-mismatch</code></a>, <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a></p></li>
 </ul></li>
+<li><p><a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-EVENTS (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-events</code></a> <em>(reader in-memory-journal)</em> ↩ <em>f</em>: <a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-previous-sync-position</code></a></p></li>
+<li><p><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-LOG-DECORATOR (MGL-PAX:ACCESSOR JOURNAL:JOURNAL)"><code>journal-log-decorator</code></a> <em>(accessor journal)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="decoration">decoration</a>, <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DECORATOR FUNCTION"><code>make-log-decorator</code></a></p></li>
+<li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" title="JOURNAL:*TRACE-JOURNAL* VARIABLE"><code>*trace-journal*</code></a></p></li>
+</ul></li>
+<li><p><a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-previous-sync-position</code></a> <em>(reader in-memory-journal)</em></p></li>
+<li><p><a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-REPLAY-MISMATCH (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-replay-mismatch</code></a> <em>(reader journal)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">Synchronization with in-memory journals</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" title="JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"><code>journal-divergent-p</code></a></p></li>
+</ul></li>
+<li><p><a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-STATE (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-state</code></a> <em>(reader journal)</em></p></li>
+<li><p><a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-SYNC (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-sync</code></a> <em>(reader journal)</em> ↩ <em>f</em>: <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a></p></li>
 <li><p><a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> <em>(macro)</em></p>
 
 <ul>
@@ -4399,6 +4418,7 @@ be readable.</li>
 <li><p>↩ <em>t</em>: <a href="#JOURNAL:FILE-JOURNAL%20CLASS" title="JOURNAL:FILE-JOURNAL CLASS"><code>file-journal</code></a>, <a href="#JOURNAL:IN-EVENT%20TYPE" title="JOURNAL:IN-EVENT TYPE"><code>in-event</code></a>, <a href="#JOURNAL:IN-MEMORY-JOURNAL%20CLASS" title="JOURNAL:IN-MEMORY-JOURNAL CLASS"><code>in-memory-journal</code></a>, <a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION"><code>journaling-failure</code></a>, <a href="#JOURNAL:LOG-EVENT%20TYPE" title="JOURNAL:LOG-EVENT TYPE"><code>log-event</code></a>, <a href="#JOURNAL:OUT-EVENT%20TYPE" title="JOURNAL:OUT-EVENT TYPE"><code>out-event</code></a>, <a href="#JOURNAL:RECORD-UNEXPECTED-OUTCOME%20CONDITION" title="JOURNAL:RECORD-UNEXPECTED-OUTCOME CONDITION"><code>record-unexpected-outcome</code></a>, <a href="#JOURNAL:STREAMLET%20CLASS" title="JOURNAL:STREAMLET CLASS"><code>streamlet</code></a>, <a href="#JOURNAL:VERSIONED-EVENT%20TYPE" title="JOURNAL:VERSIONED-EVENT TYPE"><code>versioned-event</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#JOURNAL:*FORCE-INSERTABLE*%20VARIABLE" title="JOURNAL:*FORCE-INSERTABLE* VARIABLE"><code>*force-insertable*</code></a></p></li>
 </ul></li>
+<li><p><a href="#JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29" title="JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION (MGL-PAX:READER JOURNAL:JOURNALING-FAILURE)"><code>journaling-failure-embedded-condition</code></a> <em>(reader journaling-failure)</em> ↩ <em>t</em>: <a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION"><code>journaling-failure</code></a></p></li>
 <li><p><a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a> <em>(macro)</em></p>
 
 <ul>
@@ -4448,11 +4468,15 @@ be readable.</li>
 <li><p><a href="#JOURNAL:MAKE-OUT-EVENT%20FUNCTION" title="JOURNAL:MAKE-OUT-EVENT FUNCTION"><code>make-out-event</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:EVENT%3D%20FUNCTION" title="JOURNAL:EVENT= FUNCTION"><code>event=</code></a></p></li>
 <li><p><a href="#JOURNAL:MAKE-PPRINT-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-PPRINT-JOURNAL FUNCTION"><code>make-pprint-journal</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#JOURNAL:MAKE-STREAMLET-FINALIZER%20GENERIC-FUNCTION" title="JOURNAL:MAKE-STREAMLET-FINALIZER GENERIC-FUNCTION"><code>make-streamlet-finalizer</code></a> <em>(gf)</em></p></li>
+<li><p><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" title="JOURNAL:MAX-N-COMPLETED (MGL-PAX:ACCESSOR JOURNAL:BUNDLE)"><code>max-n-completed</code></a> <em>(accessor bundle)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-FILE-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-FILE-BUNDLE FUNCTION"><code>make-file-bundle</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-BUNDLE FUNCTION"><code>make-in-memory-bundle</code></a></p></li>
+<li><p><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" title="JOURNAL:MAX-N-FAILED (MGL-PAX:ACCESSOR JOURNAL:BUNDLE)"><code>max-n-failed</code></a> <em>(accessor bundle)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-FILE-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-FILE-BUNDLE FUNCTION"><code>make-file-bundle</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-BUNDLE FUNCTION"><code>make-in-memory-bundle</code></a></p></li>
 <li><p><a href="#JOURNAL:OPEN-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET GENERIC-FUNCTION"><code>open-streamlet</code></a> <em>(gf)</em> ↩ <em>f</em>: <a href="#JOURNAL:CLOSE-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:CLOSE-STREAMLET GENERIC-FUNCTION"><code>close-streamlet</code></a>, <a href="#JOURNAL:INPUT-STREAMLET-P%20FUNCTION" title="JOURNAL:INPUT-STREAMLET-P FUNCTION"><code>input-streamlet-p</code></a>, <a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" title="JOURNAL:JOURNAL (MGL-PAX:READER JOURNAL:STREAMLET)"><code>journal</code></a>, <a href="#JOURNAL:OUTPUT-STREAMLET-P%20FUNCTION" title="JOURNAL:OUTPUT-STREAMLET-P FUNCTION"><code>output-streamlet-p</code></a>, <a href="#JOURNAL:WITH-OPEN-JOURNAL%20MGL-PAX:MACRO" title="JOURNAL:WITH-OPEN-JOURNAL MGL-PAX:MACRO"><code>with-open-journal</code></a></p></li>
 <li><p><a href="#JOURNAL:OPEN-STREAMLET-P%20GENERIC-FUNCTION" title="JOURNAL:OPEN-STREAMLET-P GENERIC-FUNCTION"><code>open-streamlet-p</code></a> <em>(gf)</em> ↩ <em>f</em>: <a href="#JOURNAL:READ-EVENT%20GENERIC-FUNCTION" title="JOURNAL:READ-EVENT GENERIC-FUNCTION"><code>read-event</code></a>, <a href="#JOURNAL:WRITE-EVENT%20GENERIC-FUNCTION" title="JOURNAL:WRITE-EVENT GENERIC-FUNCTION"><code>write-event</code></a></p></li>
 <li><p><a href="#JOURNAL:OUT-EVENT-P%20FUNCTION" title="JOURNAL:OUT-EVENT-P FUNCTION"><code>out-event-p</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#JOURNAL:OUTPUT-STREAMLET-P%20FUNCTION" title="JOURNAL:OUTPUT-STREAMLET-P FUNCTION"><code>output-streamlet-p</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:WRITE-EVENT%20GENERIC-FUNCTION" title="JOURNAL:WRITE-EVENT GENERIC-FUNCTION"><code>write-event</code></a></p></li>
+<li><p><a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" title="JOURNAL:PATHNAME-OF (MGL-PAX:READER JOURNAL:FILE-JOURNAL)"><code>pathname-of</code></a> <em>(reader file-journal)</em></p></li>
 <li><p><a href="#JOURNAL:PEEK-EVENT%20GENERIC-FUNCTION" title="JOURNAL:PEEK-EVENT GENERIC-FUNCTION"><code>peek-event</code></a> <em>(gf)</em></p></li>
+<li><p><a href="#JOURNAL:PEEK-EVENT%20%28METHOD%20%28JOURNAL:STREAMLET%29%29" title="JOURNAL:PEEK-EVENT (METHOD (JOURNAL:STREAMLET))"><code>peek-event</code></a> <em>(method (streamlet))</em></p></li>
 <li><p><a href="#JOURNAL:PEEK-REPLAY-EVENT%20FUNCTION" title="JOURNAL:PEEK-REPLAY-EVENT FUNCTION"><code>peek-replay-event</code></a> <em>(fn)</em> ↩ <em>d</em>: <a href="#JOURNAL:@JOURNALED-FOR-REPLAY%20MGL-PAX:SECTION" title="Journaled for replay">Journaled for replay</a>, <a href="#JOURNAL:@REPLAY-EVENT%20MGL-PAX:GLOSSARY-TERM" title="replay event">replay event</a></p></li>
 <li><p><a href="#JOURNAL:PPRINT-EVENTS%20FUNCTION" title="JOURNAL:PPRINT-EVENTS FUNCTION"><code>pprint-events</code></a> <em>(fn)</em></p>
 
@@ -4460,6 +4484,15 @@ be readable.</li>
 <li><p>↩ <em>f</em>: <a href="#JOURNAL:JTRACE%20MGL-PAX:MACRO" title="JOURNAL:JTRACE MGL-PAX:MACRO"><code>jtrace</code></a>, <a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-PRETTY*%20VARIABLE" title="JOURNAL:*TRACE-PRETTY* VARIABLE"><code>*trace-pretty*</code></a></p></li>
 </ul></li>
+<li><p><a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a> <em>(accessor pprint-journal)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a></p></li>
+<li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" title="JOURNAL:*TRACE-JOURNAL* VARIABLE"><code>*trace-journal*</code></a></p></li>
+</ul></li>
+<li><p><a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a> <em>(accessor pprint-journal)</em> ↩ <em>f</em>: <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a></p></li>
+<li><p><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-STREAM (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-stream</code></a> <em>(accessor pprint-journal)</em> ↩ <em>d</em>: <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a></p></li>
 <li><p><a href="#JOURNAL:PRETTIFY-EVENT%20FUNCTION" title="JOURNAL:PRETTIFY-EVENT FUNCTION"><code>prettify-event</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DECORATOR FUNCTION"><code>make-log-decorator</code></a>, <a href="#JOURNAL:MAKE-PPRINT-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-PPRINT-JOURNAL FUNCTION"><code>make-pprint-journal</code></a>, <a href="#JOURNAL:PPRINT-EVENTS%20FUNCTION" title="JOURNAL:PPRINT-EVENTS FUNCTION"><code>pprint-events</code></a>, <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a></p></li>
 <li><p><a href="#JOURNAL:PRINT-EVENTS%20FUNCTION" title="JOURNAL:PRINT-EVENTS FUNCTION"><code>print-events</code></a> <em>(fn)</em></p>
 
@@ -4481,6 +4514,9 @@ be readable.</li>
 <li><p>↩ <em>f</em>: <a href="#JOURNAL:DEFINE-FILE-BUNDLE-TEST%20MGL-PAX:MACRO" title="JOURNAL:DEFINE-FILE-BUNDLE-TEST MGL-PAX:MACRO"><code>define-file-bundle-test</code></a>, <a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-REPLAY-MISMATCH (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-replay-mismatch</code></a>, <a href="#JOURNAL:LIST-EVENTS%20FUNCTION" title="JOURNAL:LIST-EVENTS FUNCTION"><code>list-events</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-JOURNAL%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-JOURNAL FUNCTION"><code>make-in-memory-journal</code></a>, <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a>, <a href="#JOURNAL:WITH-BUNDLE%20MGL-PAX:MACRO" title="JOURNAL:WITH-BUNDLE MGL-PAX:MACRO"><code>with-bundle</code></a></p></li>
 <li><p>↩ <em>t</em>: <a href="#JOURNAL:END-OF-JOURNAL%20CONDITION" title="JOURNAL:END-OF-JOURNAL CONDITION"><code>end-of-journal</code></a>, <a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION"><code>journaling-failure</code></a>, <a href="#JOURNAL:REPLAY-FAILURE%20CONDITION" title="JOURNAL:REPLAY-FAILURE CONDITION"><code>replay-failure</code></a></p></li>
 </ul></li>
+<li><p><a href="#JOURNAL:REPLAY-FAILURE-NEW-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" title="JOURNAL:REPLAY-FAILURE-NEW-EVENT (MGL-PAX:READER JOURNAL:REPLAY-FAILURE)"><code>replay-failure-new-event</code></a> <em>(reader replay-failure)</em></p></li>
+<li><p><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" title="JOURNAL:REPLAY-FAILURE-REPLAY-EVENT (MGL-PAX:READER JOURNAL:REPLAY-FAILURE)"><code>replay-failure-replay-event</code></a> <em>(reader replay-failure)</em></p></li>
+<li><p><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" title="JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL (MGL-PAX:READER JOURNAL:REPLAY-FAILURE)"><code>replay-failure-replay-journal</code></a> <em>(reader replay-failure)</em></p></li>
 <li><p><a href="#JOURNAL:REPLAY-JOURNAL%20FUNCTION" title="JOURNAL:REPLAY-JOURNAL FUNCTION"><code>replay-journal</code></a> <em>(fn)</em></p>
 
 <ul>
@@ -4540,6 +4576,7 @@ be readable.</li>
 </ul></li>
 <li><p><a href="#JOURNAL:WITH-REPLAY-STREAMLET%20MGL-PAX:MACRO" title="JOURNAL:WITH-REPLAY-STREAMLET MGL-PAX:MACRO"><code>with-replay-streamlet</code></a> <em>(macro)</em></p></li>
 <li><p><a href="#JOURNAL:WRITE-EVENT%20GENERIC-FUNCTION" title="JOURNAL:WRITE-EVENT GENERIC-FUNCTION"><code>write-event</code></a> <em>(gf)</em> ↩ <em>f</em>: <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a>, <a href="#JOURNAL:SYNC-STREAMLET%20GENERIC-FUNCTION" title="JOURNAL:SYNC-STREAMLET GENERIC-FUNCTION"><code>sync-streamlet</code></a></p></li>
+<li><p><a href="#JOURNAL:WRITE-EVENT%20%28METHOD%20%28T%20JOURNAL:JOURNAL%29%29" title="JOURNAL:WRITE-EVENT (METHOD (T JOURNAL:JOURNAL))"><code>write-event</code></a> <em>(method (t journal))</em></p></li>
 <li><p><a href="#JOURNAL:WRITE-POSITION%20GENERIC-FUNCTION" title="JOURNAL:WRITE-POSITION GENERIC-FUNCTION"><code>write-position</code></a> <em>(gf)</em></p></li>
 </ul>
 
@@ -4790,43 +4827,7 @@ be readable.</li>
 <p><div class="pax-index"></p>
 
 <ul>
-<li><p><a href="#JOURNAL:DIRECTORY-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-BUNDLE%29" title="JOURNAL:DIRECTORY-OF (MGL-PAX:READER JOURNAL:FILE-BUNDLE)"><code>directory-of</code></a> <em>(reader file-bundle)</em></p></li>
 <li><p><a href="#%22journal%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;journal&quot; ASDF/SYSTEM:SYSTEM"><code>journal</code></a> <em>(asdf:system)</em></p></li>
-<li><p><a href="#JOURNAL:JOURNAL%20%28MGL-PAX:READER%20JOURNAL:STREAMLET%29" title="JOURNAL:JOURNAL (MGL-PAX:READER JOURNAL:STREAMLET)"><code>journal</code></a> <em>(reader streamlet)</em></p></li>
-<li><p><a href="#JOURNAL:JOURNAL-EVENTS%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-EVENTS (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-events</code></a> <em>(reader in-memory-journal)</em> ↩ <em>f</em>: <a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-previous-sync-position</code></a></p></li>
-<li><p><a href="#JOURNAL:JOURNAL-LOG-DECORATOR%20%28MGL-PAX:ACCESSOR%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-LOG-DECORATOR (MGL-PAX:ACCESSOR JOURNAL:JOURNAL)"><code>journal-log-decorator</code></a> <em>(accessor journal)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#JOURNAL:@DECORATION%20MGL-PAX:GLOSSARY-TERM" title="decoration">decoration</a>, <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#JOURNAL:MAKE-LOG-DECORATOR%20FUNCTION" title="JOURNAL:MAKE-LOG-DECORATOR FUNCTION"><code>make-log-decorator</code></a></p></li>
-<li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" title="JOURNAL:*TRACE-JOURNAL* VARIABLE"><code>*trace-journal*</code></a></p></li>
-</ul></li>
-<li><p><a href="#JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION%20%28MGL-PAX:READER%20JOURNAL:IN-MEMORY-JOURNAL%29" title="JOURNAL:JOURNAL-PREVIOUS-SYNC-POSITION (MGL-PAX:READER JOURNAL:IN-MEMORY-JOURNAL)"><code>journal-previous-sync-position</code></a> <em>(reader in-memory-journal)</em></p></li>
-<li><p><a href="#JOURNAL:JOURNAL-REPLAY-MISMATCH%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-REPLAY-MISMATCH (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-replay-mismatch</code></a> <em>(reader journal)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#JOURNAL:@SYNCHRONIZATION-WITH-IN-MEMORY-JOURNALS%20MGL-PAX:SECTION" title="Synchronization with in-memory journals">Synchronization with in-memory journals</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#JOURNAL:JOURNAL-DIVERGENT-P%20FUNCTION" title="JOURNAL:JOURNAL-DIVERGENT-P FUNCTION"><code>journal-divergent-p</code></a></p></li>
-</ul></li>
-<li><p><a href="#JOURNAL:JOURNAL-STATE%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-STATE (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-state</code></a> <em>(reader journal)</em></p></li>
-<li><p><a href="#JOURNAL:JOURNAL-SYNC%20%28MGL-PAX:READER%20JOURNAL:JOURNAL%29" title="JOURNAL:JOURNAL-SYNC (MGL-PAX:READER JOURNAL:JOURNAL)"><code>journal-sync</code></a> <em>(reader journal)</em> ↩ <em>f</em>: <a href="#JOURNAL:SYNC-JOURNAL%20FUNCTION" title="JOURNAL:SYNC-JOURNAL FUNCTION"><code>sync-journal</code></a></p></li>
-<li><p><a href="#JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION%20%28MGL-PAX:READER%20JOURNAL:JOURNALING-FAILURE%29" title="JOURNAL:JOURNALING-FAILURE-EMBEDDED-CONDITION (MGL-PAX:READER JOURNAL:JOURNALING-FAILURE)"><code>journaling-failure-embedded-condition</code></a> <em>(reader journaling-failure)</em> ↩ <em>t</em>: <a href="#JOURNAL:JOURNALING-FAILURE%20CONDITION" title="JOURNAL:JOURNALING-FAILURE CONDITION"><code>journaling-failure</code></a></p></li>
-<li><p><a href="#JOURNAL:MAX-N-COMPLETED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" title="JOURNAL:MAX-N-COMPLETED (MGL-PAX:ACCESSOR JOURNAL:BUNDLE)"><code>max-n-completed</code></a> <em>(accessor bundle)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-FILE-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-FILE-BUNDLE FUNCTION"><code>make-file-bundle</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-BUNDLE FUNCTION"><code>make-in-memory-bundle</code></a></p></li>
-<li><p><a href="#JOURNAL:MAX-N-FAILED%20%28MGL-PAX:ACCESSOR%20JOURNAL:BUNDLE%29" title="JOURNAL:MAX-N-FAILED (MGL-PAX:ACCESSOR JOURNAL:BUNDLE)"><code>max-n-failed</code></a> <em>(accessor bundle)</em> ↩ <em>f</em>: <a href="#JOURNAL:MAKE-FILE-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-FILE-BUNDLE FUNCTION"><code>make-file-bundle</code></a>, <a href="#JOURNAL:MAKE-IN-MEMORY-BUNDLE%20FUNCTION" title="JOURNAL:MAKE-IN-MEMORY-BUNDLE FUNCTION"><code>make-in-memory-bundle</code></a></p></li>
-<li><p><a href="#JOURNAL:PATHNAME-OF%20%28MGL-PAX:READER%20JOURNAL:FILE-JOURNAL%29" title="JOURNAL:PATHNAME-OF (MGL-PAX:READER JOURNAL:FILE-JOURNAL)"><code>pathname-of</code></a> <em>(reader file-journal)</em></p></li>
-<li><p><a href="#JOURNAL:PEEK-EVENT%20%28METHOD%20%28JOURNAL:STREAMLET%29%29" title="JOURNAL:PEEK-EVENT (METHOD (JOURNAL:STREAMLET))"><code>peek-event</code></a> <em>(method (streamlet))</em></p></li>
-<li><p><a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a> <em>(accessor pprint-journal)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a></p></li>
-<li><p>↩ <em>v</em>: <a href="#JOURNAL:*TRACE-JOURNAL*%20VARIABLE" title="JOURNAL:*TRACE-JOURNAL* VARIABLE"><code>*trace-journal*</code></a></p></li>
-</ul></li>
-<li><p><a href="#JOURNAL:PPRINT-JOURNAL-PRETTY%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTY (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-pretty</code></a> <em>(accessor pprint-journal)</em> ↩ <em>f</em>: <a href="#JOURNAL:PPRINT-JOURNAL-PRETTIFIER%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-PRETTIFIER (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-prettifier</code></a></p></li>
-<li><p><a href="#JOURNAL:PPRINT-JOURNAL-STREAM%20%28MGL-PAX:ACCESSOR%20JOURNAL:PPRINT-JOURNAL%29" title="JOURNAL:PPRINT-JOURNAL-STREAM (MGL-PAX:ACCESSOR JOURNAL:PPRINT-JOURNAL)"><code>pprint-journal-stream</code></a> <em>(accessor pprint-journal)</em> ↩ <em>d</em>: <a href="#JOURNAL:@TRACING%20MGL-PAX:SECTION" title="Tracing">Tracing</a></p></li>
-<li><p><a href="#JOURNAL:REPLAY-FAILURE-NEW-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" title="JOURNAL:REPLAY-FAILURE-NEW-EVENT (MGL-PAX:READER JOURNAL:REPLAY-FAILURE)"><code>replay-failure-new-event</code></a> <em>(reader replay-failure)</em></p></li>
-<li><p><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-EVENT%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" title="JOURNAL:REPLAY-FAILURE-REPLAY-EVENT (MGL-PAX:READER JOURNAL:REPLAY-FAILURE)"><code>replay-failure-replay-event</code></a> <em>(reader replay-failure)</em></p></li>
-<li><p><a href="#JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL%20%28MGL-PAX:READER%20JOURNAL:REPLAY-FAILURE%29" title="JOURNAL:REPLAY-FAILURE-REPLAY-JOURNAL (MGL-PAX:READER JOURNAL:REPLAY-FAILURE)"><code>replay-failure-replay-journal</code></a> <em>(reader replay-failure)</em></p></li>
 <li><p><a href="#JOURNAL:REPLAY-FORCE-INSERT%20RESTART" title="JOURNAL:REPLAY-FORCE-INSERT RESTART"><code>replay-force-insert</code></a> <em>(restart)</em></p>
 
 <ul>
@@ -4839,7 +4840,6 @@ be readable.</li>
 <li><p>↩ <em>d</em>: <a href="#JOURNAL:@UPGRADES-AND-REPLAY%20MGL-PAX:SECTION" title="Upgrades and replay">Upgrades and replay</a></p></li>
 <li><p>↩ <em>t</em>: <a href="#JOURNAL:REPLAY-ARGS-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-ARGS-MISMATCH CONDITION"><code>replay-args-mismatch</code></a>, <a href="#JOURNAL:REPLAY-NAME-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-NAME-MISMATCH CONDITION"><code>replay-name-mismatch</code></a>, <a href="#JOURNAL:REPLAY-OUTCOME-MISMATCH%20CONDITION" title="JOURNAL:REPLAY-OUTCOME-MISMATCH CONDITION"><code>replay-outcome-mismatch</code></a>, <a href="#JOURNAL:REPLAY-VERSION-DOWNGRADE%20CONDITION" title="JOURNAL:REPLAY-VERSION-DOWNGRADE CONDITION"><code>replay-version-downgrade</code></a></p></li>
 </ul></li>
-<li><p><a href="#JOURNAL:WRITE-EVENT%20%28METHOD%20%28T%20JOURNAL:JOURNAL%29%29" title="JOURNAL:WRITE-EVENT (METHOD (T JOURNAL:JOURNAL))"><code>write-event</code></a> <em>(method (t journal))</em></p></li>
 </ul>
 
 <p> </div></p>
@@ -4949,7 +4949,7 @@ be readable.</li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-28T09:05:31Z]</h6>
+<h6>[Generated 2026-10-28T16:54:30Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

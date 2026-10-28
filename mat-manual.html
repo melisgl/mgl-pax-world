@@ -2529,8 +2529,17 @@ instead.</p>
 <li><p><a href="#MGL-MAT:.COSH%21%20FUNCTION" title="MGL-MAT:.COSH! FUNCTION"><code>.cosh!</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:CUBLAS-CREATE%20FUNCTION" title="MGL-MAT:CUBLAS-CREATE FUNCTION"><code>cublas-create</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:CUBLAS-DESTROY%20FUNCTION" title="MGL-MAT:CUBLAS-DESTROY FUNCTION"><code>cublas-destroy</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" title="MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME (MGL-PAX:READER MGL-MAT:CUBLAS-ERROR)"><code>cublas-error-function-name</code></a> <em>(reader cublas-error)</em></p></li>
+<li><p><a href="#MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" title="MGL-MAT:CUBLAS-ERROR-STATUS (MGL-PAX:READER MGL-MAT:CUBLAS-ERROR)"><code>cublas-error-status</code></a> <em>(reader cublas-error)</em></p></li>
 <li><p><a href="#MGL-MAT:CUBLAS-GET-VERSION%20FUNCTION" title="MGL-MAT:CUBLAS-GET-VERSION FUNCTION"><code>cublas-get-version</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:CUDA-AVAILABLE-P%20FUNCTION" title="MGL-MAT:CUDA-AVAILABLE-P FUNCTION"><code>cuda-available-p</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a> <em>(accessor mat)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">CUDA Memory Management</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a></p></li>
+<li><p>↩ <em>v</em>: <a href="#MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* VARIABLE"><code>*default-mat-cuda-enabled*</code></a></p></li>
+</ul></li>
 <li><p><a href="#MGL-MAT:CUDA-ROOM%20FUNCTION" title="MGL-MAT:CUDA-ROOM FUNCTION"><code>cuda-room</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-MAT:MAT-ROOM%20FUNCTION" title="MGL-MAT:MAT-ROOM FUNCTION"><code>mat-room</code></a></p></li>
 <li><p><a href="#MGL-MAT:DEFINE-CUDA-KERNEL%20MGL-PAX:MACRO" title="MGL-MAT:DEFINE-CUDA-KERNEL MGL-PAX:MACRO"><code>define-cuda-kernel</code></a> <em>(macro)</em> ↩ <em>f</em>: <a href="#MGL-MAT:DEFINE-LISP-KERNEL%20MGL-PAX:MACRO" title="MGL-MAT:DEFINE-LISP-KERNEL MGL-PAX:MACRO"><code>define-lisp-kernel</code></a></p></li>
 <li><p><a href="#MGL-MAT:DEFINE-LISP-KERNEL%20MGL-PAX:MACRO" title="MGL-MAT:DEFINE-LISP-KERNEL MGL-PAX:MACRO"><code>define-lisp-kernel</code></a> <em>(macro)</em></p></li>
@@ -2562,9 +2571,20 @@ instead.</p>
 <li><p><a href="#MGL-MAT:MAP-DISPLACEMENTS%20FUNCTION" title="MGL-MAT:MAP-DISPLACEMENTS FUNCTION"><code>map-displacements</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:MAP-MATS-INTO%20FUNCTION" title="MGL-MAT:MAP-MATS-INTO FUNCTION"><code>map-mats-into</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:MAT-AS-SCALAR%20FUNCTION" title="MGL-MAT:MAT-AS-SCALAR FUNCTION"><code>mat-as-scalar</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-CTYPE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-ctype</code></a> <em>(reader mat)</em> ↩ <em>v</em>: <a href="#MGL-MAT:*MAT-HEADERS*%20VARIABLE" title="MGL-MAT:*MAT-HEADERS* VARIABLE"><code>*mat-headers*</code></a></p></li>
 <li><p><a href="#MGL-MAT:MAT-DIMENSION%20FUNCTION" title="MGL-MAT:MAT-DIMENSION FUNCTION"><code>mat-dimension</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-dimensions</code></a> <em>(reader mat)</em> ↩ <em>f</em>: <a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a></p></li>
+<li><p><a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-displacement</code></a> <em>(reader mat)</em> ↩ <em>d</em>: <a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">Comparison to Lisp Arrays</a></p></li>
+<li><p><a href="#MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-INITIAL-ELEMENT (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-initial-element</code></a> <em>(reader mat)</em></p></li>
+<li><p><a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a> <em>(reader mat)</em> ↩ <em>f</em>: <a href="#MGL-MAT:RESHAPE-AND-DISPLACE%21%20FUNCTION" title="MGL-MAT:RESHAPE-AND-DISPLACE! FUNCTION"><code>reshape-and-displace!</code></a></p></li>
 <li><p><a href="#MGL-MAT:MAT-ROOM%20FUNCTION" title="MGL-MAT:MAT-ROOM FUNCTION"><code>mat-room</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:MAT-ROW-MAJOR-INDEX%20FUNCTION" title="MGL-MAT:MAT-ROW-MAJOR-INDEX FUNCTION"><code>mat-row-major-index</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a> <em>(reader mat)</em></p>
+
+<ul>
+<li><p>↩ <em>f</em>: <a href="#MGL-MAT:ASUM%20FUNCTION" title="MGL-MAT:ASUM FUNCTION"><code>asum</code></a>, <a href="#MGL-MAT:AXPY%21%20FUNCTION" title="MGL-MAT:AXPY! FUNCTION"><code>axpy!</code></a>, <a href="#MGL-MAT:COPY%21%20FUNCTION" title="MGL-MAT:COPY! FUNCTION"><code>copy!</code></a>, <a href="#MGL-MAT:.COS%21%20FUNCTION" title="MGL-MAT:.COS! FUNCTION"><code>.cos!</code></a>, <a href="#MGL-MAT:.COSH%21%20FUNCTION" title="MGL-MAT:.COSH! FUNCTION"><code>.cosh!</code></a>, <a href="#CL-CUDA.LANG.BUILT-IN:DOT%20FUNCTION" title="CL-CUDA.LANG.BUILT-IN:DOT FUNCTION"><code>dot</code></a> [<code>cl-cuda.lang.built-in</code>], <a href="#MGL-MAT:.EXP%21%20FUNCTION" title="MGL-MAT:.EXP! FUNCTION"><code>.exp!</code></a>, <a href="#MGL-MAT:FILL%21%20FUNCTION" title="MGL-MAT:FILL! FUNCTION"><code>fill!</code></a>, <a href="#MGL-MAT:.INV%21%20FUNCTION" title="MGL-MAT:.INV! FUNCTION"><code>.inv!</code></a>, <a href="#MGL-MAT:.LOG%21%20FUNCTION" title="MGL-MAT:.LOG! FUNCTION"><code>.log!</code></a>, <a href="#MGL-MAT:.LOGISTIC%21%20FUNCTION" title="MGL-MAT:.LOGISTIC! FUNCTION"><code>.logistic!</code></a>, <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a>, <a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a>, <a href="#MGL-MAT:NRM2%20FUNCTION" title="MGL-MAT:NRM2 FUNCTION"><code>nrm2</code></a>, <a href="#MGL-MAT:READ-MAT%20GENERIC-FUNCTION" title="MGL-MAT:READ-MAT GENERIC-FUNCTION"><code>read-mat</code></a>, <a href="#MGL-MAT:SCAL%21%20FUNCTION" title="MGL-MAT:SCAL! FUNCTION"><code>scal!</code></a>, <a href="#MGL-MAT:.SIN%21%20FUNCTION" title="MGL-MAT:.SIN! FUNCTION"><code>.sin!</code></a>, <a href="#MGL-MAT:.SINH%21%20FUNCTION" title="MGL-MAT:.SINH! FUNCTION"><code>.sinh!</code></a>, <a href="#MGL-MAT:.SQRT%21%20FUNCTION" title="MGL-MAT:.SQRT! FUNCTION"><code>.sqrt!</code></a>, <a href="#MGL-MAT:.SQUARE%21%20FUNCTION" title="MGL-MAT:.SQUARE! FUNCTION"><code>.square!</code></a>, <a href="#MGL-MAT:.TAN%21%20FUNCTION" title="MGL-MAT:.TAN! FUNCTION"><code>.tan!</code></a>, <a href="#MGL-MAT:.TANH%21%20FUNCTION" title="MGL-MAT:.TANH! FUNCTION"><code>.tanh!</code></a></p></li>
+<li><p>↩ <em>v</em>: <a href="#MGL-MAT:*MAT-HEADERS*%20VARIABLE" title="MGL-MAT:*MAT-HEADERS* VARIABLE"><code>*mat-headers*</code></a></p></li>
+</ul></li>
 <li><p><a href="#MGL-MAT:MAT-TO-ARRAY%20FUNCTION" title="MGL-MAT:MAT-TO-ARRAY FUNCTION"><code>mat-to-array</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:.MAX%21%20FUNCTION" title="MGL-MAT:.MAX! FUNCTION"><code>.max!</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:MAX-POOL%21%20FUNCTION" title="MGL-MAT:MAX-POOL! FUNCTION"><code>max-pool!</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-MAT:DERIVE-MAX-POOL%21%20FUNCTION" title="MGL-MAT:DERIVE-MAX-POOL! FUNCTION"><code>derive-max-pool!</code></a></p></li>
@@ -2572,6 +2592,7 @@ instead.</p>
 <li><p><a href="#MGL-MAT:MM*%20FUNCTION" title="MGL-MAT:MM* FUNCTION"><code>mm*</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:MREF%20FUNCTION" title="MGL-MAT:MREF FUNCTION"><code>mref</code></a> <em>(fn)</em> ↩ <em>d</em>: <a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p><a href="#MGL-MAT:MV-GAUSSIAN-RANDOM%20FUNCTION" title="MGL-MAT:MV-GAUSSIAN-RANDOM FUNCTION"><code>mv-gaussian-random</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" title="MGL-MAT:N-STATES (MGL-PAX:READER MGL-MAT:CURAND-XORWOW-STATE)"><code>n-states</code></a> <em>(reader curand-xorwow-state)</em></p></li>
 <li><p><a href="#MGL-MAT:NRM2%20FUNCTION" title="MGL-MAT:NRM2 FUNCTION"><code>nrm2</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:ORTHOGONAL-RANDOM%21%20FUNCTION" title="MGL-MAT:ORTHOGONAL-RANDOM! FUNCTION"><code>orthogonal-random!</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:PINNING-SUPPORTED-P%20FUNCTION" title="MGL-MAT:PINNING-SUPPORTED-P FUNCTION"><code>pinning-supported-p</code></a> <em>(fn)</em> ↩ <em>v</em>: <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a></p></li>
@@ -2593,6 +2614,7 @@ instead.</p>
 <li><p><a href="#MGL-MAT:.SQUARE%21%20FUNCTION" title="MGL-MAT:.SQUARE! FUNCTION"><code>.square!</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:STACK%20FUNCTION" title="MGL-MAT:STACK FUNCTION"><code>stack</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:STACK%21%20FUNCTION" title="MGL-MAT:STACK! FUNCTION"><code>stack!</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-MAT:STACK%20FUNCTION" title="MGL-MAT:STACK FUNCTION"><code>stack</code></a></p></li>
+<li><p><a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" title="MGL-MAT:STATES (MGL-PAX:READER MGL-MAT:CURAND-XORWOW-STATE)"><code>states</code></a> <em>(reader curand-xorwow-state)</em></p></li>
 <li><p><a href="#MGL-MAT:SUM%21%20FUNCTION" title="MGL-MAT:SUM! FUNCTION"><code>sum!</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:.TAN%21%20FUNCTION" title="MGL-MAT:.TAN! FUNCTION"><code>.tan!</code></a> <em>(fn)</em></p></li>
 <li><p><a href="#MGL-MAT:.TANH%21%20FUNCTION" title="MGL-MAT:.TANH! FUNCTION"><code>.tanh!</code></a> <em>(fn)</em></p></li>
@@ -2725,8 +2747,6 @@ instead.</p>
 <li><p>↩ <em>f</em>: <a href="#MGL-MAT:MREF%20FUNCTION" title="MGL-MAT:MREF FUNCTION"><code>mref</code></a>, <a href="#MGL-MAT:ROW-MAJOR-MREF%20FUNCTION" title="MGL-MAT:ROW-MAJOR-MREF FUNCTION"><code>row-major-mref</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a>, <a href="#MGL-MAT:*PRINT-MAT-FACETS*%20VARIABLE" title="MGL-MAT:*PRINT-MAT-FACETS* VARIABLE"><code>*print-mat-facets*</code></a></p></li>
 </ul></li>
-<li><p><a href="#MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" title="MGL-MAT:CUBLAS-ERROR-FUNCTION-NAME (MGL-PAX:READER MGL-MAT:CUBLAS-ERROR)"><code>cublas-error-function-name</code></a> <em>(reader cublas-error)</em></p></li>
-<li><p><a href="#MGL-MAT:CUBLAS-ERROR-STATUS%20%28MGL-PAX:READER%20MGL-MAT:CUBLAS-ERROR%29" title="MGL-MAT:CUBLAS-ERROR-STATUS (MGL-PAX:READER MGL-MAT:CUBLAS-ERROR)"><code>cublas-error-status</code></a> <em>(reader cublas-error)</em></p></li>
 <li><p><a href="#MGL-MAT:CUDA-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-array</code></a> <em>(facet-name)</em></p>
 
 <ul>
@@ -2734,13 +2754,6 @@ instead.</p>
 <li><p>↩ <em>d</em>: <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">CUDA Memory Management</a>, <a href="#MGL-MAT:@MAT-DEBUGGING%20MGL-PAX:SECTION" title="Debugging">Debugging</a>, <a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p>↩ <em>f</em>: <a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a>, <a href="#MGL-MAT:MREF%20FUNCTION" title="MGL-MAT:MREF FUNCTION"><code>mref</code></a>, <a href="#MGL-MAT:ROW-MAJOR-MREF%20FUNCTION" title="MGL-MAT:ROW-MAJOR-MREF FUNCTION"><code>row-major-mref</code></a>, <a href="#MGL-MAT:WITH-CUDA*%20MGL-PAX:MACRO" title="MGL-MAT:WITH-CUDA* MGL-PAX:MACRO"><code>with-cuda*</code></a>, <a href="#MGL-MAT:WITH-SYNCING-CUDA-FACETS%20MGL-PAX:MACRO" title="MGL-MAT:WITH-SYNCING-CUDA-FACETS MGL-PAX:MACRO"><code>with-syncing-cuda-facets</code></a></p></li>
 <li><p>↩ <em>v</em>: <a href="#MGL-MAT:*FOREIGN-ARRAY-STRATEGY*%20VARIABLE" title="MGL-MAT:*FOREIGN-ARRAY-STRATEGY* VARIABLE"><code>*foreign-array-strategy*</code></a>, <a href="#MGL-MAT:*PRINT-MAT-FACETS*%20VARIABLE" title="MGL-MAT:*PRINT-MAT-FACETS* VARIABLE"><code>*print-mat-facets*</code></a></p></li>
-</ul></li>
-<li><p><a href="#MGL-MAT:CUDA-ENABLED%20%28MGL-PAX:ACCESSOR%20MGL-MAT:MAT%29" title="MGL-MAT:CUDA-ENABLED (MGL-PAX:ACCESSOR MGL-MAT:MAT)"><code>cuda-enabled</code></a> <em>(accessor mat)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#MGL-MAT:@MAT-CUDA-MEMORY-MANAGEMENT%20MGL-PAX:SECTION" title="CUDA Memory Management">CUDA Memory Management</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-MAT:USE-CUDA-P%20FUNCTION" title="MGL-MAT:USE-CUDA-P FUNCTION"><code>use-cuda-p</code></a></p></li>
-<li><p>↩ <em>v</em>: <a href="#MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED*%20VARIABLE" title="MGL-MAT:*DEFAULT-MAT-CUDA-ENABLED* VARIABLE"><code>*default-mat-cuda-enabled*</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-MAT:CUDA-HOST-ARRAY%20MGL-CUBE:FACET-NAME" title="MGL-MAT:CUDA-HOST-ARRAY MGL-CUBE:FACET-NAME"><code>cuda-host-array</code></a> <em>(facet-name)</em></p>
 
@@ -2755,24 +2768,11 @@ instead.</p>
 <li><p>↩ <em>d</em>: <a href="#MGL-MAT:@MAT-FACETS%20MGL-PAX:SECTION" title="Facets">Facets</a>, <a href="#MGL-MAT:@MAT-FOREIGN%20MGL-PAX:SECTION" title="Foreign arrays">Foreign arrays</a>, <a href="#MGL-MAT:@MAT-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p>↩ <em>v</em>: <a href="#MGL-MAT:*PRINT-MAT-FACETS*%20VARIABLE" title="MGL-MAT:*PRINT-MAT-FACETS* VARIABLE"><code>*print-mat-facets*</code></a></p></li>
 </ul></li>
-<li><p><a href="#MGL-MAT:MAT-CTYPE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-CTYPE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-ctype</code></a> <em>(reader mat)</em> ↩ <em>v</em>: <a href="#MGL-MAT:*MAT-HEADERS*%20VARIABLE" title="MGL-MAT:*MAT-HEADERS* VARIABLE"><code>*mat-headers*</code></a></p></li>
-<li><p><a href="#MGL-MAT:MAT-DIMENSIONS%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DIMENSIONS (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-dimensions</code></a> <em>(reader mat)</em> ↩ <em>f</em>: <a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a></p></li>
-<li><p><a href="#MGL-MAT:MAT-DISPLACEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-DISPLACEMENT (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-displacement</code></a> <em>(reader mat)</em> ↩ <em>d</em>: <a href="#MGL-MAT:@MAT-SHAPING-COMPARISON-TO-LISP%20MGL-PAX:SECTION" title="Comparison to Lisp Arrays">Comparison to Lisp Arrays</a></p></li>
-<li><p><a href="#MGL-MAT:MAT-INITIAL-ELEMENT%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-INITIAL-ELEMENT (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-initial-element</code></a> <em>(reader mat)</em></p></li>
-<li><p><a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a> <em>(reader mat)</em> ↩ <em>f</em>: <a href="#MGL-MAT:RESHAPE-AND-DISPLACE%21%20FUNCTION" title="MGL-MAT:RESHAPE-AND-DISPLACE! FUNCTION"><code>reshape-and-displace!</code></a></p></li>
-<li><p><a href="#MGL-MAT:MAT-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-size</code></a> <em>(reader mat)</em></p>
-
-<ul>
-<li><p>↩ <em>f</em>: <a href="#MGL-MAT:ASUM%20FUNCTION" title="MGL-MAT:ASUM FUNCTION"><code>asum</code></a>, <a href="#MGL-MAT:AXPY%21%20FUNCTION" title="MGL-MAT:AXPY! FUNCTION"><code>axpy!</code></a>, <a href="#MGL-MAT:COPY%21%20FUNCTION" title="MGL-MAT:COPY! FUNCTION"><code>copy!</code></a>, <a href="#MGL-MAT:.COS%21%20FUNCTION" title="MGL-MAT:.COS! FUNCTION"><code>.cos!</code></a>, <a href="#MGL-MAT:.COSH%21%20FUNCTION" title="MGL-MAT:.COSH! FUNCTION"><code>.cosh!</code></a>, <a href="#CL-CUDA.LANG.BUILT-IN:DOT%20FUNCTION" title="CL-CUDA.LANG.BUILT-IN:DOT FUNCTION"><code>dot</code></a> [<code>cl-cuda.lang.built-in</code>], <a href="#MGL-MAT:.EXP%21%20FUNCTION" title="MGL-MAT:.EXP! FUNCTION"><code>.exp!</code></a>, <a href="#MGL-MAT:FILL%21%20FUNCTION" title="MGL-MAT:FILL! FUNCTION"><code>fill!</code></a>, <a href="#MGL-MAT:.INV%21%20FUNCTION" title="MGL-MAT:.INV! FUNCTION"><code>.inv!</code></a>, <a href="#MGL-MAT:.LOG%21%20FUNCTION" title="MGL-MAT:.LOG! FUNCTION"><code>.log!</code></a>, <a href="#MGL-MAT:.LOGISTIC%21%20FUNCTION" title="MGL-MAT:.LOGISTIC! FUNCTION"><code>.logistic!</code></a>, <a href="#MGL-MAT:MAKE-MAT%20FUNCTION" title="MGL-MAT:MAKE-MAT FUNCTION"><code>make-mat</code></a>, <a href="#MGL-MAT:MAT-MAX-SIZE%20%28MGL-PAX:READER%20MGL-MAT:MAT%29" title="MGL-MAT:MAT-MAX-SIZE (MGL-PAX:READER MGL-MAT:MAT)"><code>mat-max-size</code></a>, <a href="#MGL-MAT:NRM2%20FUNCTION" title="MGL-MAT:NRM2 FUNCTION"><code>nrm2</code></a>, <a href="#MGL-MAT:READ-MAT%20GENERIC-FUNCTION" title="MGL-MAT:READ-MAT GENERIC-FUNCTION"><code>read-mat</code></a>, <a href="#MGL-MAT:SCAL%21%20FUNCTION" title="MGL-MAT:SCAL! FUNCTION"><code>scal!</code></a>, <a href="#MGL-MAT:.SIN%21%20FUNCTION" title="MGL-MAT:.SIN! FUNCTION"><code>.sin!</code></a>, <a href="#MGL-MAT:.SINH%21%20FUNCTION" title="MGL-MAT:.SINH! FUNCTION"><code>.sinh!</code></a>, <a href="#MGL-MAT:.SQRT%21%20FUNCTION" title="MGL-MAT:.SQRT! FUNCTION"><code>.sqrt!</code></a>, <a href="#MGL-MAT:.SQUARE%21%20FUNCTION" title="MGL-MAT:.SQUARE! FUNCTION"><code>.square!</code></a>, <a href="#MGL-MAT:.TAN%21%20FUNCTION" title="MGL-MAT:.TAN! FUNCTION"><code>.tan!</code></a>, <a href="#MGL-MAT:.TANH%21%20FUNCTION" title="MGL-MAT:.TANH! FUNCTION"><code>.tanh!</code></a></p></li>
-<li><p>↩ <em>v</em>: <a href="#MGL-MAT:*MAT-HEADERS*%20VARIABLE" title="MGL-MAT:*MAT-HEADERS* VARIABLE"><code>*mat-headers*</code></a></p></li>
-</ul></li>
 <li><p><a href="#%22mgl-mat%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-mat&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-mat</code></a> <em>(asdf:system)</em></p></li>
-<li><p><a href="#MGL-MAT:N-STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" title="MGL-MAT:N-STATES (MGL-PAX:READER MGL-MAT:CURAND-XORWOW-STATE)"><code>n-states</code></a> <em>(reader curand-xorwow-state)</em></p></li>
-<li><p><a href="#MGL-MAT:STATES%20%28MGL-PAX:READER%20MGL-MAT:CURAND-XORWOW-STATE%29" title="MGL-MAT:STATES (MGL-PAX:READER MGL-MAT:CURAND-XORWOW-STATE)"><code>states</code></a> <em>(reader curand-xorwow-state)</em></p></li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-28T09:05:31Z]</h6>
+<h6>[Generated 2026-10-28T16:54:30Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

@@ -1004,14 +1004,49 @@ specify <a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFF
 <li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-BASICS%20MGL-PAX:SECTION" title="Basics">Basics</a>, <a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">Training</a>, <a href="#MGL-GPR:@GPR-GP-TUTORIAL%20MGL-PAX:SECTION" title="Tutorial">Tutorial</a></p></li>
 <li><p>↩ <em>f</em>: <a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:GENERATION-COUNTER (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>generation-counter</code></a></p></li>
 </ul></li>
+<li><p><a href="#MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" title="MGL-GPR:ARGUMENT-TYPES (MGL-PAX:READER MGL-GPR:OPERATOR)"><code>argument-types</code></a> <em>(reader operator)</em> ↩ <em>f</em>: <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a></p></li>
+<li><p><a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" title="MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL)"><code>builder</code></a> <em>(reader literal)</em> ↩ <em>t</em>: <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a></p></li>
+<li><p><a href="#MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:COPY-CHANCE (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>copy-chance</code></a> <em>(accessor genetic-programming)</em></p></li>
 <li><p><a href="#MGL-GPR:COUNT-NODES%20FUNCTION" title="MGL-GPR:COUNT-NODES FUNCTION"><code>count-nodes</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a></p></li>
+<li><p><a href="#MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:CREATE-INDIVIDUAL-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>create-individual-fn</code></a> <em>(reader differential-evolution)</em> ↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
+<li><p><a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:CROSSOVER-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>crossover-fn</code></a> <em>(reader differential-evolution)</em></p></li>
 <li><p><a href="#MGL-GPR:CROSSOVER%2FBINARY%20FUNCTION" title="MGL-GPR:CROSSOVER/BINARY FUNCTION"><code>crossover/binary</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:CROSSOVER-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>crossover-fn</code></a></p></li>
+<li><p><a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a> <em>(reader evolutionary-algorithm)</em></p>
+
+<ul>
+<li><p>↩ <em>f</em>: <a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITNESS-KEY (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fitness-key</code></a>, <a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:MASS-EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>mass-evaluator</code></a></p></li>
+<li><p>↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
+</ul></li>
+<li><p><a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITNESS-KEY (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fitness-key</code></a> <em>(reader evolutionary-algorithm)</em></p></li>
+<li><p><a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest</code></a> <em>(reader evolutionary-algorithm)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">Training</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST-CHANGED-FN (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest-changed-fn</code></a></p></li>
+</ul></li>
+<li><p><a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST-CHANGED-FN (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest-changed-fn</code></a> <em>(accessor evolutionary-algorithm)</em></p></li>
+<li><p><a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:GENERATION-COUNTER (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>generation-counter</code></a> <em>(reader evolutionary-algorithm)</em></p></li>
 <li><p><a href="#MGL-GPR:HOLD-TOURNAMENT%20FUNCTION" title="MGL-GPR:HOLD-TOURNAMENT FUNCTION"><code>hold-tournament</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>selector</code></a></p></li>
+<li><p><a href="#MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:KEEP-FITTEST-P (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>keep-fittest-p</code></a> <em>(accessor genetic-programming)</em></p></li>
 <li><p><a href="#MGL-GPR:LITERAL%20MGL-PAX:MACRO" title="MGL-GPR:LITERAL MGL-PAX:MACRO"><code>literal</code></a> <em>(macro)</em> ↩ <em>t</em>: <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a></p></li>
+<li><p><a href="#MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:LITERALS (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>literals</code></a> <em>(reader genetic-programming)</em></p></li>
+<li><p><a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MAP-WEIGHTS-INTO-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>map-weights-into-fn</code></a> <em>(reader differential-evolution)</em> ↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
+<li><p><a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:MASS-EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>mass-evaluator</code></a> <em>(reader evolutionary-algorithm)</em> ↩ <em>f</em>: <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a></p></li>
+<li><p><a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MUTATE-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>mutate-fn</code></a> <em>(reader differential-evolution)</em></p></li>
 <li><p><a href="#MGL-GPR:MUTATE%2FBEST%2F1%20FUNCTION" title="MGL-GPR:MUTATE/BEST/1 FUNCTION"><code>mutate/best/1</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MUTATE-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>mutate-fn</code></a></p></li>
 <li><p><a href="#MGL-GPR:MUTATE%2FCURRENT-TO-BEST%2F2%20FUNCTION" title="MGL-GPR:MUTATE/CURRENT-TO-BEST/2 FUNCTION"><code>mutate/current-to-best/2</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MUTATE-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>mutate-fn</code></a></p></li>
 <li><p><a href="#MGL-GPR:MUTATE%2FRAND%2F1%20FUNCTION" title="MGL-GPR:MUTATE/RAND/1 FUNCTION"><code>mutate/rand/1</code></a> <em>(fn)</em> ↩ <em>f</em>: <a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MUTATE-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>mutate-fn</code></a></p></li>
+<li><p><a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:MUTATION-CHANCE (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>mutation-chance</code></a> <em>(accessor genetic-programming)</em></p></li>
+<li><p><a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" title="MGL-GPR:NAME (MGL-PAX:READER MGL-GPR:OPERATOR)"><code>name</code></a> <em>(reader operator)</em> ↩ <em>t</em>: <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a></p></li>
 <li><p><a href="#MGL-GPR:OPERATOR%20MGL-PAX:MACRO" title="MGL-GPR:OPERATOR MGL-PAX:MACRO"><code>operator</code></a> <em>(macro)</em> ↩ <em>t</em>: <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a></p></li>
+<li><p><a href="#MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:OPERATORS (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>operators</code></a> <em>(reader genetic-programming)</em></p></li>
+<li><p><a href="#MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:POPULATION (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>population</code></a> <em>(accessor evolutionary-algorithm)</em> ↩ <em>f</em>: <a href="#MGL-GPR:ADD-INDIVIDUAL%20FUNCTION" title="MGL-GPR:ADD-INDIVIDUAL FUNCTION"><code>add-individual</code></a>, <a href="#MGL-GPR:ADVANCE%20GENERIC-FUNCTION" title="MGL-GPR:ADVANCE GENERIC-FUNCTION"><code>advance</code></a></p></li>
+<li><p><a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:POPULATION-SIZE (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>population-size</code></a> <em>(accessor evolutionary-algorithm)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">Environment</a></p></li>
+<li><p>↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
+</ul></li>
 <li><p><a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a> <em>(fn)</em></p>
 
 <ul>
@@ -1020,7 +1055,17 @@ specify <a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFF
 <li><p>↩ <em>t</em>: <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a></p></li>
 </ul></li>
 <li><p><a href="#MGL-GPR:RANDOM-GP-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-GP-EXPRESSION FUNCTION"><code>random-gp-expression</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>randomizer</code></a> <em>(reader genetic-programming)</em></p>
+
+<ul>
+<li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">Reproduction</a></p></li>
+<li><p>↩ <em>f</em>: <a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:MUTATION-CHANCE (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>mutation-chance</code></a>, <a href="#MGL-GPR:RANDOM-GP-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-GP-EXPRESSION FUNCTION"><code>random-gp-expression</code></a></p></li>
+</ul></li>
+<li><p><a href="#MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" title="MGL-GPR:RESULT-TYPE (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"><code>result-type</code></a> <em>(reader expression-class)</em> ↩ <em>f</em>: <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a></p></li>
 <li><p><a href="#MGL-GPR:SELECT-DISTINCT-RANDOM-NUMBERS%20FUNCTION" title="MGL-GPR:SELECT-DISTINCT-RANDOM-NUMBERS FUNCTION"><code>select-distinct-random-numbers</code></a> <em>(fn)</em></p></li>
+<li><p><a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>selector</code></a> <em>(reader genetic-programming)</em> ↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">Reproduction</a></p></li>
+<li><p><a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:TOPLEVEL-TYPE (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>toplevel-type</code></a> <em>(reader genetic-programming)</em> ↩ <em>f</em>: <a href="#MGL-GPR:RANDOM-GP-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-GP-EXPRESSION FUNCTION"><code>random-gp-expression</code></a></p></li>
+<li><p><a href="#MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" title="MGL-GPR:WEIGHT (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"><code>weight</code></a> <em>(reader expression-class)</em> ↩ <em>f</em>: <a href="#MGL-GPR:LITERAL%20MGL-PAX:MACRO" title="MGL-GPR:LITERAL MGL-PAX:MACRO"><code>literal</code></a>, <a href="#MGL-GPR:OPERATOR%20MGL-PAX:MACRO" title="MGL-GPR:OPERATOR MGL-PAX:MACRO"><code>operator</code></a>, <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a></p></li>
 </ul>
 
 <p> </div></p>
@@ -1061,56 +1106,11 @@ specify <a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFF
 <p><div class="pax-index"></p>
 
 <ul>
-<li><p><a href="#MGL-GPR:ARGUMENT-TYPES%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" title="MGL-GPR:ARGUMENT-TYPES (MGL-PAX:READER MGL-GPR:OPERATOR)"><code>argument-types</code></a> <em>(reader operator)</em> ↩ <em>f</em>: <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a></p></li>
-<li><p><a href="#MGL-GPR:BUILDER%20%28MGL-PAX:READER%20MGL-GPR:LITERAL%29" title="MGL-GPR:BUILDER (MGL-PAX:READER MGL-GPR:LITERAL)"><code>builder</code></a> <em>(reader literal)</em> ↩ <em>t</em>: <a href="#MGL-GPR:LITERAL%20CLASS" title="MGL-GPR:LITERAL CLASS"><code>literal</code></a></p></li>
-<li><p><a href="#MGL-GPR:COPY-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:COPY-CHANCE (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>copy-chance</code></a> <em>(accessor genetic-programming)</em></p></li>
-<li><p><a href="#MGL-GPR:CREATE-INDIVIDUAL-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:CREATE-INDIVIDUAL-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>create-individual-fn</code></a> <em>(reader differential-evolution)</em> ↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
-<li><p><a href="#MGL-GPR:CROSSOVER-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:CROSSOVER-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>crossover-fn</code></a> <em>(reader differential-evolution)</em></p></li>
-<li><p><a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a> <em>(reader evolutionary-algorithm)</em></p>
-
-<ul>
-<li><p>↩ <em>f</em>: <a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITNESS-KEY (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fitness-key</code></a>, <a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:MASS-EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>mass-evaluator</code></a></p></li>
-<li><p>↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
-</ul></li>
-<li><p><a href="#MGL-GPR:FITNESS-KEY%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITNESS-KEY (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fitness-key</code></a> <em>(reader evolutionary-algorithm)</em></p></li>
-<li><p><a href="#MGL-GPR:FITTEST%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest</code></a> <em>(reader evolutionary-algorithm)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-EA-TRAINING%20MGL-PAX:SECTION" title="Training">Training</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST-CHANGED-FN (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest-changed-fn</code></a></p></li>
-</ul></li>
-<li><p><a href="#MGL-GPR:FITTEST-CHANGED-FN%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:FITTEST-CHANGED-FN (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>fittest-changed-fn</code></a> <em>(accessor evolutionary-algorithm)</em></p></li>
-<li><p><a href="#MGL-GPR:GENERATION-COUNTER%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:GENERATION-COUNTER (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>generation-counter</code></a> <em>(reader evolutionary-algorithm)</em></p></li>
-<li><p><a href="#MGL-GPR:KEEP-FITTEST-P%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:KEEP-FITTEST-P (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>keep-fittest-p</code></a> <em>(accessor genetic-programming)</em></p></li>
-<li><p><a href="#MGL-GPR:LITERALS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:LITERALS (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>literals</code></a> <em>(reader genetic-programming)</em></p></li>
-<li><p><a href="#MGL-GPR:MAP-WEIGHTS-INTO-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MAP-WEIGHTS-INTO-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>map-weights-into-fn</code></a> <em>(reader differential-evolution)</em> ↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
-<li><p><a href="#MGL-GPR:MASS-EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:MASS-EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>mass-evaluator</code></a> <em>(reader evolutionary-algorithm)</em> ↩ <em>f</em>: <a href="#MGL-GPR:EVALUATOR%20%28MGL-PAX:READER%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:EVALUATOR (MGL-PAX:READER MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>evaluator</code></a></p></li>
-<li><p><a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-gpr&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-gpr</code></a> <em>(asdf:system)</em></p></li>
-<li><p><a href="#MGL-GPR:MUTATE-FN%20%28MGL-PAX:READER%20MGL-GPR:DIFFERENTIAL-EVOLUTION%29" title="MGL-GPR:MUTATE-FN (MGL-PAX:READER MGL-GPR:DIFFERENTIAL-EVOLUTION)"><code>mutate-fn</code></a> <em>(reader differential-evolution)</em></p></li>
-<li><p><a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:MUTATION-CHANCE (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>mutation-chance</code></a> <em>(accessor genetic-programming)</em></p></li>
-<li><p><a href="#MGL-GPR:NAME%20%28MGL-PAX:READER%20MGL-GPR:OPERATOR%29" title="MGL-GPR:NAME (MGL-PAX:READER MGL-GPR:OPERATOR)"><code>name</code></a> <em>(reader operator)</em> ↩ <em>t</em>: <a href="#MGL-GPR:OPERATOR%20CLASS" title="MGL-GPR:OPERATOR CLASS"><code>operator</code></a></p></li>
-<li><p><a href="#MGL-GPR:OPERATORS%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:OPERATORS (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>operators</code></a> <em>(reader genetic-programming)</em></p></li>
-<li><p><a href="#MGL-GPR:POPULATION%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:POPULATION (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>population</code></a> <em>(accessor evolutionary-algorithm)</em> ↩ <em>f</em>: <a href="#MGL-GPR:ADD-INDIVIDUAL%20FUNCTION" title="MGL-GPR:ADD-INDIVIDUAL FUNCTION"><code>add-individual</code></a>, <a href="#MGL-GPR:ADVANCE%20GENERIC-FUNCTION" title="MGL-GPR:ADVANCE GENERIC-FUNCTION"><code>advance</code></a></p></li>
-<li><p><a href="#MGL-GPR:POPULATION-SIZE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:EVOLUTIONARY-ALGORITHM%29" title="MGL-GPR:POPULATION-SIZE (MGL-PAX:ACCESSOR MGL-GPR:EVOLUTIONARY-ALGORITHM)"><code>population-size</code></a> <em>(accessor evolutionary-algorithm)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-ENVIRONMENT%20MGL-PAX:SECTION" title="Environment">Environment</a></p></li>
-<li><p>↩ <em>t</em>: <a href="#MGL-GPR:SANSDE%20CLASS" title="MGL-GPR:SANSDE CLASS"><code>sansde</code></a></p></li>
-</ul></li>
-<li><p><a href="#MGL-GPR:RANDOMIZER%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:RANDOMIZER (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>randomizer</code></a> <em>(reader genetic-programming)</em></p>
-
-<ul>
-<li><p>↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">Reproduction</a></p></li>
-<li><p>↩ <em>f</em>: <a href="#MGL-GPR:MUTATION-CHANCE%20%28MGL-PAX:ACCESSOR%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:MUTATION-CHANCE (MGL-PAX:ACCESSOR MGL-GPR:GENETIC-PROGRAMMING)"><code>mutation-chance</code></a>, <a href="#MGL-GPR:RANDOM-GP-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-GP-EXPRESSION FUNCTION"><code>random-gp-expression</code></a></p></li>
-</ul></li>
-<li><p><a href="#MGL-GPR:RESULT-TYPE%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" title="MGL-GPR:RESULT-TYPE (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"><code>result-type</code></a> <em>(reader expression-class)</em> ↩ <em>f</em>: <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a></p></li>
-<li><p><a href="#MGL-GPR:SELECTOR%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:SELECTOR (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>selector</code></a> <em>(reader genetic-programming)</em> ↩ <em>d</em>: <a href="#MGL-GPR:@GPR-GP-REPRODUCTION%20MGL-PAX:SECTION" title="Reproduction">Reproduction</a></p></li>
-<li><p><a href="#MGL-GPR:TOPLEVEL-TYPE%20%28MGL-PAX:READER%20MGL-GPR:GENETIC-PROGRAMMING%29" title="MGL-GPR:TOPLEVEL-TYPE (MGL-PAX:READER MGL-GPR:GENETIC-PROGRAMMING)"><code>toplevel-type</code></a> <em>(reader genetic-programming)</em> ↩ <em>f</em>: <a href="#MGL-GPR:RANDOM-GP-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-GP-EXPRESSION FUNCTION"><code>random-gp-expression</code></a></p></li>
-<li><p><a href="#MGL-GPR:WEIGHT%20%28MGL-PAX:READER%20MGL-GPR:EXPRESSION-CLASS%29" title="MGL-GPR:WEIGHT (MGL-PAX:READER MGL-GPR:EXPRESSION-CLASS)"><code>weight</code></a> <em>(reader expression-class)</em> ↩ <em>f</em>: <a href="#MGL-GPR:LITERAL%20MGL-PAX:MACRO" title="MGL-GPR:LITERAL MGL-PAX:MACRO"><code>literal</code></a>, <a href="#MGL-GPR:OPERATOR%20MGL-PAX:MACRO" title="MGL-GPR:OPERATOR MGL-PAX:MACRO"><code>operator</code></a>, <a href="#MGL-GPR:RANDOM-EXPRESSION%20FUNCTION" title="MGL-GPR:RANDOM-EXPRESSION FUNCTION"><code>random-expression</code></a></p></li>
+<li><a href="#%22mgl-gpr%22%20ASDF%2FSYSTEM:SYSTEM" title="&quot;mgl-gpr&quot; ASDF/SYSTEM:SYSTEM"><code>mgl-gpr</code></a> <em>(asdf:system)</em></li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-28T09:05:31Z]</h6>
+<h6>[Generated 2026-10-28T16:54:30Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

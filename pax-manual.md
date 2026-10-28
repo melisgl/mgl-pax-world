@@ -1516,7 +1516,7 @@ For more powerful search, see [Apropos][b7fc].
     Definitions that do not define a first-class object are supported
     via [DRef][5225]:
 
-        (document (dref:locate 'foo 'type))
+        (document (dref:dref 'foo 'type))
 
     There are quite a few special variables that affect how output is
     generated. See [Codification][f1ab], [Linking to the HyperSpec][7cc3],
@@ -2929,7 +2929,7 @@ table of contents and navigation links.
 
     ... and
 
-    - We are [Browsing Live Documentation][a595], or
+    - we are [Browsing Live Documentation][a595], or
 
     - D is an external definition ([`clhs`][ed5f] or denotes a
       [`glossary-term`][8251] with a [`url`][8ece]), or
@@ -3461,7 +3461,7 @@ Also, see [concept subkey][5920] on how to order concepts in the output.
 
     The default value specifies separate indices for
 
-    - functions and macros
+    - functions, macros and methods
 
     - variables
 
@@ -3549,9 +3549,8 @@ Also, see [concept subkey][5920] on how to order concepts in the output.
 
 #### 8.9.1 Plain Output
 
-This is the default `:format` of [`document`][432c], intended to be a
-replacement for [`cl:documentation`][68f1]. `:plain` (short for plain text) is
-very similar to `:markdown`, but most of the markup that would make
+This is the default `:format` of [`document`][432c]. `:plain` (short for plain text)
+is very similar to `:markdown`, but most of the markup that would make
 reading in, say, the REPL unpleasant is removed.
 
 - Markup for [Markdown emphasis][c624], [Markdown inline code][68c1],
@@ -3563,6 +3562,29 @@ reading in, say, the REPL unpleasant is removed.
 - No [section numbering][f12d].
 
 - No [table of contents][d4e7].
+
+`:plain` is used by the following methods, which hook PAX constructs
+into standard [`cl:documentation`][68f1].
+
+<a id="x-28DOCUMENTATION-20-28METHOD-20-28MGL-PAX-3ASECTION-20-28EQL-20T-29-29-29-29"></a>
+<a id="DOCUMENTATION%20%28METHOD%20%28MGL-PAX:SECTION%20%28EQL%20T%29%29%29"></a>
+
+- \[method\] **documentation** *(section mgl-pax:section) (doc-type (eql t))*
+
+<a id="x-28DOCUMENTATION-20-28METHOD-20-28SYMBOL-20-28EQL-20MGL-PAX-3ASECTION-29-29-29-29"></a>
+<a id="DOCUMENTATION%20%28METHOD%20%28SYMBOL%20%28EQL%20MGL-PAX:SECTION%29%29%29"></a>
+
+- \[method\] **documentation** *(symbol symbol) (doc-type (eql mgl-pax:section))*
+
+<a id="x-28DOCUMENTATION-20-28METHOD-20-28MGL-PAX-3AGLOSSARY-TERM-20-28EQL-20T-29-29-29-29"></a>
+<a id="DOCUMENTATION%20%28METHOD%20%28MGL-PAX:GLOSSARY-TERM%20%28EQL%20T%29%29%29"></a>
+
+- \[method\] **documentation** *(glossary-term mgl-pax:glossary-term) (doc-type (eql t))*
+
+<a id="x-28DOCUMENTATION-20-28METHOD-20-28SYMBOL-20-28EQL-20MGL-PAX-3AGLOSSARY-TERM-29-29-29-29"></a>
+<a id="DOCUMENTATION%20%28METHOD%20%28SYMBOL%20%28EQL%20MGL-PAX:GLOSSARY-TERM%29%29%29"></a>
+
+- \[method\] **documentation** *(symbol symbol) (doc-type (eql mgl-pax:glossary-term))*
 
 <a id="x-28MGL-PAX-3A-40MARKDOWN-OUTPUT-20MGL-PAX-3ASECTION-29"></a>
 <a id="MGL-PAX:@MARKDOWN-OUTPUT%20MGL-PAX:SECTION"></a>
