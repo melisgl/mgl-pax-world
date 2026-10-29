@@ -93,8 +93,6 @@
 
         - [4.3.3 Getting Existing Programs to Run][57a6]
 
-        - [4.3.4 Implementation Limitations][5ebc]
-
     - [4.4 Compiler Policy][2474]
 
     - [4.5 Compiler Errors][1857]
@@ -143,75 +141,111 @@
 
 - [6 Efficiency][29fd]
 
-    - [6.1 Source Optimization][8459]
+    - [6.1 More About Types][3485]
 
-        - [6.1.1 Let Optimization][6385]
+        - [6.1.1 More Types Meaningful][31a6]
 
-        - [6.1.2 Constant Folding][7866]
+        - [6.1.2 Type Canonicalization][da10]
 
-        - [6.1.3 Unused Expression Elimination][de7a]
+        - [6.1.3 `member` Types][3cb2]
 
-        - [6.1.4 Control Optimization][6ba7]
+        - [6.1.4 Union Types][5092]
 
-        - [6.1.5 Dead Code Elimination][01df]
+        - [6.1.5 The Empty Type][a60b]
 
-        - [6.1.6 Multiple Values Optimization][4c23]
+        - [6.1.6 Function Types][4fa3]
 
-        - [6.1.7 Style Recommendations][46a0]
+        - [6.1.7 The `values` declaration][df8b]
 
-    - [6.2 Tail Call][ec2e]
+        - [6.1.8 Structure Types][5abd]
 
-        - [6.2.1 Tail Call Optimization][3074]
+        - [6.1.9 Type Restrictions][effb]
 
-        - [6.2.2 Tail Position][c6d1]
+        - [6.1.10 Type Style Recommendations][14f5]
 
-        - [6.2.3 Tail Recursion][7f39]
+    - [6.2 Type Inference][55c7]
 
-    - [6.3 Local Call][3d65]
+        - [6.2.1 Variable Type Inference][17c2]
 
-        - [6.3.1 Local Self-recursive Call][7426]
+        - [6.2.2 Local Function Type Inference][daf5]
 
-        - [6.3.2 Let Call][eaf9]
+        - [6.2.3 Global Function Type Inference][2cf8]
 
-        - [6.3.3 Local Calls to Closures][8e47]
+        - [6.2.4 Operation-specific Type Inference][0f30]
 
-        - [6.3.4 Local Tail Call][06b6]
+        - [6.2.5 Dynamic Type Inference][1e7c]
 
-        - [6.3.5 Local Call Return Values][64ff]
+        - [6.2.6 Type Check Optimization][fce9]
 
-    - [6.4 Block Compilation][1143]
+    - [6.3 Source Optimization][8459]
 
-        - [6.4.1 Block Compilation Semantics][8294]
+        - [6.3.1 Let Optimization][6385]
 
-        - [6.4.2 Block Compilation Declarations][6ef5]
+        - [6.3.2 Constant Folding][7866]
 
-        - [6.4.3 Block Compilation Difficulties][286e]
+        - [6.3.3 Unused Expression Elimination][de7a]
 
-    - [6.5 Inline Expansion][2ccb]
+        - [6.3.4 Control Optimization][6ba7]
 
-        - [6.5.1 Inline Expansion Recording][c276]
+        - [6.3.5 Unreachable Code Elimination][01df]
 
-        - [6.5.2 Semi-inline Expansion][c6ad]
+        - [6.3.6 Multiple Values Optimization][4c23]
 
-    - [6.6 Slot Access][37e3]
+        - [6.3.7 Style Recommendations][46a0]
 
-        - [6.6.1 Structure Object Slot Access][b229]
+    - [6.4 Tail Call][ec2e]
 
-        - [6.6.2 Standard Object Slot Access][72a3]
+        - [6.4.1 Tail Call Optimization][3074]
 
-    - [6.7 Stack Allocation][5cbb]
+        - [6.4.2 Tail Position][c6d1]
 
-    - [6.8 Modular Arithmetic][1a1b]
+        - [6.4.3 Tail Recursion][7f39]
 
-        - [6.8.1 Signed Modular Arithmetic][cce0]
+    - [6.5 Local Call][3d65]
 
-    - [6.9 Recognized Idioms][44af]
+        - [6.5.1 Local Self-recursive Call][7426]
 
-        - [6.9.1 Count Trailing Zeros][af2a]
+        - [6.5.2 Let Call][eaf9]
 
-    - [6.10 Global and Always-bound Variables][560e]
+        - [6.5.3 Local Calls to Closures][8e47]
 
-    - [6.11 Miscellaneous Efficiency Issues][b81a]
+        - [6.5.4 Local Tail Call][06b6]
+
+        - [6.5.5 Local Call Return Values][64ff]
+
+    - [6.6 Block Compilation][1143]
+
+        - [6.6.1 Block Compilation Semantics][8294]
+
+        - [6.6.2 Block Compilation Declarations][6ef5]
+
+        - [6.6.3 Block Compilation Difficulties][286e]
+
+    - [6.7 Inline Expansion][2ccb]
+
+        - [6.7.1 Inline Expansion Recording][c276]
+
+        - [6.7.2 Semi-inline Expansion][c6ad]
+
+    - [6.8 Slot Access][37e3]
+
+        - [6.8.1 Structure Object Slot Access][b229]
+
+        - [6.8.2 Standard Object Slot Access][72a3]
+
+    - [6.9 Stack Allocation][5cbb]
+
+    - [6.10 Modular Arithmetic][1a1b]
+
+        - [6.10.1 Signed Modular Arithmetic][cce0]
+
+    - [6.11 Recognized Idioms][44af]
+
+        - [6.11.1 Count Trailing Zeros][af2a]
+
+    - [6.12 Global and Always-bound Variables][560e]
+
+    - [6.13 Miscellaneous Efficiency Issues][b81a]
 
 - [7 Beyond the ANSI Standard][8723]
 
@@ -611,7 +645,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10`, generated *2026-10-29 13:53:21*. See
+The output is for SBCL version `2.6.10.48-82d5edd`, generated *2026-10-29 19:58:40*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1452,11 +1486,11 @@ When you invoke the SBCL binary, it needs to be able to find the other
     - The directory denoted by the `SBCL_HOME` environment
       variable if it is set
 
-    - The current directory
+    - The `../lib/sbcl/` directory relative to the `sbcl` binary
 
     - The directory of the `sbcl` binary
 
-    - The `../lib/sbcl/` directory relative to the `sbcl` binary
+    - The current directory
 
     If no core file was found by the above rules, then the runtime
     exits with an error message.
@@ -1473,11 +1507,11 @@ When you invoke the SBCL binary, it needs to be able to find the other
 
     - *The directory `../lib/sbcl` relative to `sbcl.core`*
 
-    - The current directory
+    - The directory `../lib/sbcl` relative to the `sbcl` binary
 
     - The directory of the `sbcl` binary
 
-    - The directory `../lib/sbcl` relative to the `sbcl` binary
+    - The current directory
 
     The list of directories is the same as for finding the core file
     except here we also try directories relative to `sbcl.core`.
@@ -2685,11 +2719,9 @@ Lisp compilers. Under the default [Compiler Policy][2474], the compiler
 doesn't blindly believe type declarations but considers them
 assertions about the program that should be checked: all type
 declarations that have not been proven to always hold are asserted
-at runtime.
-
-*Remaining bugs in the compiler's handling of types unfortunately
-provide some exceptions to this rule. See
-[Implementation Limitations][5ebc].*
+at runtime. This behavior allows [Type Inference][55c7] to trust declared
+types and from them derive the types of other expressions, opening
+up lots of optimization possibilities.
 
 There are three type checking policies available in SBCL, selectable
 via [`optimize`][4d51] declarations.
@@ -2701,20 +2733,35 @@ via [`optimize`][4d51] declarations.
     precise. The default compilation policy provides full type
     checks.
 
+    > **Warning**: The callee's [`ftype`][05c1] declaration is trusted when
+    > compiling the caller unless the `debug` (!) optimization
+    > quality is 3. Thus, if an `ftype` is placed after the function
+    > definition, the function won't perform any type checks and the
+    > caller's trust in the type checking will be misplaced and
+    > render the caller unsafe. Adding or changing a [`ftype`][05c1]
+    > declaration necessitates recompiling the function definition
+    > and all its callers. See also [Global Function Type Inference][2cf8].
+
 - **Unsafe code** `(= safety 0)`
 
     No type checks. All declarations are believed without
     assertions. Also disables argument count and array bounds
-    checking.
+    checking. Any type errors in code where type checks are not
+    performed are liable to corrupt the heap.
 
-    > **Warning**: Any type errors in code where type checks are not
-    > performed are liable to corrupt the heap.
+There is a third option of mostly historical interest called Weak
+Type Checking, where declared types may be simplified into faster to
+check supertypes: for example, `(or (integer -17 -7) (integer 7
+17))` is simplified into `(integer -17 17)`. This option is also
+unsafe and is no longer available by any combination of the standard
+optimization qualities.
 
-There is a third option called Weak Type Checking, where declared
-types may be simplified into faster to check supertypes: for
-example, `(or (integer -17 -7) (integer 7 17))` is simplified
-into `(integer -17 17)`. This option is also unsafe and is no longer
-available by any combination of the standard optimization qualities.
+Note that CLOS slots with types declared using the `:type` slot option
+in [`defclass`][ead6] are asserted if and only if the class was defined in
+*safe code* and the slot access location is in *safe code* as well.
+This laxness does not pose any safety issues, as the CLOS slot types
+are not available for [Type Inference][55c7], nor do CLOS slot types
+provide any efficiency benefits.
 
 <a id="x-28SB-MANUAL-3A-40PRECISE-TYPE-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION"></a>
@@ -2856,23 +2903,6 @@ numeric argument. Another possible fix would be to say:
 This would be preferable in some circumstances since it would allow
 a non-standard representation to be used for the local `pos`
 variable in the loop body.
-
-<a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-LIMITATIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@IMPLEMENTATION-LIMITATIONS%20MGL-PAX:SECTION"></a>
-
-#### 4.3.4 Implementation Limitations
-
-If an [`ftype`][05c1] is placed after the function definition, the function
-won't perform any type checks and the calls to the function will
-blindly trust the declared types. ([`optimize`][4d51] ([`debug`][5df9] 3)) will not
-trust any `ftype` declarations.
-
-CLOS slot types form a notable exception. Types declared using the
-`:type` slot option in [`defclass`][ead6] are asserted if and only if the class
-was defined in *safe code* and the slot access location is in *safe
-code* as well. This laxness does not pose any internal consistency
-issues, as the CLOS slot types are not available for the type
-inferencer, nor do CLOS slot types provide any efficiency benefits.
 
 <a id="x-28SB-MANUAL-3A-40COMPILER-POLICY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-POLICY%20MGL-PAX:SECTION"></a>
@@ -3888,7 +3918,10 @@ quality:
       contain frames for all invoked functions, even those in tail
       positions. 
 
-Inlining of local functions is inhibited so that they may be [`trace`][548d]d.
+    - Inlining of local functions is inhibited so that they may be
+      [`trace`][548d]d.
+
+    - [Type Declaration Checking][538a] does not trust [`ftype`][05c1] declarations.
 
 - `> (max speed space)`: If `debug` is greater than both `speed` and
   `space`, the command [`return`][5b0b] can be used to continue execution by
@@ -4388,10 +4421,953 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 
 ## 6 Efficiency
 
+In SBCL as with any language on any computer, the path to efficient
+code starts with good algorithms and sensible programming
+techniques, but to avoid inefficiency pitfalls, you need to know
+some of this implementation's quirks and features. This chapter is
+mostly a fairly long and detailed overview of what optimizations the
+compiler does. Although there are the usual negative suggestions of
+inefficient features to avoid, the main emphasis is on describing
+the things that programmers can count on being efficient.
+
+The optimizations described here can have the effect of speeding up
+existing programs written in conventional styles, but the potential
+for new programming styles that are clearer and less error-prone is
+at least as significant. For this reason, several sections end with
+a discussion of the implications of these optimizations for
+programming style.
+
+In this section, we discuss SBCL's support for **types**, which is
+unusual in three major ways:
+
+- [Precise Type Checking][ade9] encourages the specific use of type
+  declarations as a form of run-time consistency checking. This
+  speeds development by localizing type errors and giving more
+  meaningful error messages. The compiler produces completely safe
+  code; [Type Check Optimization][fce9] maintains reasonable efficiency.
+
+- Comprehensive support for the Common Lisp type system makes
+  complex type specifiers useful. Using type specifiers such as [`or`][8808]
+  and [`member`][0376] has both efficiency and robustness advantages (see
+  [More About Types][3485]).
+
+- [Type Inference][55c7] eliminates the need for some declarations and also
+  aids compile-time detection of type errors. Given detailed type
+  declarations, type inference can often eliminate type checks and
+  enable more efficient object representations and code sequences.
+  Checking all types results in fewer type checks.
+
+Then, we move on to the topic of **optimization**. The main barrier
+to writing efficient Lisp programs is that it's hard to find to the
+most efficient solution among the many semantically equivalent
+"reasonable" ways to code a given problem.
+**[Source Optimization][8459]** greatly reduces the variance in performance
+across equivalent solutions, freeing the programmer from a class of
+low-level considerations.
+
+The next important topic is **function call** efficiency. This is
+especially important in Lisp due local functions and recursion. For
+this reason, Lisp implementations strive to make the general (or
+full) function call as inexpensive as possible. SBCL goes beyond
+this by providing two good alternatives to full call:
+
+- **[Local Call][3d65]** resolves function references at compile time,
+  allowing better calling sequences and optimization across function
+  calls.
+
+    - Control transfer is a direct jump.
+
+    - The closure environment is passed in registers rather than
+      heap allocated.
+
+    - Keyword arguments and multiple values are implemented more
+      efficiently.
+
+- **[Inline Expansion][2ccb]** totally eliminates call overhead and allows
+  many context-dependent optimizations. This provides a safe and
+  efficient implementation of operations with function semantics,
+  eliminating the need for error-prone macro definitions or manual
+  case analysis.
+
+Generally, the compiler provides simple implementations for simple
+uses of function call, rather than having only a single calling
+convention. These features allow a more natural programming style:
+
+- Proper **[Tail Call][ec2e]**s
+
+- Relatively efficient closures
+
+- A [`funcall`][03c7] that is as efficient as normal named call
+
+Finally, we can only touch upon some of the most important concepts
+discussed later before this introduction gets too long, so let's
+focus on the big picture. Writing efficient code that works is a
+complex and prolonged process. It is important not to get so
+involved in the pursuit of efficiency that you lose sight of what
+the original problem demands. Remember that:
+
+- The program should be correct: it doesn't matter how quickly you
+  get the wrong answer.
+
+- Both the programmer and the user will make errors, so the program
+  must be robust: it must detect errors in a way that allows easy
+  correction.
+
+- A small portion of the program will consume most of the resources,
+  with the bulk of the code being virtually irrelevant to efficiency
+  considerations. Even experienced programmers familiar with the
+  problem area cannot reliably predict where these hot spots will
+  be.
+
+The best way to get efficient code that is still worth using, is to
+separate coding from tuning. During coding, you should:
+
+- Use a coding style that aids correctness and robustness without
+  being incompatible with efficiency.
+
+- Choose appropriate data structures that allow efficient algorithms
+  and object representations. Try to make interfaces abstract enough
+  so that you can change to a different representation if [Profiling][9c07]
+  reveals a need.
+
+- Whenever you make an assumption about a function argument or
+  global data structure, add consistency assertions, either with
+  type declarations or explicit uses of [`assert`][97ee], [`ecase`][c036], etc.
+
+During tuning, you should:
+
+- Identify the hot spots in the program through [Profiling][9c07].
+
+- Identify inefficient constructs in the hot spot with efficiency
+  notes, more profiling, or manual inspection of the source and with
+  judicious use of [`disassemble`][12f8].
+
+- Add declarations and consider the application of discussed in the
+  section.
+
+- If all else fails, consider algorithm or data structure changes.
+  If you did a good job coding, changes will be easy to introduce.
+
+<a id="x-28SB-MANUAL-3A-40MORE-ABOUT-TYPES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@MORE-ABOUT-TYPES%20MGL-PAX:SECTION"></a>
+
+### 6.1 More About Types
+
+This section goes into more detail describing what types and
+declarations are recognized by SBCL. Some of the most important
+features of SBCL are related to types:
+
+- [Precise Type Checking][ade9] helps to find bugs at run time.
+
+- Compile-time type checking helps to find bugs at compile time (see
+  [Dynamic Type Inference][1e7c] for an example).
+
+- [Type Inference][55c7] minimizes the need for generic operations and also
+  increases the efficiency of run-time type checking and the
+  effectiveness of compile-time type checking.
+
+- Support for detailed types provides a wealth of opportunity for
+  operation-specific type inference and optimization.
+
+<a id="x-28SB-MANUAL-3A-40MORE-TYPES-MEANINGFUL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@MORE-TYPES-MEANINGFUL%20MGL-PAX:SECTION"></a>
+
+#### 6.1.1 More Types Meaningful
+
+Common Lisp has a very powerful type system, but conventional
+implementations typically only recognize the small set of types
+special in that implementation. In these systems, there is an
+unfortunate paradox: a declaration for a relatively general type
+like [`fixnum`][3cde] will be recognized by the compiler, but a highly
+specific declaration such as `(integer 3 17)` may be totally
+ignored.
+
+This is obviously a problem, since the user has to know how to
+specify the type of an object in the way the compiler wants it. A
+very minimal (but rarely satisfied) criterion for type system
+support is that it be no worse to make a specific declaration than
+to make a general one. SBCL goes beyond this by exploiting a number
+of advantages obtained from detailed type information.
+
+Using more restrictive types in declarations allows the compiler to
+do better type inference and more compile-time type checking. Also,
+when type declarations are considered to be consistency assertions
+that should be verified (conditional on policy), then complex types
+are useful for making more detailed assertions.
+
+SBCL "understands" the list-style [`or`][8808], [`member`][0376], [`function`][a51f], `array`([`0`][1f99] [`1`][cb94]) and
+number type specifiers. Understanding means that:
+
+- If the type contains more information than is used in a particular
+  context, then the extra information is simply ignored, rather than
+  derailing type inference.
+
+- In many contexts, the extra information from these type specifier
+  is used to good effect. In particular, with SBCL's
+  [Precise Type Checking][ade9], these complex types can be used in
+  declarations to make interesting assertions about functions and
+  data structures. More specific declarations also aid type
+  inference and reduce the cost for type checking (see
+  [Type Check Optimization][fce9]).
+
+<a id="x-28SB-MANUAL-3A-40TYPE-CANONICALIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TYPE-CANONICALIZATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.2 Type Canonicalization
+
+When given a type specifier, SBCL will often rewrite it into a
+different (but equivalent) type. This is the mechanism that the
+compiler uses for detecting type equivalence. For example, in
+its canonical representation,
+
+    (or list (member :end))
+
+is equivalent to
+
+    (or cons (member nil :end))
+
+This has two implications for the user:
+
+- The standard symbol type specifiers (e.g. [`null`][5866] and [`list`][9271]) are
+  in no way magical. The [`null`][663f] type is actually defined as
+  `(member nil)` and `list` as `(or cons null)`.
+
+- When the compiler prints out a type, it may not look like the type
+  specifier that originally appeared in the program. This is
+  generally not a problem, but it must be taken into consideration
+  when reading compiler error messages.
+
+<a id="x-28SB-MANUAL-3A-40MEMBER-TYPES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@MEMBER-TYPES%20MGL-PAX:SECTION"></a>
+
+#### 6.1.3 `member` Types
+
+The [`member`][a79d] type specifier can be used to represent
+"symbolic" values, analogous to the enumerated types of Pascal.
+For example, the second value of [`find-symbol`][3473] has type
+
+    (member :internal :external :inherited nil)
+
+Member types are very useful for expressing consistency constraints on data
+structures, for example:
+
+    (defstruct ice-cream
+      (flavor :vanilla :type (member :vanilla :chocolate :strawberry)))
+
+Member types are also useful in [Type Inference][55c7], as the number of
+members can sometimes be pared down to one, in which case the value
+is a known constant.
+
+<a id="x-28SB-MANUAL-3A-40UNION-TYPES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@UNION-TYPES%20MGL-PAX:SECTION"></a>
+
+#### 6.1.4 Union Types
+
+The [`or`][8808] (union) type specifier is understood and is
+meaningfully applied in many contexts. The use of `or` allows
+assertions to be made about types in dynamically typed programs. For
+example:
+
+    (defstruct box
+      (next nil :type (or box null))
+      (top :removed :type (or box-top (member :removed))))
+
+The type assertion on the `top` slot ensures that an error will be
+signaled when there is an attempt to store an illegal value (such as
+`:rmvd`.) Although somewhat weak, these union type assertions
+provide a useful input into type inference, allowing the cost of
+type checking to be reduced. For example, this loop is safely
+compiled with no type checks:
+
+    (defun find-box-with-top (box)
+      (declare (type (or box null) box))
+      (do ((current box (box-next current)))
+          ((null current))
+        (unless (eq (box-top current) :removed)
+          (return current))))
+
+Union types are also useful in type inference for representing types
+that are partially constrained. For example, the result of
+
+    (if foo
+        (logior x y)
+        (list x y))
+
+can be expressed as `(or integer cons)`.
+
+<a id="x-28SB-MANUAL-3A-40THE-EMPTY-TYPE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@THE-EMPTY-TYPE%20MGL-PAX:SECTION"></a>
+
+#### 6.1.5 The Empty Type
+
+The type [`nil`][4df2] is also called the empty type, since no object is of that
+type. The union of no types, `(or)`, is also empty. The compiler's
+interpretation of an expression whose type is `nil` is that the
+expression never yields any value but rather fails to terminate or
+exits non-locally. For example, the type of a call to [`error`][669b] or a use
+of [`return`][5b0b] is `nil`. When the type of an expression is empty,
+compile-time type warnings about its value are suppressed;
+presumably somebody else is signaling an error. If a function is
+declared to have return type [`nil`][4df2] but does in fact return, then (in
+[safe code][538a]) an error will be signaled.
+
+<a id="x-28SB-MANUAL-3A-40FUNCTION-TYPES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FUNCTION-TYPES%20MGL-PAX:SECTION"></a>
+
+#### 6.1.6 Function Types
+
+Function types ([`ftype`][05c1] declarations) are understood in the restrictive
+sense, specifying:
+
+- *The argument syntax that the function must be called with*
+
+    This is information about what argument counts are acceptable,
+    and which keyword arguments are recognized. In SBCL, warnings
+    about argument syntax are a consequence of function type
+    checking.
+
+- *The types of the argument values that the caller must pass*
+
+    If the compiler can prove that some argument to a call is of a
+    type disallowed by the called function's type, then it will give
+    a compile-time type warning. In addition to being used for
+    compile-time type checking, these type assertions are also used
+    as output type assertions in code generation. For example, if
+    `foo` is declared to have a `fixnum` argument, then the 1+
+    in `(foo (1+ x))` is compiled with knowledge that the result
+    must be a `fixnum`.
+
+- *The types the values that will be bound to argument variables in
+  the function's definition*
+
+    Declaring a function's type with `ftype` implicitly declares the
+    types of the arguments in the definition. The compiler checks
+    for consistency between the definition and the [`ftype`][05c1]
+    declaration. Because of [Precise Type Checking][ade9], an error will be
+    signaled when a function is called with an argument of the wrong
+    type.
+
+- *The type of return value(s) that the caller can expect*
+
+    This information is a useful input to [Type Inference][55c7] at call
+    sites. For example, if a function is declared to return a
+    `fixnum`, then when a call to that function appears in an
+    expression, the expression will be compiled with knowledge that
+    the call will return a `fixnum` (see [Type Declaration Checking][538a]).
+
+- *The type of return value(s) that the definition must return*
+
+    The result type in an [`ftype`][05c1] declaration is treated like an
+    implicit [`the`][311a] wrapped around the body of the definition. If the
+    definition returns a value of the wrong type, an error will be
+    signaled. If the compiler can prove that the function returns
+    the wrong type, then it will give a compile-time warning.
+
+This is consistent with the new interpretation of function types and
+the [`ftype`][05c1] declaration in the [proposed X3J13
+function-type-argument-type-semantics cleanup][e1fa].
+
+See also [Global Function Type Inference][2cf8].
+
+<a id="x-28SB-MANUAL-3A-40THE-VALUES-DECLARATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@THE-VALUES-DECLARATION%20MGL-PAX:SECTION"></a>
+
+#### 6.1.7 The `values` declaration
+
+SBCL supports the [`values`][c4cf] declaration as an extension to Common Lisp.
+
+<a id="x-28VALUES-20DECLARATION-29"></a>
+<a id="VALUES%20DECLARATION"></a>
+
+- \[declaration\] **values**
+
+    Syntax: `(values &rest types)`
+
+    Only valid as a local declaration.
+
+    Specifies the return [`types`][7c9f] of the enclosing special form.
+
+    See [The `values` declaration][df8b] for more.
+
+This declaration is semantically equivalent to a [`the`][311a] form wrapped
+around the body of the special form in which the [`values`][c4cf] declaration
+appears. The advantage of `values` over `the` is purely syntactic: it
+doesn't introduce more indentation. For example,
+
+    (defun foo (x)
+      (declare (values single-float))
+      (ecase x
+        (:this ...)
+        (:that ...)
+        (:the-other ...)))
+
+is equivalent to
+
+    (defun foo (x)
+      (the single-float
+           (ecase x
+             (:this ...)
+             (:that ...)
+             (:the-other ...))))
+
+and
+
+    (defun floor (number &optional (divisor 1))
+      (declare (values integer real))
+      ...)
+
+is equivalent to
+
+    (defun floor (number &optional (divisor 1))
+      (the (values integer real)
+           ...))
+
+In addition to being recognized by [`lambda`][650d] (and hence by [`defun`][f472]), the
+[`values`][c4cf] declaration is recognized by all the other special forms with
+bodies and declarations: [`let`][4853], [`let*`][49f5], [`labels`][c2ef] and [`flet`][091c]. Macros with
+declarations usually splice the declarations into one of the above
+forms, so they will accept this declaration too, but the exact
+effect of a [`values`][c4cf] declaration will depend on the macro.
+
+If you declare the types of all arguments to a function and also
+declare the return value types with `values`, you have described the
+type of the function. The compiler will use this argument and result
+type information to derive a function type that will then be applied
+to calls of the function (see [Function Types][4fa3]). This provides a way
+to declare the types of functions that is much less syntactically
+awkward than using the [`ftype`][05c1] declaration with a [`function`][119e] type
+specifier.
+
+Although the [`values`][c4cf] declaration is non-standard, it is relatively
+harmless to use it in otherwise portable code, since any warning in
+non-SBCL implementations can be suppressed with the standard
+[`declaration`][d07c] proclamation:
+
+    (declaim (declaration values))
+
+<a id="x-28SB-MANUAL-3A-40STRUCTURE-TYPES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@STRUCTURE-TYPES%20MGL-PAX:SECTION"></a>
+
+#### 6.1.8 Structure Types
+
+Structure accessors have [Precise Type Checking][ade9]:
+
+- The structure argument to structure accessors is precisely checked
+  -- if you call `foo-a` on a `bar`, an error will be signaled.
+
+- The types of slot values are precisely checked -- if you pass
+  the wrong type argument to a constructor or a slot setter, then an
+  error will be signaled.
+
+An additional advantage of checking structure types and enforcing
+slot types is that the compiler can [safely][538a] trust slot type declarations. The
+compiler effectively moves the type checking from the slot access to
+the slot setter or constructor call. This is more efficient since
+caller of the setter or constructor often knows the type of the
+value, entirely eliminating the need to check the value's type.
+Consider this example:
+
+    (defstruct coordinate
+      (x nil :type single-float)
+      (y nil :type single-float))
+    
+    (defun make-it ()
+      (make-coordinate :x 1.0 :y 1.0))
+    
+    (defun use-it (it)
+      (declare (type coordinate it))
+      (sqrt (expt (coordinate-x it) 2) (expt (coordinate-y it) 2)))
+
+`make-it` and `use-it` are compiled with no checking on the types of
+the float slots, yet `use-it` can use [`single-float`][31a6d] arithmetic with
+perfect safety. Note that `make-coordinate` must still check the
+values of `x` and `y` unless the call is in [Block Compilation][1143] or
+undergoes [Inline Expansion][2ccb]. But even without this advantage, it is
+almost always more efficient to check slot values on structure
+initialization, since slots are usually written once and read many
+times.
+
+When redefining a structure, one can choose to whether to invalidate
+previously compiled code (the [`continue`][1867] restart) or not (the
+`recklessly-continue` restart). With `continue`, previously compiled
+calls to accessors will signal an error in [safe code][538a]. With `recklessly-continue`, safety is
+compromised.
+
+<a id="x-28SB-EXT-3AFREEZE-TYPE-20DECLARATION-29"></a>
+<a id="SB-EXT:FREEZE-TYPE%20DECLARATION"></a>
+
+- \[declaration\] **sb-ext:freeze-type**
+
+    Syntax: `(sb-ext:freeze-type &rest symbols)`
+
+    Only valid as a global proclamation.
+
+    Specifies that the types named by [`symbols`][e5af] and their subtypes are not
+    going to change. This allows more efficient type testing, since the
+    compiler can open-code a test for all possible subtypes, rather than
+    having to examine the type hierarchy at run-time.
+
+    Currently, this has an effect only for structure types.
+
+<a id="x-28SB-MANUAL-3A-40TYPE-RESTRICTIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TYPE-RESTRICTIONS%20MGL-PAX:SECTION"></a>
+
+#### 6.1.9 Type Restrictions
+
+Be careful with [`and`][94b8], [`not`][35b8] and [`satisfies`][2b8b] types in declarations, since
+[Type Inference][55c7] has problems with them. When these types do appear
+in a declaration, they are still checked precisely, but the type
+information may be of limited use to the compiler.
+
+`and` types are effective as long as the intersection can be
+canonicalized to a type that doesn't use `and`. For example,
+
+    (and fixnum unsigned-byte (not (member 7)))
+
+is fine, since it is the same as
+
+    (or (integer 0 6) (integer 8 most-positive-fixnum))
+
+but this type:
+
+    (and symbol (not (member :end)))
+
+will not be fully understood by type interference since the `and`
+can't be removed by canonicalization.
+
+Using any of these type specifiers in a type test with [`typep`][0895] or
+[`typecase`][5c81] is fine, since as tests, these types can be translated into
+the [`and`][425d] macro, the [`not`][1013] function or a call to the satisfies
+predicate.
+
+<a id="x-28SB-MANUAL-3A-40TYPE-STYLE-RECOMMENDATIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TYPE-STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION"></a>
+
+#### 6.1.10 Type Style Recommendations
+
+With SBCL it is desirable to make declarations as precise as possible,
+but [Type Inference][55c7] also makes some declarations unnecessary. Here
+are some general guidelines for maximum robustness and efficiency:
+
+- Declare the types of all function arguments and structure slots as
+  precisely as possible (while avoiding [`not`][35b8], [`and`][94b8] and [`satisfies`][2b8b]). Put
+  these declarations in during initial coding so that type
+  assertions can find bugs for you during debugging.
+
+- Durining development, prefer declaring function argument types
+  with with [`declare`][1574] within the function to avoid having to redefine
+  [`ftype`][05c1]s, which can lead to safety problems (see
+  [Type Declaration Checking][538a]).
+
+- Use the [`member`][a79d] type specifier where there are a small number of
+  possible symbol values, for example, `(member :red :blue :green)`.
+
+- Use the [`or`][e2d1] type specifier in situations where the type is not
+  certain, but there are only a few possibilities, for example,
+  `(or list vector)`.
+
+- Declare integer types with the tightest bounds that you can, such
+  as `(integer 3 7)`.
+
+- Put [`deftype`][7f9a] or [`defstruct`][eac1] definitions before they are used.
+  Definition after use is legal (producing no undefined type
+  warnings), but type tests and structure operations will be
+  compiled much less efficiently.
+
+- Use the [`sb-ext:freeze-type`][7b24] declaration to speed up type testing
+  for structure types that won't have new subtypes added later.
+
+- In addition to declaring the array element type and simpleness,
+  also declare the dimensions if they are fixed. For example,
+
+    (simple-array single-float (1024 1024))
+
+The bounds information allows array indexing for multi-dimensional
+  arrays to be compiled much more efficiently and may also allow
+  array bounds checking to be done at compile time.
+
+- Avoid use of the [`the`][311a] declaration within expressions. Not only does
+  it clutter the code, but it is often unnecesary under [safe
+  policies][538a]. If the need for a return
+  type assertion is revealed by efficiency notes during tuning, then
+  you can consider `the`, but it is preferable to constrain the
+  argument types more, allowing the compiler to prove the desired
+  result type.
+
+- Don't bother declaring the type of [`let`][4853] or other non-argument
+  variables unless the type is non-obvious. If you declare function
+  return types and structure slot types, then the type of a variable
+  is often obvious both to the programmer and to the compiler. An
+  important case where the type isn't obvious, and a declaration is
+  appropriate, is when the value for a variable is pulled out of
+  untyped structure (e.g. the result of [`car`][d5a2]), from a [`class`][1f37], or comes
+  from some weakly typed function, such as [`read`][fe58].
+
+- Declarations are sometimes necessary for integer loop variables,
+  since the compiler can't always prove that the value is of a good
+  integer type. These declarations are best added during tuning,
+  when an efficiency note indicates the need.
+
+<a id="x-28SB-MANUAL-3A-40TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
+
+### 6.2 Type Inference
+
+Type inference is the process by which the compiler tries to figure
+out the types of expressions and variables, given an inevitable lack
+of complete type information. Although SBCL does more type inference
+than most Common Lisp compilers, remember that the more precise and
+comprehensive type declarations are, the more type inference will be
+able to do.
+
+<a id="x-28SB-MANUAL-3A-40VARIABLE-TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@VARIABLE-TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
+
+#### 6.2.1 Variable Type Inference
+
+The type of a variable is the union of the types of all the
+definitions. In the degenerate case of a [`let`][4853], the type of the
+variable is the type of the initial value. This inferred type is
+intersected with any declared type and is then propagated to all the
+variable's references. The types of [`multiple-value-bind`][625d] variables
+are similarly inferred from the types of the individual values of
+the values form.
+
+If multiple type declarations apply to a single variable, then all
+the declarations must be correct; it is as though all the types were
+intersected producing a single [`and`][dd55] type specifier. In
+this example
+
+    (defmacro my-dotimes ((var count) &body body)
+      `(do ((,var 0 (1+ ,var)))
+           ((>= ,var ,count))
+         (declare (type (integer 0 *) ,var))
+         ,@body))
+    
+    (my-dotimes (i ...)
+      (declare (fixnum i))
+      ...)
+
+the two declarations for `i` are intersected, which yields that it
+must be a non-negative fixnum.
+
+In practice, this type inference is limited to
+[Local Call][3d65]s (including [Let Call][eaf9]s), since the compiler can't
+analyze all the calls to a global function. But type inference works
+well enough on local variables so that it is often unnecessary to
+declare the type of local variables. This is especially likely when
+function result types and structure slot types are declared. The
+main areas where type inference breaks down are:
+
+- When the initial value of a variable is an untyped expression,
+  such as `(car x)`, and
+
+- When the type of one of the variable's definitions is a function
+  of the variable's current value, as in `(setq x (1+ x))`.
+
+<a id="x-28SB-MANUAL-3A-40LOCAL-FUNCTION-TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@LOCAL-FUNCTION-TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
+
+#### 6.2.2 Local Function Type Inference
+
+The types of arguments to local functions are inferred in the same way
+as any other local variable; the type is the union of the argument
+types across all the calls to the function, intersected with the
+declared type. If there are any assignments to the argument
+variables, the type of the assigned value is unioned in as well.
+
+The result type of a local function is computed in a special way
+that takes [Tail Recursion][7f39] into consideration. The result type is
+the union of all possible return values that aren't tail recursive.
+For example, the compiler will infer that the result type of this
+function is [`integer`][9b12]:
+
+    (defun ! (n res)
+      (declare (integer n res))
+      (if (zerop n)
+          res
+          (! (1- n) (* n res))))
+
+Although this is a rather obvious result, it becomes somewhat less
+trivial in the presence of mutual tail recursion of multiple
+functions. Local function result type inference interacts with the
+mechanisms for ensuring proper tail calls mentioned in
+[Local Call Return Values][64ff].
+
+<a id="x-28SB-MANUAL-3A-40GLOBAL-FUNCTION-TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@GLOBAL-FUNCTION-TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
+
+#### 6.2.3 Global Function Type Inference
+
+As described in [Type Declaration Checking][538a], global function
+type ([`ftype`][05c1]) declarations are trusted by the compiler at call sites
+unless the `debug` optimization quality is 3. This can result in
+unsafe propagation of the type constraints in the callee based on
+the declared types of its arguments and return values.
+
+For example, if we compile this:
+
+    (declaim (ftype (function () cons) foo))
+    (defun foo ()
+      (cons 1 2))
+    
+    (defun bar ()
+      (car (foo)))
+
+and subsequently redefine `foo` as
+
+    (declaim (ftype (function () t) foo))
+    (defun foo ()
+      1)
+
+we get a somewhat innocent looking style warning:
+
+    ; caught STYLE-WARNING:
+    ;   The new FTYPE proclamation for COMMON-LISP-USER::FOO
+    ;     (FUNCTION NIL T)
+    ;   does not match the old FTYPE proclamation
+    ;     (FUNCTION NIL (VALUES CONS &REST T))
+
+However, here the consequences are on the harsher side of undefined
+behavior:
+
+    CL-USER> (bar)
+    Unhandled memory fault at #xFFFFFFFFFFFFFFFB.
+
+This happens because when compiling `bar`, the compiler applied type
+arithmetic to the active `ftype` of `foo` ([`cons`][229c]). Because a `cons`
+satisfies [`car`][d5a2]'s type requirement with 100% certainty, the compiler
+completely eliminated the runtime type check. Upon redefinition, `bar`
+executes a raw memory pointer dereference on the integer `1`, triggering
+an immediate hardware-level segmentation fault.
+
+This happens because when compiling `bar`, the compiler trusted the
+then active `ftype` of `foo`, with return value type [`cons`][a237], and thus
+omitted the type check for `cons` from the inlined call to `car`.
+
+> *Note*: A similar example can be constructed based on declared
+> argument types.
+
+> *Note*: Without explicit `ftype` declarations and with
+> [`sb-ext:*derive-function-types*`][eb49] `nil`, [`compile-file`][0bd1] itself does not
+> trust the derived function types, which does a lot to mitigate the
+> safety issue.
+
+<a id="x-28SB-EXT-3A-2ADERIVE-FUNCTION-TYPES-2A-20VARIABLE-29"></a>
+<a id="SB-EXT:*DERIVE-FUNCTION-TYPES*%20VARIABLE"></a>
+
+- \[variable\] **sb-ext:\*derive-function-types\*** *nil*
+
+    Should the compiler assume that function types will never change,
+    so that it can use type information inferred from current
+    definitions to optimize code which uses those definitions? Setting
+    this true gives non-ANSI, early-`cmucl` behavior. It can be useful for
+    improving the efficiency of stable code at the cost of safety in
+    face of changing [`ftype`][05c1]s.
+
+    > *Warning*: Enabling this is *unsafe*. See
+    > [Global Function Type Inference][2cf8].
+
+<a id="x-28SB-MANUAL-3A-40OPERATION-SPECIFIC-TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@OPERATION-SPECIFIC-TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
+
+#### 6.2.4 Operation-specific Type Inference
+
+Many of the standard Common Lisp functions have special type inference
+procedures that determine the result type as a function of the
+argument types. For example, the result type of [`aref`][e22b] is the array
+element type. Here are some other examples of type inferences:
+
+    (logand x #xFF) => (unsigned-byte 8)
+    
+    (+ (the (integer 0 12) x) (the (integer 0 1) y)) => (integer 0 13)
+    
+    (ash (the (unsigned-byte 16) x) -8) => (unsigned-byte 8)
+
+<a id="x-28SB-MANUAL-3A-40DYNAMIC-TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DYNAMIC-TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
+
+#### 6.2.5 Dynamic Type Inference
+
+SBCL uses flow analysis to infer types in dynamically typed
+programs. For example:
+
+    (ecase x
+      (list (length x))
+      ...)
+
+Here, the compiler knows the type of the argument to [`length`][2f78] because
+`length` is called when X is a [`list`][9271]. The most significant efficiency
+effect of inference from assertions is usually in type check
+optimization.
+
+A similar optimization is possible for
+
+    (+ (car x) (length x))
+
+Dynamic type inference has two inputs: explicit conditionals and
+implicit or explicit type assertions. Flow analysis propagates these
+constraints on variable type to any code that can be executed only
+after passing through the constraint. Explicit type constraints come
+from [`if`][02ad]s where the test is either a lexical variable or a function
+of lexical variables and constants, where the function is either a
+type predicate, a numeric comparison or [`eq`][5a82].
+
+If there is an `eq` or [`eql`][38a2] test, then the compiler will actually
+substitute one argument for the other in the true branch. For
+example,
+
+    (when (eq x :yow!)
+      (return x))
+
+becomes
+
+    (when (eq x :yow!)
+      (return :yow!))
+
+This substitution is done when one argument is a constant or one
+argument has better type information than the other. This
+transformation reveals opportunities for constant folding or
+type-specific optimizations. If the test is against a constant, then
+the compiler can prove that the variable is not that constant value
+in the false branch or `(not (member :yow!))` in the example above.
+This can eliminate redundant tests. For example,
+
+    (if (eq x nil)
+        ...
+        (if x a b))
+
+is transformed to
+
+    (if (eq x nil)
+        ...
+        a)
+
+Variables appearing as `if` tests are interpreted as
+`(not (eq var nil))` tests. The compiler also converts [`=`][e52f] into `eql`
+where possible. It is difficult to do inference directly on = since
+it does implicit coercions.
+
+When there is an explicit [`<`][c3a0] or [`>`][5333] test on numeric variables, the
+compiler makes inferences about the ranges the variables can assume
+in the true and false branches. This is mainly useful when it proves
+that the values are small enough in magnitude to allow open-coding
+of arithmetic operations. For example, in many uses of [`dotimes`][aa56] with
+a [`fixnum`][3cde] repeat count, the compiler proves that fixnum arithmetic
+can be used.
+
+Implicit type assertions are quite common, especially if you declare
+function argument types. Dynamic inference from implicit type
+assertions sometimes helps to disambiguate programs to a useful
+degree but is most noticeable when it detects a dynamic type error.
+For example,
+
+    (defun foo (x)
+      (+ (car x) x))
+
+results in this warning:
+
+    ; in: DEFUN FOO
+    ;     (+ (CAR X) X)
+    ;
+    ; note: deleting unreachable code
+    ;
+    ; caught WARNING:
+    ;   Derived type of X is
+    ;     (VALUES LIST &OPTIONAL),
+    ;   conflicting with its asserted type
+    ;     NUMBER.
+
+<a id="x-28SB-MANUAL-3A-40TYPE-CHECK-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TYPE-CHECK-OPTIMIZATION%20MGL-PAX:SECTION"></a>
+
+#### 6.2.6 Type Check Optimization
+
+SBCL backs up its support for [Precise Type Checking][ade9] by minimizing
+the cost of run-time type checking. This is done both through
+[Type Inference][55c7] and through optimizations of type checking itself.
+
+Type inference often allows the compiler to prove that a value is of
+the correct type, and thus no type check is necessary. For example:
+
+    (defstruct foo a b c)
+    (defstruct link
+      (foo (required-argument) :type foo)
+      (next nil :type (or link null)))
+    
+    (foo-a (link-foo x))
+
+Here, there is no need to check that the result of `link-foo` is a
+`foo` since it always is. Even when some type checks are necessary,
+type inference can often reduce the number:
+
+    (defun test (x)
+      (let ((a (foo-a x))
+            (b (foo-b x))
+            (c (foo-c x)))
+        ...))
+
+In this above example, only one `(foo-p x)` check is needed. This
+applies to a lesser degree in list operations, such as
+
+    (if (eql (car x) 3)
+        (cdr x)
+        y)
+
+where we only have to check that `x` is a list once.
+
+Since the compiler recognizes explicit type tests, code that
+explicitly protects itself against type errors has little introduced
+overhead due to implicit type checking. For example, this loop
+compiles with no type checks for [`car`][d5a2] and [`cdr`][e012] due to the termination
+condition involving [`atom`][0a7c]:
+
+    (defun memq (e l)
+      (do ((current l (cdr current)))
+          ((atom current) nil)
+        (when (eq (car current) e) (return current))))
+
+The compiler reduces the cost of checks that must be done through an
+optimization called *complementing*. A complemented check for
+`type` is simply a check that the value is not of the type
+`(not type)`. This is only interesting when something is known about
+the actual type, in which case we can test for the complement of
+`(and known-type (not type))` or the difference between the known
+type and the assertion. An example:
+
+    (link-foo (link-next x))
+
+Here, we change the type check for `link-foo` from a test for `foo`
+to a test for:
+
+    (not (and (or foo null)
+              (not foo)))
+
+or more simply `(not null)`. This is probably the most important use
+of complementing, since the situation is fairly common and a [`null`][5866]
+test is much cheaper than a structure type test.
+
+Here is a more complicated example that illustrates the combination of
+complementing with dynamic type inference:
+
+    (defun find-a (a x)
+      (declare (type (or link null) x))
+      (do ((current x (link-next current)))
+          ((null current) nil)
+        (let ((foo (link-foo current)))
+          (when (eq (foo-a foo) a) (return foo)))))
+
+This loop can be compiled with no type checks. The `link` test for
+`link-foo` and `link-next` is complemented to `(not null)` and then
+deleted because of the explicit `null` test. As before, no check is
+necessary for `foo-a`, since `link-foo` is always a `foo`. This sort
+of situation shows how [Precise Type Checking][ade9] combined with precise
+declarations can actually result in reduced type checking.
+
 <a id="x-28SB-MANUAL-3A-40SOURCE-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SOURCE-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-### 6.1 Source Optimization
+### 6.3 Source Optimization
 
 This section describes source-level transformations that the SBCL
 compiler does on programs in an attempt to make them more efficient.
@@ -4402,10 +5378,14 @@ straightforward implementation can be transformed into an efficient
 one, then there is no need for tricky and dangerous hand
 optimization.
 
+Source-level optimization eliminates the need for macros to optimize
+their expansion, and also increases the effectiveness of
+[Inline Expansion][2ccb].
+
 <a id="x-28SB-MANUAL-3A-40LET-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LET-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.1 Let Optimization
+#### 6.3.1 Let Optimization
 
 The primary optimization of let variables is to delete them when they
 are unnecessary. Whenever the value of a let variable is a constant,
@@ -4493,7 +5473,7 @@ is totally assignment-free.
 <a id="x-28SB-MANUAL-3A-40CONSTANT-FOLDING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONSTANT-FOLDING%20MGL-PAX:SECTION"></a>
 
-#### 6.1.2 Constant Folding
+#### 6.3.2 Constant Folding
 
 Constant folding is an optimization that replaces a call of constant
 arguments with the constant result of that call. Constant folding is
@@ -4516,7 +5496,7 @@ that special-cases constant arguments.
 <a id="x-28SB-MANUAL-3A-40UNUSED-EXPRESSION-ELIMINATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNUSED-EXPRESSION-ELIMINATION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.3 Unused Expression Elimination
+#### 6.3.3 Unused Expression Elimination
 
 If the value of any expression is not used, and the expression has no
 side-effects, then it is deleted. As with [Constant Folding][7866], this
@@ -4540,14 +5520,14 @@ becomes
 <a id="x-28SB-MANUAL-3A-40CONTROL-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONTROL-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.4 Control Optimization
+#### 6.3.4 Control Optimization
 
 The most important optimization of control is recognizing when an
 [`if`][02ad] test is known at compile time, then deleting the `if`, the test
 expression, and the unreachable branch. This can be considered a
 special case of constant folding, although the test doesn't have to
 be truly constant as long as it is definitely false or definitely
-not false. Note also, that type inference propagates the result of
+not false. Note also, that [Type Inference][55c7] propagates the result of
 an `if` test to the true and false branches.
 
 A related [`if`][02ad] optimization transforming
@@ -4601,7 +5581,7 @@ to make control drop through to the target.
 <a id="x-28SB-MANUAL-3A-40UNREACHABLE-CODE-DELETION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNREACHABLE-CODE-DELETION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.5 Dead Code Elimination
+#### 6.3.5 Unreachable Code Elimination
 
 The compiler will delete code whenever it can prove that the code can
 never be executed. Code becomes unreachable when
@@ -4702,7 +5682,7 @@ Not all unreachable code results in a note:
   are never given since it is too easy to confuse them in expanded
   code with ones in the original source. These constants are `nil`, `t`,
   keywords and unboxed values such as `fixnum`s, [`character`][0a49]s, and
-  [`single-float`][31a6]s on 64-bit platforms.
+  [`single-float`][31a6d]s on 64-bit platforms.
 
 - Notes are only given about code unreachable due to control flow.
   There is no note when an expression is deleted because its value
@@ -4712,7 +5692,7 @@ Not all unreachable code results in a note:
 <a id="x-28SB-MANUAL-3A-40MULTIPLE-VALUES-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MULTIPLE-VALUES-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 6.1.6 Multiple Values Optimization
+#### 6.3.6 Multiple Values Optimization
 
 Within a function, the compiler implements uses of multiple values
 particularly efficiently. Multiple values can be kept in arbitrary
@@ -4737,7 +5717,7 @@ call provides efficient support for multiple function return values.
 <a id="x-28SB-MANUAL-3A-40STYLE-RECOMMENDATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION"></a>
 
-#### 6.1.7 Style Recommendations
+#### 6.3.7 Style Recommendations
 
 Source level optimization makes possible a clearer and more relaxed
 programming style:
@@ -4767,7 +5747,7 @@ programming style:
 <a id="x-28SB-MANUAL-3A-40TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-CALL%20MGL-PAX:SECTION"></a>
 
-### 6.2 Tail Call
+### 6.4 Tail Call
 
 A call to a function is a tail call if nothing has to be done after
 the call returns. That is, when the call returns, the returned
@@ -4780,7 +5760,7 @@ Note that both [Local Call][3d65]s and full calls can be tail calls.
 <a id="x-28SB-MANUAL-3A-40TAIL-CALL-OPTIMIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-CALL-OPTIMIZATION%20MGL-PAX:SECTION"></a>
 
-#### 6.2.1 Tail Call Optimization
+#### 6.4.1 Tail Call Optimization
 
 SBCL performs tail call optimization (TCO) although this is not
 required by the Common Lisp standard.
@@ -4809,7 +5789,7 @@ calls. See [Debugging Tail Calls][22a1].
 <a id="x-28SB-MANUAL-3A-40TAIL-POSITION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-POSITION%20MGL-PAX:SECTION"></a>
 
-#### 6.2.2 Tail Position
+#### 6.4.2 Tail Position
 
 A call is said to be in tail position unless it is enclosed by at
 least one of the following:
@@ -4830,7 +5810,7 @@ when the stack is unwound.
 <a id="x-28SB-MANUAL-3A-40TAIL-RECURSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TAIL-RECURSION%20MGL-PAX:SECTION"></a>
 
-#### 6.2.3 Tail Recursion
+#### 6.4.3 Tail Recursion
 
 Tail recursion is when a function makes a [Tail Call][ec2e] to
 itself. In this example, the recursive call to `myfun` is
@@ -4881,7 +5861,7 @@ functions instead of using a single huge [`prog`][9a0c].
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALL%20MGL-PAX:SECTION"></a>
 
-### 6.3 Local Call
+### 6.5 Local Call
 
 The compiler supports two kinds of function call: full call and local
 call. Full call is the standard calling convention; its late binding
@@ -4903,7 +5883,7 @@ compilation times and prevents function redefinition.
 <a id="x-28SB-MANUAL-3A-40LOCAL-SELF-RECURSIVE-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-SELF-RECURSIVE-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.3.1 Local Self-recursive Call
+#### 6.5.1 Local Self-recursive Call
 
 [Local Call][3d65] is used when a function defined by [`defun`][f472] calls
 itself and block compilation is used (see [`compile-file`][0bd1]). For
@@ -4923,7 +5903,7 @@ jump to the start of the function and don't indirect through
 <a id="x-28SB-MANUAL-3A-40LET-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LET-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.3.2 Let Call
+#### 6.5.2 Let Call
 
 Because [Local Call][3d65] avoids unnecessary call overheads, the compiler
 internally uses local call to implement some macros and special
@@ -4974,7 +5954,7 @@ let calls.
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALLS-TO-CLOSURES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION"></a>
 
-#### 6.3.3 Local Calls to Closures
+#### 6.5.3 Local Calls to Closures
 
 [Local Call][3d65] allows for much more efficient use of closures, since the
 closure environment doesn't need to be allocated on the heap or even
@@ -5002,7 +5982,7 @@ Closures may also be subject to [Let Optimization][6385].
 <a id="x-28SB-MANUAL-3A-40LOCAL-TAIL-CALL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION"></a>
 
-#### 6.3.4 Local Tail Call
+#### 6.5.4 Local Tail Call
 
 Local tail calls are particularly efficient because they combine the
 benefits of [Local Call][3d65]s (simplified calling convention) and
@@ -5030,7 +6010,7 @@ which is compiled to just as efficient code as
 <a id="x-28SB-MANUAL-3A-40LOCAL-CALL-RETURN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LOCAL-CALL-RETURN-VALUES%20MGL-PAX:SECTION"></a>
 
-#### 6.3.5 Local Call Return Values
+#### 6.5.5 Local Call Return Values
 
 
 One of the more subtle costs of full call comes from allowing
@@ -5039,13 +6019,13 @@ arbitrary numbers of return values. This overhead can be avoided in
 number of values. For efficiency reasons (as well as stylistic
 ones), you should write functions so that they always return the
 same number of values. This may require passing extra `nil` arguments
-to [`values`][5cc0] in some cases, but the result is more efficient, not less
+to `values`([`0`][5cc0] [`1`][c4cf]) in some cases, but the result is more efficient, not less
 so.
 
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION%20MGL-PAX:SECTION"></a>
 
-### 6.4 Block Compilation
+### 6.6 Block Compilation
 
 Block compilation allows calls to global functions defined by
 [`defun`][f472] to be compiled as [Local Call][3d65]s. The function call can be in a
@@ -5073,7 +6053,7 @@ arguments and return values in non-trivial programs.
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-SEMANTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION"></a>
 
-#### 6.4.1 Block Compilation Semantics
+#### 6.6.1 Block Compilation Semantics
 
 The effect of block compilation can be envisioned as the compiler
 turning all the [`defun`][f472]s in the block-compiled unit into a single
@@ -5124,7 +6104,7 @@ is not an entry point, so it is not globally defined. In addition,
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DECLARATIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-DECLARATIONS%20MGL-PAX:SECTION"></a>
 
-#### 6.4.2 Block Compilation Declarations
+#### 6.6.2 Block Compilation Declarations
 
 The following declarations allow fine-grained control of block
 compilation. They are only legal as global declarations ([`declaim`][ebea] or
@@ -5161,7 +6141,7 @@ compilation. They are only legal as global declarations ([`declaim`][ebea] or
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-DIFFICULTIES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION"></a>
 
-#### 6.4.3 Block Compilation Difficulties
+#### 6.6.3 Block Compilation Difficulties
 
 The main problem with block compilation is that the compiler uses
 large amounts of memory when it is block compiling. This places an
@@ -5187,7 +6167,7 @@ block compilation across file boundaries.
 <a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-### 6.5 Inline Expansion
+### 6.7 Inline Expansion
 
 SBCL can expand almost any function inline, including functions
 with keyword arguments. The only restrictions are that keyword
@@ -5305,7 +6285,7 @@ See also [Source Optimization][8459].
 <a id="x-28SB-MANUAL-3A-40INLINE-EXPANSION-RECORDING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INLINE-EXPANSION-RECORDING%20MGL-PAX:SECTION"></a>
 
-#### 6.5.1 Inline Expansion Recording
+#### 6.7.1 Inline Expansion Recording
 
 Inline expansion requires that the source for the inline expanded
 function to be available when calls to the function are compiled.
@@ -5346,7 +6326,7 @@ environment.
 <a id="x-28SB-MANUAL-3A-40SEMI-INLINE-EXPANSION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SEMI-INLINE-EXPANSION%20MGL-PAX:SECTION"></a>
 
-#### 6.5.2 Semi-inline Expansion
+#### 6.7.2 Semi-inline Expansion
 
 Semi-inline expansion shares a single copy of a function across all
 the calls in a component by converting the inline expansion into a
@@ -5416,12 +6396,12 @@ call.
 <a id="x-28SB-MANUAL-3A-40SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 6.6 Slot Access
+### 6.8 Slot Access
 
 <a id="x-28SB-MANUAL-3A-40STRUCTURE-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STRUCTURE-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.6.1 Structure Object Slot Access
+#### 6.8.1 Structure Object Slot Access
 
 Structure slot accessors are efficient only if the compiler is
 able to open code them: compiling a call to a structure slot
@@ -5432,7 +6412,7 @@ severe performance degradation.
 <a id="x-28SB-MANUAL-3A-40STANDARD-OBJECT-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STANDARD-OBJECT-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 6.6.2 Standard Object Slot Access
+#### 6.8.2 Standard Object Slot Access
 
 The most efficient way to access a slot of a [`standard-object`][a843] is
 by using [`slot-value`][5a85] with a constant slot name argument inside a
@@ -5477,7 +6457,7 @@ lazily set up during those calls.
 <a id="x-28SB-MANUAL-3A-40STACK-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION"></a>
 
-### 6.7 Stack Allocation
+### 6.9 Stack Allocation
 
 SBCL has fairly extensive support for performing allocations on the
 stack when a variable or function is declared [`dynamic-extent`][0901]. The
@@ -5526,7 +6506,7 @@ of values when they are recognized as having dynamic extent:
     > *Note*: Structures with *raw* slots can currently be
     > stack-allocated only on x86 and x86-64. A raw slot is one
     > whose declared type is a subtype of exactly one of:
-    > [`double-float`][0d57], [`single-float`][31a6], `(complex
+    > [`double-float`][0d57], [`single-float`][31a6d], `(complex
     > double-float)`, `(complex single-float)`, or `sb-ext:word`; but
     > as an exception to the preceding, any subtype of [`fixnum`][3cde] is not
     > stored as raw despite also being a subtype of `sb-ext:word`.
@@ -5659,7 +6639,7 @@ detect incorrect usage of dynamic extent declarations.
 <a id="x-28SB-MANUAL-3A-40MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-### 6.8 Modular Arithmetic
+### 6.10 Modular Arithmetic
 
 Some numeric functions have a property: n lower bits of the
 result depend only on n lower bits of (all or some) arguments. If
@@ -5694,7 +6674,7 @@ currently this is not implemented.
 <a id="x-28SB-MANUAL-3A-40SIGNED-MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SIGNED-MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-#### 6.8.1 Signed Modular Arithmetic
+#### 6.10.1 Signed Modular Arithmetic
 
 Sign-extending the result in the following way will be
 translated into signed modular arithmetic:
@@ -5707,7 +6687,7 @@ translated into signed modular arithmetic:
 <a id="x-28SB-MANUAL-3A-40RECOGNIZED-IDIOMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RECOGNIZED-IDIOMS%20MGL-PAX:SECTION"></a>
 
-### 6.9 Recognized Idioms
+### 6.11 Recognized Idioms
 
 Common Lisp doesn't directly expose all features present in
 modern hardware. Some code patterns are recognized and turned into
@@ -5717,7 +6697,7 @@ internal features.
 <a id="x-28SB-MANUAL-3A-40COUNT-TRAILING-ZEROS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COUNT-TRAILING-ZEROS%20MGL-PAX:SECTION"></a>
 
-#### 6.9.1 Count Trailing Zeros
+#### 6.11.1 Count Trailing Zeros
 
     (defun ctz (n)
       (declare (type (unsigned-byte 64) n))
@@ -5729,7 +6709,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40GLOBAL-AND-ALWAYS-BOUND-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GLOBAL-AND-ALWAYS-BOUND-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 6.10 Global and Always-bound Variables
+### 6.12 Global and Always-bound Variables
 
 <a id="x-28SB-EXT-3ADEFGLOBAL-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO"></a>
@@ -5778,7 +6758,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EFFICIENCY-ISSUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION"></a>
 
-### 6.11 Miscellaneous Efficiency Issues
+### 6.13 Miscellaneous Efficiency Issues
 
 The `sb-ext:purify` function (available with conservative GC) causes
 SBCL first to collect all garbage, then to mark all uncollected
@@ -5796,30 +6776,18 @@ The `sb-ext:truly-the` special form declares the type of the result of
 the operations, producing its argument; the declaration is not
 checked. In short: don't use it.
 
-The `sb-ext:freeze-type` declaration declares that a type will never
-change, which can make type testing (e.g. with [`typep`][0895]) more efficient
-for structure types.
-
 FIXME: The remaining material in the CMUCL manual about getting good
 performance from the compiler should be reviewed, and added to this
 section. In the meantime, the original CMUCL manual is still 95+%
 correct for the SBCL's compiler. See the sections
 
-- Advanced Compiler Use and Efficiency Hints
+- Advanced Compiler Use and Efficiency Hints- Object Representation
 
-- Advanced Compiler Introduction
+    - Numbers
 
-- More About Types in Python
+    - General Efficiency Hints
 
-- Type Inference
-
-- Object Representation
-
-- Numbers
-
-- General Efficiency Hints
-
-- Efficiency Notes
+    - Efficiency Notes
 
 Besides this information from the CMUCL manual, there are a few other
 points to keep in mind.
@@ -5874,13 +6842,13 @@ hand-coding has been done as of SBCL version 0.6.3 include
   type checking, e.g. `(locally (declare (safety 1)) (assoc item list))`
   (which currently performs safe [`endp`][e8d7] checking internal to [`assoc`][e5fc]).
 
-If your system's performance is suffering because of some construct
-which could in principle be compiled efficiently, but which the SBCL
-compiler can't in practice compile efficiently, consider writing a
-patch to the compiler and submitting it for inclusion in the main
-sources. Such code is often reasonably straightforward to write;
-search the sources for the string `deftransform` to find many
-examples (some straightforward, some less so).
+If your system's performance is suffering due to some construct that
+SBCL fails to compile efficiently, even though it could be in
+principle, consider writing a patch to the compiler and submitting
+it for inclusion in the main sources. Such code is often reasonably
+straightforward to write; search the sources for the string
+`deftransform` to find many examples (some straightforward, some
+less so).
 
 <a id="x-28SB-MANUAL-3A-40BEYOND-THE-ANSI-STANDARD-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BEYOND-THE-ANSI-STANDARD%20MGL-PAX:SECTION"></a>
@@ -8622,7 +9590,7 @@ effect as
     (* limit
        (float (/ (random (expt 2 23)) (expt 2 23)) 1.0f0))
 
-(for [`single-float`][31a6]s) and correspondingly (with `52` and `1.0d0`
+(for [`single-float`][31a6d]s) and correspondingly (with `52` and `1.0d0`
 instead of `23` and `1.0f0`) for [`double-float`][0d57]s. Note especially that
 this means that zero is a possible return value occurring with
 probability `(expt 2 -23)` and `(expt 2 -52)`, respectively. Also
@@ -8966,6 +9934,26 @@ and its context.
     Note that the unencapsulated function may be [`eq`][5a82] to the designated
     function even in the presence of encapsulations. For generic
     functions, this is currently always the case.
+
+<a id="x-28SB-EXT-3ACOMPILE-FILE-POSITION-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-EXT:COMPILE-FILE-POSITION%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-ext:compile-file-position**
+
+    Return the character position of this macro invocation. This is in the
+    context of the file being compiled with [`compile-file`][0bd1]. Outside this
+    context or if the position cannot be determined, `nil` is returned.
+
+<a id="x-28SB-EXT-3ACOMPILE-FILE-LINE-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-EXT:COMPILE-FILE-LINE%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-ext:compile-file-line**
+
+    Return the line number (starting from 1) and and column
+    number (starting from 0) of this macro invocation as multiple
+    values. This is in the context of the file being compiled with
+    [`compile-file`][0bd1]. Outside this context or if the line and column cannot
+    be determined, the values 0, -1 are returned.
 
 <a id="x-28DOCUMENTATION-20GENERIC-FUNCTION-29"></a>
 <a id="DOCUMENTATION%20GENERIC-FUNCTION"></a>
@@ -9384,7 +10372,7 @@ declaration. See [Precise Type Checking][ade9].
 Note that the type identifiers used in the foreign type system
 overlap with native Lisp type specifiers in some cases. For example,
 the type specifier `(alien single-float)` is identical to
-[`single-float`][31a6], since foreign floats are automatically converted to
+[`single-float`][31a6d], since foreign floats are automatically converted to
 Lisp floats. When [`type-of`][9caa] is called on an alien value that is not
 automatically converted to a Lisp value, then it will return an
 `alien` type specifier.
@@ -9398,7 +10386,7 @@ automatically converted to a Lisp value, then it will return an
 > package. Some foreign type names are also symbols in the
 > `common-lisp` package, in which case they are reexported from the
 > `sb-alien` package, so that e.g. it is legal to refer to
-> [`single-float`][31a6].
+> [`single-float`][31a6d].
 
 These are the basic foreign type specifiers:
 
@@ -14476,9 +15464,10 @@ compiler and in generating sb-alien structure and union types,
 [Defining Foreign Types][7cc7].
 
 The ASDF (<http://www.cliki.net/ASDF>) component type
-GROVEL-CONSTANTS-FILE has its `asdf:perform` operation defined to
-write out a C source file, compile it, and run it. The output from
-this program is Lisp, which is then itself compiled and loaded.
+`sb-grovel:grovel-constants-file` has its `asdf:perform` operation
+defined to write out a C source file, compile it, and run it. The
+output from this program is Lisp, which is then itself compiled and
+loaded.
 
 `sb-grovel` is used in a few contributed modules, and it is
 currently compatible only to SBCL. However, if you want to use it,
@@ -15119,6 +16108,11 @@ following the usual convention of uppercasing the name. Docstrings
 are in a subset of Markdown and use very little markup in general,
 so they are easy to read directly in the source.
 
+The final, rendered documentation in plain text format is available
+for any section via [`cl:documentation`][68f1]:
+
+    (documentation sb-manual:@sbcl-manual t)
+
 The official manual in Info, HTML and PDF formats is generated via
 Texinfo generated from these definitions.
 
@@ -15668,7 +16662,7 @@ packs of complex numbers or characters.
 
 The supported scalar types are `f32`, `f64`, `s<n>`, and `u<n>`,
 where `<n>` is either 8, 16, 32, or 64. These scalar types are
-abbreviations for the Common Lisp types [`single-float`][31a6], [`double-float`][0d57],
+abbreviations for the Common Lisp types [`single-float`][31a6d], [`double-float`][0d57],
 [`signed-byte`][c474], and [`unsigned-byte`][561a], respectively. For each scalar data
 type `x`, there exists one or more SIMD data type `x.y` with `y`
 elements. For example, in AVX there are two supported SIMD data
@@ -16550,9 +17544,9 @@ just hang and you want to send a useful bug report, then:
 - Isolate a smallish test case, run it.
 
 - If SBCL hangs, kill it with `sigabrt`: `kill -ABRT <pidof sbcl>`,
-  which by default enters [`ldb`][00e9].
+  which by default enters LDB.
 
-- Print the backtrace from `ldb` by typing `ba`.
+- Print the backtrace from LDB by typing `ba`.
 
 - Next, attach gdb with `gdb -p <pidof sbcl>`, and get backtraces
   for all threads with `thread apply all ba`.
@@ -16802,8 +17796,6 @@ learn about Common Lisp, some books stand out:
 
 [00a0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_mi.htm "SLOT-MISSING (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
-[00e9]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ldb.htm "LDB (MGL-PAX:CLHS FUNCTION)"
-
 [0157]: #SB-MANUAL:@CONDITIONALS%20MGL-PAX:SECTION "Conditionals"
 
 [0160]: http://www.lispworks.com/documentation/HyperSpec/Body/s_setq.htm "SETQ (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -16812,7 +17804,7 @@ learn about Common Lisp, some books stand out:
 
 [01c3]: #SB-MANUAL:@TROUBLESHOOTING-THE-BUILD%20MGL-PAX:SECTION "Troubleshooting the Build"
 
-[01df]: #SB-MANUAL:@UNREACHABLE-CODE-DELETION%20MGL-PAX:SECTION "Dead Code Elimination"
+[01df]: #SB-MANUAL:@UNREACHABLE-CODE-DELETION%20MGL-PAX:SECTION "Unreachable Code Elimination"
 
 [025a]: #SB-SPROF:*SAMPLE-INTERVAL*%20VARIABLE "SB-SPROF:*SAMPLE-INTERVAL* VARIABLE"
 
@@ -16874,6 +17866,8 @@ learn about Common Lisp, some books stand out:
 
 [0a63]: #SB-CONCURRENCY:FRLOCK-READ-BEGIN%20FUNCTION "SB-CONCURRENCY:FRLOCK-READ-BEGIN FUNCTION"
 
+[0a7c]: http://www.lispworks.com/documentation/HyperSpec/Body/a_atom.htm "ATOM (MGL-PAX:CLHS NIL)"
+
 [0b58]: #SB-EXT:PACKAGE-LOCKED-ERROR-SYMBOL%20FUNCTION "SB-EXT:PACKAGE-LOCKED-ERROR-SYMBOL FUNCTION"
 
 [0b69]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp_fi.htm "COMPILE-FILE (MGL-PAX:CLHS FUNCTION)"
@@ -16910,11 +17904,15 @@ learn about Common Lisp, some books stand out:
 
 [0eff]: #SB-UNICODE:UPPERCASE%20FUNCTION "SB-UNICODE:UPPERCASE FUNCTION"
 
+[0f30]: #SB-MANUAL:@OPERATION-SPECIFIC-TYPE-INFERENCE%20MGL-PAX:SECTION "Operation-specific Type Inference"
+
 [0f4f]: #SB-POSIX:DO-PASSWDS%20MGL-PAX:MACRO "SB-POSIX:DO-PASSWDS MGL-PAX:MACRO"
 
 [0f57]: #SB-MANUAL:@CHARACTER-INPUT-STREAM-METHODS%20MGL-PAX:SECTION "Character input stream methods"
 
 [0fc0]: #SB-SEQUENCE:MAP%20GENERIC-FUNCTION "SB-SEQUENCE:MAP GENERIC-FUNCTION"
+
+[1013]: http://www.lispworks.com/documentation/HyperSpec/Body/f_not.htm "NOT (MGL-PAX:CLHS FUNCTION)"
 
 [1016]: #SB-MANUAL:@INITIALIZATION-FILES%20MGL-PAX:SECTION "Initialization Files"
 
@@ -16934,6 +17932,8 @@ learn about Common Lisp, some books stand out:
 
 [116c]: http://www.lispworks.com/documentation/HyperSpec/Body/f_stm_el.htm "STREAM-ELEMENT-TYPE (MGL-PAX:CLHS FUNCTION)"
 
+[119e]: http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm "FUNCTION (MGL-PAX:CLHS CLASS)"
+
 [11bf]: #SB-MANUAL:@NAME-SERVICE%20MGL-PAX:SECTION "Name Service"
 
 [11dd]: #SB-THREAD:SEMAPHORE-NOTIFICATION-STATUS%20FUNCTION "SB-THREAD:SEMAPHORE-NOTIFICATION-STATUS FUNCTION"
@@ -16950,6 +17950,8 @@ learn about Common Lisp, some books stand out:
 
 [1298]: #SB-MANUAL:@VARIABLE-VALUE-AVAILABILITY%20MGL-PAX:SECTION "Variable Value Availability"
 
+[12f8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_disass.htm "DISASSEMBLE (MGL-PAX:CLHS FUNCTION)"
+
 [1341]: #SB-BSD-SOCKETS:HOST-ENT%20CLASS "SB-BSD-SOCKETS:HOST-ENT CLASS"
 
 [1351]: #SB-BSD-SOCKETS:SOCKET-ERROR%20FUNCTION "SB-BSD-SOCKETS:SOCKET-ERROR FUNCTION"
@@ -16960,6 +17962,8 @@ learn about Common Lisp, some books stand out:
 
 [14cb]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defmac.htm "DEFMACRO (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[14f5]: #SB-MANUAL:@TYPE-STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION "Type Style Recommendations"
+
 [1574]: http://www.lispworks.com/documentation/HyperSpec/Body/s_declar.htm "DECLARE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [15fc]: #SB-MANUAL:@PACKAGE-LOCKS-IN-COMPILED-CODE%20MGL-PAX:SECTION "Package Locks in Compiled Code"
@@ -16969,6 +17973,8 @@ learn about Common Lisp, some books stand out:
 [1665]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm "WRITE-STRING (MGL-PAX:CLHS FUNCTION)"
 
 [16f8]: #SB-EXT:PACKAGE-LOCKED-ERROR%20CONDITION "SB-EXT:PACKAGE-LOCKED-ERROR CONDITION"
+
+[17c2]: #SB-MANUAL:@VARIABLE-TYPE-INFERENCE%20MGL-PAX:SECTION "Variable Type Inference"
 
 [1847]: #SB-MANUAL:@MISCELLANEOUS-EXTENSIONS%20MGL-PAX:SECTION "Miscellaneous Extensions"
 
@@ -17000,6 +18006,8 @@ learn about Common Lisp, some books stand out:
 
 [1e45]: #SB-THREAD:SEMAPHORE-NOTIFICATION%20STRUCTURE "SB-THREAD:SEMAPHORE-NOTIFICATION STRUCTURE"
 
+[1e7c]: #SB-MANUAL:@DYNAMIC-TYPE-INFERENCE%20MGL-PAX:SECTION "Dynamic Type Inference"
+
 [1efa]: #SB-CONCURRENCY:DEQUEUE%20FUNCTION "SB-CONCURRENCY:DEQUEUE FUNCTION"
 
 [1f10]: http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm "BUILT-IN-CLASS (MGL-PAX:CLHS CLASS)"
@@ -17009,6 +18017,8 @@ learn about Common Lisp, some books stand out:
 [1f37]: http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm "CLASS (MGL-PAX:CLHS CLASS)"
 
 [1f38]: #SB-THREAD:MAKE-THREAD%20FUNCTION "SB-THREAD:MAKE-THREAD FUNCTION"
+
+[1f99]: http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm "ARRAY (MGL-PAX:CLHS CLASS)"
 
 [1fcc]: #SB-MANUAL:@HOME-DIRECTORY-SPECIFIERS%20MGL-PAX:SECTION "Home Directory Specifiers"
 
@@ -17086,6 +18096,8 @@ learn about Common Lisp, some books stand out:
 
 [2ccb]: #SB-MANUAL:@INLINE-EXPANSION%20MGL-PAX:SECTION "Inline Expansion"
 
+[2cf8]: #SB-MANUAL:@GLOBAL-FUNCTION-TYPE-INFERENCE%20MGL-PAX:SECTION "Global Function Type Inference"
+
 [2d20]: #SB-MANUAL:@SB-POSIX-LISP-NAMES%20MGL-PAX:SECTION "Lisp Names for C Names"
 
 [2d27]: #SB-INTROSPECT:DEFINITION-SOURCE-PATHNAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-INTROSPECT:DEFINITION-SOURCE%29 "SB-INTROSPECT:DEFINITION-SOURCE-PATHNAME (MGL-PAX:STRUCTURE-ACCESSOR SB-INTROSPECT:DEFINITION-SOURCE)"
@@ -17102,6 +18114,8 @@ learn about Common Lisp, some books stand out:
 
 [2eec]: http://www.lispworks.com/documentation/HyperSpec/Body/s_symbol.htm "SYMBOL-MACROLET (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[2f78]: http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm "LENGTH (MGL-PAX:CLHS FUNCTION)"
+
 [3002]: http://www.lispworks.com/documentation/HyperSpec/Body/m_prog1c.htm "PROG2 (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [3074]: #SB-MANUAL:@TAIL-CALL-OPTIMIZATION%20MGL-PAX:SECTION "Tail Call Optimization"
@@ -17114,7 +18128,9 @@ learn about Common Lisp, some books stand out:
 
 [311a]: http://www.lispworks.com/documentation/HyperSpec/Body/s_the.htm "THE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
-[31a6]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "SINGLE-FLOAT (MGL-PAX:CLHS TYPE)"
+[31a6]: #SB-MANUAL:@MORE-TYPES-MEANINGFUL%20MGL-PAX:SECTION "More Types Meaningful"
+
+[31a6d]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "SINGLE-FLOAT (MGL-PAX:CLHS TYPE)"
 
 [31ef]: #SB-EXT:NATIVE-PATHNAME%20FUNCTION "SB-EXT:NATIVE-PATHNAME FUNCTION"
 
@@ -17135,6 +18151,10 @@ learn about Common Lisp, some books stand out:
 [335f]: #SB-MANUAL:@DEPRECATION-CONDITIONS%20MGL-PAX:SECTION "Deprecation Conditions"
 
 [339d]: #SB-MANUAL:@FOREIGN-VARIABLES%20MGL-PAX:SECTION "Foreign Variables"
+
+[3473]: http://www.lispworks.com/documentation/HyperSpec/Body/f_find_s.htm "FIND-SYMBOL (MGL-PAX:CLHS FUNCTION)"
+
+[3485]: #SB-MANUAL:@MORE-ABOUT-TYPES%20MGL-PAX:SECTION "More About Types"
 
 [3498]: http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm "FINISH-OUTPUT (MGL-PAX:CLHS FUNCTION)"
 
@@ -17192,6 +18212,8 @@ learn about Common Lisp, some books stand out:
 
 [3c84]: #SB-ALIEN:LOAD-SHARED-OBJECT%20FUNCTION "SB-ALIEN:LOAD-SHARED-OBJECT FUNCTION"
 
+[3cb2]: #SB-MANUAL:@MEMBER-TYPES%20MGL-PAX:SECTION "`member` Types"
+
 [3cde]: http://www.lispworks.com/documentation/HyperSpec/Body/t_fixnum.htm "FIXNUM (MGL-PAX:CLHS TYPE)"
 
 [3d00]: http://www.lispworks.com/documentation/HyperSpec/Body/f_stm_ex.htm "STREAM-EXTERNAL-FORMAT (MGL-PAX:CLHS FUNCTION)"
@@ -17233,6 +18255,8 @@ learn about Common Lisp, some books stand out:
 [41a3]: #SB-SYS:DEADLINE-TIMEOUT%20CONDITION "SB-SYS:DEADLINE-TIMEOUT CONDITION"
 
 [41b7]: #SB-CONCURRENCY:FRLOCK-WRITE%20MGL-PAX:MACRO "SB-CONCURRENCY:FRLOCK-WRITE MGL-PAX:MACRO"
+
+[425d]: http://www.lispworks.com/documentation/HyperSpec/Body/m_and.htm "AND (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [4272]: #SB-MANUAL:@STYLE-WARNINGS%20MGL-PAX:SECTION "Style Warnings"
 
@@ -17322,6 +18346,8 @@ learn about Common Lisp, some books stand out:
 
 [4dee]: http://www.lispworks.com/documentation/HyperSpec/Body/t_number.htm "NUMBER (MGL-PAX:CLHS CLASS)"
 
+[4df2]: http://www.lispworks.com/documentation/HyperSpec/Body/t_nil.htm "NIL (MGL-PAX:CLHS TYPE)"
+
 [4dff]: #SB-MANUAL:@WEAK-POINTERS%20MGL-PAX:SECTION "Weak Pointers"
 
 [4e46]: http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm "FIND (MGL-PAX:CLHS FUNCTION)"
@@ -17336,7 +18362,11 @@ learn about Common Lisp, some books stand out:
 
 [4f58]: #SB-THREAD:BARRIER%20MGL-PAX:MACRO "SB-THREAD:BARRIER MGL-PAX:MACRO"
 
+[4fa3]: #SB-MANUAL:@FUNCTION-TYPES%20MGL-PAX:SECTION "Function Types"
+
 [507d]: #SB-MANUAL:@SB-CONCURRENCY-MAILBOX%20MGL-PAX:SECTION "Mailbox (lock-free)"
+
+[5092]: #SB-MANUAL:@UNION-TYPES%20MGL-PAX:SECTION "Union Types"
 
 [5149]: #SB-UNICODE:UNICODE%3E%20FUNCTION "SB-UNICODE:UNICODE> FUNCTION"
 
@@ -17367,6 +18397,8 @@ learn about Common Lisp, some books stand out:
 [556e]: #SB-THREAD:WITH-NEW-SESSION%20MGL-PAX:MACRO "SB-THREAD:WITH-NEW-SESSION MGL-PAX:MACRO"
 
 [5598]: #SB-CONCURRENCY:RECEIVE-MESSAGE-NO-HANG%20FUNCTION "SB-CONCURRENCY:RECEIVE-MESSAGE-NO-HANG FUNCTION"
+
+[55c7]: #SB-MANUAL:@TYPE-INFERENCE%20MGL-PAX:SECTION "Type Inference"
 
 [55e8]: #SB-MANUAL:@STALE-EXTENSIONS%20MGL-PAX:SECTION "Stale Extensions"
 
@@ -17400,6 +18432,8 @@ learn about Common Lisp, some books stand out:
 
 [5854]: http://www.lispworks.com/documentation/HyperSpec/Body/m_cond.htm "COND (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[5866]: http://www.lispworks.com/documentation/HyperSpec/Body/a_null.htm "NULL (MGL-PAX:CLHS NIL)"
+
 [5888]: #SB-EXT:DEPRECATED%20DECLARATION "SB-EXT:DEPRECATED DECLARATION"
 
 [5986]: http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm "STRING-UPCASE (MGL-PAX:CLHS FUNCTION)"
@@ -17414,11 +18448,15 @@ learn about Common Lisp, some books stand out:
 
 [5a9f]: #SB-MANUAL:@TIMERS%20MGL-PAX:SECTION "Timers"
 
+[5abd]: #SB-MANUAL:@STRUCTURE-TYPES%20MGL-PAX:SECTION "Structure Types"
+
 [5b0b]: http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm "RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [5c43]: #SB-MANUAL:@EXSEQ-ITERATOR-PROTOCOL%20MGL-PAX:SECTION "Iterator Protocol"
 
 [5c73]: #SB-MANUAL:@GRAY-STREAMS-EXAMPLES%20MGL-PAX:SECTION "Gray Streams Examples"
+
+[5c81]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tpcase.htm "TYPECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [5cbb]: #SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION "Stack Allocation"
 
@@ -17437,8 +18475,6 @@ learn about Common Lisp, some books stand out:
 [5df9]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "DEBUG (MGL-PAX:CLHS DECLARATION)"
 
 [5e27]: #SB-MANUAL:@BREAKING-STRINGS%20MGL-PAX:SECTION "Breaking strings"
-
-[5ebc]: #SB-MANUAL:@IMPLEMENTATION-LIMITATIONS%20MGL-PAX:SECTION "Implementation Limitations"
 
 [5ed1]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm "*PACKAGE* (MGL-PAX:CLHS VARIABLE)"
 
@@ -17472,6 +18508,8 @@ learn about Common Lisp, some books stand out:
 
 [6239]: #SB-MANUAL:@PACKAGE-LOCK-CONCEPTS%20MGL-PAX:SECTION "Package Lock Concepts"
 
+[625d]: http://www.lispworks.com/documentation/HyperSpec/Body/m_multip.htm "MULTIPLE-VALUE-BIND (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
 [62fa]: #SB-MANUAL:@INTRODUCTION%20MGL-PAX:SECTION "Introduction"
 
 [6385]: #SB-MANUAL:@LET-OPTIMIZATION%20MGL-PAX:SECTION "Let Optimization"
@@ -17499,6 +18537,8 @@ learn about Common Lisp, some books stand out:
 [6547]: http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm "OPEN (MGL-PAX:CLHS FUNCTION)"
 
 [65f6]: #SB-MANUAL:@INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION "Instruction Set Dispatch"
+
+[663f]: http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm "NULL (MGL-PAX:CLHS CLASS)"
 
 [6651]: http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm "DESCRIBE (MGL-PAX:CLHS FUNCTION)"
 
@@ -17627,6 +18667,8 @@ learn about Common Lisp, some books stand out:
 [7ab4]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm "LOGAND (MGL-PAX:CLHS FUNCTION)"
 
 [7af6]: http://www.lispworks.com/documentation/HyperSpec/Body/f_chg_cl.htm "CHANGE-CLASS (MGL-PAX:CLHS GENERIC-FUNCTION)"
+
+[7b24]: #SB-EXT:FREEZE-TYPE%20DECLARATION "SB-EXT:FREEZE-TYPE DECLARATION"
 
 [7bca]: #SB-THREAD:MAKE-LISTENER-THREAD%20FUNCTION "SB-THREAD:MAKE-LISTENER-THREAD FUNCTION"
 
@@ -17796,6 +18838,8 @@ learn about Common Lisp, some books stand out:
 
 [96b9]: #SB-CONCURRENCY:MAILBOX%20STRUCTURE "SB-CONCURRENCY:MAILBOX STRUCTURE"
 
+[97ee]: http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm "ASSERT (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
 [980e]: #SB-EXT:PROCESS-EXIT-CODE%20FUNCTION "SB-EXT:PROCESS-EXIT-CODE FUNCTION"
 
 [9867]: #SB-THREAD:INTERRUPT-THREAD%20FUNCTION "SB-THREAD:INTERRUPT-THREAD FUNCTION"
@@ -17866,6 +18910,8 @@ learn about Common Lisp, some books stand out:
 
 [a22e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pars_1.htm "PARSE-NAMESTRING (MGL-PAX:CLHS FUNCTION)"
 
+[a237]: http://www.lispworks.com/documentation/HyperSpec/Body/t_cons.htm "CONS (MGL-PAX:CLHS CLASS)"
+
 [a270]: #SB-MANUAL:@FINDING-DEFINITIONS%20MGL-PAX:SECTION "Finding Definitions"
 
 [a370]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm "UNTRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -17890,6 +18936,8 @@ learn about Common Lisp, some books stand out:
 
 [a5e7]: #SB-MANUAL:@CHARACTER-CODING-CONDITIONS%20MGL-PAX:SECTION "Character Coding Conditions"
 
+[a60b]: #SB-MANUAL:@THE-EMPTY-TYPE%20MGL-PAX:SECTION "The Empty Type"
+
 [a625]: #SB-DEBUG:VAR%20FUNCTION "SB-DEBUG:VAR FUNCTION"
 
 [a64e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm ">= (MGL-PAX:CLHS FUNCTION)"
@@ -17897,6 +18945,8 @@ learn about Common Lisp, some books stand out:
 [a72b]: #SB-MANUAL:@SB-GROVEL-STRUCTURES%20MGL-PAX:SECTION "Programming with sb-grovel's Structure Types"
 
 [a78a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm "MAP-INTO (MGL-PAX:CLHS FUNCTION)"
+
+[a79d]: http://www.lispworks.com/documentation/HyperSpec/Body/t_member.htm "MEMBER (MGL-PAX:CLHS TYPE)"
 
 [a820]: #SB-MANUAL:@SBCL-REPOSITORY%20MGL-PAX:SECTION "SBCL Repository"
 
@@ -18052,6 +19102,8 @@ learn about Common Lisp, some books stand out:
 
 [bffa]: #SB-MANUAL:@DEFAULT-EXTERNAL-FORMAT%20MGL-PAX:SECTION "The Default External Format"
 
+[c036]: http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm "ECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
 [c052]: #SB-POSIX:FILENAME%20TYPE "SB-POSIX:FILENAME TYPE"
 
 [c072]: #SB-GRAY:STREAM-LISTEN%20GENERIC-FUNCTION "SB-GRAY:STREAM-LISTEN GENERIC-FUNCTION"
@@ -18096,6 +19148,8 @@ learn about Common Lisp, some books stand out:
 
 [c474]: http://www.lispworks.com/documentation/HyperSpec/Body/t_sgn_by.htm "SIGNED-BYTE (MGL-PAX:CLHS TYPE)"
 
+[c4cf]: #VALUES%20DECLARATION "VALUES DECLARATION"
+
 [c54e]: #SB-MANUAL:@IMPLEMENTATION-PACKAGES%20MGL-PAX:SECTION "Implementation Packages"
 
 [c5ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_docume.htm "DOCUMENTATION (MGL-PAX:CLHS GENERIC-FUNCTION)"
@@ -18136,6 +19190,8 @@ learn about Common Lisp, some books stand out:
 
 [cb60]: #SB-CONCURRENCY:QUEUE%20STRUCTURE "SB-CONCURRENCY:QUEUE STRUCTURE"
 
+[cb94]: mat-manual.md#ARRAY%20MGL-CUBE:FACET-NAME "ARRAY MGL-CUBE:FACET-NAME"
+
 [cc69]: #SB-MANUAL:@PATHNAMES%20MGL-PAX:SECTION "Pathnames"
 
 [ccb5]: #SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION "Information Commands"
@@ -18153,6 +19209,8 @@ learn about Common Lisp, some books stand out:
 [cfbd]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm "/= (MGL-PAX:CLHS FUNCTION)"
 
 [cfdf]: #SB-MANUAL:@BARRIERS%20MGL-PAX:SECTION "Barriers"
+
+[d07c]: http://www.lispworks.com/documentation/HyperSpec/Body/d_declar.htm "DECLARATION (MGL-PAX:CLHS DECLARATION)"
 
 [d116]: #SB-POSIX:FILE-DESCRIPTOR%20TYPE "SB-POSIX:FILE-DESCRIPTOR TYPE"
 
@@ -18212,11 +19270,15 @@ learn about Common Lisp, some books stand out:
 
 [d97f]: #SB-BSD-SOCKETS:SOCKET%20CLASS "SB-BSD-SOCKETS:SOCKET CLASS"
 
+[da10]: #SB-MANUAL:@TYPE-CANONICALIZATION%20MGL-PAX:SECTION "Type Canonicalization"
+
 [da1d]: #SB-CONCURRENCY:GATE%20STRUCTURE "SB-CONCURRENCY:GATE STRUCTURE"
 
 [da60]: http://www.lispworks.com/documentation/HyperSpec/Body/e_file_e.htm "FILE-ERROR (MGL-PAX:CLHS CONDITION)"
 
 [daac]: http://www.lispworks.com/documentation/HyperSpec/Body/f_subtpp.htm "SUBTYPEP (MGL-PAX:CLHS FUNCTION)"
+
+[daf5]: #SB-MANUAL:@LOCAL-FUNCTION-TYPE-INFERENCE%20MGL-PAX:SECTION "Local Function Type Inference"
 
 [db00]: #SB-EXT:WAIT-FOR%20MGL-PAX:MACRO "SB-EXT:WAIT-FOR MGL-PAX:MACRO"
 
@@ -18252,6 +19314,8 @@ learn about Common Lisp, some books stand out:
 
 [deed]: #SB-MANUAL:@CUSTOMIZING-THE-BUILD%20MGL-PAX:SECTION "Customizing the Build"
 
+[df8b]: #SB-MANUAL:@THE-VALUES-DECLARATION%20MGL-PAX:SECTION "The `values` declaration"
+
 [df9e]: #SB-MANUAL:@USING-SB-GROVEL%20MGL-PAX:SECTION "Using sb-grovel in Your Own ASDF System"
 
 [e009]: #SB-EXT:SEED-RANDOM-STATE%20FUNCTION "SB-EXT:SEED-RANDOM-STATE FUNCTION"
@@ -18272,6 +19336,8 @@ learn about Common Lisp, some books stand out:
 
 [e1d1]: #SB-EXT:*BLOCK-COMPILE-DEFAULT*%20VARIABLE "SB-EXT:*BLOCK-COMPILE-DEFAULT* VARIABLE"
 
+[e1fa]: http://www.lispworks.com/documentation/HyperSpec/Issues/iss176_w.htm "\"ISSUE:FUNCTION-TYPE-ARGUMENT-TYPE-SEMANTICS\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
+
 [e22b]: http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm "AREF (MGL-PAX:CLHS FUNCTION)"
 
 [e258]: http://www.lispworks.com/documentation/HyperSpec/Body/m_incf_.htm "INCF (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -18281,6 +19347,8 @@ learn about Common Lisp, some books stand out:
 [e299]: #SB-MANUAL:@SOCKET-OPTIONS%20MGL-PAX:SECTION "Socket Options"
 
 [e2a7]: #SB-THREAD:MUTEX%20STRUCTURE "SB-THREAD:MUTEX STRUCTURE"
+
+[e2d1]: http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm "OR (MGL-PAX:CLHS TYPE)"
 
 [e30a]: #SB-MANUAL:@METAOBJECT-PROTOCOL%20MGL-PAX:SECTION "Metaobject Protocol"
 
@@ -18340,6 +19408,8 @@ learn about Common Lisp, some books stand out:
 
 [eaf9]: #SB-MANUAL:@LET-CALL%20MGL-PAX:SECTION "Let Call"
 
+[eb49]: #SB-EXT:*DERIVE-FUNCTION-TYPES*%20VARIABLE "SB-EXT:*DERIVE-FUNCTION-TYPES* VARIABLE"
+
 [ebb7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_5.htm "HASH-TABLE-TEST (MGL-PAX:CLHS FUNCTION)"
 
 [ebea]: http://www.lispworks.com/documentation/HyperSpec/Body/m_declai.htm "DECLAIM (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -18363,6 +19433,8 @@ learn about Common Lisp, some books stand out:
 [ef88]: #SB-EXT:*MUFFLED-WARNINGS*%20VARIABLE "SB-EXT:*MUFFLED-WARNINGS* VARIABLE"
 
 [efe2]: http://www.lispworks.com/documentation/HyperSpec/Body/t_generi.htm "GENERIC-FUNCTION (MGL-PAX:CLHS CLASS)"
+
+[effb]: #SB-MANUAL:@TYPE-RESTRICTIONS%20MGL-PAX:SECTION "Type Restrictions"
 
 [f044]: http://www.lispworks.com/documentation/HyperSpec/Body/a_ration.htm "RATIONAL (MGL-PAX:CLHS NIL)"
 
@@ -18421,6 +19493,8 @@ learn about Common Lisp, some books stand out:
 [fca4]: #SB-SEQUENCE:LENGTH%20GENERIC-FUNCTION "SB-SEQUENCE:LENGTH GENERIC-FUNCTION"
 
 [fcab]: #SB-EXT:GLOBAL%20DECLARATION "SB-EXT:GLOBAL DECLARATION"
+
+[fce9]: #SB-MANUAL:@TYPE-CHECK-OPTIMIZATION%20MGL-PAX:SECTION "Type Check Optimization"
 
 [fe40]: #SB-GRAY:STREAM-READ-CHAR-NO-HANG%20GENERIC-FUNCTION "SB-GRAY:STREAM-READ-CHAR-NO-HANG GENERIC-FUNCTION"
 

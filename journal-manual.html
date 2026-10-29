@@ -3602,7 +3602,7 @@ ideal for smallish journals persisted manually (see
 generated. They differ from <code>file-journal</code>s in that events written to
 <code>in-memory-journal</code>s are not serialized (and deserialized on replay)
 with the following consequences for the objects recorded by
-<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>values</code></a>
+<a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> (i.e. its <code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>0</code></a> <a href="sbcl-manual.html#VALUES%20DECLARATION" title="VALUES DECLARATION"><code>1</code></a>)
 of the block, or the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>):</p>
 
 <ul>
@@ -3677,7 +3677,7 @@ a more full-featured solution for repeated <a href="#JOURNAL:@REPLAY%20MGL-PAX:S
 
 <p>Since serialization in <code>file-journal</code>s is built on top of Lisp <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm" title="READ (MGL-PAX:CLHS FUNCTION)"><code>read</code></a>
 and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm" title="WRITE (MGL-PAX:CLHS FUNCTION)"><code>write</code></a>, everything that <a href="#JOURNAL:JOURNALED%20MGL-PAX:MACRO" title="JOURNAL:JOURNALED MGL-PAX:MACRO"><code>journaled</code></a> records in events (i.e. its
-<code>name</code>, <code>args</code> arguments, and also the return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>values</code></a> of the block, or
+<code>name</code>, <code>args</code> arguments, and also the return <code>values</code>(<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm" title="VALUES (MGL-PAX:CLHS NIL)"><code>0</code></a> <a href="sbcl-manual.html#VALUES%20DECLARATION" title="VALUES DECLARATION"><code>1</code></a>) of the block, or
 the value returned by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm" title="CONDITION (MGL-PAX:CLHS CONDITION)"><code>condition</code></a>) must be <a href="#JOURNAL:@READABLE%20MGL-PAX:GLOSSARY-TERM" title="readable">readable</a>.</p>
 
 <p>File journals are human-readable and editable by hand with some
@@ -4949,7 +4949,7 @@ be readable.</li>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-10-29T13:54:06Z]</h6>
+<h6>[Generated 2026-10-29T19:59:48Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>

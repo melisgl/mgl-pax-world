@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.10, generated 2026-10-29 13:53:21. See
+The output is for SBCL version 2.6.10.48-82d5edd, generated 2026-10-29 19:58:40. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -783,11 +783,11 @@ Contributed Modules in the contrib/ directory.
     - The directory denoted by the SBCL_HOME environment
       variable if it is set
 
-    - The current directory
+    - The ../lib/sbcl/ directory relative to the sbcl binary
 
     - The directory of the sbcl binary
 
-    - The ../lib/sbcl/ directory relative to the sbcl binary
+    - The current directory
 
     If no core file was found by the above rules, then the runtime
     exits with an error message.
@@ -804,11 +804,11 @@ Contributed Modules in the contrib/ directory.
 
     - The directory ../lib/sbcl relative to sbcl.core
 
-    - The current directory
+    - The directory ../lib/sbcl relative to the sbcl binary
 
     - The directory of the sbcl binary
 
-    - The directory ../lib/sbcl relative to the sbcl binary
+    - The current directory
 
     The list of directories is the same as for finding the core file
     except here we also try directories relative to sbcl.core.
@@ -1875,11 +1875,9 @@ Lisp compilers. Under the default Compiler Policy, the compiler
 doesn't blindly believe type declarations but considers them
 assertions about the program that should be checked: all type
 declarations that have not been proven to always hold are asserted
-at runtime.
-
-Remaining bugs in the compiler's handling of types unfortunately
-provide some exceptions to this rule. See
-Implementation Limitations.
+at runtime. This behavior allows Type Inference to trust declared
+types and from them derive the types of other expressions, opening
+up lots of optimization possibilities.
 
 There are three type checking policies available in SBCL, selectable
 via optimize declarations.
@@ -1891,20 +1889,35 @@ via optimize declarations.
     precise. The default compilation policy provides full type
     checks.
 
+    > Warning: The callee's ftype declaration is trusted when
+    > compiling the caller unless the debug (!) optimization
+    > quality is 3. Thus, if an ftype is placed after the function
+    > definition, the function won't perform any type checks and the
+    > caller's trust in the type checking will be misplaced and
+    > render the caller unsafe. Adding or changing a ftype
+    > declaration necessitates recompiling the function definition
+    > and all its callers. See also Global Function Type Inference.
+
 - Unsafe code (= safety 0)
 
     No type checks. All declarations are believed without
     assertions. Also disables argument count and array bounds
-    checking.
+    checking. Any type errors in code where type checks are not
+    performed are liable to corrupt the heap.
 
-    > Warning: Any type errors in code where type checks are not
-    > performed are liable to corrupt the heap.
+There is a third option of mostly historical interest called Weak
+Type Checking, where declared types may be simplified into faster to
+check supertypes: for example, (or (integer -17 -7) (integer 7
+17)) is simplified into (integer -17 17). This option is also
+unsafe and is no longer available by any combination of the standard
+optimization qualities.
 
-There is a third option called Weak Type Checking, where declared
-types may be simplified into faster to check supertypes: for
-example, (or (integer -17 -7) (integer 7 17)) is simplified
-into (integer -17 17). This option is also unsafe and is no longer
-available by any combination of the standard optimization qualities.
+Note that CLOS slots with types declared using the :type slot option
+in defclass are asserted if and only if the class was defined in
+safe code and the slot access location is in safe code as well.
+This laxness does not pose any safety issues, as the CLOS slot types
+are not available for Type Inference, nor do CLOS slot types
+provide any efficiency benefits.
 
 #### Precise Type Checking
 
@@ -2040,20 +2053,6 @@ numeric argument. Another possible fix would be to say:
 This would be preferable in some circumstances since it would allow
 a non-standard representation to be used for the local pos
 variable in the loop body.
-
-#### Implementation Limitations
-
-If an ftype is placed after the function definition, the function
-won't perform any type checks and the calls to the function will
-blindly trust the declared types. (optimize (debug 3)) will not
-trust any ftype declarations.
-
-CLOS slot types form a notable exception. Types declared using the
-:type slot option in defclass are asserted if and only if the class
-was defined in safe code and the slot access location is in safe
-code as well. This laxness does not pose any internal consistency
-issues, as the CLOS slot types are not available for the type
-inferencer, nor do CLOS slot types provide any efficiency benefits.
 
 ### Compiler Policy
 
@@ -2964,7 +2963,10 @@ quality:
       contain frames for all invoked functions, even those in tail
       positions. 
 
-Inlining of local functions is inhibited so that they may be traced.
+    - Inlining of local functions is inhibited so that they may be
+      traced.
+
+    - Type Declaration Checking does not trust ftype declarations.
 
 - > (max speed space): If debug is greater than both speed and
   space, the command return can be used to continue execution by
@@ -3410,6 +3412,886 @@ in such cases we recommend using (TRACE FOO :ENCAPSULATE t).
 
 ## Efficiency
 
+In SBCL as with any language on any computer, the path to efficient
+code starts with good algorithms and sensible programming
+techniques, but to avoid inefficiency pitfalls, you need to know
+some of this implementation's quirks and features. This chapter is
+mostly a fairly long and detailed overview of what optimizations the
+compiler does. Although there are the usual negative suggestions of
+inefficient features to avoid, the main emphasis is on describing
+the things that programmers can count on being efficient.
+
+The optimizations described here can have the effect of speeding up
+existing programs written in conventional styles, but the potential
+for new programming styles that are clearer and less error-prone is
+at least as significant. For this reason, several sections end with
+a discussion of the implications of these optimizations for
+programming style.
+
+In this section, we discuss SBCL's support for types, which is
+unusual in three major ways:
+
+- Precise Type Checking encourages the specific use of type
+  declarations as a form of run-time consistency checking. This
+  speeds development by localizing type errors and giving more
+  meaningful error messages. The compiler produces completely safe
+  code; Type Check Optimization maintains reasonable efficiency.
+
+- Comprehensive support for the Common Lisp type system makes
+  complex type specifiers useful. Using type specifiers such as or
+  and member has both efficiency and robustness advantages (see
+  More About Types).
+
+- Type Inference eliminates the need for some declarations and also
+  aids compile-time detection of type errors. Given detailed type
+  declarations, type inference can often eliminate type checks and
+  enable more efficient object representations and code sequences.
+  Checking all types results in fewer type checks.
+
+Then, we move on to the topic of optimization. The main barrier
+to writing efficient Lisp programs is that it's hard to find to the
+most efficient solution among the many semantically equivalent
+"reasonable" ways to code a given problem.
+Source Optimization greatly reduces the variance in performance
+across equivalent solutions, freeing the programmer from a class of
+low-level considerations.
+
+The next important topic is function call efficiency. This is
+especially important in Lisp due local functions and recursion. For
+this reason, Lisp implementations strive to make the general (or
+full) function call as inexpensive as possible. SBCL goes beyond
+this by providing two good alternatives to full call:
+
+- Local Call resolves function references at compile time,
+  allowing better calling sequences and optimization across function
+  calls.
+
+    - Control transfer is a direct jump.
+
+    - The closure environment is passed in registers rather than
+      heap allocated.
+
+    - Keyword arguments and multiple values are implemented more
+      efficiently.
+
+- Inline Expansion totally eliminates call overhead and allows
+  many context-dependent optimizations. This provides a safe and
+  efficient implementation of operations with function semantics,
+  eliminating the need for error-prone macro definitions or manual
+  case analysis.
+
+Generally, the compiler provides simple implementations for simple
+uses of function call, rather than having only a single calling
+convention. These features allow a more natural programming style:
+
+- Proper Tail Calls
+
+- Relatively efficient closures
+
+- A funcall that is as efficient as normal named call
+
+Finally, we can only touch upon some of the most important concepts
+discussed later before this introduction gets too long, so let's
+focus on the big picture. Writing efficient code that works is a
+complex and prolonged process. It is important not to get so
+involved in the pursuit of efficiency that you lose sight of what
+the original problem demands. Remember that:
+
+- The program should be correct: it doesn't matter how quickly you
+  get the wrong answer.
+
+- Both the programmer and the user will make errors, so the program
+  must be robust: it must detect errors in a way that allows easy
+  correction.
+
+- A small portion of the program will consume most of the resources,
+  with the bulk of the code being virtually irrelevant to efficiency
+  considerations. Even experienced programmers familiar with the
+  problem area cannot reliably predict where these hot spots will
+  be.
+
+The best way to get efficient code that is still worth using, is to
+separate coding from tuning. During coding, you should:
+
+- Use a coding style that aids correctness and robustness without
+  being incompatible with efficiency.
+
+- Choose appropriate data structures that allow efficient algorithms
+  and object representations. Try to make interfaces abstract enough
+  so that you can change to a different representation if Profiling
+  reveals a need.
+
+- Whenever you make an assumption about a function argument or
+  global data structure, add consistency assertions, either with
+  type declarations or explicit uses of assert, ecase, etc.
+
+During tuning, you should:
+
+- Identify the hot spots in the program through Profiling.
+
+- Identify inefficient constructs in the hot spot with efficiency
+  notes, more profiling, or manual inspection of the source and with
+  judicious use of disassemble.
+
+- Add declarations and consider the application of discussed in the
+  section.
+
+- If all else fails, consider algorithm or data structure changes.
+  If you did a good job coding, changes will be easy to introduce.
+
+### More About Types
+
+This section goes into more detail describing what types and
+declarations are recognized by SBCL. Some of the most important
+features of SBCL are related to types:
+
+- Precise Type Checking helps to find bugs at run time.
+
+- Compile-time type checking helps to find bugs at compile time (see
+  Dynamic Type Inference for an example).
+
+- Type Inference minimizes the need for generic operations and also
+  increases the efficiency of run-time type checking and the
+  effectiveness of compile-time type checking.
+
+- Support for detailed types provides a wealth of opportunity for
+  operation-specific type inference and optimization.
+
+#### More Types Meaningful
+
+Common Lisp has a very powerful type system, but conventional
+implementations typically only recognize the small set of types
+special in that implementation. In these systems, there is an
+unfortunate paradox: a declaration for a relatively general type
+like fixnum will be recognized by the compiler, but a highly
+specific declaration such as (integer 3 17) may be totally
+ignored.
+
+This is obviously a problem, since the user has to know how to
+specify the type of an object in the way the compiler wants it. A
+very minimal (but rarely satisfied) criterion for type system
+support is that it be no worse to make a specific declaration than
+to make a general one. SBCL goes beyond this by exploiting a number
+of advantages obtained from detailed type information.
+
+Using more restrictive types in declarations allows the compiler to
+do better type inference and more compile-time type checking. Also,
+when type declarations are considered to be consistency assertions
+that should be verified (conditional on policy), then complex types
+are useful for making more detailed assertions.
+
+SBCL "understands" the list-style or, member, function, array and
+number type specifiers. Understanding means that:
+
+- If the type contains more information than is used in a particular
+  context, then the extra information is simply ignored, rather than
+  derailing type inference.
+
+- In many contexts, the extra information from these type specifier
+  is used to good effect. In particular, with SBCL's
+  Precise Type Checking, these complex types can be used in
+  declarations to make interesting assertions about functions and
+  data structures. More specific declarations also aid type
+  inference and reduce the cost for type checking (see
+  Type Check Optimization).
+
+#### Type Canonicalization
+
+When given a type specifier, SBCL will often rewrite it into a
+different (but equivalent) type. This is the mechanism that the
+compiler uses for detecting type equivalence. For example, in
+its canonical representation,
+
+    (or list (member :end))
+
+is equivalent to
+
+    (or cons (member nil :end))
+
+This has two implications for the user:
+
+- The standard symbol type specifiers (e.g. null and list) are
+  in no way magical. The null type is actually defined as
+  (member nil) and list as (or cons null).
+
+- When the compiler prints out a type, it may not look like the type
+  specifier that originally appeared in the program. This is
+  generally not a problem, but it must be taken into consideration
+  when reading compiler error messages.
+
+#### member Types
+
+The member type specifier can be used to represent
+"symbolic" values, analogous to the enumerated types of Pascal.
+For example, the second value of find-symbol has type
+
+    (member :internal :external :inherited nil)
+
+Member types are very useful for expressing consistency constraints on data
+structures, for example:
+
+    (defstruct ice-cream
+      (flavor :vanilla :type (member :vanilla :chocolate :strawberry)))
+
+Member types are also useful in Type Inference, as the number of
+members can sometimes be pared down to one, in which case the value
+is a known constant.
+
+#### Union Types
+
+The or (union) type specifier is understood and is
+meaningfully applied in many contexts. The use of or allows
+assertions to be made about types in dynamically typed programs. For
+example:
+
+    (defstruct box
+      (next nil :type (or box null))
+      (top :removed :type (or box-top (member :removed))))
+
+The type assertion on the top slot ensures that an error will be
+signaled when there is an attempt to store an illegal value (such as
+:rmvd.) Although somewhat weak, these union type assertions
+provide a useful input into type inference, allowing the cost of
+type checking to be reduced. For example, this loop is safely
+compiled with no type checks:
+
+    (defun find-box-with-top (box)
+      (declare (type (or box null) box))
+      (do ((current box (box-next current)))
+          ((null current))
+        (unless (eq (box-top current) :removed)
+          (return current))))
+
+Union types are also useful in type inference for representing types
+that are partially constrained. For example, the result of
+
+    (if foo
+        (logior x y)
+        (list x y))
+
+can be expressed as (or integer cons).
+
+#### The Empty Type
+
+The type nil is also called the empty type, since no object is of that
+type. The union of no types, (or), is also empty. The compiler's
+interpretation of an expression whose type is nil is that the
+expression never yields any value but rather fails to terminate or
+exits non-locally. For example, the type of a call to error or a use
+of return is nil. When the type of an expression is empty,
+compile-time type warnings about its value are suppressed;
+presumably somebody else is signaling an error. If a function is
+declared to have return type nil but does in fact return, then (in
+safe code) an error will be signaled.
+
+#### Function Types
+
+Function types (ftype declarations) are understood in the restrictive
+sense, specifying:
+
+- The argument syntax that the function must be called with
+
+    This is information about what argument counts are acceptable,
+    and which keyword arguments are recognized. In SBCL, warnings
+    about argument syntax are a consequence of function type
+    checking.
+
+- The types of the argument values that the caller must pass
+
+    If the compiler can prove that some argument to a call is of a
+    type disallowed by the called function's type, then it will give
+    a compile-time type warning. In addition to being used for
+    compile-time type checking, these type assertions are also used
+    as output type assertions in code generation. For example, if
+    foo is declared to have a fixnum argument, then the 1+
+    in (foo (1+ x)) is compiled with knowledge that the result
+    must be a fixnum.
+
+- The types the values that will be bound to argument variables in
+  the function's definition
+
+    Declaring a function's type with ftype implicitly declares the
+    types of the arguments in the definition. The compiler checks
+    for consistency between the definition and the ftype
+    declaration. Because of Precise Type Checking, an error will be
+    signaled when a function is called with an argument of the wrong
+    type.
+
+- The type of return value(s) that the caller can expect
+
+    This information is a useful input to Type Inference at call
+    sites. For example, if a function is declared to return a
+    fixnum, then when a call to that function appears in an
+    expression, the expression will be compiled with knowledge that
+    the call will return a fixnum (see Type Declaration Checking).
+
+- The type of return value(s) that the definition must return
+
+    The result type in an ftype declaration is treated like an
+    implicit the wrapped around the body of the definition. If the
+    definition returns a value of the wrong type, an error will be
+    signaled. If the compiler can prove that the function returns
+    the wrong type, then it will give a compile-time warning.
+
+This is consistent with the new interpretation of function types and
+the ftype declaration in the proposed X3J13
+function-type-argument-type-semantics cleanup.
+
+See also Global Function Type Inference.
+
+#### The values declaration
+
+SBCL supports the values declaration as an extension to Common Lisp.
+
+- [declaration] values
+
+    Syntax: (values &rest types)
+
+    Only valid as a local declaration.
+
+    Specifies the return types of the enclosing special form.
+
+    See The values declaration for more.
+
+This declaration is semantically equivalent to a the form wrapped
+around the body of the special form in which the values declaration
+appears. The advantage of values over the is purely syntactic: it
+doesn't introduce more indentation. For example,
+
+    (defun foo (x)
+      (declare (values single-float))
+      (ecase x
+        (:this ...)
+        (:that ...)
+        (:the-other ...)))
+
+is equivalent to
+
+    (defun foo (x)
+      (the single-float
+           (ecase x
+             (:this ...)
+             (:that ...)
+             (:the-other ...))))
+
+and
+
+    (defun floor (number &optional (divisor 1))
+      (declare (values integer real))
+      ...)
+
+is equivalent to
+
+    (defun floor (number &optional (divisor 1))
+      (the (values integer real)
+           ...))
+
+In addition to being recognized by lambda (and hence by defun), the
+values declaration is recognized by all the other special forms with
+bodies and declarations: let, let*, labels and flet. Macros with
+declarations usually splice the declarations into one of the above
+forms, so they will accept this declaration too, but the exact
+effect of a values declaration will depend on the macro.
+
+If you declare the types of all arguments to a function and also
+declare the return value types with values, you have described the
+type of the function. The compiler will use this argument and result
+type information to derive a function type that will then be applied
+to calls of the function (see Function Types). This provides a way
+to declare the types of functions that is much less syntactically
+awkward than using the ftype declaration with a function type
+specifier.
+
+Although the values declaration is non-standard, it is relatively
+harmless to use it in otherwise portable code, since any warning in
+non-SBCL implementations can be suppressed with the standard
+declaration proclamation:
+
+    (declaim (declaration values))
+
+#### Structure Types
+
+Structure accessors have Precise Type Checking:
+
+- The structure argument to structure accessors is precisely checked
+  -- if you call foo-a on a bar, an error will be signaled.
+
+- The types of slot values are precisely checked -- if you pass
+  the wrong type argument to a constructor or a slot setter, then an
+  error will be signaled.
+
+An additional advantage of checking structure types and enforcing
+slot types is that the compiler can safely trust slot type declarations. The
+compiler effectively moves the type checking from the slot access to
+the slot setter or constructor call. This is more efficient since
+caller of the setter or constructor often knows the type of the
+value, entirely eliminating the need to check the value's type.
+Consider this example:
+
+    (defstruct coordinate
+      (x nil :type single-float)
+      (y nil :type single-float))
+    
+    (defun make-it ()
+      (make-coordinate :x 1.0 :y 1.0))
+    
+    (defun use-it (it)
+      (declare (type coordinate it))
+      (sqrt (expt (coordinate-x it) 2) (expt (coordinate-y it) 2)))
+
+make-it and use-it are compiled with no checking on the types of
+the float slots, yet use-it can use single-float arithmetic with
+perfect safety. Note that make-coordinate must still check the
+values of x and y unless the call is in Block Compilation or
+undergoes Inline Expansion. But even without this advantage, it is
+almost always more efficient to check slot values on structure
+initialization, since slots are usually written once and read many
+times.
+
+When redefining a structure, one can choose to whether to invalidate
+previously compiled code (the continue restart) or not (the
+recklessly-continue restart). With continue, previously compiled
+calls to accessors will signal an error in safe code. With recklessly-continue, safety is
+compromised.
+
+- [declaration] sb-ext:freeze-type
+
+    Syntax: (sb-ext:freeze-type &rest symbols)
+
+    Only valid as a global proclamation.
+
+    Specifies that the types named by symbols and their subtypes are not
+    going to change. This allows more efficient type testing, since the
+    compiler can open-code a test for all possible subtypes, rather than
+    having to examine the type hierarchy at run-time.
+
+    Currently, this has an effect only for structure types.
+
+#### Type Restrictions
+
+Be careful with and, not and satisfies types in declarations, since
+Type Inference has problems with them. When these types do appear
+in a declaration, they are still checked precisely, but the type
+information may be of limited use to the compiler.
+
+and types are effective as long as the intersection can be
+canonicalized to a type that doesn't use and. For example,
+
+    (and fixnum unsigned-byte (not (member 7)))
+
+is fine, since it is the same as
+
+    (or (integer 0 6) (integer 8 most-positive-fixnum))
+
+but this type:
+
+    (and symbol (not (member :end)))
+
+will not be fully understood by type interference since the and
+can't be removed by canonicalization.
+
+Using any of these type specifiers in a type test with typep or
+typecase is fine, since as tests, these types can be translated into
+the and macro, the not function or a call to the satisfies
+predicate.
+
+#### Type Style Recommendations
+
+With SBCL it is desirable to make declarations as precise as possible,
+but Type Inference also makes some declarations unnecessary. Here
+are some general guidelines for maximum robustness and efficiency:
+
+- Declare the types of all function arguments and structure slots as
+  precisely as possible (while avoiding not, and and satisfies). Put
+  these declarations in during initial coding so that type
+  assertions can find bugs for you during debugging.
+
+- Durining development, prefer declaring function argument types
+  with with declare within the function to avoid having to redefine
+  ftypes, which can lead to safety problems (see
+  Type Declaration Checking).
+
+- Use the member type specifier where there are a small number of
+  possible symbol values, for example, (member :red :blue :green).
+
+- Use the or type specifier in situations where the type is not
+  certain, but there are only a few possibilities, for example,
+  (or list vector).
+
+- Declare integer types with the tightest bounds that you can, such
+  as (integer 3 7).
+
+- Put deftype or defstruct definitions before they are used.
+  Definition after use is legal (producing no undefined type
+  warnings), but type tests and structure operations will be
+  compiled much less efficiently.
+
+- Use the sb-ext:freeze-type declaration to speed up type testing
+  for structure types that won't have new subtypes added later.
+
+- In addition to declaring the array element type and simpleness,
+  also declare the dimensions if they are fixed. For example,
+
+    (simple-array single-float (1024 1024))
+
+The bounds information allows array indexing for multi-dimensional
+  arrays to be compiled much more efficiently and may also allow
+  array bounds checking to be done at compile time.
+
+- Avoid use of the the declaration within expressions. Not only does
+  it clutter the code, but it is often unnecesary under safe
+  policies. If the need for a return
+  type assertion is revealed by efficiency notes during tuning, then
+  you can consider the, but it is preferable to constrain the
+  argument types more, allowing the compiler to prove the desired
+  result type.
+
+- Don't bother declaring the type of let or other non-argument
+  variables unless the type is non-obvious. If you declare function
+  return types and structure slot types, then the type of a variable
+  is often obvious both to the programmer and to the compiler. An
+  important case where the type isn't obvious, and a declaration is
+  appropriate, is when the value for a variable is pulled out of
+  untyped structure (e.g. the result of car), from a class, or comes
+  from some weakly typed function, such as read.
+
+- Declarations are sometimes necessary for integer loop variables,
+  since the compiler can't always prove that the value is of a good
+  integer type. These declarations are best added during tuning,
+  when an efficiency note indicates the need.
+
+### Type Inference
+
+Type inference is the process by which the compiler tries to figure
+out the types of expressions and variables, given an inevitable lack
+of complete type information. Although SBCL does more type inference
+than most Common Lisp compilers, remember that the more precise and
+comprehensive type declarations are, the more type inference will be
+able to do.
+
+#### Variable Type Inference
+
+The type of a variable is the union of the types of all the
+definitions. In the degenerate case of a let, the type of the
+variable is the type of the initial value. This inferred type is
+intersected with any declared type and is then propagated to all the
+variable's references. The types of multiple-value-bind variables
+are similarly inferred from the types of the individual values of
+the values form.
+
+If multiple type declarations apply to a single variable, then all
+the declarations must be correct; it is as though all the types were
+intersected producing a single and type specifier. In
+this example
+
+    (defmacro my-dotimes ((var count) &body body)
+      `(do ((,var 0 (1+ ,var)))
+           ((>= ,var ,count))
+         (declare (type (integer 0 *) ,var))
+         ,@body))
+    
+    (my-dotimes (i ...)
+      (declare (fixnum i))
+      ...)
+
+the two declarations for i are intersected, which yields that it
+must be a non-negative fixnum.
+
+In practice, this type inference is limited to
+Local Calls (including Let Calls), since the compiler can't
+analyze all the calls to a global function. But type inference works
+well enough on local variables so that it is often unnecessary to
+declare the type of local variables. This is especially likely when
+function result types and structure slot types are declared. The
+main areas where type inference breaks down are:
+
+- When the initial value of a variable is an untyped expression,
+  such as (car x), and
+
+- When the type of one of the variable's definitions is a function
+  of the variable's current value, as in (setq x (1+ x)).
+
+#### Local Function Type Inference
+
+The types of arguments to local functions are inferred in the same way
+as any other local variable; the type is the union of the argument
+types across all the calls to the function, intersected with the
+declared type. If there are any assignments to the argument
+variables, the type of the assigned value is unioned in as well.
+
+The result type of a local function is computed in a special way
+that takes Tail Recursion into consideration. The result type is
+the union of all possible return values that aren't tail recursive.
+For example, the compiler will infer that the result type of this
+function is integer:
+
+    (defun ! (n res)
+      (declare (integer n res))
+      (if (zerop n)
+          res
+          (! (1- n) (* n res))))
+
+Although this is a rather obvious result, it becomes somewhat less
+trivial in the presence of mutual tail recursion of multiple
+functions. Local function result type inference interacts with the
+mechanisms for ensuring proper tail calls mentioned in
+Local Call Return Values.
+
+#### Global Function Type Inference
+
+As described in Type Declaration Checking, global function
+type (ftype) declarations are trusted by the compiler at call sites
+unless the debug optimization quality is 3. This can result in
+unsafe propagation of the type constraints in the callee based on
+the declared types of its arguments and return values.
+
+For example, if we compile this:
+
+    (declaim (ftype (function () cons) foo))
+    (defun foo ()
+      (cons 1 2))
+    
+    (defun bar ()
+      (car (foo)))
+
+and subsequently redefine foo as
+
+    (declaim (ftype (function () t) foo))
+    (defun foo ()
+      1)
+
+we get a somewhat innocent looking style warning:
+
+    ; caught STYLE-WARNING:
+    ;   The new FTYPE proclamation for COMMON-LISP-USER::FOO
+    ;     (FUNCTION NIL T)
+    ;   does not match the old FTYPE proclamation
+    ;     (FUNCTION NIL (VALUES CONS &REST T))
+
+However, here the consequences are on the harsher side of undefined
+behavior:
+
+    CL-USER> (bar)
+    Unhandled memory fault at #xFFFFFFFFFFFFFFFB.
+
+This happens because when compiling bar, the compiler applied type
+arithmetic to the active ftype of foo (cons). Because a cons
+satisfies car's type requirement with 100% certainty, the compiler
+completely eliminated the runtime type check. Upon redefinition, bar
+executes a raw memory pointer dereference on the integer 1, triggering
+an immediate hardware-level segmentation fault.
+
+This happens because when compiling bar, the compiler trusted the
+then active ftype of foo, with return value type cons, and thus
+omitted the type check for cons from the inlined call to car.
+
+> Note: A similar example can be constructed based on declared
+> argument types.
+
+> Note: Without explicit ftype declarations and with
+> sb-ext:*derive-function-types* nil, compile-file itself does not
+> trust the derived function types, which does a lot to mitigate the
+> safety issue.
+
+- [variable] sb-ext:*derive-function-types* nil
+
+    Should the compiler assume that function types will never change,
+    so that it can use type information inferred from current
+    definitions to optimize code which uses those definitions? Setting
+    this true gives non-ANSI, early-cmucl behavior. It can be useful for
+    improving the efficiency of stable code at the cost of safety in
+    face of changing ftypes.
+
+    > Warning: Enabling this is unsafe. See
+    > Global Function Type Inference.
+
+#### Operation-specific Type Inference
+
+Many of the standard Common Lisp functions have special type inference
+procedures that determine the result type as a function of the
+argument types. For example, the result type of aref is the array
+element type. Here are some other examples of type inferences:
+
+    (logand x #xFF) => (unsigned-byte 8)
+    
+    (+ (the (integer 0 12) x) (the (integer 0 1) y)) => (integer 0 13)
+    
+    (ash (the (unsigned-byte 16) x) -8) => (unsigned-byte 8)
+
+#### Dynamic Type Inference
+
+SBCL uses flow analysis to infer types in dynamically typed
+programs. For example:
+
+    (ecase x
+      (list (length x))
+      ...)
+
+Here, the compiler knows the type of the argument to length because
+length is called when X is a list. The most significant efficiency
+effect of inference from assertions is usually in type check
+optimization.
+
+A similar optimization is possible for
+
+    (+ (car x) (length x))
+
+Dynamic type inference has two inputs: explicit conditionals and
+implicit or explicit type assertions. Flow analysis propagates these
+constraints on variable type to any code that can be executed only
+after passing through the constraint. Explicit type constraints come
+from ifs where the test is either a lexical variable or a function
+of lexical variables and constants, where the function is either a
+type predicate, a numeric comparison or eq.
+
+If there is an eq or eql test, then the compiler will actually
+substitute one argument for the other in the true branch. For
+example,
+
+    (when (eq x :yow!)
+      (return x))
+
+becomes
+
+    (when (eq x :yow!)
+      (return :yow!))
+
+This substitution is done when one argument is a constant or one
+argument has better type information than the other. This
+transformation reveals opportunities for constant folding or
+type-specific optimizations. If the test is against a constant, then
+the compiler can prove that the variable is not that constant value
+in the false branch or (not (member :yow!)) in the example above.
+This can eliminate redundant tests. For example,
+
+    (if (eq x nil)
+        ...
+        (if x a b))
+
+is transformed to
+
+    (if (eq x nil)
+        ...
+        a)
+
+Variables appearing as if tests are interpreted as
+(not (eq var nil)) tests. The compiler also converts = into eql
+where possible. It is difficult to do inference directly on = since
+it does implicit coercions.
+
+When there is an explicit < or > test on numeric variables, the
+compiler makes inferences about the ranges the variables can assume
+in the true and false branches. This is mainly useful when it proves
+that the values are small enough in magnitude to allow open-coding
+of arithmetic operations. For example, in many uses of dotimes with
+a fixnum repeat count, the compiler proves that fixnum arithmetic
+can be used.
+
+Implicit type assertions are quite common, especially if you declare
+function argument types. Dynamic inference from implicit type
+assertions sometimes helps to disambiguate programs to a useful
+degree but is most noticeable when it detects a dynamic type error.
+For example,
+
+    (defun foo (x)
+      (+ (car x) x))
+
+results in this warning:
+
+    ; in: DEFUN FOO
+    ;     (+ (CAR X) X)
+    ;
+    ; note: deleting unreachable code
+    ;
+    ; caught WARNING:
+    ;   Derived type of X is
+    ;     (VALUES LIST &OPTIONAL),
+    ;   conflicting with its asserted type
+    ;     NUMBER.
+
+#### Type Check Optimization
+
+SBCL backs up its support for Precise Type Checking by minimizing
+the cost of run-time type checking. This is done both through
+Type Inference and through optimizations of type checking itself.
+
+Type inference often allows the compiler to prove that a value is of
+the correct type, and thus no type check is necessary. For example:
+
+    (defstruct foo a b c)
+    (defstruct link
+      (foo (required-argument) :type foo)
+      (next nil :type (or link null)))
+    
+    (foo-a (link-foo x))
+
+Here, there is no need to check that the result of link-foo is a
+foo since it always is. Even when some type checks are necessary,
+type inference can often reduce the number:
+
+    (defun test (x)
+      (let ((a (foo-a x))
+            (b (foo-b x))
+            (c (foo-c x)))
+        ...))
+
+In this above example, only one (foo-p x) check is needed. This
+applies to a lesser degree in list operations, such as
+
+    (if (eql (car x) 3)
+        (cdr x)
+        y)
+
+where we only have to check that x is a list once.
+
+Since the compiler recognizes explicit type tests, code that
+explicitly protects itself against type errors has little introduced
+overhead due to implicit type checking. For example, this loop
+compiles with no type checks for car and cdr due to the termination
+condition involving atom:
+
+    (defun memq (e l)
+      (do ((current l (cdr current)))
+          ((atom current) nil)
+        (when (eq (car current) e) (return current))))
+
+The compiler reduces the cost of checks that must be done through an
+optimization called complementing. A complemented check for
+type is simply a check that the value is not of the type
+(not type). This is only interesting when something is known about
+the actual type, in which case we can test for the complement of
+(and known-type (not type)) or the difference between the known
+type and the assertion. An example:
+
+    (link-foo (link-next x))
+
+Here, we change the type check for link-foo from a test for foo
+to a test for:
+
+    (not (and (or foo null)
+              (not foo)))
+
+or more simply (not null). This is probably the most important use
+of complementing, since the situation is fairly common and a null
+test is much cheaper than a structure type test.
+
+Here is a more complicated example that illustrates the combination of
+complementing with dynamic type inference:
+
+    (defun find-a (a x)
+      (declare (type (or link null) x))
+      (do ((current x (link-next current)))
+          ((null current) nil)
+        (let ((foo (link-foo current)))
+          (when (eq (foo-a foo) a) (return foo)))))
+
+This loop can be compiled with no type checks. The link test for
+link-foo and link-next is complemented to (not null) and then
+deleted because of the explicit null test. As before, no check is
+necessary for foo-a, since link-foo is always a foo. This sort
+of situation shows how Precise Type Checking combined with precise
+declarations can actually result in reduced type checking.
+
 ### Source Optimization
 
 This section describes source-level transformations that the SBCL
@@ -3420,6 +4302,10 @@ that it makes it easier to write efficient programs. If a clean,
 straightforward implementation can be transformed into an efficient
 one, then there is no need for tricky and dangerous hand
 optimization.
+
+Source-level optimization eliminates the need for macros to optimize
+their expansion, and also increases the effectiveness of
+Inline Expansion.
 
 #### Let Optimization
 
@@ -3554,7 +4440,7 @@ if test is known at compile time, then deleting the if, the test
 expression, and the unreachable branch. This can be considered a
 special case of constant folding, although the test doesn't have to
 be truly constant as long as it is definitely false or definitely
-not false. Note also, that type inference propagates the result of
+not false. Note also, that Type Inference propagates the result of
 an if test to the true and false branches.
 
 A related if optimization transforming
@@ -3605,7 +4491,7 @@ branches. The code in a tagbody will not be emitted in the order it
 appeared in the source, so there is no point in arranging the code
 to make control drop through to the target.
 
-#### Dead Code Elimination
+#### Unreachable Code Elimination
 
 The compiler will delete code whenever it can prove that the code can
 never be executed. Code becomes unreachable when
@@ -4687,30 +5573,18 @@ The sb-ext:truly-the special form declares the type of the result of
 the operations, producing its argument; the declaration is not
 checked. In short: don't use it.
 
-The sb-ext:freeze-type declaration declares that a type will never
-change, which can make type testing (e.g. with typep) more efficient
-for structure types.
-
 FIXME: The remaining material in the CMUCL manual about getting good
 performance from the compiler should be reviewed, and added to this
 section. In the meantime, the original CMUCL manual is still 95+%
 correct for the SBCL's compiler. See the sections
 
-- Advanced Compiler Use and Efficiency Hints
+- Advanced Compiler Use and Efficiency Hints- Object Representation
 
-- Advanced Compiler Introduction
+    - Numbers
 
-- More About Types in Python
+    - General Efficiency Hints
 
-- Type Inference
-
-- Object Representation
-
-- Numbers
-
-- General Efficiency Hints
-
-- Efficiency Notes
+    - Efficiency Notes
 
 Besides this information from the CMUCL manual, there are a few other
 points to keep in mind.
@@ -4765,13 +5639,13 @@ hand-coding has been done as of SBCL version 0.6.3 include
   type checking, e.g. (locally (declare (safety 1)) (assoc item list))
   (which currently performs safe endp checking internal to assoc).
 
-If your system's performance is suffering because of some construct
-which could in principle be compiled efficiently, but which the SBCL
-compiler can't in practice compile efficiently, consider writing a
-patch to the compiler and submitting it for inclusion in the main
-sources. Such code is often reasonably straightforward to write;
-search the sources for the string deftransform to find many
-examples (some straightforward, some less so).
+If your system's performance is suffering due to some construct that
+SBCL fails to compile efficiently, even though it could be in
+principle, consider writing a patch to the compiler and submitting
+it for inclusion in the main sources. Such code is often reasonably
+straightforward to write; search the sources for the string
+deftransform to find many examples (some straightforward, some
+less so).
 
 ## Beyond the ANSI Standard
 
@@ -7216,6 +8090,20 @@ and its context.
     Note that the unencapsulated function may be eq to the designated
     function even in the presence of encapsulations. For generic
     functions, this is currently always the case.
+
+- [macro] sb-ext:compile-file-position
+
+    Return the character position of this macro invocation. This is in the
+    context of the file being compiled with compile-file. Outside this
+    context or if the position cannot be determined, nil is returned.
+
+- [macro] sb-ext:compile-file-line
+
+    Return the line number (starting from 1) and and column
+    number (starting from 0) of this macro invocation as multiple
+    values. This is in the context of the file being compiled with
+    compile-file. Outside this context or if the line and column cannot
+    be determined, the values 0, -1 are returned.
 
 - [generic-function] documentation object doc-type
 
@@ -11677,9 +12565,10 @@ compiler and in generating sb-alien structure and union types,
 Defining Foreign Types.
 
 The ASDF (<http://www.cliki.net/ASDF>) component type
-GROVEL-CONSTANTS-FILE has its asdf:perform operation defined to
-write out a C source file, compile it, and run it. The output from
-this program is Lisp, which is then itself compiled and loaded.
+sb-grovel:grovel-constants-file has its asdf:perform operation
+defined to write out a C source file, compile it, and run it. The
+output from this program is Lisp, which is then itself compiled and
+loaded.
 
 sb-grovel is used in a few contributed modules, and it is
 currently compatible only to SBCL. However, if you want to use it,
@@ -12211,6 +13100,11 @@ definition docstrings and section docstrings reference sections
 following the usual convention of uppercasing the name. Docstrings
 are in a subset of Markdown and use very little markup in general,
 so they are easy to read directly in the source.
+
+The final, rendered documentation in plain text format is available
+for any section via cl:documentation:
+
+    (documentation sb-manual:@sbcl-manual t)
 
 The official manual in Info, HTML and PDF formats is generated via
 Texinfo generated from these definitions.
@@ -13406,9 +14300,9 @@ just hang and you want to send a useful bug report, then:
 - Isolate a smallish test case, run it.
 
 - If SBCL hangs, kill it with sigabrt: kill -ABRT <pidof sbcl>,
-  which by default enters ldb.
+  which by default enters LDB.
 
-- Print the backtrace from ldb by typing ba.
+- Print the backtrace from LDB by typing ba.
 
 - Next, attach gdb with gdb -p <pidof sbcl>, and get backtraces
   for all threads with thread apply all ba.

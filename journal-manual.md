@@ -3440,7 +3440,7 @@ The rest of section is about concrete subclasses of [`journal`][5082].
     generated. They differ from `file-journal`s in that events written to
     `in-memory-journal`s are not serialized (and deserialized on replay)
     with the following consequences for the objects recorded by
-    [`journaled`][6267] (i.e. its `name`, `args` arguments, and also the return [`values`][5cc0]
+    [`journaled`][6267] (i.e. its `name`, `args` arguments, and also the return `values`([`0`][5cc0] [`1`][c4cf])
     of the block, or the value returned by [`condition`][83e1]):
 
     - These objects need not be [readable][768f].
@@ -3506,7 +3506,7 @@ The rest of section is about concrete subclasses of [`journal`][5082].
 
     Since serialization in `file-journal`s is built on top of Lisp [`read`][fe58]
     and [`write`][fc0a], everything that [`journaled`][6267] records in events (i.e. its
-    `name`, `args` arguments, and also the return [`values`][5cc0] of the block, or
+    `name`, `args` arguments, and also the return `values`([`0`][5cc0] [`1`][c4cf]) of the block, or
     the value returned by [`condition`][83e1]) must be [readable][768f].
 
     File journals are human-readable and editable by hand with some
@@ -4371,6 +4371,8 @@ normal operation, [`streamlet`][7a2f]s are not worked with directly.
 [c2b8]: #JOURNAL:REPLAYED%20MGL-PAX:MACRO "JOURNAL:REPLAYED MGL-PAX:MACRO"
 
 [c438]: #JOURNAL:DELETE-FILE-BUNDLE%20FUNCTION "JOURNAL:DELETE-FILE-BUNDLE FUNCTION"
+
+[c4cf]: sbcl-manual.md#VALUES%20DECLARATION "VALUES DECLARATION"
 
 [c9d6]: #JOURNAL:SYNC-STREAMLET%20GENERIC-FUNCTION "JOURNAL:SYNC-STREAMLET GENERIC-FUNCTION"
 
