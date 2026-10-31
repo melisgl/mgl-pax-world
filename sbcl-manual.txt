@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.10.56-2472930, generated 2026-10-31 18:52:29. See
+The output is for SBCL version 2.6.10.62-c15c1e9, generated 2026-10-31 22:01:27. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -6043,15 +6043,39 @@ among other things.
 Hash tables can also have weak keys and values. See
 Hash Table Extensions.
 
+- [class] sb-ext:weak-pointer t
+
+- [function] sb-ext:weak-pointer-p object
+
+    Return true if object is a weak-pointer, and nil otherwise.
+
 - [function] sb-ext:make-weak-pointer object
 
-    Allocate and return a weak pointer which points to object.
+    Allocate and return a weak-pointer that points to object.
 
 - [function] sb-ext:weak-pointer-value weak-pointer
 
     If weak-pointer is valid, return the value of weak-pointer and t.
     If the referent of weak-pointer has been garbage collected,
     returns the values nil and nil.
+
+- [function] sb-ext:weak-vector-p object
+
+    See if object is a weak vector. This implies simple-vector-p.
+
+- [function] sb-ext:make-weak-vector length &key initial-contents initial-element
+
+    Allocate a weak vector of length elements. See make-array for a
+    description of initial-contents and initial-element. Note that unlike
+    in make-array, here initial-element always defaults to nil.
+
+    A weak vector is similar to a general vector whose elements are
+    weak-pointers, but in weak vectors the weak pointers are implicit.
+    Hence, there is no need for make-weak-pointer and weak-pointer-value
+    when writing or reading its elements.
+
+    If an element is garbage collected, it is replaced by nil in the
+    vector.
 
 #### Introspection and Tuning
 
@@ -13101,10 +13125,24 @@ following the usual convention of uppercasing the name. Docstrings
 are in a subset of Markdown and use very little markup in general,
 so they are easy to read directly in the source.
 
-The final, rendered documentation in plain text format is available
-for any section via cl:documentation:
+- The final, rendered documentation in plain text format is available
+  for any section via cl:documentation:
 
-    (documentation sb-manual:@sbcl-manual t)
+        (documentation sb-manual:@sbcl-manual t)
+
+- When sb-manual is loaded, describe output includes the name of the
+  containing section if any. For example, (describe
+  'sb-ext:*on-package-variance*) points to Package Variance:
+
+        SB-EXT:*ON-PACKAGE-VARIANCE*
+          [symbol]
+        
+        *ON-PACKAGE-VARIANCE* names a special variable:
+          Declared type: LIST
+          Value: (:WARN T)
+          User manual section: SB-MANUAL:@PACKAGE-VARIANCE
+          Documentation:
+            ...
 
 The official manual in Info, HTML and PDF formats is generated via
 Texinfo generated from these definitions.

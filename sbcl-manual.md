@@ -645,7 +645,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.56-2472930`, generated *2026-10-31 18:52:29*. See
+The output is for SBCL version `2.6.10.62-c15c1e9`, generated *2026-10-31 22:01:27*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -7332,12 +7332,24 @@ among other things.
 Hash tables can also have weak keys and values. See
 [Hash Table Extensions][309c].
 
+<a id="x-28SB-EXT-3AWEAK-POINTER-20CLASS-29"></a>
+<a id="SB-EXT:WEAK-POINTER%20CLASS"></a>
+
+- \[class\] **sb-ext:weak-pointer** *[t][9172]*
+
+<a id="x-28SB-EXT-3AWEAK-POINTER-P-20FUNCTION-29"></a>
+<a id="SB-EXT:WEAK-POINTER-P%20FUNCTION"></a>
+
+- \[function\] **sb-ext:weak-pointer-p** *object*
+
+    Return true if `object` is a [`weak-pointer`][ae2e], and `nil` otherwise.
+
 <a id="x-28SB-EXT-3AMAKE-WEAK-POINTER-20FUNCTION-29"></a>
 <a id="SB-EXT:MAKE-WEAK-POINTER%20FUNCTION"></a>
 
 - \[function\] **sb-ext:make-weak-pointer** *object*
 
-    Allocate and return a weak pointer which points to `object`.
+    Allocate and return a [`weak-pointer`][ae2e] that points to `object`.
 
 <a id="x-28SB-EXT-3AWEAK-POINTER-VALUE-20FUNCTION-29"></a>
 <a id="SB-EXT:WEAK-POINTER-VALUE%20FUNCTION"></a>
@@ -7347,6 +7359,30 @@ Hash tables can also have weak keys and values. See
     If `weak-pointer` is valid, return the value of `weak-pointer` and `t`.
     If the referent of `weak-pointer` has been garbage collected,
     returns the values `nil` and `nil`.
+
+<a id="x-28SB-EXT-3AWEAK-VECTOR-P-20FUNCTION-29"></a>
+<a id="SB-EXT:WEAK-VECTOR-P%20FUNCTION"></a>
+
+- \[function\] **sb-ext:weak-vector-p** *object*
+
+    See if `object` is a weak vector. This implies [`simple-vector-p`][3874].
+
+<a id="x-28SB-EXT-3AMAKE-WEAK-VECTOR-20FUNCTION-29"></a>
+<a id="SB-EXT:MAKE-WEAK-VECTOR%20FUNCTION"></a>
+
+- \[function\] **sb-ext:make-weak-vector** *length \&key initial-contents initial-element*
+
+    Allocate a weak vector of `length` elements. See [`make-array`][92ab] for a
+    description of `initial-contents` and `initial-element`. Note that unlike
+    in `make-array`, here `initial-element` always defaults to `nil`.
+
+    A weak vector is similar to a general [`vector`][64b3] whose elements are
+    [`weak-pointer`][ae2e]s, but in weak vectors the weak pointers are implicit.
+    Hence, there is no need for [`make-weak-pointer`][c4ae] and [`weak-pointer-value`][495f]
+    when writing or reading its elements.
+
+    If an element is garbage collected, it is replaced by `nil` in the
+    vector.
 
 <a id="x-28SB-MANUAL-3A-40INTROSPECTION-AND-TUNING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION"></a>
@@ -7504,7 +7540,7 @@ paths:
 
     Find roots keeping the targets of `weak-pointers` alive.
 
-    `weak-pointers` must be a single `sb-ext:weak-pointer` or a list of those,
+    `weak-pointers` must be a single [`sb-ext:weak-pointer`][ae2e] or a list of those,
     pointing to objects for which roots should be searched.
 
     `criterion` determines just how rooty (how deep) a root must be in order
@@ -16108,10 +16144,24 @@ following the usual convention of uppercasing the name. Docstrings
 are in a subset of Markdown and use very little markup in general,
 so they are easy to read directly in the source.
 
-The final, rendered documentation in plain text format is available
-for any section via [`cl:documentation`][68f1]:
+- The final, rendered documentation in plain text format is available
+  for any section via [`cl:documentation`][68f1]:
 
-    (documentation sb-manual:@sbcl-manual t)
+        (documentation sb-manual:@sbcl-manual t)
+
+- When `sb-manual` is loaded, [`describe`][6651] output includes the name of the
+  containing section if any. For example, `(describe
+  'sb-ext:*on-package-variance*)` points to [Package Variance][30f8]:
+
+        SB-EXT:*ON-PACKAGE-VARIANCE*
+          [symbol]
+        
+        *ON-PACKAGE-VARIANCE* names a special variable:
+          Declared type: LIST
+          Value: (:WARN T)
+          User manual section: SB-MANUAL:@PACKAGE-VARIANCE
+          Documentation:
+            ...
 
 The official manual in Info, HTML and PDF formats is generated via
 Texinfo generated from these definitions.
@@ -18182,6 +18232,8 @@ learn about Common Lisp, some books stand out:
 
 [3808]: http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm "FRESH-LINE (MGL-PAX:CLHS FUNCTION)"
 
+[3874]: http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_ve.htm "SIMPLE-VECTOR-P (MGL-PAX:CLHS FUNCTION)"
+
 [38a2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm "EQL (MGL-PAX:CLHS NIL)"
 
 [38bd]: #SB-SEQUENCE:CONCATENATE%20GENERIC-FUNCTION "SB-SEQUENCE:CONCATENATE GENERIC-FUNCTION"
@@ -18309,6 +18361,8 @@ learn about Common Lisp, some books stand out:
 [48fa]: http://www.lispworks.com/documentation/HyperSpec/Body/f_chareq.htm "CHAR= (MGL-PAX:CLHS FUNCTION)"
 
 [4912]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get_in.htm "GET-INTERNAL-REAL-TIME (MGL-PAX:CLHS FUNCTION)"
+
+[495f]: #SB-EXT:WEAK-POINTER-VALUE%20FUNCTION "SB-EXT:WEAK-POINTER-VALUE FUNCTION"
 
 [49f5]: http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm "LET* (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -18996,6 +19050,8 @@ learn about Common Lisp, some books stand out:
 
 [ae28]: #SB-THREAD:GRAB-MUTEX%20FUNCTION "SB-THREAD:GRAB-MUTEX FUNCTION"
 
+[ae2e]: #SB-EXT:WEAK-POINTER%20CLASS "SB-EXT:WEAK-POINTER CLASS"
+
 [ae44]: http://www.lispworks.com/documentation/HyperSpec/Body/r_abort.htm "ABORT (MGL-PAX:CLHS RESTART)"
 
 [ae5f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_listen.htm "LISTEN (MGL-PAX:CLHS FUNCTION)"
@@ -19147,6 +19203,8 @@ learn about Common Lisp, some books stand out:
 [c3fd]: #SB-THREAD:WITH-MUTEX%20MGL-PAX:MACRO "SB-THREAD:WITH-MUTEX MGL-PAX:MACRO"
 
 [c474]: http://www.lispworks.com/documentation/HyperSpec/Body/t_sgn_by.htm "SIGNED-BYTE (MGL-PAX:CLHS TYPE)"
+
+[c4ae]: #SB-EXT:MAKE-WEAK-POINTER%20FUNCTION "SB-EXT:MAKE-WEAK-POINTER FUNCTION"
 
 [c4cf]: #VALUES%20DECLARATION "VALUES DECLARATION"
 
