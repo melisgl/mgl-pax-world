@@ -645,7 +645,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.72-fed161b`, generated *2026-11-02 10:04:56*. See
+The output is for SBCL version `2.6.10.75-819d684`, generated *2026-11-02 20:49:30*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -7359,30 +7359,6 @@ Hash tables can also have weak keys and values. See
     If `weak-pointer` is valid, return the value of `weak-pointer` and `t`.
     If the referent of `weak-pointer` has been garbage collected,
     returns the values `nil` and `nil`.
-
-<a id="x-28SB-EXT-3AWEAK-VECTOR-P-20FUNCTION-29"></a>
-<a id="SB-EXT:WEAK-VECTOR-P%20FUNCTION"></a>
-
-- \[function\] **sb-ext:weak-vector-p** *object*
-
-    See if `object` is a weak vector. This implies [`simple-vector-p`][3874].
-
-<a id="x-28SB-EXT-3AMAKE-WEAK-VECTOR-20FUNCTION-29"></a>
-<a id="SB-EXT:MAKE-WEAK-VECTOR%20FUNCTION"></a>
-
-- \[function\] **sb-ext:make-weak-vector** *length \&key initial-contents initial-element*
-
-    Allocate a weak vector of `length` elements. See [`make-array`][92ab] for a
-    description of `initial-contents` and `initial-element`. Note that unlike
-    in `make-array`, here `initial-element` always defaults to `nil`.
-
-    A weak vector is similar to a general [`vector`][64b3] whose elements are
-    [`weak-pointer`][ae2e]s, but in weak vectors the weak pointers are implicit.
-    Hence, there is no need for [`make-weak-pointer`][c4ae] and [`weak-pointer-value`][495f]
-    when writing or reading its elements.
-
-    If an element is garbage collected, it is replaced by `nil` in the
-    vector.
 
 <a id="x-28SB-MANUAL-3A-40INTROSPECTION-AND-TUNING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION"></a>
@@ -18232,8 +18208,6 @@ learn about Common Lisp, some books stand out:
 
 [3808]: http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm "FRESH-LINE (MGL-PAX:CLHS FUNCTION)"
 
-[3874]: http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_ve.htm "SIMPLE-VECTOR-P (MGL-PAX:CLHS FUNCTION)"
-
 [38a2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm "EQL (MGL-PAX:CLHS NIL)"
 
 [38bd]: #SB-SEQUENCE:CONCATENATE%20GENERIC-FUNCTION "SB-SEQUENCE:CONCATENATE GENERIC-FUNCTION"
@@ -18361,8 +18335,6 @@ learn about Common Lisp, some books stand out:
 [48fa]: http://www.lispworks.com/documentation/HyperSpec/Body/f_chareq.htm "CHAR= (MGL-PAX:CLHS FUNCTION)"
 
 [4912]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get_in.htm "GET-INTERNAL-REAL-TIME (MGL-PAX:CLHS FUNCTION)"
-
-[495f]: #SB-EXT:WEAK-POINTER-VALUE%20FUNCTION "SB-EXT:WEAK-POINTER-VALUE FUNCTION"
 
 [49f5]: http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm "LET* (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -19203,8 +19175,6 @@ learn about Common Lisp, some books stand out:
 [c3fd]: #SB-THREAD:WITH-MUTEX%20MGL-PAX:MACRO "SB-THREAD:WITH-MUTEX MGL-PAX:MACRO"
 
 [c474]: http://www.lispworks.com/documentation/HyperSpec/Body/t_sgn_by.htm "SIGNED-BYTE (MGL-PAX:CLHS TYPE)"
-
-[c4ae]: #SB-EXT:MAKE-WEAK-POINTER%20FUNCTION "SB-EXT:MAKE-WEAK-POINTER FUNCTION"
 
 [c4cf]: #VALUES%20DECLARATION "VALUES DECLARATION"
 
