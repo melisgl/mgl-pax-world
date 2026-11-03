@@ -645,7 +645,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.91-45892b9`, generated *2026-11-03 10:11:35*. See
+The output is for SBCL version `2.6.10.94-017564a`, generated *2026-11-03 18:08:47*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -972,9 +972,15 @@ documentation strings, thread support, or extra debugging code.
 The preferred way to do this is using command-line arguments to
 `make.sh`:
 
-    --fancy                    Enables a curated set of features.
-    --with-<feature>           Enables a specific feature.
-    --without-<feature>        Disables a specific feature.
+    --fancy                 Enables a curated set of features.
+    --with-<feature>        Enables a known feature.
+    --without-<feature>     Disables a known feature.
+    --with%-<feature>       Enables a known or unknown feature.
+    --without%-<feature>    Disables a known or unknown feature.
+
+It is an error if the feature in the `--with-<feature>` and
+`--without-<feature>` options is not one of [Build Options][9119]. Use the
+`%` variants to disable this check.
 
 When tracking the [SBCL Repository][a820], it may be annoying having to
 supply the same arguments to `make.sh` over and over again. You can
@@ -985,13 +991,15 @@ expression like this in it:
     (lambda (list)
       (flet ((enable (x) (pushnew x list))
              (disable (x) (setf list (remove x list))))
-        #+nil (enable :sb-show)
-        (enable :sb-after-xc-core)
-        #+nil (disable :sb-doc)
+        #+nil (enable (feature :sb-show))
+        (enable (feature :sb-after-xc-core))
+        #+nil (disable (feature :sb-doc))
         list))
 
 This function gets a list of features from `make.sh` and returns the
-transformed list to be used for the build.
+transformed list to be used for the build. The `feature` function
+returns its argument after performing the same check that
+`--with-<feature>` does.
 
 > *Note*: There is no direct correspondance between [Build Options][9119]
 > and [`*features*`][6234] in the compiled SBCL. Some build options do make it
