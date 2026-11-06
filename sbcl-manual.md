@@ -235,17 +235,59 @@
 
     - [6.9 Stack Allocation][5cbb]
 
-    - [6.10 Modular Arithmetic][1a1b]
+    - [6.10 Representation of Objects][bb11]
 
-        - [6.10.1 Signed Modular Arithmetic][cce0]
+        - [6.10.1 Descriptor][777e]
 
-    - [6.11 Recognized Idioms][44af]
+        - [6.10.2 Non-descriptor][820d]
 
-        - [6.11.1 Count Trailing Zeros][af2a]
+        - [6.10.3 Non-descriptor Variables][5ca7]
 
-    - [6.12 Global and Always-bound Variables][560e]
+        - [6.10.4 Non-descriptors in Local Call][74b3]
 
-    - [6.13 Miscellaneous Efficiency Issues][b81a]
+        - [6.10.5 Specialized Arrays][fd3d]
+
+        - [6.10.6 Specialized Structure Slots][686b]
+
+        - [6.10.7 Characters][6140]
+
+        - [6.10.8 Generic Arithmetic][a4d8]
+
+        - [6.10.9 Fixnums][dc36]
+
+        - [6.10.10 Word Integers][3727]
+
+        - [6.10.11 Modular Arithmetic][1a1b]
+
+        - [6.10.12 Floating Point][634d]
+
+    - [6.11 Efficiency Notes][0d14]
+
+        - [6.11.1 Operation Efficiency Notes][8690]
+
+        - [6.11.2 Representation Efficiency Notes][96e3]
+
+    - [6.12 Recognized Idioms][44af]
+
+        - [6.12.1 Count Trailing Zeros][af2a]
+
+    - [6.13 Global and Always-bound Variables][560e]
+
+    - [6.14 Efficiency Miscellanea][456d]
+
+        - [6.14.1 Compile Your Code][f659]
+
+        - [6.14.2 Consing][8866]
+
+        - [6.14.3 Complex Argument Syntax][67d5]
+
+        - [6.14.4 Mapping and Iteration][eb59]
+
+        - [6.14.5 Trace Files][9cd7]
+
+        - [6.14.6 Assignments][fcad]
+
+        - [6.14.7 Optimization Opportunities][47fe]
 
 - [7 Beyond the ANSI Standard][8723]
 
@@ -301,7 +343,7 @@
 
     - [7.10 Unix Support][1b5c]
 
-        - [7.10.1 Running external programs][52f0]
+        - [7.10.1 Running External Programs][52f0]
 
     - [7.11 Unicode Support][cecd]
 
@@ -623,7 +665,7 @@
 
         - [19.1.4 Editor Integration][07b6]
 
-        - [19.1.5 Internals Documentation][a160]
+        - [19.1.5 Contributing][d5b0]
 
         - [19.1.6 History and Implementation of SBCL][2703]
 
@@ -645,7 +687,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.116-432dc81`, generated *2026-11-06 17:46:15*. See
+The output is for SBCL version `2.6.10.131-f6a9f50`, generated *2026-11-06 23:35:36*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -2129,6 +2171,8 @@ from a naive translation.
         default is `:default` which uses the
         [`sb-ext:*default-source-external-format*`][3fde].
 
+    The rest of the arguments are extensions to the standard:
+
     - `:block-compile` {`nil` | `:specified` | `t`}
 
         Determines whether multiple functions are compiled together as a
@@ -2140,7 +2184,7 @@ from a naive translation.
         declaration will enable block compilation. A value of `t` indicates
         that all forms in the file(s) should be compiled as a unit. The
         default is the value of [`sb-ext:*block-compile-default*`][e1d1], which is
-        initially `nil`.
+        initially `nil`. See [Block Compilation][1143].
 
     - `:entry-points`
 
@@ -2149,13 +2193,13 @@ from a naive translation.
         to block compilation and is useful mainly when `:block-compile` `t` is
         specified on a file that lacks `start-block` declarations. If the
         value is `nil` (the default), then all functions will be globally
-        defined.
+        defined. See [Block Compilation][1143].
 
     - `:trace-file`
 
         If given, internal data structures are dumped to the specified
         file, or if a value of `t` is given, to a file of `.trace` type
-        derived from the input file name. (non-standard)
+        derived from the input file name. See [Trace Files][9cd7].
 
     - `:emit-cfasl`
 
@@ -2722,7 +2766,7 @@ types involving the [`satisfies`][2b8b] type specifier.
 
 #### 4.3.1 Type Declaration Checking
 
-The SBCL compiler treats type declarations differently from most other
+The compiler treats type declarations differently from most other
 Lisp compilers. Under the default [Compiler Policy][2474], the compiler
 doesn't blindly believe type declarations but considers them
 assertions about the program that should be checked: all type
@@ -2757,19 +2801,23 @@ via [`optimize`][4d51] declarations.
     checking. Any type errors in code where type checks are not
     performed are liable to corrupt the heap.
 
-There is a third option of mostly historical interest called Weak
-Type Checking, where declared types may be simplified into faster to
-check supertypes: for example, `(or (integer -17 -7) (integer 7
-17))` is simplified into `(integer -17 17)`. This option is also
-unsafe and is no longer available by any combination of the standard
-optimization qualities.
+> *Note*: There is a third option of mostly historical interest
+> called Weak Type Checking, where declared types may be simplified
+> into faster to check supertypes: for example, `(or (integer -17
+> -7) (integer 7 17))` is simplified into `(integer -17 17)`. This
+> option is also unsafe and is no longer available by any
+> combination of the standard optimization qualities.
 
-Note that CLOS slots with types declared using the `:type` slot option
-in [`defclass`][ead6] are asserted if and only if the class was defined in
-*safe code* and the slot access location is in *safe code* as well.
-This laxness does not pose any safety issues, as the CLOS slot types
-are not available for [Type Inference][55c7], nor do CLOS slot types
-provide any efficiency benefits.
+> *Note*: CLOS slots with types declared using the `:type` slot option
+> in [`defclass`][ead6] are asserted if and only if the class was defined in
+> *safe code* and the slot access location is in *safe code* as
+> well. This laxness does not pose any safety issues, as the CLOS
+> slot types are not available for [Type Inference][55c7], nor do CLOS slot
+> types provide any efficiency benefits.
+
+> *Note*: The `sb-ext:truly-the` special form declares the type of the
+> result of the operations, producing its argument; the declaration
+> is not checked. In short: don't use it.
 
 <a id="x-28SB-MANUAL-3A-40PRECISE-TYPE-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION"></a>
@@ -2910,7 +2958,7 @@ numeric argument. Another possible fix would be to say:
 
 This would be preferable in some circumstances since it would allow
 a non-standard representation to be used for the local `pos`
-variable in the loop body.
+variable in the loop body. See also [Non-descriptor][820d].
 
 <a id="x-28SB-MANUAL-3A-40COMPILER-POLICY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-POLICY%20MGL-PAX:SECTION"></a>
@@ -4429,7 +4477,7 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 
 ## 6 Efficiency
 
-In SBCL as with any language on any computer, the path to efficient
+In SBCL, as with any language on any computer, the path to efficient
 code starts with good algorithms and sensible programming
 techniques, but to avoid inefficiency pitfalls, you need to know
 some of this implementation's quirks and features. This chapter is
@@ -4507,6 +4555,11 @@ convention. These features allow a more natural programming style:
 
 - A [`funcall`][03c7] that is as efficient as normal named call
 
+We also discuss how the compiler handles the tension between
+efficient, natural [Representation of Objects][bb11] and the dynamic nature
+of Common Lisp. [Efficiency Notes][0d14] open a window into the compiler's
+view.
+
 Finally, we can only touch upon some of the most important concepts
 discussed later before this introduction gets too long, so let's
 focus on the big picture. Writing efficient code that works is a
@@ -4544,14 +4597,16 @@ separate coding from tuning. During coding, you should:
 
 During tuning, you should:
 
+- Follow the recommendations in [Efficiency Miscellanea][456d].
+
+- Declare `speed`-critical code and pay attention to
+  [Efficiency Notes][0d14].
+
 - Identify the hot spots in the program through [Profiling][9c07].
 
 - Identify inefficient constructs in the hot spot with efficiency
   notes, more profiling, or manual inspection of the source and with
   judicious use of [`disassemble`][12f8].
-
-- Add declarations and consider the application of discussed in the
-  section.
 
 - If all else fails, consider algorithm or data structure changes.
   If you did a good job coding, changes will be easy to introduce.
@@ -4618,6 +4673,8 @@ number type specifiers. Understanding means that:
   inference and reduce the cost for type checking (see
   [Type Check Optimization][fce9]).
 
+For related information, see [Representation of Objects][bb11].
+
 <a id="x-28SB-MANUAL-3A-40TYPE-CANONICALIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TYPE-CANONICALIZATION%20MGL-PAX:SECTION"></a>
 
@@ -4682,7 +4739,7 @@ example:
 
 The type assertion on the `top` slot ensures that an error will be
 signaled when there is an attempt to store an illegal value (such as
-`:rmvd`.) Although somewhat weak, these union type assertions
+`:rmvd`). Although somewhat weak, these union type assertions
 provide a useful input into type inference, allowing the cost of
 type checking to be reduced. For example, this loop is safely
 compiled with no type checks:
@@ -4962,8 +5019,8 @@ are some general guidelines for maximum robustness and efficiency:
   these declarations in during initial coding so that type
   assertions can find bugs for you during debugging.
 
-- Durining development, prefer declaring function argument types
-  with with [`declare`][1574] within the function to avoid having to redefine
+- During development, prefer declaring function argument types
+  with [`declare`][1574] within the function to avoid having to redefine
   [`ftype`][05c1]s, which can lead to safety problems (see
   [Type Declaration Checking][538a]).
 
@@ -4988,7 +5045,7 @@ are some general guidelines for maximum robustness and efficiency:
 - In addition to declaring the array element type and simpleness,
   also declare the dimensions if they are fixed. For example,
 
-    (simple-array single-float (1024 1024))
+        (simple-array single-float (1024 1024))
 
 The bounds information allows array indexing for multi-dimensional
   arrays to be compiled much more efficiently and may also allow
@@ -4997,8 +5054,8 @@ The bounds information allows array indexing for multi-dimensional
 - Avoid use of the [`the`][311a] declaration within expressions. Not only does
   it clutter the code, but it is often unnecesary under [safe
   policies][538a]. If the need for a return
-  type assertion is revealed by efficiency notes during tuning, then
-  you can consider `the`, but it is preferable to constrain the
+  type assertion is revealed by [Efficiency Notes][0d14] during tuning,
+  then you can consider `the`, but it is preferable to constrain the
   argument types more, allowing the compiler to prove the desired
   result type.
 
@@ -5014,7 +5071,7 @@ The bounds information allows array indexing for multi-dimensional
 - Declarations are sometimes necessary for integer loop variables,
   since the compiler can't always prove that the value is of a good
   integer type. These declarations are best added during tuning,
-  when an efficiency note indicates the need.
+  when [Efficiency Notes][0d14] indicate the need.
 
 <a id="x-28SB-MANUAL-3A-40TYPE-INFERENCE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TYPE-INFERENCE%20MGL-PAX:SECTION"></a>
@@ -5431,7 +5488,7 @@ becoming
 
 A constant variable is a lexical variable that is never assigned to,
 always keeping its initial value. Whenever possible, avoid setting
-lexical variables -- instead bind a new variable to the new value.
+lexical variables; instead, bind a new variable to the new value.
 Except for loop variables, it is almost always possible to avoid
 setting lexical variables. This form:
 
@@ -5604,7 +5661,7 @@ never be executed. Code becomes unreachable when
 
 When code that appeared in the original source is deleted, the
 compiler prints a note to indicate a possible problem (or at least
-unnecessary code.) For example:
+unnecessary code). For example:
 
     (defun foo ()
       (if t
@@ -5734,10 +5791,10 @@ programming style:
   inline function, write it as a function and declare it [`inline`][9fb4].
   It's clearer, less error-prone, and works just as well.
 
-- Don't write macros that try to "optimize" their expansion in
-  trivial ways such as avoiding binding variables for simple
-  expressions. The compiler does these optimizations too and is less
-  likely to make a mistake.
+- Don't write macros that try to optimize their expansion in trivial
+  ways such as avoiding binding variables for simple expressions.
+  The compiler does these optimizations too and is less likely to
+  make a mistake.
 
 - Make use of local functions (i.e. [`labels`][c2ef] and [`flet`][091c]) and [Tail Call][ec2e]s
   in places where it is clearer. [Local Call][3d65] is faster than full
@@ -5977,9 +6034,9 @@ stored in memory at all. In this example, there is no penalty for
             (localfun a))))
 
 In local call, the compiler effectively passes closed-over values as
-extra arguments, so there is no need for you to "optimize"
-`localfun` by explicitly passing in lexically visible values.
-Closures may also be subject to [Let Optimization][6385].
+extra arguments, so there is no need for you to optimize `localfun`
+by explicitly passing in lexically visible values. Closures may also
+be subject to [Let Optimization][6385].
 
 > *Note*: indirect value cells are currently always allocated on the
 > heap when a variable is both assigned to (with [`setq`][0160] or [`setf`][a138]) and
@@ -6055,8 +6112,9 @@ convenience) they are broken up into many small functions. There is
 absolutely no overhead for calling a non-entry point function that
 is defined purely for modularity (i.e. called only in one place).
 
-Block compilation also allows for more unboxed and non-descriptor
-arguments and return values in non-trivial programs.
+Block compilation also allows for more unboxed and [Non-descriptor][820d]
+arguments and return values in non-trivial programs (see
+[Non-descriptors in Local Call][74b3]).
 
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-SEMANTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION"></a>
@@ -6181,7 +6239,7 @@ SBCL can expand almost any function inline, including functions
 with keyword arguments. The only restrictions are that keyword
 argument keywords in the call must be constant, and that global
 function definitions ([`defun`][f472]) must be done in a null lexical
-environment (not nested in a [`let`][4853] or other binding form.) Local
+environment (not nested in a [`let`][4853] or other binding form). Local
 functions (e.g. [`flet`][091c]) can be inline expanded in any environment.
 Combined with source-level optimization, inline expansion can be
 used for things that would otherwise require macros for efficient
@@ -6609,11 +6667,11 @@ suprising ways with the otherwise inaccessible parts criterion:
 SBCL also performs sophisticated escape analysis to enable automatic
 stack allocation of local functions without any bound dynamic extent
 declarations in many situations where the compiler can prove that no
-uses escape (traditional Lisp terminology names this situation "all
-uses are downward funargs"). For example, in the following
-function, the local function `#'predicatep` is stack allocated,
-because the compiler understands that the built-in function
-[`position-if`][abd8] only uses its first argument as a downward funarg:
+uses escape (traditional Lisp terminology names this situation *all
+uses are downward funargs*). For example, in the following function,
+the local function `#'predicatep` is stack allocated, because the
+compiler understands that the built-in function [`position-if`][abd8] only
+uses its first argument as a downward funarg:
 
     (let ((acc 0))
       (flet ((predicatep (num) (plusp (+ num off))))
@@ -6644,18 +6702,466 @@ detect incorrect usage of dynamic extent declarations.
       (declare (optimize speed (safety 0) (debug 0)))
       (trivial-hof (lambda (a b) (+ a b x)) 92))
 
+<a id="x-28SB-MANUAL-3A-40REPRESENTATION-OF-OBJECTS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@REPRESENTATION-OF-OBJECTS%20MGL-PAX:SECTION"></a>
+
+### 6.10 Representation of Objects
+
+<a id="x-28SB-MANUAL-3A-40DESCRIPTOR-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DESCRIPTOR%20MGL-PAX:SECTION"></a>
+
+#### 6.10.1 Descriptor
+
+To support dynamic typing and garbage collection, all Lisp objects
+can be represented with a one-word object, known as a *descriptor*,
+in which a few *tag* bits carry information about the object's type and
+allocation.
+
+There are two kinds of descriptors:
+
+- *Immediate descriptor* (or *tagged value*)
+
+    For example, [Fixnums][dc36] and [Characters][6140] fit into a machine word
+    along with the tag bits. Immediate descriptors are unboxed. The
+    presence of the tag bits has a very slight performance impact on
+    operations.
+
+- *Pointer descriptor* (or *tagged pointer*)
+
+    Objects larger than one word (such as [`cons`][229c]es) or objects that do
+    not fit into one word due to the tag bits (such as
+    [Word Integers][3727] and [`single-float`][31a6d]s) are represented as aligned
+    pointers to a separately allocated memory area, where the
+    alignment allows some low bits to be used as the tag. Pointer
+    descriptors are boxed.
+
+    This boxing has two major disadvantages:
+
+    - The memory pointed to must be allocated on the heap, so it
+      must eventually be freed by the garbage collector. Excessive
+      [Consing][8866] is inefficient in several ways.
+
+    - Representing an object in memory requires the compiler to emit
+      additional instructions to read the actual value in from
+      memory, and then to write the value back after operating on
+      it.
+
+<a id="x-28SB-MANUAL-3A-40NON-DESCRIPTOR-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@NON-DESCRIPTOR%20MGL-PAX:SECTION"></a>
+
+#### 6.10.2 Non-descriptor
+
+We saw that the standard [Descriptor][777e] representation has efficiency
+problems, the worst being the [Consing][8866] caused by boxing. SBCL tries
+to avoid these by using *non-descriptor* representations, which are
+basically untagged immediates. For example, this function does not
+cons numbers:
+
+    (defun multby (vec n)
+      (declare (type (simple-array single-float (*)) vec)
+               (single-float n))
+      (dotimes (i (length vec))
+        (setf (aref vec i)
+              (* n (aref vec i)))))
+
+If a descriptor representation were used, each iteration of the loop
+might cons two floats and do three times as many memory references.
+
+As its negative definition suggests, the range of possible
+non-descriptor representations is large. The performance improvement
+from non-descriptor representation depends upon both the number of
+types that have non-descriptor representations and the number of
+contexts in which the compiler is forced to use a descriptor
+representation.
+
+SBCL supports non-descriptor representations for
+
+- float types (see [Floating Point][634d]),
+
+- [Word Integers][3727],
+
+- [Characters][6140],
+
+- system area pointers (unconstrained pointers, see [Untyped memory][8dbe]),
+
+- local variables (see [Non-descriptor Variables][5ca7]),
+
+- array elements (section [Specialized Arrays][fd3d]),
+
+- arguments and return values in [Local Call][3d65] (see
+  [Non-descriptors in Local Call][74b3]), and
+
+- [Specialized Structure Slots][686b].
+
+<a id="x-28SB-MANUAL-3A-40NON-DESCRIPTOR-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@NON-DESCRIPTOR-VARIABLES%20MGL-PAX:SECTION"></a>
+
+#### 6.10.3 Non-descriptor Variables
+
+In order to use a [Non-descriptor][820d] representation for a variable or
+expression intermediate value, the compiler must be able to prove
+that the value is always of a particular type having a
+non-descriptor representation. [Type Inference][55c7] often needs some help
+from user-supplied declarations. The best kind of type declaration
+is a variable type declaration placed at the binding point:
+
+    (let ((x (car l)))
+      (declare (single-float x))
+      ...)
+
+Use of [`the`][311a] or of variable declarations not at the binding form is
+insufficient to allow non-descriptor representation of the variable:
+with these declarations, it is not certain that all values of the
+variable are of the right type. It is sometimes useful to introduce
+a gratuitous binding that allows the compiler to change to a
+non-descriptor representation, like
+
+    (etypecase x
+      ((signed-byte 32)
+       (let ((x x))
+         (declare (type (signed-byte 32) x))
+         ...))
+      ...)
+
+The declaration on the inner `x` is necessary here due to a phase
+ordering problem. Although the compiler will eventually prove that
+the outer `x` is a `(signed-byte 32)` within that [`etypecase`][5eb2] branch,
+the inner `x` would have been optimized away by that time. Declaring
+the type makes let optimization more cautious.
+
+Note that storing a value into a global variable always forces a
+descriptor representation. Wherever possible, you should operate
+only on local variables, binding any referenced globals to local
+variables at the beginning of the function, and doing any global
+assignments at the end.
+
+[Efficiency Notes][0d14] signal use of inefficient representations, so
+programmers needn't continuously worry about the details of
+representation selection (see [Representation Efficiency Notes][96e3]).
+
+<a id="x-28SB-MANUAL-3A-40NON-DESCRIPTORS-IN-LOCAL-CALL-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@NON-DESCRIPTORS-IN-LOCAL-CALL%20MGL-PAX:SECTION"></a>
+
+#### 6.10.4 Non-descriptors in Local Call
+
+[Local Call][3d65] has many advantages; one relevant to our discussion here
+is that local call extends the usefulness of [Non-descriptor][820d]
+representations. If the compiler knows from the argument type that
+an argument has a non-descriptor representation, then the argument
+will be passed in that representation. The easiest way to ensure
+that the argument type is known at compile time is to always declare
+the argument type in the called function, like
+
+    (defun 2+f (x)
+      (declare (single-float x))
+      (+ x 2.0))
+
+The advantages of passing arguments and return values in a
+[Non-descriptor][820d] representation are the same as for non-descriptor
+representations in general: reduced consing and memory access. This
+extends the applicative programming styles (see [Local Call][3d65]) to
+numeric code. Also, if source files are kept reasonably small, block
+compilation can be used to reduce number consing to a minimum.
+
+Note that non-descriptor return values can only be used with the
+known return convention (see [Local Call Return Values][64ff]). If the
+compiler can't prove that a function always returns the same number
+of values, then it must use the unknown values return convention,
+which requires a descriptor representation. Pay attention to the
+known return [Efficiency Notes][0d14] to avoid number consing.
+
+<a id="x-28SB-MANUAL-3A-40SPECIALIZED-ARRAYS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SPECIALIZED-ARRAYS%20MGL-PAX:SECTION"></a>
+
+#### 6.10.5 Specialized Arrays
+
+Common Lisp supports specialized array element types through the
+`:element-type` argument to [`make-array`][92ab]. When an array has a
+specialized element type, only elements of that type can be stored
+in the array. From this restriction comes two major efficiency
+advantages:
+
+- A specialized array can save space by packing multiple elements
+  into a single word. For example, on 64-bit platforms, a [`base-char`][92f9]
+  array can have 8 elements per word, and a [`bit`][11a4] array can have 64.
+  This space-efficient representation is possible because it is not
+  necessary to separately indicate the type of each element.
+
+- The elements in a specialized array can be given the same
+  non-descriptor representation as the one used in registers and on
+  the stack, eliminating the need for representation conversions
+  when reading and writing array elements. For objects with pointer
+  descriptor representations (such as floats and word integers)
+  there is also a substantial consing reduction because it is not
+  necessary to allocate a new object every time an array element is
+  modified.
+
+These are the specialized element types currently supported on
+64-bit platforms:
+
+    nil
+    bit
+    (unsigned-byte 2)
+    (unsigned-byte 4)
+    (unsigned-byte 7)
+    (unsigned-byte 8)
+    (unsigned-byte 15)
+    (unsigned-byte 16)
+    (unsigned-byte 31)
+    (unsigned-byte 32)
+    (unsigned-byte 63)
+    (unsigned-byte 64)
+    (signed-byte 8)
+    (signed-byte 16)
+    (signed-byte 30)
+    (signed-byte 32)
+    (signed-byte 64)
+    single-float
+    double-float
+    (complex single-float)
+    (complex double-float)
+    base-char
+    character
+
+Although a [`simple-vector`][dc3d] can hold any type of object, `t` should still
+be considered a specialized array type, since arrays with element
+type [`t`][9172] are specialized to hold descriptors.
+
+When using non-descriptor representations, it is particularly
+important to make sure that array accesses are open-coded, since in
+addition to the generic operation overhead, efficiency is lost when
+the array element is converted to a descriptor so that it can be
+passed to (or from) the generic access routine. You can detect
+inefficient array accesses by enabling [Efficiency Notes][0d14].
+
+<a id="x-28SB-MANUAL-3A-40SPECIALIZED-STRUCTURE-SLOTS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SPECIALIZED-STRUCTURE-SLOTS%20MGL-PAX:SECTION"></a>
+
+#### 6.10.6 Specialized Structure Slots
+
+Structure slots declared by the `:type` [`defstruct`][eac1] slot option to have
+certain known numeric types are also given [Non-descriptor][820d]
+representations. On 64-bit platforms, these types (and subtypes of
+these types) are supported:
+
+    (unsigned-byte 64)
+    (signed-byte 64)
+    single-float
+    double-float
+    (complex single-float)
+    (complex double-float)
+
+The primary advantage of specialized slot representations is a large
+reduction in spurious memory allocation and access overhead of
+programs that intensively use these types.
+
+<a id="x-28SB-MANUAL-3A-40CHARACTERS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CHARACTERS%20MGL-PAX:SECTION"></a>
+
+#### 6.10.7 Characters
+
+SBCL also uses a [Non-descriptor][820d] representation for characters when
+convenient. This improves the efficiency of string manipulation but
+is otherwise pretty invisible; characters have an immediate
+[Descriptor][777e] representation, so there is not a great penalty for
+converting a character to a descriptor. Nonetheless, it may
+sometimes be helpful to declare character-valued variables as
+[`base-char`][92f9].
+
+<a id="x-28SB-MANUAL-3A-40GENERIC-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@GENERIC-ARITHMETIC%20MGL-PAX:SECTION"></a>
+
+#### 6.10.8 Generic Arithmetic
+
+In Common Lisp, arithmetic operations are *generic*. For example, the
+[`+`][fd8a] function can be passed [`fixnum`][3cde]s, [`bignum`][db8c]s, [`ratio`][cd68]s, and various
+kinds of [`float`][eee2]s and [`complex`][523d]es, in any combination.
+
+> *Note*: As Steele notes in CLTL II, this generic conception of
+> *generic* is not to be confused with the CLOS concept of a generic
+> function.
+
+In addition to the inherent complexity of `bignum` and `ratio`
+operations, there is also a lot of overhead in just figuring out
+which operation to do and what contagion and canonicalization rules
+apply. The complexity of generic arithmetic is so great that it is
+inconceivable to open code it. Instead, the compiler does a function
+call to a generic arithmetic routine, consuming many instructions
+before the actual computation even starts.
+
+This is ridiculous, since even Lisp programs do a lot of arithmetic,
+and the hardware is capable of doing operations on small integers
+and floats with a single instruction. To get acceptable efficiency,
+the compiler special-cases uses of generic arithmetic that are
+directly implemented in the hardware. In order to open code
+arithmetic, several constraints must be met:
+
+- All the arguments must be known to be a *good type* of number.
+
+- The result must be known to be a good type of number.
+
+- Any intermediate values such as the result of `(+ a b)` in the
+  call `(+ a b c)` must be known to be a good type of number.
+
+- All the above numbers with good types must be of the *same* good
+  type. Don't try to mix integers and floats or different float
+  formats.
+
+The good types on 64-bit platforms are
+
+    (unsigned-byte 64)
+    (signed-byte 64)
+    single-float
+    double-float
+    (complex single-float)
+    (complex double-float)
+
+See [Fixnums][dc36], [Word Integers][3727] and [Floating Point][634d] for more discussion
+of good numeric types.
+
+`float` is not a good type, since it might mean either [`single-float`][31a6d] or
+[`double-float`][0d57]. [`integer`][9b12] is not a good type, since it might mean
+`bignum`. [`rational`][f044] is not a good type, since it might mean `ratio`. Note
+however that these types are still useful in declarations, since
+[Type Inference][55c7] may be able to strengthen a weak declaration into a
+good one, when it would be at a loss if there was no declaration at
+all. The `integer` and [`unsigned-byte`][561a] (or non-negative integer) types
+are especially useful in this regard, since they can often be
+strengthened to a good integer type.
+
+As noted above, SBCL has support for `(complex single-float)`
+and `(complex double-float)`. These can be unboxed and, thus, are
+quite efficient. However, arithmetic with complex types such
+as `(complex float)` and `(complex fixnum)` will be significantly
+slower than the good complex types but is still faster than [`bignum`][db8c]
+or [`ratio`][cd68] arithmetic, since the implementation is much simpler.
+
+> *Note*: don't use the [`/`][8ac8] function to divide integers unless you
+> want the overhead of rational arithmetic. Use [`truncate`][45ae] even when
+> you know that the arguments divide evenly.
+
+You don't need to remember all the rules for how to get open-coded
+arithmetic, since [Efficiency Notes][0d14] will tell you when and where
+there is a problem.
+
+<a id="x-28SB-MANUAL-3A-40FIXNUMS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FIXNUMS%20MGL-PAX:SECTION"></a>
+
+#### 6.10.9 Fixnums
+
+A fixnum is a *FIXed-precision NUMber*. In modern Lisp
+implementations, fixnums can be represented with an immediate
+[Descriptor][777e], so operating on fixnums requires no consing or memory
+references. Clever choice of representations also allows some
+arithmetic operations to be done on fixnums using hardware supported
+word-integer instructions, somewhat reducing the speed penalty for
+using an unnatural integer representation.
+
+It is useful to distinguish the [`fixnum`][3cde] type from the fixnum
+representation of integers. In SBCL, there is absolutely nothing
+magical about the [`fixnum`][3cde] type in comparison to other finite integer
+types. `fixnum` is equivalent to `(signed-byte 63)` on all 64-bit
+platforms but ppc64, where it is `(signed-byte 61)`. On 32-bit
+platforms, a `fixnum` is `(signed-byte 29)`. `fixnum` is simply the
+largest subset of integers that *can be represented* using an
+immediate fixnum descriptor.
+
+Unlike in other Common Lisp compilers, it is in no way desirable to
+use the [`fixnum`][3cde] type in declarations in preference to more
+restrictive integer types such as [`bit`][11a4], `(integer -43 7)`
+and `(unsigned-byte 8)`. Since SBCL does understand these integer
+types, it is preferable to use the more restrictive type, as it
+allows better [Type Inference][55c7] (see [More Types Meaningful][31a6]).
+
+The small, efficient fixnum is contrasted with bignum, or *BIG
+NUMber*. This is another descriptor representation for integers, but
+this time a pointer representation that allows for arbitrarily large
+integers. Bignum operations are less efficient than fixnum
+operations, both because of the consing and memory reference
+overheads of a pointer descriptor, and also because of the inherent
+complexity of extended precision arithmetic. While fixnum operations
+can often be done with a single instruction, bignum operations are
+so complex that they are always done using generic arithmetic.
+
+A crucial point is that the compiler will use generic arithmetic if
+it can't prove that all the arguments, intermediate values, and
+results are fixnums. With bounded integer types such as `fixnum`, the
+result type proves to be especially problematical, since these types
+are not closed under common arithmetic operations such as
+[`+`][fd8a], [`-`][b5f9], [`*`][31c5] and
+[`/`][8ac8]. For example, `(1+ (the fixnum x))` does not
+necessarily evaluate to a `fixnum`. Bignums were added to Lisp to get
+around this problem, but they really just transform the correctness
+problem *if this add overflows, you will get the wrong answer* to
+the efficiency problem *if this add overflows, then your program
+will run slowly* (because of generic arithmetic).
+
+There is just no getting around the fact that the hardware only
+directly supports short integers. To get the most efficient open
+coding, the compiler must be able to prove that the result is a good
+integer type. This is an argument in favor of using more restrictive
+integer types: `(1+ (the fixnum x))` may not always be a `fixnum`,
+but `(1+ (the (unsigned-byte 8) x))` always is. Of course, you can
+also assert the result type by putting in lots of [`the`][311a] declarations
+and then compiling with `safety` `0` (see
+[Type Declaration Checking][538a]).
+
+<a id="x-28SB-MANUAL-3A-40WORD-INTEGERS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@WORD-INTEGERS%20MGL-PAX:SECTION"></a>
+
+#### 6.10.10 Word Integers
+
+SBCL provides an efficient implementation of arithmetic
+on full-word integers through [Non-descriptor][820d] representations and
+open coding. Arithmetic on any subtype of
+
+    (signed-byte 64)
+    (unsigned-byte 64)
+
+on 64-bit platforms or the 32-bit equivalents on 32-bit platforms is
+reasonably efficient, although subtypes of [`fixnum`][3cde] remain somewhat
+more efficient.
+
+If a word integer must be represented as a [Descriptor][777e], then the
+[`bignum`][db8c] representation is used, with its associated consing overhead.
+The support for word integers in no way changes the language
+semantics, it just makes arithmetic on small bignums vastly more
+efficient. It is fine to do arithmetic operations with mixed `fixnum`
+and word integer operands; just declare the most specific integer
+type you can, and let the compiler decide what representation to
+use.
+
+In fact, to most users, the greatest advantage of word integer
+arithmetic is that it effectively provides a few guard bits on the
+fixnum representation. If there are missing assertions on
+intermediate values in a fixnum expression, the intermediate results
+can usually be proved to fit in a word. After the whole expression
+is evaluated, there will often be a fixnum assertion on the final
+result, allowing creation of a fixnum result without even checking
+for overflow.
+
+The remarks in [Fixnums][dc36] about fixnum result type also apply to word
+integers; you must be careful to give the compiler enough
+information to prove that the result is still a word integer. This
+time, though, when we blow out of word integers we land in into
+generic bignum arithmetic, which is much worse than sleazing from
+`fixnum`s to word integers. Note that mixing unsigned word
+integers (e.g. `(unsigned-byte 64)`) arguments with arguments of any
+signed type (such as `fixnum`) is a no-no, since the result might not
+be unsigned.
+
 <a id="x-28SB-MANUAL-3A-40MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-### 6.10 Modular Arithmetic
+#### 6.10.11 Modular Arithmetic
 
 Some numeric functions have a property: n lower bits of the
 result depend only on n lower bits of (all or some) arguments. If
 the compiler sees an expression of form `(logand <expr> <mask>)`,
 where `<expr>` is a tree of such *good* functions and `<mask>` is
 known to be of type `(unsigned-byte <w>)`, where `<w>` is a *good*
-width, all intermediate results will be cut to `<w>` bits (but it is
-not done for variables and constants!). This often results in an
+width, all intermediate results will be cut to `<w>` bits (but this
+is *not* done for variables and constants). This often results in an
 ability to use simple machine instructions for the functions.
 
 Consider this example:
@@ -6673,16 +7179,18 @@ cutting results to 32 bits, and because terminals (here, expressions
 `x` and `y`) are also of type `(unsigned-byte 32)`, 32-bit machine
 arithmetic can be used.
 
-As of SBCL 0.8.5 good functions are [`+`][0c83], [`-`][2dd9], [`logand`][7ab4], [`logior`][0430],
-`logxor`, `lognot` and their combinations; and [`ash`][90ca] with the positive
-second argument. Good widths are 32 on 32-bit CPUs and 64 on 64-bit
-CPUs. While it is possible to support smaller widths as well,
-currently this is not implemented.
+- Good functions are [`+`][fd8a], [`-`][b5f9], [`logand`][7ab4],
+  [`logior`][0430], [`logxor`][aa84], [`lognot`][edce], [`ash`][90ca] with a positive second
+  argument, and their combinations.
+
+- Good widths are 64 on 64-bit CPUs and 32 on 32-bit CPUs. While it
+  is possible to support smaller widths as well, currently this is
+  not implemented.
 
 <a id="x-28SB-MANUAL-3A-40SIGNED-MODULAR-ARITHMETIC-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SIGNED-MODULAR-ARITHMETIC%20MGL-PAX:SECTION"></a>
 
-#### 6.10.1 Signed Modular Arithmetic
+##### Signed Modular Arithmetic
 
 Sign-extending the result in the following way will be
 translated into signed modular arithmetic:
@@ -6692,10 +7200,236 @@ translated into signed modular arithmetic:
       (let ((u (ldb (byte 64 0) (+ a b))))
         (logior u (- (mask-field (byte 1 63) u)))))
 
+<a id="x-28SB-MANUAL-3A-40FLOATING-POINT-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FLOATING-POINT%20MGL-PAX:SECTION"></a>
+
+#### 6.10.12 Floating Point
+
+Arithmetic on objects of type [`single-float`][31a6d] and [`double-float`][0d57] is
+efficiently implemented using [Non-descriptor][820d] representations and
+open coding. As for integer arithmetic, the arguments must be known
+to be of the same float type. Unlike for integer arithmetic, the
+results and intermediate values usually take care of themselves due
+to the rules of float contagion, i.e. `(1+ (the single-float x))` is
+always a `single-float`.
+
+Although they are not specially implemented, [`short-float`][15fa] and
+[`long-float`][cf46] are also acceptable in declarations, since they are
+synonyms for the `single-float` and `double-float` types, respectively.
+
+In SBCL, compound float type specifiers such as
+`(single-float 0.0 1.0)` will be used to good effect. For example,
+in this function
+
+    (defun square (x)
+      (declare (type (single-float 0f0 10f0)))
+      (* x x))
+
+SBCL can deduce that the return type of the function `square`
+is `(single-float 0f0 100f0)`.
+
+Many union types are also supported so that
+
+    (+ (the (or (integer 1 1) (integer 5 5)) x)
+       (the (or (integer 10 10) (integer 20 20)) y))
+
+has the inferred type
+
+    (or (integer 11 11) (integer 15 15)
+        (integer 21 21) (integer 25 25))
+
+This also works for floating-point numbers. [`member` Types][3cb2] are also
+supported.
+
+SBCL can also infer types for many mathematical functions including
+square root, exponential and logarithmic functions, trigonometric
+functions and their inverses, and hyperbolic functions and their
+inverses. For numeric code, this can greatly enhance efficiency by
+allowing the compiler to use specialized versions of the functions
+instead of the generic versions. The greatest benefit of this type
+inference is determining that the result of the function is a
+real-valued number instead of possibly being a complex-valued
+number.
+
+For example, consider the function
+
+    (defun fun (x)
+      (declare (type (single-float (0f0) 100f0) x))
+      (values (sqrt x) (log x)))
+
+With this declaration, the compiler can determine that the argument
+to [`sqrt`][65e2] and [`log`][c0c3] are always non-negative so that the result is always
+a `single-float`. In fact, the return type for this function is
+derived to be `(values (single-float 0f0 10f0) (single-float *
+2f0))`.
+
+If the declaration were reduced to just `(declare (single-float
+x))`, the argument to `sqrt` and `log` could be negative. This forces
+the use of the generic versions of these functions because the
+result could be a complex number.
+
+We note, however, that proper interval arithmetic is not fully
+implemented in the compiler so the inferred types may be slightly in
+error due to round-off errors. This round-off error could accumulate
+to cause the compiler to erroneously deduce the result type and
+cause code to be removed as being unreachable. Thus, the
+declarations should only be precise enough for the compiler to
+deduce that a real-valued argument to a function would produce a
+real-valued result. The [Efficiency Notes][0d14] from the compiler will
+guide you on what declarations might be useful.
+
+When a float must be represented as a [Descriptor][777e], a pointer
+representation is used, creating [Consing][8866] overhead. For this reason,
+you should try to avoid situations (such as full call and
+non-specialized data structures) that force a descriptor
+representation. See [Specialized Arrays][fd3d],
+[Specialized Structure Slots][686b] and [Non-descriptors in Local Call][74b3].
+
+<a id="x-28SB-MANUAL-3A-40SIGNED-ZEROES-AND-SPECIAL-FUNCTIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SIGNED-ZEROES-AND-SPECIAL-FUNCTIONS%20MGL-PAX:SECTION"></a>
+
+##### Signed Zeroes and Special Functions
+
+SBCL supports IEEE signed zeroes. In typical usage, the signed
+zeroes are not a problem and can be treated as an unsigned zero.
+However, some of the special functions have branch points at zero, so
+care must be taken.
+
+For example, suppose we have the function
+
+    (defun fun (x)
+      (declare (type (single-float 0f0) x))
+      (log x))
+
+The derived result of the function is `(or single-float
+(complex single-float))` because the declared values for `x`
+includes both `-0.0` and `0.0` and `(log -0.0)` is actually a
+complex number. Because of this, the generic complex log routine is
+used.
+
+If the declaration for `x` were `(single-float (0f0))` so `+0.0` is
+not included or `(or (single-float (0f0)) (member 0f0))` so `+0.0`
+is included but not `-0.0`, the derived type would be [`single-float`][31a6d]
+for both cases. By declaring `x` this way, the log can be
+implemented using a fast real-valued log routine instead of the
+generic log routine.
+
+SBCL implements the branch cuts and values given by Kahan (*Branch
+Cuts for Complex Elementary Functions, or Much Ado About Nothing's
+Sign Bit* in Iserles and Powell (eds.) *The State of the Art in
+Numerical Analysis*, pp. 165-211, Clarendon Press, 1987).
+
+<a id="x-28SB-MANUAL-3A-40EFFICIENCY-NOTES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@EFFICIENCY-NOTES%20MGL-PAX:SECTION"></a>
+
+### 6.11 Efficiency Notes
+
+Efficiency notes are messages that alert the user that the compiler
+has chosen a relatively inefficient implementation for some
+operation. Usually an efficiency note reflects the compiler's desire
+for more type information. If the type of the values concerned is
+known to the programmer, then additional declarations can be used to
+get a more efficient implementation.
+
+The main cause of inefficiency is the compiler's lack of adequate
+information about the types of function argument and result values.
+
+Efficiency notes are enabled whenever `speed` is greater than its
+default of `1`. See the deprecated `sb-ext:inhibit-warnings`
+optimization quality in [Compiler Policy][2474] for the full picture. See
+also [Controlling Verbosity][9578] for some related knobs.
+
+<a id="x-28SB-MANUAL-3A-40OPERATION-EFFICIENCY-NOTES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@OPERATION-EFFICIENCY-NOTES%20MGL-PAX:SECTION"></a>
+
+#### 6.11.1 Operation Efficiency Notes
+
+Many important operations have an inefficient general case (see
+e.g. [Generic Arithmetic][a4d8]) but have efficient implementations that
+can usually be used if there is sufficient argument type
+information.
+
+Compiling this function with an obscure missing declaration:
+
+    (defun eff-note (x y z)
+      (declare (fixnum x y z)
+               (optimize speed))
+      (zerop (mod (+ x y z) 3)))
+    
+    ; in: DEFUN EFF-NOTE
+    ;     (+ X Y Z)
+    ;
+    ; note: forced to do +/SIGNED=>S128 (cost 8)
+    ;       unable to do inline fixnum arithmetic (cost 2) because:
+    ;       The first argument is a (INTEGER -9223372036854775808 9223372036854775806), not a FIXNUM.
+    ;       The result is a (VALUES
+    ;                        (INTEGER -13835058055282163712 13835058055282163709)
+    ;                        &OPTIONAL), not a (VALUES FIXNUM &OPTIONAL).
+
+This rather cryptic efficiency note is trying to tell us that the
+result of the intermediate computation `(+ x y)`, which adds two
+fixnums, can overflow the fixnum range, so the addition of the
+intermediate sum to `z` must be done less efficiently. This might be
+fixed by providing more type information about the result of `(+ x
+y)`:
+
+    (defun eff-note (x y z)
+      (declare (fixnum x y z)
+               (optimize speed))
+      (zerop (mod (+ (the fixnum (+ x y)) z) 3)))
+
+<a id="x-28SB-MANUAL-3A-40REPRESENTATION-EFFICIENCY-NOTES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@REPRESENTATION-EFFICIENCY-NOTES%20MGL-PAX:SECTION"></a>
+
+#### 6.11.2 Representation Efficiency Notes
+
+When operating on values that have [Non-descriptor][820d] representations,
+there can be a substantial time and [Consing][8866] penalty for converting
+to and from [Descriptor][777e] representations. For this reason, the
+compiler gives an efficiency note whenever it is forced to do a
+representation coercion more expensive than
+[`sb-ext:*efficiency-note-cost-threshold*`][12a0].
+
+Inefficient representation coercions may be due to type uncertainty,
+as in this example on a 64-bit platform:
+
+    (defun cf+ (x y)
+      (declare (double-float x y)
+               (optimize speed))
+      (cons (+ x y) t))
+    
+    ; in: DEFUN CF+
+    ;     (CONS (+ X Y) T)
+    ;
+    ; note: doing float to pointer coercion (cost 13), for:
+    ;       the first argument of CONS
+
+The issue here is that a [`cons`][229c] can only hold [Descriptor][777e]s. Thus, the
+64-bit float result of `(+ x y)` needs to be boxed (see
+[Floating Point][634d]).
+
+Inefficient representation conversions are often not due to type
+uncertainty. Instead, they result from evaluating a non-descriptor
+expression in a context that requires a descriptor result:
+
+- assignment to or initialization of any data structure other than
+  [Specialized Arrays][fd3d], or
+
+- assignment to a [`special`][0bd4] variable, or
+
+- passing as an argument or returning as a value in any function
+  call that is not a local call (see
+  [Non-descriptors in Local Call][74b3]).
+
+If such inefficient coercions appear in a hot spot in the program,
+data structure redesign or program reorganization may be necessary
+to improve efficiency. See e.g. [Block Compilation][1143],
+[Representation of Objects][bb11] and [Profiling][9c07].
+
 <a id="x-28SB-MANUAL-3A-40RECOGNIZED-IDIOMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RECOGNIZED-IDIOMS%20MGL-PAX:SECTION"></a>
 
-### 6.11 Recognized Idioms
+### 6.12 Recognized Idioms
 
 Common Lisp doesn't directly expose all features present in
 modern hardware. Some code patterns are recognized and turned into
@@ -6705,7 +7439,7 @@ internal features.
 <a id="x-28SB-MANUAL-3A-40COUNT-TRAILING-ZEROS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COUNT-TRAILING-ZEROS%20MGL-PAX:SECTION"></a>
 
-#### 6.11.1 Count Trailing Zeros
+#### 6.12.1 Count Trailing Zeros
 
     (defun ctz (n)
       (declare (type (unsigned-byte 64) n))
@@ -6717,7 +7451,7 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 <a id="x-28SB-MANUAL-3A-40GLOBAL-AND-ALWAYS-BOUND-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GLOBAL-AND-ALWAYS-BOUND-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 6.12 Global and Always-bound Variables
+### 6.13 Global and Always-bound Variables
 
 <a id="x-28SB-EXT-3ADEFGLOBAL-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO"></a>
@@ -6763,86 +7497,250 @@ is turned into hardware instructions on arm64 and x86-64. It returns
     `sb-ext:always-bound` signals an error. Allows the compiler to elide
     boundness checks from value lookups.
 
-<a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EFFICIENCY-ISSUES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40EFFICIENCY-MISCELLANEA-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@EFFICIENCY-MISCELLANEA%20MGL-PAX:SECTION"></a>
 
-### 6.13 Miscellaneous Efficiency Issues
+### 6.14 Efficiency Miscellanea
 
-The `sb-ext:purify` function (available with conservative GC) causes
-SBCL first to collect all garbage, then to mark all uncollected
-objects as permanent, never again attempting to collect them as
-garbage. This can cause a large increase in efficiency when using a
-primitive garbage collector, or a more moderate increase in
-efficiency when using a more sophisticated garbage collector which
-is well suited to the program's memory usage pattern. It also allows
-permanent code to be frozen at fixed addresses, a precondition for
-using copy-on-write to share code between multiple Lisp processes.
-This is less important with modern generational GC, but not all
-SBCL platforms use such a garbage collector.
+This section is a summary of various implementation costs and ways to
+get around them. In each section, there are references to related
+in-depth discussion.
 
-The `sb-ext:truly-the` special form declares the type of the result of
-the operations, producing its argument; the declaration is not
-checked. In short: don't use it.
+<a id="x-28SB-MANUAL-3A-40COMPILE-YOUR-CODE-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@COMPILE-YOUR-CODE%20MGL-PAX:SECTION"></a>
 
-FIXME: The remaining material in the CMUCL manual about getting good
-performance from the compiler should be reviewed, and added to this
-section. In the meantime, the original CMUCL manual is still 95+%
-correct for the SBCL's compiler. See the sections
+#### 6.14.1 Compile Your Code
 
-- Advanced Compiler Use and Efficiency Hints- Object Representation
+At this point, the advantages of compiling code relative to running it
+interpreted probably need not be emphasized too much, but remember
+that in SBCL, running compiled code is typically runs hundreds of
+times faster than using the [Interpreter][2e79] (when
+[`sb-ext:*evaluator-mode*`][f5c3] is not `:compile`). Also, compiled (fasl)
+files load significantly faster than source files, so it is
+worthwhile compiling files that are loaded many times, even if the
+speed of the functions in the file is unimportant.
 
-    - Numbers
+Even disregarding the efficiency advantages, compiled code is as
+good or better than interpreted code. Compiled code can be debugged
+at the source level (see [Debugger][825d]), and compiled code does more
+error checking. For these reasons, the interpreter should be
+regarded mainly as an interactive command interpreter, rather than
+as a programming language implementation.
 
-    - General Efficiency Hints
+<a id="x-28SB-MANUAL-3A-40CONSING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CONSING%20MGL-PAX:SECTION"></a>
 
-    - Efficiency Notes
+#### 6.14.2 Consing
 
-Besides this information from the CMUCL manual, there are a few other
-points to keep in mind.
+Consing is another name for allocation of memory, as done by the
+[`cons`][12a8] function (hence its name). `cons` is by no means the only
+function which conses: so do [`make-array`][92ab] and many other functions.
+Arithmetic and function calls can also have hidden consing
+overheads. Consing hurts performance in the following ways:
 
-- The CMUCL manual doesn't seem to state it explicitly, but
-  Python (the CMUCL compiler, not the language) has a mental block
-  about type inference when assignment is involved. Python is very
-  aggressive and clever about inferring the types of values bound
-  with [`let`][4853], [`let*`][49f5], inline function call, and so forth. However, it's
-  much more passive and dumb about inferring the types of values
-  assigned with [`setq`][0160], [`setf`][a138], and friends. It would be nice to fix
-  this, but in the meantime don't expect that just because it's very
-  smart about types in most respects it will be smart about types
-  involved in assignments. (This doesn't affect its ability to
-  benefit from explicit type declarations involving the assigned
-  variables, only its ability to get by without explicit type
-  declarations.)
+- Consing reduces memory access locality, increasing paging
+  activity.
 
-- Since the time the CMUCL manual was written, CMUCL (and thus SBCL)
-  has gotten a generational GC. This means that there are some
-  efficiency implications of various patterns of memory usage which
-  aren't discussed in the CMUCL manual. (Some new material should be
-  written about this.)
+- Consing takes time just like anything else.
 
-- SBCL has some important known efficiency problems. Perhaps the
-  most important are
+- Any space allocated eventually needs to be reclaimed, either by
+  [Garbage Collection][b7da] or by starting a new Lisp process. Note that
+  CheneyGC is less efficient than GENCGC.
 
-    - The garbage collector is not particularly efficient, at least
-      on platforms without the generational collector (as of SBCL
-      0.8.9, all except x86).
+Consing is not undiluted evil, since programs do things other than
+consing, and appropriate consing can speed up the real work. It
+would certainly save time to allocate a vector of intermediate
+results that are reused hundreds of times. Also, if it is necessary
+to copy a large data structure many times, it may be more efficient
+to update the data structure non-destructively; this somewhat
+increases update overhead but makes copying trivial.
 
-    - Various aspects of the PCL implementation of CLOS are more
-      inefficient than necessary.
+Note that the remarks in the introduction of section [Efficiency][29fd]
+about the importance of separating tuning from coding also apply to
+consing overhead. The majority of consing will be done by a small
+portion of the program. The consing hot spots are even less
+predictable than the CPU hot spots, so don't waste time and create
+bugs by doing unnecessary consing optimization. During initial
+coding, avoid unnecessary side-effects and cons where it is
+convenient. If profiling reveals a consing problem, *then* go back
+and fix the hot spots.
 
-Finally, note that Common Lisp defines many constructs which, in the
-infamous phrase, "could be compiled efficiently by a sufficiently
-smart compiler". The phrase is infamous because making a compiler
-which actually is sufficiently smart to find all these optimizations
-systematically is well beyond the state of the art of current
-compiler technology. Instead, they're optimized on a case-by-case
-basis by hand-written code, or not optimized at all if the
-appropriate case hasn't been hand-coded. Some cases where no such
-hand-coding has been done as of SBCL version 0.6.3 include
+See [Non-descriptor][820d] for a discussion of how one might avoid consing.
+
+<a id="x-28SB-MANUAL-3A-40COMPLEX-ARGUMENT-SYNTAX-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@COMPLEX-ARGUMENT-SYNTAX%20MGL-PAX:SECTION"></a>
+
+#### 6.14.3 Complex Argument Syntax
+
+Lisp has very powerful argument passing mechanisms. Unfortunately, two
+of the most powerful mechanisms, [`&rest`][4336] and [`&key`][4336] arguments, have a
+significant performance penalty:
+
+- With keyword arguments, the called function has to parse the
+  supplied keywords by iterating over them and checking them against
+  the desired keywords.
+
+- With rest arguments, the function must cons a list to hold the
+  arguments. If a function is called many times or with many
+  arguments, large amounts of memory will be allocated.
+
+Although rest argument consing is worse than keyword parsing,
+neither problem is serious unless a great many of calls are made to
+such a function. The use of keyword arguments is strongly encouraged
+in functions with many arguments or with interfaces that are likely
+to be extended, and rest arguments are often natural in user
+interface functions.
+
+[`&optional`][4336] arguments have some efficiency advantage over keyword
+arguments, but their syntactic clumsiness and lack of extensibility
+has caused many Lisp programmers to abandon their use except in
+functions that have obviously simple and immutable interfaces (such
+as [`subseq`][4a86]), or in functions that are only called in a few places.
+When defining an interface function to be used by other programmers
+or users, use of only required and keyword arguments is recommended.
+
+Parsing of [`defmacro`][14cb] keyword and [`rest`][fe9f] arguments is done at compile
+time, so a macro can be used to provide a convenient syntax with an
+efficient implementation. If the macro-expanded form contains no
+keyword or rest arguments, then it is perfectly acceptable in inner
+loops.
+
+Keyword argument parsing overhead can also be avoided by use of
+[Inline Expansion][2ccb] and [Block Compilation][1143].
+
+> *Note*: the compiler open-codes most heavily used system functions
+> which have keyword or rest arguments, so that no run-time overhead
+> is involved.
+
+<a id="x-28SB-MANUAL-3A-40MAPPING-AND-ITERATION-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@MAPPING-AND-ITERATION%20MGL-PAX:SECTION"></a>
+
+#### 6.14.4 Mapping and Iteration
+
+One of the traditional Lisp programming styles is a highly
+applicative one, involving the use of mapping functions and many
+lists to store intermediate results. To compute the sum of the
+square-roots of a list of numbers, one might say
+
+    (reduce #'+ (mapcar #'sqrt list-of-numbers))
+
+This programming style is clear and elegant, but unfortunately results
+in slow code. There are two reasons why:
+
+- The creation of lists of intermediate results causes much
+  [Consing][8866].
+
+- Each level of application requires another scan down the list.
+  Thus, disregarding other effects, the above code would probably
+  take twice as long as a straightforward iterative version.
+
+An example of an iterative version of the same code:
+
+    (loop for x in list-of-numbers
+          sum (sqrt x))
+
+or
+
+    (do ((num list-of-numbers (cdr num))
+         (sum 0 (+ (sqrt (car num)) sum)))
+        ((null num) sum))
+
+See sections [Variable Type Inference][17c2] and [Let Optimization][6385] for a
+discussion of the interactions of iteration constructs with
+[Type Inference][55c7] and variable optimization. Also, [Local Tail Call][06b6]
+discusses an applicative style of iteration.
+
+<a id="x-28SB-MANUAL-3A-40TRACE-FILES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@TRACE-FILES%20MGL-PAX:SECTION"></a>
+
+#### 6.14.5 Trace Files
+
+In order to write efficient code, you need to know the relative costs
+of different operations. The main reason why writing efficient Lisp
+code is difficult is that there are so many operations, and the
+costs of these operations vary in obscure context-dependent ways.
+Although [Efficiency Notes][0d14] point out some problem areas, the only
+way to ensure generation of the best code is to look at the assembly
+code output.
+
+The [`disassemble`][12f8] function is a convenient way to get the assembly
+code for a function, but it can be very difficult to interpret since
+the correspondence with the original source code is weak. A
+better (but more awkward) option is to use the `:trace-file` argument
+to [`compile-file`][0bd1] to generate a trace file.
+
+A trace file is a dump of the compiler's internal representations,
+through four stages of processing, including annotated assembly
+code. Each component in the program gets four pages in the trace
+file (separated by `^l`'):
+
+- The implicit continuation representation (IR1) of the optimized
+  source. This is a dump of the flow graph representation used for
+  [Source Optimization][8459]s. As you will quickly notice, it is not
+  really very close to the source. This representation is not very
+  useful to even sophisticated users.
+
+- The Virtual Machine representation (VM or IR2) of the program.
+  This dump represents the generated code as sequences of *Virtual
+  OPerations* (VOPs). This representation is intermediate between
+  the source and the assembly code; each VOP corresponds fairly
+  directly to some primitive function or construct, but a given VOP
+  also has a fairly predictable instruction sequence. An operation
+  (such as [`+`][fd8a]) may have multiple implementations with
+  different cost and applicability. The choice of a particular VOP
+  such as `+/fixnum` or `+/single-float` represents this choice of
+  implementation. Once you are familiar with it, the VM
+  representation is probably the most useful for determining what
+  implementation has been used.
+
+- An assembly listing, annotated with the VOP responsible for
+  generating the instructions. This listing is useful for figuring
+  out what a VOP does and how it is implemented in a particular
+  context, but its large size makes it more difficult to read.
+
+- A disassembly of the generated code, which has all
+  pseudo-operations expanded out but is not annotated with VOPs.
+
+Note that trace file generation takes much space and time, since the
+trace file is tens of times larger than the source file. To avoid
+huge confusing trace files and much wasted time, it is best to
+separate the critical program portion into its own file and then
+generate the trace file from this small file.
+
+<a id="x-28SB-MANUAL-3A-40ASSIGNMENTS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@ASSIGNMENTS%20MGL-PAX:SECTION"></a>
+
+#### 6.14.6 Assignments
+
+The compiler has a mental block about type inference when assignment
+is involved. It does very aggressive and clever [Type Inference][55c7] on
+the types of values bound with [`let`][4853], [`let*`][49f5], [Inline Expansion][2ccb], and so
+forth. However, it's much more passive and dumb about inferring the
+types of values assigned with [`setq`][0160], [`setf`][a138], and friends in the context
+of loop induction, closed over variables and aliases. It would be
+nice to fix this, but in the meantime don't expect that just because
+it's very smart about types in most respects it will be smart about
+types involved in assignments.
+
+> *Note*: This doesn't affect its ability to benefit from explicit
+> type declarations involving the assigned variables, only its
+> ability to get by without explicit type declarations.
+
+<a id="x-28SB-MANUAL-3A-40OPTIMIZATION-OPPORTUNITIES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@OPTIMIZATION-OPPORTUNITIES%20MGL-PAX:SECTION"></a>
+
+#### 6.14.7 Optimization Opportunities
+
+Common Lisp defines many constructs that *could be compiled
+efficiently by a sufficiently smart compiler*. This phrase is
+infamous because making a compiler that actually is sufficiently
+smart to find all these optimizations systematically is well beyond
+the state of the art of current compiler technology. Instead,
+they're optimized on a case-by-case basis by hand-written code, or
+not optimized at all if the appropriate case hasn't been hand-coded.
+Some cases where no such hand-coding has been done include
 
 - `(reduce #'f x)` where the type of `x` is known at compile time,
-
-- various bit vector operations, e.g. `(position 0 some-bit-vector)`,
 
 - specialized sequence idioms, e.g. `(remove item list :count 1)`,
 
@@ -6850,7 +7748,7 @@ hand-coding has been done as of SBCL version 0.6.3 include
   type checking, e.g. `(locally (declare (safety 1)) (assoc item list))`
   (which currently performs safe [`endp`][e8d7] checking internal to [`assoc`][e5fc]).
 
-If your system's performance is suffering due to some construct that
+If you find that performance is suffering due to some construct that
 SBCL fails to compile efficiently, even though it could be in
 principle, consider writing a patch to the compiler and submitting
 it for inclusion in the main sources. Such code is often reasonably
@@ -7499,6 +8397,24 @@ Hash tables can also have weak keys and values. See
     assigned to using [`setf`][a138]. Available on GENCGC platforms only.
 
     Experimental: interface subject to change.
+
+<a id="x-28SB-EXT-3APURIFY-20FUNCTION-29"></a>
+<a id="SB-EXT:PURIFY%20FUNCTION"></a>
+
+- \[function\] **sb-ext:purify** *\&key root-structures environment-name*
+
+    This function optimizes garbage collection by moving all currently live
+    objects into non-collected storage. `root-structures` is an optional list of
+    objects which should be copied first to maximize locality.
+
+    [`defstruct`][eac1] structures defined with the (`:pure` `t`) option are moved into
+    read-only storage, further reducing [`gc`][b50b] cost. List and vector slots of pure
+    structures are also moved into read-only storage.
+
+    `environment-name` is unused.
+
+    This function is a no-op on platforms using the generational garbage
+    collector (x86, x86-64, ppc, arm, arm64).
 
 <a id="x-28SB-MANUAL-3A-40TRACING-LIVE-OBJECTS-BACK-TO-ROOTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TRACING-LIVE-OBJECTS-BACK-TO-ROOTS%20MGL-PAX:SECTION"></a>
@@ -8508,7 +9424,7 @@ created by calling the following generic function:
 <a id="x-28SB-MANUAL-3A-40RUNNING-EXTERNAL-PROGRAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION"></a>
 
-#### 7.10.1 Running external programs
+#### 7.10.1 Running External Programs
 
 External programs can be run with [`sb-ext:run-program`][e0d4].
 
@@ -10047,7 +10963,7 @@ such exchanges are:
 
 - Character streams associated with files, sockets and process
   input/output (see [Stream External Formats][7055] and
-  [Running external programs][52f0])
+  [Running External Programs][52f0])
 
 - Names of files
 
@@ -11220,13 +12136,13 @@ Lisp values into C.
 
     The resulting alien callable value has dynamic extent.
 
-Note that the garbage collector moves objects, and won't be able to fix
+Note that the garbage collector moves objects and won't be able to fix
 up any references in C variables. There are three mechanisms for
 coping with this:
 
-- `sb-ext:purify` moves all live Lisp data into static or read-only
-  areas such that it will never be moved (or freed) again in the
-  life of the Lisp session
+- On CheneyGC platforms, [`sb-ext:purify`][dc69] moves all live Lisp data into
+  static or read-only areas such that it will never be moved (or
+  freed) again in the life of the Lisp session.
 
 - `sb-sys:with-pinned-objects` is a macro which arranges for some set
   of objects to be pinned in memory for the dynamic extent of its
@@ -17615,15 +18531,19 @@ together with Emacs is recommended for use with SBCL, though other
 options exist as well. SLIME can be downloaded from
 <https://slime.common-lisp.dev/>.
 
-<a id="x-28SB-MANUAL-3A-40INTERNALS-DOCUMENTATION-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@INTERNALS-DOCUMENTATION%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40CONTRIBUTING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CONTRIBUTING%20MGL-PAX:SECTION"></a>
 
-#### 19.1.5 Internals Documentation
+#### 19.1.5 Contributing
 
 If you're interested in the development of the SBCL system itself,
-then subscribing to
-[sbcl-devel@lists.sourceforge.net](mailto:sbcl-devel@lists.sourceforge.net)
-is a good idea.
+then
+
+- subscribe to the
+  [`sbcl-devel@lists.sourceforge.net`](mailto:sbcl-devel@lists.sourceforge.net)
+  mailing list, and
+
+- join the `#sbcl` IRC channel (see [Internet Community][fab2]).
 
 The Texinfo sources for the SBCL Internals Manual are available in
 `doc/internals/`.
@@ -17918,6 +18838,8 @@ learn about Common Lisp, some books stand out:
 
 [0d02]: http://www.lispworks.com/documentation/HyperSpec/Body/f_close.htm "CLOSE (MGL-PAX:CLHS FUNCTION)"
 
+[0d14]: #SB-MANUAL:@EFFICIENCY-NOTES%20MGL-PAX:SECTION "Efficiency Notes"
+
 [0d57]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "DOUBLE-FLOAT (MGL-PAX:CLHS TYPE)"
 
 [0d6e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm "EVAL (MGL-PAX:CLHS FUNCTION)"
@@ -17968,6 +18890,8 @@ learn about Common Lisp, some books stand out:
 
 [119e]: http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm "FUNCTION (MGL-PAX:CLHS CLASS)"
 
+[11a4]: http://www.lispworks.com/documentation/HyperSpec/Body/a_bit.htm "BIT (MGL-PAX:CLHS NIL)"
+
 [11bf]: #SB-MANUAL:@NAME-SERVICE%20MGL-PAX:SECTION "Name Service"
 
 [11dd]: #SB-THREAD:SEMAPHORE-NOTIFICATION-STATUS%20FUNCTION "SB-THREAD:SEMAPHORE-NOTIFICATION-STATUS FUNCTION"
@@ -17984,6 +18908,10 @@ learn about Common Lisp, some books stand out:
 
 [1298]: #SB-MANUAL:@VARIABLE-VALUE-AVAILABILITY%20MGL-PAX:SECTION "Variable Value Availability"
 
+[12a0]: #SB-EXT:*EFFICIENCY-NOTE-COST-THRESHOLD*%20VARIABLE "SB-EXT:*EFFICIENCY-NOTE-COST-THRESHOLD* VARIABLE"
+
+[12a8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cons.htm "CONS (MGL-PAX:CLHS FUNCTION)"
+
 [12f8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_disass.htm "DISASSEMBLE (MGL-PAX:CLHS FUNCTION)"
 
 [1341]: #SB-BSD-SOCKETS:HOST-ENT%20CLASS "SB-BSD-SOCKETS:HOST-ENT CLASS"
@@ -17999,6 +18927,8 @@ learn about Common Lisp, some books stand out:
 [14f5]: #SB-MANUAL:@TYPE-STYLE-RECOMMENDATIONS%20MGL-PAX:SECTION "Type Style Recommendations"
 
 [1574]: http://www.lispworks.com/documentation/HyperSpec/Body/s_declar.htm "DECLARE (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
+[15fa]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "SHORT-FLOAT (MGL-PAX:CLHS TYPE)"
 
 [15fc]: #SB-MANUAL:@PACKAGE-LOCKS-IN-COMPILED-CODE%20MGL-PAX:SECTION "Package Locks in Compiled Code"
 
@@ -18136,8 +19066,6 @@ learn about Common Lisp, some books stand out:
 
 [2d27]: #SB-INTROSPECT:DEFINITION-SOURCE-PATHNAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-INTROSPECT:DEFINITION-SOURCE%29 "SB-INTROSPECT:DEFINITION-SOURCE-PATHNAME (MGL-PAX:STRUCTURE-ACCESSOR SB-INTROSPECT:DEFINITION-SOURCE)"
 
-[2dd9]: http://www.lispworks.com/documentation/HyperSpec/Body/a__.htm "- (MGL-PAX:CLHS NIL)"
-
 [2e37]: #SB-MANUAL:@PACKAGE-LOCK-DICTIONARY%20MGL-PAX:SECTION "Package Lock Dictionary"
 
 [2e79]: #SB-MANUAL:@INTERPRETER%20MGL-PAX:SECTION "Interpreter"
@@ -18165,6 +19093,8 @@ learn about Common Lisp, some books stand out:
 [31a6]: #SB-MANUAL:@MORE-TYPES-MEANINGFUL%20MGL-PAX:SECTION "More Types Meaningful"
 
 [31a6d]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "SINGLE-FLOAT (MGL-PAX:CLHS TYPE)"
+
+[31c5]: http://www.lispworks.com/documentation/HyperSpec/Body/f_st.htm "* (MGL-PAX:CLHS FUNCTION)"
 
 [31ef]: #SB-EXT:NATIVE-PATHNAME%20FUNCTION "SB-EXT:NATIVE-PATHNAME FUNCTION"
 
@@ -18209,6 +19139,8 @@ learn about Common Lisp, some books stand out:
 [36fc]: http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm "ROUND (MGL-PAX:CLHS FUNCTION)"
 
 [3705]: http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_4.htm "SYMBOL-PLIST (MGL-PAX:CLHS FUNCTION)"
+
+[3727]: #SB-MANUAL:@WORD-INTEGERS%20MGL-PAX:SECTION "Word Integers"
 
 [37bb]: #SB-MANUAL:@ATOMIC-OPERATIONS%20MGL-PAX:SECTION "Atomic Operations"
 
@@ -18312,6 +19244,8 @@ learn about Common Lisp, some books stand out:
 
 [452a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_has.htm "MAKE-HASH-TABLE (MGL-PAX:CLHS FUNCTION)"
 
+[456d]: #SB-MANUAL:@EFFICIENCY-MISCELLANEA%20MGL-PAX:SECTION "Efficiency Miscellanea"
+
 [45ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm "TRUNCATE (MGL-PAX:CLHS FUNCTION)"
 
 [45c0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get_se.htm "GET-SETF-EXPANSION (MGL-PAX:CLHS FUNCTION)"
@@ -18335,6 +19269,8 @@ learn about Common Lisp, some books stand out:
 [47c0]: #SB-MANUAL:@FOREIGN-TYPE-SPECIFIERS%20MGL-PAX:SECTION "Foreign Type Specifiers"
 
 [47c4]: #SB-MANUAL:@RESOLUTION-OF-NAME-CONFLICTS%20MGL-PAX:SECTION "Resolution of Name Conflicts"
+
+[47fe]: #SB-MANUAL:@OPTIMIZATION-OPPORTUNITIES%20MGL-PAX:SECTION "Optimization Opportunities"
 
 [4853]: http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm "LET (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -18410,7 +19346,9 @@ learn about Common Lisp, some books stand out:
 
 [51fe]: http://www.lispworks.com/documentation/HyperSpec/Body/f_find_c.htm "FIND-CLASS (MGL-PAX:CLHS FUNCTION)"
 
-[52f0]: #SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION "Running external programs"
+[523d]: http://www.lispworks.com/documentation/HyperSpec/Body/a_comple.htm "COMPLEX (MGL-PAX:CLHS NIL)"
+
+[52f0]: #SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION "Running External Programs"
 
 [5333]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm "> (MGL-PAX:CLHS FUNCTION)"
 
@@ -18492,6 +19430,8 @@ learn about Common Lisp, some books stand out:
 
 [5c81]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tpcase.htm "TYPECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
+[5ca7]: #SB-MANUAL:@NON-DESCRIPTOR-VARIABLES%20MGL-PAX:SECTION "Non-descriptor Variables"
+
 [5cbb]: #SB-MANUAL:@STACK-ALLOCATION%20MGL-PAX:SECTION "Stack Allocation"
 
 [5cc0]: http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm "VALUES (MGL-PAX:CLHS NIL)"
@@ -18509,6 +19449,8 @@ learn about Common Lisp, some books stand out:
 [5df9]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "DEBUG (MGL-PAX:CLHS DECLARATION)"
 
 [5e27]: #SB-MANUAL:@BREAKING-STRINGS%20MGL-PAX:SECTION "Breaking strings"
+
+[5eb2]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tpcase.htm "ETYPECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [5ed1]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm "*PACKAGE* (MGL-PAX:CLHS VARIABLE)"
 
@@ -18528,6 +19470,8 @@ learn about Common Lisp, some books stand out:
 
 [610a]: #SB-EXT:CAS%20MGL-PAX:MACRO "SB-EXT:CAS MGL-PAX:MACRO"
 
+[6140]: #SB-MANUAL:@CHARACTERS%20MGL-PAX:SECTION "Characters"
+
 [6154]: #SB-MANUAL:@CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS%20MGL-PAX:SECTION "Converting between Strings and Octet Vectors"
 
 [615c]: #SB-MANUAL:@STARTING-SBCL%20MGL-PAX:SECTION "Starting SBCL"
@@ -18545,6 +19489,8 @@ learn about Common Lisp, some books stand out:
 [625d]: http://www.lispworks.com/documentation/HyperSpec/Body/m_multip.htm "MULTIPLE-VALUE-BIND (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [62fa]: #SB-MANUAL:@INTRODUCTION%20MGL-PAX:SECTION "Introduction"
+
+[634d]: #SB-MANUAL:@FLOATING-POINT%20MGL-PAX:SECTION "Floating Point"
 
 [6385]: #SB-MANUAL:@LET-OPTIMIZATION%20MGL-PAX:SECTION "Let Optimization"
 
@@ -18570,6 +19516,8 @@ learn about Common Lisp, some books stand out:
 
 [6547]: http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm "OPEN (MGL-PAX:CLHS FUNCTION)"
 
+[65e2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_sqrt_.htm "SQRT (MGL-PAX:CLHS FUNCTION)"
+
 [65f6]: #SB-MANUAL:@INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION "Instruction Set Dispatch"
 
 [663f]: http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm "NULL (MGL-PAX:CLHS CLASS)"
@@ -18584,7 +19532,11 @@ learn about Common Lisp, some books stand out:
 
 [67c8]: #SB-MANUAL:@STACK-FRAMES%20MGL-PAX:SECTION "Stack Frames"
 
+[67d5]: #SB-MANUAL:@COMPLEX-ARGUMENT-SYNTAX%20MGL-PAX:SECTION "Complex Argument Syntax"
+
 [6832]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm "DEFMETHOD (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
+[686b]: #SB-MANUAL:@SPECIALIZED-STRUCTURE-SLOTS%20MGL-PAX:SECTION "Specialized Structure Slots"
 
 [68cc]: http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm "STRING (MGL-PAX:CLHS NIL)"
 
@@ -18666,6 +19618,8 @@ learn about Common Lisp, some books stand out:
 
 [749c]: #SB-MANUAL:@THE-SBCL-PROJECT%20MGL-PAX:SECTION "The SBCL Project"
 
+[74b3]: #SB-MANUAL:@NON-DESCRIPTORS-IN-LOCAL-CALL%20MGL-PAX:SECTION "Non-descriptors in Local Call"
+
 [74c7]: #SB-MANUAL:@STARTING-AND-STOPPING%20MGL-PAX:SECTION "Starting and Stopping"
 
 [752f]: http://www.lispworks.com/documentation/HyperSpec/Body/v_defaul.htm "*DEFAULT-PATHNAME-DEFAULTS* (MGL-PAX:CLHS VARIABLE)"
@@ -18681,6 +19635,8 @@ learn about Common Lisp, some books stand out:
 [76d3]: #SB-THREAD:SYMBOL-VALUE-IN-THREAD-ERROR%20CONDITION "SB-THREAD:SYMBOL-VALUE-IN-THREAD-ERROR CONDITION"
 
 [7742]: http://www.lispworks.com/documentation/HyperSpec/Body/t_hash_t.htm "HASH-TABLE (MGL-PAX:CLHS CLASS)"
+
+[777e]: #SB-MANUAL:@DESCRIPTOR%20MGL-PAX:SECTION "Descriptor"
 
 [782a]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_pre.htm "*PRINT-PRETTY* (MGL-PAX:CLHS VARIABLE)"
 
@@ -18736,6 +19692,8 @@ learn about Common Lisp, some books stand out:
 
 [80ef]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_by.htm "WRITE-BYTE (MGL-PAX:CLHS FUNCTION)"
 
+[820d]: #SB-MANUAL:@NON-DESCRIPTOR%20MGL-PAX:SECTION "Non-descriptor"
+
 [825d]: #SB-MANUAL:@DEBUGGER%20MGL-PAX:SECTION "Debugger"
 
 [8294]: #SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION "Block Compilation Semantics"
@@ -18760,6 +19718,8 @@ learn about Common Lisp, some books stand out:
 
 [8679]: #SB-EXT:START-BLOCK%20DECLARATION "SB-EXT:START-BLOCK DECLARATION"
 
+[8690]: #SB-MANUAL:@OPERATION-EFFICIENCY-NOTES%20MGL-PAX:SECTION "Operation Efficiency Notes"
+
 [86d8]: http://www.lispworks.com/documentation/HyperSpec/Body/t_base_s.htm "BASE-STRING (MGL-PAX:CLHS TYPE)"
 
 [8723]: #SB-MANUAL:@BEYOND-THE-ANSI-STANDARD%20MGL-PAX:SECTION "Beyond the ANSI Standard"
@@ -18771,6 +19731,8 @@ learn about Common Lisp, some books stand out:
 [87b6]: #SB-GRAY:FUNDAMENTAL-OUTPUT-STREAM%20CLASS "SB-GRAY:FUNDAMENTAL-OUTPUT-STREAM CLASS"
 
 [8808]: http://www.lispworks.com/documentation/HyperSpec/Body/a_or.htm "OR (MGL-PAX:CLHS NIL)"
+
+[8866]: #SB-MANUAL:@CONSING%20MGL-PAX:SECTION "Consing"
 
 [88f1]: http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_def.htm "*READ-DEFAULT-FLOAT-FORMAT* (MGL-PAX:CLHS VARIABLE)"
 
@@ -18790,6 +19752,8 @@ learn about Common Lisp, some books stand out:
 
 [8a67]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logica.htm "LOGICAL-PATHNAME-TRANSLATIONS (MGL-PAX:CLHS FUNCTION)"
 
+[8ac8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_sl.htm "/ (MGL-PAX:CLHS FUNCTION)"
+
 [8ae0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm "IDENTITY (MGL-PAX:CLHS FUNCTION)"
 
 [8b52]: #SB-MANUAL:@HANDLING-OF-TYPES%20MGL-PAX:SECTION "Handling of Types"
@@ -18799,6 +19763,8 @@ learn about Common Lisp, some books stand out:
 [8c8e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cell_e.htm "CELL-ERROR-NAME (MGL-PAX:CLHS FUNCTION)"
 
 [8cb6]: #STREAM-ELEMENT-TYPE%20GENERIC-FUNCTION "STREAM-ELEMENT-TYPE GENERIC-FUNCTION"
+
+[8dbe]: #SB-MANUAL:@UNTYPED-MEMORY%20MGL-PAX:SECTION "Untyped memory"
 
 [8e47]: #SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION "Local Calls to Closures"
 
@@ -18872,6 +19838,8 @@ learn about Common Lisp, some books stand out:
 
 [96b9]: #SB-CONCURRENCY:MAILBOX%20STRUCTURE "SB-CONCURRENCY:MAILBOX STRUCTURE"
 
+[96e3]: #SB-MANUAL:@REPRESENTATION-EFFICIENCY-NOTES%20MGL-PAX:SECTION "Representation Efficiency Notes"
+
 [97ee]: http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm "ASSERT (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [980e]: #SB-EXT:PROCESS-EXIT-CODE%20FUNCTION "SB-EXT:PROCESS-EXIT-CODE FUNCTION"
@@ -18912,6 +19880,8 @@ learn about Common Lisp, some books stand out:
 
 [9cc8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_unrd_c.htm "UNREAD-CHAR (MGL-PAX:CLHS FUNCTION)"
 
+[9cd7]: #SB-MANUAL:@TRACE-FILES%20MGL-PAX:SECTION "Trace Files"
+
 [9d2b]: #SB-MANUAL:@THREADING-BASICS%20MGL-PAX:SECTION "Threading Basics"
 
 [9d96]: #SB-MANUAL:@RUNNING-FROM-EMACS%20MGL-PAX:SECTION "Running from Emacs"
@@ -18938,8 +19908,6 @@ learn about Common Lisp, some books stand out:
 
 [a138]: http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm "SETF (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
-[a160]: #SB-MANUAL:@INTERNALS-DOCUMENTATION%20MGL-PAX:SECTION "Internals Documentation"
-
 [a1c3]: #SB-COVER:RESTORE-COVERAGE%20FUNCTION "SB-COVER:RESTORE-COVERAGE FUNCTION"
 
 [a22e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pars_1.htm "PARSE-NAMESTRING (MGL-PAX:CLHS FUNCTION)"
@@ -18959,6 +19927,8 @@ learn about Common Lisp, some books stand out:
 [a47b]: #SB-MANUAL:@DATA-TYPES%20MGL-PAX:SECTION "Data Types"
 
 [a485]: http://www.lispworks.com/documentation/HyperSpec/Body/f_inspec.htm "INSPECT (MGL-PAX:CLHS FUNCTION)"
+
+[a4d8]: #SB-MANUAL:@GENERIC-ARITHMETIC%20MGL-PAX:SECTION "Generic Arithmetic"
 
 [a51f]: http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm "FUNCTION (MGL-PAX:CLHS NIL)"
 
@@ -19078,6 +20048,8 @@ learn about Common Lisp, some books stand out:
 
 [b5f2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_apropo.htm "APROPOS (MGL-PAX:CLHS FUNCTION)"
 
+[b5f9]: http://www.lispworks.com/documentation/HyperSpec/Body/f__.htm "- (MGL-PAX:CLHS FUNCTION)"
+
 [b607]: #SB-MANUAL:@SB-INTROSPECT-VARIABLES%20MGL-PAX:SECTION "Special Variables"
 
 [b6e4]: http://www.lispworks.com/documentation/HyperSpec/Body/m_pop.htm "POP (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -19090,8 +20062,6 @@ learn about Common Lisp, some books stand out:
 
 [b7da]: #SB-MANUAL:@GARBAGE-COLLECTION%20MGL-PAX:SECTION "Garbage Collection"
 
-[b81a]: #SB-MANUAL:@MISCELLANEOUS-EFFICIENCY-ISSUES%20MGL-PAX:SECTION "Miscellaneous Efficiency Issues"
-
 [b905]: #SB-MANUAL:@CALLING-THE-COMPILER%20MGL-PAX:SECTION "Calling the Compiler"
 
 [b934]: #SB-MANUAL:@BUILD-PREREQUISITES%20MGL-PAX:SECTION "Build Prerequisites"
@@ -19101,6 +20071,8 @@ learn about Common Lisp, some books stand out:
 [ba6a]: #SB-CONCURRENCY:FRLOCK-READ%20MGL-PAX:MACRO "SB-CONCURRENCY:FRLOCK-READ MGL-PAX:MACRO"
 
 [bac3]: #SB-GRAY:STREAM-READ-SEQUENCE%20GENERIC-FUNCTION "SB-GRAY:STREAM-READ-SEQUENCE GENERIC-FUNCTION"
+
+[bb11]: #SB-MANUAL:@REPRESENTATION-OF-OBJECTS%20MGL-PAX:SECTION "Representation of Objects"
 
 [bb44]: #SB-GRAY:FUNDAMENTAL-CHARACTER-OUTPUT-STREAM%20CLASS "SB-GRAY:FUNDAMENTAL-CHARACTER-OUTPUT-STREAM CLASS"
 
@@ -19149,6 +20121,8 @@ learn about Common Lisp, some books stand out:
 [c09b9]: #SB-EXT:*USERINIT-PATHNAME-FUNCTION*%20VARIABLE "SB-EXT:*USERINIT-PATHNAME-FUNCTION* VARIABLE"
 
 [c0ba]: #ED%20FUNCTION "ED FUNCTION"
+
+[c0c3]: http://www.lispworks.com/documentation/HyperSpec/Body/f_log.htm "LOG (MGL-PAX:CLHS FUNCTION)"
 
 [c16f]: #SB-INTROSPECT:DEFINITION-SOURCE-FORM-PATH%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-INTROSPECT:DEFINITION-SOURCE%29 "SB-INTROSPECT:DEFINITION-SOURCE-FORM-PATH (MGL-PAX:STRUCTURE-ACCESSOR SB-INTROSPECT:DEFINITION-SOURCE)"
 
@@ -19232,13 +20206,15 @@ learn about Common Lisp, some books stand out:
 
 [ccb5]: #SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION "Information Commands"
 
-[cce0]: #SB-MANUAL:@SIGNED-MODULAR-ARITHMETIC%20MGL-PAX:SECTION "Signed Modular Arithmetic"
+[cd68]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ratio.htm "RATIO (MGL-PAX:CLHS CLASS)"
 
 [ce81]: #SB-MANUAL:@DEPRECATION-EXAMPLES%20MGL-PAX:SECTION "Deprecation Examples"
 
 [cecd]: #SB-MANUAL:@UNICODE-SUPPORT%20MGL-PAX:SECTION "Unicode Support"
 
 [cee6]: http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm "SYMBOL-VALUE (MGL-PAX:CLHS FUNCTION)"
+
+[cf46]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "LONG-FLOAT (MGL-PAX:CLHS TYPE)"
 
 [cfa8]: #SB-MANUAL:@BREAKPOINT-COMMANDS%20MGL-PAX:SECTION "Breakpoint Commands"
 
@@ -19290,6 +20266,8 @@ learn about Common Lisp, some books stand out:
 
 [d5a9]: http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm "STREAM (MGL-PAX:CLHS CLASS)"
 
+[d5b0]: #SB-MANUAL:@CONTRIBUTING%20MGL-PAX:SECTION "Contributing"
+
 [d5fd]: #SB-MANUAL:@UNDERSTANDING-COMPILER-DIAGNOSTICS%20MGL-PAX:SECTION "Understanding Compiler Diagnostics"
 
 [d64d]: http://www.lispworks.com/documentation/HyperSpec/Body/f_svref.htm "SVREF (MGL-PAX:CLHS FUNCTION)"
@@ -19327,6 +20305,12 @@ learn about Common Lisp, some books stand out:
 [db7a]: #SB-MANUAL:@STATISTICAL-PROFILER%20MGL-PAX:SECTION "Statistical Profiler"
 
 [db8c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_bignum.htm "BIGNUM (MGL-PAX:CLHS TYPE)"
+
+[dc36]: #SB-MANUAL:@FIXNUMS%20MGL-PAX:SECTION "Fixnums"
+
+[dc3d]: http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ve.htm "SIMPLE-VECTOR (MGL-PAX:CLHS TYPE)"
+
+[dc69]: #SB-EXT:PURIFY%20FUNCTION "SB-EXT:PURIFY FUNCTION"
 
 [dccb]: #SB-CONCURRENCY:SEND-MESSAGE%20FUNCTION "SB-CONCURRENCY:SEND-MESSAGE FUNCTION"
 
@@ -19446,6 +20430,8 @@ learn about Common Lisp, some books stand out:
 
 [eb49]: #SB-EXT:*DERIVE-FUNCTION-TYPES*%20VARIABLE "SB-EXT:*DERIVE-FUNCTION-TYPES* VARIABLE"
 
+[eb59]: #SB-MANUAL:@MAPPING-AND-ITERATION%20MGL-PAX:SECTION "Mapping and Iteration"
+
 [ebb7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_5.htm "HASH-TABLE-TEST (MGL-PAX:CLHS FUNCTION)"
 
 [ebea]: http://www.lispworks.com/documentation/HyperSpec/Body/m_declai.htm "DECLAIM (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -19506,11 +20492,15 @@ learn about Common Lisp, some books stand out:
 
 [f575]: #SB-SEQUENCE:MERGE%20GENERIC-FUNCTION "SB-SEQUENCE:MERGE GENERIC-FUNCTION"
 
+[f5c3]: #SB-EXT:*EVALUATOR-MODE*%20VARIABLE "SB-EXT:*EVALUATOR-MODE* VARIABLE"
+
 [f5e3]: #SB-MANUAL:@LANGUAGE-REFERENCE%20MGL-PAX:SECTION "Language Reference"
 
 [f634]: #SB-MANUAL:@SB-CONCURRENCY%20MGL-PAX:SECTION "sb-concurrency"
 
 [f64d]: #SB-MANUAL:@STREAMS%20MGL-PAX:SECTION "Streams"
+
+[f659]: #SB-MANUAL:@COMPILE-YOUR-CODE%20MGL-PAX:SECTION "Compile Your Code"
 
 [f69b]: #SB-MANUAL:@GENERIC-FUNCTION-DISPATCH%20MGL-PAX:SECTION "Generic Function Dispatch"
 
@@ -19530,7 +20520,13 @@ learn about Common Lisp, some books stand out:
 
 [fcab]: #SB-EXT:GLOBAL%20DECLARATION "SB-EXT:GLOBAL DECLARATION"
 
+[fcad]: #SB-MANUAL:@ASSIGNMENTS%20MGL-PAX:SECTION "Assignments"
+
 [fce9]: #SB-MANUAL:@TYPE-CHECK-OPTIMIZATION%20MGL-PAX:SECTION "Type Check Optimization"
+
+[fd3d]: #SB-MANUAL:@SPECIALIZED-ARRAYS%20MGL-PAX:SECTION "Specialized Arrays"
+
+[fd8a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pl.htm "+ (MGL-PAX:CLHS FUNCTION)"
 
 [fe40]: #SB-GRAY:STREAM-READ-CHAR-NO-HANG%20GENERIC-FUNCTION "SB-GRAY:STREAM-READ-CHAR-NO-HANG GENERIC-FUNCTION"
 
