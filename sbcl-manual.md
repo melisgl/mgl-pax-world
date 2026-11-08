@@ -687,7 +687,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.132-ecb2ffb`, generated *2026-11-07 19:08:47*. See
+The output is for SBCL version `2.6.10.136-5055409`, generated *2026-11-08 00:04:31*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1053,13 +1053,17 @@ returns its argument after performing the same check that
 
 #### 2.3.2 Build Options
 
-- `:sb-doc`
+The following is a list is build option with the default value and
+whether they are retained in [`cl:*features*`][6234] in the built SBCL in
+parentheses.
+
+- `:sb-doc` (on)
 
     Retain documentation strings found in the system sources in the
     target SBCL executable. Traditional Common Lisp folk will want this
     option set.
 
-- `:sb-show`
+- `:sb-show` (off)
 
     Make more debugging information available (for debugging SBCL
      itself). If you aren't hacking or troubleshooting SBCL itself, you
@@ -1090,7 +1094,7 @@ returns its argument after performing the same check that
     therefore, be sure to keep the sources around, and run with the
     readtable configured so that the system sources can be read.
 
-- `:sb-ldb`
+- `:sb-ldb` (on, in [`*features*`][6234])
 
     Enable the [LDB][3b91], the low-level debugger. In the ideal world you
     would not need this unless you are messing with SBCL at a very low
@@ -1099,7 +1103,7 @@ returns its argument after performing the same check that
     that sooner or later everyone `lose()`s, in which case `sb-ldb` can
     at least provide an informative backtrace.
 
-- `:sb-after-xc-core`
+- `:sb-after-xc-core` (off)
 
     This isn't really a target Lisp feature at all but controls
     whether the build process produces an `after-xc.core` file. This can
@@ -1107,12 +1111,12 @@ returns its argument after performing the same check that
     modify SBCL's own source code, as in `slam.sh`. Otherwise you don't
     need it.
 
-- `:sb-show-assem`
+- `:sb-show-assem` (off)
 
     Enable extra debugging output in the `assem.lisp` assembler /
     scheduler code.
 
-- `:sb-dyncount`
+- `:sb-dyncount` (off)
 
     Enable code for collecting statistics on usage of various
     operations, useful for performance tuning of the SBCL system itself.
@@ -1120,18 +1124,18 @@ returns its argument after performing the same check that
     fork from base CMUCL) but might nonetheless be a useful starting
     point for anyone who wants to collect such statistics in the future.
 
-- `:sb-simd-pack`
+- `:sb-simd-pack` (off)
 
     Enabled automatically by `make-config.sh` for platforms which
     implement short vector SIMD intrinsics.
 
-- `:cycle-counter`
+- `:cycle-counter` (off)
 
     Enabled automatically by `make-config.sh` for platforms which
     implement the `%read-cycle-counter` VOP. Can be disabled manually:
     affects [`time`][9427].
 
-- `:immobile-space`
+- `:immobile-space` (off)
 
     Build with support for an additional dynamic heap differing from
     the main dynamic heap in two ways:
@@ -1152,7 +1156,7 @@ returns its argument after performing the same check that
     performance regressions are observed, consider disabling this
     feature and reporting a bug.
 
-- `:immobile-code`
+- `:immobile-code` (off)
 
     Allocate most functions in the immobile space.
     Enabled by default if supported. The down-side of this feature is
@@ -1161,14 +1165,14 @@ returns its argument after performing the same check that
     by speed of creation of compiled functions (not including closures),
     the feature can be disabled.
 
-- `:compact-instance-header`
+- `:compact-instance-header` (off)
 
     Combine the layout pointer, instance-length, and widetag of
     an `instance` into a single machine word. This represents a space
     savings of anywhere from 4% to 8% in typical applications. (Your
     mileage may vary.)
 
-- `:sb-thread`
+- `:sb-thread` (dynamic, in `*features*`)
 
     Enable low-level thread primitives support. See [Threading][6ec7].
 
@@ -1176,11 +1180,11 @@ returns its argument after performing the same check that
     Linux, Darwin, and Windows. In fact, threads are mandatory on
     Windows. Other platforms that support them include FreeBSD, Solaris.
 
-- `:sb-futex`
+- `:sb-futex` (off)
 
     Use `futex`es as our locking primitive. Only available on Linux.
 
-- `:sb-package-locks`
+- `:sb-package-locks` (on, in `*features*`)
 
     Enable detection of unportable code (when applied to the
     `common-lisp` package or SBCL-internal packages) or bad-neighbourly
@@ -1188,38 +1192,38 @@ returns its argument after performing the same check that
     alteration to packages or to bindings in symbols in packages. See
     [Package Locks][5746].
 
-- `:sb-unicode`
+- `:sb-unicode` (on, in `*features*`)
 
     Support for the entirety of the 21-bit character space defined by
     the Unicode consortium, rather than the classical 8-bit ISO-8859-1
     character set. See [Unicode Support][cecd].
 
-- `:sb-eval`
+- `:sb-eval` (on)
 
     Support for a full evaluator that can execute all the CL special
     forms, as opposed to the traditional SBCL evaluator, which called
     [`compile`][8c75] for everything complicated. See [Interpreter][2e79].
 
-- `:sb-fasteval`
+- `:sb-fasteval` (off)
 
     Support for a different evaluator (interpreter) with improved
     performance. You can have only one of `:sb-eval` [`and`][94b8] `:sb-fasteval`. See
     [Interpreter][2e79].
 
-- `:sb-source-locations`
+- `:sb-source-locations` (on)
 
     Record source location information for variables, classes,
     conditions, packages, etc. Gives much better information on
     `M-.` in Slime but increases core size by about 100kB.
 
-- `:sb-xref-for-internals`
+- `:sb-xref-for-internals` (off)
 
     Record xref data for SBCL internals. This can be rather useful for
     people who want to develop on SBCL itself because it will make
     `M-?` (`slime-edit-uses`) work which lists call/expansion/etc.
     sites. It will increase the core size by major 5-6MB, though.
 
-- `:ansi-compliant-load-truename`
+- `:ansi-compliant-load-truename` (on)
 
     `clhs` says that [`*load-truename*`][d234] has to be bound whenever
     [`*load-pathname*`][a11d] is because obviously the spec wanted to mandate that
@@ -1228,7 +1232,7 @@ returns its argument after performing the same check that
      Remove this feature if you want to ignore the technical requirement
      that `*load-truename*` be a variable (as opposed to a symbol-macro).
 
-- `:largefile`
+- `:largefile` (off)
 
     Some platforms don't use a 32-bit `off_t` by default, and thus can't
     handle files larger than 2GB. This feature will control whether
@@ -1239,30 +1243,30 @@ returns its argument after performing the same check that
     want to disable it, if you need to pass file descriptors to foreign
     code that uses a 32-bit `off_t`.
 
-- `:relocatable-static-space`
+- `:relocatable-static-space` (off)
 
     Allow static space to be relocatable on start-up.
 
-- `:aslr`
+- `:aslr` (off)
 
     Allow Lisp spaces to be randomly allocated anywhere in virtual address
     space, i.e. the behavior of passing `mmap` an address of zero.
     Requires all spaces to be relocatable on start-up.
 
-- `:sb-core-compression`
+- `:sb-core-compression` (off, in `*features*`)
 
     Support zstd-based compressed core files. Enable this feature to
     compile it in. Obviously, doing so adds a dependency on zstd.
 
-- `:sb-safepoint`
+- `:sb-safepoint` (dynamic, in `*features*`)
 
     On certain thread-enabled platforms, synchronization between
     threads for the purpose of stopping and starting the world around GC
     can be performed using safepoints instead of signals. Enable this
     feature to compile with safepoints and to use them for GC. This is
-    always enabled on `:win32`.
+    always enabled on `:win32`. Not enabled elsewhere by default.
 
-- `:sb-cover-for-internals`
+- `:sb-cover-for-internals` (off)
 
     Build the SBCL system itself with code coverage data marks (and
     sequences in the compiled code to set those marks). Inevitably,
