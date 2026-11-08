@@ -687,7 +687,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.137-e0b77ff`, generated *2026-11-08 06:47:15*. See
+The output is for SBCL version `2.6.10.138-7f1c6b5`, generated *2026-11-08 13:57:33*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -6786,7 +6786,7 @@ SBCL supports non-descriptor representations for
 
 - [Characters][6140],
 
-- system area pointers (unconstrained pointers, see [Untyped memory][8dbe]),
+- [System Area Pointer][4c32]s,
 
 - local variables (see [Non-descriptor Variables][5ca7]),
 
@@ -11415,7 +11415,7 @@ can only be allocated using [`make-alien`][fb92].
   ...))`.
 
 - The foreign type specifier `system-area-pointer` describes a
-  pointer which is represented in Lisp as a `system-area-pointer`
+  pointer which is represented in Lisp as a [`system-area-pointer`][e3d5]
   object. SBCL exports this type from `sb-alien` because CMUCL did,
   but tentatively (as of the first draft of this section of the
   manual, SBCL 0.7.6) it is deprecated, since it doesn't seem to be
@@ -11520,44 +11520,164 @@ and how to dynamically allocate and free foreign variables.
     Note that `slot` is evaluated, and need not be a compile-time
     constant (but only constant slot accesses are efficiently compiled).
 
-<a id="x-28SB-MANUAL-3A-40UNTYPED-MEMORY-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@UNTYPED-MEMORY%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SYSTEM-AREA-POINTER-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SYSTEM-AREA-POINTER%20MGL-PAX:SECTION"></a>
 
-##### Untyped memory
+##### System Area Pointer
 
-As noted at the beginning of the chapter, the System Area Pointer
-facilities allow untyped access to foreign memory. SAPs can be
-converted to and from the usual typed foreign values using [`sap-alien`][3208]
-and [`alien-sap`][213e], and also to and from integers (raw machine
+System area pointers allow untyped access to foreign memory. SAPs can
+be converted to and from the usual typed foreign values using
+[`sap-alien`][3208] and [`alien-sap`][213e], and also to and from integers (raw machine
 addresses). They should thus be used with caution; corrupting the
 Lisp heap or other memory with SAPs is trivial.
+
+<a id="x-28SB-SYS-3ASYSTEM-AREA-POINTER-20CLASS-29"></a>
+<a id="SB-SYS:SYSTEM-AREA-POINTER%20CLASS"></a>
+
+- \[class\] **system-area-pointer** *[t][9172]*
+
+<a id="x-28SB-SYS-3ASAP-INT-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-INT%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-int** *sap*
+
+    Return the address corresponding to `sap`. Note that this conses if the
+    address does not fit into [`fixnum`][3cde] range.
 
 <a id="x-28SB-SYS-3AINT-SAP-20FUNCTION-29"></a>
 <a id="SB-SYS:INT-SAP%20FUNCTION"></a>
 
 - \[function\] **sb-sys:int-sap** *x*
 
-    Creates a `sap` pointing at the virtual address `x`.
+    Create a [`system-area-pointer`][e3d5] for the virtual address `x`, an unsigned
+    machine word integer.
+
+<a id="x-28SB-SYS-3ASAP-2B-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP+%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap+** *sap offset*
+
+    Create a new [`system-area-pointer`][e3d5] `offset` bytes (a signed machine word)
+    from `sap`.
+
+<a id="x-28SB-SYS-3ASAP--20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-** *sap-1 sap-2*
+
+    Return the difference of `sap-1` and `sap-2` as a signed machine word.
+    It holds that `(sap- (sap+ sap offset) sap)` is `offset`.
+
+The following functions compare the [`sb-sys:int-sap`][3b87] values without
+consing:
+
+<a id="x-28SB-SYS-3ASAP-3D-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP%3D%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap=** *sap-1 sap-2*
+
+<a id="x-28SB-SYS-3ASAP-3C-3D-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP%3C%3D%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap\<=** *sap-1 sap-2*
+
+<a id="x-28SB-SYS-3ASAP-3E-3D-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP%3E%3D%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap>=** *sap-1 sap-2*
+
+<a id="x-28SB-SYS-3ASAP-3E-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP%3E%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap>** *sap-1 sap-2*
+
+The rest are [`setf`][a138]able accessors.
+
+The first group of accessors is for [`unsigned-byte`][561a]s of varying widths:
+
+<a id="x-28SB-SYS-3ASAP-REF-8-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-8%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-8** *sap offset*
+
+    Access the ([`unsigned-byte`][561a] 8) value at the memory location `offset` bytes
+    from `sap`. [`setf`][a138]able.
+
+<a id="x-28SB-SYS-3ASAP-REF-16-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-16%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-16** *sap offset*
+
+    Access the ([`unsigned-byte`][561a] 16) value at the memory location `offset` bytes
+    from `sap`. [`setf`][a138]able.
 
 <a id="x-28SB-SYS-3ASAP-REF-32-20FUNCTION-29"></a>
 <a id="SB-SYS:SAP-REF-32%20FUNCTION"></a>
 
 - \[function\] **sb-sys:sap-ref-32** *sap offset*
 
-    Access the value of the memory location at `offset` bytes from `sap`. [`setf`][a138]able.
+    Access the ([`unsigned-byte`][561a] 32) value at the memory location `offset` bytes
+    from `sap`. [`setf`][a138]able.
 
-<a id="x-28SB-SYS-3ASAP-3D-20FUNCTION-29"></a>
-<a id="SB-SYS:SAP%3D%20FUNCTION"></a>
+<a id="x-28SB-SYS-3ASAP-REF-64-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-64%20FUNCTION"></a>
 
-- \[function\] **sb-sys:sap=** *x y*
+- \[function\] **sb-sys:sap-ref-64** *sap offset*
 
-    Compare the `sap`s `x` and `y` for equality.
+    Access the ([`unsigned-byte`][561a] 64) value at the memory location `offset` bytes
+    from `sap`. [`setf`][a138]able.
 
-Similarly named functions exist for accessing other sizes of word,
-other comparisons, and other conversions. The reader is invited to
-use [`apropos`][b5f2] and [`describe`][6651] for more details:
+Then, we have their [`signed-byte`][c474] equivalents:
 
-    (apropos "sap" :sb-sys)
+<a id="x-28SB-SYS-3ASIGNED-SAP-REF-8-20FUNCTION-29"></a>
+<a id="SB-SYS:SIGNED-SAP-REF-8%20FUNCTION"></a>
+
+- \[function\] **sb-sys:signed-sap-ref-8** *sap offset*
+
+<a id="x-28SB-SYS-3ASIGNED-SAP-REF-16-20FUNCTION-29"></a>
+<a id="SB-SYS:SIGNED-SAP-REF-16%20FUNCTION"></a>
+
+- \[function\] **sb-sys:signed-sap-ref-16** *sap offset*
+
+<a id="x-28SB-SYS-3ASIGNED-SAP-REF-32-20FUNCTION-29"></a>
+<a id="SB-SYS:SIGNED-SAP-REF-32%20FUNCTION"></a>
+
+- \[function\] **sb-sys:signed-sap-ref-32** *sap offset*
+
+<a id="x-28SB-SYS-3ASIGNED-SAP-REF-64-20FUNCTION-29"></a>
+<a id="SB-SYS:SIGNED-SAP-REF-64%20FUNCTION"></a>
+
+- \[function\] **sb-sys:signed-sap-ref-64** *sap offset*
+
+Finally, accessors for various types:
+
+<a id="x-28SB-SYS-3ASAP-REF-SAP-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-SAP%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-sap** *sap offset*
+
+    Like `sap-ref-word`, but convert the word to a [`system-area-pointer`][e3d5].
+
+<a id="x-28SB-SYS-3ASAP-REF-LISPOBJ-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-LISPOBJ%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-lispobj** *sap offset*
+
+    Like `sap-ref-word`, but interpret the word as a Lisp object descriptor.
+
+<a id="x-28SB-SYS-3ASAP-REF-SINGLE-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-SINGLE%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-single** *sap offset*
+
+    Access the 32-bit value pointed at as a [`single-float`][31a6d].
+
+<a id="x-28SB-SYS-3ASAP-REF-DOUBLE-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-DOUBLE%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-double** *sap offset*
+
+    Access the 64-bit value pointed at as a [`double-float`][0d57].
 
 <a id="x-28SB-MANUAL-3A-40COERCING-FOREIGN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COERCING-FOREIGN-VALUES%20MGL-PAX:SECTION"></a>
@@ -11589,7 +11709,7 @@ use [`apropos`][b5f2] and [`describe`][6651] for more details:
 
 - \[macro\] **sap-alien** *sap type*
 
-    Convert the `system-area-pointer` `sap` to an `alien` of the specified
+    Convert the [`system-area-pointer`][e3d5] `sap` to an `alien` of the specified
     `type` (not evaluated). `type` must be pointer-like (foreign pointer,
     array, or record type).
 
@@ -11598,7 +11718,7 @@ use [`apropos`][b5f2] and [`describe`][6651] for more details:
 
 - \[function\] **alien-sap** *alien*
 
-    Return a `system-area-pointer` pointing to `alien`'s data.
+    Return a [`system-area-pointer`][e3d5] pointing to `alien`'s data.
     `alien` must be of some foreign pointer, array, or record type.
 
 <a id="x-28SB-MANUAL-3A-40FOREIGN-DYNAMIC-ALLOCATION-20MGL-PAX-3ASECTION-29"></a>
@@ -11983,7 +12103,7 @@ developer, is the only documentation. Users of a Lisp built with the
     Call the foreign function `alien`, writing the struct result to `result-buffer`.
     Returns no values.
 
-    `result-buffer` should be a `system-area-pointer` to appropriately sized memory.
+    `result-buffer` should be a [`system-area-pointer`][e3d5] to appropriately sized memory.
     Only supported on x86-64 and ARM64.
 
     Here is an example that calls a C function returning a struct, writing
@@ -19176,6 +19296,8 @@ learn about Common Lisp, some books stand out:
 
 [3af9]: #SB-MANUAL:@OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Output stream methods"
 
+[3b87]: #SB-SYS:INT-SAP%20FUNCTION "SB-SYS:INT-SAP FUNCTION"
+
 [3b91]: #SB-MANUAL:@LDB%20MGL-PAX:SECTION "LDB"
 
 [3c4b]: #SB-THREAD:CONDITION-NOTIFY%20FUNCTION "SB-THREAD:CONDITION-NOTIFY FUNCTION"
@@ -19303,6 +19425,8 @@ learn about Common Lisp, some books stand out:
 [4be3]: #SB-THREAD:WAITQUEUE%20STRUCTURE "SB-THREAD:WAITQUEUE STRUCTURE"
 
 [4c23]: #SB-MANUAL:@MULTIPLE-VALUES-OPTIMIZATION%20MGL-PAX:SECTION "Multiple Values Optimization"
+
+[4c32]: #SB-MANUAL:@SYSTEM-AREA-POINTER%20MGL-PAX:SECTION "System Area Pointer"
 
 [4d23]: #SB-THREAD:TERMINATE-THREAD%20FUNCTION "SB-THREAD:TERMINATE-THREAD FUNCTION"
 
@@ -19767,8 +19891,6 @@ learn about Common Lisp, some books stand out:
 [8c8e]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cell_e.htm "CELL-ERROR-NAME (MGL-PAX:CLHS FUNCTION)"
 
 [8cb6]: #STREAM-ELEMENT-TYPE%20GENERIC-FUNCTION "STREAM-ELEMENT-TYPE GENERIC-FUNCTION"
-
-[8dbe]: #SB-MANUAL:@UNTYPED-MEMORY%20MGL-PAX:SECTION "Untyped memory"
 
 [8e47]: #SB-MANUAL:@LOCAL-CALLS-TO-CLOSURES%20MGL-PAX:SECTION "Local Calls to Closures"
 
@@ -20377,6 +20499,8 @@ learn about Common Lisp, some books stand out:
 [e30a]: #SB-MANUAL:@METAOBJECT-PROTOCOL%20MGL-PAX:SECTION "Metaobject Protocol"
 
 [e30b]: http://www.lispworks.com/documentation/HyperSpec/Body/f_comput.htm "COMPUTE-APPLICABLE-METHODS (MGL-PAX:CLHS GENERIC-FUNCTION)"
+
+[e3d5]: #SB-SYS:SYSTEM-AREA-POINTER%20CLASS "SB-SYS:SYSTEM-AREA-POINTER CLASS"
 
 [e494]: #SB-MANUAL:@INITIALIZATION-AND-EXIT-HOOKS%20MGL-PAX:SECTION "Initialization and Exit Hooks"
 

@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.10.137-e0b77ff, generated 2026-11-08 06:47:15. See
+The output is for SBCL version 2.6.10.138-7f1c6b5, generated 2026-11-08 13:57:33. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -5559,7 +5559,7 @@ SBCL supports non-descriptor representations for
 
 - Characters,
 
-- system area pointers (unconstrained pointers, see Untyped memory),
+- System Area Pointers,
 
 - local variables (see Non-descriptor Variables),
 
@@ -9481,32 +9481,98 @@ and how to dynamically allocate and free foreign variables.
     Note that slot is evaluated, and need not be a compile-time
     constant (but only constant slot accesses are efficiently compiled).
 
-##### Untyped memory
+##### System Area Pointer
 
-As noted at the beginning of the chapter, the System Area Pointer
-facilities allow untyped access to foreign memory. SAPs can be
-converted to and from the usual typed foreign values using sap-alien
-and alien-sap, and also to and from integers (raw machine
+System area pointers allow untyped access to foreign memory. SAPs can
+be converted to and from the usual typed foreign values using
+sap-alien and alien-sap, and also to and from integers (raw machine
 addresses). They should thus be used with caution; corrupting the
 Lisp heap or other memory with SAPs is trivial.
 
+- [class] system-area-pointer t
+
+- [function] sb-sys:sap-int sap
+
+    Return the address corresponding to sap. Note that this conses if the
+    address does not fit into fixnum range.
+
 - [function] sb-sys:int-sap x
 
-    Creates a sap pointing at the virtual address x.
+    Create a system-area-pointer for the virtual address x, an unsigned
+    machine word integer.
+
+- [function] sb-sys:sap+ sap offset
+
+    Create a new system-area-pointer offset bytes (a signed machine word)
+    from sap.
+
+- [function] sb-sys:sap- sap-1 sap-2
+
+    Return the difference of sap-1 and sap-2 as a signed machine word.
+    It holds that (sap- (sap+ sap offset) sap) is offset.
+
+The following functions compare the sb-sys:int-sap values without
+consing:
+
+- [function] sb-sys:sap= sap-1 sap-2
+
+- [function] sb-sys:sap<= sap-1 sap-2
+
+- [function] sb-sys:sap>= sap-1 sap-2
+
+- [function] sb-sys:sap> sap-1 sap-2
+
+The rest are setfable accessors.
+
+The first group of accessors is for unsigned-bytes of varying widths:
+
+- [function] sb-sys:sap-ref-8 sap offset
+
+    Access the (unsigned-byte 8) value at the memory location offset bytes
+    from sap. setfable.
+
+- [function] sb-sys:sap-ref-16 sap offset
+
+    Access the (unsigned-byte 16) value at the memory location offset bytes
+    from sap. setfable.
 
 - [function] sb-sys:sap-ref-32 sap offset
 
-    Access the value of the memory location at offset bytes from sap. setfable.
+    Access the (unsigned-byte 32) value at the memory location offset bytes
+    from sap. setfable.
 
-- [function] sb-sys:sap= x y
+- [function] sb-sys:sap-ref-64 sap offset
 
-    Compare the saps x and y for equality.
+    Access the (unsigned-byte 64) value at the memory location offset bytes
+    from sap. setfable.
 
-Similarly named functions exist for accessing other sizes of word,
-other comparisons, and other conversions. The reader is invited to
-use apropos and describe for more details:
+Then, we have their signed-byte equivalents:
 
-    (apropos "sap" :sb-sys)
+- [function] sb-sys:signed-sap-ref-8 sap offset
+
+- [function] sb-sys:signed-sap-ref-16 sap offset
+
+- [function] sb-sys:signed-sap-ref-32 sap offset
+
+- [function] sb-sys:signed-sap-ref-64 sap offset
+
+Finally, accessors for various types:
+
+- [function] sb-sys:sap-ref-sap sap offset
+
+    Like sap-ref-word, but convert the word to a system-area-pointer.
+
+- [function] sb-sys:sap-ref-lispobj sap offset
+
+    Like sap-ref-word, but interpret the word as a Lisp object descriptor.
+
+- [function] sb-sys:sap-ref-single sap offset
+
+    Access the 32-bit value pointed at as a single-float.
+
+- [function] sb-sys:sap-ref-double sap offset
+
+    Access the 64-bit value pointed at as a double-float.
 
 #### Coercing Foreign Values
 
