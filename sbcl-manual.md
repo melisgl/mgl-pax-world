@@ -693,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.162-fe98395`, generated *2026-11-11 09:57:38*. See
+The output is for SBCL version `2.6.10.166-fe595a5`, generated *2026-11-11 18:08:56*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -3456,16 +3456,24 @@ These commands move to a new stack frame and print the name of the
 function and the values of its arguments in the style of a Lisp
 function call:
 
-- `up`: Move up to the next higher frame. More recent function calls
-   are considered to be higher on the stack.
+- `up`
 
-- `down`: Move down to the next lower frame.
+    Move up to the next higher frame. More recent function calls are
+    considered to be higher on the stack.
 
-- `bottom`: Move to the lowest frame.
+- `down`
 
-- `frame [<n>]`: Move to the frame with the specified number.
-  Prompts for the number if not supplied. The frame with number 0 is
-  the frame where the debugger was entered.
+    Move down to the next lower frame.
+
+- `bottom`
+
+    Move to the lowest frame.
+
+- `frame [<n>]`
+
+    Move to the frame with the specified number. Prompts for the
+    number if not supplied. The frame with number 0 is the frame
+    where the debugger was entered.
 
 <a id="x-28SB-MANUAL-3A-40HOW-ARGUMENTS-ARE-PRINTED-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HOW-ARGUMENTS-ARE-PRINTED%20MGL-PAX:SECTION"></a>
@@ -3655,13 +3663,15 @@ identifier 0 (which is not printed), the second one has identifier
     X  =  1
     X#1  =  2
 
-- `list-locals [<prefix>]`: This command prints the name and value
-  of all variables in the current frame whose name has the specified
-  `<prefix>`, which may be a string or a symbol. If no `<prefix>` is
-  given, then all available variables are printed. If a variable has
-  a potentially ambiguous name, then the name is printed with a
-  `#<identifier>` suffix, where `<identifier>` is the small integer
-  used to make the name unique.
+- `list-locals [<prefix>]`
+
+    This command prints the name and value of all variables in the
+    current frame whose name has the specified `<prefix>`, which may
+    be a string or a symbol. If no `<prefix>` is given, then all
+    available variables are printed. If a variable has a potentially
+    ambiguous name, then the name is printed with a `#<identifier>`
+    suffix, where `<identifier>` is the small integer used to make
+    the name unique.
 
 <a id="x-28SB-DEBUG-3AVAR-20FUNCTION-29"></a>
 <a id="SB-DEBUG:VAR%20FUNCTION"></a>
@@ -3786,16 +3796,17 @@ things happening.
 
 #### 5.1.5 Source Location Printing
 
-One of the debugger's capabilities is source level debugging of
-compiled code.  These commands display the source location for the
-current frame:
+One of the debugger's capabilities is source-level debugging of
+compiled code.
 
-- `source [<context>]`: This command displays the file that the
-  current frame's function was defined from (if it was defined from
-  a file), and then the source form responsible for generating the
-  code that the current frame was executing. If `<context>` is
-  specified, then it is an integer specifying the number of
-  enclosing levels of list structure to print.
+- `source [<context>]`
+
+    This command displays the file that the current frame's function
+    was defined from (if it was defined from a file), and then the
+    source form responsible for generating the code that the current
+    frame was executing. If `<context>` is specified, then it is an
+    integer specifying the number of enclosing levels of list
+    structure to print.
 
 The source form for a location in the code is the innermost list
 present in the original source that encloses the form responsible
@@ -4016,35 +4027,46 @@ version of the function, not to the original function. See
 
 These commands get you out of the debugger.
 
-- `toplevel`: Throw to top level.
+- `toplevel`
 
-- `restart [<n>]` or `<n>`: Invoke the `<n>`th restart case as
-  displayed by the [`error`][669b] command. If `<n>` is not specified, the
-  available restart cases are reported. When using the short
-  form (`<n>`), an integer for which there is no corresponding
-  restart is evaluated following normal REPL semantics.
+    Throw to top level.
 
-- `continue`: Call [`continue`][87a5] with the condition given that invoked
-  the debugger. If there is no restart case named `continue`, then an
-  error is signaled. This is not a debugger command but the name of
-  a commonly available restart.
+- `restart [<n>]` or `<n>`
 
-- `abort`: Call [`abort`][a838] on the condition that invoked the debugger.
-  This is useful for popping debug command loop levels or aborting
-  to top level, as the case may be. This is not a debugger command
-  but the name of a commonly available restart.
+    Invoke the `<n>`th restart case as displayed by the [`error`][669b]
+    command. If `<n>` is not specified, the available restart cases
+    are reported. When using the short form (`<n>`), an integer for
+    which there is no corresponding restart is evaluated following
+    normal REPL semantics.
 
-- `return <value>`: Return `value` from the current stack frame.
-  This command is available when the `debug` optimization quality is
-  greater than both `speed` and `space`. Care must be taken that the
-  value is of the same type as SBCL expects the stack frame to
-  return.
+- `continue`
 
-- `restart-frame`: Restart execution of the current stack frame.
-  This command is available when the `debug` optimization quality is
-  greater than both `speed` and `space` and when the frame is for a
-  global function. If the function is redefined in the debugger
-  before the frame is restarted, the new function will be used.
+    Call [`continue`][87a5] with the condition given that invoked the
+    debugger. If there is no restart case named `continue`, then an
+    error is signaled. This is not a debugger command but the name
+    of a commonly available restart.
+
+- `abort`
+
+    Call [`abort`][a838] on the condition that invoked the debugger. This is
+    useful for popping debug command loop levels or aborting to top
+    level, as the case may be. This is not a debugger command but
+    the name of a commonly available restart.
+
+- `return <value>`
+
+    Return `value` from the current stack frame. This command is
+    available when the `debug` optimization quality is greater than
+    both `speed` and `space`. Care must be taken that the value is of
+    the same type as SBCL expects the stack frame to return.
+
+- `restart-frame`
+
+    Restart execution of the current stack frame. This command is
+    available when the `debug` optimization quality is greater than
+    both `speed` and `space` and when the frame is for a global
+    function. If the function is redefined in the debugger before
+    the frame is restarted, the new function will be used.
 
 <a id="x-28SB-MANUAL-3A-40INFORMATION-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION"></a>
@@ -4054,20 +4076,30 @@ These commands get you out of the debugger.
 Most of these commands print information about the current frame or
 function, but a few show general information.
 
-- `help` or `?`: Display a synopsis of debugger commands.
+- `help` or `?`
 
-- `describe`: Call [`describe`][6651] on the current function and display
-  the number of local variables.
+    Display a synopsis of debugger commands.
 
-- `print`: Display the current function call as it would be
-  displayed by moving to this frame.
+- `describe`
 
-- `error`: Print the condition given to [`invoke-debugger`][de5c] and the
-  active proceed cases.
+    Call [`describe`][6651] on the current function and display the number of
+    local variables.
 
-- `backtrace [<n>]`: Display all the frames from the current to the
-  bottom. Only shows `<n>` frames if specified. The printing is
-  controlled by [`sb-debug:*debug-print-variable-alist*`][21be].
+- `print`
+
+    Display the current function call as it would be displayed by
+    moving to this frame.
+
+- `error`
+
+    Print the condition given to [`invoke-debugger`][de5c] and the active
+    proceed cases.
+
+- `backtrace [<n>]`
+
+    Display all the frames from the current to the bottom. Only
+    shows `<n>` frames if specified. The printing is controlled by
+    [`sb-debug:*debug-print-variable-alist*`][21be].
 
 <a id="x-28SB-MANUAL-3A-40BREAKPOINT-COMMANDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BREAKPOINT-COMMANDS%20MGL-PAX:SECTION"></a>
@@ -4080,18 +4112,22 @@ locations (see [Unknown Locations and Interrupts][2496]), so these commands
 are largely useless unless the `debug` optimize quality is at least
 2 (see [Debug Information][c397]). These commands manipulate breakpoints:
 
-- `breakpoint <location> [<option> <value>]*`: Set a breakpoint in
-  some function. `<location>` may be an integer code location
-  number (as displayed by `list-locations`) or a keyword. The
-  keyword can be used to indicate setting a breakpoint at the
-  function start (`:start`, `:s`) or function end (`:end`, `:e`). The
-  `breakpoint` command has `:condition`, `:break`, `:print` and `:function`
-  options which work similarly to the [`trace`][548d] options.
+- `breakpoint <location> [<option> <value>]*`
 
-- `list-locations [<function>]` or `ll [<function>]`: List all the
-  code locations in the current frame's function, or in `<function>`
-  if it is supplied. The display format is the code location number,
-  a colon and then the source form for that location:
+    Set a breakpoint in some function. `<location>` may be an
+    integer code location number (as displayed by `list-locations`)
+    or a keyword. The keyword can be used to indicate setting a
+    breakpoint at the function start (`:start`, `:s`) or function
+    end (`:end`, `:e`). The `breakpoint` command has `:condition`,
+    `:break`, `:print` and `:function` options which work similarly to the
+    [`trace`][548d] options.
+
+- `list-locations [<function>]` or `ll [<function>]`
+
+    List all the code locations in the current frame's function, or
+    in `<function>` if it is supplied. The display format is the
+    code location number, a colon and then the source form for that
+    location:
 
         3: (1- N)
 
@@ -4102,16 +4138,21 @@ are largely useless unless the `debug` optimize quality is at least
     the same source. The listed function becomes the new default
     function for breakpoint setting (via the `breakpoint`) command.
 
-- `list-breakpoints` or `lb`: List all currently active breakpoints
-  with their breakpoint number.
+- `list-breakpoints` or `lb`
 
-- `delete-breakpoint [<number>]` or `db [<number>]`: Delete a
-  breakpoint specified by its breakpoint number. If no number is
-  specified, delete all breakpoints.
+    List all currently active breakpoints with their breakpoint
+    number.
 
-- `step*`: Step to the next possible breakpoint location in the
-  current function. This always steps over function calls, instead
-  of stepping into them.
+- `delete-breakpoint [<number>]` or `db [<number>]`
+
+    Delete a breakpoint specified by its breakpoint number. If no
+    number is specified, delete all breakpoints.
+
+- `step*`
+
+    Step to the next possible breakpoint location in the current
+    function. This always steps over function calls, instead of
+    stepping into them.
 
 <a id="x-28SB-MANUAL-3A-40BREAKPOINT-EXAMPLE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BREAKPOINT-EXAMPLE%20MGL-PAX:SECTION"></a>
@@ -4205,22 +4246,32 @@ for compiled code.
 
 The following debugger commands are used for controlling single stepping.
 
-- `start`: Select the [`continue`][1867] restart if one exists and starts
-  single stepping. None of the other single stepping commands can be
-  used before stepping has been started either by using `start` or
-  by using the standard [`step`][aea4] macro.
+- `start`
 
-- `step`: Step into the current form. Stepping will be resumed when
-  the next form that has been compiled with stepper instrumentation
-  is evaluated.
+    Select the [`continue`][1867] restart if one exists and starts single
+    stepping. None of the other single stepping commands can be used
+    before stepping has been started either by using `start` or by
+    using the standard [`step`][aea4] macro.
 
-- `next`: Step over the current form. Stepping will be disabled
-  until evaluation of the form is complete.
+- `step`
 
-- `out`: Step out of the current frame. Stepping will be disabled
-  until the topmost stack frame that had been stepped into returns.
+    Step into the current form. Stepping will be resumed when the
+    next form that has been compiled with stepper instrumentation is
+    evaluated.
 
-- `stop`: Stop the single stepper and resumes normal execution.
+- `next`
+
+    Step over the current form. Stepping will be disabled until
+    evaluation of the form is complete.
+
+- `out`
+
+    Step out of the current frame. Stepping will be disabled until
+    the topmost stack frame that had been stepped into returns.
+
+- `stop`
+
+    Stop the single stepper and resumes normal execution.
 
 <a id="x-28STEP-20MGL-PAX-3AMACRO-29"></a>
 <a id="STEP%20MGL-PAX:MACRO"></a>
@@ -8578,30 +8629,6 @@ Hash tables can also have weak keys and values. See
     Arrange with the garbage collector that `object`s will not be moved in memory
     for the duration of `body`.  Useful for e.g. foreign calls where another thread
     may trigger garbage collection.
-
-<a id="x-28SB-SYS-3AWITHOUT-GCING-20MGL-PAX-3AMACRO-29"></a>
-<a id="SB-SYS:WITHOUT-GCING%20MGL-PAX:MACRO"></a>
-
-- \[macro\] **sb-sys:without-gcing** *\&body body*
-
-    Execute the forms in `body` without doing a garbage collection. It
-    inhibits both automatically and explicitly triggered collections.
-    Finally, upon leaving the `body` if gc is not inhibited it runs the
-    pending gc. Similarly, if gc is triggered in another thread then it
-    waits until gc is enabled in this thread.
-
-    Implies [`sb-sys:without-interrupts`][fb8d] for `body`, and causes any nested
-    [`sb-sys:with-interrupts`][767b] to signal a warning during execution of the
-    `body`.
-
-    Should be used with great care, and not at all in multithreaded
-    application code: Any locks that are ever acquired while [`gc`][b50b] is
-    inhibited need to be always held with `gc` inhibited to prevent
-    deadlocks: if T1 holds the lock and is stopped for `gc` while T2 is
-    waiting for the lock inside `without-gcing` the system will be
-    deadlocked. Since SBCL does not currently document its internal locks,
-    application code can never be certain that this invariant is
-    maintained.
 
 <a id="x-28SB-MANUAL-3A-40TRACING-LIVE-OBJECTS-BACK-TO-ROOTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TRACING-LIVE-OBJECTS-BACK-TO-ROOTS%20MGL-PAX:SECTION"></a>
