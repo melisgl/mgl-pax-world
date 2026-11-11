@@ -107,8 +107,6 @@
 
     - [4.7 Interpreter][2e79]
 
-    - [4.8 Advanced Compiler Use and Efficiency Hints][10a0]
-
 - [5 Debugging][3d82]
 
     - [5.1 Debugger][825d]
@@ -138,6 +136,8 @@
     - [5.3 Enabling and Disabling the Debugger][721e]
 
     - [5.4 Function Tracing][668f]
+
+    - [5.5 Backtraces][186e]
 
 - [6 Efficiency][29fd]
 
@@ -315,49 +315,55 @@
 
     - [7.4 Package Variance][30f8]
 
-    - [7.5 Garbage Collection][b7da]
+    - [7.5 Resolution of Name Conflicts][47c4]
 
-        - [7.5.1 Finalization][b235]
+    - [7.6 Garbage Collection][b7da]
 
-        - [7.5.2 Weak Pointers][4dff]
+        - [7.6.1 Finalization][b235]
 
-        - [7.5.3 Introspection and Tuning][fae5]
+        - [7.6.2 Weak Pointers][4dff]
 
-        - [7.5.4 Tracing Live Objects Back to Roots][fe9c]
+        - [7.6.3 GC Introspection and Tuning][eec4]
 
-    - [7.6 Generic Function Dispatch][f69b]
+        - [7.6.4 Controlling GC][abb0]
 
-    - [7.7 Extended Slot Access][e030]
+        - [7.6.5 Tracing Live Objects Back to Roots][fe9c]
 
-    - [7.8 Metaobject Protocol][e30a]
+    - [7.7 Generic Function Dispatch][f69b]
 
-        - [7.8.1 AMOP Compatibility of Metaobject Protocol][dd74]
+    - [7.8 Extended Slot Access][e030]
 
-        - [7.8.2 Metaobject Protocol Extensions][7d66]
+    - [7.9 Metaobject Protocol][e30a]
 
-    - [7.9 Extensible Sequences][5f65]
+        - [7.9.1 AMOP Compatibility of Metaobject Protocol][dd74]
 
-        - [7.9.1 Iterator Protocol][5c43]
+        - [7.9.2 Metaobject Protocol Extensions][7d66]
 
-        - [7.9.2 Simple Iterator Protocol][e761]
+    - [7.10 Extensible Sequences][5f65]
 
-    - [7.10 Unix Support][1b5c]
+        - [7.10.1 Iterator Protocol][5c43]
 
-        - [7.10.1 Running External Programs][52f0]
+        - [7.10.2 Simple Iterator Protocol][e761]
 
-    - [7.11 Unicode Support][cecd]
+    - [7.11 Unix Support][1b5c]
 
-        - [7.11.1 Unicode property access][bff9]
+        - [7.11.1 Running External Programs][52f0]
 
-        - [7.11.2 String operations][ea13]
+        - [7.11.2 Signal Handling][3e3c]
 
-        - [7.11.3 Breaking strings][5e27]
+        - [7.11.3 File Descriptor Streams][bf69]
 
-    - [7.12 Customization Hooks for Users][b192]
+    - [7.12 Unicode Support][cecd]
 
-    - [7.13 Tools to Help Developers][f0e6]
+        - [7.12.1 Unicode property access][bff9]
 
-    - [7.14 Resolution of Name Conflicts][47c4]
+        - [7.12.2 Unicode String operations][c015]
+
+        - [7.12.3 Breaking Unicode Strings][136f]
+
+    - [7.13 Customization Hooks for Users][b192]
+
+    - [7.14 Tools to Help Developers][f0e6]
 
     - [7.15 Hash Table Extensions][309c]
 
@@ -385,7 +391,7 @@
 
     - [8.3 Character Coding Conditions][a5e7]
 
-    - [8.4 Converting between Strings and Octet Vectors][6154]
+    - [8.4 Converting Between Strings and Octet Vectors][6154]
 
     - [8.5 Supported External Formats][11f9]
 
@@ -491,7 +497,7 @@
 
         - [13.1.5 Error Conditions][a378]
 
-    - [13.2 Special Variables][a8ca]
+    - [13.2 Special Variables in Threads][2b10]
 
     - [13.3 Atomic Operations][37bb]
 
@@ -499,13 +505,13 @@
 
     - [13.5 Semaphores][75d3]
 
-    - [13.6 Waitqueue/condition variables][e0d9]
+    - [13.6 Waitqueues and Condition Variables][b795]
 
     - [13.7 Barriers][cfdf]
 
-    - [13.8 Sessions/Debugging][a016]
+    - [13.8 Debugging Sessions][dcc9]
 
-    - [13.9 Foreign threads][7f6c]
+    - [13.9 Foreign Threads][7f6c]
 
     - [13.10 Implementation on Linux x86oids][b2c8]
 
@@ -545,11 +551,11 @@
 
         - [17.2.1 Queue][2771]
 
-        - [17.2.2 Mailbox (lock-free)][507d]
+        - [17.2.2 Mailbox][507d]
 
         - [17.2.3 Gates][6227]
 
-        - [17.2.4 Frlocks, aka Fast Read Locks][d59d]
+        - [17.2.4 Fast Read Locks][d59d]
 
     - [17.3 sb-cover][959f]
 
@@ -607,31 +613,31 @@
 
     - [17.11 sb-simd][e89e]
 
-        - [17.11.1 Data Types][a47b]
+        - [17.11.1 Data Types][ebfe]
 
-        - [17.11.2 Casts][1e30]
+        - [17.11.2 Casts][6ca4]
 
-        - [17.11.3 Constructors][073a]
+        - [17.11.3 Constructors][dd87]
 
-        - [17.11.4 Unpackers][e577]
+        - [17.11.4 Unpackers][5eff]
 
-        - [17.11.5 Reinterpret Casts][0928]
+        - [17.11.5 Reinterpret Casts][0106]
 
-        - [17.11.6 Associatives][c624]
+        - [17.11.6 Associatives][35cf]
 
-        - [17.11.7 Reducers][6c6de]
+        - [17.11.7 Reducers][41aa]
 
-        - [17.11.8 Rounding][45ed]
+        - [17.11.8 Rounding][9671]
 
-        - [17.11.9 Comparisons][ef38]
+        - [17.11.9 Comparisons][1f5b]
 
-        - [17.11.10 Conditionals][0157]
+        - [17.11.10 Conditionals][ef5a]
 
-        - [17.11.11 Loads and Stores][38d2]
+        - [17.11.11 Loads and Stores][cf07]
 
-        - [17.11.12 Specialized Scalar Operations][554f]
+        - [17.11.12 Specialized Scalar Operations][a35b]
 
-        - [17.11.13 Instruction Set Dispatch][65f6]
+        - [17.11.13 Instruction Set Dispatch][f6bc]
 
 - [18 Deprecation][c297]
 
@@ -687,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.153-24fc986`, generated *2026-11-11 02:20:55*. See
+The output is for SBCL version `2.6.10.162-fe98395`, generated *2026-11-11 09:57:38*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1057,11 +1063,159 @@ The following is a list is build option with the default value and
 whether they are retained in [`cl:*features*`][6234] in the built SBCL in
 parentheses.
 
+- `:ansi-compliant-load-truename` (on)
+
+    `clhs` says that [`*load-truename*`][d234] has to be bound whenever
+    [`*load-pathname*`][a11d] is because obviously the spec wanted to mandate that
+     one system call turn into an unlimited number. At least you're
+     correct in saying "it's not my code, it's the OS that's slow".
+     Remove this feature if you want to ignore the technical requirement
+     that `*load-truename*` be a variable (as opposed to a symbol-macro).
+
+- `:aslr` (off)
+
+    Allow Lisp spaces to be randomly allocated anywhere in virtual address
+    space, i.e. the behavior of passing `mmap` an address of zero.
+    Requires all spaces to be relocatable on start-up.
+
+- `:compact-instance-header` (dynamic)
+
+    Combine the layout pointer, instance-length, and widetag of
+    an `instance` into a single machine word. This represents a space
+    saving of anywhere from 4% to 8% in typical applications. (Your
+    mileage may vary.)
+
+    Needs `:immobile-space`. Enabled by default on x86-64 if `:immobile-space`.
+
+- `:cycle-counter` (off)
+
+    Enabled automatically by `make-config.sh` for platforms which
+    implement the `%read-cycle-counter` VOP. Can be disabled manually:
+    affects [`time`][9427].
+
+- `:immobile-code` (dynamic)
+
+    Allocate most functions in the immobile space.
+    Needs `:immobile-space`. Enabled by default if `:immobile-space`.
+
+    The down-side of this feature is that the allocator is significantly
+    slower than the allocator for movable code. If a particular
+    application is performance-constrained by speed of creation of
+    compiled functions (not including closures), the feature can be
+    disabled.
+
+- `:immobile-space` (off)
+
+    Build with support for an additional dynamic heap differing from
+    the main dynamic heap in two ways:
+
+    1. It is guaranteed to reside below 4GB so that all pointers into it
+       fit in 32 bits. (Only an issue for >32 bit address space)
+
+    2. All objects therein are immovable, and space is reclaimed by a
+       mark-and-sweep collector.
+
+    That combination of aspects potentially allows various efficiencies
+    in code generation, especially for the x86-64 backend. The extra
+    space has a fixed size which can only be changed by a rebuild, and
+    out-of-space conditions are not easily preventable, so the space is
+    sized rather generously to sidestep the issue. Additionally, it is
+    assumed that for all objects in the immobile heap, speed of
+    allocation of those objects is relatively unimportant. If unexpected
+    performance regressions are observed, consider disabling this
+    feature and reporting a bug.
+
+- `:largefile` (off)
+
+    Some platforms don't use a 32-bit `off_t` by default, and thus can't
+    handle files larger than 2GB. This feature will control whether
+    we'll try to use platform-specific compilation options to enable a
+    64-bit `off_t`. The intent is for this feature to be automatically
+    enabled by `make-config.sh` on platforms where it's needed and known
+    to work, you shouldn't be enabling it manually. You might however
+    want to disable it, if you need to pass file descriptors to foreign
+    code that uses a 32-bit `off_t`.
+
+- `:relocatable-static-space` (off)
+
+    Allow static space to be relocatable on start-up.
+
+- `:sb-after-xc-core` (off)
+
+    This isn't really a target Lisp feature at all but controls
+    whether the build process produces an `after-xc.core` file. This can
+    be useful for shortening the edit/compile/debug cycle when you
+    modify SBCL's own source code, as in `slam.sh`. Otherwise you don't
+    need it.
+
+- `:sb-core-compression` (off, in [`*features*`][6234])
+
+    Support zstd-based compressed core files. Enable this feature to
+    compile it in. Obviously, doing so adds a dependency on zstd.
+
+- `:sb-cover-for-internals` (off)
+
+    Build the SBCL system itself with code coverage data marks (and
+    sequences in the compiled code to set those marks). Inevitably,
+    this makes the system as a whole slower, but allows coverage of
+    tests to be measured.
+
 - `:sb-doc` (on)
 
     Retain documentation strings found in the system sources in the
     target SBCL executable. Traditional Common Lisp folk will want this
     option set.
+
+- `:sb-dyncount` (off)
+
+    Enable code for collecting statistics on usage of various
+    operations, useful for performance tuning of the SBCL system itself.
+    This code is probably pretty stale (having not been tested since the
+    fork from base CMUCL) but might nonetheless be a useful starting
+    point for anyone who wants to collect such statistics in the future.
+
+- `:sb-eval` (on)
+
+    Support for a full evaluator that can execute all the CL special
+    forms, as opposed to the traditional SBCL evaluator, which called
+    [`compile`][8c75] for everything complicated. See [Interpreter][2e79].
+
+- `:sb-fasteval` (off)
+
+    Support for a different evaluator (interpreter) with improved
+    performance. You can have only one of `:sb-eval` [`and`][94b8] `:sb-fasteval`. See
+    [Interpreter][2e79].
+
+- `:sb-futex` (dynamic)
+
+    Use `futex`es as our locking primitive for lower-overhead
+    synchronization. Available on Linux, FreeBSD, OpenBSD, Darwin ARM64,
+    and Windows under various names.
+
+- `:sb-ldb` (on, in `*features*`)
+
+    Enable the [LDB][3b91], the low-level debugger. In the ideal world you
+    would not need this unless you are messing with SBCL at a very low
+    level (e.g. trying to diagnose GC problems, or trying to debug
+    assembly code for a port to a new CPU). However, experience shows
+    that sooner or later everyone `lose()`s, in which case `sb-ldb` can
+    at least provide an informative backtrace.
+
+- `:sb-package-locks` (on, in `*features*`)
+
+    Enable detection of unportable code (when applied to the
+    `common-lisp` package or SBCL-internal packages) or bad-neighbourly
+    code (when applied to user-level packages), relating to material
+    alteration to packages or to bindings in symbols in packages. See
+    [Package Locks][5746].
+
+- `:sb-safepoint` (dynamic, in `*features*`)
+
+    On certain thread-enabled platforms, synchronization between
+    threads for the purpose of stopping and starting the world around GC
+    can be performed using safepoints instead of signals. Enable this
+    feature to compile with safepoints and to use them for GC. This is
+    always enabled on `:win32`. Not enabled elsewhere by default.
 
 - `:sb-show` (off)
 
@@ -1094,121 +1248,15 @@ parentheses.
     therefore, be sure to keep the sources around, and run with the
     readtable configured so that the system sources can be read.
 
-- `:sb-ldb` (on, in [`*features*`][6234])
-
-    Enable the [LDB][3b91], the low-level debugger. In the ideal world you
-    would not need this unless you are messing with SBCL at a very low
-    level (e.g. trying to diagnose GC problems, or trying to debug
-    assembly code for a port to a new CPU). However, experience shows
-    that sooner or later everyone `lose()`s, in which case `sb-ldb` can
-    at least provide an informative backtrace.
-
-- `:sb-after-xc-core` (off)
-
-    This isn't really a target Lisp feature at all but controls
-    whether the build process produces an `after-xc.core` file. This can
-    be useful for shortening the edit/compile/debug cycle when you
-    modify SBCL's own source code, as in `slam.sh`. Otherwise you don't
-    need it.
-
 - `:sb-show-assem` (off)
 
     Enable extra debugging output in the `assem.lisp` assembler /
     scheduler code.
 
-- `:sb-dyncount` (off)
-
-    Enable code for collecting statistics on usage of various
-    operations, useful for performance tuning of the SBCL system itself.
-    This code is probably pretty stale (having not been tested since the
-    fork from base CMUCL) but might nonetheless be a useful starting
-    point for anyone who wants to collect such statistics in the future.
-
 - `:sb-simd-pack` (off)
 
     Enabled automatically by `make-config.sh` for platforms which
     implement short vector SIMD intrinsics.
-
-- `:cycle-counter` (off)
-
-    Enabled automatically by `make-config.sh` for platforms which
-    implement the `%read-cycle-counter` VOP. Can be disabled manually:
-    affects [`time`][9427].
-
-- `:immobile-space` (off)
-
-    Build with support for an additional dynamic heap differing from
-    the main dynamic heap in two ways:
-
-    1. It is guaranteed to reside below 4GB so that all pointers into it
-       fit in 32 bits. (Only an issue for >32 bit address space)
-
-    2. All objects therein are immovable, and space is reclaimed by a
-       mark-and-sweep collector.
-
-    That combination of aspects potentially allows various efficiencies
-    in code generation, especially for the x86-64 backend. The extra
-    space has a fixed size which can only be changed by a rebuild, and
-    out-of-space conditions are not easily preventable, so the space is
-    sized rather generously to sidestep the issue. Additionally, it is
-    assumed that for all objects in the immobile heap, speed of
-    allocation of those objects is relatively unimportant. If unexpected
-    performance regressions are observed, consider disabling this
-    feature and reporting a bug.
-
-- `:immobile-code` (off)
-
-    Allocate most functions in the immobile space.
-    Enabled by default if supported. The down-side of this feature is
-    that the allocator is significantly slower than the allocator for
-    movable code. If a particular application is performance-constrained
-    by speed of creation of compiled functions (not including closures),
-    the feature can be disabled.
-
-- `:compact-instance-header` (off)
-
-    Combine the layout pointer, instance-length, and widetag of
-    an `instance` into a single machine word. This represents a space
-    savings of anywhere from 4% to 8% in typical applications. (Your
-    mileage may vary.)
-
-- `:sb-thread` (dynamic, in `*features*`)
-
-    Enable low-level thread primitives support. See [Threading][6ec7].
-
-    As of SBCL 2.6.9, threads are part of the default build on x86oid
-    Linux, Darwin, and Windows. In fact, threads are mandatory on
-    Windows. Other platforms that support them include FreeBSD, Solaris.
-
-- `:sb-futex` (off)
-
-    Use `futex`es as our locking primitive. Only available on Linux.
-
-- `:sb-package-locks` (on, in `*features*`)
-
-    Enable detection of unportable code (when applied to the
-    `common-lisp` package or SBCL-internal packages) or bad-neighbourly
-    code (when applied to user-level packages), relating to material
-    alteration to packages or to bindings in symbols in packages. See
-    [Package Locks][5746].
-
-- `:sb-unicode` (on, in `*features*`)
-
-    Support for the entirety of the 21-bit character space defined by
-    the Unicode consortium, rather than the classical 8-bit ISO-8859-1
-    character set. See [Unicode Support][cecd].
-
-- `:sb-eval` (on)
-
-    Support for a full evaluator that can execute all the CL special
-    forms, as opposed to the traditional SBCL evaluator, which called
-    [`compile`][8c75] for everything complicated. See [Interpreter][2e79].
-
-- `:sb-fasteval` (off)
-
-    Support for a different evaluator (interpreter) with improved
-    performance. You can have only one of `:sb-eval` [`and`][94b8] `:sb-fasteval`. See
-    [Interpreter][2e79].
 
 - `:sb-source-locations` (on)
 
@@ -1216,62 +1264,31 @@ parentheses.
     conditions, packages, etc. Gives much better information on
     `M-.` in Slime but increases core size by about 100kB.
 
+- `:sb-thread` (dynamic, in `*features*`)
+
+    Enable low-level thread primitives support. See [Threading][6ec7]
+    for the list of supported platforms.
+
+    Threads are on by default on
+
+    - x86 / x86-64 Linux, Darwin, and Windows,
+
+    - ARM64, RISC-V, and LoongArch64.
+
+    In fact, threads are mandatory on Windows.
+
+- `:sb-unicode` (on, in `*features*`)
+
+    Support for the entirety of the 21-bit character space defined by
+    the Unicode consortium, rather than the classical 8-bit ISO-8859-1
+    character set. See [Unicode Support][cecd].
+
 - `:sb-xref-for-internals` (off)
 
     Record xref data for SBCL internals. This can be rather useful for
     people who want to develop on SBCL itself because it will make
-    `M-?` (`slime-edit-uses`) work which lists call/expansion/etc.
+    `M-?` (`slime-edit-uses`) work, which lists call/expansion/etc.
     sites. It will increase the core size by major 5-6MB, though.
-
-- `:ansi-compliant-load-truename` (on)
-
-    `clhs` says that [`*load-truename*`][d234] has to be bound whenever
-    [`*load-pathname*`][a11d] is because obviously the spec wanted to mandate that
-     one system call turn into an unlimited number. At least you're
-     correct in saying "it's not my code, it's the OS that's slow".
-     Remove this feature if you want to ignore the technical requirement
-     that `*load-truename*` be a variable (as opposed to a symbol-macro).
-
-- `:largefile` (off)
-
-    Some platforms don't use a 32-bit `off_t` by default, and thus can't
-    handle files larger than 2GB. This feature will control whether
-    we'll try to use platform-specific compilation options to enable a
-    64-bit `off_t`. The intent is for this feature to be automatically
-    enabled by `make-config.sh` on platforms where it's needed and known
-    to work, you shouldn't be enabling it manually. You might however
-    want to disable it, if you need to pass file descriptors to foreign
-    code that uses a 32-bit `off_t`.
-
-- `:relocatable-static-space` (off)
-
-    Allow static space to be relocatable on start-up.
-
-- `:aslr` (off)
-
-    Allow Lisp spaces to be randomly allocated anywhere in virtual address
-    space, i.e. the behavior of passing `mmap` an address of zero.
-    Requires all spaces to be relocatable on start-up.
-
-- `:sb-core-compression` (off, in `*features*`)
-
-    Support zstd-based compressed core files. Enable this feature to
-    compile it in. Obviously, doing so adds a dependency on zstd.
-
-- `:sb-safepoint` (dynamic, in `*features*`)
-
-    On certain thread-enabled platforms, synchronization between
-    threads for the purpose of stopping and starting the world around GC
-    can be performed using safepoints instead of signals. Enable this
-    feature to compile with safepoints and to use them for GC. This is
-    always enabled on `:win32`. Not enabled elsewhere by default.
-
-- `:sb-cover-for-internals` (off)
-
-    Build the SBCL system itself with code coverage data marks (and
-    sequences in the compiled code to set those marks). Inevitably,
-    this makes the system as a whole slower, but allows coverage of
-    tests to be measured.
 
 <a id="x-28SB-MANUAL-3A-40TROUBLESHOOTING-THE-BUILD-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TROUBLESHOOTING-THE-BUILD%20MGL-PAX:SECTION"></a>
@@ -1669,8 +1686,9 @@ they were intended for the runtime system or the Lisp system.
 
 - `--tls-limit <positive integer>`
 
-    Maximum number of thread-local [Special Variables][a8ca] in threaded
-    builds. Default value is 4096.
+    Maximum number of thread-local special variables (see
+    [Special Variables in Threads][2b10]) in threaded builds. Default value
+    is 4096.
 
 - `--noinform`
 
@@ -1694,7 +1712,9 @@ they were intended for the runtime system or the Lisp system.
     to continue and handle the error in Lisp. However, this will not
     always work, and SBCL may subsequently malfunction or even hang.
     With this option, upon encountering such an error, SBCL will
-    exit instead of signalling a Lisp error.
+    instead attempt to enter [LDB][3b91] (and exit if LDB is not
+    available). See also [Default Signal Handlers][ffa6] and
+    [Foreign Threads][7f6c].
 
 - `--script <filename>`
 
@@ -1733,7 +1753,7 @@ they were intended for the runtime system or the Lisp system.
     End processing of runtime options and pass the rest of the
     command-line arguments to the toplevel function.
 
-In the future, runtime options may be added to control behaviour
+In the future, runtime options may be added to control behavior
 such as lazy allocation of memory.
 
 <a id="x-28SB-MANUAL-3A-40TOPLEVEL-OPTIONS-20MGL-PAX-3ASECTION-29"></a>
@@ -2987,7 +3007,7 @@ All qualities take values of type `(integer 0 3)`. The default for
 all qualities is `1`. Whenever qualities are equal, ties are broken
 according to a broad idea of what a good default environment is
 supposed to be. Generally this downplays `speed`, `compilation-speed`
-and `space` in favour of `safety` and `debug`. Novice and casual users
+and `space` in favor of `safety` and `debug`. Novice and casual users
 should stick to the default policy. Advanced users often want to
 improve speed and memory usage at the cost of safety and
 debuggability.
@@ -3167,7 +3187,7 @@ character position and gives up on the entire source file.
 Since Common Lisp forbids the redefinition of standard functions, the
 compiler can have special knowledge of these standard functions
 embedded in it. This special knowledge is used in various ways (open
-coding, [Inline Expansion][2ccb], source transformation), but the
+coding, [Inline Expansion][2ccb], [Source Optimization][8459]), but the
 implications to the user are basically the same:
 
 - Attempts to redefine standard functions may be frustrated since
@@ -3246,24 +3266,6 @@ is not safer or more debuggable than compiled code.
     to `:interpret`, an interpreter will be used. `:interpret` is a valid
     value only if SBCL has been compiled with either the `sb-eval` or the
     `sb-fasteval` feature.
-
-<a id="x-28SB-MANUAL-3A-40ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS%20MGL-PAX:SECTION"></a>
-
-### 4.8 Advanced Compiler Use and Efficiency Hints
-
-For more advanced usages of the compiler, please see the chapter of the
-same name in the CMUCL manual. Many aspects of the compiler have stayed
-exactly the same, and there is a much more detailed explanation of the
-compiler's behavior and how to maximally optimize code in their
-manual. In particular, while SBCL no longer supports byte-code
-compilation, it does support CMUCL's block compilation facility allowing
-whole program optimization and increased use of the local call
-convention.
-
-Unlike CMUCL, SBCL is able to open-code forward-referenced type
-tests while block compiling. This helps with mutually referential
-[`defstruct`][eac1]s in particular.
 
 <a id="x-28SB-MANUAL-3A-40DEBUGGING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEBUGGING%20MGL-PAX:SECTION"></a>
@@ -3401,7 +3403,7 @@ The debugger can be invoked again within a debugger session
 following the normal rules (see [Debugger Invocation][6031]). In such
 nested debugger sessions, the prompt is `<frame>[<nesting-level>]`.
 
-It is possible to override the normal printing behaviour in the
+It is possible to override the normal printing behavior in the
 debugger by using the [`sb-ext:*debug-print-variable-alist*`][21be].
 
 <a id="x-28SB-EXT-3A-2ADEBUG-PRINT-VARIABLE-ALIST-2A-20VARIABLE-29"></a>
@@ -3412,7 +3414,7 @@ debugger by using the [`sb-ext:*debug-print-variable-alist*`][21be].
     An association list describing new bindings for special variables
     to be used within the debugger. For example,
 
-    (([`*print-length*`][8f7a8] . 10) ([`*print-level*`][215b] . 6) ([`*print-pretty*`][782a] . `nil`))
+        ((*print-length* . 10) (*print-level* . 6) (*print-pretty* . nil))
 
     The variables in the [`car`][d5a2] positions are bound to the values in the [`cdr`][e012]
     during the execution of some debug commands. When the same variable
@@ -4270,11 +4272,11 @@ re-enable them).
 
 - \[function\] **sb-ext:disable-debugger**
 
-    When invoked, this function will turn off both the [Debugger][825d]
-    and [LDB][3b91] (the low-level debugger), similar to specifying
-    `--disable-debugger` (see [Toplevel Options][6be4]) and
-    `--disable-ldb` (see [Runtime Options][3e4d]) on the command line.
-    See also [`enable-debugger`][adab].
+    Turn off both the [Debugger][825d] and [LDB][3b91] (the
+    low-level debugger), similar to specifying `--disable-debugger` (see
+    [Toplevel Options][6be4]) and `--disable-ldb` (see
+    [Runtime Options][3e4d]) on the command line. See also
+    [`enable-debugger`][adab].
 
 <a id="x-28SB-EXT-3AENABLE-DEBUGGER-20FUNCTION-29"></a>
 <a id="SB-EXT:ENABLE-DEBUGGER%20FUNCTION"></a>
@@ -4475,6 +4477,131 @@ in such cases we recommend using `(TRACE FOO :ENCAPSULATE t)`.
 - \[variable\] **sb-debug:\*trace-report-default\*** *trace*
 
     The default value for the `:report` option to [`trace`][548d].
+
+<a id="x-28SB-MANUAL-3A-40BACKTRACES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BACKTRACES%20MGL-PAX:SECTION"></a>
+
+### 5.5 Backtraces
+
+<a id="x-28SB-DEBUG-3AMAP-BACKTRACE-20FUNCTION-29"></a>
+<a id="SB-DEBUG:MAP-BACKTRACE%20FUNCTION"></a>
+
+- \[function\] **sb-debug:map-backtrace** *function \&key (start 0) (from :debugger-frame) (count \*backtrace-frame-count\*)*
+
+    Call the designated `function` with each frame on the call stack.
+    Returns the last value returned by `function`.
+
+    - `start` is the number of the frame the backtrace should start from.
+
+    - `count` is the number of frames to backtrace from `start`.
+
+    - `from` specifies the frame relative to which the frames are numbered.
+      Possible values are an explicit `sb-di:frame` object, and the keywords
+      `:current-frame`, `:interrupted-frame`, and `:debugger-frame`.
+
+        - `:current-frame` specifies the caller of `map-backtrace`.
+
+        - `:interrupted-frame` specifies the first interrupted frame on the
+          stack (typically the frame where the error occurred, as opposed
+          to error handling frames) if any, otherwise behaving as
+          `:current-frame`.
+
+        - `:debugger-frame` specifies the currently debugged frame when
+          inside the debugger, and behaves as `:interrupted-frame` outside
+          the debugger.
+
+<a id="x-28SB-DEBUG-3APRINT-BACKTRACE-20FUNCTION-29"></a>
+<a id="SB-DEBUG:PRINT-BACKTRACE%20FUNCTION"></a>
+
+- \[function\] **sb-debug:print-backtrace** *\&key (stream \*debug-io\*) (start 0) (from :debugger-frame) (count \*backtrace-frame-count\*) (print-thread t) (print-pc \*backtrace-print-pc\*) (argument-limit \*default-argument-limit\*) print-frame-source (method-frame-style \*method-frame-style\*) (emergency-best-effort (> \*debug-command-level\* 1))*
+
+    Print a listing of the call stack to `stream`, defaulting to [`*debug-io*`][10ff].
+
+    `start`, `from` and `count` behave as in [`map-backtrace`][913b].
+
+    - If `print-thread` is true (default), backtrace is preceded by printing
+      the thread object the backtrace is from.
+
+    - If `print-pc` is true (default is false), then the program counter is
+      printed for each frame where it's available.
+
+    - The argument list is truncated at `argument-limit` (default is no
+      truncation).
+
+    - If `print-frame-source` is true (default is false), each frame is
+      followed by printing the currently executing source form in the
+      function responsible for that frame, when available. Requires the
+      function to have been compiled at [`debug`][5df9] 2 or higher. If
+      `print-frame-source` is `:always`, it also reports "no source
+      available" for frames that were compiled at lower debug settings.
+
+    - `method-frame-style` determines how frames corresponding to method
+      functions are printed. Possible values are `:minimal`, `:normal`, and
+      `:full`. See [`*method-frame-style*`][89eb] for more information.
+
+    - If `emergency-best-effort` is true, then try to print as much
+      information as possible while navigating and ignoring possible
+      errors.
+
+<a id="x-28SB-DEBUG-3ALIST-BACKTRACE-20FUNCTION-29"></a>
+<a id="SB-DEBUG:LIST-BACKTRACE%20FUNCTION"></a>
+
+- \[function\] **sb-debug:list-backtrace** *\&key (count \*backtrace-frame-count\*) (argument-limit \*default-argument-limit\*) (start 0) (from :debugger-frame) (method-frame-style \*method-frame-style\*)*
+
+    Return a list describing the call stack. Each frame is represented
+    by a sublist:
+
+        (<name> ...args...)
+
+    where `<name>` describes the function responsible for the frame. The
+    name might not be bound to the actual function object. Unavailable
+    arguments are represented by dummy objects that print as
+    `#<unavailable argument>`. Objects with dynamic-extent allocation by
+    the current thread are represented by substitutes to avoid references
+    to them from leaking outside their legal extent.
+
+    See [`print-backtrace`][c14c] for a description of the arguments.
+
+<a id="x-28SB-DEBUG-3A-2ABACKTRACE-FRAME-COUNT-2A-20VARIABLE-29"></a>
+<a id="SB-DEBUG:*BACKTRACE-FRAME-COUNT*%20VARIABLE"></a>
+
+- \[variable\] **sb-debug:\*backtrace-frame-count\*** *1000*
+
+    Default number of frames to backtrace. Defaults to 1000.
+
+<a id="x-28SB-DEBUG-3A-2AMETHOD-FRAME-STYLE-2A-20VARIABLE-29"></a>
+<a id="SB-DEBUG:*METHOD-FRAME-STYLE*%20VARIABLE"></a>
+
+- \[variable\] **sb-debug:\*method-frame-style\*** *:normal*
+
+    Determine how frames corresponding to method functions are represented
+    in backtraces. Possible values are `:minimal`, `:normal`, and `:full`.
+
+    - `:minimal` represents them as
+
+            (<gf-name> ...args...)
+
+        if all arguments are available, and only a single method is
+        applicable to the arguments -- otherwise behaves as `:normal`.
+
+    - `:normal` represents them as
+
+            ((:method <gf-name> [<qualifier>*] (<specializer>*)) ...args...)
+
+        The frame is then followed by either `[fast-method]` or
+        `[slow-method]`, designating the kind of method function. (See
+        below.)
+
+    - `:full` represents them using the actual funcallable method function name:
+
+            ((sb-pcl:fast-method <gf-name> [<qualifier>*] (<specializer>*)) ...args...)
+
+        or
+
+            ((sb-pcl:slow-method <gf-name> [<qualifier>*] (<specializer>*)) ...args...)
+
+        In this case, arguments may include values internal to SBCL's
+        method dispatch machinery.
 
 <a id="x-28SB-MANUAL-3A-40EFFICIENCY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION"></a>
@@ -6116,9 +6243,13 @@ convenience) they are broken up into many small functions. There is
 absolutely no overhead for calling a non-entry point function that
 is defined purely for modularity (i.e. called only in one place).
 
-Block compilation also allows for more unboxed and [Non-descriptor][820d]
-arguments and return values in non-trivial programs (see
-[Non-descriptors in Local Call][74b3]).
+Block compilation also allows
+
+- for more unboxed and [Non-descriptor][820d] arguments and return values
+  in non-trivial programs (see [Non-descriptors in Local Call][74b3]), and
+
+- open-coding forward-referenced type tests, which helps with
+  mutually referential [`defstruct`][eac1]s in particular.
 
 <a id="x-28SB-MANUAL-3A-40BLOCK-COMPILATION-SEMANTICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION"></a>
@@ -6563,7 +6694,7 @@ of values when they are recognized as having dynamic extent:
 
     > **Warning**: Stack space is limited, so allocation of a large
     > vector may cause stack overflow. Stack overflow checks are
-    > done except in 0 `safety` policies.
+    > done except in `safety` `0` policies.
 
 - closures defined with [`flet`][091c] or [`labels`][c2ef] with a bound [`dynamic-extent`][0901]
   declaration;
@@ -7462,9 +7593,9 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 
 - \[macro\] **sb-ext:defglobal** *name value \&optional doc*
 
-    Defines `name` as a global variable that is always bound. `value` is evaluated
-    and assigned to `name` both at compile- and load-time but only if `name`
-    is not already bound.
+    Define `name` as a global variable that is always bound. `value` is
+    evaluated and assigned to `name` both at compile- and load-time but only
+    if `name` is not already bound.
 
     Global variables share their values between all threads. They cannot
     be locally bound, declared special, defined as constants, or defined
@@ -7939,21 +8070,22 @@ read-time package lock violation, so does `foo::(bar)`.
 
 #### 7.2.2 Symbol Name Normalization
 
-SBCL also extends the reader to normalize all symbols to *Normalization
-Form KC* in builds with Unicode enabled. Whether symbols are
-normalized is controlled by
+In [Unicode builds][9119], SBCL can normalize all symbols
+[`read`][fe58] to `:nfkc` (see [`sb-unicode:normalize-string`][58d6]). This converts
+visually different but semantically identical symbols into a
+canonical format.
 
 <a id="x-28SB-EXT-3AREADTABLE-NORMALIZATION-20FUNCTION-29"></a>
 <a id="SB-EXT:READTABLE-NORMALIZATION%20FUNCTION"></a>
 
 - \[function\] **sb-ext:readtable-normalization** *readtable*
 
-    Returns `t` if `readtable` normalizes symbols to NFKC, and `nil`
-    otherwise. The `readtable-normalization` of the standard readtable is `t`.
+    Return `t` if `readtable` normalizes symbols to NFKC, and `nil` otherwise.
+    This is true by default in Unicode builds. [`setf`][a138]able.
 
-Symbols created by [`intern`][b4f0] and similar functions are not affected by
-this setting. If [`sb-ext:readtable-normalization`][9e48] is `t`, symbols that
-are not normalized are escaped during printing.
+    Symbols created by [`intern`][b4f0] and similar functions are not affected by
+    this setting. If `sb-ext:readtable-normalization` is `t`, symbols that are
+    not normalized are escaped during printing.
 
 <a id="x-28SB-MANUAL-3A-40DECIMAL-SYNTAX-FOR-RATIONALS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DECIMAL-SYNTAX-FOR-RATIONALS%20MGL-PAX:SECTION"></a>
@@ -8021,7 +8153,7 @@ able to refer to the thus hidden `"BAR"` package:
 
 - \[function\] **sb-ext:package-local-nicknames** *package-designator*
 
-    Returns an alist of `(local-nickname . actual-package)` describing the
+    Return an alist of `(local-nickname . actual-package)` describing the
     nicknames local to the designated package.
 
     When in the designated package, calls to [`find-package`][4dc9] with any of the
@@ -8040,7 +8172,7 @@ able to refer to the thus hidden `"BAR"` package:
 
 - \[function\] **sb-ext:package-locally-nicknamed-by-list** *package-designator*
 
-    Returns a list of packages which have a local nickname for the designated
+    Return a list of packages which have a local nickname for the designated
     package.
 
     Experimental: interface subject to change.
@@ -8050,7 +8182,7 @@ able to refer to the thus hidden `"BAR"` package:
 
 - \[function\] **sb-ext:add-package-local-nickname** *local-nickname actual-package \&optional (package-designator (sane-package))*
 
-    Adds `local-nickname` for `actual-package` in the designated package, defaulting
+    Add `local-nickname` for `actual-package` in the designated package, defaulting
     to current package. `local-nickname` must be a string designator, and
     `actual-package` must be a package designator.
 
@@ -8079,7 +8211,7 @@ able to refer to the thus hidden `"BAR"` package:
 - \[function\] **sb-ext:remove-package-local-nickname** *old-nickname \&optional (package-designator (sane-package))*
 
     If the designated package had `old-nickname` as a local nickname for
-    another package, it is removed. Returns true if the nickname existed and was
+    another package, remove it. Returns true if the nickname existed and was
     removed, and `nil` otherwise.
 
     Experimental: interface subject to change.
@@ -8125,10 +8257,23 @@ the following variable.
     specifies to signal a warning if SWANK package is in variance, and an
     error otherwise.
 
+<a id="x-28SB-MANUAL-3A-40RESOLUTION-OF-NAME-CONFLICTS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@RESOLUTION-OF-NAME-CONFLICTS%20MGL-PAX:SECTION"></a>
+
+### 7.5 Resolution of Name Conflicts
+
+`clhs` [`11.1.1.2.5`][5d5b] requires that name conflicts in packages be
+resolvable in favor of any of the conflicting symbols. In the
+interactive debugger, this is achieved by prompting for the symbol
+in whose favor the conflict should be resolved; for programmatic
+use, the `sb-ext:resolve-conflict` restart should be invoked with one
+argument, which should be a member of the list returned by the
+condition accessor `sb-ext:name-conflict-symbols`.
+
 <a id="x-28SB-MANUAL-3A-40GARBAGE-COLLECTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GARBAGE-COLLECTION%20MGL-PAX:SECTION"></a>
 
-### 7.5 Garbage Collection
+### 7.6 Garbage Collection
 
 SBCL provides additional garbage collection functionality not
 specified by ANSI.
@@ -8157,7 +8302,7 @@ specified by ANSI.
 <a id="x-28SB-MANUAL-3A-40FINALIZATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FINALIZATION%20MGL-PAX:SECTION"></a>
 
-#### 7.5.1 Finalization
+#### 7.6.1 Finalization
 
 Finalization allows code to be executed after an object has been
 garbage collected. This is useful for example for releasing foreign
@@ -8233,7 +8378,7 @@ memory associated with a Lisp object.
 <a id="x-28SB-MANUAL-3A-40WEAK-POINTERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@WEAK-POINTERS%20MGL-PAX:SECTION"></a>
 
-#### 7.5.2 Weak Pointers
+#### 7.6.2 Weak Pointers
 
 Weak pointers allow references to objects to be maintained without
 keeping them from being garbage collected: useful for building caches
@@ -8267,13 +8412,13 @@ Hash tables can also have weak keys and values. See
 - \[function\] **sb-ext:weak-pointer-value** *weak-pointer*
 
     If `weak-pointer` is valid, return the value of `weak-pointer` and `t`.
-    If the referent of `weak-pointer` has been garbage collected,
-    returns the values `nil` and `nil`.
+    If the referent of `weak-pointer` has been garbage collected, return the
+    values `nil` and `nil`.
 
-<a id="x-28SB-MANUAL-3A-40INTROSPECTION-AND-TUNING-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40GC-INTROSPECTION-AND-TUNING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@GC-INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION"></a>
 
-#### 7.5.3 Introspection and Tuning
+#### 7.6.3 GC Introspection and Tuning
 
 <a id="x-28SB-EXT-3A-2AGC-RUN-TIME-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*GC-RUN-TIME*%20VARIABLE"></a>
@@ -8299,7 +8444,7 @@ Hash tables can also have weak keys and values. See
 - \[function\] **sb-ext:bytes-consed-between-gcs**
 
     The amount of memory that will be allocated before the next garbage
-    collection is initiated. This can be set with [`setf`][a138].
+    collection is initiated. [`setf`][a138]able.
 
     On GENCGC platforms this is the nursery size, and defaults to 5% of dynamic
     space size.
@@ -8330,7 +8475,7 @@ Hash tables can also have weak keys and values. See
 
 - \[function\] **sb-ext:gc-logfile**
 
-    Return the pathname used to log garbage collections. Can be [`setf`][a138].
+    Return the pathname used to log garbage collections. [`setf`][a138]able.
     Default is `nil`, meaning collections are not logged. If non-null, the
     designated file is opened before and after each collection, and generation
     statistics are appended to it.
@@ -8402,13 +8547,18 @@ Hash tables can also have weak keys and values. See
 
     Experimental: interface subject to change.
 
+<a id="x-28SB-MANUAL-3A-40CONTROLLING-GC-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@CONTROLLING-GC%20MGL-PAX:SECTION"></a>
+
+#### 7.6.4 Controlling GC
+
 <a id="x-28SB-EXT-3APURIFY-20FUNCTION-29"></a>
 <a id="SB-EXT:PURIFY%20FUNCTION"></a>
 
 - \[function\] **sb-ext:purify** *\&key root-structures environment-name*
 
-    This function optimizes garbage collection by moving all currently live
-    objects into non-collected storage. `root-structures` is an optional list of
+    Optimize garbage collection by moving all currently live objects into
+    non-collected storage. `root-structures` is an optional list of
     objects which should be copied first to maximize locality.
 
     [`defstruct`][eac1] structures defined with the (`:pure` `t`) option are moved into
@@ -8420,10 +8570,43 @@ Hash tables can also have weak keys and values. See
     This function is a no-op on platforms using the generational garbage
     collector (x86, x86-64, ppc, arm, arm64).
 
+<a id="x-28SB-SYS-3AWITH-PINNED-OBJECTS-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-SYS:WITH-PINNED-OBJECTS%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-sys:with-pinned-objects** *(\&rest objects) \&body body*
+
+    Arrange with the garbage collector that `object`s will not be moved in memory
+    for the duration of `body`.  Useful for e.g. foreign calls where another thread
+    may trigger garbage collection.
+
+<a id="x-28SB-SYS-3AWITHOUT-GCING-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-SYS:WITHOUT-GCING%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-sys:without-gcing** *\&body body*
+
+    Execute the forms in `body` without doing a garbage collection. It
+    inhibits both automatically and explicitly triggered collections.
+    Finally, upon leaving the `body` if gc is not inhibited it runs the
+    pending gc. Similarly, if gc is triggered in another thread then it
+    waits until gc is enabled in this thread.
+
+    Implies [`sb-sys:without-interrupts`][fb8d] for `body`, and causes any nested
+    [`sb-sys:with-interrupts`][767b] to signal a warning during execution of the
+    `body`.
+
+    Should be used with great care, and not at all in multithreaded
+    application code: Any locks that are ever acquired while [`gc`][b50b] is
+    inhibited need to be always held with `gc` inhibited to prevent
+    deadlocks: if T1 holds the lock and is stopped for `gc` while T2 is
+    waiting for the lock inside `without-gcing` the system will be
+    deadlocked. Since SBCL does not currently document its internal locks,
+    application code can never be certain that this invariant is
+    maintained.
+
 <a id="x-28SB-MANUAL-3A-40TRACING-LIVE-OBJECTS-BACK-TO-ROOTS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TRACING-LIVE-OBJECTS-BACK-TO-ROOTS%20MGL-PAX:SECTION"></a>
 
-#### 7.5.4 Tracing Live Objects Back to Roots
+#### 7.6.5 Tracing Live Objects Back to Roots
 
 This feature is intended to help expert users diagnose rare low-level
 issues and should not be needed during normal usage. On top of that,
@@ -8558,7 +8741,7 @@ path shows the symbol and the three cons cells.
 <a id="x-28SB-MANUAL-3A-40GENERIC-FUNCTION-DISPATCH-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GENERIC-FUNCTION-DISPATCH%20MGL-PAX:SECTION"></a>
 
-### 7.6 Generic Function Dispatch
+### 7.7 Generic Function Dispatch
 
 If a generic function with standard or short method combination is
 called, and the set of applicable methods does not include any
@@ -8572,7 +8755,7 @@ define methods on it.
 <a id="x-28SB-MANUAL-3A-40EXTENDED-SLOT-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTENDED-SLOT-ACCESS%20MGL-PAX:SECTION"></a>
 
-### 7.7 Extended Slot Access
+### 7.8 Extended Slot Access
 
 The slot access functions [`slot-value`][5a85], `(setf slot-value)`,
 [`slot-boundp`][4a9d] and [`slot-makunbound`][e964] are defined to function as expected
@@ -8606,12 +8789,12 @@ For structures:
 <a id="x-28SB-MANUAL-3A-40METAOBJECT-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@METAOBJECT-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-### 7.8 Metaobject Protocol
+### 7.9 Metaobject Protocol
 
 <a id="x-28SB-MANUAL-3A-40AMOP-COMPATIBILITY-OF-METAOBJECT-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@AMOP-COMPATIBILITY-OF-METAOBJECT-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-#### 7.8.1 AMOP Compatibility of Metaobject Protocol
+#### 7.9.1 AMOP Compatibility of Metaobject Protocol
 
 SBCL supports a metaobject protocol which is intended to be compatible
 with AMOP; present exceptions to this (as distinct from current bugs)
@@ -8721,7 +8904,7 @@ are:
 
     This is consistent with the description `sb-mop:ensure-class` in
     AMOP as the functional version of [`defclass`][ead6], which has this
-    behaviour; however, it is not consistent with the weaker
+    behavior; however, it is not consistent with the weaker
     requirement in AMOP, which states that any class found by
     [`find-class`][51fe], no matter what its [`class-name`][03fa], is
     redefined.
@@ -8772,7 +8955,7 @@ are:
 <a id="x-28SB-MANUAL-3A-40METAOBJECT-PROTOCOL-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@METAOBJECT-PROTOCOL-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
-#### 7.8.2 Metaobject Protocol Extensions
+#### 7.9.2 Metaobject Protocol Extensions
 
 In addition, SBCL supports extensions to the Metaobject protocol from
 AMOP; at present, they are:
@@ -8808,7 +8991,7 @@ AMOP; at present, they are:
 <a id="x-28SB-MANUAL-3A-40EXTENSIBLE-SEQUENCES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXTENSIBLE-SEQUENCES%20MGL-PAX:SECTION"></a>
 
-### 7.9 Extensible Sequences
+### 7.10 Extensible Sequences
 
 ANSI Common Lisp has a class [`sequence`][ae23] with subclasses [`list`][9271] and
 [`vector`][64b3], on which the sequence functions like [`find`][4e46], [`subseq`][4a86], etc.
@@ -8843,7 +9026,7 @@ functions:
 
 - \[generic-function\] **sb-sequence:length** *sequence*
 
-    Returns the length of `sequence` or signals a
+    Return the length of `sequence` or signals a
     [`sequence:protocol-unimplemented`][460c] error if the sequence protocol is
     not implemented for the class of `sequence`.
 
@@ -8852,7 +9035,7 @@ functions:
 
 - \[generic-function\] **sb-sequence:elt** *sequence index*
 
-    Returns the element at position `index` of `sequence` or signals a
+    Return the element at position `index` of `sequence` or signals a
     [`sequence:protocol-unimplemented`][460c] error if the sequence protocol is
     not implemented for the class of `sequence`.
 
@@ -8861,8 +9044,8 @@ functions:
 
 - \[setf-generic-function\] **sb-sequence:elt** *new-value sequence index*
 
-    Replaces the element at position `index` of `sequence` with `new-value`
-    and returns `new-value` or signals a [`sequence:protocol-unimplemented`][460c]
+    Replace the element at position `index` of `sequence` with `new-value`
+    and return `new-value` or signal a [`sequence:protocol-unimplemented`][460c]
     error if the sequence protocol is not implemented for the class of
     `sequence`.
 
@@ -8871,7 +9054,7 @@ functions:
 
 - \[generic-function\] **sb-sequence:adjust-sequence** *sequence length \&key initial-element initial-contents*
 
-    Returns destructively modified `sequence` or a freshly allocated
+    Return destructively modified `sequence` or a freshly allocated
     sequence of the same class as `sequence` of length `length`. Elements
     of the returned sequence are initialized to `initial-element`, if
     supplied, initialized to `initial-contents` if supplied, or identical
@@ -8884,7 +9067,7 @@ functions:
 
 - \[generic-function\] **sb-sequence:make-sequence-like** *sequence length \&key initial-element initial-contents*
 
-    Returns a freshly allocated sequence of length `length` and of the
+    Return a freshly allocated sequence of length `length` and of the
     same class as `sequence`. Elements of the new sequence are
     initialized to `initial-element`, if supplied, initialized to
     `initial-contents` if supplied, or undefined if neither is supplied.
@@ -8909,7 +9092,7 @@ to instances of that class signals the following condition:
 
 - \[condition\] **sb-sequence:protocol-unimplemented** *[type-error][abfd] sb-int:reference-condition*
 
-    This error is signaled if a sequence operation is applied to an
+    Signaled if a sequence operation is applied to an
     instance of a sequence class that does not support the
     operation.
 
@@ -8941,7 +9124,7 @@ There are some noteworthy irregularities:
 
 - \[generic-function\] **sb-sequence:emptyp** *sequence*
 
-    Returns `t` if `sequence` is an empty sequence and `nil`
+    Return `t` if `sequence` is an empty sequence and `nil`
     otherwise. Signals an error if `sequence` is not a sequence.
 
 <a id="x-28SB-SEQUENCE-3ADOSEQUENCE-20MGL-PAX-3AMACRO-29"></a>
@@ -8949,7 +9132,7 @@ There are some noteworthy irregularities:
 
 - \[macro\] **sb-sequence:dosequence** *(element sequence \&optional return) \&body body*
 
-    Executes `body` with `element` subsequently bound to each element of
+    Execute `body` with `element` subsequently bound to each element of
     `sequence`, then returns `return`.
 
 The remaining list parallels the *Sequence Dictionary*, see
@@ -9196,7 +9379,7 @@ Removing duplicates:
 <a id="x-28SB-MANUAL-3A-40EXSEQ-ITERATOR-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXSEQ-ITERATOR-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-#### 7.9.1 Iterator Protocol
+#### 7.10.1 Iterator Protocol
 
 The general iterator protocol allows subsequently accessing some or
 all elements of a sequence in forward or reverse direction. Users
@@ -9214,7 +9397,7 @@ An iterator is created by calling:
 
 - \[generic-function\] **sb-sequence:make-sequence-iterator** *sequence \&key from-end start end*
 
-    Returns a sequence iterator for `sequence` or, if `start` and/or `end`
+    Return a sequence iterator for `sequence` or, if `start` and/or `end`
     are supplied, the subsequence bounded by `start` and `end` as nine
     values:
 
@@ -9256,7 +9439,7 @@ iterators:
 
 - \[macro\] **sb-sequence:with-sequence-iterator** *(\&optional iterator limit from-end-p step endp element set-element index copy) (sequence \&key from-end (start 0) end) \&body body*
 
-    Executes `body` with the elements of `vars` bound to the iteration
+    Execute `body` with the elements of `vars` bound to the iteration
     state returned by [`sequence:make-sequence-iterator`][3ae3] for `sequence` and
     `args`. Elements of `vars` may be `nil` in which case the corresponding
     value returned by `sequence:make-sequence-iterator` is ignored.
@@ -9266,7 +9449,7 @@ iterators:
 
 - \[macro\] **sb-sequence:with-sequence-iterator-functions** *(\&optional step endp elt setf index copy) (sequence \&rest args \&key from-end start end) \&body body*
 
-    Executes `body` with the names `step`, `endp`, `elt`, `setf`, `index` and `copy`
+    Execute `body` with the names `step`, `endp`, `elt`, `setf`, `index` and `copy`
     bound to local functions which execute the iteration state query and
     mutation functions returned by [`sequence:make-sequence-iterator`][3ae3] for
     `sequence` and `args`. When some names are not supplied or `nil` is supplied
@@ -9277,7 +9460,7 @@ iterators:
 <a id="x-28SB-MANUAL-3A-40EXSEQ-SIMPLE-ITERATOR-PROTOCOL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EXSEQ-SIMPLE-ITERATOR-PROTOCOL%20MGL-PAX:SECTION"></a>
 
-#### 7.9.2 Simple Iterator Protocol
+#### 7.10.2 Simple Iterator Protocol
 
 For cases in which the full flexibility and performance of the general
 sequence iterator protocol is not required, there is a simplified
@@ -9289,7 +9472,7 @@ can be specialized for iterator classes:
 
 - \[generic-function\] **sb-sequence:iterator-step** *sequence iterator from-end*
 
-    Moves `iterator` one position forward or backward in `sequence`
+    Move `iterator` one position forward or backward in `sequence`
     depending on the iteration direction encoded in `from-end`.
 
 <a id="x-28SB-SEQUENCE-3AITERATOR-ENDP-20GENERIC-FUNCTION-29"></a>
@@ -9297,7 +9480,7 @@ can be specialized for iterator classes:
 
 - \[generic-function\] **sb-sequence:iterator-endp** *sequence iterator limit from-end*
 
-    Returns non-`nil` when `iterator` has reached `limit` (which may
+    Return non-`nil` when `iterator` has reached `limit` (which may
     correspond to the end of `sequence`) with respect to the iteration
     direction encoded in `from-end`.
 
@@ -9306,7 +9489,7 @@ can be specialized for iterator classes:
 
 - \[generic-function\] **sb-sequence:iterator-element** *sequence iterator*
 
-    Returns the element of `sequence` associated to the position of
+    Return the element of `sequence` associated to the position of
     `iterator`.
 
 <a id="x-28SB-SEQUENCE-3AITERATOR-ELEMENT-20DREF-3ASETF-GENERIC-FUNCTION-29"></a>
@@ -9322,14 +9505,14 @@ can be specialized for iterator classes:
 
 - \[generic-function\] **sb-sequence:iterator-index** *sequence iterator*
 
-    Returns the position of `iterator` in `sequence`.
+    Return the position of `iterator` in `sequence`.
 
 <a id="x-28SB-SEQUENCE-3AITERATOR-COPY-20GENERIC-FUNCTION-29"></a>
 <a id="SB-SEQUENCE:ITERATOR-COPY%20GENERIC-FUNCTION"></a>
 
 - \[generic-function\] **sb-sequence:iterator-copy** *sequence iterator*
 
-    Returns a copy of `iterator` which also traverses `sequence` but can
+    Return a copy of `iterator` which also traverses `sequence` but can
     be mutated independently of `iterator`.
 
 Iterator objects implementing the above simple iteration protocol are
@@ -9340,7 +9523,7 @@ created by calling the following generic function:
 
 - \[generic-function\] **sb-sequence:make-simple-sequence-iterator** *sequence \&key from-end start end*
 
-    Returns a sequence iterator for `sequence`, `start`, `end` and `from-end`
+    Return a sequence iterator for `sequence`, `start`, `end` and `from-end`
     as three values:
 
     1. iterator state
@@ -9355,7 +9538,7 @@ created by calling the following generic function:
 <a id="x-28SB-MANUAL-3A-40UNIX-SUPPORT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNIX-SUPPORT%20MGL-PAX:SECTION"></a>
 
-### 7.10 Unix Support
+### 7.11 Unix Support
 
 <a id="x-28SB-EXT-3A-2APOSIX-ARGV-2A-20VARIABLE-29"></a>
 <a id="SB-EXT:*POSIX-ARGV*%20VARIABLE"></a>
@@ -9381,14 +9564,14 @@ created by calling the following generic function:
 
 - \[function\] **sb-ext:posix-environ**
 
-    Return the Unix environment as a list of [`simple-string`][ea6c]s. See `man environ`.
+    Return the Unix environment as a list of [`simple-string`][ea6c]s. See `environ(7)`.
 
 <a id="x-28SB-EXT-3AEXIT-20FUNCTION-29"></a>
 <a id="SB-EXT:EXIT%20FUNCTION"></a>
 
 - \[function\] **sb-ext:exit** *\&key code abort (timeout \*exit-timeout\*)*
 
-    Terminates the process, causing SBCL to exit with `code`. `code`
+    Terminate the OS process, causing SBCL to exit with `code`. `code`
     defaults to 0 when `abort` is false, and 1 when it is true.
 
     When `abort` is false (the default), current thread is first unwound,
@@ -9428,7 +9611,7 @@ created by calling the following generic function:
 <a id="x-28SB-MANUAL-3A-40RUNNING-EXTERNAL-PROGRAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION"></a>
 
-#### 7.10.1 Running External Programs
+#### 7.11.1 Running External Programs
 
 External programs can be run with [`sb-ext:run-program`][e0d4].
 
@@ -9449,7 +9632,7 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
 
 - \[function\] **sb-ext:run-program** *program args \&key env environment (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn*
 
-    `run-program` creates a new process specified by `program`.
+    Create a new OS process specified by `program`.
     `args` is a list of strings to be passed literally to the new program.
     In POSIX environments, this list becomes the array supplied as the second
     parameter to the execv() or execvp() system call, each list element becoming
@@ -9482,7 +9665,7 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
     - `:environment`
 
         A list of [`string`][68cc]s describing the new Unix environment
-        (as in "man environ"). The default is to copy the environment of
+        (see `environ(7)`). The default is to copy the environment of
         the current process.
 
     - `:env`
@@ -9705,10 +9888,219 @@ processes:
     Returns `t` if successful, otherwise returns `nil` and error
     number (two values).
 
+<a id="x-28SB-MANUAL-3A-40SIGNAL-HANDLING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SIGNAL-HANDLING%20MGL-PAX:SECTION"></a>
+
+#### 7.11.2 Signal Handling
+
+<a id="x-28SB-SYS-3AWITHOUT-INTERRUPTS-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-SYS:WITHOUT-INTERRUPTS%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-sys:without-interrupts** *\&body body*
+
+    Execute `body` with all deferrable interrupts disabled. Deferrable
+    interrupts arriving during execution of the `body` take effect after
+    `body` has been executed. Deferrable interrupts include most blockable
+    POSIX signals, and [`sb-thread:interrupt-thread`][9867].
+
+    This macro does not interfere with garbage collection, and unlike in
+    many traditional Lisps using userspace threads, in SBCL
+    `without-interrupts` does not inhibit scheduling of other threads.
+
+    The local macros `allow-with-interrupts` and `with-local-interrupts` are
+    available in `body`.
+
+    - `allow-with-interrupts` allows [`with-interrupts`][767b] to take effect during
+      the dynamic scope of its body, unless there is an outer
+      `without-interrupts` without a corresponding `allow-with-interrupts`.
+
+    - `with-local-interrupts` executes its body with interrupts enabled
+      provided that there is an `allow-with-interrupts` for every
+      `without-interrupts` surrounding the current one.
+      `with-local-interrupts` is equivalent to:
+
+            (allow-with-interrupts (with-interrupts ...))
+
+    Care must be taken not to let either `allow-with-interrupts` or
+    `with-local-interrupts` appear in a function that escapes from inside
+    the `without-interrupts` in:
+
+        (without-interrupts
+          ;; The body of the lambda would be executed with WITH-INTERRUPTS allowed
+          ;; regardless of the interrupt policy in effect when it is called.
+          (lambda () (allow-with-interrupts ...)))
+        
+        (without-interrupts
+          ;; The body of the lambda would be executed with interrupts enabled
+          ;; regardless of the interrupt policy in effect when it is called.
+          (lambda () (with-local-interrupts ...)))
+
+<a id="x-28SB-SYS-3AWITH-INTERRUPTS-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-SYS:WITH-INTERRUPTS%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-sys:with-interrupts** *\&body body*
+
+    Execute `body` with deferrable interrupts conditionally enabled. If there
+    are pending interrupts they take effect prior to executing `body`.
+
+    As interrupts are normally allowed `with-interrupts` only makes sense if there
+    is an outer [`without-interrupts`][fb8d] with a corresponding `allow-with-interrupts`:
+    interrupts are not enabled if any outer `without-interrupts` is not accompanied
+    by `allow-with-interrupts`.
+
+<a id="x-28SB-SYS-3AENABLE-INTERRUPT-20FUNCTION-29"></a>
+<a id="SB-SYS:ENABLE-INTERRUPT%20FUNCTION"></a>
+
+- \[function\] **sb-sys:enable-interrupt** *signum handler*
+
+    Set the Unix signal `handler` for `signum`. This applies to all threads in
+    the SBCL process.
+
+    - `signum` is a signal number. Use the constants `sb-posix:sigint`,
+      `sb-posix:sighup` and others.
+
+    - `handler` is a function, `:default` or `:ignore`.
+
+        - When `handler` is a function, it takes three arguments,
+        paralleling those of `sigaction.sa_sigaction` (see
+        `sigaction(2)`).
+
+                  (sb-sys:enable-interrupt
+                    :sighup (lambda (signal siginfo-sap context-sap)
+                              (declare (ignore signal siginfo-sap context-sap))
+                              (setq *sighup-received* t)))
+
+        - To reset the handler of `sighup`:
+
+                  (sb-sys:enable-interrupt :sighup :default)
+
+        - To ignore `sigint`:
+
+                  (sb-sys:enable-interrupt :sigint :ignore)
+
+    > *Warning*: See `signal-safety(7)` for restrictions on what signal
+    > handlers are allowed to do, which is not a whole lot in practice.
+    > A simple and safe way is to set a flag, as in the above example,
+    > and check periodically in some application loop.
+
+<a id="x-28SB-MANUAL-3A-40DEFAULT-SIGNAL-HANDLERS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEFAULT-SIGNAL-HANDLERS%20MGL-PAX:SECTION"></a>
+
+##### Default Signal Handlers
+
+SBCL establishes the following signal handlers:
+
+- `SIGINT`: [`signal`][8f49]s an [`sb-sys:interactive-interrupt`][b914] (in
+  `sb-thread::foreground-thread` with [Threading][6ec7]). If that condition
+  is not handled, it enters the [Debugger][825d] respecting
+  [`*debugger-hook*`][1cdc].
+
+- `SIGPIPE`: Ignored.
+
+- `SIGTERM`: Calls `(sb-ext:exit)`.
+
+- `SIGFPE`: Signals the standard [`floating-point-overflow`][8c02],
+  [`floating-point-underflow`][7f21], [`floating-point-inexact`][de46], [`division-by-zero`][5b72]
+  conditions based on the execution context, or
+  `sb-kernel:floating-point-exception` if the appropriate condition
+  could not be determined.
+
+- `SIGALRM`: Checks for expired [Timers][5a9f].
+
+- `SIGURG`: Handles interruptions by [`sb-thread:interrupt-thread`][9867]
+  unless `:sb-safepoint` is enabled (see [Build Options][9119]).
+
+- `SIGCHLD`: Handles child status changes for [`sb-ext:run-program`][e0d4].
+
+- `SIGUSR2`: Used by [Garbage Collection][b7da] with [Threading][6ec7].
+
+- `SIGABRT`: Drops into [LDB][3b91]. Always handled by the runtime.
+  Establishing a Lisp handler has no effect.
+
+- `SIGSEGV`, `SIGILL`, `SIGEMT`, `SIGBUS`,
+  `SIGTRAP`, `SIGSYS`: Some of these synchronous interrupts
+  are used by the runtime. Else, they may be subject to
+  `--lose-on-corruption` (see [Runtime Options][3e4d]). If neither, then
+  they signal a [`simple-error`][cac1].
+
+    It is still safe to use [`sb-sys:enable-interrupt`][260a], as that only
+    affects the signals that are handled in Lisp.
+
+<a id="x-28SB-SYS-3AINTERACTIVE-INTERRUPT-20CONDITION-29"></a>
+<a id="SB-SYS:INTERACTIVE-INTERRUPT%20CONDITION"></a>
+
+- \[condition\] **sb-sys:interactive-interrupt** *sb-sys:system-condition [serious-condition][af00]*
+
+<a id="x-28SB-MANUAL-3A-40FD-STREAMS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FD-STREAMS%20MGL-PAX:SECTION"></a>
+
+#### 7.11.3 File Descriptor Streams
+
+Many of the UNIX system calls return file descriptors. Instead of
+using other UNIX system calls to perform I/O on them, you can create
+a [`sb-sys:fd-stream`][b91d] around them. For example,
+[`sb-bsd-sockets:socket-make-stream`][d54e] and [`sb-simple-streams:open`][6547] are
+built using fd streams.
+
+<a id="x-28SB-SYS-3AFD-STREAM-20STRUCTURE-29"></a>
+<a id="SB-SYS:FD-STREAM%20STRUCTURE"></a>
+
+- \[structure\] **sb-sys:fd-stream** *[file-stream][c241] sb-kernel:ansi-stream*
+
+<a id="x-28SB-SYS-3AFD-STREAM-P-20FUNCTION-29"></a>
+<a id="SB-SYS:FD-STREAM-P%20FUNCTION"></a>
+
+- \[function\] **sb-sys:fd-stream-p** *object*
+
+<a id="x-28SB-SYS-3AMAKE-FD-STREAM-20FUNCTION-29"></a>
+<a id="SB-SYS:MAKE-FD-STREAM%20FUNCTION"></a>
+
+- \[function\] **sb-sys:make-fd-stream** *fd \&key (class 'fd-stream) input output (element-type 'base-char) (buffering :full) (external-format :default) serve-events timeout file original delete-original pathname input-buffer-p dual-channel-p (name (if file
+    (format nil "file ~A" file)
+    (format nil "descriptor ~W" fd))) auto-close*
+
+    Create an [`fd-stream`][b91d] for the given Unix file descriptor `fd`.
+
+    - If `input` is non-`nil`, allow input operations. If `output` is non-nil,
+      allow output operations. If neither `input` nor `output` is specified,
+      default to allowing input.
+
+    - `element-type` indicates the element type to use (as for [`open`][6547]).
+
+    - `buffering` indicates the kind of buffering to use. Acceptable
+      values for `buffering` are `:full`, `:line` and `:none`, default is `:full`,
+      i.e. output is buffered till it is explicitly flushed using [`close`][848f]
+      or [`finish-output`][3498]. ([`force-output`][5842] forces some output to be flushed:
+      to ensure all buffered output is flushed use `finish-output`.)
+
+    - `timeout` (if non-`nil`) is the number of seconds to wait for input.
+      If `nil` (the default), then wait forever. When we time out, we
+      signal `io-timeout`.
+
+    - `file` is the name of the file (will be returned by `pathname` on the
+      returned `fd-stream`).
+
+    - `name` is used to identify the stream when printed.
+
+    - If `serve-events` is true, `serve-event` machinery is used to handle
+      blocking IO on the stream.
+
+    - If `auto-close` is true, the underlying OS socket is automatically
+      closed after the stream and the socket have been garbage
+      collected. Default is `nil`.
+
+<a id="x-28SB-SYS-3AFD-STREAM-FD-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-SYS-3AFD-STREAM-29-29"></a>
+<a id="SB-SYS:FD-STREAM-FD%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-SYS:FD-STREAM%29"></a>
+
+- \[structure-accessor\] **sb-sys:fd-stream-fd** *fd-stream*
+
+    Return the Unix file descriptor associated with `fd-stream`.
+    See the `fd` argument of [`make-fd-stream`][a960].
+
 <a id="x-28SB-MANUAL-3A-40UNICODE-SUPPORT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNICODE-SUPPORT%20MGL-PAX:SECTION"></a>
 
-### 7.11 Unicode Support
+### 7.12 Unicode Support
 
 SBCL provides support for working with Unicode text and querying the
 standard Unicode database for information about individual codepoints.
@@ -9749,7 +10141,7 @@ Letter A With Acute*) as
 <a id="x-28SB-MANUAL-3A-40UNICODE-PROPERTY-ACCESS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNICODE-PROPERTY-ACCESS%20MGL-PAX:SECTION"></a>
 
-#### 7.11.1 Unicode property access
+#### 7.12.1 Unicode property access
 
 The following functions can be used to find information about a
 Unicode codepoint.
@@ -9759,28 +10151,29 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:general-category** *character*
 
-    Returns the general category of `character` as it appears in UnicodeData.txt
+    Return the general category of `character` as it appears in
+    UnicodeData.txt.
 
 <a id="x-28SB-UNICODE-3ABIDI-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:BIDI-CLASS%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:bidi-class** *character*
 
-    Returns the bidirectional class of `character`
+    Return the bidirectional class of `character`.
 
 <a id="x-28SB-UNICODE-3ACOMBINING-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:COMBINING-CLASS%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:combining-class** *character*
 
-    Returns the canonical combining class (CCC) of `character`
+    Return the canonical combining class (CCC) of `character`.
 
 <a id="x-28SB-UNICODE-3ADECIMAL-VALUE-20FUNCTION-29"></a>
 <a id="SB-UNICODE:DECIMAL-VALUE%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:decimal-value** *character*
 
-    Returns the decimal digit value associated with `character` or `nil` if
+    Return the decimal digit value associated with `character` or `nil` if
     there is no such value.
 
     The only characters in Unicode with a decimal digit value are those
@@ -9793,7 +10186,7 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:digit-value** *character*
 
-    Returns the Unicode digit value of `character` or `nil` if it doesn't exist.
+    Return the Unicode digit value of `character` or `nil` if it doesn't exist.
 
     Digit values are guaranteed to be integers between 0 and 9 inclusive.
     All characters with decimal digit values have the same digit value,
@@ -9805,7 +10198,7 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:numeric-value** *character*
 
-    Returns the numeric value of `character` or `nil` if there is no such value.
+    Return the numeric value of `character` or `nil` if there is no such value.
     Numeric value is the most general of the Unicode numeric properties.
     The only constraint on the numeric value is that it be a rational number.
 
@@ -9814,7 +10207,7 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:mirrored-p** *character*
 
-    Returns `t` if `character` needs to be mirrored in bidirectional text.
+    Return `t` if `character` needs to be mirrored in bidirectional text.
     Otherwise, returns `nil`.
 
 <a id="x-28SB-UNICODE-3ABIDI-MIRRORING-GLYPH-20FUNCTION-29"></a>
@@ -9822,15 +10215,15 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:bidi-mirroring-glyph** *character*
 
-    Returns the mirror image of `character` if it exists.
-    Otherwise, returns `nil`.
+    Return the mirror image of `character` if it exists.
+    Otherwise, return `nil`.
 
 <a id="x-28SB-UNICODE-3AAGE-20FUNCTION-29"></a>
 <a id="SB-UNICODE:AGE%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:age** *character*
 
-    Returns the version of Unicode in which `character` was assigned as a pair
+    Return the version of Unicode in which `character` was assigned as a pair
     of values, both integers, representing the major and minor version respectively.
     If `character` is not assigned in Unicode, returns `nil` for both values.
 
@@ -9839,41 +10232,41 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:hangul-syllable-type** *character*
 
-    Returns the Hangul syllable type of `character`.
+    Return the Hangul syllable type of `character`.
     The syllable type can be one of `:l`, `:v`, `:t`, `:lv`, or `:lvt`.
-    If the character is not a Hangul syllable or Jamo, returns `nil`
+    If the character is not a Hangul syllable or Jamo, returns `nil`.
 
 <a id="x-28SB-UNICODE-3AEAST-ASIAN-WIDTH-20FUNCTION-29"></a>
 <a id="SB-UNICODE:EAST-ASIAN-WIDTH%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:east-asian-width** *character*
 
-    Returns the East Asian Width property of `character` as
+    Return the East Asian Width property of `character` as
     one of the keywords `:n` (Narrow), `:a` (Ambiguous), `:h` (Halfwidth),
-    `:w` (Wide), `:f` (Fullwidth), or `:na` (Not applicable)
+    `:w` (Wide), `:f` (Fullwidth), or `:na` (Not applicable).
 
 <a id="x-28SB-UNICODE-3ASCRIPT-20FUNCTION-29"></a>
 <a id="SB-UNICODE:SCRIPT%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:script** *character*
 
-    Returns the Script property of `character` as a keyword.
-    If `character` does not have a known script, returns `:unknown`
+    Return the Script property of `character` as a keyword.
+    If `character` does not have a known script, returns `:unknown`.
 
 <a id="x-28SB-UNICODE-3ACHAR-BLOCK-20FUNCTION-29"></a>
 <a id="SB-UNICODE:CHAR-BLOCK%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:char-block** *character*
 
-    Returns the Unicode block in which `character` resides as a keyword.
-    If `character` does not have a known block, returns `:no-block`
+    Return the Unicode block in which `character` resides as a keyword.
+    If `character` does not have a known block, returns `:no-block`.
 
 <a id="x-28SB-UNICODE-3AUNICODE-1-NAME-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE-1-NAME%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:unicode-1-name** *character*
 
-    Returns the name assigned to `character` in Unicode 1.0 if it is distinct
+    Return the name assigned to `character` in Unicode 1.0 if it is distinct
     from the name currently assigned to `character`. Otherwise, returns `nil`.
     This property has been officially obsoleted by the Unicode standard, and
     is only included for backwards compatibility.
@@ -9883,7 +10276,7 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:proplist-p** *character property*
 
-    Returns `t` if `character` has the specified `property`.
+    Return `t` if `character` has the specified `property`.
     `property` is a keyword representing one of the properties from PropList.txt,
     with underscores replaced by dashes.
 
@@ -9892,76 +10285,76 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:uppercase-p** *character*
 
-    Returns `t` if `character` has the Unicode property Uppercase and `nil` otherwise
+    Return `t` if `character` has the Unicode property Uppercase and `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3ALOWERCASE-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:LOWERCASE-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:lowercase-p** *character*
 
-    Returns `t` if `character` has the Unicode property Lowercase and `nil` otherwise
+    Return `t` if `character` has the Unicode property Lowercase and `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3ACASED-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:CASED-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:cased-p** *character*
 
-    Returns `t` if `character` has a (Unicode) case, and `nil` otherwise
+    Return `t` if `character` has a (Unicode) case, and `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3ACASE-IGNORABLE-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:CASE-IGNORABLE-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:case-ignorable-p** *character*
 
-    Returns `t` if `character` is Case Ignorable as defined in Unicode 6.3, Chapter
-    3
+    Return `t` if `character` is Case Ignorable as defined in Unicode 6.3, Chapter
+    3.
 
 <a id="x-28SB-UNICODE-3AALPHABETIC-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:ALPHABETIC-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:alphabetic-p** *character*
 
-    Returns `t` if `character` is Alphabetic according to the Unicode standard
-    and `nil` otherwise
+    Return `t` if `character` is Alphabetic according to the Unicode standard
+    and `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3AIDEOGRAPHIC-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:IDEOGRAPHIC-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:ideographic-p** *character*
 
-    Returns `t` if `character` has the Unicode property Ideographic,
-    which loosely corresponds to the set of "Chinese characters"
+    Return `t` if `character` has the Unicode property Ideographic,
+    which loosely corresponds to the set of "Chinese characters".
 
 <a id="x-28SB-UNICODE-3AMATH-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:MATH-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:math-p** *character*
 
-    Returns `t` if `character` is a mathematical symbol according to Unicode and
-    `nil` otherwise
+    Return `t` if `character` is a mathematical symbol according to Unicode and
+    `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3AWHITESPACE-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:WHITESPACE-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:whitespace-p** *character*
 
-    Returns `t` if `character` is whitespace according to Unicode
-    and `nil` otherwise
+    Return `t` if `character` is whitespace according to Unicode
+    and `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3ASOFT-DOTTED-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:SOFT-DOTTED-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:soft-dotted-p** *character*
 
-    Returns `t` if `character` has a soft dot (such as the dots on i and j) which
-    disappears when accents are placed on top of it. and `nil` otherwise
+    Return `t` if `character` has a soft dot (such as the dots on i and j) that
+    disappears when accents are placed on top of it, and `nil` otherwise.
 
 <a id="x-28SB-UNICODE-3AHEX-DIGIT-P-20FUNCTION-29"></a>
 <a id="SB-UNICODE:HEX-DIGIT-P%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:hex-digit-p** *character \&key ascii*
 
-    Returns `t` if `character` is a hexadecimal digit and `nil` otherwise.
+    Return `t` if `character` is a hexadecimal digit and `nil` otherwise.
     If `:ascii` is non-`nil`, fullwidth equivalents of the Latin letters A through F
     are excluded.
 
@@ -9970,41 +10363,41 @@ Unicode codepoint.
 
 - \[function\] **sb-unicode:default-ignorable-p** *character*
 
-    Returns `t` if `character` is a Default\_Ignorable\_Code\_Point
+    Return `t` if `character` is a Default\_Ignorable\_Code\_Point.
 
 <a id="x-28SB-UNICODE-3AGRAPHEME-BREAK-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:GRAPHEME-BREAK-CLASS%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:grapheme-break-class** *character*
 
-    Returns the grapheme breaking class of `character`, as specified in UAX #29.
+    Return the grapheme breaking class of `character`, as specified in UAX #29.
 
 <a id="x-28SB-UNICODE-3AWORD-BREAK-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:WORD-BREAK-CLASS%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:word-break-class** *character*
 
-    Returns the word breaking class of `character`, as specified in UAX #29.
+    Return the word breaking class of `character`, as specified in UAX #29.
 
 <a id="x-28SB-UNICODE-3ASENTENCE-BREAK-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:SENTENCE-BREAK-CLASS%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:sentence-break-class** *character*
 
-    Returns the sentence breaking class of `character`, as specified in UAX #29.
+    Return the sentence breaking class of `character`, as specified in UAX #29.
 
 <a id="x-28SB-UNICODE-3ALINE-BREAK-CLASS-20FUNCTION-29"></a>
 <a id="SB-UNICODE:LINE-BREAK-CLASS%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:line-break-class** *character*
 
-    Returns the line breaking class of `character`, as specified in the
+    Return the line breaking class of `character`, as specified in the
     Unicode character database.
 
-<a id="x-28SB-MANUAL-3A-40STRING-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@STRING-OPERATIONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40UNICODE-STRING-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@UNICODE-STRING-OPERATIONS%20MGL-PAX:SECTION"></a>
 
-#### 7.11.2 String operations
+#### 7.12.2 Unicode String operations
 
 SBCL can normalize strings using:
 
@@ -10023,7 +10416,7 @@ SBCL can normalize strings using:
 
 - \[function\] **sb-unicode:normalized-p** *string \&optional (form :nfd)*
 
-    Tests if `string` is normalized to `form`
+    Test if `string` is normalized to `form`.
 
 SBCL implements the full range of Unicode case operations with the
 functions
@@ -10033,7 +10426,7 @@ functions
 
 - \[function\] **sb-unicode:uppercase** *string \&key locale*
 
-    Returns the full uppercase of `string` according to the Unicode standard.
+    Return the full uppercase of `string` according to the Unicode standard.
     The result is not guaranteed to have the same length as the input. If `:locale`
     is `nil`, no language-specific case transformations are applied. If `:locale` is a
     keyword representing a two-letter ISO country code, the case transforms of that
@@ -10045,7 +10438,7 @@ functions
 
 - \[function\] **sb-unicode:lowercase** *string \&key locale*
 
-    Returns the full lowercase of `string` according to the Unicode standard.
+    Return the full lowercase of `string` according to the Unicode standard.
     The result is not guaranteed to have the same length as the input.
     `:locale` has the same semantics as the `:locale` argument to [`uppercase`][0eff].
 
@@ -10054,7 +10447,7 @@ functions
 
 - \[function\] **sb-unicode:titlecase** *string \&key locale*
 
-    Returns the titlecase of `string`. The resulting string can
+    Return the titlecase of `string`. The resulting string can
     be longer than the input.
     `:locale` has the same semantics as the `:locale` argument to [`uppercase`][0eff].
 
@@ -10063,7 +10456,7 @@ functions
 
 - \[function\] **sb-unicode:casefold** *string*
 
-    Returns the full casefolding of `string` according to the Unicode standard.
+    Return the full casefolding of `string` according to the Unicode standard.
     Casefolding removes case information in a way that allows the results to be used
     for case-insensitive comparisons.
     The result is not guaranteed to have the same length as the input.
@@ -10082,50 +10475,53 @@ Algorithm.
 
 - \[function\] **sb-unicode:unicode\<** *string1 string2 \&key (start1 0) end1 (start2 0) end2*
 
-    Determines whether `string1` sorts before `string2` using the Unicode Collation
-    Algorithm. The function uses an untailored Default Unicode Collation Element Table
-    to produce the sort keys. The function uses the Shifted method for dealing
-    with variable-weight characters, as described in UTS #10
+    Determine whether `string1` sorts before `string2` using the Unicode
+    Collation Algorithm. The function uses an untailored Default Unicode
+    Collation Element Table to produce the sort keys. The function uses
+    the Shifted method for dealing with variable-weight characters, as
+    described in UTS #10.
 
 <a id="x-28SB-UNICODE-3AUNICODE-3D-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE%3D%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:unicode=** *string1 string2 \&key (start1 0) end1 (start2 0) end2 (strict t)*
 
-    Determines whether `string1` and `string2` are canonically equivalent according
-    to Unicode. The `start` and `end` arguments behave like the arguments to [`string=`][4143].
-    If `:strict` is `nil`, `unicode=` tests compatibility equivalence instead.
+    Determine whether `string1` and `string2` are canonically equivalent
+    according to Unicode. The `start` and `end` arguments behave like the
+    arguments to [`string=`][4143]. If `:strict` is `nil`, `unicode=` tests compatibility
+    equivalence instead.
 
 <a id="x-28SB-UNICODE-3AUNICODE-EQUAL-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE-EQUAL%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:unicode-equal** *string1 string2 \&key (start1 0) end1 (start2 0) end2 (strict t)*
 
-    Determines whether `string1` and `string2` are canonically equivalent after
-    casefolding (that is, ignoring case differences) according to Unicode. The
-    `start` and `end` arguments behave like the arguments to [`string=`][4143]. If `:strict` is
-    `nil`, [`unicode=`][03f5] tests compatibility equivalence instead.
+    Determine whether `string1` and `string2` are canonically equivalent
+    after casefolding (that is, ignoring case differences) according to
+    Unicode. The `start` and `end` arguments behave like the arguments to
+    [`string=`][4143]. If `:strict` is `nil`, [`unicode=`][03f5] tests compatibility equivalence
+    instead.
 
 <a id="x-28SB-UNICODE-3AUNICODE-3C-3D-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE%3C%3D%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:unicode\<=** *string1 string2 \&key (start1 0) end1 (start2 0) end2*
 
-    Tests if `string1` and `string2` are either [`unicode<`][53a6] or [`unicode=`][03f5]
+    See if `string1` and `string2` are either [`unicode<`][53a6] or [`unicode=`][03f5].
 
 <a id="x-28SB-UNICODE-3AUNICODE-3E-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE%3E%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:unicode>** *string1 string2 \&key (start1 0) end1 (start2 0) end2*
 
-    Tests if `string2` is [`unicode<`][53a6] `string1`.
+    See if `string2` is [`unicode<`][53a6] `string1`.
 
 <a id="x-28SB-UNICODE-3AUNICODE-3E-3D-20FUNCTION-29"></a>
 <a id="SB-UNICODE:UNICODE%3E%3D%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:unicode>=** *string1 string2 \&key (start1 0) end1 (start2 0) end2*
 
-    Tests if `string1` and `string2` are either [`unicode=`][03f5] or [`unicode>`][5149]
+    See if `string1` and `string2` are either [`unicode=`][03f5] or UNICODE>.
 
 The following functions are provided for detecting visually
 confusable strings:
@@ -10135,13 +10531,13 @@ confusable strings:
 
 - \[function\] **sb-unicode:confusable-p** *string1 string2 \&key (start1 0) end1 (start2 0) end2*
 
-    Determines whether `string1` and `string2` could be visually confusable
-    according to the IDNA confusableSummary.txt table
+    Determine whether `string1` and `string2` could be visually confusable
+    according to the IDNA confusableSummary.txt table.
 
-<a id="x-28SB-MANUAL-3A-40BREAKING-STRINGS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@BREAKING-STRINGS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40BREAKING-UNICODE-STRINGS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@BREAKING-UNICODE-STRINGS%20MGL-PAX:SECTION"></a>
 
-#### 7.11.3 Breaking strings
+#### 7.12.3 Breaking Unicode Strings
 
 The `sb-unicode` package includes several functions for breaking a
 Unicode string into useful parts.
@@ -10151,7 +10547,7 @@ Unicode string into useful parts.
 
 - \[function\] **sb-unicode:graphemes** *string*
 
-    Breaks `string` into graphemes according to the default
+    Break `string` into graphemes according to the default
     grapheme breaking rules specified in UAX #29, returning a list of strings.
 
 <a id="x-28SB-UNICODE-3AWORDS-20FUNCTION-29"></a>
@@ -10159,38 +10555,38 @@ Unicode string into useful parts.
 
 - \[function\] **sb-unicode:words** *string*
 
-    Breaks `string` into words according to the default
-    word breaking rules specified in UAX #29. Returns a list of strings
+    Break `string` into words according to the default word breaking rules
+    specified in UAX #29. Returns a list of strings.
 
 <a id="x-28SB-UNICODE-3ASENTENCES-20FUNCTION-29"></a>
 <a id="SB-UNICODE:SENTENCES%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:sentences** *string*
 
-    Breaks `string` into sentences according to the default
-    sentence breaking rules specified in UAX #29
+    Break `string` into sentences according to the default
+    sentence breaking rules specified in UAX #29.
 
 <a id="x-28SB-UNICODE-3ALINES-20FUNCTION-29"></a>
 <a id="SB-UNICODE:LINES%20FUNCTION"></a>
 
 - \[function\] **sb-unicode:lines** *string \&key (margin \*print-right-margin\*)*
 
-    Breaks `string` into lines that are no wider than `:margin` according to the
+    Break `string` into lines that are no wider than `:margin` according to the
     line breaking rules outlined in UAX #14. Combining marks will always be kept
     together with their base characters, and spaces (but not other types of
     whitespace) will be removed from the end of lines. If `:margin` is unspecified,
-    it defaults to 80 characters
+    it defaults to 80 characters.
 
 <a id="x-28SB-MANUAL-3A-40CUSTOMIZATION-HOOKS-FOR-USERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CUSTOMIZATION-HOOKS-FOR-USERS%20MGL-PAX:SECTION"></a>
 
-### 7.12 Customization Hooks for Users
+### 7.13 Customization Hooks for Users
 
 The toplevel repl prompt may be customized, and the function
 that reads user input may be replaced completely. See the `:toplevel`
 argument of [`sb-ext:save-lisp-and-die`][9e55].
 
-The behaviour of [`require`][360d] when called with only one argument is
+The behavior of [`require`][360d] when called with only one argument is
 implementation-defined. In SBCL, `require` behaves in the following
 way:
 
@@ -10199,13 +10595,13 @@ way:
 
 - \[function\] **require** *module-name \&optional pathnames*
 
-    Loads a module, unless it already has been loaded. `pathnames`, if supplied,
-    is a designator for a list of pathnames to be loaded if the module
-    needs to be. If `pathnames` is not supplied, functions from the list
-    [`*module-provider-functions*`][bbfe] are called in order with `module-name`
-    as an argument, until one of them returns non-`nil`.  User code is
-    responsible for calling [`provide`][10c2] to indicate a successful load of the
-    module.
+    Load `module-name`, unless it already has been loaded. `pathnames`, if
+    supplied, is a designator for a list of pathnames to be loaded if
+    the module needs to be. If `pathnames` is not supplied, functions from
+    the list [`*module-provider-functions*`][bbfe] are called in order with
+    `module-name` as an argument, until one of them returns non-`nil`. User
+    code is responsible for calling [`provide`][10c2] to indicate a successful
+    load of the module.
 
     Also, see the [CLHS][d3da].
 
@@ -10225,7 +10621,7 @@ mechanisms as follows:
 
 - \[function\] **ed** *\&optional x*
 
-    Starts the editor (on a file or a function if named).  Functions
+    Start the editor (on a file or a function if named). Functions
     from the list [`*ed-functions*`][3235] are called in order with `x` as an argument
     until one of them returns non-`nil`; these functions are responsible for
     signalling a [`file-error`][da60] to indicate failure to perform an operation on
@@ -10257,7 +10653,7 @@ SBCL provides a variable [`sb-ext:*muffled-warnings*`][ef88]:
 <a id="x-28SB-MANUAL-3A-40TOOLS-TO-HELP-DEVELOPERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@TOOLS-TO-HELP-DEVELOPERS%20MGL-PAX:SECTION"></a>
 
-### 7.13 Tools to Help Developers
+### 7.14 Tools to Help Developers
 
 SBCL provides a profiler and other extensions to the [`trace`][548d]
 facility.
@@ -10268,26 +10664,13 @@ accessed by typing `help` at the debugger prompt. See [Debugger][825d].
 Documentation for the command `inspect` is accessed by typing
 `help` at the `inspect` prompt.
 
-<a id="x-28SB-MANUAL-3A-40RESOLUTION-OF-NAME-CONFLICTS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@RESOLUTION-OF-NAME-CONFLICTS%20MGL-PAX:SECTION"></a>
-
-### 7.14 Resolution of Name Conflicts
-
-`clhs` [`11.1.1.2.5`][5d5b] requires that name conflicts in packages be
-resolvable in favour of any of the conflicting symbols. In the
-interactive debugger, this is achieved by prompting for the symbol
-in whose favour the conflict should be resolved; for programmatic
-use, the `sb-ext:resolve-conflict` restart should be invoked
-with one argument, which should be a member of the list returned by
-the condition accessor `sb-ext:name-conflict-symbols`.
-
 <a id="x-28SB-MANUAL-3A-40HASH-TABLE-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@HASH-TABLE-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
 ### 7.15 Hash Table Extensions
 
-hash table extensions supported by SBCL are all controlled by keyword
-arguments to [`make-hash-table`][e826].
+Extensions to hash tables supported by SBCL are all controlled by
+keyword arguments to [`make-hash-table`][e826].
 
 <a id="x-28MAKE-HASH-TABLE-20FUNCTION-29"></a>
 <a id="MAKE-HASH-TABLE%20FUNCTION"></a>
@@ -10373,8 +10756,8 @@ arguments to [`make-hash-table`][e826].
 
 - \[macro\] **sb-ext:define-hash-table-test** *name hash-function*
 
-    Defines `name` as a new kind of hash table test for use with the `:test`
-    argument to [`make-hash-table`][e826], and associates a default `hash-function` with it.
+    Define `name` as a new kind of hash table test for use with the `:test`
+    argument to [`make-hash-table`][e826], and associate a default `hash-function` with it.
 
     `name` must be a symbol naming a global two argument equivalence predicate.
     Afterwards both '`name` and #'`name` can be used with `:test` argument. In both
@@ -10432,7 +10815,7 @@ arguments to [`make-hash-table`][e826].
 
 - \[macro\] **sb-ext:with-locked-hash-table** *(hash-table) \&body body*
 
-    Limits concurrent accesses to `hash-table` for the duration of `body`.
+    Limit concurrent accesses to `hash-table` for the duration of `body`.
     If `hash-table` is synchronized, `body` will execute with exclusive
     ownership of the table. If `hash-table` is not synchronized, `body` will
     execute with other `with-locked-hash-table` bodies excluded -- exclusion
@@ -10444,7 +10827,7 @@ arguments to [`make-hash-table`][e826].
 
 - \[function\] **sb-ext:hash-table-synchronized-p** *ht*
 
-    Returns `t` if [`hash-table`][7742] is synchronized.
+    Return `t` if [`hash-table`][7742] is synchronized.
 
 <a id="x-28SB-EXT-3AHASH-TABLE-WEAKNESS-20FUNCTION-29"></a>
 <a id="SB-EXT:HASH-TABLE-WEAKNESS%20FUNCTION"></a>
@@ -10485,8 +10868,8 @@ word size.
 
 - \[function\] **sb-ext:seed-random-state** *\&optional state*
 
-    Make a random state object. The optional `state` argument specifies a seed
-    for deterministic pseudo-random number generation.
+    Make a [`random-state`][2b4d] object. The optional `state` argument specifies a
+    seed for deterministic pseudo-random number generation.
 
     As per the Common Lisp standard for [`make-random-state`][db3f],
 
@@ -10652,7 +11035,7 @@ explicitly overrides outer deadlines.
 
 - \[macro\] **sb-sys:with-deadline** *(\&key seconds override) \&body body*
 
-    Arranges for a [`timeout`][b488] condition to be signalled if an operation
+    Arrange for a [`timeout`][b488] condition to be signalled if an operation
     respecting deadlines occurs either after the deadline has passed, or
     would take longer than the time left to complete.
 
@@ -10802,7 +11185,7 @@ and its context.
 
 - \[function\] **sb-ext:array-storage-vector** *array*
 
-    Returns the underlying storage vector of `array`, which must be a non-displaced array.
+    Return the underlying storage vector of `array`, which must be a non-displaced array.
 
     In SBCL, if `array` is a of type ([`simple-array`][451a] \* (\*)), it is its own storage
     vector. Multidimensional arrays, arrays with fill pointers, and adjustable
@@ -10818,7 +11201,7 @@ and its context.
 
 - \[function\] **sb-ext:delete-directory** *pathspec \&key recursive*
 
-    Deletes the directory designated by `pathspec` (a pathname designator).
+    Delete the directory designated by `pathspec` (a pathname designator).
     Returns the truename of the directory deleted.
 
     If `recursive` is false (the default), signals an error unless the directory is
@@ -10843,14 +11226,14 @@ and its context.
 - \[function\] **sb-ext:get-time-of-day**
 
     Return the number of seconds and microseconds since the beginning of
-    the UNIX epoch (January 1st 1970.)
+    the UNIX epoch (January 1st 1970).
 
 <a id="x-28SB-EXT-3AASSERT-VERSION--3E-3D-20FUNCTION-29"></a>
 <a id="SB-EXT:ASSERT-VERSION-%3E%3D%20FUNCTION"></a>
 
 - \[function\] **sb-ext:assert-version->=** *\&rest subversions*
 
-    Asserts that the current SBCL is of version equal to or greater than
+    Assert that the current SBCL is of version equal to or greater than
     the version specified in the arguments.  A continuable error is signaled
     otherwise.
 
@@ -11092,7 +11475,7 @@ versions.
 <a id="x-28SB-MANUAL-3A-40CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS%20MGL-PAX:SECTION"></a>
 
-### 8.4 Converting between Strings and Octet Vectors
+### 8.4 Converting Between Strings and Octet Vectors
 
 To encode Lisp strings as octet vectors and decode octet vectors as
 Lisp strings, the following SBCL-specific functions can be used:
@@ -12029,7 +12412,7 @@ calling [`load-shared-object`][3c84].
 
 - \[function\] **unload-shared-object** *pathname*
 
-    Unloads the shared object loaded earlier using the designated `pathname` with
+    Unload the shared object loaded earlier using the designated `pathname` with
     [`load-shared-object`][3c84], to the degree supported on the platform.
 
     Experimental.
@@ -12260,22 +12643,9 @@ Lisp values into C.
 
     The resulting alien callable value has dynamic extent.
 
-Note that the garbage collector moves objects and won't be able to fix
-up any references in C variables. There are three mechanisms for
-coping with this:
-
-- On CheneyGC platforms, [`sb-ext:purify`][dc69] moves all live Lisp data into
-  static or read-only areas such that it will never be moved (or
-  freed) again in the life of the Lisp session.
-
-- `sb-sys:with-pinned-objects` is a macro which arranges for some set
-  of objects to be pinned in memory for the dynamic extent of its
-  body forms. On ports which use the generational GC
-  (most, as of this writing) this affects exactly the specified
-  objects. On other ports it is implemented by turning off GC for
-  the duration (so could be said to have a whole-world granularity).
-
-- Disable GC, using the SB-EXT:WITHOUT-GCING macro.
+Note that the garbage collector moves objects and won't be able to
+fix up any references in C variables. See [Controlling GC][abb0] for how to
+cope with this.
 
 <a id="x-28SB-MANUAL-3A-40LISP-AS-A-SHARED-LIBRARY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LISP-AS-A-SHARED-LIBRARY%20MGL-PAX:SECTION"></a>
@@ -12514,7 +12884,7 @@ return the closest equivalent Lisp pathname to a given string
 [`sb-ext:native-namestring`][6b7c] converts a non-wild pathname designator to
 the equivalent native namestring, if possible. Some Lisp pathname
 concepts (such as the `:back` directory component) have no direct
-equivalents in most Operating Systems; the behaviour of
+equivalents in most Operating Systems; the behavior of
 `sb-ext:native-namestring` is unspecified if an inappropriate pathname
 designator is passed to it. Additionally, note that conversion from
 pathname to native filename and back to pathname should not be
@@ -12895,7 +13265,7 @@ These generic functions are used to implement subclasses of
 
 - \[generic-function\] **sb-gray:stream-finish-output** *stream*
 
-    Attempts to ensure that all output sent to the Stream has reached
+    Attempt to ensure that all output sent to `stream` has reached
     its destination, and only then returns false. Implements
     [`finish-output`][3498]. The default method does nothing.
 
@@ -12904,7 +13274,7 @@ These generic functions are used to implement subclasses of
 
 - \[generic-function\] **sb-gray:stream-force-output** *stream*
 
-    Attempts to force any buffered output to be sent. Implements
+    Attempt to force any buffered output to be sent. Implements
     [`force-output`][5842]. The default method does nothing.
 
 <a id="x-28SB-GRAY-3ASTREAM-WRITE-SEQUENCE-20GENERIC-FUNCTION-29"></a>
@@ -12940,7 +13310,7 @@ These generic functions are used to implement subclasses of
 
 - \[generic-function\] **sb-gray:stream-fresh-line** *stream*
 
-    Outputs a new line to the Stream if it is not positioned at the
+    Output a new line to `stream` if it is not positioned at the
     beginning of a line. Returns `t` if it output a new line, nil
     otherwise. Used by [`fresh-line`][3808]. The default method uses
     [`stream-start-line-p`][7a5c] and [`stream-terpri`][ae1f].
@@ -12988,7 +13358,7 @@ These generic functions are used to implement subclasses of
 
 - \[generic-function\] **sb-gray:stream-terpri** *stream*
 
-    Writes an end of line, as for [`terpri`][bccf]. Returns `nil`. The default
+    Write an end of line, like [`terpri`][bccf], and return `nil`. The default
     method does ([`stream-write-char`][40ad] stream `#\Newline`).
 
 <a id="x-28SB-GRAY-3ASTREAM-WRITE-CHAR-20GENERIC-FUNCTION-29"></a>
@@ -13244,7 +13614,7 @@ framework is there, but many classes are just stubs at the moment.
 See `SYS:CONTRIB;SB-SIMPLE-STREAMS;SIMPLE-STREAM-TEST.LISP` for
 things that should work.
 
-Known differences to the ACL behaviour:
+Known differences to the ACL behavior:
 
 - [`sb-simple-streams:open`][6547] does not return a `simple-stream` by
   default. See its `:class` argument.
@@ -13361,7 +13731,7 @@ If file-compiled code contains interned symbols, then loading that
 code into an image without the said symbols will not cause a package
 lock violation, even if the packages in question are locked.
 
-With the exception of interned symbols, behaviour is unspecified if
+With the exception of interned symbols, behavior is unspecified if
 package locks affecting compiled code are not the same during
 loading of the code or execution.
 
@@ -13557,7 +13927,7 @@ Example:
 
 - \[function\] **sb-ext:package-locked-p** *package*
 
-    Returns `t` when `package` is locked, `nil` otherwise. Signals an error
+    Return `t` when `package` is locked, `nil` otherwise. Signals an error
     if `package` doesn't designate a valid package.
 
 <a id="x-28SB-EXT-3ALOCK-PACKAGE-20FUNCTION-29"></a>
@@ -13565,7 +13935,7 @@ Example:
 
 - \[function\] **sb-ext:lock-package** *package*
 
-    Locks `package` and returns `t`. Has no effect if `package` was already
+    Lock `package` and return `t`. Has no effect if `package` was already
     locked. Signals an error if `package` is not a valid package designator.
 
 <a id="x-28SB-EXT-3AUNLOCK-PACKAGE-20FUNCTION-29"></a>
@@ -13573,7 +13943,7 @@ Example:
 
 - \[function\] **sb-ext:unlock-package** *package*
 
-    Unlocks `package` and returns `t`. Has no effect if `package` was already
+    Unlock `package` and return `t`. Has no effect if `package` was already
     unlocked. Signals an error if `package` is not a valid package designator.
 
 <a id="x-28SB-EXT-3APACKAGE-IMPLEMENTED-BY-LIST-20FUNCTION-29"></a>
@@ -13581,7 +13951,7 @@ Example:
 
 - \[function\] **sb-ext:package-implemented-by-list** *package*
 
-    Returns a list containing the implementation packages of
+    Return a list containing the implementation packages of
     `package`. Signals an error if `package` is not a valid package designator.
 
 <a id="x-28SB-EXT-3APACKAGE-IMPLEMENTS-LIST-20FUNCTION-29"></a>
@@ -13589,7 +13959,7 @@ Example:
 
 - \[function\] **sb-ext:package-implements-list** *package*
 
-    Returns the packages that `package` is an implementation package
+    Return the packages that `package` is an implementation package
     of. Signals an error if `package` is not a valid package designator.
 
 <a id="x-28SB-EXT-3AADD-IMPLEMENTATION-PACKAGE-20FUNCTION-29"></a>
@@ -13597,7 +13967,7 @@ Example:
 
 - \[function\] **sb-ext:add-implementation-package** *packages-to-add \&optional (package \*package\*)*
 
-    Adds `packages-to-add` as implementation packages of `package`. Signals
+    Add `packages-to-add` as implementation packages of `package`. Signals
     an error if `package` or any of the `packages-to-add` is not a valid
     package designator.
 
@@ -13606,7 +13976,7 @@ Example:
 
 - \[function\] **sb-ext:remove-implementation-package** *packages-to-remove \&optional (package \*package\*)*
 
-    Removes `packages-to-remove` from the implementation packages of
+    Remove `packages-to-remove` from the implementation packages of
     `package`. Signals an error if `package` or any of the `packages-to-remove`
     is not a valid package designator.
 
@@ -13615,15 +13985,15 @@ Example:
 
 - \[macro\] **sb-ext:without-package-locks** *\&body body*
 
-    Ignores all runtime package lock violations during the execution of
-    body. Body can begin with declarations.
+    Ignore all runtime package lock violations during the execution of
+    `body`. `body` can begin with declarations.
 
 <a id="x-28SB-EXT-3AWITH-UNLOCKED-PACKAGES-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-EXT:WITH-UNLOCKED-PACKAGES%20MGL-PAX:MACRO"></a>
 
 - \[macro\] **sb-ext:with-unlocked-packages** *(\&rest packages) \&body forms*
 
-    Unlocks `packages` for the dynamic scope of the body. Signals an
+    Unlock `packages` for the dynamic scope of the body. Signals an
     error if any of `packages` is not a valid package designator.
 
 The [`defpackage`][9b43] options are extended to include the following:
@@ -13665,13 +14035,12 @@ multiprocessing on machines that have more than one CPU, but it does
 not allow Lisp control of the scheduler. This is found in the
 `sb-thread` package.
 
-Threads are part of the default build on x86\[-64\]/ARM64 Linux and
-Windows.
+Threading is supported generally on architectures with POSIX threads
+except on ARM, SPARC, MIPS, ppc64 and on the DragonFly BSD operating
+system, as well as on Windows.
 
-They are also supported on: x86\[-64\] Darwin (Mac OS X), x86\[-64\]
-FreeBSD, x86 SunOS (Solaris), PPC Linux, ARM64 Linux, RISC-V Linux.
-On these platforms threads must be explicitly enabled at build-time,
-see `install` for directions.
+Threads are one of the default [Build Options][9119] on most major
+architectures.
 
 <a id="x-28SB-MANUAL-3A-40THREADING-BASICS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@THREADING-BASICS%20MGL-PAX:SECTION"></a>
@@ -13740,7 +14109,7 @@ see `install` for directions.
 
 - \[function\] **sb-thread:main-thread**
 
-    Returns the main thread of the process.
+    Return the main thread of the process.
 
 <a id="x-28SB-MANUAL-3A-40RUNNING-THREADS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-THREADS%20MGL-PAX:SECTION"></a>
@@ -13765,7 +14134,7 @@ see `install` for directions.
 
 - \[macro\] **sb-thread:return-from-thread** *values-form \&key allow-exit*
 
-    Unwinds from and terminates the current thread, with values from
+    Unwind from and terminate the current thread, with values from
     `values-form` as the results visible to [`join-thread`][bcf9].
 
     If current thread is the main thread of the process (see
@@ -13779,7 +14148,7 @@ see `install` for directions.
 
 - \[function\] **sb-thread:abort-thread** *\&key allow-exit*
 
-    Unwinds from and terminates the current thread abnormally, causing
+    Unwind from and terminate the current thread abnormally, causing
     [`join-thread`][bcf9] on current thread to signal an error unless a
     default-value is provided.
 
@@ -13849,12 +14218,12 @@ see `install` for directions.
     Interrupt `thread` and make it run `function`.
 
     The interrupt is asynchronous, and can occur anywhere with the exception of
-    sections protected using `sb-sys:without-interrupts`.
+    sections protected using [`sb-sys:without-interrupts`][fb8d].
 
     `function` is called with interrupts disabled, under
     `sb-sys:allow-with-interrupts`. Since functions such as [`grab-mutex`][ae28] may try to
     enable interrupts internally, in most cases `function` should either enter
-    `sb-sys:with-interrupts` to allow nested interrupts, or
+    [`sb-sys:with-interrupts`][767b] to allow nested interrupts, or
     `sb-sys:without-interrupts` to prevent them completely.
 
     When a thread receives multiple interrupts, they are executed in the order
@@ -13929,7 +14298,7 @@ see `install` for directions.
     execution of `release-foo`.
 
     Thus, in order to write an asynch unwind safe [`unwind-protect`][c93f] you need
-    to use `without-interrupts`:
+    to use [`without-interrupts`][fb8d]:
 
         (let (foo)
           (sb-sys:without-interrupts
@@ -13978,7 +14347,7 @@ see `install` for directions.
 
 - \[condition\] **sb-thread:thread-error** *[error][d162]*
 
-    Conditions of type [`thread-error`][1286] are signalled when thread operations fail.
+    Signalled when thread operations fail.
     The offending thread is initialized by the `:thread` initialization argument and
     read by the function [`thread-error-thread`][693b].
 
@@ -14014,13 +14383,13 @@ see `install` for directions.
     to be joined. The offending thread can be accessed using
     [`thread-error-thread`][693b].
 
-<a id="x-28SB-MANUAL-3A-40SPECIAL-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@SPECIAL-VARIABLES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SPECIAL-VARIABLES-IN-THREADS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SPECIAL-VARIABLES-IN-THREADS%20MGL-PAX:SECTION"></a>
 
-### 13.2 Special Variables
+### 13.2 Special Variables in Threads
 
 The interaction of special variables with multiple threads is mostly
-as one would expect, with behaviour very similar to other
+as one would expect, with behavior very similar to other
 implementations.
 
 - Global special values are visible across all threads.
@@ -14147,7 +14516,7 @@ lockless algorithms.
 
 - \[macro\] **sb-ext:atomic-update** *place update-fn \&rest arguments*
 
-    Updates `place` atomically to the value returned by calling function
+    Update `place` atomically to the value returned by calling function
     designated by `update-fn` with `arguments` and the previous value of `place`.
 
     `place` may be read and `update-fn` evaluated and called multiple times before the
@@ -14409,7 +14778,7 @@ that they go to sleep.
                 (allow-with-interrupts (grab-mutex ...))
                 ...)
 
-        `without-interrupts` is necessary to avoid an interrupt unwinding the call
+        [`without-interrupts`][fb8d] is necessary to avoid an interrupt unwinding the call
         while the mutex is in an inconsistent state while `allow-with-interrupts`
         allows the call to be interrupted from sleep.
 
@@ -14469,7 +14838,7 @@ resource is exhausted.
 - \[function\] **sb-thread:signal-semaphore** *semaphore \&optional (n 1)*
 
     Increment the count of `semaphore` by `n`. If there are threads waiting
-    on this semaphore, then `n` of them is woken up.
+    on this semaphore, then wake up `n` of them.
 
 <a id="x-28SB-THREAD-3AWAIT-ON-SEMAPHORE-20FUNCTION-29"></a>
 <a id="SB-THREAD:WAIT-ON-SEMAPHORE%20FUNCTION"></a>
@@ -14507,7 +14876,7 @@ resource is exhausted.
 
 - \[function\] **sb-thread:semaphore-count** *semaphore*
 
-    Returns the current count of `semaphore`.
+    Return the current count of `semaphore`.
 
 <a id="x-28SB-THREAD-3ASEMAPHORE-NAME-20FUNCTION-29"></a>
 <a id="SB-THREAD:SEMAPHORE-NAME%20FUNCTION"></a>
@@ -14538,7 +14907,7 @@ resource is exhausted.
 
 - \[function\] **sb-thread:semaphore-notification-status** *semaphore-notification*
 
-    Returns `t` if a [`wait-on-semaphore`][4b11] or [`try-semaphore`][01ad] using
+    Return `t` if a [`wait-on-semaphore`][4b11] or [`try-semaphore`][01ad] using
     `semaphore-notification` has succeeded since the notification object was created
     or cleared.
 
@@ -14547,13 +14916,13 @@ resource is exhausted.
 
 - \[function\] **sb-thread:clear-semaphore-notification** *semaphore-notification*
 
-    Resets the `semaphore-notification` object for use with another call to
+    Reset the `semaphore-notification` object for use with another call to
     [`wait-on-semaphore`][4b11] or [`try-semaphore`][01ad].
 
-<a id="x-28SB-MANUAL-3A-40WAITQUEUE-2FCONDITION-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@WAITQUEUE%2FCONDITION-VARIABLES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40WAITQUEUES-AND-CONDITION-VARIABLES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@WAITQUEUES-AND-CONDITION-VARIABLES%20MGL-PAX:SECTION"></a>
 
-### 13.6 Waitqueue/condition variables
+### 13.6 Waitqueues and Condition Variables
 
 These are based on the POSIX condition variable design, hence the
 annoyingly CL-conflicting name. For use when you want to check a
@@ -14759,16 +15128,16 @@ following functions and macros also serve as `:memory` barriers:
     The file `memory-barriers.txt` in the Linux kernel documentation is
     highly recommended reading for anyone programming at this level.
 
-<a id="x-28SB-MANUAL-3A-40SESSIONS-2FDEBUGGING-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@SESSIONS%2FDEBUGGING%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40DEBUGGING-SESSIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEBUGGING-SESSIONS%20MGL-PAX:SECTION"></a>
 
-### 13.8 Sessions/Debugging
+### 13.8 Debugging Sessions
 
 If the user has multiple views onto the same Lisp image (for example,
 using multiple terminals, or a windowing system, or network access)
 they are typically set up as multiple *sessions* such that each view
 has its own collection of foreground, background, and stopped
-threads. A thread which wishes to create a new session can use
+threads. A thread that wishes to create a new session can use
 [`sb-thread:with-new-session`][556e] to remove itself from the current
 session (which it shares with its parent and siblings) and create a
 fresh one.
@@ -14811,7 +15180,7 @@ for the input stream is managed by calls to
 <a id="x-28SB-MANUAL-3A-40FOREIGN-THREADS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-THREADS%20MGL-PAX:SECTION"></a>
 
-### 13.9 Foreign threads
+### 13.9 Foreign Threads
 
 Direct calls to `pthread_create(3)` (instead of [`sb-thread:make-thread`][1f38])
 create threads that SBCL is not aware of, these are called foreign
@@ -14826,8 +15195,8 @@ current process which should land in a thread that does not block
 it, that is, a Lisp thread.
 
 The resignalling trick cannot work for synchronously triggered signals
-(`sigsegv` and co), take care not to trigger any. Resignalling for
-synchronously triggered signals in foreign threads is subject to
+(`SIGSEGV` and co), take care not to trigger any. Resignalling
+for synchronously triggered signals in foreign threads is subject to
 `--lose-on-corruption`, see [Runtime Options][3e4d].
 
 <a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-ON-LINUX-X86OIDS-20MGL-PAX-3ASECTION-29"></a>
@@ -14855,7 +15224,7 @@ each thread has its own region so this involves no stopping.
 However, when a region fills, a lock must be obtained while another
 is allocated, and when a collection is required, all processes are
 stopped. This is achieved by sending them signals, which may make
-for interesting behaviour if they are interrupted in system calls.
+for interesting behavior if they are interrupted in system calls.
 The streams interface is believed to handle the required system call
 restarting correctly, but this may be a consideration when making
 other blocking calls e.g. from foreign library code.
@@ -14937,7 +15306,7 @@ serve as a cautionary tale:
     When `thread` is not `t`, [`sb-thread:interrupt-thread`][9867] is used to run
     `function` and the ordering guarantees of `sb-thread:interrupt-thread`
     apply. In that case, `function` runs with interrupts disabled but
-    `with-interrupts` is allowed.
+    [`with-interrupts`][767b] is allowed.
 
 <a id="x-28SB-EXT-3ATIMER-NAME-20FUNCTION-29"></a>
 <a id="SB-EXT:TIMER-NAME%20FUNCTION"></a>
@@ -15181,10 +15550,10 @@ more useful features of Common Lisp -- briefly:
 
     If `auto-close` is true, the underlying OS socket is automatically
     closed after the stream and the socket have been garbage collected.
-    Default is false.
+    Default is `nil`.
 
     If `serve-events` is true, blocking IO on the socket will dispatch to
-    the recursive event loop. Default is false.
+    the recursive event loop. Default is `nil`.
 
     The stream for `socket` will be cached, and a second invocation of this
     method will return the same stream. This may lead to oddities if this
@@ -15228,47 +15597,47 @@ sb-bsd-sockets:sockopt-receive-low-water)`.
 
 - \[function\] **sb-bsd-sockets:sockopt-reuse-address** *socket*
 
-    Return the value of the SO-REUSEADDR socket option for `socket`. This can also be
-    updated with [`setf`][a138].
+    Return the value of the `SO_REUSEADDR` socket option for `socket`. This can
+    also be updated with [`setf`][a138].
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-KEEP-ALIVE-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-KEEP-ALIVE%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-keep-alive** *socket*
 
-    Return the value of the SO-KEEPALIVE socket option for `socket`. This can also be
-    updated with [`setf`][a138].
+    Return the value of the `SO_KEEPALIVE` socket option for `socket`. This can
+    also be updated with [`setf`][a138].
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-OOB-INLINE-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-OOB-INLINE%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-oob-inline** *socket*
 
-    Return the value of the SO-OOBINLINE socket option for `socket`. This can also be
-    updated with [`setf`][a138].
+    Return the value of the `SO_OOBINLINE` socket option for `socket`. This can
+    also be updated with [`setf`][a138].
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-BSD-COMPATIBLE-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-BSD-COMPATIBLE%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-bsd-compatible** *socket*
 
-    Return the value of the SO-BSDCOMPAT socket option for `socket`. This can also be
-    updated with [`setf`][a138]. Available only on Linux.
+    Return the value of the `SO_BSDCOMPAT` socket option for `socket`. This can
+    also be updated with [`setf`][a138]. Available only on Linux.
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-PASS-CREDENTIALS-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-PASS-CREDENTIALS%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-pass-credentials** *socket*
 
-    Return the value of the SO-PASSCRED socket option for `socket`. This can also be
-    updated with [`setf`][a138]. Available only on Linux.
+    Return the value of the `SO_PASSCRED` socket option for `socket`. This can also
+    be updated with [`setf`][a138]. Available only on Linux.
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-DEBUG-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-DEBUG%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-debug** *socket*
 
-    Return the value of the SO-DEBUG socket option for `socket`. This can also be
+    Return the value of the `SO_DEBUG` socket option for `socket`. This can also be
     updated with [`setf`][a138].
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-DONT-ROUTE-20FUNCTION-29"></a>
@@ -15276,24 +15645,24 @@ sb-bsd-sockets:sockopt-receive-low-water)`.
 
 - \[function\] **sb-bsd-sockets:sockopt-dont-route** *socket*
 
-    Return the value of the SO-DONTROUTE socket option for `socket`. This can also be
-    updated with [`setf`][a138].
+    Return the value of the `SO_DONTROUTE` socket option for `socket`. This can
+    also be updated with [`setf`][a138].
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-BROADCAST-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-BROADCAST%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-broadcast** *socket*
 
-    Return the value of the SO-BROADCAST socket option for `socket`. This can also be
-    updated with [`setf`][a138].
+    Return the value of the `SO_BROADCAST` socket option for `socket`. This can
+    also be updated with [`setf`][a138].
 
 <a id="x-28SB-BSD-SOCKETS-3ASOCKOPT-TCP-NODELAY-20FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:SOCKOPT-TCP-NODELAY%20FUNCTION"></a>
 
 - \[function\] **sb-bsd-sockets:sockopt-tcp-nodelay** *socket*
 
-    Return the value of the TCP-NODELAY socket option for `socket`. This can also be
-    updated with [`setf`][a138].
+    Return the value of the `TCP_NODELAY` socket option for `socket`. This can also
+    be updated with [`setf`][a138].
 
 <a id="x-28SB-MANUAL-3A-40INET-DOMAIN-SOCKETS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INET-DOMAIN-SOCKETS%20MGL-PAX:SECTION"></a>
@@ -15427,7 +15796,7 @@ lookup) are platform dependent.
 
 - \[function\] **sb-bsd-sockets:get-host-by-name** *host-name*
 
-    Returns a [`host-ent`][1341] instance for `host-name` or signals a `name-service-error`.
+    Return a [`host-ent`][1341] instance for `host-name` or signals a `name-service-error`.
 
     Another `host-ent` instance containing zero, one or more IPv6 addresses
     may be returned as a second return value.
@@ -15440,10 +15809,10 @@ lookup) are platform dependent.
 
 - \[function\] **sb-bsd-sockets:get-host-by-address** *address*
 
-    Returns a [`host-ent`][1341] instance for `address`, which should be a vector of
+    Return a [`host-ent`][1341] instance for `address`, which should be a vector of
     (integer 0 255) with 4 elements in case of an IPv4 address and 16
     elements in case of an IPv6 address, or signals a `name-service-error`.
-    See gethostbyaddr(3) for details.
+    See `gethostbyaddr(3)` for details.
 
 <a id="x-28SB-BSD-SOCKETS-3AHOST-ENT-ADDRESS-20GENERIC-FUNCTION-29"></a>
 <a id="SB-BSD-SOCKETS:HOST-ENT-ADDRESS%20GENERIC-FUNCTION"></a>
@@ -16022,7 +16391,7 @@ backwards-compatibility, but which has since been deprecated.
 
 - \[function\] **sb-concurrency:dequeue** *queue*
 
-    Retrieves the oldest value in `queue` and returns it as the primary value,
+    Retrieve the oldest value in `queue` and returns it as the primary value,
     and `t` as secondary value. If the queue is empty, returns `nil` as both primary
     and secondary value.
 
@@ -16031,14 +16400,14 @@ backwards-compatibility, but which has since been deprecated.
 
 - \[function\] **sb-concurrency:enqueue** *value queue*
 
-    Adds `value` to the end of `queue`. Returns `value`.
+    Add `value` to the end of `queue`. Returns `value`.
 
 <a id="x-28SB-CONCURRENCY-3ALIST-QUEUE-CONTENTS-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:LIST-QUEUE-CONTENTS%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:list-queue-contents** *queue*
 
-    Returns the contents of `queue` as a list without removing them from the
+    Return the contents of `queue` as a list without removing them from the
     `queue`. Mainly useful for manual examination of queue state, as the list may be
     out of date by the time it is returned, and concurrent dequeue operations may
     in the worse case force the queue-traversal to be restarted several times.
@@ -16048,7 +16417,7 @@ backwards-compatibility, but which has since been deprecated.
 
 - \[function\] **sb-concurrency:make-queue** *\&key name initial-contents*
 
-    Returns a new [`queue`][cb60] with `name` and contents of the `initial-contents`
+    Return a new [`queue`][cb60] with `name` and contents of the `initial-contents`
     sequence enqueued.
 
 <a id="x-28SB-CONCURRENCY-3AQUEUE-COUNT-20FUNCTION-29"></a>
@@ -16056,7 +16425,7 @@ backwards-compatibility, but which has since been deprecated.
 
 - \[function\] **sb-concurrency:queue-count** *queue*
 
-    Returns the number of objects in `queue`. Mainly useful for manual
+    Return the number of objects in `queue`. Mainly useful for manual
     examination of queue state, and in [`print-object`][3f2e] methods: inefficient as it
     must walk the entire queue.
 
@@ -16065,27 +16434,27 @@ backwards-compatibility, but which has since been deprecated.
 
 - \[function\] **sb-concurrency:queue-empty-p** *queue*
 
-    Returns `t` if `queue` is empty, `nil` otherwise.
+    Return `t` if `queue` is empty, `nil` otherwise.
 
 <a id="x-28SB-CONCURRENCY-3AQUEUE-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-CONCURRENCY-3AQUEUE-29-29"></a>
 <a id="SB-CONCURRENCY:QUEUE-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-CONCURRENCY:QUEUE%29"></a>
 
 - \[structure-accessor\] **sb-concurrency:queue-name** *queue*
 
-    Name of a `queue`. Can be assigned to using [`setf`][a138]. Queue names
-    can be arbitrary printable objects, and need not be unique.
+    Name of a `queue`. [`setf`][a138]able. Queue names can be arbitrary printable
+    objects, and need not be unique.
 
 <a id="x-28SB-CONCURRENCY-3AQUEUEP-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:QUEUEP%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:queuep** *object*
 
-    Returns true if argument is a [`queue`][cb60], `nil` otherwise.
+    Return true if argument is a [`queue`][cb60], `nil` otherwise.
 
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-MAILBOX-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-MAILBOX%20MGL-PAX:SECTION"></a>
 
-#### 17.2.2 Mailbox (lock-free)
+#### 17.2.2 Mailbox
 
 [`sb-concurrency:mailbox`][96b9] is a lock-free message queue where one or
 multiple ends can send messages to one or multiple receivers. The
@@ -16112,7 +16481,7 @@ Built on top of the [Queue][2771] implementation.
 
 - \[function\] **sb-concurrency:list-mailbox-messages** *mailbox*
 
-    Returns a fresh list containing all the messages in `mailbox`. Does not
+    Return a fresh list containing all the messages in `mailbox`. Does not
     remove messages from the mailbox.
 
 <a id="x-28SB-CONCURRENCY-3AMAILBOX-COUNT-20FUNCTION-29"></a>
@@ -16120,14 +16489,14 @@ Built on top of the [Queue][2771] implementation.
 
 - \[function\] **sb-concurrency:mailbox-count** *mailbox*
 
-    Returns the number of messages currently in `mailbox`.
+    Return the number of messages currently in `mailbox`.
 
 <a id="x-28SB-CONCURRENCY-3AMAILBOX-EMPTY-P-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:MAILBOX-EMPTY-P%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:mailbox-empty-p** *mailbox*
 
-    Returns true if `mailbox` is currently empty, `nil` otherwise.
+    Return true if `mailbox` is currently empty, `nil` otherwise.
 
 <a id="x-28SB-CONCURRENCY-3AMAILBOX-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-CONCURRENCY-3AMAILBOX-29-29"></a>
 <a id="SB-CONCURRENCY:MAILBOX-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-CONCURRENCY:MAILBOX%29"></a>
@@ -16141,21 +16510,21 @@ Built on top of the [Queue][2771] implementation.
 
 - \[function\] **sb-concurrency:mailboxp** *object*
 
-    Returns true if argument is a [`mailbox`][96b9], `nil` otherwise.
+    Return true if argument is a [`mailbox`][96b9], `nil` otherwise.
 
 <a id="x-28SB-CONCURRENCY-3AMAKE-MAILBOX-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:MAKE-MAILBOX%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:make-mailbox** *\&key name initial-contents*
 
-    Returns a new [`mailbox`][96b9] with messages in `initial-contents` enqueued.
+    Return a new [`mailbox`][96b9] with messages in `initial-contents` enqueued.
 
 <a id="x-28SB-CONCURRENCY-3ARECEIVE-MESSAGE-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:RECEIVE-MESSAGE%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:receive-message** *mailbox \&key timeout*
 
-    Removes the oldest message from `mailbox` and returns it as the primary
+    Remove the oldest message from `mailbox` and returns it as the primary
     value, and a secondary value of `t`. If `mailbox` is empty waits until a message
     arrives.
 
@@ -16176,8 +16545,8 @@ Built on top of the [Queue][2771] implementation.
 
 - \[function\] **sb-concurrency:receive-pending-messages** *mailbox \&optional n*
 
-    Removes and returns all (or at most `n`) currently pending messages
-    from `mailbox`, or returns `nil` if no messages are pending.
+    Remove and return all (or at most `n`) currently pending messages
+    from `mailbox`, or return `nil` if no messages are pending.
 
     > *Note*: Concurrent threads may be snarfing messages during the run
     > of this function, so even `x` and `y` appearing right next to each
@@ -16189,7 +16558,7 @@ Built on top of the [Queue][2771] implementation.
 
 - \[function\] **sb-concurrency:send-message** *mailbox message*
 
-    Adds a `message` to `mailbox`. Message can be any object.
+    Add a `message` to `mailbox`. Message can be any object.
 
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-GATES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-GATES%20MGL-PAX:SECTION"></a>
@@ -16216,7 +16585,7 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:close-gate** *gate*
 
-    Closes `gate`. Returns `t` if the gate was previously open, and `nil`
+    Close `gate`. Return `t` if the gate was previously open, and `nil`
     if the gate was already closed.
 
 <a id="x-28SB-CONCURRENCY-3AGATE-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-CONCURRENCY-3AGATE-29-29"></a>
@@ -16231,21 +16600,21 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:gate-open-p** *gate*
 
-    Returns true if `gate` is open.
+    Return true if `gate` is open.
 
 <a id="x-28SB-CONCURRENCY-3AGATEP-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:GATEP%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:gatep** *object*
 
-    Returns true if the argument is a [`gate`][da1d].
+    Return true if the argument is a [`gate`][da1d].
 
 <a id="x-28SB-CONCURRENCY-3AMAKE-GATE-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:MAKE-GATE%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:make-gate** *\&key name open*
 
-    Makes a new gate. Gate will be initially open if `open` is true, and closed if `open`
+    Make a new gate. Gate will be initially open if `open` is true, and closed if `open`
     is `nil` (the default.) `name`, if provided, is the name of the gate, used when printing
     the gate.
 
@@ -16254,7 +16623,7 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:open-gate** *gate*
 
-    Opens `gate`. Returns `t` if the gate was previously closed, and `nil`
+    Open `gate`. Return `t` if the gate was previously closed, and `nil`
     if the gate was already open.
 
 <a id="x-28SB-CONCURRENCY-3AWAIT-ON-GATE-20FUNCTION-29"></a>
@@ -16262,13 +16631,13 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:wait-on-gate** *gate \&key timeout*
 
-    Waits for `gate` to open, or `timeout` seconds to pass. Returns `t`
+    Wait for `gate` to open or `timeout` seconds to pass. Return `t`
     if the gate was opened in time, and `nil` otherwise.
 
 <a id="x-28SB-MANUAL-3A-40SB-CONCURRENCY-FRLOCKS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-CONCURRENCY-FRLOCKS%20MGL-PAX:SECTION"></a>
 
-#### 17.2.4 Frlocks, aka Fast Read Locks
+#### 17.2.4 Fast Read Locks
 
 <a id="x-28SB-CONCURRENCY-3AFRLOCK-20STRUCTURE-29"></a>
 <a id="SB-CONCURRENCY:FRLOCK%20STRUCTURE"></a>
@@ -16315,7 +16684,7 @@ multiple threads must wait for a single event before proceeding.
 
 - \[macro\] **sb-concurrency:frlock-read** *(frlock) \&body value-forms*
 
-    Evaluates `value-forms` under `frlock` till it obtains a consistent
+    Evaluate `value-forms` under `frlock` till it obtains a consistent
     set, and returns that as multiple values.
 
 <a id="x-28SB-CONCURRENCY-3AFRLOCK-WRITE-20MGL-PAX-3AMACRO-29"></a>
@@ -16323,14 +16692,14 @@ multiple threads must wait for a single event before proceeding.
 
 - \[macro\] **sb-concurrency:frlock-write** *(frlock \&key (wait-p t) timeout) \&body body*
 
-    Executes `body` while holding `frlock` for writing.
+    Execute `body` while holding `frlock` for writing.
 
 <a id="x-28SB-CONCURRENCY-3AMAKE-FRLOCK-20FUNCTION-29"></a>
 <a id="SB-CONCURRENCY:MAKE-FRLOCK%20FUNCTION"></a>
 
 - \[function\] **sb-concurrency:make-frlock** *\&key name*
 
-    Returns a new [`frlock`][56e2] with `name`.
+    Return a new [`frlock`][56e2] with `name`.
 
 <a id="x-28SB-CONCURRENCY-3AFRLOCK-NAME-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-CONCURRENCY-3AFRLOCK-29-29"></a>
 <a id="SB-CONCURRENCY:FRLOCK-NAME%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-CONCURRENCY:FRLOCK%29"></a>
@@ -16354,10 +16723,11 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:frlock-read-end** *frlock*
 
-    Ends a read sequence on `frlock`. Returns a token and an epoch. If the token
-    and epoch are [`eql`][38a2] to the read-token and epoch returned by [`frlock-read-begin`][0a63],
-    the values read under the `frlock` are consistent and can be used: if the values
-    differ, the values are inconsistent and the read must be restated.
+    End a read sequence on `frlock`. Return a token and an epoch. If the
+    token and epoch are [`eql`][38a2] to the read-token and epoch returned by
+    [`frlock-read-begin`][0a63], the values read under the `frlock` are consistent and
+    can be used: if the values differ, the values are inconsistent and the
+    read must be restated.
 
     Using [`frlock-read`][ba6a] instead is recommended.
 
@@ -16376,7 +16746,7 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:grab-frlock-write-lock** *frlock \&key (wait-p t) timeout*
 
-    Acquires `frlock` for writing, invalidating existing and future read-tokens
+    Acquire `frlock` for writing, invalidating existing and future read-tokens
     for the duration. Returns `t` on success, and `nil` if the lock wasn't acquired
     due to e.g. a timeout. Using [`frlock-write`][41b7] instead is recommended.
 
@@ -16385,9 +16755,9 @@ multiple threads must wait for a single event before proceeding.
 
 - \[function\] **sb-concurrency:release-frlock-write-lock** *frlock*
 
-    Releases `frlock` after writing, allowing valid read-tokens to be acquired again.
-    Signals an error if the current thread doesn't hold `frlock` for writing. Using [`frlock-write`][41b7]
-    instead is recommended.
+    Release `frlock` after writing, allowing valid read-tokens to be
+    acquired again. Signals an error if the current thread doesn't hold
+    `frlock` for writing. Using [`frlock-write`][41b7] instead is recommended.
 
 <a id="x-28SB-MANUAL-3A-40SB-COVER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SB-COVER%20MGL-PAX:SECTION"></a>
@@ -16467,7 +16837,7 @@ How to use it:
 
 - \[function\] **sb-cover:save-coverage**
 
-    Returns an opaque representation of the current code coverage state.
+    Return an opaque representation of the current code coverage state.
     The only operation that may be done on the state is passing it to
     [`restore-coverage`][a1c3]. The representation is guaranteed to be readably printable.
     A representation that has been printed and read back will work identically
@@ -16845,7 +17215,7 @@ as querying their properties and relationships in the running image.
 
 - \[function\] **sb-introspect:find-definition-sources-by-name** *name type*
 
-    Returns a list of [`definition-source`][4f11]s for definitions of `name` with
+    Return a list of [`definition-source`][4f11]s for definitions of `name` with
     the given definition `type`. A `definition-source` object is always
     returned for definitions that exist, but the source location (e.g.
     [`definition-source-pathname`][2d27]) may be missing. `type` can currently be one
@@ -16953,7 +17323,7 @@ as querying their properties and relationships in the running image.
 
 - \[function\] **sb-introspect:function-type** *function-designator*
 
-    Returns the ftype of `function-designator` or `nil`.
+    Return the ftype of `function-designator` or `nil`.
 
 <a id="x-28SB-INTROSPECT-3AMETHOD-COMBINATION-LAMBDA-LIST-20FUNCTION-29"></a>
 <a id="SB-INTROSPECT:METHOD-COMBINATION-LAMBDA-LIST%20FUNCTION"></a>
@@ -17021,7 +17391,7 @@ as querying their properties and relationships in the running image.
 
 - \[function\] **sb-introspect:deftype-lambda-list** *type-specifier-name*
 
-    Returns the lambda list of `type-specifier-name` as the first return
+    Return the lambda list of `type-specifier-name` as the first return
     value, and a flag whether the arglist could be found as the second
     value.
 
@@ -17073,7 +17443,7 @@ as querying their properties and relationships in the running image.
 
 - \[function\] **sb-introspect:allocation-information** *object*
 
-    Returns information about the allocation of `object`. The primary return
+    Return information about the allocation of `object`. The primary return
     value indicates the general type of allocation: `:immediate`, `:heap`,
     `:stack`, or `:foreign`.
 
@@ -17117,7 +17487,7 @@ as querying their properties and relationships in the running image.
     the object is allocated.
 
     Expected use-cases include introspection to gain insight into allocation and
-    GC behaviour and restricting memoization to heap-allocated arguments.
+    GC behavior and restricting memoization to heap-allocated arguments.
 
     Experimental: interface subject to change.
 
@@ -17352,7 +17722,7 @@ Unixlike platform". This is section 2 of the Unix manual, plus
 section 3 calls that are (a) typically found in libc, but (b) not
 part of the C standard. For example, we intend to provide support
 for `opendir(3)` and `readdir(3)` but not for `printf(3)`. That
-said, if your favourite system call is not included yet, you are
+said, if your favorite system call is not included yet, you are
 encouraged to submit a patch to the SBCL mailing list.
 
 Some facilities are omitted where they offer absolutely no
@@ -17420,7 +17790,7 @@ both pathnames and strings as its arguments.
 
     A [`fixnum`][3cde] designating a native file descriptor.
 
-    `sb-sys:make-fd-stream` can be used to construct a [`file-stream`][c241] associated with a
+    [`sb-sys:make-fd-stream`][a960] can be used to construct a [`file-stream`][c241] associated with a
     native file descriptor.
 
     Note that mixing I/O operations on a `file-stream` with operations directly on its
@@ -17618,14 +17988,14 @@ counterparts.
 
 - \[function\] **sb-posix:getcwd**
 
-    Returns the process's current working directory as a string.
+    Return the OS process's current working directory as a string.
 
 <a id="x-28SB-POSIX-3AREADLINK-20FUNCTION-29"></a>
 <a id="SB-POSIX:READLINK%20FUNCTION"></a>
 
 - \[function\] **sb-posix:readlink** *pathspec*
 
-    Returns the resolved target of a symbolic link as a string.
+    Return the resolved target of a symbolic link as a string.
 
 <a id="x-28SB-POSIX-3ASYSLOG-20FUNCTION-29"></a>
 <a id="SB-POSIX:SYSLOG%20FUNCTION"></a>
@@ -17706,7 +18076,7 @@ on 32-bit rings.
 
 - \[function\] **sb-rotate-byte:rotate-byte** *count bytespec integer*
 
-    Rotates a field of bits within `integer`; specifically, returns an
+    Rotate a field of bits within `integer`; specifically, return an
     integer that contains the bits of `integer` rotated `count` times
     leftwards within the byte specified by `bytespec`, and elsewhere
     contains the bits of `integer`.
@@ -17721,8 +18091,8 @@ programming in SBCL. It provides one package per SIMD instruction
 set, plus functions and macros for querying whether an instruction
 set is available and what functions and data types it exports.
 
-<a id="x-28SB-MANUAL-3A-40DATA-TYPES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DATA-TYPES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-DATA-TYPES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-DATA-TYPES%20MGL-PAX:SECTION"></a>
 
 #### 17.11.1 Data Types
 
@@ -17755,8 +18125,8 @@ usually be avoided via inlining, or by loading and storing them to
 specialized arrays instead of passing them around as function
 arguments.
 
-<a id="x-28SB-MANUAL-3A-40CASTS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@CASTS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-CASTS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-CASTS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.2 Casts
 
@@ -17775,8 +18145,8 @@ function description states that an argument must be of type `x.y`,
 the argument can actually be of any type that is a suitable argument
 of the cast function named `x.y`.
 
-<a id="x-28SB-MANUAL-3A-40CONSTRUCTORS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@CONSTRUCTORS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-CONSTRUCTORS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-CONSTRUCTORS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.3 Constructors
 
@@ -17784,8 +18154,8 @@ For each SIMD data type `x.y`, there is a constructor named
 `make-x.y` that takes `y` arguments of type `x` and returns a SIMD
 pack whose elements are the supplied values.
 
-<a id="x-28SB-MANUAL-3A-40UNPACKERS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@UNPACKERS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-UNPACKERS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-UNPACKERS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.4 Unpackers
 
@@ -17793,8 +18163,8 @@ For each SIMD data type `x.y`, there is a function named
 `x.y-values` that returns, as `y` multiple values, the elements of
 the supplied SIMD pack of type `x.y`.
 
-<a id="x-28SB-MANUAL-3A-40REINTERPRET-CASTS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@REINTERPRET-CASTS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-REINTERPRET-CASTS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-REINTERPRET-CASTS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.5 Reinterpret Casts
 
@@ -17805,8 +18175,8 @@ bits than the resulting value, the excess bits are discarded. If the
 supplied datum has less bits than the resulting value, the missing
 bits are assumed to be zero.
 
-<a id="x-28SB-MANUAL-3A-40ASSOCIATIVES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@ASSOCIATIVES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-ASSOCIATIVES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-ASSOCIATIVES%20MGL-PAX:SECTION"></a>
 
 #### 17.11.6 Associatives
 
@@ -17823,8 +18193,8 @@ summing any number of 256 bit packs of single floats, and
 `sb-simd-fma:u8.32-max`, for computing the element-wise maximum of
 one or more 256 bit packs of 8 bit integers.
 
-<a id="x-28SB-MANUAL-3A-40REDUCERS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@REDUCERS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-REDUCERS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-REDUCERS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.7 Reducers
 
@@ -17844,8 +18214,8 @@ from the first supplied one, except in the case of a single
 argument, where `sb-simd-fma:u32.8-` simply negates all values in
 the pack.
 
-<a id="x-28SB-MANUAL-3A-40ROUNDING-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@ROUNDING%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-ROUNDING-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-ROUNDING%20MGL-PAX:SECTION"></a>
 
 #### 17.11.8 Rounding
 
@@ -17857,8 +18227,8 @@ functions are `x.y-round`, `x.y-floor`, `x.y-ceiling`, and
 versions of [`cl:round`][36fc], [`cl:floor`][c27f], [`cl:ceiling`][c37a], and [`cl:truncate`][45ae],
 respectively.
 
-<a id="x-28SB-MANUAL-3A-40COMPARISONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@COMPARISONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-COMPARISONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-COMPARISONS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.9 Comparisons
 
@@ -17874,8 +18244,8 @@ The bits of each unsigned integer are either all one, if the values
 of the arguments at that position satisfy the test, or all zero, if
 they don't. We call a SIMD packs of such unsigned integers a mask.
 
-<a id="x-28SB-MANUAL-3A-40CONDITIONALS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@CONDITIONALS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-CONDITIONALS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-CONDITIONALS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.10 Conditionals
 
@@ -17901,8 +18271,8 @@ and that returns a value of type `x.y` where each element is from
 the second operand if the corresponding mask bits are set, and from
 the third operand if the corresponding mask bits are not set.
 
-<a id="x-28SB-MANUAL-3A-40LOADS-AND-STORES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@LOADS-AND-STORES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-LOADS-AND-STORES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-LOADS-AND-STORES%20MGL-PAX:SECTION"></a>
 
 #### 17.11.11 Loads and Stores
 
@@ -17936,8 +18306,8 @@ handling by the user, non-temporal loads and stores will only work
 on certain array indices that depend on the actual placement of that
 array in memory.
 
-<a id="x-28SB-MANUAL-3A-40SPECIALIZED-SCALAR-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@SPECIALIZED-SCALAR-OPERATIONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-SPECIALIZED-SCALAR-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-SPECIALIZED-SCALAR-OPERATIONS%20MGL-PAX:SECTION"></a>
 
 #### 17.11.12 Specialized Scalar Operations
 
@@ -17959,8 +18329,8 @@ they can be used to write reference implementations for testing. A
 final reason is that these scalar functions can be used to simplify
 the life of tools for automatic vectorization.
 
-<a id="x-28SB-MANUAL-3A-40INSTRUCTION-SET-DISPATCH-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40SB-SIMD-INSTRUCTION-SET-DISPATCH-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@SB-SIMD-INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION"></a>
 
 #### 17.11.13 Instruction Set Dispatch
 
@@ -18701,6 +19071,11 @@ still reflected in the current implementation:
 - The system is implemented as a C program which is responsible for
   supplying low-level services and loading a Lisp `.core` file.
 
+The name *Steel Bank Common Lisp* itself is a reference to *Carnegie
+Mellon University Common Lisp* from which SBCL forked: Andrew
+Carnegie made his fortune in the steel industry and Andrew Mellon
+was a successful banker.
+
 SBCL also inherited some newer architectural features from CMUCL.
 The most important is that on some architectures it has a
 generational GC, which has various implications (mostly good) for
@@ -18722,25 +19097,27 @@ of forms, such as symbols which are [`boundp`][6c37]. More complicated forms
 are evaluated by calling [`compile`][8c75] and then calling [`funcall`][03c7] on the
 returned result.
 
-The direct ancestor of SBCL is the x86 port of CMUCL. This port was in
-some ways the most cobbled-together of all the CMUCL ports, since a
-number of strange changes had to be made to support the register-poor
-x86 architecture. Some things (like tracing and debugging) do not work
-particularly well there. SBCL should be able to improve in these areas
-(and has already improved in some other areas), but it takes a while.
+The direct ancestor of SBCL is the x86 port of CMUCL. This port was
+in some ways the most cobbled-together of all the CMUCL ports, since
+a number of strange changes had to be made to support the
+register-poor x86 architecture. Some things (like tracing and
+debugging) do not work particularly well there. SBCL should be able
+to improve in these areas (and has already improved in some other
+areas), but it takes a while.
 
-On the x86 SBCL -- like the x86 port of CMUCL -- uses a
+On x86, SBCL -- like the x86 port of CMUCL -- uses a
 *conservative GC*. This means that it doesn't maintain a strict
-separation between tagged and untagged data, instead treating some
-untagged data (e.g. raw floating point numbers) as possibly-tagged
-data and so not collecting any Lisp objects that they point to. This
-has some negative consequences for average time efficiency (though
-possibly no worse than the negative consequences of trying to
-implement an exact GC on a processor architecture as register-poor
-as the x86) and also has potentially unlimited consequences for
-worst-case memory efficiency. In practice, conservative GCs work
-reasonably well, not getting anywhere near the worst case. But they
-can occasionally cause odd patterns of memory usage.
+separation between [Descriptor][777e] and [Non-descriptor][820d] data, instead
+treating some non-descriptor data (e.g. raw floating point numbers)
+as possibly-descriptor data and so not collecting any Lisp objects
+that they point to. This has some negative consequences for average
+time efficiency (though possibly no worse than the negative
+consequences of trying to implement an exact GC on a processor
+architecture as register-poor as the x86) and also has potentially
+unlimited consequences for worst-case memory efficiency. In
+practice, conservative GCs work reasonably well, not getting
+anywhere near the worst case. But they can occasionally cause odd
+patterns of memory usage.
 
 The fork from CMUCL was based on a major rewrite of the system
 bootstrap process. CMUCL has for many years tolerated a very unusual
@@ -18874,7 +19251,7 @@ learn about Common Lisp, some books stand out:
 
 [00a0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_mi.htm "SLOT-MISSING (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
-[0157]: #SB-MANUAL:@CONDITIONALS%20MGL-PAX:SECTION "Conditionals"
+[0106]: #SB-MANUAL:@SB-SIMD-REINTERPRET-CASTS%20MGL-PAX:SECTION "Reinterpret Casts"
 
 [0160]: http://www.lispworks.com/documentation/HyperSpec/Body/s_setq.htm "SETQ (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -18916,8 +19293,6 @@ learn about Common Lisp, some books stand out:
 
 [06b6]: #SB-MANUAL:@LOCAL-TAIL-CALL%20MGL-PAX:SECTION "Local Tail Call"
 
-[073a]: #SB-MANUAL:@CONSTRUCTORS%20MGL-PAX:SECTION "Constructors"
-
 [0759]: #SB-COVER:SAVE-COVERAGE%20FUNCTION "SB-COVER:SAVE-COVERAGE FUNCTION"
 
 [07b0]: #SB-PROFILE:PROFILE%20MGL-PAX:MACRO "SB-PROFILE:PROFILE MGL-PAX:MACRO"
@@ -18933,8 +19308,6 @@ learn about Common Lisp, some books stand out:
 [0901]: http://www.lispworks.com/documentation/HyperSpec/Body/d_dynami.htm "DYNAMIC-EXTENT (MGL-PAX:CLHS DECLARATION)"
 
 [091c]: http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm "FLET (MGL-PAX:CLHS MGL-PAX:MACRO)"
-
-[0928]: #SB-MANUAL:@REINTERPRET-CASTS%20MGL-PAX:SECTION "Reinterpret Casts"
 
 [0961]: http://www.lispworks.com/documentation/HyperSpec/Body/v_cmp_pr.htm "*COMPILE-VERBOSE* (MGL-PAX:CLHS VARIABLE)"
 
@@ -18996,8 +19369,6 @@ learn about Common Lisp, some books stand out:
 
 [1016]: #SB-MANUAL:@INITIALIZATION-FILES%20MGL-PAX:SECTION "Initialization Files"
 
-[10a0]: #SB-MANUAL:@ADVANCED-COMPILER-USE-AND-EFFICIENCY-HINTS%20MGL-PAX:SECTION "Advanced Compiler Use and Efficiency Hints"
-
 [10c2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_provid.htm "PROVIDE (MGL-PAX:CLHS FUNCTION)"
 
 [10c3]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm "TRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -19042,6 +19413,8 @@ learn about Common Lisp, some books stand out:
 
 [1351]: #SB-BSD-SOCKETS:SOCKET-ERROR%20FUNCTION "SB-BSD-SOCKETS:SOCKET-ERROR FUNCTION"
 
+[136f]: #SB-MANUAL:@BREAKING-UNICODE-STRINGS%20MGL-PAX:SECTION "Breaking Unicode Strings"
+
 [1383]: http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm "MACROLET (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [13dd]: http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm "CLEAR-OUTPUT (MGL-PAX:CLHS FUNCTION)"
@@ -19070,6 +19443,8 @@ learn about Common Lisp, some books stand out:
 
 [1867]: http://www.lispworks.com/documentation/HyperSpec/Body/r_contin.htm "CONTINUE (MGL-PAX:CLHS RESTART)"
 
+[186e]: #SB-MANUAL:@BACKTRACES%20MGL-PAX:SECTION "Backtraces"
+
 [187d]: #SB-SPROF:*MAX-SAMPLES*%20VARIABLE "SB-SPROF:*MAX-SAMPLES* VARIABLE"
 
 [1a1b]: #SB-MANUAL:@MODULAR-ARITHMETIC%20MGL-PAX:SECTION "Modular Arithmetic"
@@ -19090,8 +19465,6 @@ learn about Common Lisp, some books stand out:
 
 [1dd7]: #SB-CONCURRENCY:OPEN-GATE%20FUNCTION "SB-CONCURRENCY:OPEN-GATE FUNCTION"
 
-[1e30]: #SB-MANUAL:@CASTS%20MGL-PAX:SECTION "Casts"
-
 [1e45]: #SB-THREAD:SEMAPHORE-NOTIFICATION%20STRUCTURE "SB-THREAD:SEMAPHORE-NOTIFICATION STRUCTURE"
 
 [1e7c]: #SB-MANUAL:@DYNAMIC-TYPE-INFERENCE%20MGL-PAX:SECTION "Dynamic Type Inference"
@@ -19105,6 +19478,8 @@ learn about Common Lisp, some books stand out:
 [1f37]: http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm "CLASS (MGL-PAX:CLHS CLASS)"
 
 [1f38]: #SB-THREAD:MAKE-THREAD%20FUNCTION "SB-THREAD:MAKE-THREAD FUNCTION"
+
+[1f5b]: #SB-MANUAL:@SB-SIMD-COMPARISONS%20MGL-PAX:SECTION "Comparisons"
 
 [1f99]: http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm "ARRAY (MGL-PAX:CLHS CLASS)"
 
@@ -19152,6 +19527,8 @@ learn about Common Lisp, some books stand out:
 
 [24fb]: #SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION "Package-local Nicknames"
 
+[260a]: #SB-SYS:ENABLE-INTERRUPT%20FUNCTION "SB-SYS:ENABLE-INTERRUPT FUNCTION"
+
 [2703]: #SB-MANUAL:@HISTORY-AND-IMPLEMENTATION-OF-SBCL%20MGL-PAX:SECTION "History and Implementation of SBCL"
 
 [2771]: #SB-MANUAL:@SB-CONCURRENCY-QUEUE%20MGL-PAX:SECTION "Queue"
@@ -19171,6 +19548,10 @@ learn about Common Lisp, some books stand out:
 [29fd]: #SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION "Efficiency"
 
 [2a47]: #SB-POSIX:STAT%20CLASS "SB-POSIX:STAT CLASS"
+
+[2b10]: #SB-MANUAL:@SPECIAL-VARIABLES-IN-THREADS%20MGL-PAX:SECTION "Special Variables in Threads"
+
+[2b4d]: http://www.lispworks.com/documentation/HyperSpec/Body/t_rnd_st.htm "RANDOM-STATE (MGL-PAX:CLHS CLASS)"
 
 [2b8b]: http://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm "SATISFIES (MGL-PAX:CLHS TYPE)"
 
@@ -19252,6 +19633,8 @@ learn about Common Lisp, some books stand out:
 
 [35b8]: http://www.lispworks.com/documentation/HyperSpec/Body/a_not.htm "NOT (MGL-PAX:CLHS NIL)"
 
+[35cf]: #SB-MANUAL:@SB-SIMD-ASSOCIATIVES%20MGL-PAX:SECTION "Associatives"
+
 [360d]: #REQUIRE%20FUNCTION "REQUIRE FUNCTION"
 
 [361d]: #SB-MANUAL:@GETTING-STARTED%20MGL-PAX:SECTION "Getting Started"
@@ -19275,8 +19658,6 @@ learn about Common Lisp, some books stand out:
 [38a2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm "EQL (MGL-PAX:CLHS NIL)"
 
 [38bd]: #SB-SEQUENCE:CONCATENATE%20GENERIC-FUNCTION "SB-SEQUENCE:CONCATENATE GENERIC-FUNCTION"
-
-[38d2]: #SB-MANUAL:@LOADS-AND-STORES%20MGL-PAX:SECTION "Loads and Stores"
 
 [392d]: http://www.lispworks.com/documentation/HyperSpec/Body/s_catch.htm "CATCH (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -19320,6 +19701,8 @@ learn about Common Lisp, some books stand out:
 
 [3df6]: #SB-MANUAL:@BIVALENT-STREAMS%20MGL-PAX:SECTION "Bivalent Streams"
 
+[3e3c]: #SB-MANUAL:@SIGNAL-HANDLING%20MGL-PAX:SECTION "Signal Handling"
+
 [3e47]: #SB-EXT:DEPRECATION-ERROR%20CONDITION "SB-EXT:DEPRECATION-ERROR CONDITION"
 
 [3e4d]: #SB-MANUAL:@RUNTIME-OPTIONS%20MGL-PAX:SECTION "Runtime Options"
@@ -19345,6 +19728,8 @@ learn about Common Lisp, some books stand out:
 [4143]: http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm "STRING= (MGL-PAX:CLHS FUNCTION)"
 
 [41a3]: #SB-SYS:DEADLINE-TIMEOUT%20CONDITION "SB-SYS:DEADLINE-TIMEOUT CONDITION"
+
+[41aa]: #SB-MANUAL:@SB-SIMD-REDUCERS%20MGL-PAX:SECTION "Reducers"
 
 [41b7]: #SB-CONCURRENCY:FRLOCK-WRITE%20MGL-PAX:MACRO "SB-CONCURRENCY:FRLOCK-WRITE MGL-PAX:MACRO"
 
@@ -19375,8 +19760,6 @@ learn about Common Lisp, some books stand out:
 [45ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm "TRUNCATE (MGL-PAX:CLHS FUNCTION)"
 
 [45c0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_get_se.htm "GET-SETF-EXPANSION (MGL-PAX:CLHS FUNCTION)"
-
-[45ed]: #SB-MANUAL:@ROUNDING%20MGL-PAX:SECTION "Rounding"
 
 [460c]: #SB-SEQUENCE:PROTOCOL-UNIMPLEMENTED%20CONDITION "SB-SEQUENCE:PROTOCOL-UNIMPLEMENTED CONDITION"
 
@@ -19462,11 +19845,9 @@ learn about Common Lisp, some books stand out:
 
 [4fa3]: #SB-MANUAL:@FUNCTION-TYPES%20MGL-PAX:SECTION "Function Types"
 
-[507d]: #SB-MANUAL:@SB-CONCURRENCY-MAILBOX%20MGL-PAX:SECTION "Mailbox (lock-free)"
+[507d]: #SB-MANUAL:@SB-CONCURRENCY-MAILBOX%20MGL-PAX:SECTION "Mailbox"
 
 [5092]: #SB-MANUAL:@UNION-TYPES%20MGL-PAX:SECTION "Union Types"
-
-[5149]: #SB-UNICODE:UNICODE%3E%20FUNCTION "SB-UNICODE:UNICODE> FUNCTION"
 
 [5165]: #SB-MANUAL:@GRAY-STREAMS%20MGL-PAX:SECTION "Gray Streams"
 
@@ -19491,8 +19872,6 @@ learn about Common Lisp, some books stand out:
 [548d]: #TRACE%20MGL-PAX:MACRO "TRACE MGL-PAX:MACRO"
 
 [54ac]: #SB-EXT:BYTES-CONSED-BETWEEN-GCS%20FUNCTION "SB-EXT:BYTES-CONSED-BETWEEN-GCS FUNCTION"
-
-[554f]: #SB-MANUAL:@SPECIALIZED-SCALAR-OPERATIONS%20MGL-PAX:SECTION "Specialized Scalar Operations"
 
 [556e]: #SB-THREAD:WITH-NEW-SESSION%20MGL-PAX:MACRO "SB-THREAD:WITH-NEW-SESSION MGL-PAX:MACRO"
 
@@ -19536,6 +19915,8 @@ learn about Common Lisp, some books stand out:
 
 [5888]: #SB-EXT:DEPRECATED%20DECLARATION "SB-EXT:DEPRECATED DECLARATION"
 
+[58d6]: #SB-UNICODE:NORMALIZE-STRING%20FUNCTION "SB-UNICODE:NORMALIZE-STRING FUNCTION"
+
 [5986]: http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm "STRING-UPCASE (MGL-PAX:CLHS FUNCTION)"
 
 [59a9]: #SB-EXT:DEFGLOBAL%20MGL-PAX:MACRO "SB-EXT:DEFGLOBAL MGL-PAX:MACRO"
@@ -19551,6 +19932,8 @@ learn about Common Lisp, some books stand out:
 [5abd]: #SB-MANUAL:@STRUCTURE-TYPES%20MGL-PAX:SECTION "Structure Types"
 
 [5b0b]: http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm "RETURN (MGL-PAX:CLHS MGL-PAX:MACRO)"
+
+[5b72]: http://www.lispworks.com/documentation/HyperSpec/Body/e_divisi.htm "DIVISION-BY-ZERO (MGL-PAX:CLHS CONDITION)"
 
 [5c43]: #SB-MANUAL:@EXSEQ-ITERATOR-PROTOCOL%20MGL-PAX:SECTION "Iterator Protocol"
 
@@ -19576,13 +19959,13 @@ learn about Common Lisp, some books stand out:
 
 [5df9]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "DEBUG (MGL-PAX:CLHS DECLARATION)"
 
-[5e27]: #SB-MANUAL:@BREAKING-STRINGS%20MGL-PAX:SECTION "Breaking strings"
-
 [5eb2]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tpcase.htm "ETYPECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [5ed1]: http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm "*PACKAGE* (MGL-PAX:CLHS VARIABLE)"
 
 [5ef5]: #SB-THREAD:THREAD%20STRUCTURE "SB-THREAD:THREAD STRUCTURE"
+
+[5eff]: #SB-MANUAL:@SB-SIMD-UNPACKERS%20MGL-PAX:SECTION "Unpackers"
 
 [5f65]: #SB-MANUAL:@EXTENSIBLE-SEQUENCES%20MGL-PAX:SECTION "Extensible Sequences"
 
@@ -19600,7 +19983,7 @@ learn about Common Lisp, some books stand out:
 
 [6140]: #SB-MANUAL:@CHARACTERS%20MGL-PAX:SECTION "Characters"
 
-[6154]: #SB-MANUAL:@CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS%20MGL-PAX:SECTION "Converting between Strings and Octet Vectors"
+[6154]: #SB-MANUAL:@CONVERTING-BETWEEN-STRINGS-AND-OCTET-VECTORS%20MGL-PAX:SECTION "Converting Between Strings and Octet Vectors"
 
 [615c]: #SB-MANUAL:@STARTING-SBCL%20MGL-PAX:SECTION "Starting SBCL"
 
@@ -19646,8 +20029,6 @@ learn about Common Lisp, some books stand out:
 
 [65e2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_sqrt_.htm "SQRT (MGL-PAX:CLHS FUNCTION)"
 
-[65f6]: #SB-MANUAL:@INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION "Instruction Set Dispatch"
-
 [663f]: http://www.lispworks.com/documentation/HyperSpec/Body/t_null.htm "NULL (MGL-PAX:CLHS CLASS)"
 
 [6651]: http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm "DESCRIBE (MGL-PAX:CLHS FUNCTION)"
@@ -19692,7 +20073,7 @@ learn about Common Lisp, some books stand out:
 
 [6c6d]: #SB-MANUAL:@SB-POSIX-EXTENSIONS-TO-POSIX%20MGL-PAX:SECTION "Extensions to POSIX"
 
-[6c6de]: #SB-MANUAL:@REDUCERS%20MGL-PAX:SECTION "Reducers"
+[6ca4]: #SB-MANUAL:@SB-SIMD-CASTS%20MGL-PAX:SECTION "Casts"
 
 [6cf6]: #SB-MANUAL:@READ-ERRORS%20MGL-PAX:SECTION "Read Errors"
 
@@ -19756,6 +20137,8 @@ learn about Common Lisp, some books stand out:
 
 [75d3]: #SB-MANUAL:@SEMAPHORES%20MGL-PAX:SECTION "Semaphores"
 
+[767b]: #SB-SYS:WITH-INTERRUPTS%20MGL-PAX:MACRO "SB-SYS:WITH-INTERRUPTS MGL-PAX:MACRO"
+
 [76b5]: #SB-EXT:*STACK-ALLOCATE-DYNAMIC-EXTENT*%20VARIABLE "SB-EXT:*STACK-ALLOCATE-DYNAMIC-EXTENT* VARIABLE"
 
 [76ca]: #SB-MANUAL:@DECIMAL-SYNTAX-FOR-RATIONALS%20MGL-PAX:SECTION "Decimal Syntax for Rationals"
@@ -19806,11 +20189,13 @@ learn about Common Lisp, some books stand out:
 
 [7edc]: #SB-MANUAL:@FOREIGN-TYPES-AND-LISP-TYPES%20MGL-PAX:SECTION "Foreign Types and Lisp Types"
 
+[7f21]: http://www.lispworks.com/documentation/HyperSpec/Body/e_floa_3.htm "FLOATING-POINT-UNDERFLOW (MGL-PAX:CLHS CONDITION)"
+
 [7f27]: #SB-EXT:EXIT%20FUNCTION "SB-EXT:EXIT FUNCTION"
 
 [7f39]: #SB-MANUAL:@TAIL-RECURSION%20MGL-PAX:SECTION "Tail Recursion"
 
-[7f6c]: #SB-MANUAL:@FOREIGN-THREADS%20MGL-PAX:SECTION "Foreign threads"
+[7f6c]: #SB-MANUAL:@FOREIGN-THREADS%20MGL-PAX:SECTION "Foreign Threads"
 
 [7f9a]: http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm "DEFTYPE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -19872,6 +20257,8 @@ learn about Common Lisp, some books stand out:
 
 [8936]: #SB-MANUAL:@RUNNING-WITHOUT-INSTALLATION%20MGL-PAX:SECTION "Running without Installation"
 
+[89eb]: #SB-DEBUG:*METHOD-FRAME-STYLE*%20VARIABLE "SB-DEBUG:*METHOD-FRAME-STYLE* VARIABLE"
+
 [8a24]: #SB-GRAY:STREAM-CLEAR-INPUT%20GENERIC-FUNCTION "SB-GRAY:STREAM-CLEAR-INPUT GENERIC-FUNCTION"
 
 [8a51]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_lin.htm "READ-LINE (MGL-PAX:CLHS FUNCTION)"
@@ -19885,6 +20272,8 @@ learn about Common Lisp, some books stand out:
 [8ae0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm "IDENTITY (MGL-PAX:CLHS FUNCTION)"
 
 [8b52]: #SB-MANUAL:@HANDLING-OF-TYPES%20MGL-PAX:SECTION "Handling of Types"
+
+[8c02]: http://www.lispworks.com/documentation/HyperSpec/Body/e_floa_2.htm "FLOATING-POINT-OVERFLOW (MGL-PAX:CLHS CONDITION)"
 
 [8c75]: #COMPILE%20FUNCTION "COMPILE FUNCTION"
 
@@ -19911,6 +20300,8 @@ learn about Common Lisp, some books stand out:
 [90ca]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ash.htm "ASH (MGL-PAX:CLHS FUNCTION)"
 
 [9119]: #SB-MANUAL:@BUILD-OPTIONS%20MGL-PAX:SECTION "Build Options"
+
+[913b]: #SB-DEBUG:MAP-BACKTRACE%20FUNCTION "SB-DEBUG:MAP-BACKTRACE FUNCTION"
 
 [9172]: http://www.lispworks.com/documentation/HyperSpec/Body/t_t.htm "T (MGL-PAX:CLHS CLASS)"
 
@@ -19959,6 +20350,8 @@ learn about Common Lisp, some books stand out:
 [959f]: #SB-MANUAL:@SB-COVER%20MGL-PAX:SECTION "sb-cover"
 
 [95c1]: #SB-ALIEN:FREE-ALIEN%20FUNCTION "SB-ALIEN:FREE-ALIEN FUNCTION"
+
+[9671]: #SB-MANUAL:@SB-SIMD-ROUNDING%20MGL-PAX:SECTION "Rounding"
 
 [96b0]: #SB-INTROSPECT:VALID-FUNCTION-NAME-P%20FUNCTION "SB-INTROSPECT:VALID-FUNCTION-NAME-P FUNCTION"
 
@@ -20012,8 +20405,6 @@ learn about Common Lisp, some books stand out:
 
 [9d96]: #SB-MANUAL:@RUNNING-FROM-EMACS%20MGL-PAX:SECTION "Running from Emacs"
 
-[9e48]: #SB-EXT:READTABLE-NORMALIZATION%20FUNCTION "SB-EXT:READTABLE-NORMALIZATION FUNCTION"
-
 [9e55]: #SB-EXT:SAVE-LISP-AND-DIE%20FUNCTION "SB-EXT:SAVE-LISP-AND-DIE FUNCTION"
 
 [9ef0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_seq.htm "WRITE-SEQUENCE (MGL-PAX:CLHS FUNCTION)"
@@ -20025,8 +20416,6 @@ learn about Common Lisp, some books stand out:
 [9fe7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ed.htm "ED (MGL-PAX:CLHS FUNCTION)"
 
 [a005]: #SB-MANUAL:@FOREIGN-DATA-STRUCTURE-EXAMPLES%20MGL-PAX:SECTION "Foreign Data Structure Examples"
-
-[a016]: #SB-MANUAL:@SESSIONS%2FDEBUGGING%20MGL-PAX:SECTION "Sessions/Debugging"
 
 [a064]: #SB-MANUAL:@SB-GROVEL-TRAPS%20MGL-PAX:SECTION "Traps and Pitfalls"
 
@@ -20042,6 +20431,8 @@ learn about Common Lisp, some books stand out:
 
 [a270]: #SB-MANUAL:@FINDING-DEFINITIONS%20MGL-PAX:SECTION "Finding Definitions"
 
+[a35b]: #SB-MANUAL:@SB-SIMD-SPECIALIZED-SCALAR-OPERATIONS%20MGL-PAX:SECTION "Specialized Scalar Operations"
+
 [a370]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm "UNTRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [a378]: #SB-MANUAL:@ERROR-CONDITIONS%20MGL-PAX:SECTION "Error Conditions"
@@ -20049,8 +20440,6 @@ learn about Common Lisp, some books stand out:
 [a3b7]: #SB-MANUAL:@CHARACTER-OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Character output stream methods"
 
 [a3be]: #SB-CONCURRENCY:CLOSE-GATE%20FUNCTION "SB-CONCURRENCY:CLOSE-GATE FUNCTION"
-
-[a47b]: #SB-MANUAL:@DATA-TYPES%20MGL-PAX:SECTION "Data Types"
 
 [a485]: http://www.lispworks.com/documentation/HyperSpec/Body/f_inspec.htm "INSPECT (MGL-PAX:CLHS FUNCTION)"
 
@@ -20090,9 +20479,9 @@ learn about Common Lisp, some books stand out:
 
 [a887]: #SB-ALIEN:ALIEN-CALLABLE-FUNCTION%20FUNCTION "SB-ALIEN:ALIEN-CALLABLE-FUNCTION FUNCTION"
 
-[a8ca]: #SB-MANUAL:@SPECIAL-VARIABLES%20MGL-PAX:SECTION "Special Variables"
-
 [a917]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_ele.htm "ARRAY-ELEMENT-TYPE (MGL-PAX:CLHS FUNCTION)"
+
+[a960]: #SB-SYS:MAKE-FD-STREAM%20FUNCTION "SB-SYS:MAKE-FD-STREAM FUNCTION"
 
 [a9a5]: #SB-MANUAL:@STOPPING-SBCL%20MGL-PAX:SECTION "Stopping SBCL"
 
@@ -20105,6 +20494,8 @@ learn about Common Lisp, some books stand out:
 [aab4]: #SB-MANUAL:@SUPPORTED-PLATFORMS%20MGL-PAX:SECTION "Supported Platforms"
 
 [ab6d]: http://www.lispworks.com/documentation/HyperSpec/Body/f_tn.htm "TRUENAME (MGL-PAX:CLHS FUNCTION)"
+
+[abb0]: #SB-MANUAL:@CONTROLLING-GC%20MGL-PAX:SECTION "Controlling GC"
 
 [abd8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pos_p.htm "POSITION-IF (MGL-PAX:CLHS FUNCTION)"
 
@@ -20184,11 +20575,17 @@ learn about Common Lisp, some books stand out:
 
 [b77b]: #SB-EXT:PARSE-NATIVE-NAMESTRING%20FUNCTION "SB-EXT:PARSE-NATIVE-NAMESTRING FUNCTION"
 
+[b795]: #SB-MANUAL:@WAITQUEUES-AND-CONDITION-VARIABLES%20MGL-PAX:SECTION "Waitqueues and Condition Variables"
+
 [b79a]: http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm "*READTABLE* (MGL-PAX:CLHS VARIABLE)"
 
 [b7da]: #SB-MANUAL:@GARBAGE-COLLECTION%20MGL-PAX:SECTION "Garbage Collection"
 
 [b905]: #SB-MANUAL:@CALLING-THE-COMPILER%20MGL-PAX:SECTION "Calling the Compiler"
+
+[b914]: #SB-SYS:INTERACTIVE-INTERRUPT%20CONDITION "SB-SYS:INTERACTIVE-INTERRUPT CONDITION"
+
+[b91d]: #SB-SYS:FD-STREAM%20STRUCTURE "SB-SYS:FD-STREAM STRUCTURE"
 
 [b934]: #SB-MANUAL:@BUILD-PREREQUISITES%20MGL-PAX:SECTION "Build Prerequisites"
 
@@ -20230,11 +20627,15 @@ learn about Common Lisp, some books stand out:
 
 [be8f]: #SB-MANUAL:@HIGHLIGHTS%20MGL-PAX:SECTION "Highlights"
 
+[bf69]: #SB-MANUAL:@FD-STREAMS%20MGL-PAX:SECTION "File Descriptor Streams"
+
 [bfc5]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ban.htm "BOOLEAN (MGL-PAX:CLHS TYPE)"
 
 [bff9]: #SB-MANUAL:@UNICODE-PROPERTY-ACCESS%20MGL-PAX:SECTION "Unicode property access"
 
 [bffa]: #SB-MANUAL:@DEFAULT-EXTERNAL-FORMAT%20MGL-PAX:SECTION "The Default External Format"
+
+[c015]: #SB-MANUAL:@UNICODE-STRING-OPERATIONS%20MGL-PAX:SECTION "Unicode String operations"
 
 [c036]: http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm "ECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -20249,6 +20650,8 @@ learn about Common Lisp, some books stand out:
 [c0ba]: #ED%20FUNCTION "ED FUNCTION"
 
 [c0c3]: http://www.lispworks.com/documentation/HyperSpec/Body/f_log.htm "LOG (MGL-PAX:CLHS FUNCTION)"
+
+[c14c]: #SB-DEBUG:PRINT-BACKTRACE%20FUNCTION "SB-DEBUG:PRINT-BACKTRACE FUNCTION"
 
 [c16f]: #SB-INTROSPECT:DEFINITION-SOURCE-FORM-PATH%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-INTROSPECT:DEFINITION-SOURCE%29 "SB-INTROSPECT:DEFINITION-SOURCE-FORM-PATH (MGL-PAX:STRUCTURE-ACCESSOR SB-INTROSPECT:DEFINITION-SOURCE)"
 
@@ -20292,8 +20695,6 @@ learn about Common Lisp, some books stand out:
 
 [c60f]: #SB-MANUAL:@METHODS-COMMON-TO-ALL-STREAMS%20MGL-PAX:SECTION "Methods common to all streams"
 
-[c624]: #SB-MANUAL:@ASSOCIATIVES%20MGL-PAX:SECTION "Associatives"
-
 [c665]: #SB-MANUAL:@SOCKETS-OVERVIEW%20MGL-PAX:SECTION "Sockets Overview"
 
 [c6ad]: #SB-MANUAL:@SEMI-INLINE-EXPANSION%20MGL-PAX:SECTION "Semi-inline Expansion"
@@ -20324,6 +20725,8 @@ learn about Common Lisp, some books stand out:
 
 [ca58]: #SB-MANUAL:@SB-POSIX-TYPES%20MGL-PAX:SECTION "Types"
 
+[cac1]: http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_er.htm "SIMPLE-ERROR (MGL-PAX:CLHS CONDITION)"
+
 [cb60]: #SB-CONCURRENCY:QUEUE%20STRUCTURE "SB-CONCURRENCY:QUEUE STRUCTURE"
 
 [cb94]: mat-manual.md#ARRAY%20MGL-CUBE:FACET-NAME "ARRAY MGL-CUBE:FACET-NAME"
@@ -20339,6 +20742,8 @@ learn about Common Lisp, some books stand out:
 [cecd]: #SB-MANUAL:@UNICODE-SUPPORT%20MGL-PAX:SECTION "Unicode Support"
 
 [cee6]: http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm "SYMBOL-VALUE (MGL-PAX:CLHS FUNCTION)"
+
+[cf07]: #SB-MANUAL:@SB-SIMD-LOADS-AND-STORES%20MGL-PAX:SECTION "Loads and Stores"
 
 [cf46]: http://www.lispworks.com/documentation/HyperSpec/Body/t_short_.htm "LONG-FLOAT (MGL-PAX:CLHS TYPE)"
 
@@ -20386,7 +20791,7 @@ learn about Common Lisp, some books stand out:
 
 [d54e]: #SB-BSD-SOCKETS:SOCKET-MAKE-STREAM%20GENERIC-FUNCTION "SB-BSD-SOCKETS:SOCKET-MAKE-STREAM GENERIC-FUNCTION"
 
-[d59d]: #SB-MANUAL:@SB-CONCURRENCY-FRLOCKS%20MGL-PAX:SECTION "Frlocks, aka Fast Read Locks"
+[d59d]: #SB-MANUAL:@SB-CONCURRENCY-FRLOCKS%20MGL-PAX:SECTION "Fast Read Locks"
 
 [d5a2]: http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm "CAR (MGL-PAX:CLHS FUNCTION)"
 
@@ -20436,7 +20841,7 @@ learn about Common Lisp, some books stand out:
 
 [dc3d]: http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_ve.htm "SIMPLE-VECTOR (MGL-PAX:CLHS TYPE)"
 
-[dc69]: #SB-EXT:PURIFY%20FUNCTION "SB-EXT:PURIFY FUNCTION"
+[dcc9]: #SB-MANUAL:@DEBUGGING-SESSIONS%20MGL-PAX:SECTION "Debugging Sessions"
 
 [dccb]: #SB-CONCURRENCY:SEND-MESSAGE%20FUNCTION "SB-CONCURRENCY:SEND-MESSAGE FUNCTION"
 
@@ -20448,9 +20853,13 @@ learn about Common Lisp, some books stand out:
 
 [dd7a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_cha.htm "READ-CHAR (MGL-PAX:CLHS FUNCTION)"
 
+[dd87]: #SB-MANUAL:@SB-SIMD-CONSTRUCTORS%20MGL-PAX:SECTION "Constructors"
+
 [de0a]: #SB-ALIEN:MAKE-ALIEN-STRING%20FUNCTION "SB-ALIEN:MAKE-ALIEN-STRING FUNCTION"
 
 [de40]: http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_seq.htm "COPY-SEQ (MGL-PAX:CLHS FUNCTION)"
+
+[de46]: http://www.lispworks.com/documentation/HyperSpec/Body/e_floa_1.htm "FLOATING-POINT-INEXACT (MGL-PAX:CLHS CONDITION)"
 
 [de5c]: http://www.lispworks.com/documentation/HyperSpec/Body/f_invoke.htm "INVOKE-DEBUGGER (MGL-PAX:CLHS FUNCTION)"
 
@@ -20471,8 +20880,6 @@ learn about Common Lisp, some books stand out:
 [e030]: #SB-MANUAL:@EXTENDED-SLOT-ACCESS%20MGL-PAX:SECTION "Extended Slot Access"
 
 [e0d4]: #SB-EXT:RUN-PROGRAM%20FUNCTION "SB-EXT:RUN-PROGRAM FUNCTION"
-
-[e0d9]: #SB-MANUAL:@WAITQUEUE%2FCONDITION-VARIABLES%20MGL-PAX:SECTION "Waitqueue/condition variables"
 
 [e0fd]: #SB-CONCURRENCY:WAIT-ON-GATE%20FUNCTION "SB-CONCURRENCY:WAIT-ON-GATE FUNCTION"
 
@@ -20505,8 +20912,6 @@ learn about Common Lisp, some books stand out:
 [e494]: #SB-MANUAL:@INITIALIZATION-AND-EXIT-HOOKS%20MGL-PAX:SECTION "Initialization and Exit Hooks"
 
 [e52f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm "= (MGL-PAX:CLHS FUNCTION)"
-
-[e577]: #SB-MANUAL:@UNPACKERS%20MGL-PAX:SECTION "Unpackers"
 
 [e5a1]: #SB-GRAY:FUNDAMENTAL-BINARY-STREAM%20CLASS "SB-GRAY:FUNDAMENTAL-BINARY-STREAM CLASS"
 
@@ -20544,8 +20949,6 @@ learn about Common Lisp, some books stand out:
 
 [e964]: http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_ma.htm "SLOT-MAKUNBOUND (MGL-PAX:CLHS FUNCTION)"
 
-[ea13]: #SB-MANUAL:@STRING-OPERATIONS%20MGL-PAX:SECTION "String operations"
-
 [ea6c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_st.htm "SIMPLE-STRING (MGL-PAX:CLHS TYPE)"
 
 [eab4]: #SB-MANUAL:@COMPILER%20MGL-PAX:SECTION "Compiler"
@@ -20566,6 +20969,8 @@ learn about Common Lisp, some books stand out:
 
 [ebf7]: #SB-POSIX:FILE-DESCRIPTOR-DESIGNATOR%20TYPE "SB-POSIX:FILE-DESCRIPTOR-DESIGNATOR TYPE"
 
+[ebfe]: #SB-MANUAL:@SB-SIMD-DATA-TYPES%20MGL-PAX:SECTION "Data Types"
+
 [ec2e]: #SB-MANUAL:@TAIL-CALL%20MGL-PAX:SECTION "Tail Call"
 
 [edce]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm "LOGNOT (MGL-PAX:CLHS FUNCTION)"
@@ -20576,9 +20981,11 @@ learn about Common Lisp, some books stand out:
 
 [eea4]: http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm "FDEFINITION (MGL-PAX:CLHS FUNCTION)"
 
+[eec4]: #SB-MANUAL:@GC-INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION "GC Introspection and Tuning"
+
 [eee2]: http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm "FLOAT (MGL-PAX:CLHS NIL)"
 
-[ef38]: #SB-MANUAL:@COMPARISONS%20MGL-PAX:SECTION "Comparisons"
+[ef5a]: #SB-MANUAL:@SB-SIMD-CONDITIONALS%20MGL-PAX:SECTION "Conditionals"
 
 [ef88]: #SB-EXT:*MUFFLED-WARNINGS*%20VARIABLE "SB-EXT:*MUFFLED-WARNINGS* VARIABLE"
 
@@ -20632,6 +21039,8 @@ learn about Common Lisp, some books stand out:
 
 [f69b]: #SB-MANUAL:@GENERIC-FUNCTION-DISPATCH%20MGL-PAX:SECTION "Generic Function Dispatch"
 
+[f6bc]: #SB-MANUAL:@SB-SIMD-INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION "Instruction Set Dispatch"
+
 [f709]: #SB-MANUAL:@GENERAL-SOCKETS%20MGL-PAX:SECTION "General Sockets"
 
 [f942]: #SB-MANUAL:@SB-INTROSPECT%20MGL-PAX:SECTION "sb-introspect"
@@ -20640,7 +21049,7 @@ learn about Common Lisp, some books stand out:
 
 [fab8]: #SB-SPROF:PROFILE-CALL-COUNTS%20FUNCTION "SB-SPROF:PROFILE-CALL-COUNTS FUNCTION"
 
-[fae5]: #SB-MANUAL:@INTROSPECTION-AND-TUNING%20MGL-PAX:SECTION "Introspection and Tuning"
+[fb8d]: #SB-SYS:WITHOUT-INTERRUPTS%20MGL-PAX:MACRO "SB-SYS:WITHOUT-INTERRUPTS MGL-PAX:MACRO"
 
 [fb92]: #SB-ALIEN:MAKE-ALIEN%20MGL-PAX:MACRO "SB-ALIEN:MAKE-ALIEN MGL-PAX:MACRO"
 
@@ -20665,3 +21074,5 @@ learn about Common Lisp, some books stand out:
 [fe9f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rest.htm "REST (MGL-PAX:CLHS FUNCTION)"
 
 [fef5]: #SB-MANUAL:@INET-DOMAIN-SOCKETS%20MGL-PAX:SECTION "INET Domain Sockets"
+
+[ffa6]: #SB-MANUAL:@DEFAULT-SIGNAL-HANDLERS%20MGL-PAX:SECTION "Default Signal Handlers"

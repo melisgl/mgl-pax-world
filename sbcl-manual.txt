@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.10.153-24fc986, generated 2026-11-11 02:20:55. See
+The output is for SBCL version 2.6.10.162-fe98395, generated 2026-11-11 09:57:38. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -342,11 +342,159 @@ The following is a list is build option with the default value and
 whether they are retained in cl:*features* in the built SBCL in
 parentheses.
 
+- :ansi-compliant-load-truename (on)
+
+    clhs says that *load-truename* has to be bound whenever
+    *load-pathname* is because obviously the spec wanted to mandate that
+     one system call turn into an unlimited number. At least you're
+     correct in saying "it's not my code, it's the OS that's slow".
+     Remove this feature if you want to ignore the technical requirement
+     that *load-truename* be a variable (as opposed to a symbol-macro).
+
+- :aslr (off)
+
+    Allow Lisp spaces to be randomly allocated anywhere in virtual address
+    space, i.e. the behavior of passing mmap an address of zero.
+    Requires all spaces to be relocatable on start-up.
+
+- :compact-instance-header (dynamic)
+
+    Combine the layout pointer, instance-length, and widetag of
+    an instance into a single machine word. This represents a space
+    saving of anywhere from 4% to 8% in typical applications. (Your
+    mileage may vary.)
+
+    Needs :immobile-space. Enabled by default on x86-64 if :immobile-space.
+
+- :cycle-counter (off)
+
+    Enabled automatically by make-config.sh for platforms which
+    implement the %read-cycle-counter VOP. Can be disabled manually:
+    affects time.
+
+- :immobile-code (dynamic)
+
+    Allocate most functions in the immobile space.
+    Needs :immobile-space. Enabled by default if :immobile-space.
+
+    The down-side of this feature is that the allocator is significantly
+    slower than the allocator for movable code. If a particular
+    application is performance-constrained by speed of creation of
+    compiled functions (not including closures), the feature can be
+    disabled.
+
+- :immobile-space (off)
+
+    Build with support for an additional dynamic heap differing from
+    the main dynamic heap in two ways:
+
+    1. It is guaranteed to reside below 4GB so that all pointers into it
+       fit in 32 bits. (Only an issue for >32 bit address space)
+
+    2. All objects therein are immovable, and space is reclaimed by a
+       mark-and-sweep collector.
+
+    That combination of aspects potentially allows various efficiencies
+    in code generation, especially for the x86-64 backend. The extra
+    space has a fixed size which can only be changed by a rebuild, and
+    out-of-space conditions are not easily preventable, so the space is
+    sized rather generously to sidestep the issue. Additionally, it is
+    assumed that for all objects in the immobile heap, speed of
+    allocation of those objects is relatively unimportant. If unexpected
+    performance regressions are observed, consider disabling this
+    feature and reporting a bug.
+
+- :largefile (off)
+
+    Some platforms don't use a 32-bit off_t by default, and thus can't
+    handle files larger than 2GB. This feature will control whether
+    we'll try to use platform-specific compilation options to enable a
+    64-bit off_t. The intent is for this feature to be automatically
+    enabled by make-config.sh on platforms where it's needed and known
+    to work, you shouldn't be enabling it manually. You might however
+    want to disable it, if you need to pass file descriptors to foreign
+    code that uses a 32-bit off_t.
+
+- :relocatable-static-space (off)
+
+    Allow static space to be relocatable on start-up.
+
+- :sb-after-xc-core (off)
+
+    This isn't really a target Lisp feature at all but controls
+    whether the build process produces an after-xc.core file. This can
+    be useful for shortening the edit/compile/debug cycle when you
+    modify SBCL's own source code, as in slam.sh. Otherwise you don't
+    need it.
+
+- :sb-core-compression (off, in *features*)
+
+    Support zstd-based compressed core files. Enable this feature to
+    compile it in. Obviously, doing so adds a dependency on zstd.
+
+- :sb-cover-for-internals (off)
+
+    Build the SBCL system itself with code coverage data marks (and
+    sequences in the compiled code to set those marks). Inevitably,
+    this makes the system as a whole slower, but allows coverage of
+    tests to be measured.
+
 - :sb-doc (on)
 
     Retain documentation strings found in the system sources in the
     target SBCL executable. Traditional Common Lisp folk will want this
     option set.
+
+- :sb-dyncount (off)
+
+    Enable code for collecting statistics on usage of various
+    operations, useful for performance tuning of the SBCL system itself.
+    This code is probably pretty stale (having not been tested since the
+    fork from base CMUCL) but might nonetheless be a useful starting
+    point for anyone who wants to collect such statistics in the future.
+
+- :sb-eval (on)
+
+    Support for a full evaluator that can execute all the CL special
+    forms, as opposed to the traditional SBCL evaluator, which called
+    compile for everything complicated. See Interpreter.
+
+- :sb-fasteval (off)
+
+    Support for a different evaluator (interpreter) with improved
+    performance. You can have only one of :sb-eval and :sb-fasteval. See
+    Interpreter.
+
+- :sb-futex (dynamic)
+
+    Use futexes as our locking primitive for lower-overhead
+    synchronization. Available on Linux, FreeBSD, OpenBSD, Darwin ARM64,
+    and Windows under various names.
+
+- :sb-ldb (on, in *features*)
+
+    Enable the LDB, the low-level debugger. In the ideal world you
+    would not need this unless you are messing with SBCL at a very low
+    level (e.g. trying to diagnose GC problems, or trying to debug
+    assembly code for a port to a new CPU). However, experience shows
+    that sooner or later everyone lose()s, in which case sb-ldb can
+    at least provide an informative backtrace.
+
+- :sb-package-locks (on, in *features*)
+
+    Enable detection of unportable code (when applied to the
+    common-lisp package or SBCL-internal packages) or bad-neighbourly
+    code (when applied to user-level packages), relating to material
+    alteration to packages or to bindings in symbols in packages. See
+    Package Locks.
+
+- :sb-safepoint (dynamic, in *features*)
+
+    On certain thread-enabled platforms, synchronization between
+    threads for the purpose of stopping and starting the world around GC
+    can be performed using safepoints instead of signals. Enable this
+    feature to compile with safepoints and to use them for GC. This is
+    always enabled on :win32. Not enabled elsewhere by default.
 
 - :sb-show (off)
 
@@ -379,121 +527,15 @@ parentheses.
     therefore, be sure to keep the sources around, and run with the
     readtable configured so that the system sources can be read.
 
-- :sb-ldb (on, in *features*)
-
-    Enable the LDB, the low-level debugger. In the ideal world you
-    would not need this unless you are messing with SBCL at a very low
-    level (e.g. trying to diagnose GC problems, or trying to debug
-    assembly code for a port to a new CPU). However, experience shows
-    that sooner or later everyone lose()s, in which case sb-ldb can
-    at least provide an informative backtrace.
-
-- :sb-after-xc-core (off)
-
-    This isn't really a target Lisp feature at all but controls
-    whether the build process produces an after-xc.core file. This can
-    be useful for shortening the edit/compile/debug cycle when you
-    modify SBCL's own source code, as in slam.sh. Otherwise you don't
-    need it.
-
 - :sb-show-assem (off)
 
     Enable extra debugging output in the assem.lisp assembler /
     scheduler code.
 
-- :sb-dyncount (off)
-
-    Enable code for collecting statistics on usage of various
-    operations, useful for performance tuning of the SBCL system itself.
-    This code is probably pretty stale (having not been tested since the
-    fork from base CMUCL) but might nonetheless be a useful starting
-    point for anyone who wants to collect such statistics in the future.
-
 - :sb-simd-pack (off)
 
     Enabled automatically by make-config.sh for platforms which
     implement short vector SIMD intrinsics.
-
-- :cycle-counter (off)
-
-    Enabled automatically by make-config.sh for platforms which
-    implement the %read-cycle-counter VOP. Can be disabled manually:
-    affects time.
-
-- :immobile-space (off)
-
-    Build with support for an additional dynamic heap differing from
-    the main dynamic heap in two ways:
-
-    1. It is guaranteed to reside below 4GB so that all pointers into it
-       fit in 32 bits. (Only an issue for >32 bit address space)
-
-    2. All objects therein are immovable, and space is reclaimed by a
-       mark-and-sweep collector.
-
-    That combination of aspects potentially allows various efficiencies
-    in code generation, especially for the x86-64 backend. The extra
-    space has a fixed size which can only be changed by a rebuild, and
-    out-of-space conditions are not easily preventable, so the space is
-    sized rather generously to sidestep the issue. Additionally, it is
-    assumed that for all objects in the immobile heap, speed of
-    allocation of those objects is relatively unimportant. If unexpected
-    performance regressions are observed, consider disabling this
-    feature and reporting a bug.
-
-- :immobile-code (off)
-
-    Allocate most functions in the immobile space.
-    Enabled by default if supported. The down-side of this feature is
-    that the allocator is significantly slower than the allocator for
-    movable code. If a particular application is performance-constrained
-    by speed of creation of compiled functions (not including closures),
-    the feature can be disabled.
-
-- :compact-instance-header (off)
-
-    Combine the layout pointer, instance-length, and widetag of
-    an instance into a single machine word. This represents a space
-    savings of anywhere from 4% to 8% in typical applications. (Your
-    mileage may vary.)
-
-- :sb-thread (dynamic, in *features*)
-
-    Enable low-level thread primitives support. See Threading.
-
-    As of SBCL 2.6.9, threads are part of the default build on x86oid
-    Linux, Darwin, and Windows. In fact, threads are mandatory on
-    Windows. Other platforms that support them include FreeBSD, Solaris.
-
-- :sb-futex (off)
-
-    Use futexes as our locking primitive. Only available on Linux.
-
-- :sb-package-locks (on, in *features*)
-
-    Enable detection of unportable code (when applied to the
-    common-lisp package or SBCL-internal packages) or bad-neighbourly
-    code (when applied to user-level packages), relating to material
-    alteration to packages or to bindings in symbols in packages. See
-    Package Locks.
-
-- :sb-unicode (on, in *features*)
-
-    Support for the entirety of the 21-bit character space defined by
-    the Unicode consortium, rather than the classical 8-bit ISO-8859-1
-    character set. See Unicode Support.
-
-- :sb-eval (on)
-
-    Support for a full evaluator that can execute all the CL special
-    forms, as opposed to the traditional SBCL evaluator, which called
-    compile for everything complicated. See Interpreter.
-
-- :sb-fasteval (off)
-
-    Support for a different evaluator (interpreter) with improved
-    performance. You can have only one of :sb-eval and :sb-fasteval. See
-    Interpreter.
 
 - :sb-source-locations (on)
 
@@ -501,62 +543,31 @@ parentheses.
     conditions, packages, etc. Gives much better information on
     M-. in Slime but increases core size by about 100kB.
 
+- :sb-thread (dynamic, in *features*)
+
+    Enable low-level thread primitives support. See Threading
+    for the list of supported platforms.
+
+    Threads are on by default on
+
+    - x86 / x86-64 Linux, Darwin, and Windows,
+
+    - ARM64, RISC-V, and LoongArch64.
+
+    In fact, threads are mandatory on Windows.
+
+- :sb-unicode (on, in *features*)
+
+    Support for the entirety of the 21-bit character space defined by
+    the Unicode consortium, rather than the classical 8-bit ISO-8859-1
+    character set. See Unicode Support.
+
 - :sb-xref-for-internals (off)
 
     Record xref data for SBCL internals. This can be rather useful for
     people who want to develop on SBCL itself because it will make
-    M-? (slime-edit-uses) work which lists call/expansion/etc.
+    M-? (slime-edit-uses) work, which lists call/expansion/etc.
     sites. It will increase the core size by major 5-6MB, though.
-
-- :ansi-compliant-load-truename (on)
-
-    clhs says that *load-truename* has to be bound whenever
-    *load-pathname* is because obviously the spec wanted to mandate that
-     one system call turn into an unlimited number. At least you're
-     correct in saying "it's not my code, it's the OS that's slow".
-     Remove this feature if you want to ignore the technical requirement
-     that *load-truename* be a variable (as opposed to a symbol-macro).
-
-- :largefile (off)
-
-    Some platforms don't use a 32-bit off_t by default, and thus can't
-    handle files larger than 2GB. This feature will control whether
-    we'll try to use platform-specific compilation options to enable a
-    64-bit off_t. The intent is for this feature to be automatically
-    enabled by make-config.sh on platforms where it's needed and known
-    to work, you shouldn't be enabling it manually. You might however
-    want to disable it, if you need to pass file descriptors to foreign
-    code that uses a 32-bit off_t.
-
-- :relocatable-static-space (off)
-
-    Allow static space to be relocatable on start-up.
-
-- :aslr (off)
-
-    Allow Lisp spaces to be randomly allocated anywhere in virtual address
-    space, i.e. the behavior of passing mmap an address of zero.
-    Requires all spaces to be relocatable on start-up.
-
-- :sb-core-compression (off, in *features*)
-
-    Support zstd-based compressed core files. Enable this feature to
-    compile it in. Obviously, doing so adds a dependency on zstd.
-
-- :sb-safepoint (dynamic, in *features*)
-
-    On certain thread-enabled platforms, synchronization between
-    threads for the purpose of stopping and starting the world around GC
-    can be performed using safepoints instead of signals. Enable this
-    feature to compile with safepoints and to use them for GC. This is
-    always enabled on :win32. Not enabled elsewhere by default.
-
-- :sb-cover-for-internals (off)
-
-    Build the SBCL system itself with code coverage data marks (and
-    sequences in the compiled code to set those marks). Inevitably,
-    this makes the system as a whole slower, but allows coverage of
-    tests to be measured.
 
 #### Troubleshooting the Build
 
@@ -906,8 +917,9 @@ they were intended for the runtime system or the Lisp system.
 
 - --tls-limit <positive integer>
 
-    Maximum number of thread-local Special Variables in threaded
-    builds. Default value is 4096.
+    Maximum number of thread-local special variables (see
+    Special Variables in Threads) in threaded builds. Default value
+    is 4096.
 
 - --noinform
 
@@ -931,7 +943,9 @@ they were intended for the runtime system or the Lisp system.
     to continue and handle the error in Lisp. However, this will not
     always work, and SBCL may subsequently malfunction or even hang.
     With this option, upon encountering such an error, SBCL will
-    exit instead of signalling a Lisp error.
+    instead attempt to enter LDB (and exit if LDB is not
+    available). See also Default Signal Handlers and
+    Foreign Threads.
 
 - --script <filename>
 
@@ -970,7 +984,7 @@ they were intended for the runtime system or the Lisp system.
     End processing of runtime options and pass the rest of the
     command-line arguments to the toplevel function.
 
-In the future, runtime options may be added to control behaviour
+In the future, runtime options may be added to control behavior
 such as lazy allocation of memory.
 
 #### Toplevel Options
@@ -2092,7 +2106,7 @@ All qualities take values of type (integer 0 3). The default for
 all qualities is 1. Whenever qualities are equal, ties are broken
 according to a broad idea of what a good default environment is
 supposed to be. Generally this downplays speed, compilation-speed
-and space in favour of safety and debug. Novice and casual users
+and space in favor of safety and debug. Novice and casual users
 should stick to the default policy. Advanced users often want to
 improve speed and memory usage at the cost of safety and
 debuggability.
@@ -2251,7 +2265,7 @@ character position and gives up on the entire source file.
 Since Common Lisp forbids the redefinition of standard functions, the
 compiler can have special knowledge of these standard functions
 embedded in it. This special knowledge is used in various ways (open
-coding, Inline Expansion, source transformation), but the
+coding, Inline Expansion, Source Optimization), but the
 implications to the user are basically the same:
 
 - Attempts to redefine standard functions may be frustrated since
@@ -2324,21 +2338,6 @@ is not safer or more debuggable than compiled code.
     to :interpret, an interpreter will be used. :interpret is a valid
     value only if SBCL has been compiled with either the sb-eval or the
     sb-fasteval feature.
-
-### Advanced Compiler Use and Efficiency Hints
-
-For more advanced usages of the compiler, please see the chapter of the
-same name in the CMUCL manual. Many aspects of the compiler have stayed
-exactly the same, and there is a much more detailed explanation of the
-compiler's behavior and how to maximally optimize code in their
-manual. In particular, while SBCL no longer supports byte-code
-compilation, it does support CMUCL's block compilation facility allowing
-whole program optimization and increased use of the local call
-convention.
-
-Unlike CMUCL, SBCL is able to open-code forward-referenced type
-tests while block compiling. This helps with mutually referential
-defstructs in particular.
 
 ## Debugging
 
@@ -2452,7 +2451,7 @@ The debugger can be invoked again within a debugger session
 following the normal rules (see Debugger Invocation). In such
 nested debugger sessions, the prompt is <frame>[<nesting-level>].
 
-It is possible to override the normal printing behaviour in the
+It is possible to override the normal printing behavior in the
 debugger by using the sb-ext:*debug-print-variable-alist*.
 
 - [variable] sb-ext:*debug-print-variable-alist* nil
@@ -2460,7 +2459,7 @@ debugger by using the sb-ext:*debug-print-variable-alist*.
     An association list describing new bindings for special variables
     to be used within the debugger. For example,
 
-    ((*print-length* . 10) (*print-level* . 6) (*print-pretty* . nil))
+        ((*print-length* . 10) (*print-level* . 6) (*print-pretty* . nil))
 
     The variables in the car positions are bound to the values in the cdr
     during the execution of some debug commands. When the same variable
@@ -3246,11 +3245,11 @@ re-enable them).
 
 - [function] sb-ext:disable-debugger
 
-    When invoked, this function will turn off both the Debugger
-    and LDB (the low-level debugger), similar to specifying
-    --disable-debugger (see Toplevel Options) and
-    --disable-ldb (see Runtime Options) on the command line.
-    See also enable-debugger.
+    Turn off both the Debugger and LDB (the
+    low-level debugger), similar to specifying --disable-debugger (see
+    Toplevel Options) and --disable-ldb (see
+    Runtime Options) on the command line. See also
+    enable-debugger.
 
 - [function] sb-ext:enable-debugger
 
@@ -3427,6 +3426,113 @@ in such cases we recommend using (TRACE FOO :ENCAPSULATE t).
 - [variable] sb-debug:*trace-report-default* trace
 
     The default value for the :report option to trace.
+
+### Backtraces
+
+- [function] sb-debug:map-backtrace function &key (start 0) (from :debugger-frame) (count *backtrace-frame-count*)
+
+    Call the designated function with each frame on the call stack.
+    Returns the last value returned by function.
+
+    - start is the number of the frame the backtrace should start from.
+
+    - count is the number of frames to backtrace from start.
+
+    - from specifies the frame relative to which the frames are numbered.
+      Possible values are an explicit sb-di:frame object, and the keywords
+      :current-frame, :interrupted-frame, and :debugger-frame.
+
+        - :current-frame specifies the caller of map-backtrace.
+
+        - :interrupted-frame specifies the first interrupted frame on the
+          stack (typically the frame where the error occurred, as opposed
+          to error handling frames) if any, otherwise behaving as
+          :current-frame.
+
+        - :debugger-frame specifies the currently debugged frame when
+          inside the debugger, and behaves as :interrupted-frame outside
+          the debugger.
+
+- [function] sb-debug:print-backtrace &key (stream *debug-io*) (start 0) (from :debugger-frame) (count *backtrace-frame-count*) (print-thread t) (print-pc *backtrace-print-pc*) (argument-limit *default-argument-limit*) print-frame-source (method-frame-style *method-frame-style*) (emergency-best-effort (> *debug-command-level* 1))
+
+    Print a listing of the call stack to stream, defaulting to *debug-io*.
+
+    start, from and count behave as in map-backtrace.
+
+    - If print-thread is true (default), backtrace is preceded by printing
+      the thread object the backtrace is from.
+
+    - If print-pc is true (default is false), then the program counter is
+      printed for each frame where it's available.
+
+    - The argument list is truncated at argument-limit (default is no
+      truncation).
+
+    - If print-frame-source is true (default is false), each frame is
+      followed by printing the currently executing source form in the
+      function responsible for that frame, when available. Requires the
+      function to have been compiled at debug 2 or higher. If
+      print-frame-source is :always, it also reports "no source
+      available" for frames that were compiled at lower debug settings.
+
+    - method-frame-style determines how frames corresponding to method
+      functions are printed. Possible values are :minimal, :normal, and
+      :full. See *method-frame-style* for more information.
+
+    - If emergency-best-effort is true, then try to print as much
+      information as possible while navigating and ignoring possible
+      errors.
+
+- [function] sb-debug:list-backtrace &key (count *backtrace-frame-count*) (argument-limit *default-argument-limit*) (start 0) (from :debugger-frame) (method-frame-style *method-frame-style*)
+
+    Return a list describing the call stack. Each frame is represented
+    by a sublist:
+
+        (<name> ...args...)
+
+    where <name> describes the function responsible for the frame. The
+    name might not be bound to the actual function object. Unavailable
+    arguments are represented by dummy objects that print as
+    #<unavailable argument>. Objects with dynamic-extent allocation by
+    the current thread are represented by substitutes to avoid references
+    to them from leaking outside their legal extent.
+
+    See print-backtrace for a description of the arguments.
+
+- [variable] sb-debug:*backtrace-frame-count* 1000
+
+    Default number of frames to backtrace. Defaults to 1000.
+
+- [variable] sb-debug:*method-frame-style* :normal
+
+    Determine how frames corresponding to method functions are represented
+    in backtraces. Possible values are :minimal, :normal, and :full.
+
+    - :minimal represents them as
+
+            (<gf-name> ...args...)
+
+        if all arguments are available, and only a single method is
+        applicable to the arguments -- otherwise behaves as :normal.
+
+    - :normal represents them as
+
+            ((:method <gf-name> [<qualifier>*] (<specializer>*)) ...args...)
+
+        The frame is then followed by either [fast-method] or
+        [slow-method], designating the kind of method function. (See
+        below.)
+
+    - :full represents them using the actual funcallable method function name:
+
+            ((sb-pcl:fast-method <gf-name> [<qualifier>*] (<specializer>*)) ...args...)
+
+        or
+
+            ((sb-pcl:slow-method <gf-name> [<qualifier>*] (<specializer>*)) ...args...)
+
+        In this case, arguments may include values internal to SBCL's
+        method dispatch machinery.
 
 ## Efficiency
 
@@ -4945,9 +5051,13 @@ convenience) they are broken up into many small functions. There is
 absolutely no overhead for calling a non-entry point function that
 is defined purely for modularity (i.e. called only in one place).
 
-Block compilation also allows for more unboxed and Non-descriptor
-arguments and return values in non-trivial programs (see
-Non-descriptors in Local Call).
+Block compilation also allows
+
+- for more unboxed and Non-descriptor arguments and return values
+  in non-trivial programs (see Non-descriptors in Local Call), and
+
+- open-coding forward-referenced type tests, which helps with
+  mutually referential defstructs in particular.
 
 #### Block Compilation Semantics
 
@@ -5345,7 +5455,7 @@ of values when they are recognized as having dynamic extent:
 
     > Warning: Stack space is limited, so allocation of a large
     > vector may cause stack overflow. Stack overflow checks are
-    > done except in 0 safety policies.
+    > done except in safety 0 policies.
 
 - closures defined with flet or labels with a bound dynamic-extent
   declaration;
@@ -6178,9 +6288,9 @@ is turned into hardware instructions on arm64 and x86-64. It returns
 
 - [macro] sb-ext:defglobal name value &optional doc
 
-    Defines name as a global variable that is always bound. value is evaluated
-    and assigned to name both at compile- and load-time but only if name
-    is not already bound.
+    Define name as a global variable that is always bound. value is
+    evaluated and assigned to name both at compile- and load-time but only
+    if name is not already bound.
 
     Global variables share their values between all threads. They cannot
     be locally bound, declared special, defined as constants, or defined
@@ -6595,18 +6705,19 @@ read-time package lock violation, so does foo::(bar).
 
 #### Symbol Name Normalization
 
-SBCL also extends the reader to normalize all symbols to Normalization
-Form KC in builds with Unicode enabled. Whether symbols are
-normalized is controlled by
+In Unicode builds, SBCL can normalize all symbols
+read to :nfkc (see sb-unicode:normalize-string). This converts
+visually different but semantically identical symbols into a
+canonical format.
 
 - [function] sb-ext:readtable-normalization readtable
 
-    Returns t if readtable normalizes symbols to NFKC, and nil
-    otherwise. The readtable-normalization of the standard readtable is t.
+    Return t if readtable normalizes symbols to NFKC, and nil otherwise.
+    This is true by default in Unicode builds. setfable.
 
-Symbols created by intern and similar functions are not affected by
-this setting. If sb-ext:readtable-normalization is t, symbols that
-are not normalized are escaped during printing.
+    Symbols created by intern and similar functions are not affected by
+    this setting. If sb-ext:readtable-normalization is t, symbols that are
+    not normalized are escaped during printing.
 
 #### Decimal Syntax for Rationals
 
@@ -6665,7 +6776,7 @@ able to refer to the thus hidden "BAR" package:
 
 - [function] sb-ext:package-local-nicknames package-designator
 
-    Returns an alist of (local-nickname . actual-package) describing the
+    Return an alist of (local-nickname . actual-package) describing the
     nicknames local to the designated package.
 
     When in the designated package, calls to find-package with any of the
@@ -6681,14 +6792,14 @@ able to refer to the thus hidden "BAR" package:
 
 - [function] sb-ext:package-locally-nicknamed-by-list package-designator
 
-    Returns a list of packages which have a local nickname for the designated
+    Return a list of packages which have a local nickname for the designated
     package.
 
     Experimental: interface subject to change.
 
 - [function] sb-ext:add-package-local-nickname local-nickname actual-package &optional (package-designator (sane-package))
 
-    Adds local-nickname for actual-package in the designated package, defaulting
+    Add local-nickname for actual-package in the designated package, defaulting
     to current package. local-nickname must be a string designator, and
     actual-package must be a package designator.
 
@@ -6714,7 +6825,7 @@ able to refer to the thus hidden "BAR" package:
 - [function] sb-ext:remove-package-local-nickname old-nickname &optional (package-designator (sane-package))
 
     If the designated package had old-nickname as a local nickname for
-    another package, it is removed. Returns true if the nickname existed and was
+    another package, remove it. Returns true if the nickname existed and was
     removed, and nil otherwise.
 
     Experimental: interface subject to change.
@@ -6753,6 +6864,16 @@ the following variable.
 
     specifies to signal a warning if SWANK package is in variance, and an
     error otherwise.
+
+### Resolution of Name Conflicts
+
+clhs 11.1.1.2.5 requires that name conflicts in packages be
+resolvable in favor of any of the conflicting symbols. In the
+interactive debugger, this is achieved by prompting for the symbol
+in whose favor the conflict should be resolved; for programmatic
+use, the sb-ext:resolve-conflict restart should be invoked with one
+argument, which should be a member of the list returned by the
+condition accessor sb-ext:name-conflict-symbols.
 
 ### Garbage Collection
 
@@ -6855,10 +6976,10 @@ Hash Table Extensions.
 - [function] sb-ext:weak-pointer-value weak-pointer
 
     If weak-pointer is valid, return the value of weak-pointer and t.
-    If the referent of weak-pointer has been garbage collected,
-    returns the values nil and nil.
+    If the referent of weak-pointer has been garbage collected, return the
+    values nil and nil.
 
-#### Introspection and Tuning
+#### GC Introspection and Tuning
 
 - [variable] sb-ext:*gc-run-time* 0
 
@@ -6875,7 +6996,7 @@ Hash Table Extensions.
 - [function] sb-ext:bytes-consed-between-gcs
 
     The amount of memory that will be allocated before the next garbage
-    collection is initiated. This can be set with setf.
+    collection is initiated. setfable.
 
     On GENCGC platforms this is the nursery size, and defaults to 5% of dynamic
     space size.
@@ -6897,7 +7018,7 @@ Hash Table Extensions.
 
 - [function] sb-ext:gc-logfile
 
-    Return the pathname used to log garbage collections. Can be setf.
+    Return the pathname used to log garbage collections. setfable.
     Default is nil, meaning collections are not logged. If non-null, the
     designated file is opened before and after each collection, and generation
     statistics are appended to it.
@@ -6951,10 +7072,12 @@ Hash Table Extensions.
 
     Experimental: interface subject to change.
 
+#### Controlling GC
+
 - [function] sb-ext:purify &key root-structures environment-name
 
-    This function optimizes garbage collection by moving all currently live
-    objects into non-collected storage. root-structures is an optional list of
+    Optimize garbage collection by moving all currently live objects into
+    non-collected storage. root-structures is an optional list of
     objects which should be copied first to maximize locality.
 
     defstruct structures defined with the (:pure t) option are moved into
@@ -6965,6 +7088,33 @@ Hash Table Extensions.
 
     This function is a no-op on platforms using the generational garbage
     collector (x86, x86-64, ppc, arm, arm64).
+
+- [macro] sb-sys:with-pinned-objects (&rest objects) &body body
+
+    Arrange with the garbage collector that objects will not be moved in memory
+    for the duration of body.  Useful for e.g. foreign calls where another thread
+    may trigger garbage collection.
+
+- [macro] sb-sys:without-gcing &body body
+
+    Execute the forms in body without doing a garbage collection. It
+    inhibits both automatically and explicitly triggered collections.
+    Finally, upon leaving the body if gc is not inhibited it runs the
+    pending gc. Similarly, if gc is triggered in another thread then it
+    waits until gc is enabled in this thread.
+
+    Implies sb-sys:without-interrupts for body, and causes any nested
+    sb-sys:with-interrupts to signal a warning during execution of the
+    body.
+
+    Should be used with great care, and not at all in multithreaded
+    application code: Any locks that are ever acquired while gc is
+    inhibited need to be always held with gc inhibited to prevent
+    deadlocks: if T1 holds the lock and is stopped for gc while T2 is
+    waiting for the lock inside without-gcing the system will be
+    deadlocked. Since SBCL does not currently document its internal locks,
+    application code can never be certain that this invariant is
+    maintained.
 
 #### Tracing Live Objects Back to Roots
 
@@ -7249,7 +7399,7 @@ are:
 
     This is consistent with the description sb-mop:ensure-class in
     AMOP as the functional version of defclass, which has this
-    behaviour; however, it is not consistent with the weaker
+    behavior; however, it is not consistent with the weaker
     requirement in AMOP, which states that any class found by
     find-class, no matter what its class-name, is
     redefined.
@@ -7362,26 +7512,26 @@ functions:
 
 - [generic-function] sb-sequence:length sequence
 
-    Returns the length of sequence or signals a
+    Return the length of sequence or signals a
     sequence:protocol-unimplemented error if the sequence protocol is
     not implemented for the class of sequence.
 
 - [generic-function] sb-sequence:elt sequence index
 
-    Returns the element at position index of sequence or signals a
+    Return the element at position index of sequence or signals a
     sequence:protocol-unimplemented error if the sequence protocol is
     not implemented for the class of sequence.
 
 - [setf-generic-function] sb-sequence:elt new-value sequence index
 
-    Replaces the element at position index of sequence with new-value
-    and returns new-value or signals a sequence:protocol-unimplemented
+    Replace the element at position index of sequence with new-value
+    and return new-value or signal a sequence:protocol-unimplemented
     error if the sequence protocol is not implemented for the class of
     sequence.
 
 - [generic-function] sb-sequence:adjust-sequence sequence length &key initial-element initial-contents
 
-    Returns destructively modified sequence or a freshly allocated
+    Return destructively modified sequence or a freshly allocated
     sequence of the same class as sequence of length length. Elements
     of the returned sequence are initialized to initial-element, if
     supplied, initialized to initial-contents if supplied, or identical
@@ -7391,7 +7541,7 @@ functions:
 
 - [generic-function] sb-sequence:make-sequence-like sequence length &key initial-element initial-contents
 
-    Returns a freshly allocated sequence of length length and of the
+    Return a freshly allocated sequence of length length and of the
     same class as sequence. Elements of the new sequence are
     initialized to initial-element, if supplied, initialized to
     initial-contents if supplied, or undefined if neither is supplied.
@@ -7413,7 +7563,7 @@ to instances of that class signals the following condition:
 
 - [condition] sb-sequence:protocol-unimplemented type-error reference-condition
 
-    This error is signaled if a sequence operation is applied to an
+    Signaled if a sequence operation is applied to an
     instance of a sequence class that does not support the
     operation.
 
@@ -7442,12 +7592,12 @@ There are some noteworthy irregularities:
 
 - [generic-function] sb-sequence:emptyp sequence
 
-    Returns t if sequence is an empty sequence and nil
+    Return t if sequence is an empty sequence and nil
     otherwise. Signals an error if sequence is not a sequence.
 
 - [macro] sb-sequence:dosequence (element sequence &optional return) &body body
 
-    Executes body with element subsequently bound to each element of
+    Execute body with element subsequently bound to each element of
     sequence, then returns return.
 
 The remaining list parallels the Sequence Dictionary, see
@@ -7595,7 +7745,7 @@ An iterator is created by calling:
 
 - [generic-function] sb-sequence:make-sequence-iterator sequence &key from-end start end
 
-    Returns a sequence iterator for sequence or, if start and/or end
+    Return a sequence iterator for sequence or, if start and/or end
     are supplied, the subsequence bounded by start and end as nine
     values:
 
@@ -7634,14 +7784,14 @@ iterators:
 
 - [macro] sb-sequence:with-sequence-iterator (&optional iterator limit from-end-p step endp element set-element index copy) (sequence &key from-end (start 0) end) &body body
 
-    Executes body with the elements of vars bound to the iteration
+    Execute body with the elements of vars bound to the iteration
     state returned by sequence:make-sequence-iterator for sequence and
     args. Elements of vars may be nil in which case the corresponding
     value returned by sequence:make-sequence-iterator is ignored.
 
 - [macro] sb-sequence:with-sequence-iterator-functions (&optional step endp elt setf index copy) (sequence &rest args &key from-end start end) &body body
 
-    Executes body with the names step, endp, elt, setf, index and copy
+    Execute body with the names step, endp, elt, setf, index and copy
     bound to local functions which execute the iteration state query and
     mutation functions returned by sequence:make-sequence-iterator for
     sequence and args. When some names are not supplied or nil is supplied
@@ -7658,18 +7808,18 @@ can be specialized for iterator classes:
 
 - [generic-function] sb-sequence:iterator-step sequence iterator from-end
 
-    Moves iterator one position forward or backward in sequence
+    Move iterator one position forward or backward in sequence
     depending on the iteration direction encoded in from-end.
 
 - [generic-function] sb-sequence:iterator-endp sequence iterator limit from-end
 
-    Returns non-nil when iterator has reached limit (which may
+    Return non-nil when iterator has reached limit (which may
     correspond to the end of sequence) with respect to the iteration
     direction encoded in from-end.
 
 - [generic-function] sb-sequence:iterator-element sequence iterator
 
-    Returns the element of sequence associated to the position of
+    Return the element of sequence associated to the position of
     iterator.
 
 - [setf-generic-function] sb-sequence:iterator-element new-value sequence iterator
@@ -7679,11 +7829,11 @@ can be specialized for iterator classes:
 
 - [generic-function] sb-sequence:iterator-index sequence iterator
 
-    Returns the position of iterator in sequence.
+    Return the position of iterator in sequence.
 
 - [generic-function] sb-sequence:iterator-copy sequence iterator
 
-    Returns a copy of iterator which also traverses sequence but can
+    Return a copy of iterator which also traverses sequence but can
     be mutated independently of iterator.
 
 Iterator objects implementing the above simple iteration protocol are
@@ -7691,7 +7841,7 @@ created by calling the following generic function:
 
 - [generic-function] sb-sequence:make-simple-sequence-iterator sequence &key from-end start end
 
-    Returns a sequence iterator for sequence, start, end and from-end
+    Return a sequence iterator for sequence, start, end and from-end
     as three values:
 
     1. iterator state
@@ -7720,11 +7870,11 @@ created by calling the following generic function:
 
 - [function] sb-ext:posix-environ
 
-    Return the Unix environment as a list of simple-strings. See man environ.
+    Return the Unix environment as a list of simple-strings. See environ(7).
 
 - [function] sb-ext:exit &key code abort (timeout *exit-timeout*)
 
-    Terminates the process, causing SBCL to exit with code. code
+    Terminate the OS process, causing SBCL to exit with code. code
     defaults to 0 when abort is false, and 1 when it is true.
 
     When abort is false (the default), current thread is first unwound,
@@ -7779,7 +7929,7 @@ External programs can be run with sb-ext:run-program.
 
 - [function] sb-ext:run-program program args &key env environment (wait t) search pty input if-input-does-not-exist output (if-output-exists :error) (error :output) (if-error-exists :error) status-hook (external-format :default) directory preserve-fds use-posix-spawn
 
-    run-program creates a new process specified by program.
+    Create a new OS process specified by program.
     args is a list of strings to be passed literally to the new program.
     In POSIX environments, this list becomes the array supplied as the second
     parameter to the execv() or execvp() system call, each list element becoming
@@ -7812,7 +7962,7 @@ External programs can be run with sb-ext:run-program.
     - :environment
 
         A list of strings describing the new Unix environment
-        (as in "man environ"). The default is to copy the environment of
+        (see environ(7)). The default is to copy the environment of
         the current process.
 
     - :env
@@ -8002,6 +8152,182 @@ processes:
     Returns t if successful, otherwise returns nil and error
     number (two values).
 
+#### Signal Handling
+
+- [macro] sb-sys:without-interrupts &body body
+
+    Execute body with all deferrable interrupts disabled. Deferrable
+    interrupts arriving during execution of the body take effect after
+    body has been executed. Deferrable interrupts include most blockable
+    POSIX signals, and sb-thread:interrupt-thread.
+
+    This macro does not interfere with garbage collection, and unlike in
+    many traditional Lisps using userspace threads, in SBCL
+    without-interrupts does not inhibit scheduling of other threads.
+
+    The local macros allow-with-interrupts and with-local-interrupts are
+    available in body.
+
+    - allow-with-interrupts allows with-interrupts to take effect during
+      the dynamic scope of its body, unless there is an outer
+      without-interrupts without a corresponding allow-with-interrupts.
+
+    - with-local-interrupts executes its body with interrupts enabled
+      provided that there is an allow-with-interrupts for every
+      without-interrupts surrounding the current one.
+      with-local-interrupts is equivalent to:
+
+            (allow-with-interrupts (with-interrupts ...))
+
+    Care must be taken not to let either allow-with-interrupts or
+    with-local-interrupts appear in a function that escapes from inside
+    the without-interrupts in:
+
+        (without-interrupts
+          ;; The body of the lambda would be executed with WITH-INTERRUPTS allowed
+          ;; regardless of the interrupt policy in effect when it is called.
+          (lambda () (allow-with-interrupts ...)))
+        
+        (without-interrupts
+          ;; The body of the lambda would be executed with interrupts enabled
+          ;; regardless of the interrupt policy in effect when it is called.
+          (lambda () (with-local-interrupts ...)))
+
+- [macro] sb-sys:with-interrupts &body body
+
+    Execute body with deferrable interrupts conditionally enabled. If there
+    are pending interrupts they take effect prior to executing body.
+
+    As interrupts are normally allowed with-interrupts only makes sense if there
+    is an outer without-interrupts with a corresponding allow-with-interrupts:
+    interrupts are not enabled if any outer without-interrupts is not accompanied
+    by allow-with-interrupts.
+
+- [function] sb-sys:enable-interrupt signum handler
+
+    Set the Unix signal handler for signum. This applies to all threads in
+    the SBCL process.
+
+    - signum is a signal number. Use the constants sb-posix:sigint,
+      sb-posix:sighup and others.
+
+    - handler is a function, :default or :ignore.
+
+        - When handler is a function, it takes three arguments,
+        paralleling those of sigaction.sa_sigaction (see
+        sigaction(2)).
+
+                  (sb-sys:enable-interrupt
+                    :sighup (lambda (signal siginfo-sap context-sap)
+                              (declare (ignore signal siginfo-sap context-sap))
+                              (setq *sighup-received* t)))
+
+        - To reset the handler of sighup:
+
+                  (sb-sys:enable-interrupt :sighup :default)
+
+        - To ignore sigint:
+
+                  (sb-sys:enable-interrupt :sigint :ignore)
+
+    > Warning: See signal-safety(7) for restrictions on what signal
+    > handlers are allowed to do, which is not a whole lot in practice.
+    > A simple and safe way is to set a flag, as in the above example,
+    > and check periodically in some application loop.
+
+##### Default Signal Handlers
+
+SBCL establishes the following signal handlers:
+
+- SIGINT: signals an sb-sys:interactive-interrupt (in
+  sb-thread::foreground-thread with Threading). If that condition
+  is not handled, it enters the Debugger respecting
+  *debugger-hook*.
+
+- SIGPIPE: Ignored.
+
+- SIGTERM: Calls (sb-ext:exit).
+
+- SIGFPE: Signals the standard floating-point-overflow,
+  floating-point-underflow, floating-point-inexact, division-by-zero
+  conditions based on the execution context, or
+  sb-kernel:floating-point-exception if the appropriate condition
+  could not be determined.
+
+- SIGALRM: Checks for expired Timers.
+
+- SIGURG: Handles interruptions by sb-thread:interrupt-thread
+  unless :sb-safepoint is enabled (see Build Options).
+
+- SIGCHLD: Handles child status changes for sb-ext:run-program.
+
+- SIGUSR2: Used by Garbage Collection with Threading.
+
+- SIGABRT: Drops into LDB. Always handled by the runtime.
+  Establishing a Lisp handler has no effect.
+
+- SIGSEGV, SIGILL, SIGEMT, SIGBUS,
+  SIGTRAP, SIGSYS: Some of these synchronous interrupts
+  are used by the runtime. Else, they may be subject to
+  --lose-on-corruption (see Runtime Options). If neither, then
+  they signal a simple-error.
+
+    It is still safe to use sb-sys:enable-interrupt, as that only
+    affects the signals that are handled in Lisp.
+
+- [condition] sb-sys:interactive-interrupt system-condition serious-condition
+
+#### File Descriptor Streams
+
+Many of the UNIX system calls return file descriptors. Instead of
+using other UNIX system calls to perform I/O on them, you can create
+a sb-sys:fd-stream around them. For example,
+sb-bsd-sockets:socket-make-stream and sb-simple-streams:open are
+built using fd streams.
+
+- [structure] sb-sys:fd-stream file-stream ansi-stream
+
+- [function] sb-sys:fd-stream-p object
+
+- [function] sb-sys:make-fd-stream fd &key (class 'fd-stream) input output (element-type 'base-char) (buffering :full) (external-format :default) serve-events timeout file original delete-original pathname input-buffer-p dual-channel-p (name (if file
+    (format nil "file ~A" file)
+    (format nil "descriptor ~W" fd))) auto-close
+
+    Create an fd-stream for the given Unix file descriptor fd.
+
+    - If input is non-nil, allow input operations. If output is non-nil,
+      allow output operations. If neither input nor output is specified,
+      default to allowing input.
+
+    - element-type indicates the element type to use (as for open).
+
+    - buffering indicates the kind of buffering to use. Acceptable
+      values for buffering are :full, :line and :none, default is :full,
+      i.e. output is buffered till it is explicitly flushed using close
+      or finish-output. (force-output forces some output to be flushed:
+      to ensure all buffered output is flushed use finish-output.)
+
+    - timeout (if non-nil) is the number of seconds to wait for input.
+      If nil (the default), then wait forever. When we time out, we
+      signal io-timeout.
+
+    - file is the name of the file (will be returned by pathname on the
+      returned fd-stream).
+
+    - name is used to identify the stream when printed.
+
+    - If serve-events is true, serve-event machinery is used to handle
+      blocking IO on the stream.
+
+    - If auto-close is true, the underlying OS socket is automatically
+      closed after the stream and the socket have been garbage
+      collected. Default is nil.
+
+- [structure-accessor] sb-sys:fd-stream-fd fd-stream
+
+    Return the Unix file descriptor associated with fd-stream.
+    See the fd argument of make-fd-stream.
+
 ### Unicode Support
 
 SBCL provides support for working with Unicode text and querying the
@@ -8047,19 +8373,20 @@ Unicode codepoint.
 
 - [function] sb-unicode:general-category character
 
-    Returns the general category of character as it appears in UnicodeData.txt
+    Return the general category of character as it appears in
+    UnicodeData.txt.
 
 - [function] sb-unicode:bidi-class character
 
-    Returns the bidirectional class of character
+    Return the bidirectional class of character.
 
 - [function] sb-unicode:combining-class character
 
-    Returns the canonical combining class (CCC) of character
+    Return the canonical combining class (CCC) of character.
 
 - [function] sb-unicode:decimal-value character
 
-    Returns the decimal digit value associated with character or nil if
+    Return the decimal digit value associated with character or nil if
     there is no such value.
 
     The only characters in Unicode with a decimal digit value are those
@@ -8069,7 +8396,7 @@ Unicode codepoint.
 
 - [function] sb-unicode:digit-value character
 
-    Returns the Unicode digit value of character or nil if it doesn't exist.
+    Return the Unicode digit value of character or nil if it doesn't exist.
 
     Digit values are guaranteed to be integers between 0 and 9 inclusive.
     All characters with decimal digit values have the same digit value,
@@ -8078,131 +8405,131 @@ Unicode codepoint.
 
 - [function] sb-unicode:numeric-value character
 
-    Returns the numeric value of character or nil if there is no such value.
+    Return the numeric value of character or nil if there is no such value.
     Numeric value is the most general of the Unicode numeric properties.
     The only constraint on the numeric value is that it be a rational number.
 
 - [function] sb-unicode:mirrored-p character
 
-    Returns t if character needs to be mirrored in bidirectional text.
+    Return t if character needs to be mirrored in bidirectional text.
     Otherwise, returns nil.
 
 - [function] sb-unicode:bidi-mirroring-glyph character
 
-    Returns the mirror image of character if it exists.
-    Otherwise, returns nil.
+    Return the mirror image of character if it exists.
+    Otherwise, return nil.
 
 - [function] sb-unicode:age character
 
-    Returns the version of Unicode in which character was assigned as a pair
+    Return the version of Unicode in which character was assigned as a pair
     of values, both integers, representing the major and minor version respectively.
     If character is not assigned in Unicode, returns nil for both values.
 
 - [function] sb-unicode:hangul-syllable-type character
 
-    Returns the Hangul syllable type of character.
+    Return the Hangul syllable type of character.
     The syllable type can be one of :l, :v, :t, :lv, or :lvt.
-    If the character is not a Hangul syllable or Jamo, returns nil
+    If the character is not a Hangul syllable or Jamo, returns nil.
 
 - [function] sb-unicode:east-asian-width character
 
-    Returns the East Asian Width property of character as
+    Return the East Asian Width property of character as
     one of the keywords :n (Narrow), :a (Ambiguous), :h (Halfwidth),
-    :w (Wide), :f (Fullwidth), or :na (Not applicable)
+    :w (Wide), :f (Fullwidth), or :na (Not applicable).
 
 - [function] sb-unicode:script character
 
-    Returns the Script property of character as a keyword.
-    If character does not have a known script, returns :unknown
+    Return the Script property of character as a keyword.
+    If character does not have a known script, returns :unknown.
 
 - [function] sb-unicode:char-block character
 
-    Returns the Unicode block in which character resides as a keyword.
-    If character does not have a known block, returns :no-block
+    Return the Unicode block in which character resides as a keyword.
+    If character does not have a known block, returns :no-block.
 
 - [function] sb-unicode:unicode-1-name character
 
-    Returns the name assigned to character in Unicode 1.0 if it is distinct
+    Return the name assigned to character in Unicode 1.0 if it is distinct
     from the name currently assigned to character. Otherwise, returns nil.
     This property has been officially obsoleted by the Unicode standard, and
     is only included for backwards compatibility.
 
 - [function] sb-unicode:proplist-p character property
 
-    Returns t if character has the specified property.
+    Return t if character has the specified property.
     property is a keyword representing one of the properties from PropList.txt,
     with underscores replaced by dashes.
 
 - [function] sb-unicode:uppercase-p character
 
-    Returns t if character has the Unicode property Uppercase and nil otherwise
+    Return t if character has the Unicode property Uppercase and nil otherwise.
 
 - [function] sb-unicode:lowercase-p character
 
-    Returns t if character has the Unicode property Lowercase and nil otherwise
+    Return t if character has the Unicode property Lowercase and nil otherwise.
 
 - [function] sb-unicode:cased-p character
 
-    Returns t if character has a (Unicode) case, and nil otherwise
+    Return t if character has a (Unicode) case, and nil otherwise.
 
 - [function] sb-unicode:case-ignorable-p character
 
-    Returns t if character is Case Ignorable as defined in Unicode 6.3, Chapter
-    3
+    Return t if character is Case Ignorable as defined in Unicode 6.3, Chapter
+    3.
 
 - [function] sb-unicode:alphabetic-p character
 
-    Returns t if character is Alphabetic according to the Unicode standard
-    and nil otherwise
+    Return t if character is Alphabetic according to the Unicode standard
+    and nil otherwise.
 
 - [function] sb-unicode:ideographic-p character
 
-    Returns t if character has the Unicode property Ideographic,
-    which loosely corresponds to the set of "Chinese characters"
+    Return t if character has the Unicode property Ideographic,
+    which loosely corresponds to the set of "Chinese characters".
 
 - [function] sb-unicode:math-p character
 
-    Returns t if character is a mathematical symbol according to Unicode and
-    nil otherwise
+    Return t if character is a mathematical symbol according to Unicode and
+    nil otherwise.
 
 - [function] sb-unicode:whitespace-p character
 
-    Returns t if character is whitespace according to Unicode
-    and nil otherwise
+    Return t if character is whitespace according to Unicode
+    and nil otherwise.
 
 - [function] sb-unicode:soft-dotted-p character
 
-    Returns t if character has a soft dot (such as the dots on i and j) which
-    disappears when accents are placed on top of it. and nil otherwise
+    Return t if character has a soft dot (such as the dots on i and j) that
+    disappears when accents are placed on top of it, and nil otherwise.
 
 - [function] sb-unicode:hex-digit-p character &key ascii
 
-    Returns t if character is a hexadecimal digit and nil otherwise.
+    Return t if character is a hexadecimal digit and nil otherwise.
     If :ascii is non-nil, fullwidth equivalents of the Latin letters A through F
     are excluded.
 
 - [function] sb-unicode:default-ignorable-p character
 
-    Returns t if character is a Default_Ignorable_Code_Point
+    Return t if character is a Default_Ignorable_Code_Point.
 
 - [function] sb-unicode:grapheme-break-class character
 
-    Returns the grapheme breaking class of character, as specified in UAX #29.
+    Return the grapheme breaking class of character, as specified in UAX #29.
 
 - [function] sb-unicode:word-break-class character
 
-    Returns the word breaking class of character, as specified in UAX #29.
+    Return the word breaking class of character, as specified in UAX #29.
 
 - [function] sb-unicode:sentence-break-class character
 
-    Returns the sentence breaking class of character, as specified in UAX #29.
+    Return the sentence breaking class of character, as specified in UAX #29.
 
 - [function] sb-unicode:line-break-class character
 
-    Returns the line breaking class of character, as specified in the
+    Return the line breaking class of character, as specified in the
     Unicode character database.
 
-#### String operations
+#### Unicode String operations
 
 SBCL can normalize strings using:
 
@@ -8215,14 +8542,14 @@ SBCL can normalize strings using:
 
 - [function] sb-unicode:normalized-p string &optional (form :nfd)
 
-    Tests if string is normalized to form
+    Test if string is normalized to form.
 
 SBCL implements the full range of Unicode case operations with the
 functions
 
 - [function] sb-unicode:uppercase string &key locale
 
-    Returns the full uppercase of string according to the Unicode standard.
+    Return the full uppercase of string according to the Unicode standard.
     The result is not guaranteed to have the same length as the input. If :locale
     is nil, no language-specific case transformations are applied. If :locale is a
     keyword representing a two-letter ISO country code, the case transforms of that
@@ -8231,19 +8558,19 @@ functions
 
 - [function] sb-unicode:lowercase string &key locale
 
-    Returns the full lowercase of string according to the Unicode standard.
+    Return the full lowercase of string according to the Unicode standard.
     The result is not guaranteed to have the same length as the input.
     :locale has the same semantics as the :locale argument to uppercase.
 
 - [function] sb-unicode:titlecase string &key locale
 
-    Returns the titlecase of string. The resulting string can
+    Return the titlecase of string. The resulting string can
     be longer than the input.
     :locale has the same semantics as the :locale argument to uppercase.
 
 - [function] sb-unicode:casefold string
 
-    Returns the full casefolding of string according to the Unicode standard.
+    Return the full casefolding of string according to the Unicode standard.
     Casefolding removes case information in a way that allows the results to be used
     for case-insensitive comparisons.
     The result is not guaranteed to have the same length as the input.
@@ -8259,71 +8586,74 @@ Algorithm.
 
 - [function] sb-unicode:unicode< string1 string2 &key (start1 0) end1 (start2 0) end2
 
-    Determines whether string1 sorts before string2 using the Unicode Collation
-    Algorithm. The function uses an untailored Default Unicode Collation Element Table
-    to produce the sort keys. The function uses the Shifted method for dealing
-    with variable-weight characters, as described in UTS #10
+    Determine whether string1 sorts before string2 using the Unicode
+    Collation Algorithm. The function uses an untailored Default Unicode
+    Collation Element Table to produce the sort keys. The function uses
+    the Shifted method for dealing with variable-weight characters, as
+    described in UTS #10.
 
 - [function] sb-unicode:unicode= string1 string2 &key (start1 0) end1 (start2 0) end2 (strict t)
 
-    Determines whether string1 and string2 are canonically equivalent according
-    to Unicode. The start and end arguments behave like the arguments to string=.
-    If :strict is nil, unicode= tests compatibility equivalence instead.
+    Determine whether string1 and string2 are canonically equivalent
+    according to Unicode. The start and end arguments behave like the
+    arguments to string=. If :strict is nil, unicode= tests compatibility
+    equivalence instead.
 
 - [function] sb-unicode:unicode-equal string1 string2 &key (start1 0) end1 (start2 0) end2 (strict t)
 
-    Determines whether string1 and string2 are canonically equivalent after
-    casefolding (that is, ignoring case differences) according to Unicode. The
-    start and end arguments behave like the arguments to string=. If :strict is
-    nil, unicode= tests compatibility equivalence instead.
+    Determine whether string1 and string2 are canonically equivalent
+    after casefolding (that is, ignoring case differences) according to
+    Unicode. The start and end arguments behave like the arguments to
+    string=. If :strict is nil, unicode= tests compatibility equivalence
+    instead.
 
 - [function] sb-unicode:unicode<= string1 string2 &key (start1 0) end1 (start2 0) end2
 
-    Tests if string1 and string2 are either unicode< or unicode=
+    See if string1 and string2 are either unicode< or unicode=.
 
 - [function] sb-unicode:unicode> string1 string2 &key (start1 0) end1 (start2 0) end2
 
-    Tests if string2 is unicode< string1.
+    See if string2 is unicode< string1.
 
 - [function] sb-unicode:unicode>= string1 string2 &key (start1 0) end1 (start2 0) end2
 
-    Tests if string1 and string2 are either unicode= or unicode>
+    See if string1 and string2 are either unicode= or UNICODE>.
 
 The following functions are provided for detecting visually
 confusable strings:
 
 - [function] sb-unicode:confusable-p string1 string2 &key (start1 0) end1 (start2 0) end2
 
-    Determines whether string1 and string2 could be visually confusable
-    according to the IDNA confusableSummary.txt table
+    Determine whether string1 and string2 could be visually confusable
+    according to the IDNA confusableSummary.txt table.
 
-#### Breaking strings
+#### Breaking Unicode Strings
 
 The sb-unicode package includes several functions for breaking a
 Unicode string into useful parts.
 
 - [function] sb-unicode:graphemes string
 
-    Breaks string into graphemes according to the default
+    Break string into graphemes according to the default
     grapheme breaking rules specified in UAX #29, returning a list of strings.
 
 - [function] sb-unicode:words string
 
-    Breaks string into words according to the default
-    word breaking rules specified in UAX #29. Returns a list of strings
+    Break string into words according to the default word breaking rules
+    specified in UAX #29. Returns a list of strings.
 
 - [function] sb-unicode:sentences string
 
-    Breaks string into sentences according to the default
-    sentence breaking rules specified in UAX #29
+    Break string into sentences according to the default
+    sentence breaking rules specified in UAX #29.
 
 - [function] sb-unicode:lines string &key (margin *print-right-margin*)
 
-    Breaks string into lines that are no wider than :margin according to the
+    Break string into lines that are no wider than :margin according to the
     line breaking rules outlined in UAX #14. Combining marks will always be kept
     together with their base characters, and spaces (but not other types of
     whitespace) will be removed from the end of lines. If :margin is unspecified,
-    it defaults to 80 characters
+    it defaults to 80 characters.
 
 ### Customization Hooks for Users
 
@@ -8331,19 +8661,19 @@ The toplevel repl prompt may be customized, and the function
 that reads user input may be replaced completely. See the :toplevel
 argument of sb-ext:save-lisp-and-die.
 
-The behaviour of require when called with only one argument is
+The behavior of require when called with only one argument is
 implementation-defined. In SBCL, require behaves in the following
 way:
 
 - [function] require module-name &optional pathnames
 
-    Loads a module, unless it already has been loaded. pathnames, if supplied,
-    is a designator for a list of pathnames to be loaded if the module
-    needs to be. If pathnames is not supplied, functions from the list
-    *module-provider-functions* are called in order with module-name
-    as an argument, until one of them returns non-nil.  User code is
-    responsible for calling provide to indicate a successful load of the
-    module.
+    Load module-name, unless it already has been loaded. pathnames, if
+    supplied, is a designator for a list of pathnames to be loaded if
+    the module needs to be. If pathnames is not supplied, functions from
+    the list *module-provider-functions* are called in order with
+    module-name as an argument, until one of them returns non-nil. User
+    code is responsible for calling provide to indicate a successful
+    load of the module.
 
     Also, see the CLHS.
 
@@ -8357,7 +8687,7 @@ mechanisms as follows:
 
 - [function] ed &optional x
 
-    Starts the editor (on a file or a function if named).  Functions
+    Start the editor (on a file or a function if named). Functions
     from the list *ed-functions* are called in order with x as an argument
     until one of them returns non-nil; these functions are responsible for
     signalling a file-error to indicate failure to perform an operation on
@@ -8391,20 +8721,10 @@ accessed by typing help at the debugger prompt. See Debugger.
 Documentation for the command inspect is accessed by typing
 help at the inspect prompt.
 
-### Resolution of Name Conflicts
-
-clhs 11.1.1.2.5 requires that name conflicts in packages be
-resolvable in favour of any of the conflicting symbols. In the
-interactive debugger, this is achieved by prompting for the symbol
-in whose favour the conflict should be resolved; for programmatic
-use, the sb-ext:resolve-conflict restart should be invoked
-with one argument, which should be a member of the list returned by
-the condition accessor sb-ext:name-conflict-symbols.
-
 ### Hash Table Extensions
 
-hash table extensions supported by SBCL are all controlled by keyword
-arguments to make-hash-table.
+Extensions to hash tables supported by SBCL are all controlled by
+keyword arguments to make-hash-table.
 
 - [function] make-hash-table &key (test 'eql) (size 7) (rehash-size 1.5) (rehash-threshold 1) hash-function weakness synchronized
 
@@ -8484,8 +8804,8 @@ arguments to make-hash-table.
 
 - [macro] sb-ext:define-hash-table-test name hash-function
 
-    Defines name as a new kind of hash table test for use with the :test
-    argument to make-hash-table, and associates a default hash-function with it.
+    Define name as a new kind of hash table test for use with the :test
+    argument to make-hash-table, and associate a default hash-function with it.
 
     name must be a symbol naming a global two argument equivalence predicate.
     Afterwards both 'name and #'name can be used with :test argument. In both
@@ -8536,7 +8856,7 @@ arguments to make-hash-table.
 
 - [macro] sb-ext:with-locked-hash-table (hash-table) &body body
 
-    Limits concurrent accesses to hash-table for the duration of body.
+    Limit concurrent accesses to hash-table for the duration of body.
     If hash-table is synchronized, body will execute with exclusive
     ownership of the table. If hash-table is not synchronized, body will
     execute with other with-locked-hash-table bodies excluded -- exclusion
@@ -8545,7 +8865,7 @@ arguments to make-hash-table.
 
 - [function] sb-ext:hash-table-synchronized-p ht
 
-    Returns t if hash-table is synchronized.
+    Return t if hash-table is synchronized.
 
 - [function] sb-ext:hash-table-weakness ht
 
@@ -8577,8 +8897,8 @@ word size.
 
 - [function] sb-ext:seed-random-state &optional state
 
-    Make a random state object. The optional state argument specifies a seed
-    for deterministic pseudo-random number generation.
+    Make a random-state object. The optional state argument specifies a
+    seed for deterministic pseudo-random number generation.
 
     As per the Common Lisp standard for make-random-state,
 
@@ -8729,7 +9049,7 @@ explicitly overrides outer deadlines.
 
 - [macro] sb-sys:with-deadline (&key seconds override) &body body
 
-    Arranges for a timeout condition to be signalled if an operation
+    Arrange for a timeout condition to be signalled if an operation
     respecting deadlines occurs either after the deadline has passed, or
     would take longer than the time left to complete.
 
@@ -8850,7 +9170,7 @@ and its context.
 
 - [function] sb-ext:array-storage-vector array
 
-    Returns the underlying storage vector of array, which must be a non-displaced array.
+    Return the underlying storage vector of array, which must be a non-displaced array.
 
     In SBCL, if array is a of type (simple-array * (*)), it is its own storage
     vector. Multidimensional arrays, arrays with fill pointers, and adjustable
@@ -8863,7 +9183,7 @@ and its context.
 
 - [function] sb-ext:delete-directory pathspec &key recursive
 
-    Deletes the directory designated by pathspec (a pathname designator).
+    Delete the directory designated by pathspec (a pathname designator).
     Returns the truename of the directory deleted.
 
     If recursive is false (the default), signals an error unless the directory is
@@ -8885,11 +9205,11 @@ and its context.
 - [function] sb-ext:get-time-of-day
 
     Return the number of seconds and microseconds since the beginning of
-    the UNIX epoch (January 1st 1970.)
+    the UNIX epoch (January 1st 1970).
 
 - [function] sb-ext:assert-version->= &rest subversions
 
-    Asserts that the current SBCL is of version equal to or greater than
+    Assert that the current SBCL is of version equal to or greater than
     the version specified in the arguments.  A continuable error is signaled
     otherwise.
 
@@ -9092,7 +9412,7 @@ above circumstances. The types of the condition signaled are not
 currently exported or documented but will be in future SBCL
 versions.
 
-### Converting between Strings and Octet Vectors
+### Converting Between Strings and Octet Vectors
 
 To encode Lisp strings as octet vectors and decode octet vectors as
 Lisp strings, the following SBCL-specific functions can be used:
@@ -9864,7 +10184,7 @@ calling load-shared-object.
 
 - [function] unload-shared-object pathname
 
-    Unloads the shared object loaded earlier using the designated pathname with
+    Unload the shared object loaded earlier using the designated pathname with
     load-shared-object, to the degree supported on the platform.
 
     Experimental.
@@ -10071,22 +10391,9 @@ Lisp values into C.
 
     The resulting alien callable value has dynamic extent.
 
-Note that the garbage collector moves objects and won't be able to fix
-up any references in C variables. There are three mechanisms for
-coping with this:
-
-- On CheneyGC platforms, sb-ext:purify moves all live Lisp data into
-  static or read-only areas such that it will never be moved (or
-  freed) again in the life of the Lisp session.
-
-- sb-sys:with-pinned-objects is a macro which arranges for some set
-  of objects to be pinned in memory for the dynamic extent of its
-  body forms. On ports which use the generational GC
-  (most, as of this writing) this affects exactly the specified
-  objects. On other ports it is implemented by turning off GC for
-  the duration (so could be said to have a whole-world granularity).
-
-- Disable GC, using the SB-EXT:WITHOUT-GCING macro.
+Note that the garbage collector moves objects and won't be able to
+fix up any references in C variables. See Controlling GC for how to
+cope with this.
 
 #### Lisp as a Shared Library
 
@@ -10301,7 +10608,7 @@ return the closest equivalent Lisp pathname to a given string
 sb-ext:native-namestring converts a non-wild pathname designator to
 the equivalent native namestring, if possible. Some Lisp pathname
 concepts (such as the :back directory component) have no direct
-equivalents in most Operating Systems; the behaviour of
+equivalents in most Operating Systems; the behavior of
 sb-ext:native-namestring is unspecified if an inappropriate pathname
 designator is passed to it. Additionally, note that conversion from
 pathname to native filename and back to pathname should not be
@@ -10580,13 +10887,13 @@ sb-gray:fundamental-output-stream:
 
 - [generic-function] sb-gray:stream-finish-output stream
 
-    Attempts to ensure that all output sent to the Stream has reached
+    Attempt to ensure that all output sent to stream has reached
     its destination, and only then returns false. Implements
     finish-output. The default method does nothing.
 
 - [generic-function] sb-gray:stream-force-output stream
 
-    Attempts to force any buffered output to be sent. Implements
+    Attempt to force any buffered output to be sent. Implements
     force-output. The default method does nothing.
 
 - [generic-function] sb-gray:stream-write-sequence stream seq &optional start end
@@ -10610,7 +10917,7 @@ sb-gray:fundamental-character-output-stream:
 
 - [generic-function] sb-gray:stream-fresh-line stream
 
-    Outputs a new line to the Stream if it is not positioned at the
+    Output a new line to stream if it is not positioned at the
     beginning of a line. Returns t if it output a new line, nil
     otherwise. Used by fresh-line. The default method uses
     stream-start-line-p and stream-terpri.
@@ -10646,7 +10953,7 @@ sb-gray:fundamental-character-output-stream:
 
 - [generic-function] sb-gray:stream-terpri stream
 
-    Writes an end of line, as for terpri. Returns nil. The default
+    Write an end of line, like terpri, and return nil. The default
     method does (stream-write-char stream #\Newline).
 
 - [generic-function] sb-gray:stream-write-char stream character
@@ -10875,7 +11182,7 @@ framework is there, but many classes are just stubs at the moment.
 See SYS:CONTRIB;SB-SIMPLE-STREAMS;SIMPLE-STREAM-TEST.LISP for
 things that should work.
 
-Known differences to the ACL behaviour:
+Known differences to the ACL behavior:
 
 - sb-simple-streams:open does not return a simple-stream by
   default. See its :class argument.
@@ -10971,7 +11278,7 @@ If file-compiled code contains interned symbols, then loading that
 code into an image without the said symbols will not cause a package
 lock violation, even if the packages in question are locked.
 
-With the exception of interned symbols, behaviour is unspecified if
+With the exception of interned symbols, behavior is unspecified if
 package locks affecting compiled code are not the same during
 loading of the code or execution.
 
@@ -11134,49 +11441,49 @@ Example:
 
 - [function] sb-ext:package-locked-p package
 
-    Returns t when package is locked, nil otherwise. Signals an error
+    Return t when package is locked, nil otherwise. Signals an error
     if package doesn't designate a valid package.
 
 - [function] sb-ext:lock-package package
 
-    Locks package and returns t. Has no effect if package was already
+    Lock package and return t. Has no effect if package was already
     locked. Signals an error if package is not a valid package designator.
 
 - [function] sb-ext:unlock-package package
 
-    Unlocks package and returns t. Has no effect if package was already
+    Unlock package and return t. Has no effect if package was already
     unlocked. Signals an error if package is not a valid package designator.
 
 - [function] sb-ext:package-implemented-by-list package
 
-    Returns a list containing the implementation packages of
+    Return a list containing the implementation packages of
     package. Signals an error if package is not a valid package designator.
 
 - [function] sb-ext:package-implements-list package
 
-    Returns the packages that package is an implementation package
+    Return the packages that package is an implementation package
     of. Signals an error if package is not a valid package designator.
 
 - [function] sb-ext:add-implementation-package packages-to-add &optional (package *package*)
 
-    Adds packages-to-add as implementation packages of package. Signals
+    Add packages-to-add as implementation packages of package. Signals
     an error if package or any of the packages-to-add is not a valid
     package designator.
 
 - [function] sb-ext:remove-implementation-package packages-to-remove &optional (package *package*)
 
-    Removes packages-to-remove from the implementation packages of
+    Remove packages-to-remove from the implementation packages of
     package. Signals an error if package or any of the packages-to-remove
     is not a valid package designator.
 
 - [macro] sb-ext:without-package-locks &body body
 
-    Ignores all runtime package lock violations during the execution of
-    body. Body can begin with declarations.
+    Ignore all runtime package lock violations during the execution of
+    body. body can begin with declarations.
 
 - [macro] sb-ext:with-unlocked-packages (&rest packages) &body forms
 
-    Unlocks packages for the dynamic scope of the body. Signals an
+    Unlock packages for the dynamic scope of the body. Signals an
     error if any of packages is not a valid package designator.
 
 The defpackage options are extended to include the following:
@@ -11215,13 +11522,12 @@ multiprocessing on machines that have more than one CPU, but it does
 not allow Lisp control of the scheduler. This is found in the
 sb-thread package.
 
-Threads are part of the default build on x86[-64]/ARM64 Linux and
-Windows.
+Threading is supported generally on architectures with POSIX threads
+except on ARM, SPARC, MIPS, ppc64 and on the DragonFly BSD operating
+system, as well as on Windows.
 
-They are also supported on: x86[-64] Darwin (Mac OS X), x86[-64]
-FreeBSD, x86 SunOS (Solaris), PPC Linux, ARM64 Linux, RISC-V Linux.
-On these platforms threads must be explicitly enabled at build-time,
-see install for directions.
+Threads are one of the default Build Options on most major
+architectures.
 
 ### Threading Basics
 
@@ -11261,7 +11567,7 @@ see install for directions.
 
 - [function] sb-thread:main-thread
 
-    Returns the main thread of the process.
+    Return the main thread of the process.
 
 #### Running Threads
 
@@ -11277,7 +11583,7 @@ see install for directions.
 
 - [macro] sb-thread:return-from-thread values-form &key allow-exit
 
-    Unwinds from and terminates the current thread, with values from
+    Unwind from and terminate the current thread, with values from
     values-form as the results visible to join-thread.
 
     If current thread is the main thread of the process (see
@@ -11288,7 +11594,7 @@ see install for directions.
 
 - [function] sb-thread:abort-thread &key allow-exit
 
-    Unwinds from and terminates the current thread abnormally, causing
+    Unwind from and terminate the current thread abnormally, causing
     join-thread on current thread to signal an error unless a
     default-value is provided.
 
@@ -11460,7 +11766,7 @@ see install for directions.
 
 - [condition] sb-thread:thread-error error
 
-    Conditions of type thread-error are signalled when thread operations fail.
+    Signalled when thread operations fail.
     The offending thread is initialized by the :thread initialization argument and
     read by the function thread-error-thread.
 
@@ -11484,10 +11790,10 @@ see install for directions.
     to be joined. The offending thread can be accessed using
     thread-error-thread.
 
-### Special Variables
+### Special Variables in Threads
 
 The interaction of special variables with multiple threads is mostly
-as one would expect, with behaviour very similar to other
+as one would expect, with behavior very similar to other
 implementations.
 
 - Global special values are visible across all threads.
@@ -11596,7 +11902,7 @@ lockless algorithms.
 
 - [macro] sb-ext:atomic-update place update-fn &rest arguments
 
-    Updates place atomically to the value returned by calling function
+    Update place atomically to the value returned by calling function
     designated by update-fn with arguments and the previous value of place.
 
     place may be read and update-fn evaluated and called multiple times before the
@@ -11867,7 +12173,7 @@ resource is exhausted.
 - [function] sb-thread:signal-semaphore semaphore &optional (n 1)
 
     Increment the count of semaphore by n. If there are threads waiting
-    on this semaphore, then n of them is woken up.
+    on this semaphore, then wake up n of them.
 
 - [function] sb-thread:wait-on-semaphore semaphore &key (n 1) timeout notification
 
@@ -11896,7 +12202,7 @@ resource is exhausted.
 
 - [function] sb-thread:semaphore-count semaphore
 
-    Returns the current count of semaphore.
+    Return the current count of semaphore.
 
 - [function] sb-thread:semaphore-name semaphore
 
@@ -11915,16 +12221,16 @@ resource is exhausted.
 
 - [function] sb-thread:semaphore-notification-status semaphore-notification
 
-    Returns t if a wait-on-semaphore or try-semaphore using
+    Return t if a wait-on-semaphore or try-semaphore using
     semaphore-notification has succeeded since the notification object was created
     or cleared.
 
 - [function] sb-thread:clear-semaphore-notification semaphore-notification
 
-    Resets the semaphore-notification object for use with another call to
+    Reset the semaphore-notification object for use with another call to
     wait-on-semaphore or try-semaphore.
 
-### Waitqueue/condition variables
+### Waitqueues and Condition Variables
 
 These are based on the POSIX condition variable design, hence the
 annoyingly CL-conflicting name. For use when you want to check a
@@ -12106,13 +12412,13 @@ following functions and macros also serve as :memory barriers:
     The file memory-barriers.txt in the Linux kernel documentation is
     highly recommended reading for anyone programming at this level.
 
-### Sessions/Debugging
+### Debugging Sessions
 
 If the user has multiple views onto the same Lisp image (for example,
 using multiple terminals, or a windowing system, or network access)
 they are typically set up as multiple sessions such that each view
 has its own collection of foreground, background, and stopped
-threads. A thread which wishes to create a new session can use
+threads. A thread that wishes to create a new session can use
 sb-thread:with-new-session to remove itself from the current
 session (which it shares with its parent and siblings) and create a
 fresh one.
@@ -12140,7 +12446,7 @@ sb-thread:release-foreground.
     Background this thread.  If next is supplied, arrange for it to
     have the foreground next.
 
-### Foreign threads
+### Foreign Threads
 
 Direct calls to pthread_create(3) (instead of sb-thread:make-thread)
 create threads that SBCL is not aware of, these are called foreign
@@ -12155,8 +12461,8 @@ current process which should land in a thread that does not block
 it, that is, a Lisp thread.
 
 The resignalling trick cannot work for synchronously triggered signals
-(sigsegv and co), take care not to trigger any. Resignalling for
-synchronously triggered signals in foreign threads is subject to
+(SIGSEGV and co), take care not to trigger any. Resignalling
+for synchronously triggered signals in foreign threads is subject to
 --lose-on-corruption, see Runtime Options.
 
 ### Implementation on Linux x86oids
@@ -12181,7 +12487,7 @@ each thread has its own region so this involves no stopping.
 However, when a region fills, a lock must be obtained while another
 is allocated, and when a collection is required, all processes are
 stopped. This is achieved by sending them signals, which may make
-for interesting behaviour if they are interrupted in system calls.
+for interesting behavior if they are interrupted in system calls.
 The streams interface is believed to handle the required system call
 restarting correctly, but this may be a consideration when making
 other blocking calls e.g. from foreign library code.
@@ -12432,10 +12738,10 @@ more useful features of Common Lisp -- briefly:
 
     If auto-close is true, the underlying OS socket is automatically
     closed after the stream and the socket have been garbage collected.
-    Default is false.
+    Default is nil.
 
     If serve-events is true, blocking IO on the socket will dispatch to
-    the recursive event loop. Default is false.
+    the recursive event loop. Default is nil.
 
     The stream for socket will be cached, and a second invocation of this
     method will return the same stream. This may lead to oddities if this
@@ -12467,48 +12773,48 @@ sb-bsd-sockets:sockopt-receive-low-water).
 
 - [function] sb-bsd-sockets:sockopt-reuse-address socket
 
-    Return the value of the SO-REUSEADDR socket option for socket. This can also be
-    updated with setf.
+    Return the value of the SO_REUSEADDR socket option for socket. This can
+    also be updated with setf.
 
 - [function] sb-bsd-sockets:sockopt-keep-alive socket
 
-    Return the value of the SO-KEEPALIVE socket option for socket. This can also be
-    updated with setf.
+    Return the value of the SO_KEEPALIVE socket option for socket. This can
+    also be updated with setf.
 
 - [function] sb-bsd-sockets:sockopt-oob-inline socket
 
-    Return the value of the SO-OOBINLINE socket option for socket. This can also be
-    updated with setf.
+    Return the value of the SO_OOBINLINE socket option for socket. This can
+    also be updated with setf.
 
 - [function] sb-bsd-sockets:sockopt-bsd-compatible socket
 
-    Return the value of the SO-BSDCOMPAT socket option for socket. This can also be
-    updated with setf. Available only on Linux.
+    Return the value of the SO_BSDCOMPAT socket option for socket. This can
+    also be updated with setf. Available only on Linux.
 
 - [function] sb-bsd-sockets:sockopt-pass-credentials socket
 
-    Return the value of the SO-PASSCRED socket option for socket. This can also be
-    updated with setf. Available only on Linux.
+    Return the value of the SO_PASSCRED socket option for socket. This can also
+    be updated with setf. Available only on Linux.
 
 - [function] sb-bsd-sockets:sockopt-debug socket
 
-    Return the value of the SO-DEBUG socket option for socket. This can also be
+    Return the value of the SO_DEBUG socket option for socket. This can also be
     updated with setf.
 
 - [function] sb-bsd-sockets:sockopt-dont-route socket
 
-    Return the value of the SO-DONTROUTE socket option for socket. This can also be
-    updated with setf.
+    Return the value of the SO_DONTROUTE socket option for socket. This can
+    also be updated with setf.
 
 - [function] sb-bsd-sockets:sockopt-broadcast socket
 
-    Return the value of the SO-BROADCAST socket option for socket. This can also be
-    updated with setf.
+    Return the value of the SO_BROADCAST socket option for socket. This can
+    also be updated with setf.
 
 - [function] sb-bsd-sockets:sockopt-tcp-nodelay socket
 
-    Return the value of the TCP-NODELAY socket option for socket. This can also be
-    updated with setf.
+    Return the value of the TCP_NODELAY socket option for socket. This can also
+    be updated with setf.
 
 ### INET Domain Sockets
 
@@ -12606,7 +12912,7 @@ lookup) are platform dependent.
 
 - [function] sb-bsd-sockets:get-host-by-name host-name
 
-    Returns a host-ent instance for host-name or signals a name-service-error.
+    Return a host-ent instance for host-name or signals a name-service-error.
 
     Another host-ent instance containing zero, one or more IPv6 addresses
     may be returned as a second return value.
@@ -12616,7 +12922,7 @@ lookup) are platform dependent.
 
 - [function] sb-bsd-sockets:get-host-by-address address
 
-    Returns a host-ent instance for address, which should be a vector of
+    Return a host-ent instance for address, which should be a vector of
     (integer 0 255) with 4 elements in case of an IPv4 address and 16
     elements in case of an IPv6 address, or signals a name-service-error.
     See gethostbyaddr(3) for details.
@@ -13096,46 +13402,46 @@ backwards-compatibility, but which has since been deprecated.
 
 - [function] sb-concurrency:dequeue queue
 
-    Retrieves the oldest value in queue and returns it as the primary value,
+    Retrieve the oldest value in queue and returns it as the primary value,
     and t as secondary value. If the queue is empty, returns nil as both primary
     and secondary value.
 
 - [function] sb-concurrency:enqueue value queue
 
-    Adds value to the end of queue. Returns value.
+    Add value to the end of queue. Returns value.
 
 - [function] sb-concurrency:list-queue-contents queue
 
-    Returns the contents of queue as a list without removing them from the
+    Return the contents of queue as a list without removing them from the
     queue. Mainly useful for manual examination of queue state, as the list may be
     out of date by the time it is returned, and concurrent dequeue operations may
     in the worse case force the queue-traversal to be restarted several times.
 
 - [function] sb-concurrency:make-queue &key name initial-contents
 
-    Returns a new queue with name and contents of the initial-contents
+    Return a new queue with name and contents of the initial-contents
     sequence enqueued.
 
 - [function] sb-concurrency:queue-count queue
 
-    Returns the number of objects in queue. Mainly useful for manual
+    Return the number of objects in queue. Mainly useful for manual
     examination of queue state, and in print-object methods: inefficient as it
     must walk the entire queue.
 
 - [function] sb-concurrency:queue-empty-p queue
 
-    Returns t if queue is empty, nil otherwise.
+    Return t if queue is empty, nil otherwise.
 
 - [structure-accessor] sb-concurrency:queue-name queue
 
-    Name of a queue. Can be assigned to using setf. Queue names
-    can be arbitrary printable objects, and need not be unique.
+    Name of a queue. setfable. Queue names can be arbitrary printable
+    objects, and need not be unique.
 
 - [function] sb-concurrency:queuep object
 
-    Returns true if argument is a queue, nil otherwise.
+    Return true if argument is a queue, nil otherwise.
 
-#### Mailbox (lock-free)
+#### Mailbox
 
 sb-concurrency:mailbox is a lock-free message queue where one or
 multiple ends can send messages to one or multiple receivers. The
@@ -13156,16 +13462,16 @@ Built on top of the Queue implementation.
 
 - [function] sb-concurrency:list-mailbox-messages mailbox
 
-    Returns a fresh list containing all the messages in mailbox. Does not
+    Return a fresh list containing all the messages in mailbox. Does not
     remove messages from the mailbox.
 
 - [function] sb-concurrency:mailbox-count mailbox
 
-    Returns the number of messages currently in mailbox.
+    Return the number of messages currently in mailbox.
 
 - [function] sb-concurrency:mailbox-empty-p mailbox
 
-    Returns true if mailbox is currently empty, nil otherwise.
+    Return true if mailbox is currently empty, nil otherwise.
 
 - [structure-accessor] sb-concurrency:mailbox-name mailbox
 
@@ -13173,15 +13479,15 @@ Built on top of the Queue implementation.
 
 - [function] sb-concurrency:mailboxp object
 
-    Returns true if argument is a mailbox, nil otherwise.
+    Return true if argument is a mailbox, nil otherwise.
 
 - [function] sb-concurrency:make-mailbox &key name initial-contents
 
-    Returns a new mailbox with messages in initial-contents enqueued.
+    Return a new mailbox with messages in initial-contents enqueued.
 
 - [function] sb-concurrency:receive-message mailbox &key timeout
 
-    Removes the oldest message from mailbox and returns it as the primary
+    Remove the oldest message from mailbox and returns it as the primary
     value, and a secondary value of t. If mailbox is empty waits until a message
     arrives.
 
@@ -13196,8 +13502,8 @@ Built on top of the Queue implementation.
 
 - [function] sb-concurrency:receive-pending-messages mailbox &optional n
 
-    Removes and returns all (or at most n) currently pending messages
-    from mailbox, or returns nil if no messages are pending.
+    Remove and return all (or at most n) currently pending messages
+    from mailbox, or return nil if no messages are pending.
 
     > Note: Concurrent threads may be snarfing messages during the run
     > of this function, so even x and y appearing right next to each
@@ -13206,7 +13512,7 @@ Built on top of the Queue implementation.
 
 - [function] sb-concurrency:send-message mailbox message
 
-    Adds a message to mailbox. Message can be any object.
+    Add a message to mailbox. Message can be any object.
 
 #### Gates
 
@@ -13224,7 +13530,7 @@ multiple threads must wait for a single event before proceeding.
 
 - [function] sb-concurrency:close-gate gate
 
-    Closes gate. Returns t if the gate was previously open, and nil
+    Close gate. Return t if the gate was previously open, and nil
     if the gate was already closed.
 
 - [structure-accessor] sb-concurrency:gate-name gate
@@ -13233,29 +13539,29 @@ multiple threads must wait for a single event before proceeding.
 
 - [function] sb-concurrency:gate-open-p gate
 
-    Returns true if gate is open.
+    Return true if gate is open.
 
 - [function] sb-concurrency:gatep object
 
-    Returns true if the argument is a gate.
+    Return true if the argument is a gate.
 
 - [function] sb-concurrency:make-gate &key name open
 
-    Makes a new gate. Gate will be initially open if open is true, and closed if open
+    Make a new gate. Gate will be initially open if open is true, and closed if open
     is nil (the default.) name, if provided, is the name of the gate, used when printing
     the gate.
 
 - [function] sb-concurrency:open-gate gate
 
-    Opens gate. Returns t if the gate was previously closed, and nil
+    Open gate. Return t if the gate was previously closed, and nil
     if the gate was already open.
 
 - [function] sb-concurrency:wait-on-gate gate &key timeout
 
-    Waits for gate to open, or timeout seconds to pass. Returns t
+    Wait for gate to open or timeout seconds to pass. Return t
     if the gate was opened in time, and nil otherwise.
 
-#### Frlocks, aka Fast Read Locks
+#### Fast Read Locks
 
 - [structure] sb-concurrency:frlock
 
@@ -13296,16 +13602,16 @@ multiple threads must wait for a single event before proceeding.
 
 - [macro] sb-concurrency:frlock-read (frlock) &body value-forms
 
-    Evaluates value-forms under frlock till it obtains a consistent
+    Evaluate value-forms under frlock till it obtains a consistent
     set, and returns that as multiple values.
 
 - [macro] sb-concurrency:frlock-write (frlock &key (wait-p t) timeout) &body body
 
-    Executes body while holding frlock for writing.
+    Execute body while holding frlock for writing.
 
 - [function] sb-concurrency:make-frlock &key name
 
-    Returns a new frlock with name.
+    Return a new frlock with name.
 
 - [structure-accessor] sb-concurrency:frlock-name frlock
 
@@ -13320,10 +13626,11 @@ multiple threads must wait for a single event before proceeding.
 
 - [function] sb-concurrency:frlock-read-end frlock
 
-    Ends a read sequence on frlock. Returns a token and an epoch. If the token
-    and epoch are eql to the read-token and epoch returned by frlock-read-begin,
-    the values read under the frlock are consistent and can be used: if the values
-    differ, the values are inconsistent and the read must be restated.
+    End a read sequence on frlock. Return a token and an epoch. If the
+    token and epoch are eql to the read-token and epoch returned by
+    frlock-read-begin, the values read under the frlock are consistent and
+    can be used: if the values differ, the values are inconsistent and the
+    read must be restated.
 
     Using frlock-read instead is recommended.
 
@@ -13339,15 +13646,15 @@ multiple threads must wait for a single event before proceeding.
 
 - [function] sb-concurrency:grab-frlock-write-lock frlock &key (wait-p t) timeout
 
-    Acquires frlock for writing, invalidating existing and future read-tokens
+    Acquire frlock for writing, invalidating existing and future read-tokens
     for the duration. Returns t on success, and nil if the lock wasn't acquired
     due to e.g. a timeout. Using frlock-write instead is recommended.
 
 - [function] sb-concurrency:release-frlock-write-lock frlock
 
-    Releases frlock after writing, allowing valid read-tokens to be acquired again.
-    Signals an error if the current thread doesn't hold frlock for writing. Using frlock-write
-    instead is recommended.
+    Release frlock after writing, allowing valid read-tokens to be
+    acquired again. Signals an error if the current thread doesn't hold
+    frlock for writing. Using frlock-write instead is recommended.
 
 ### sb-cover
 
@@ -13412,7 +13719,7 @@ How to use it:
 
 - [function] sb-cover:save-coverage
 
-    Returns an opaque representation of the current code coverage state.
+    Return an opaque representation of the current code coverage state.
     The only operation that may be done on the state is passing it to
     restore-coverage. The representation is guaranteed to be readably printable.
     A representation that has been printed and read back will work identically
@@ -13727,7 +14034,7 @@ as querying their properties and relationships in the running image.
 
 - [function] sb-introspect:find-definition-sources-by-name name type
 
-    Returns a list of definition-sources for definitions of name with
+    Return a list of definition-sources for definitions of name with
     the given definition type. A definition-source object is always
     returned for definitions that exist, but the source location (e.g.
     definition-source-pathname) may be missing. type can currently be one
@@ -13814,7 +14121,7 @@ as querying their properties and relationships in the running image.
 
 - [function] sb-introspect:function-type function-designator
 
-    Returns the ftype of function-designator or nil.
+    Return the ftype of function-designator or nil.
 
 - [function] sb-introspect:method-combination-lambda-list method-combination
 
@@ -13858,7 +14165,7 @@ as querying their properties and relationships in the running image.
 
 - [function] sb-introspect:deftype-lambda-list type-specifier-name
 
-    Returns the lambda list of type-specifier-name as the first return
+    Return the lambda list of type-specifier-name as the first return
     value, and a flag whether the arglist could be found as the second
     value.
 
@@ -13898,7 +14205,7 @@ as querying their properties and relationships in the running image.
 
 - [function] sb-introspect:allocation-information object
 
-    Returns information about the allocation of object. The primary return
+    Return information about the allocation of object. The primary return
     value indicates the general type of allocation: :immediate, :heap,
     :stack, or :foreign.
 
@@ -13942,7 +14249,7 @@ as querying their properties and relationships in the running image.
     the object is allocated.
 
     Expected use-cases include introspection to gain insight into allocation and
-    GC behaviour and restricting memoization to heap-allocated arguments.
+    GC behavior and restricting memoization to heap-allocated arguments.
 
     Experimental: interface subject to change.
 
@@ -14141,7 +14448,7 @@ Unixlike platform". This is section 2 of the Unix manual, plus
 section 3 calls that are (a) typically found in libc, but (b) not
 part of the C standard. For example, we intend to provide support
 for opendir(3) and readdir(3) but not for printf(3). That
-said, if your favourite system call is not included yet, you are
+said, if your favorite system call is not included yet, you are
 encouraged to submit a patch to the SBCL mailing list.
 
 Some facilities are omitted where they offer absolutely no
@@ -14344,11 +14651,11 @@ counterparts.
 
 - [function] sb-posix:getcwd
 
-    Returns the process's current working directory as a string.
+    Return the OS process's current working directory as a string.
 
 - [function] sb-posix:readlink pathspec
 
-    Returns the resolved target of a symbolic link as a string.
+    Return the resolved target of a symbolic link as a string.
 
 - [function] sb-posix:syslog priority format &rest args
 
@@ -14408,7 +14715,7 @@ on 32-bit rings.
 
 - [function] sb-rotate-byte:rotate-byte count bytespec integer
 
-    Rotates a field of bits within integer; specifically, returns an
+    Rotate a field of bits within integer; specifically, return an
     integer that contains the bits of integer rotated count times
     leftwards within the byte specified by bytespec, and elsewhere
     contains the bits of integer.
@@ -15274,6 +15581,11 @@ still reflected in the current implementation:
 - The system is implemented as a C program which is responsible for
   supplying low-level services and loading a Lisp .core file.
 
+The name Steel Bank Common Lisp itself is a reference to Carnegie
+Mellon University Common Lisp from which SBCL forked: Andrew
+Carnegie made his fortune in the steel industry and Andrew Mellon
+was a successful banker.
+
 SBCL also inherited some newer architectural features from CMUCL.
 The most important is that on some architectures it has a
 generational GC, which has various implications (mostly good) for
@@ -15295,25 +15607,27 @@ of forms, such as symbols which are boundp. More complicated forms
 are evaluated by calling compile and then calling funcall on the
 returned result.
 
-The direct ancestor of SBCL is the x86 port of CMUCL. This port was in
-some ways the most cobbled-together of all the CMUCL ports, since a
-number of strange changes had to be made to support the register-poor
-x86 architecture. Some things (like tracing and debugging) do not work
-particularly well there. SBCL should be able to improve in these areas
-(and has already improved in some other areas), but it takes a while.
+The direct ancestor of SBCL is the x86 port of CMUCL. This port was
+in some ways the most cobbled-together of all the CMUCL ports, since
+a number of strange changes had to be made to support the
+register-poor x86 architecture. Some things (like tracing and
+debugging) do not work particularly well there. SBCL should be able
+to improve in these areas (and has already improved in some other
+areas), but it takes a while.
 
-On the x86 SBCL -- like the x86 port of CMUCL -- uses a
+On x86, SBCL -- like the x86 port of CMUCL -- uses a
 conservative GC. This means that it doesn't maintain a strict
-separation between tagged and untagged data, instead treating some
-untagged data (e.g. raw floating point numbers) as possibly-tagged
-data and so not collecting any Lisp objects that they point to. This
-has some negative consequences for average time efficiency (though
-possibly no worse than the negative consequences of trying to
-implement an exact GC on a processor architecture as register-poor
-as the x86) and also has potentially unlimited consequences for
-worst-case memory efficiency. In practice, conservative GCs work
-reasonably well, not getting anywhere near the worst case. But they
-can occasionally cause odd patterns of memory usage.
+separation between Descriptor and Non-descriptor data, instead
+treating some non-descriptor data (e.g. raw floating point numbers)
+as possibly-descriptor data and so not collecting any Lisp objects
+that they point to. This has some negative consequences for average
+time efficiency (though possibly no worse than the negative
+consequences of trying to implement an exact GC on a processor
+architecture as register-poor as the x86) and also has potentially
+unlimited consequences for worst-case memory efficiency. In
+practice, conservative GCs work reasonably well, not getting
+anywhere near the worst case. But they can occasionally cause odd
+patterns of memory usage.
 
 The fork from CMUCL was based on a major rewrite of the system
 bootstrap process. CMUCL has for many years tolerated a very unusual

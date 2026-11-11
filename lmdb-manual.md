@@ -259,10 +259,10 @@ and `eagain`), but unwinding the stack from interrupts in the middle
 of `lmdb` calls can leave the in-memory data structures such as
 transactions inconsistent. If this happens, their further use risks
 data corruption. For this reason, calls to `lmdb` are performed with
-interrupts disabled. For SBCL, this means `sb-sys:without-interrupts`.
+interrupts disabled. For SBCL, this means [`sb-sys:without-interrupts`][fb8d].
 It is an error when compiling `lmdb` if an equivalent facility is not
 found in the Lisp implementation. A warning is signalled if no
-substitute is found for `sb-sys:with-interrupts` because this makes
+substitute is found for [`sb-sys:with-interrupts`][767b] because this makes
 the body of `with-env`, [`with-txn`][fdc6], [`with-cursor`][b1c7] and similar
 uninterruptible.
 
@@ -2340,6 +2340,8 @@ code.
 
 [749e]: #LMDB:LMDB-BAD-TXN-ERROR%20CONDITION "LMDB:LMDB-BAD-TXN-ERROR CONDITION"
 
+[767b]: sbcl-manual.md#SB-SYS:WITH-INTERRUPTS%20MGL-PAX:MACRO "SB-SYS:WITH-INTERRUPTS MGL-PAX:MACRO"
+
 [7c81]: #LMDB:UINT64-TO-OCTETS%20FUNCTION "LMDB:UINT64-TO-OCTETS FUNCTION"
 
 [7def]: #LMDB:WITH-IMPLICIT-CURSOR%20MGL-PAX:MACRO "LMDB:WITH-IMPLICIT-CURSOR MGL-PAX:MACRO"
@@ -2451,5 +2453,7 @@ code.
 [f710]: #LMDB:LMDB-MAP-FULL-ERROR%20CONDITION "LMDB:LMDB-MAP-FULL-ERROR CONDITION"
 
 [fa3d]: #LMDB:CURSOR-FIRST%20FUNCTION "LMDB:CURSOR-FIRST FUNCTION"
+
+[fb8d]: sbcl-manual.md#SB-SYS:WITHOUT-INTERRUPTS%20MGL-PAX:MACRO "SB-SYS:WITHOUT-INTERRUPTS MGL-PAX:MACRO"
 
 [fdc6]: #LMDB:WITH-TXN%20MGL-PAX:MACRO "LMDB:WITH-TXN MGL-PAX:MACRO"

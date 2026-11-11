@@ -288,10 +288,10 @@ and <code>eagain</code>), but unwinding the stack from interrupts in the middle
 of <code>lmdb</code> calls can leave the in-memory data structures such as
 transactions inconsistent. If this happens, their further use risks
 data corruption. For this reason, calls to <code>lmdb</code> are performed with
-interrupts disabled. For SBCL, this means <code>sb-sys:without-interrupts</code>.
+interrupts disabled. For SBCL, this means <a href="sbcl-manual.html#SB-SYS:WITHOUT-INTERRUPTS%20MGL-PAX:MACRO" title="SB-SYS:WITHOUT-INTERRUPTS MGL-PAX:MACRO"><code>sb-sys:without-interrupts</code></a>.
 It is an error when compiling <code>lmdb</code> if an equivalent facility is not
 found in the Lisp implementation. A warning is signalled if no
-substitute is found for <code>sb-sys:with-interrupts</code> because this makes
+substitute is found for <a href="sbcl-manual.html#SB-SYS:WITH-INTERRUPTS%20MGL-PAX:MACRO" title="SB-SYS:WITH-INTERRUPTS MGL-PAX:MACRO"><code>sb-sys:with-interrupts</code></a> because this makes
 the body of <code>with-env</code>, <a href="#LMDB:WITH-TXN%20MGL-PAX:MACRO" title="LMDB:WITH-TXN MGL-PAX:MACRO"><code>with-txn</code></a>, <a href="#LMDB:WITH-CURSOR%20MGL-PAX:MACRO" title="LMDB:WITH-CURSOR MGL-PAX:MACRO"><code>with-cursor</code></a> and similar
 uninterruptible.</p>
 
@@ -2856,7 +2856,7 @@ refer to the parent transaction:</p>
 </ul>
 
 <p> </div></p>
-<h6>[Generated 2026-11-11T02:21:54Z]</h6>
+<h6>[Generated 2026-11-11T09:58:43Z]</h6>
   </div>
 </div>
 <script>$('#page-toc').toc({'selectors': 'h1,h2,h3,h4'});</script>
