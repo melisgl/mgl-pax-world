@@ -8,7 +8,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version 2.6.10.172-0763357, generated 2026-11-13 07:28:04. See
+The output is for SBCL version 2.6.10.183-dba0fce, generated 2026-11-13 16:51:17. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -534,7 +534,7 @@ parentheses.
 
 - :sb-simd-pack (off)
 
-    Enabled automatically by make-config.sh for platforms which
+    Enabled automatically by make-config.sh for platforms that
     implement short vector SIMD intrinsics.
 
 - :sb-source-locations (on)
@@ -2661,8 +2661,15 @@ again.
 
 #### Variable Access
 
-There are two ways to access the current frame's local variables in
-the debugger: list-locals and sb-debug:var.
+There are three ways to access the current frame's local variables in
+the debugger: sb-debug:arg, list-locals, and sb-debug:var.
+
+- [function] sb-debug:arg n
+
+    Return the value of the argument's value at index n in the current
+    frame's default printed representation. Keyword / value pairs are
+    counted as separate arguments. Can be used in trace. If n is out of
+    range or the value cannot be determined, then signal an error.
 
 The debugger doesn't really understand lexical scoping; it has just
 one namespace for all the variables in the current stack frame. If a
@@ -2711,7 +2718,8 @@ identifier 0 (which is not printed), the second one has identifier
     displaying the distinguishing id values.
 
     The result of this function is limited to the availability of
-    variable information. This is setfable.
+    variable information. This is setfable and can be used in trace,
+    too.
 
 ##### Variable Value Availability
 
@@ -3444,6 +3452,40 @@ anonymous and local functions can also be traced.
     the nth value returned by the function.
 
     Also, see the CLHS.
+
+Here is an example of tracing with some of the possible options.
+For simplicity, this is the function:
+
+    (defun fact (n)
+      (if (zerop n)
+          1
+          (* n (fact (1- n)))))
+
+This example shows how to use the :condition option:
+
+    (trace fact :condition (= 4 (sb-debug:arg 0)))
+    (fact 10)
+      0: (FACT 4)
+      0: FACT returned 24
+    3628800
+
+As we can see, we produced output when the condition was satisfied.
+
+Here's another example:
+
+    (untrace)
+    (trace fact :break (= 4 (sb-debug:arg 0)))
+    (fact 10)
+      0: (FACT 5)
+        1: (FACT 4)
+    
+    Breaking before traced call to FACT:
+       [Condition of type SIMPLE-CONDITION]
+    
+    ...
+
+In this example, we see that normal tracing occurs until we the
+argument reaches 4, at which point, we break into the debugger.
 
 In the case of functions where the known return convention is used
 to optimize, encapsulation may be necessary in order to make tracing
@@ -7597,6 +7639,11 @@ to instances of that class signals the following condition:
     instance of a sequence class that does not support the
     operation.
 
+- [generic-function] sb-sequence:protocol-unimplemented-operation condition
+
+    Return the name of operation (a symbol) that caused the
+    sb-sequence:protocol-unimplemented error.
+
 In addition to the mandatory functions above, methods on the sequence
 functions listed below can be defined.
 
@@ -9179,6 +9226,11 @@ and its context.
 
     Signaled when an operation does not complete within an allotted time budget.
 
+- [condition] sb-sys:io-timeout stream-error timeout
+
+    Signaled when an IO operation does not complete within
+    an allotted time budget.
+
 #### Operations Supporting Timeouts and Deadlines
 
     | Operation              | Timeout parameter | Affected by deadlines |
@@ -9195,6 +9247,35 @@ and its context.
     | wait-on-gate           | yes               | yes?                  |
     | frlock-write           | yes               | yes?                  |
     | grab-frlock-write-lock | yes               | yes?                  |
+
+To implement new operations that support timeouts and deadlines, the
+following tools are available:
+
+- [function] sb-sys:signal-deadline
+
+    Signal a deadline-timeout condition, and associate a defer-deadline
+    restart with it. Implementors of blocking functions are responsible
+    for calling this when a deadline is reached.
+
+- [function] sb-sys:decode-internal-time time
+
+    Return internal time value time decoded into seconds and microseconds.
+
+- [function] sb-sys:decode-timeout seconds
+
+    Decode a relative timeout in seconds into five values, taking any
+    global deadlines into account: to-sec, to-usec, stop-sec,
+    stop-usec, deadlinep.
+
+    to-sec and to-usec indicate the relative timeout in seconds and
+    microseconds. stop-sec and stop-usec indicate the absolute timeout
+    in seconds and microseconds. deadlinep is true if the returned
+    values reflect a global deadline instead of the local timeout
+    indicated by seconds.
+
+    If seconds is nil and there is no global timeout all returned values
+    will be nil. If a global deadline has already passed when
+    decode-timeout is called, a timeout condition is signalled.
 
 ### Miscellaneous Extensions
 
@@ -9608,6 +9689,11 @@ has the corresponding SBCL FFI type
       (a int)
       (b (array (* (struct foo)) 100)))
 
+- [macro] alien-size type &optional (units :bits)
+
+    Return the size of the alien type type. units specifies the units to
+    use and can be either :bits, :bytes, or :words.
+
 #### Defining Foreign Types
 
 Types may be either named or anonymous. With structure and union
@@ -9620,6 +9706,12 @@ An anonymous structure or union type is specified by using the name
 nil. The with-alien macro defines a local scope which captures any
 named type definitions. Other types are not inherently named, but
 can be given named abbreviations using the define-alien-type macro.
+
+- [macro] define-alien-type name type
+
+    Define the alien type name to be equivalent to type. Name may be nil for
+    struct and union types, in which case the name is taken from the type
+    specifier.
 
 #### Foreign Types and Lisp Types
 
@@ -9653,34 +9745,38 @@ alien type specifier.
 
 These are the basic foreign type specifiers:
 
-- The foreign type specifier (* <foo>) describes a pointer to an
-  object of type <foo>. A pointed-to type <foo> of t indicates a
-  pointer to anything, similar to void * in ANSI C. A null alien
-  pointer can be detected with the null-alien function.
+- (* <foo>)
 
-- The foreign type specifier (array <foo> &rest <dimensions>)
-  describes array of the specified <dimensions>, holding elements
-  of type <foo>. Note that (unlike in C) (* <foo>) and
-  (array <foo>) are considered to be different types when
-  type checking is done. If equivalence of pointer and array types
-  is desired, it may be explicitly coerced using cast.
+    A pointer to an object of type <foo>. A pointed-to type
+    <foo> of t indicates a pointer to anything, similar to void
+    * in ANSI C. A null alien pointer can be detected with the
+    null-alien function.
 
-Arrays are accessed using deref, passing the indices
-as additional arguments.  Elements are stored in row-major order
-(as in C), so the first dimension determines only the size of the
-memory block, and not the layout of the higher dimensions. An array
-whose first dimension is variable may be specified by using nil as
-the first dimension. Fixed-size arrays can be allocated as array
-elements, structure slots or with-alien variables. Dynamic arrays
-can only be allocated using make-alien.
+- (array <foo> &rest <dimensions>)
 
-- The foreign type specifier (struct <name> &rest <fields>)
-  describes a structure type with the specified <name> and
-  <fields>. Fields are allocated at the same offsets used by the
-  implementation's C compiler, as guessed by the SBCL internals.
-  An optional :alignment keyword argument can be specified for each
-  field to explicitly control the alignment of a field. If <name>
-  is nil then the structure is anonymous.
+    An array of the specified <dimensions>, holding elements of
+    type <foo>. Note that (unlike in C) (* <foo>) and (array
+    <foo>) are considered to be different types when type checking
+    is done. If equivalence of pointer and array types is desired,
+    it may be explicitly coerced using cast.
+
+    Arrays are accessed using deref, passing the indices as
+    additional arguments. Elements are stored in row-major order
+    (as in C), so the first dimension determines only the size of the
+    memory block, and not the layout of the higher dimensions. An array
+    whose first dimension is variable may be specified by using nil as
+    the first dimension. Fixed-size arrays can be allocated as array
+    elements, structure slots or with-alien variables. Dynamic arrays
+    can only be allocated using make-alien.
+
+- (struct <name> &rest <fields>)
+
+    A structure type with the specified <name> and <fields>.
+    Fields are allocated at the same offsets used by the
+    implementation's C compiler, as guessed by the SBCL internals.
+    An optional :alignment keyword argument can be specified for
+    each field to explicitly control the alignment of a field. If
+    <name> is nil then the structure is anonymous.
 
     If a named foreign struct specifier is passed to
     define-alien-type or with-alien, then this defines,
@@ -9689,71 +9785,89 @@ can only be allocated using make-alien.
     current (local or global) alien structure type definition of
     <name>.
 
-- The foreign type specifier (union <name> &rest <fields>) is
-  similar to struct but describes a union type. All fields are
-  allocated at the same offset, and the size of the union is the
-  size of the largest field. The programmer must determine which
-  field is active from context.
+- (union <name> &rest <fields>)
 
-- The foreign type specifier (enum <name> &rest <specs>) describes
-  an enumeration type that maps between integer values and symbols.
-  If <name> is nil, then the type is anonymous. Each element of
-  the <specs> list is either a Lisp symbol, or a list
-  (<symbol> <value>). <value> is an integer. If <value> is not
-  supplied, then it defaults to one greater than the value for the
-  preceding spec (or to zero if it is the first spec).
+    Similar to struct but describes a union type. All fields are
+    allocated at the same offset, and the size of the union is the
+    size of the largest field. The programmer must determine which
+    field is active from context.
 
-- The foreign type specifier (signed &optional <bits>) specifies a
-  signed integer with the specified number of <bits> precision.
-  The upper limit on integer precision is determined by the
-  machine's word size. If <bits> is not specified, the maximum
-  size will be used.
+- (enum <name> &rest <specs>)
 
-- The foreign type specifier (integer &optional <bits>) is
-  equivalent to the corresponding type specifier using signed
-  instead of integer.
+    An enumeration type that maps between integer values and
+    symbols. If <name> is nil, then the type is anonymous. Each
+    element of the <specs> list is either a Lisp symbol, or a list
+    (<symbol> <value>). <value> is an integer. If <value> is
+    not supplied, then it defaults to one greater than the value for
+    the preceding spec (or to zero if it is the first spec).
 
-- The foreign type specifier (unsigned &optional <bits>) is like
-  corresponding type specifier using signed except that the variable
-  is treated as an unsigned integer.
+- (signed &optional <bits>)
 
-- The foreign type specifier (boolean &optional <bits>) is similar
-  to an enumeration type but maps from Lisp nil and t to C 0 and 1
-  respectively. <bits> determines the amount of storage allocated
-  to hold the truth value.
+    A signed integer with the specified number of <bits>
+    precision. The upper limit on integer precision is determined by
+    the machine's word size. If <bits> is not specified, the
+    maximum size will be used.
 
-- The foreign type specifier single-float describes a
-  floating-point number in IEEE single-precision format.
+- (integer &optional <bits>)
 
-- The foreign type specifier double-float describes a
-  floating-point number in IEEE double-precision format.
+    Equivalent to the corresponding type specifier using signed
+    instead of integer.
 
-- The foreign type specifier (function <result-type> &rest
-  <arg-types>) describes a foreign function that takes arguments of
-  the specified <arg-types> and returns a result of type
-  <result-type>. Note that the only context where a foreign
-  function type is directly specified is in the argument to
-  alien-funcall. In all other contexts, foreign functions are
-  represented by foreign function pointer types: (* (function
-  ...)).
+- (unsigned &optional <bits>)
 
-- The foreign type specifier system-area-pointer describes a
-  pointer which is represented in Lisp as a system-area-pointer
-  object. SBCL exports this type from sb-alien because CMUCL did,
-  but tentatively (as of the first draft of this section of the
-  manual, SBCL 0.7.6) it is deprecated, since it doesn't seem to be
-  required by user code.
+    Like signed, but unsigned.
 
-- The foreign type specifier void is used in function types to
-  declare that no useful value is returned. Using alien-funcall to
-  call a void foreign function will return zero values.
+- (boolean &optional <bits>)
 
-- The foreign type specifier (c-string &key <external-format>
-  <element-type> <not-null>) is similar to (* char) but is
-  interpreted as a null-terminated string, and is automatically
-  converted into a Lisp string when accessed; or if the pointer is C
-  null or 0, then accessing it gives Lisp nil unless
-  <not-null> is true, in which case a type-error is signalled.
+    Similar to an enumeration type but maps from Lisp nil and t to C
+    0 and 1 respectively. <bits> determines the amount of storage
+    allocated to hold the truth value.
+
+- word
+
+    Equivalent to (unsigned 64) and (unsigned 32) on 64-bit and
+    32-bit CPUs, respectively.
+
+- signed-word
+
+    Equivalent to (signed 64) and (signed 32) on 64-bit and
+    32-bit CPUs, respectively.
+
+- single-float
+
+    A floating-point number in IEEE single-precision format.
+
+- double-float
+
+    A floating-point number in IEEE double-precision format.
+
+- (function <result-type> &rest <arg-types>)
+
+    A foreign function that takes arguments of the specified
+    <arg-types> and returns a result of type <result-type>. Note
+    that the only context where a foreign function type is
+    directly specified is in the argument to alien-funcall. In all
+    other contexts, foreign functions are represented by foreign
+    function pointer types: (* (function ...)).
+
+- system-area-pointer
+
+    A pointer that is represented in Lisp as a system-area-pointer
+    object.
+
+- void
+
+    This is used in function types to declare that no useful value
+    is returned. Using alien-funcall to call a void foreign function
+    will return zero values.
+
+- (c-string &key <external-format> <element-type> <not-null>)
+
+    Similar to (* char) but is interpreted as a null-terminated
+    string, and is automatically converted into a Lisp string when
+    accessed; or if the pointer is C null or 0, then accessing
+    it gives Lisp nil unless <not-null> is true, in which case a
+    type-error is signalled.
 
     external format conversion is automatically done when Lisp
     strings are passed to foreign code, or when foreign strings are
@@ -9800,11 +9914,11 @@ can only be allocated using make-alien.
     Storing Lisp nil in a c-string writes C NULL to the
     variable.
 
-- sb-alien also exports translations of these C type
-specifiers as foreign type specifiers:
+- sb-alien also exports translations of these C type specifiers as
+  foreign type specifiers:
 
-  char, short, int, long, unsigned-char, unsigned-short,
-  unsigned-int, unsigned-long, float, double, size-t, off-t
+    char, short, int, long, unsigned-char, unsigned-short,
+    unsigned-int, unsigned-long, float, double, size-t, off-t
 
 ### Operations On Foreign Values
 
@@ -9831,6 +9945,10 @@ and how to dynamically allocate and free foreign variables.
     Note that slot is evaluated, and need not be a compile-time
     constant (but only constant slot accesses are efficiently compiled).
 
+- [function] null-alien alien
+
+    See if alien (which must be an alien pointer) is NULL.
+
 ##### System Area Pointer
 
 System area pointers allow untyped access to foreign memory. SAPs can
@@ -9840,6 +9958,8 @@ addresses). They should thus be used with caution; corrupting the
 Lisp heap or other memory with SAPs is trivial.
 
 - [class] system-area-pointer t
+
+- [function] sb-sys:system-area-pointer-p object
 
 - [function] sb-sys:sap-int sap
 
@@ -9872,9 +9992,17 @@ consing:
 
 - [function] sb-sys:sap> sap-1 sap-2
 
-The rest are setfable accessors.
+- [function] sb-sys:sap< sap-1 sap-2
 
-The first group of accessors is for unsigned-bytes of varying widths:
+A utility for Specialized Arrays:
+
+- [function] sb-sys:vector-sap vector
+
+    Return a system-area-pointer pointing to the first element in vector.
+    vector must be specialized.
+
+The rest are setfable accessors. The first group of accessors is for
+unsigned-bytes of varying widths:
 
 - [function] sb-sys:sap-ref-8 sap offset
 
@@ -9896,6 +10024,12 @@ The first group of accessors is for unsigned-bytes of varying widths:
     Access the (unsigned-byte 64) value at the memory location offset bytes
     from sap. setfable.
 
+- [function] sb-sys:sap-ref-word sap offset
+
+    Access the (unsigned-byte 64) or (unsigned-byte 32) value on 64-bit
+    and 32-bit platforms respectively at the memory location offset
+    bytes from sap. setfable.
+
 Then, we have their signed-byte equivalents:
 
 - [function] sb-sys:signed-sap-ref-8 sap offset
@@ -9905,6 +10039,8 @@ Then, we have their signed-byte equivalents:
 - [function] sb-sys:signed-sap-ref-32 sap offset
 
 - [function] sb-sys:signed-sap-ref-64 sap offset
+
+- [function] sb-sys:signed-sap-ref-word sap offset
 
 Finally, accessors for various types:
 
@@ -10092,6 +10228,9 @@ define-alien-routine use this conversion heuristic:
     SBCL 0.7.5, they are still implemented using an older more-or-less
     parallel mechanism inherited from CMUCL.
 
+    When the value is accessed, undefined-alien-error is signaled if the
+    external variable does not exists.
+
     For example, to access a C-level counter foo, one could write
 
         (define-alien-variable "foo" int)
@@ -10111,11 +10250,21 @@ define-alien-routine use this conversion heuristic:
     reliably be accessed through the ordinary define-alien-variable
     mechanism.
 
+- [function] set-errno new-errno
+
+    Set the C library pseudo-variable named errno for obscure syscalls.
+
 - [macro] extern-alien name type
 
-    Return an alien of type which points to an externally defined value of name.
-    name is not evaluated and may be either a string or a symbol. type
-    is an unevaluated alien type specifier. setfable.
+    Return the value of the external alien variable name of type
+    without having to define it with define-alien-variable. Signals
+    undefined-alien-error if the external variable does not exists.
+    setfable.
+
+- [condition] undefined-alien-error cell-error
+
+    Signaled when an undefined alien variable or function
+    is accessed.
 
 ### Foreign Data Structure Examples
 
@@ -10300,6 +10449,10 @@ Threading.
     Define a foreign interface function for the routine with the specified name.
     Also automatically declaim the ftype of the defined function. The
     semantics of the actual call are the same as for alien-funcall.
+
+    As is the case with define-alien-variable, no undefined-alien-error
+    may be signaled at time of definition, but when the function is
+    called.
 
     This macro is a convenience for automatically generating Lisp
     interfaces to simple foreign functions. The primary feature is the
@@ -13304,6 +13457,14 @@ Functions
 
     Stop profiling if profiling.
 
+- [function] sb-sprof:start-sampling &optional (thread sb-thread:*current-thread*)
+
+    Unblock sigprof in the specified thread.
+
+- [function] sb-sprof:stop-sampling &optional (thread sb-thread:*current-thread*)
+
+    Block sigprof in the specified thread.
+
 - [function] sb-sprof:profile-call-counts &rest names
 
     Mark the functions named by names as being subject to call counting
@@ -13323,9 +13484,22 @@ Variables
 
     Default maximum number of stack traces collected.
 
+- [variable] sb-sprof:*report-sort-by* :samples
+
+    Method for sorting the flat report: either by :samples or by :cumulative-samples.
+
+- [variable] sb-sprof:*report-sort-order* :descending
+
+    Order for sorting the flat report: either :descending or :ascending.
+
 - [variable] sb-sprof:*sample-interval* 0.01
 
     Default number of seconds between samples.
+
+- [variable] sb-sprof:*sampling-mode* :cpu
+
+    Default sampling mode. :cpu for cpu profiling, :alloc for allocation
+    profiling, and :time for wallclock profiling.
 
 Credits
 
@@ -15118,43 +15292,6 @@ when applicable.
 
     The interface is deleted entirely.
 
-### Deprecation Conditions
-
-sb-ext:deprecation-condition is the superclass of all
-deprecation-related warning and error conditions. All common slots and
-readers are defined in this condition class.
-
-- [condition] sb-ext:deprecation-condition reference-condition
-
-    Superclass for deprecation-related error and warning
-    conditions.
-
-- [condition] sb-ext:early-deprecation-warning style-warning deprecation-condition
-
-    This warning is signaled when the use of a variable,
-    function, type, etc. in :early deprecation is detected at
-    compile-time. The use will work at run-time with no warning or
-    error.
-
-- [condition] sb-ext:late-deprecation-warning warning deprecation-condition
-
-    This warning is signaled when the use of a variable,
-    function, type, etc. in :late deprecation is detected at
-    compile-time. The use will work at run-time with no warning or
-    error.
-
-- [condition] sb-ext:final-deprecation-warning warning deprecation-condition
-
-    This warning is signaled when the use of a variable,
-    function, type, etc. in :final deprecation is detected at
-    compile-time. An error will be signaled at run-time.
-
-- [condition] sb-ext:deprecation-error error deprecation-condition
-
-    This error is signaled at run-time when an attempt is made to use
-    a thing that is in :final deprecation, i.e. call a function or access
-    a variable.
-
 ### Introspecting Deprecation Information
 
 The deprecation status of functions and variables can be inspected
@@ -15239,6 +15376,55 @@ Attempting to use the deprecated functions:
     => DANGER
     (danger)
     |- ERROR: The function CL-USER::FEZ has been deprecated...
+
+### Deprecation Conditions
+
+sb-ext:deprecation-condition is the superclass of all
+deprecation-related warning and error conditions. All common slots and
+readers are defined in this condition class.
+
+- [condition] sb-ext:deprecation-condition reference-condition
+
+    Superclass for deprecation-related error and warning
+    conditions.
+
+- [function] sb-ext:deprecation-condition-name condition
+
+- [function] sb-ext:deprecation-condition-namespace condition
+
+- [function] sb-ext:deprecation-condition-replacements condition
+
+- [function] sb-ext:deprecation-condition-runtime-error condition
+
+- [function] sb-ext:deprecation-condition-software condition
+
+- [function] sb-ext:deprecation-condition-version condition
+
+- [condition] sb-ext:early-deprecation-warning style-warning deprecation-condition
+
+    This warning is signaled when the use of a variable,
+    function, type, etc. in :early deprecation is detected at
+    compile-time. The use will work at run-time with no warning or
+    error.
+
+- [condition] sb-ext:late-deprecation-warning warning deprecation-condition
+
+    This warning is signaled when the use of a variable,
+    function, type, etc. in :late deprecation is detected at
+    compile-time. The use will work at run-time with no warning or
+    error.
+
+- [condition] sb-ext:final-deprecation-warning warning deprecation-condition
+
+    This warning is signaled when the use of a variable,
+    function, type, etc. in :final deprecation is detected at
+    compile-time. An error will be signaled at run-time.
+
+- [condition] sb-ext:deprecation-error error deprecation-condition
+
+    This error is signaled at run-time when an attempt is made to use
+    a thing that is in :final deprecation, i.e. call a function or access
+    a variable.
 
 ### Deprecated Interfaces in SBCL
 

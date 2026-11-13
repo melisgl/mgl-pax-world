@@ -459,8 +459,9 @@ to be circular. The rules for loading are as follows.
 
 - \[function\] **loaddef-variable-p** *name*
 
-    See if a loaddef was [generated][c1d4] from a
-    [`defvar/auto`][3cff] for `name`, but this [autodef][af1d] has not been evaluated.
+    See if a [loaddef][e4a5] [generated][c1d4] from a
+    [`defvar/auto`][3cff] for `name` has been evaluated without a subsequent
+    `defvar/auto` for `name`.
 
 <a id="x-28AUTOLOAD-3ADEFVAR-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
 <a id="AUTOLOAD:DEFVAR%2FAUTO%20MGL-PAX:MACRO"></a>
@@ -509,9 +510,9 @@ to be circular. The rules for loading are as follows.
 
 - \[function\] **loaddef-package-p** *name*
 
-    See if a loaddef was [generated][c1d4] from a
-    [`defpackage/auto`][aa0e] for `name`, but this [autodef][af1d] has not been evaluated
-    nor has the package been deleted.
+    See if a [loaddef][e4a5] [generated][c1d4] from a
+    [`defpackage/auto`][aa0e] for `name` has been evaluated without a subsequent
+    `defpackage/auto` for `name`, nor has the package been deleted.
 
 <a id="x-28AUTOLOAD-3ADEFPACKAGE-2FAUTO-20MGL-PAX-3AMACRO-29"></a>
 <a id="AUTOLOAD:DEFPACKAGE%2FAUTO%20MGL-PAX:MACRO"></a>

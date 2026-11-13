@@ -645,13 +645,13 @@
 
     - [18.2 The Deprecation Pipeline][21f2]
 
-    - [18.3 Deprecation Conditions][335f]
+    - [18.3 Introspecting Deprecation Information][c7f6]
 
-    - [18.4 Introspecting Deprecation Information][c7f6]
+    - [18.4 Deprecation Declaration][449e]
 
-    - [18.5 Deprecation Declaration][449e]
+    - [18.5 Deprecation Examples][ce81]
 
-    - [18.6 Deprecation Examples][ce81]
+    - [18.6 Deprecation Conditions][335f]
 
     - [18.7 Deprecated Interfaces in SBCL][94f7]
 
@@ -693,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.172-0763357`, generated *2026-11-13 07:28:04*. See
+The output is for SBCL version `2.6.10.183-dba0fce`, generated *2026-11-13 16:51:17*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1255,7 +1255,7 @@ parentheses.
 
 - `:sb-simd-pack` (off)
 
-    Enabled automatically by `make-config.sh` for platforms which
+    Enabled automatically by `make-config.sh` for platforms that
     implement short vector SIMD intrinsics.
 
 - `:sb-source-locations` (on)
@@ -3640,8 +3640,18 @@ again.
 
 #### 5.1.4 Variable Access
 
-There are two ways to access the current frame's local variables in
-the debugger: `list-locals` and [`sb-debug:var`][a625].
+There are three ways to access the current frame's local variables in
+the debugger: [`sb-debug:arg`][604e], `list-locals`, and [`sb-debug:var`][a625].
+
+<a id="x-28SB-DEBUG-3AARG-20FUNCTION-29"></a>
+<a id="SB-DEBUG:ARG%20FUNCTION"></a>
+
+- \[function\] **sb-debug:arg** *n*
+
+    Return the value of the argument's value at index `n` in the current
+    frame's default printed representation. Keyword / value pairs are
+    counted as separate arguments. Can be used in [`trace`][548d]. If `n` is out of
+    range or the value cannot be determined, then signal an error.
 
 The debugger doesn't really understand lexical scoping; it has just
 one namespace for all the variables in the current stack frame. If a
@@ -3693,7 +3703,8 @@ identifier 0 (which is not printed), the second one has identifier
     displaying the distinguishing id values.
 
     The result of this function is limited to the availability of
-    variable information. This is [`setf`][a138]able.
+    variable information. This is [`setf`][a138]able and can be used in [`trace`][548d],
+    too.
 
 <a id="x-28SB-MANUAL-3A-40VARIABLE-VALUE-AVAILABILITY-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@VARIABLE-VALUE-AVAILABILITY%20MGL-PAX:SECTION"></a>
@@ -4459,7 +4470,7 @@ anonymous and local functions can also be traced.
         is not the default but means to use encapsulation for interpreted
         functions and funcallable instances, breakpoints otherwise. When
         encapsulation is used, forms are *not* evaluated in the function's
-        lexical environment, but `sb-debug:arg` can still be used.
+        lexical environment, but [`sb-debug:arg`][604e] can still be used.
 
     - `:methods` {`t` | `nil`}
 
@@ -4480,6 +4491,40 @@ anonymous and local functions can also be traced.
     the `n`th value returned by the function.
 
     Also, see the [CLHS][10c3].
+
+Here is an example of tracing with some of the possible options.
+For simplicity, this is the function:
+
+    (defun fact (n)
+      (if (zerop n)
+          1
+          (* n (fact (1- n)))))
+
+This example shows how to use the `:condition` option:
+
+    (trace fact :condition (= 4 (sb-debug:arg 0)))
+    (fact 10)
+      0: (FACT 4)
+      0: FACT returned 24
+    3628800
+
+As we can see, we produced output when the condition was satisfied.
+
+Here's another example:
+
+    (untrace)
+    (trace fact :break (= 4 (sb-debug:arg 0)))
+    (fact 10)
+      0: (FACT 5)
+        1: (FACT 4)
+    
+    Breaking before traced call to FACT:
+       [Condition of type SIMPLE-CONDITION]
+    
+    ...
+
+In this example, we see that normal tracing occurs until we the
+argument reaches 4, at which point, we break into the debugger.
 
 In the case of functions where the known return convention is used
 to optimize, encapsulation may be necessary in order to make tracing
@@ -9123,6 +9168,14 @@ to instances of that class signals the following condition:
     instance of a sequence class that does not support the
     operation.
 
+<a id="x-28SB-SEQUENCE-3APROTOCOL-UNIMPLEMENTED-OPERATION-20GENERIC-FUNCTION-29"></a>
+<a id="SB-SEQUENCE:PROTOCOL-UNIMPLEMENTED-OPERATION%20GENERIC-FUNCTION"></a>
+
+- \[generic-function\] **sb-sequence:protocol-unimplemented-operation** *condition*
+
+    Return the name of operation (a [`symbol`][e5af]) that caused the
+    [`sb-sequence:protocol-unimplemented`][460c] error.
+
 In addition to the mandatory functions above, methods on the sequence
 functions listed below can be defined.
 
@@ -10102,7 +10155,7 @@ built using fd streams.
 
     - `timeout` (if non-`nil`) is the number of seconds to wait for input.
       If `nil` (the default), then wait forever. When we time out, we
-      signal `io-timeout`.
+      signal [`io-timeout`][27bc].
 
     - `file` is the name of the file (will be returned by `pathname` on the
       returned `fd-stream`).
@@ -11180,6 +11233,14 @@ and its context.
 
     Signaled when an operation does not complete within an allotted time budget.
 
+<a id="x-28SB-SYS-3AIO-TIMEOUT-20CONDITION-29"></a>
+<a id="SB-SYS:IO-TIMEOUT%20CONDITION"></a>
+
+- \[condition\] **sb-sys:io-timeout** *[stream-error][ad6d] [sb-ext:timeout][b488]*
+
+    Signaled when an IO operation does not complete within
+    an allotted time budget.
+
 <a id="x-28SB-MANUAL-3A-40OPERATIONS-SUPPORTING-TIMEOUTS-AND-DEADLINES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-SUPPORTING-TIMEOUTS-AND-DEADLINES%20MGL-PAX:SECTION"></a>
 
@@ -11201,6 +11262,44 @@ and its context.
 | frlock-write           | yes               | yes?                  |
 | grab-frlock-write-lock | yes               | yes?                  |
 ```
+
+To implement new operations that support timeouts and deadlines, the
+following tools are available:
+
+<a id="x-28SB-SYS-3ASIGNAL-DEADLINE-20FUNCTION-29"></a>
+<a id="SB-SYS:SIGNAL-DEADLINE%20FUNCTION"></a>
+
+- \[function\] **sb-sys:signal-deadline**
+
+    Signal a [`deadline-timeout`][41a3] condition, and associate a [`defer-deadline`][32f2]
+    restart with it. Implementors of blocking functions are responsible
+    for calling this when a deadline is reached.
+
+<a id="x-28SB-SYS-3ADECODE-INTERNAL-TIME-20FUNCTION-29"></a>
+<a id="SB-SYS:DECODE-INTERNAL-TIME%20FUNCTION"></a>
+
+- \[function\] **sb-sys:decode-internal-time** *time*
+
+    Return internal time value `time` decoded into seconds and microseconds.
+
+<a id="x-28SB-SYS-3ADECODE-TIMEOUT-20FUNCTION-29"></a>
+<a id="SB-SYS:DECODE-TIMEOUT%20FUNCTION"></a>
+
+- \[function\] **sb-sys:decode-timeout** *seconds*
+
+    Decode a relative timeout in `seconds` into five values, taking any
+    global deadlines into account: `to-sec`, `to-usec`, `stop-sec`,
+    `stop-usec`, `deadlinep`.
+
+    `to-sec` and `to-usec` indicate the relative timeout in seconds and
+    microseconds. `stop-sec` and `stop-usec` indicate the absolute timeout
+    in seconds and microseconds. `deadlinep` is true if the returned
+    values reflect a global deadline instead of the local timeout
+    indicated by `seconds`.
+
+    If `seconds` is `nil` and there is no global timeout all returned values
+    will be `nil`. If a global deadline has already passed when
+    `decode-timeout` is called, a [`timeout`][b488] condition is signalled.
 
 <a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@MISCELLANEOUS-EXTENSIONS%20MGL-PAX:SECTION"></a>
@@ -11686,6 +11785,14 @@ has the corresponding SBCL FFI type
       (a int)
       (b (array (* (struct foo)) 100)))
 
+<a id="x-28SB-ALIEN-3AALIEN-SIZE-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-ALIEN:ALIEN-SIZE%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **alien-size** *type \&optional (units :bits)*
+
+    Return the size of the alien type `type`. `units` specifies the units to
+    use and can be either `:bits`, `:bytes`, or `:words`.
+
 <a id="x-28SB-MANUAL-3A-40DEFINING-FOREIGN-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEFINING-FOREIGN-TYPES%20MGL-PAX:SECTION"></a>
 
@@ -11700,7 +11807,16 @@ defined types such as:
 An anonymous structure or union type is specified by using the name
 `nil`. The [`with-alien`][3ae4] macro defines a local scope which *captures* any
 named type definitions. Other types are not inherently named, but
-can be given named abbreviations using the `define-alien-type` macro.
+can be given named abbreviations using the [`define-alien-type`][f17f] macro.
+
+<a id="x-28SB-ALIEN-3ADEFINE-ALIEN-TYPE-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-ALIEN:DEFINE-ALIEN-TYPE%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **define-alien-type** *name type*
+
+    Define the alien type `name` to be equivalent to `type`. Name may be `nil` for
+    `struct` and [`union`][d6c7] types, in which case the name is taken from the type
+    specifier.
 
 <a id="x-28SB-MANUAL-3A-40FOREIGN-TYPES-AND-LISP-TYPES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-TYPES-AND-LISP-TYPES%20MGL-PAX:SECTION"></a>
@@ -11740,107 +11856,129 @@ automatically converted to a Lisp value, then it will return an
 
 These are the basic foreign type specifiers:
 
-- The foreign type specifier `(* <foo>)` describes a pointer to an
-  object of type `<foo>`. A pointed-to type `<foo>` of `t` indicates a
-  pointer to anything, similar to `void *` in ANSI C. A null alien
-  pointer can be detected with the `null-alien` function.
+- `(* <foo>)`
 
-- The foreign type specifier `(array <foo> &rest <dimensions>)`
-  describes array of the specified `<dimensions>`, holding elements
-  of type `<foo>`. Note that (unlike in C) `(* <foo>)` and
-  `(array <foo>)` are considered to be different types when
-  type checking is done. If equivalence of pointer and array types
-  is desired, it may be explicitly coerced using [`cast`][b385].
+    A pointer to an object of type `<foo>`. A pointed-to type
+    `<foo>` of `t` indicates a pointer to anything, similar to `void
+    *` in ANSI C. A null alien pointer can be detected with the
+    [`null-alien`][ccc7] function.
 
-Arrays are accessed using [`deref`][85de], passing the indices
-as additional arguments.  Elements are stored in row-major order
-(as in C), so the first dimension determines only the size of the
-memory block, and not the layout of the higher dimensions. An array
-whose first dimension is variable may be specified by using `nil` as
-the first dimension. Fixed-size arrays can be allocated as array
-elements, structure slots or [`with-alien`][3ae4] variables. Dynamic arrays
-can only be allocated using [`make-alien`][fb92].
+- `(array <foo> &rest <dimensions>)`
 
-- The foreign type specifier `(struct <name> &rest <fields>)`
-  describes a structure type with the specified `<name>` and
-  `<fields>`. Fields are allocated at the same offsets used by the
-  implementation's C compiler, as guessed by the SBCL internals.
-  An optional `:alignment` keyword argument can be specified for each
-  field to explicitly control the alignment of a field. If `<name>`
-  is `nil` then the structure is anonymous.
+    An array of the specified `<dimensions>`, holding elements of
+    type `<foo>`. Note that (unlike in C) `(* <foo>)` and `(array
+    <foo>)` are considered to be different types when type checking
+    is done. If equivalence of pointer and array types is desired,
+    it may be explicitly coerced using [`cast`][b385].
+
+    Arrays are accessed using [`deref`][85de], passing the indices as
+    additional arguments. Elements are stored in row-major order
+    (as in C), so the first dimension determines only the size of the
+    memory block, and not the layout of the higher dimensions. An array
+    whose first dimension is variable may be specified by using `nil` as
+    the first dimension. Fixed-size arrays can be allocated as array
+    elements, structure slots or [`with-alien`][3ae4] variables. Dynamic arrays
+    can only be allocated using [`make-alien`][fb92].
+
+- `(struct <name> &rest <fields>)`
+
+    A structure type with the specified `<name>` and `<fields>`.
+    Fields are allocated at the same offsets used by the
+    implementation's C compiler, as guessed by the SBCL internals.
+    An optional `:alignment` keyword argument can be specified for
+    each field to explicitly control the alignment of a field. If
+    `<name>` is `nil` then the structure is anonymous.
 
     If a named foreign `struct` specifier is passed to
-    `define-alien-type` or `with-alien`, then this defines,
+    [`define-alien-type`][f17f] or `with-alien`, then this defines,
     respectively, a new global or local foreign structure type. If
     no `<fields>` are specified, then the fields are taken from the
     current (local or global) alien structure type definition of
     `<name>`.
 
-- The foreign type specifier `(union <name> &rest <fields>)` is
-  similar to `struct` but describes a union type. All fields are
-  allocated at the same offset, and the size of the union is the
-  size of the largest field. The programmer must determine which
-  field is active from context.
+- `(union <name> &rest <fields>)`
 
-- The foreign type specifier `(enum <name> &rest <specs>)` describes
-  an enumeration type that maps between integer values and symbols.
-  If `<name>` is `nil`, then the type is anonymous. Each element of
-  the `<specs>` list is either a Lisp symbol, or a list
-  `(<symbol> <value>)`. `<value>` is an integer. If `<value>` is not
-  supplied, then it defaults to one greater than the value for the
-  preceding spec (or to zero if it is the first spec).
+    Similar to `struct` but describes a union type. All fields are
+    allocated at the same offset, and the size of the union is the
+    size of the largest field. The programmer must determine which
+    field is active from context.
 
-- The foreign type specifier `(signed &optional <bits>)` specifies a
-  signed integer with the specified number of `<bits>` precision.
-  The upper limit on integer precision is determined by the
-  machine's word size. If `<bits>` is not specified, the maximum
-  size will be used.
+- `(enum <name> &rest <specs>)`
 
-- The foreign type specifier `(integer &optional <bits>)` is
-  equivalent to the corresponding type specifier using `signed`
-  instead of [`integer`][9b12].
+    An enumeration type that maps between integer values and
+    symbols. If `<name>` is `nil`, then the type is anonymous. Each
+    element of the `<specs>` list is either a Lisp symbol, or a list
+    `(<symbol> <value>)`. `<value>` is an integer. If `<value>` is
+    not supplied, then it defaults to one greater than the value for
+    the preceding spec (or to zero if it is the first spec).
 
-- The foreign type specifier `(unsigned &optional <bits>)` is like
-  corresponding type specifier using `signed` except that the variable
-  is treated as an unsigned integer.
+- `(signed &optional <bits>)`
 
-- The foreign type specifier `(boolean &optional <bits>)` is similar
-  to an enumeration type but maps from Lisp `nil` and `t` to C 0 and 1
-  respectively. `<bits>` determines the amount of storage allocated
-  to hold the truth value.
+    A signed integer with the specified number of `<bits>`
+    precision. The upper limit on integer precision is determined by
+    the machine's word size. If `<bits>` is not specified, the
+    maximum size will be used.
 
-- The foreign type specifier `single-float` describes a
-  floating-point number in IEEE single-precision format.
+- `(integer &optional <bits>)`
 
-- The foreign type specifier `double-float` describes a
-  floating-point number in IEEE double-precision format.
+    Equivalent to the corresponding type specifier using `signed`
+    instead of [`integer`][9b12].
 
-- The foreign type specifier `(function <result-type> &rest
-  <arg-types>)` describes a foreign function that takes arguments of
-  the specified `<arg-types>` and returns a result of type
-  `<result-type>`. Note that the only context where a foreign
-  `function` type is directly specified is in the argument to
-  [`alien-funcall`][c886]. In all other contexts, foreign functions are
-  represented by foreign function pointer types: `(* (function
-  ...))`.
+- `(unsigned &optional <bits>)`
 
-- The foreign type specifier `system-area-pointer` describes a
-  pointer which is represented in Lisp as a [`system-area-pointer`][e3d5]
-  object. SBCL exports this type from `sb-alien` because CMUCL did,
-  but tentatively (as of the first draft of this section of the
-  manual, SBCL 0.7.6) it is deprecated, since it doesn't seem to be
-  required by user code.
+    Like `signed`, but unsigned.
 
-- The foreign type specifier `void` is used in function types to
-  declare that no useful value is returned. Using `alien-funcall` to
-  call a `void` foreign function will return zero values.
+- `(boolean &optional <bits>)`
 
-- The foreign type specifier `(c-string &key <external-format>
-  <element-type> <not-null>)` is similar to `(* char)` but is
-  interpreted as a null-terminated string, and is automatically
-  converted into a Lisp string when accessed; or if the pointer is C
-  `null` or 0, then accessing it gives Lisp `nil` unless
-  `<not-null>` is true, in which case a [`type-error`][abfd] is signalled.
+    Similar to an enumeration type but maps from Lisp `nil` and `t` to C
+    0 and 1 respectively. `<bits>` determines the amount of storage
+    allocated to hold the truth value.
+
+- `word`
+
+    Equivalent to `(unsigned 64)` and `(unsigned 32)` on 64-bit and
+    32-bit CPUs, respectively.
+
+- `signed-word`
+
+    Equivalent to `(signed 64)` and `(signed 32)` on 64-bit and
+    32-bit CPUs, respectively.
+
+- `single-float`
+
+    A floating-point number in IEEE single-precision format.
+
+- `double-float`
+
+    A floating-point number in IEEE double-precision format.
+
+- `(function <result-type> &rest <arg-types>)`
+
+    A foreign function that takes arguments of the specified
+    `<arg-types>` and returns a result of type `<result-type>`. Note
+    that the only context where a foreign `function` type is
+    directly specified is in the argument to [`alien-funcall`][c886]. In all
+    other contexts, foreign functions are represented by foreign
+    function pointer types: `(* (function ...))`.
+
+- `system-area-pointer`
+
+    A pointer that is represented in Lisp as a [`system-area-pointer`][e3d5]
+    object.
+
+- `void`
+
+    This is used in function types to declare that no useful value
+    is returned. Using `alien-funcall` to call a `void` foreign function
+    will return zero values.
+
+- `(c-string &key <external-format> <element-type> <not-null>)`
+
+    Similar to `(* char)` but is interpreted as a null-terminated
+    string, and is automatically converted into a Lisp string when
+    accessed; or if the pointer is C `null` or 0, then accessing
+    it gives Lisp `nil` unless `<not-null>` is true, in which case a
+    [`type-error`][abfd] is signalled.
 
     external format conversion is automatically done when Lisp
     strings are passed to foreign code, or when foreign strings are
@@ -11887,11 +12025,11 @@ can only be allocated using [`make-alien`][fb92].
     Storing Lisp `nil` in a `c-string` writes C `NULL` to the
     variable.
 
-- `sb-alien` also exports translations of these C type
-specifiers as foreign type specifiers:
+- `sb-alien` also exports translations of these C type specifiers as
+  foreign type specifiers:
 
-  [`char`][ee36], `short`, `int`, `long`, `unsigned-char`, `unsigned-short`,
-  `unsigned-int`, `unsigned-long`, [`float`][eee2], `double`, `size-t`, `off-t`
+    [`char`][ee36], `short`, `int`, `long`, `unsigned-char`, `unsigned-short`,
+    `unsigned-int`, `unsigned-long`, [`float`][eee2], `double`, `size-t`, `off-t`
 
 <a id="x-28SB-MANUAL-3A-40OPERATIONS-ON-FOREIGN-VALUES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OPERATIONS-ON-FOREIGN-VALUES%20MGL-PAX:SECTION"></a>
@@ -11930,6 +12068,13 @@ and how to dynamically allocate and free foreign variables.
     Note that `slot` is evaluated, and need not be a compile-time
     constant (but only constant slot accesses are efficiently compiled).
 
+<a id="x-28SB-ALIEN-3ANULL-ALIEN-20FUNCTION-29"></a>
+<a id="SB-ALIEN:NULL-ALIEN%20FUNCTION"></a>
+
+- \[function\] **null-alien** *alien*
+
+    See if `alien` (which must be an alien pointer) is `NULL`.
+
 <a id="x-28SB-MANUAL-3A-40SYSTEM-AREA-POINTER-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SYSTEM-AREA-POINTER%20MGL-PAX:SECTION"></a>
 
@@ -11945,6 +12090,11 @@ Lisp heap or other memory with SAPs is trivial.
 <a id="SB-SYS:SYSTEM-AREA-POINTER%20CLASS"></a>
 
 - \[class\] **system-area-pointer** *[t][9172]*
+
+<a id="x-28SB-SYS-3ASYSTEM-AREA-POINTER-P-20FUNCTION-29"></a>
+<a id="SB-SYS:SYSTEM-AREA-POINTER-P%20FUNCTION"></a>
+
+- \[function\] **sb-sys:system-area-pointer-p** *object*
 
 <a id="x-28SB-SYS-3ASAP-INT-20FUNCTION-29"></a>
 <a id="SB-SYS:SAP-INT%20FUNCTION"></a>
@@ -12001,9 +12151,23 @@ consing:
 
 - \[function\] **sb-sys:sap>** *sap-1 sap-2*
 
-The rest are [`setf`][a138]able accessors.
+<a id="x-28SB-SYS-3ASAP-3C-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP%3C%20FUNCTION"></a>
 
-The first group of accessors is for [`unsigned-byte`][561a]s of varying widths:
+- \[function\] **sb-sys:sap\<** *sap-1 sap-2*
+
+A utility for [Specialized Arrays][fd3d]:
+
+<a id="x-28SB-SYS-3AVECTOR-SAP-20FUNCTION-29"></a>
+<a id="SB-SYS:VECTOR-SAP%20FUNCTION"></a>
+
+- \[function\] **sb-sys:vector-sap** *vector*
+
+    Return a [`system-area-pointer`][e3d5] pointing to the first element in `vector`.
+    `vector` must be specialized.
+
+The rest are [`setf`][a138]able accessors. The first group of accessors is for
+[`unsigned-byte`][561a]s of varying widths:
 
 <a id="x-28SB-SYS-3ASAP-REF-8-20FUNCTION-29"></a>
 <a id="SB-SYS:SAP-REF-8%20FUNCTION"></a>
@@ -12037,6 +12201,15 @@ The first group of accessors is for [`unsigned-byte`][561a]s of varying widths:
     Access the ([`unsigned-byte`][561a] 64) value at the memory location `offset` bytes
     from `sap`. [`setf`][a138]able.
 
+<a id="x-28SB-SYS-3ASAP-REF-WORD-20FUNCTION-29"></a>
+<a id="SB-SYS:SAP-REF-WORD%20FUNCTION"></a>
+
+- \[function\] **sb-sys:sap-ref-word** *sap offset*
+
+    Access the ([`unsigned-byte`][561a] 64) or (`unsigned-byte` 32) value on 64-bit
+    and 32-bit platforms respectively at the memory location `offset`
+    bytes from `sap`. [`setf`][a138]able.
+
 Then, we have their [`signed-byte`][c474] equivalents:
 
 <a id="x-28SB-SYS-3ASIGNED-SAP-REF-8-20FUNCTION-29"></a>
@@ -12059,6 +12232,11 @@ Then, we have their [`signed-byte`][c474] equivalents:
 
 - \[function\] **sb-sys:signed-sap-ref-64** *sap offset*
 
+<a id="x-28SB-SYS-3ASIGNED-SAP-REF-WORD-20FUNCTION-29"></a>
+<a id="SB-SYS:SIGNED-SAP-REF-WORD%20FUNCTION"></a>
+
+- \[function\] **sb-sys:signed-sap-ref-word** *sap offset*
+
 Finally, accessors for various types:
 
 <a id="x-28SB-SYS-3ASAP-REF-SAP-20FUNCTION-29"></a>
@@ -12066,14 +12244,14 @@ Finally, accessors for various types:
 
 - \[function\] **sb-sys:sap-ref-sap** *sap offset*
 
-    Like `sap-ref-word`, but convert the word to a [`system-area-pointer`][e3d5].
+    Like [`sap-ref-word`][412d], but convert the word to a [`system-area-pointer`][e3d5].
 
 <a id="x-28SB-SYS-3ASAP-REF-LISPOBJ-20FUNCTION-29"></a>
 <a id="SB-SYS:SAP-REF-LISPOBJ%20FUNCTION"></a>
 
 - \[function\] **sb-sys:sap-ref-lispobj** *sap offset*
 
-    Like `sap-ref-word`, but interpret the word as a Lisp object descriptor.
+    Like [`sap-ref-word`][412d], but interpret the word as a Lisp object descriptor.
 
 <a id="x-28SB-SYS-3ASAP-REF-SINGLE-20FUNCTION-29"></a>
 <a id="SB-SYS:SAP-REF-SINGLE%20FUNCTION"></a>
@@ -12299,6 +12477,9 @@ macros [`extern-alien`][3986], [`define-alien-variable`][3ac6] and
     SBCL 0.7.5, they are still implemented using an older more-or-less
     parallel mechanism inherited from CMUCL.
 
+    When the value is accessed, [`undefined-alien-error`][4011] is signaled if the
+    external variable does not exists.
+
     For example, to access a C-level counter `foo`, one could write
 
         (define-alien-variable "foo" int)
@@ -12321,14 +12502,30 @@ macros [`extern-alien`][3986], [`define-alien-variable`][3ac6] and
     reliably be accessed through the ordinary [`define-alien-variable`][3ac6]
     mechanism.
 
+<a id="x-28SB-ALIEN-3ASET-ERRNO-20FUNCTION-29"></a>
+<a id="SB-ALIEN:SET-ERRNO%20FUNCTION"></a>
+
+- \[function\] **set-errno** *new-errno*
+
+    Set the C library pseudo-variable named `errno` for obscure syscalls.
+
 <a id="x-28SB-ALIEN-3AEXTERN-ALIEN-20MGL-PAX-3AMACRO-29"></a>
 <a id="SB-ALIEN:EXTERN-ALIEN%20MGL-PAX:MACRO"></a>
 
 - \[macro\] **extern-alien** *name type*
 
-    Return an alien of `type` which points to an externally defined value of `name`.
-    `name` is not evaluated and may be either a string or a symbol. `type`
-    is an unevaluated alien type specifier. [`setf`][a138]able.
+    Return the value of the external alien variable `name` of `type`
+    without having to define it with [`define-alien-variable`][3ac6]. Signals
+    [`undefined-alien-error`][4011] if the external variable does not exists.
+    [`setf`][a138]able.
+
+<a id="x-28SB-ALIEN-3AUNDEFINED-ALIEN-ERROR-20CONDITION-29"></a>
+<a id="SB-ALIEN:UNDEFINED-ALIEN-ERROR%20CONDITION"></a>
+
+- \[condition\] **undefined-alien-error** *[cell-error][9ad9]*
+
+    Signaled when an undefined alien variable or function
+    is accessed.
 
 <a id="x-28SB-MANUAL-3A-40FOREIGN-DATA-STRUCTURE-EXAMPLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FOREIGN-DATA-STRUCTURE-EXAMPLES%20MGL-PAX:SECTION"></a>
@@ -12537,6 +12734,10 @@ developer, is the only documentation. Users of a Lisp built with the
     Define a foreign interface function for the routine with the specified `name`.
     Also automatically [`declaim`][ebea] the [`ftype`][05c1] of the defined function. The
     semantics of the actual call are the same as for [`alien-funcall`][c886].
+
+    As is the case with [`define-alien-variable`][3ac6], no [`undefined-alien-error`][4011]
+    may be signaled at time of definition, but when the function is
+    called.
 
     This macro is a convenience for automatically generating Lisp
     interfaces to simple foreign functions. The primary feature is the
@@ -16100,7 +16301,7 @@ two levels is only supported on x86 and x86-64.
 
 - \[macro\] **sb-sprof:with-sampling** *(\&optional (on t)) \&body body*
 
-    Evaluate body with statistical sampling turned on or off in the current thread.
+    Evaluate `body` with statistical sampling turned on or off in the current thread.
 
 **Functions**
 
@@ -16236,6 +16437,20 @@ two levels is only supported on x86 and x86-64.
 
     Stop profiling if profiling.
 
+<a id="x-28SB-SPROF-3ASTART-SAMPLING-20FUNCTION-29"></a>
+<a id="SB-SPROF:START-SAMPLING%20FUNCTION"></a>
+
+- \[function\] **sb-sprof:start-sampling** *\&optional (thread sb-thread:\*current-thread\*)*
+
+    Unblock `sigprof` in the specified thread.
+
+<a id="x-28SB-SPROF-3ASTOP-SAMPLING-20FUNCTION-29"></a>
+<a id="SB-SPROF:STOP-SAMPLING%20FUNCTION"></a>
+
+- \[function\] **sb-sprof:stop-sampling** *\&optional (thread sb-thread:\*current-thread\*)*
+
+    Block `sigprof` in the specified thread.
+
 <a id="x-28SB-SPROF-3APROFILE-CALL-COUNTS-20FUNCTION-29"></a>
 <a id="SB-SPROF:PROFILE-CALL-COUNTS%20FUNCTION"></a>
 
@@ -16264,12 +16479,34 @@ two levels is only supported on x86 and x86-64.
 
     Default maximum number of stack traces collected.
 
+<a id="x-28SB-SPROF-3A-2AREPORT-SORT-BY-2A-20VARIABLE-29"></a>
+<a id="SB-SPROF:*REPORT-SORT-BY*%20VARIABLE"></a>
+
+- \[variable\] **sb-sprof:\*report-sort-by\*** *:samples*
+
+    Method for sorting the flat report: either by `:samples` or by `:cumulative-samples`.
+
+<a id="x-28SB-SPROF-3A-2AREPORT-SORT-ORDER-2A-20VARIABLE-29"></a>
+<a id="SB-SPROF:*REPORT-SORT-ORDER*%20VARIABLE"></a>
+
+- \[variable\] **sb-sprof:\*report-sort-order\*** *:descending*
+
+    Order for sorting the flat report: either `:descending` or `:ascending`.
+
 <a id="x-28SB-SPROF-3A-2ASAMPLE-INTERVAL-2A-20VARIABLE-29"></a>
 <a id="SB-SPROF:*SAMPLE-INTERVAL*%20VARIABLE"></a>
 
 - \[variable\] **sb-sprof:\*sample-interval\*** *0.01*
 
     Default number of seconds between samples.
+
+<a id="x-28SB-SPROF-3A-2ASAMPLING-MODE-2A-20VARIABLE-29"></a>
+<a id="SB-SPROF:*SAMPLING-MODE*%20VARIABLE"></a>
+
+- \[variable\] **sb-sprof:\*sampling-mode\*** *:cpu*
+
+    Default sampling mode. `:cpu` for cpu profiling, `:alloc` for allocation
+    profiling, and `:time` for wallclock profiling.
 
 **Credits**
 
@@ -17278,7 +17515,7 @@ as querying their properties and relationships in the running image.
         `:ir1-convert`
 
     Definition types are disjoint. For example, `:type` refers to [`deftype`][7f9a]s
-    but not [`class`][1f37]es or `sb-alien:define-alien-type`, as those are of
+    but not [`class`][1f37]es or [`sb-alien:define-alien-type`][f17f], as those are of
     definition type `:class` and `:alien-type`, respectively. `:function` does
     not include `:generic-function`, `:class` does not include `:structure`,
     etc. `:variable` refers to non-constant dynamic variables (e.g. those
@@ -18527,65 +18764,10 @@ when applicable.
 
     The interface is deleted entirely.
 
-<a id="x-28SB-MANUAL-3A-40DEPRECATION-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@DEPRECATION-CONDITIONS%20MGL-PAX:SECTION"></a>
-
-### 18.3 Deprecation Conditions
-
-[`sb-ext:deprecation-condition`][9cb3] is the superclass of all
-deprecation-related warning and error conditions. All common slots and
-readers are defined in this condition class.
-
-<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-20CONDITION-29"></a>
-<a id="SB-EXT:DEPRECATION-CONDITION%20CONDITION"></a>
-
-- \[condition\] **sb-ext:deprecation-condition** *sb-int:reference-condition*
-
-    Superclass for deprecation-related error and warning
-    conditions.
-
-<a id="x-28SB-EXT-3AEARLY-DEPRECATION-WARNING-20CONDITION-29"></a>
-<a id="SB-EXT:EARLY-DEPRECATION-WARNING%20CONDITION"></a>
-
-- \[condition\] **sb-ext:early-deprecation-warning** *[style-warning][2056] [sb-ext:deprecation-condition][9cb3]*
-
-    This warning is signaled when the use of a variable,
-    function, type, etc. in `:early` deprecation is detected at
-    compile-time. The use will work at run-time with no warning or
-    error.
-
-<a id="x-28SB-EXT-3ALATE-DEPRECATION-WARNING-20CONDITION-29"></a>
-<a id="SB-EXT:LATE-DEPRECATION-WARNING%20CONDITION"></a>
-
-- \[condition\] **sb-ext:late-deprecation-warning** *[warning][bcb6] [sb-ext:deprecation-condition][9cb3]*
-
-    This warning is signaled when the use of a variable,
-    function, type, etc. in `:late` deprecation is detected at
-    compile-time. The use will work at run-time with no warning or
-    error.
-
-<a id="x-28SB-EXT-3AFINAL-DEPRECATION-WARNING-20CONDITION-29"></a>
-<a id="SB-EXT:FINAL-DEPRECATION-WARNING%20CONDITION"></a>
-
-- \[condition\] **sb-ext:final-deprecation-warning** *[warning][bcb6] [sb-ext:deprecation-condition][9cb3]*
-
-    This warning is signaled when the use of a variable,
-    function, type, etc. in `:final` deprecation is detected at
-    compile-time. An error will be signaled at run-time.
-
-<a id="x-28SB-EXT-3ADEPRECATION-ERROR-20CONDITION-29"></a>
-<a id="SB-EXT:DEPRECATION-ERROR%20CONDITION"></a>
-
-- \[condition\] **sb-ext:deprecation-error** *[error][d162] [sb-ext:deprecation-condition][9cb3]*
-
-    This error is signaled at run-time when an attempt is made to use
-    a thing that is in `:final` deprecation, i.e. call a function or access
-    a variable.
-
 <a id="x-28SB-MANUAL-3A-40INTROSPECTING-DEPRECATION-INFORMATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INTROSPECTING-DEPRECATION-INFORMATION%20MGL-PAX:SECTION"></a>
 
-### 18.4 Introspecting Deprecation Information
+### 18.3 Introspecting Deprecation Information
 
 The deprecation status of functions and variables can be inspected
 using the `sb-cltl2:function-information` and
@@ -18595,7 +18777,7 @@ contributed module.
 <a id="x-28SB-MANUAL-3A-40DEPRECATION-DECLARATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATION-DECLARATION%20MGL-PAX:SECTION"></a>
 
-### 18.5 Deprecation Declaration
+### 18.4 Deprecation Declaration
 
 The [`sb-ext:deprecated`][5888] declaration can be used to declare objects
 in various namespaces as deprecated.
@@ -18649,7 +18831,7 @@ in various namespaces as deprecated.
 <a id="x-28SB-MANUAL-3A-40DEPRECATION-EXAMPLES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATION-EXAMPLES%20MGL-PAX:SECTION"></a>
 
-### 18.6 Deprecation Examples
+### 18.5 Deprecation Examples
 
 Marking functions as deprecated:
 
@@ -18678,6 +18860,91 @@ Attempting to use the deprecated functions:
     => DANGER
     (danger)
     |- ERROR: The function CL-USER::FEZ has been deprecated...
+
+<a id="x-28SB-MANUAL-3A-40DEPRECATION-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@DEPRECATION-CONDITIONS%20MGL-PAX:SECTION"></a>
+
+### 18.6 Deprecation Conditions
+
+[`sb-ext:deprecation-condition`][9cb3] is the superclass of all
+deprecation-related warning and error conditions. All common slots and
+readers are defined in this condition class.
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-20CONDITION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION%20CONDITION"></a>
+
+- \[condition\] **sb-ext:deprecation-condition** *sb-int:reference-condition*
+
+    Superclass for deprecation-related error and warning
+    conditions.
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-NAME-20FUNCTION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION-NAME%20FUNCTION"></a>
+
+- \[function\] **sb-ext:deprecation-condition-name** *condition*
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-NAMESPACE-20FUNCTION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION-NAMESPACE%20FUNCTION"></a>
+
+- \[function\] **sb-ext:deprecation-condition-namespace** *condition*
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-REPLACEMENTS-20FUNCTION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION-REPLACEMENTS%20FUNCTION"></a>
+
+- \[function\] **sb-ext:deprecation-condition-replacements** *condition*
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-RUNTIME-ERROR-20FUNCTION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION-RUNTIME-ERROR%20FUNCTION"></a>
+
+- \[function\] **sb-ext:deprecation-condition-runtime-error** *condition*
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-SOFTWARE-20FUNCTION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION-SOFTWARE%20FUNCTION"></a>
+
+- \[function\] **sb-ext:deprecation-condition-software** *condition*
+
+<a id="x-28SB-EXT-3ADEPRECATION-CONDITION-VERSION-20FUNCTION-29"></a>
+<a id="SB-EXT:DEPRECATION-CONDITION-VERSION%20FUNCTION"></a>
+
+- \[function\] **sb-ext:deprecation-condition-version** *condition*
+
+<a id="x-28SB-EXT-3AEARLY-DEPRECATION-WARNING-20CONDITION-29"></a>
+<a id="SB-EXT:EARLY-DEPRECATION-WARNING%20CONDITION"></a>
+
+- \[condition\] **sb-ext:early-deprecation-warning** *[style-warning][2056] [sb-ext:deprecation-condition][9cb3]*
+
+    This warning is signaled when the use of a variable,
+    function, type, etc. in `:early` deprecation is detected at
+    compile-time. The use will work at run-time with no warning or
+    error.
+
+<a id="x-28SB-EXT-3ALATE-DEPRECATION-WARNING-20CONDITION-29"></a>
+<a id="SB-EXT:LATE-DEPRECATION-WARNING%20CONDITION"></a>
+
+- \[condition\] **sb-ext:late-deprecation-warning** *[warning][bcb6] [sb-ext:deprecation-condition][9cb3]*
+
+    This warning is signaled when the use of a variable,
+    function, type, etc. in `:late` deprecation is detected at
+    compile-time. The use will work at run-time with no warning or
+    error.
+
+<a id="x-28SB-EXT-3AFINAL-DEPRECATION-WARNING-20CONDITION-29"></a>
+<a id="SB-EXT:FINAL-DEPRECATION-WARNING%20CONDITION"></a>
+
+- \[condition\] **sb-ext:final-deprecation-warning** *[warning][bcb6] [sb-ext:deprecation-condition][9cb3]*
+
+    This warning is signaled when the use of a variable,
+    function, type, etc. in `:final` deprecation is detected at
+    compile-time. An error will be signaled at run-time.
+
+<a id="x-28SB-EXT-3ADEPRECATION-ERROR-20CONDITION-29"></a>
+<a id="SB-EXT:DEPRECATION-ERROR%20CONDITION"></a>
+
+- \[condition\] **sb-ext:deprecation-error** *[error][d162] [sb-ext:deprecation-condition][9cb3]*
+
+    This error is signaled at run-time when an attempt is made to use
+    a thing that is in `:final` deprecation, i.e. call a function or access
+    a variable.
 
 <a id="x-28SB-MANUAL-3A-40DEPRECATED-INTERFACES-IN-SBCL-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEPRECATED-INTERFACES-IN-SBCL%20MGL-PAX:SECTION"></a>
@@ -18892,7 +19159,7 @@ versions of SBCL, which have since then been deleted.
     preferred SBCL style. Deprecated as of 0.pre7.90 in December
     2001. Deleted as of 1.0.9.17 in September 2007. Replaced by
     [`sb-alien:define-alien-routine`][5da0], [`sb-alien:define-alien-variable`][3ac6],
-    and `sb-alien:define-alien-type`.
+    and [`sb-alien:define-alien-type`][f17f].
 
 <a id="x-28SB-MANUAL-3A-40FURTHER-RESOURCES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@FURTHER-RESOURCES%20MGL-PAX:SECTION"></a>
@@ -19564,6 +19831,8 @@ learn about Common Lisp, some books stand out:
 
 [2789]: #SB-MANUAL:@USING-PAX%20MGL-PAX:SECTION "Using PAX"
 
+[27bc]: #SB-SYS:IO-TIMEOUT%20CONDITION "SB-SYS:IO-TIMEOUT CONDITION"
+
 [286e]: #SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION "Block Compilation Difficulties"
 
 [28e7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ensure.htm "ENSURE-GENERIC-FUNCTION (MGL-PAX:CLHS FUNCTION)"
@@ -19746,11 +20015,15 @@ learn about Common Lisp, some books stand out:
 
 [3fde]: #SB-EXT:*DEFAULT-SOURCE-EXTERNAL-FORMAT*%20VARIABLE "SB-EXT:*DEFAULT-SOURCE-EXTERNAL-FORMAT* VARIABLE"
 
+[4011]: #SB-ALIEN:UNDEFINED-ALIEN-ERROR%20CONDITION "SB-ALIEN:UNDEFINED-ALIEN-ERROR CONDITION"
+
 [406a]: #SB-THREAD:CONDITION-WAIT%20FUNCTION "SB-THREAD:CONDITION-WAIT FUNCTION"
 
 [40ad]: #SB-GRAY:STREAM-WRITE-CHAR%20GENERIC-FUNCTION "SB-GRAY:STREAM-WRITE-CHAR GENERIC-FUNCTION"
 
 [40b2]: #SB-MANUAL:@DIAGNOSTIC-MESSAGES%20MGL-PAX:SECTION "Diagnostic Messages"
+
+[412d]: #SB-SYS:SAP-REF-WORD%20FUNCTION "SB-SYS:SAP-REF-WORD FUNCTION"
 
 [4143]: http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm "STRING= (MGL-PAX:CLHS FUNCTION)"
 
@@ -19999,6 +20272,8 @@ learn about Common Lisp, some books stand out:
 [5fac]: pax-manual.md#MGL-PAX:SECTION%20CLASS "MGL-PAX:SECTION CLASS"
 
 [6031]: #SB-MANUAL:@DEBUGGER-INVOCATION%20MGL-PAX:SECTION "Debugger Invocation"
+
+[604e]: #SB-DEBUG:ARG%20FUNCTION "SB-DEBUG:ARG FUNCTION"
 
 [606c]: #SB-EXT:FINAL-DEPRECATION-WARNING%20CONDITION "SB-EXT:FINAL-DEPRECATION-WARNING CONDITION"
 
@@ -20532,6 +20807,8 @@ learn about Common Lisp, some books stand out:
 
 [acd7]: http://www.lispworks.com/documentation/HyperSpec/Body/v_rnd_st.htm "*RANDOM-STATE* (MGL-PAX:CLHS VARIABLE)"
 
+[ad6d]: http://www.lispworks.com/documentation/HyperSpec/Body/e_stm_er.htm "STREAM-ERROR (MGL-PAX:CLHS CONDITION)"
+
 [ad78]: http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm "FORMAT (MGL-PAX:CLHS FUNCTION)"
 
 [adab]: #SB-EXT:ENABLE-DEBUGGER%20FUNCTION "SB-EXT:ENABLE-DEBUGGER FUNCTION"
@@ -20761,6 +21038,8 @@ learn about Common Lisp, some books stand out:
 [cc69]: #SB-MANUAL:@PATHNAMES%20MGL-PAX:SECTION "Pathnames"
 
 [ccb5]: #SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION "Information Commands"
+
+[ccc7]: #SB-ALIEN:NULL-ALIEN%20FUNCTION "SB-ALIEN:NULL-ALIEN FUNCTION"
 
 [cd68]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ratio.htm "RATIO (MGL-PAX:CLHS CLASS)"
 
@@ -21027,6 +21306,8 @@ learn about Common Lisp, some books stand out:
 [f0e6]: #SB-MANUAL:@TOOLS-TO-HELP-DEVELOPERS%20MGL-PAX:SECTION "Tools to Help Developers"
 
 [f102]: #SB-MANUAL:@DEBUGGER-ENTRY%20MGL-PAX:SECTION "Debugger Entry"
+
+[f17f]: #SB-ALIEN:DEFINE-ALIEN-TYPE%20MGL-PAX:MACRO "SB-ALIEN:DEFINE-ALIEN-TYPE MGL-PAX:MACRO"
 
 [f275]: http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm "LIST* (MGL-PAX:CLHS FUNCTION)"
 
