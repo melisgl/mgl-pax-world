@@ -1249,8 +1249,9 @@ based on the `doc-type` argument of [`cl:documentation`][c5ae].
     Refers to a global macro, typically defined with [`defmacro`][14cb], or to a
     [special operator][9a71].
 
-    `macro` references resolve to the [`macro-function`][e924] of their `name` or
-    signal `resolve-error`([`0`][58ba] [`1`][7825]) if that's `nil`.
+    `macro` references [`resolve`][63b4] to the [`macro-function`][e924] of their `name` or
+    signal `resolve-error`([`0`][58ba] [`1`][7825]) if it's `nil` or the definition cannot be [`locate`][8f19]d
+    from it.
 
 <a id="x-28MGL-PAX-3ASYMBOL-MACRO-20MGL-PAX-3ALOCATIVE-29"></a>
 <a id="MGL-PAX:SYMBOL-MACRO%20MGL-PAX:LOCATIVE"></a>

@@ -906,7 +906,8 @@ based on the doc-type argument of cl:documentation.
     special operator.
 
     macro references resolve to the macro-function of their name or
-    signal resolve-error if that's nil.
+    signal resolve-error if it's nil or the definition cannot be located
+    from it.
 
 - [locative] symbol-macro
 

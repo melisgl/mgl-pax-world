@@ -433,7 +433,7 @@
 
     - [9.9 Step-by-step Example of the Foreign Function Interface][326d]
 
-- [10 Pathnames][cc69]
+- [10 Filenames][5e65]
 
     - [10.1 Lisp Pathnames][d375]
 
@@ -442,6 +442,8 @@
         - [10.1.2 The SYS Logical Pathname Host][4b71]
 
     - [10.2 Native Filenames][2776]
+
+    - [10.3 Files Dictionary][f7d2]
 
 - [11 Streams][f64d]
 
@@ -453,17 +455,17 @@
 
         - [11.3.1 Gray Streams classes][d41e]
 
-        - [11.3.2 Methods common to all streams][c60f]
+        - [11.3.2 Methods Common to All Streams][c60f]
 
-        - [11.3.3 Input stream methods][93d2]
+        - [11.3.3 Input Stream Methods][93d2]
 
-        - [11.3.4 Character input stream methods][0f57]
+        - [11.3.4 Character Input Stream Methods][0f57]
 
-        - [11.3.5 Output stream methods][3af9]
+        - [11.3.5 Output Stream Methods][3af9]
 
-        - [11.3.6 Character output stream methods][a3b7]
+        - [11.3.6 Character Output Stream Methods][a3b7]
 
-        - [11.3.7 Binary stream methods][a530]
+        - [11.3.7 Binary Stream Methods][a530]
 
         - [11.3.8 Gray Streams Examples][5c73]
 
@@ -493,9 +495,9 @@
 
         - [13.1.3 Asynchronous Operations][bc04]
 
-        - [13.1.4 Miscellaneous Operations][4e63]
+        - [13.1.4 Miscellaneous Operations][e7f0]
 
-        - [13.1.5 Error Conditions][a378]
+        - [13.1.5 Threading Error Conditions][090f]
 
     - [13.2 Special Variables in Threads][2b10]
 
@@ -693,7 +695,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.196-89a16c7`, generated *2026-11-14 09:31:19*. See
+The output is for SBCL version `2.6.10.218-5f6691c`, generated *2026-11-14 16:49:33*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1600,10 +1602,10 @@ When you invoke the SBCL binary, it needs to be able to find the other
 
 #### 3.2.1 Exit
 
-SBCL can be stopped at any time by calling [`sb-ext:exit`][7f27],
-optionally returning a specified numeric value to the calling
-process. See [Threading][6ec7] for information about terminating individual
-threads.
+SBCL can be stopped at any time by calling [`sb-ext:exit`][7f27] or
+[`sb-ext:quit`][2a04], optionally returning a specified numeric value to the
+calling process. See [Threading][6ec7] for information about terminating
+individual threads.
 
 <a id="x-28SB-MANUAL-3A-40END-OF-FILE-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@END-OF-FILE%20MGL-PAX:SECTION"></a>
@@ -2839,9 +2841,16 @@ via [`optimize`][4d51] declarations.
 > slot types are not available for [Type Inference][55c7], nor do CLOS slot
 > types provide any efficiency benefits.
 
-> *Note*: The `sb-ext:truly-the` special form declares the type of the
-> result of the operations, producing its argument; the declaration
-> is not checked. In short: don't use it.
+<a id="x-28SB-EXT-3ATRULY-THE-20MGL-PAX-3AMACRO-29"></a>
+<a id="SB-EXT:TRULY-THE%20MGL-PAX:MACRO"></a>
+
+- \[macro\] **sb-ext:truly-the** *value-type form*
+
+    Assert that the values returned by `form` conform to `value-type`.
+    The compiler trusts this information unconditionally.
+
+    Consequences are undefined if any result is not of the declared type
+    -- typical symptoms include memory corruption. Use with great care.
 
 <a id="x-28SB-MANUAL-3A-40PRECISE-TYPE-CHECKING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@PRECISE-TYPE-CHECKING%20MGL-PAX:SECTION"></a>
@@ -7550,6 +7559,79 @@ Cuts for Complex Elementary Functions, or Much Ado About Nothing's
 Sign Bit* in Iserles and Powell (eds.) *The State of the Art in
 Numerical Analysis*, pp. 165-211, Clarendon Press, 1987).
 
+<a id="x-28SB-MANUAL-3A-40IEEE-FLOATING-POINT-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@IEEE-FLOATING-POINT%20MGL-PAX:SECTION"></a>
+
+##### IEEE Floating Point
+
+<a id="x-28SB-EXT-3AFLOAT-DENORMALIZED-P-20FUNCTION-29"></a>
+<a id="SB-EXT:FLOAT-DENORMALIZED-P%20FUNCTION"></a>
+
+- \[function\] **sb-ext:float-denormalized-p** *x*
+
+    Return true if the float X is denormalized.
+
+<a id="x-28SB-EXT-3AFLOAT-NAN-P-20FUNCTION-29"></a>
+<a id="SB-EXT:FLOAT-NAN-P%20FUNCTION"></a>
+
+- \[function\] **sb-ext:float-nan-p** *x*
+
+    Return true if the float X is a NaN (Not a Number).
+
+<a id="x-28SB-EXT-3AFLOAT-TRAPPING-NAN-P-20FUNCTION-29"></a>
+<a id="SB-EXT:FLOAT-TRAPPING-NAN-P%20FUNCTION"></a>
+
+- \[function\] **sb-ext:float-trapping-nan-p** *x*
+
+    Return true if the float X is a trapping NaN (Not a Number).
+
+<a id="x-28SB-EXT-3AFLOAT-INFINITY-P-20FUNCTION-29"></a>
+<a id="SB-EXT:FLOAT-INFINITY-P%20FUNCTION"></a>
+
+- \[function\] **sb-ext:float-infinity-p** *x*
+
+    Return true if the float X is an infinity (+ or -).
+
+<a id="x-28SB-EXT-3ASHORT-FLOAT-NEGATIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:SHORT-FLOAT-NEGATIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:short-float-negative-infinity** *#.sb-ext:single-float-negative-infinity*
+
+<a id="x-28SB-EXT-3ASHORT-FLOAT-POSITIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:SHORT-FLOAT-POSITIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:short-float-positive-infinity** *#.sb-ext:single-float-positive-infinity*
+
+<a id="x-28SB-EXT-3ASINGLE-FLOAT-NEGATIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:SINGLE-FLOAT-NEGATIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:single-float-negative-infinity** *#.sb-ext:single-float-negative-infinity*
+
+<a id="x-28SB-EXT-3ASINGLE-FLOAT-POSITIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:SINGLE-FLOAT-POSITIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:single-float-positive-infinity** *#.sb-ext:single-float-positive-infinity*
+
+<a id="x-28SB-EXT-3ADOUBLE-FLOAT-NEGATIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:DOUBLE-FLOAT-NEGATIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:double-float-negative-infinity** *#.sb-ext:double-float-negative-infinity*
+
+<a id="x-28SB-EXT-3ADOUBLE-FLOAT-POSITIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:DOUBLE-FLOAT-POSITIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:double-float-positive-infinity** *#.sb-ext:double-float-positive-infinity*
+
+<a id="x-28SB-EXT-3ALONG-FLOAT-NEGATIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:LONG-FLOAT-NEGATIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:long-float-negative-infinity** *#.sb-ext:double-float-negative-infinity*
+
+<a id="x-28SB-EXT-3ALONG-FLOAT-POSITIVE-INFINITY-20MGL-PAX-3ACONSTANT-29"></a>
+<a id="SB-EXT:LONG-FLOAT-POSITIVE-INFINITY%20MGL-PAX:CONSTANT"></a>
+
+- \[constant\] **sb-ext:long-float-positive-infinity** *#.sb-ext:double-float-positive-infinity*
+
 <a id="x-28SB-MANUAL-3A-40EFFICIENCY-NOTES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@EFFICIENCY-NOTES%20MGL-PAX:SECTION"></a>
 
@@ -8060,6 +8142,11 @@ user or system initialization file (see [Initialization Files][1016]).
              (asdf:perform (make-instance 'asdf:compile-op) c)
              (call-next-method))))
 
+<a id="x-28SB-EXT-3AINVALID-FASL-20CONDITION-29"></a>
+<a id="SB-EXT:INVALID-FASL%20CONDITION"></a>
+
+- \[condition\] **sb-ext:invalid-fasl** *[error][d162]*
+
 <a id="x-28SB-MANUAL-3A-40COMPILER-ONLY-IMPLEMENTATION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@COMPILER-ONLY-IMPLEMENTATION%20MGL-PAX:SECTION"></a>
 
@@ -8111,8 +8198,28 @@ customized macro which does the right thing, e.g.
 or possibly along the lines of the `sb-int:defconstant-eqx` macro used
 internally in the implementation of SBCL itself. In circumstances
 where this is not appropriate, the programmer can handle the
-condition type `sb-ext:defconstant-uneql` and choose either the
+condition type [`sb-ext:defconstant-uneql`][5e0f] and choose either the
 [`continue`][1867] restart or [`abort`][ae44] restart as appropriate.
+
+<a id="x-28SB-EXT-3ADEFCONSTANT-UNEQL-20CONDITION-29"></a>
+<a id="SB-EXT:DEFCONSTANT-UNEQL%20CONDITION"></a>
+
+- \[condition\] **sb-ext:defconstant-uneql** *sb-int:reference-condition [error][d162]*
+
+<a id="x-28SB-EXT-3ADEFCONSTANT-UNEQL-NAME-20FUNCTION-29"></a>
+<a id="SB-EXT:DEFCONSTANT-UNEQL-NAME%20FUNCTION"></a>
+
+- \[function\] **sb-ext:defconstant-uneql-name** *condition*
+
+<a id="x-28SB-EXT-3ADEFCONSTANT-UNEQL-NEW-VALUE-20FUNCTION-29"></a>
+<a id="SB-EXT:DEFCONSTANT-UNEQL-NEW-VALUE%20FUNCTION"></a>
+
+- \[function\] **sb-ext:defconstant-uneql-new-value** *condition*
+
+<a id="x-28SB-EXT-3ADEFCONSTANT-UNEQL-OLD-VALUE-20FUNCTION-29"></a>
+<a id="SB-EXT:DEFCONSTANT-UNEQL-OLD-VALUE%20FUNCTION"></a>
+
+- \[function\] **sb-ext:defconstant-uneql-old-value** *condition*
 
 <a id="x-28SB-MANUAL-3A-40STYLE-WARNINGS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STYLE-WARNINGS%20MGL-PAX:SECTION"></a>
@@ -8364,7 +8471,32 @@ interactive debugger, this is achieved by prompting for the symbol
 in whose favor the conflict should be resolved; for programmatic
 use, the `sb-ext:resolve-conflict` restart should be invoked with one
 argument, which should be a member of the list returned by the
-condition accessor `sb-ext:name-conflict-symbols`.
+condition accessor [`sb-ext:name-conflict-symbols`][42e9].
+
+<a id="x-28SB-EXT-3ANAME-CONFLICT-20CONDITION-29"></a>
+<a id="SB-EXT:NAME-CONFLICT%20CONDITION"></a>
+
+- \[condition\] **sb-ext:name-conflict** *sb-int:reference-condition [package-error][3ac8]*
+
+    Signaled when [`use-package`][2264], [`import`][8f46], or [`export`][0c4f] is about
+    to make a symbol accessible in a package where another symbol is
+    already accessible under the same name. The package is available via
+    [`package-error-package`][5dd7].
+
+<a id="x-28SB-EXT-3ANAME-CONFLICT-DATUM-20FUNCTION-29"></a>
+<a id="SB-EXT:NAME-CONFLICT-DATUM%20FUNCTION"></a>
+
+- \[function\] **sb-ext:name-conflict-datum** *condition*
+
+    Return the symbol that caused the [`name-conflict`][7ae0].
+
+<a id="x-28SB-EXT-3ANAME-CONFLICT-SYMBOLS-20FUNCTION-29"></a>
+<a id="SB-EXT:NAME-CONFLICT-SYMBOLS%20FUNCTION"></a>
+
+- \[function\] **sb-ext:name-conflict-symbols** *condition*
+
+    Return the list of symbols in [`name-conflict`][7ae0], including
+    [`name-conflict-datum`][643b].
 
 <a id="x-28SB-MANUAL-3A-40GARBAGE-COLLECTION-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@GARBAGE-COLLECTION%20MGL-PAX:SECTION"></a>
@@ -9688,6 +9820,14 @@ created by calling the following generic function:
     execution of the hook that signaled, but otherwise allow the exit
     process to continue normally.
 
+<a id="x-28SB-EXT-3AQUIT-20FUNCTION-29"></a>
+<a id="SB-EXT:QUIT%20FUNCTION"></a>
+
+- \[function\] **sb-ext:quit** *\&key recklessly-p (unix-status 0)*
+
+    Call ([`sb-ext:exit`][7f27] `:code` `unix-status` `:abort` `recklessly-p`),
+    see documentation for `sb-ext:exit`.
+
 <a id="x-28SB-MANUAL-3A-40RUNNING-EXTERNAL-PROGRAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-EXTERNAL-PROGRAMS%20MGL-PAX:SECTION"></a>
 
@@ -9724,8 +9864,8 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
     The program arguments and the environment are encoded using the
     default external format for streams.
 
-    `run-program` will return a `process` structure. See the CMU Common Lisp
-    Users Manual for details about the `process` structure.
+    `run-program` will return a [`process`][758d] structure. See the CMU Common Lisp
+    Users Manual for details about the [`process`][758d] structure.
 
     Notes about Unix environments (as in the `:environment` and `:env` args):
 
@@ -9770,7 +9910,7 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
 
         Either `t`, `nil`, or a stream. Unless `nil`, the subprocess is
         established under a `pty`. If `:pty` is a stream, all output to this
-        pty is sent to this stream, otherwise the `process-pty` slot is
+        pty is sent to this stream, otherwise the [`process-pty`][0df2] slot is
         filled in with a stream connected to pty that can read output and
         write input.
 
@@ -9787,7 +9927,7 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
         - Stream: all the input is read from that stream and sent to the
           subprocess.
 
-        - `:stream`: the [`process-input`][f442] slot is filled in with a stream that
+        - `:stream`: the [`process-input`][76ea] slot is filled in with a stream that
           sends its output to the process.
 
     - `:if-input-does-not-exist` (when `:input` is the name of a file)
@@ -9812,7 +9952,7 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
 
         - Stream: all the output from the process is written to this stream.
 
-        - `:stream`: the [`process-output`][30e2] slot is filled in with a stream that
+        - `:stream`: the [`process-output`][8aa7] slot is filled in with a stream that
           can be read to get the output.
 
     - `:error`
@@ -9877,37 +10017,67 @@ External programs can be run with [`sb-ext:run-program`][e0d4].
         > consistently display a console window or use the `:window`
         > `:hide` option to consistently hide the console window.
 
-When [`sb-ext:run-program`][e0d4] is called with `:wait` `nil`, an process object
+When [`sb-ext:run-program`][e0d4] is called with `:wait` `nil`, a PROCESS object
 is returned. The following functions are available for use with
 processes:
+
+<a id="x-28SB-EXT-3APROCESS-20STRUCTURE-29"></a>
+<a id="SB-EXT:PROCESS%20STRUCTURE"></a>
+
+- \[structure\] **sb-ext:process**
 
 <a id="x-28SB-EXT-3APROCESS-P-20FUNCTION-29"></a>
 <a id="SB-EXT:PROCESS-P%20FUNCTION"></a>
 
 - \[function\] **sb-ext:process-p** *object*
 
-    `t` if `object` is a `process`, `nil` otherwise.
+    `t` if `object` is a [`process`][758d], `nil` otherwise.
 
-<a id="x-28SB-EXT-3APROCESS-INPUT-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-IMPL-3A-3APROCESS-29-29"></a>
-<a id="SB-EXT:PROCESS-INPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29"></a>
+<a id="x-28SB-EXT-3APROCESS-PID-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-PID%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
+
+- \[structure-accessor\] **sb-ext:process-pid** *process*
+
+    The pid of the child process.
+
+<a id="x-28SB-EXT-3APROCESS-PLIST-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-PLIST%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
+
+- \[structure-accessor\] **sb-ext:process-plist** *process*
+
+    A place for clients to stash things.
+
+**Streams**:
+
+<a id="x-28SB-EXT-3APROCESS-INPUT-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-INPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
 
 - \[structure-accessor\] **sb-ext:process-input** *process*
 
     The input stream of the process or `nil`.
 
-<a id="x-28SB-EXT-3APROCESS-OUTPUT-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-IMPL-3A-3APROCESS-29-29"></a>
-<a id="SB-EXT:PROCESS-OUTPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29"></a>
+<a id="x-28SB-EXT-3APROCESS-OUTPUT-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-OUTPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
 
 - \[structure-accessor\] **sb-ext:process-output** *process*
 
     The output stream of the process or `nil`.
 
-<a id="x-28SB-EXT-3APROCESS-ERROR-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-IMPL-3A-3APROCESS-29-29"></a>
-<a id="SB-EXT:PROCESS-ERROR%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29"></a>
+<a id="x-28SB-EXT-3APROCESS-ERROR-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-ERROR%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
 
 - \[structure-accessor\] **sb-ext:process-error** *process*
 
     The error stream of the process or `nil`.
+
+<a id="x-28SB-EXT-3APROCESS-PTY-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-PTY%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
+
+- \[structure-accessor\] **sb-ext:process-pty** *process*
+
+    The pty stream of the process or `nil`.
+
+**Lifetime management**:
 
 <a id="x-28SB-EXT-3APROCESS-ALIVE-P-20FUNCTION-29"></a>
 <a id="SB-EXT:PROCESS-ALIVE-P%20FUNCTION"></a>
@@ -9923,7 +10093,16 @@ processes:
 - \[function\] **sb-ext:process-status** *process*
 
     Return the current status of `process`.  The result is one of `:running`,
-    `:stopped`, `:exited`, `:signaled`.
+    `:stopped` (e.g. suspended by a `SIGSTOP` signal), `:exited`,
+    `:signaled` (exited due to a fatal signal).
+
+<a id="x-28SB-EXT-3APROCESS-STATUS-HOOK-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-STATUS-HOOK%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
+
+- \[structure-accessor\] **sb-ext:process-status-hook** *process*
+
+    A function that is called when `process` changes its status.
+    The function is called with `process` as its only argument.
 
 <a id="x-28SB-EXT-3APROCESS-WAIT-20FUNCTION-29"></a>
 <a id="SB-EXT:PROCESS-WAIT%20FUNCTION"></a>
@@ -9931,22 +10110,8 @@ processes:
 - \[function\] **sb-ext:process-wait** *process \&optional check-for-stopped*
 
     Wait for `process` to quit running for some reason. When
-    `check-for-stopped` is `t`, also returns when `process` is stopped. Returns
-    `process`.
-
-<a id="x-28SB-EXT-3APROCESS-EXIT-CODE-20FUNCTION-29"></a>
-<a id="SB-EXT:PROCESS-EXIT-CODE%20FUNCTION"></a>
-
-- \[function\] **sb-ext:process-exit-code** *process*
-
-    The exit code or the signal of a stopped process.
-
-<a id="x-28SB-EXT-3APROCESS-CORE-DUMPED-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-IMPL-3A-3APROCESS-29-29"></a>
-<a id="SB-EXT:PROCESS-CORE-DUMPED%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29"></a>
-
-- \[structure-accessor\] **sb-ext:process-core-dumped** *process*
-
-    `t` if a core image was dumped by the process.
+    `check-for-stopped` is `t`, also returns when [`process-status`][a535] is `:stopped`.
+    Returns `process`.
 
 <a id="x-28SB-EXT-3APROCESS-CLOSE-20FUNCTION-29"></a>
 <a id="SB-EXT:PROCESS-CLOSE%20FUNCTION"></a>
@@ -9967,6 +10132,22 @@ processes:
     `whom` is `:process-group`, use the `killpg(1)` Unix system call.
     Returns `t` if successful, otherwise returns `nil` and error
     number (two values).
+
+**For exited processes**:
+
+<a id="x-28SB-EXT-3APROCESS-CORE-DUMPED-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20PROCESS-29-29"></a>
+<a id="SB-EXT:PROCESS-CORE-DUMPED%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29"></a>
+
+- \[structure-accessor\] **sb-ext:process-core-dumped** *process*
+
+    `t` if a core image was dumped by the process.
+
+<a id="x-28SB-EXT-3APROCESS-EXIT-CODE-20FUNCTION-29"></a>
+<a id="SB-EXT:PROCESS-EXIT-CODE%20FUNCTION"></a>
+
+- \[function\] **sb-ext:process-exit-code** *process*
+
+    The exit code or the signal of a stopped process.
 
 <a id="x-28SB-MANUAL-3A-40SIGNAL-HANDLING-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SIGNAL-HANDLING%20MGL-PAX:SECTION"></a>
@@ -11444,6 +11625,36 @@ following tools are available:
 
     Also, see the [CLHS][c5ae].
 
+**Conditions**:
+
+<a id="x-28SB-EXT-3AIMPLICIT-GENERIC-FUNCTION-WARNING-20CONDITION-29"></a>
+<a id="SB-EXT:IMPLICIT-GENERIC-FUNCTION-WARNING%20CONDITION"></a>
+
+- \[condition\] **sb-ext:implicit-generic-function-warning** *[style-warning][2056]*
+
+<a id="x-28SB-EXT-3AIMPLICIT-GENERIC-FUNCTION-NAME-20FUNCTION-29"></a>
+<a id="SB-EXT:IMPLICIT-GENERIC-FUNCTION-NAME%20FUNCTION"></a>
+
+- \[function\] **sb-ext:implicit-generic-function-name** *condition*
+
+<a id="x-28SB-EXT-3AUNKNOWN-KEYWORD-ARGUMENT-20CONDITION-29"></a>
+<a id="SB-EXT:UNKNOWN-KEYWORD-ARGUMENT%20CONDITION"></a>
+
+- \[condition\] **sb-ext:unknown-keyword-argument** *[program-error][9a70]*
+
+<a id="x-28SB-EXT-3AUNKNOWN-KEYWORD-ARGUMENT-NAME-20FUNCTION-29"></a>
+<a id="SB-EXT:UNKNOWN-KEYWORD-ARGUMENT-NAME%20FUNCTION"></a>
+
+- \[function\] **sb-ext:unknown-keyword-argument-name** *condition*
+
+<a id="x-28SB-EXT-3APACKAGE-DOES-NOT-EXIST-20CONDITION-29"></a>
+<a id="SB-EXT:PACKAGE-DOES-NOT-EXIST%20CONDITION"></a>
+
+- \[condition\] **sb-ext:package-does-not-exist** *sb-kernel:simple-package-error*
+
+    Signaled when a designated package does not
+    exists (including the case where it's been deleted with [`delete-package`][329a]).
+
 <a id="x-28SB-MANUAL-3A-40STALE-EXTENSIONS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STALE-EXTENSIONS%20MGL-PAX:SECTION"></a>
 
@@ -11456,7 +11667,7 @@ have urgent need of them, look at the code in `src/code/gc.lisp` and
 bring it up on the developers' mailing list.
 
 SBCL has various hooks inherited from CMUCL, like
-`sb-ext:float-denormalized-p`, to allow a program to take advantage of
+[`sb-ext:float-denormalized-p`][9306], to allow a program to take advantage of
 IEEE floating point arithmetic properties which aren't conveniently
 or efficiently expressible using the ANSI standard. These look good,
 and their interface looks good, but IEEE support is slightly broken
@@ -12478,7 +12689,7 @@ macros [`extern-alien`][3986], [`define-alien-variable`][3ac6] and
     parallel mechanism inherited from CMUCL.
 
     When the value is accessed, [`undefined-alien-error`][4011] is signaled if the
-    external variable does not exists.
+    external variable does not exist.
 
     For example, to access a C-level counter `foo`, one could write
 
@@ -12516,7 +12727,7 @@ macros [`extern-alien`][3986], [`define-alien-variable`][3ac6] and
 
     Return the value of the external alien variable `name` of `type`
     without having to define it with [`define-alien-variable`][3ac6]. Signals
-    [`undefined-alien-error`][4011] if the external variable does not exists.
+    [`undefined-alien-error`][4011] if the external variable does not exist.
     [`setf`][a138]able.
 
 <a id="x-28SB-ALIEN-3AUNDEFINED-ALIEN-ERROR-20CONDITION-29"></a>
@@ -13038,10 +13249,10 @@ Lisp read-eval-print loop should print the following return values:
     10
     "a C string"
 
-<a id="x-28SB-MANUAL-3A-40PATHNAMES-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@PATHNAMES%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40FILENAMES-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FILENAMES%20MGL-PAX:SECTION"></a>
 
-## 10 Pathnames
+## 10 Filenames
 
 <a id="x-28SB-MANUAL-3A-40LISP-PATHNAMES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@LISP-PATHNAMES%20MGL-PAX:SECTION"></a>
@@ -13188,6 +13399,62 @@ to force a pathname to unparse as a file. For example,
     (setf *p* (parse-native-namestring "/tmp/")) => #P"/tmp/"
     (native-namestring *p* :as-file t) => "/tmp"
 
+<a id="x-28SB-MANUAL-3A-40FILES-DICTIONARY-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@FILES-DICTIONARY%20MGL-PAX:SECTION"></a>
+
+### 10.3 Files Dictionary
+
+<a id="x-28SB-EXT-3AMAP-DIRECTORY-20FUNCTION-29"></a>
+<a id="SB-EXT:MAP-DIRECTORY%20FUNCTION"></a>
+
+- \[function\] **sb-ext:map-directory** *function directory \&key (files t) (directories t) (classify-symlinks t) (errorp t)*
+
+    Map over entries in `directory`. Keyword arguments specify which entries to
+    map over, and how:
+
+    - `:files`
+
+        If true, call `function` with the pathname of each file in `directory`.
+
+    - `:directories`
+
+        If true, call `function` with a pathname for each subdirectory of
+         `directory`. If `:as-files`, the pathname used is a pathname
+         designating the subdirectory as a file in `directory`. Otherwise
+         the pathname used is a directory pathname.
+
+    - `:classify-symlinks`
+
+        If true, the decision to call `function` with the pathname of a
+         symbolic link depends on the resolution of the link: if it points
+         to a directory, it is considered a directory entry, otherwise a
+         file entry. If false, all symbolic links are considered file
+         entries. In both cases the pathname used for the symbolic link is
+         not fully resolved, but names it as an immediate child of
+         `directory`. Defaults to `t`.
+
+    - `:errorp`
+
+        If true, signal an error if `directory` does not exist, cannot be
+         read, etc.
+
+    Experimental: interface subject to change.
+
+<a id="x-28SB-EXT-3ADELETE-FILE-ERROR-20CONDITION-29"></a>
+<a id="SB-EXT:DELETE-FILE-ERROR%20CONDITION"></a>
+
+- \[condition\] **sb-ext:delete-file-error** *sb-int:simple-file-error*
+
+<a id="x-28SB-EXT-3AFILE-DOES-NOT-EXIST-20CONDITION-29"></a>
+<a id="SB-EXT:FILE-DOES-NOT-EXIST%20CONDITION"></a>
+
+- \[condition\] **sb-ext:file-does-not-exist** *sb-int:simple-file-error*
+
+<a id="x-28SB-EXT-3AFILE-EXISTS-20CONDITION-29"></a>
+<a id="SB-EXT:FILE-EXISTS%20CONDITION"></a>
+
+- \[condition\] **sb-ext:file-exists** *sb-int:simple-file-error*
+
 <a id="x-28SB-MANUAL-3A-40STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@STREAMS%20MGL-PAX:SECTION"></a>
 
@@ -13213,7 +13480,7 @@ streams:
   be used as Lisp streams (e.g. passed as the first argument to
   [`format`][ad78]).
 
-- *Simple Streams*: The bundled contrib module `sb-simple-streams`
+- *Simple Streams*: The bundled contrib module [Simple Streams][c2e4]
   implements a subset of the Franz Allegro simple-streams proposal.
 
 <a id="x-28SB-MANUAL-3A-40STREAM-EXTERNAL-FORMATS-20MGL-PAX-3ASECTION-29"></a>
@@ -13347,7 +13614,7 @@ function [`stream-element-type`][8cb6].
 <a id="x-28SB-MANUAL-3A-40METHODS-COMMON-TO-ALL-STREAMS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@METHODS-COMMON-TO-ALL-STREAMS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.2 Methods common to all streams
+#### 11.3.2 Methods Common to All Streams
 
 These generic functions can be specialized on any generalized instance
 of fundamental-stream.
@@ -13384,7 +13651,7 @@ of fundamental-stream.
 <a id="x-28SB-MANUAL-3A-40INPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@INPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.3 Input stream methods
+#### 11.3.3 Input Stream Methods
 
 These generic functions may be specialized on any generalized instance
 of fundamental-input-stream.
@@ -13407,7 +13674,7 @@ of fundamental-input-stream.
 <a id="x-28SB-MANUAL-3A-40CHARACTER-INPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CHARACTER-INPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.4 Character input stream methods
+#### 11.3.4 Character Input Stream Methods
 
 These generic functions are used to implement subclasses of
 [`sb-gray:fundamental-input-stream`][5667]:
@@ -13475,7 +13742,7 @@ These generic functions are used to implement subclasses of
 <a id="x-28SB-MANUAL-3A-40OUTPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.5 Output stream methods
+#### 11.3.5 Output Stream Methods
 
 These generic functions are used to implement subclasses of
 [`sb-gray:fundamental-output-stream`][87b6]:
@@ -13515,7 +13782,7 @@ These generic functions are used to implement subclasses of
 <a id="x-28SB-MANUAL-3A-40CHARACTER-OUTPUT-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@CHARACTER-OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.6 Character output stream methods
+#### 11.3.6 Character Output Stream Methods
 
 These generic functions are used to implement subclasses of
 [`sb-gray:fundamental-character-output-stream`][bb44]:
@@ -13612,7 +13879,7 @@ These generic functions are used to implement subclasses of
 <a id="x-28SB-MANUAL-3A-40BINARY-STREAM-METHODS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@BINARY-STREAM-METHODS%20MGL-PAX:SECTION"></a>
 
-#### 11.3.7 Binary stream methods
+#### 11.3.7 Binary Stream Methods
 
 The following generic functions are available for subclasses of
 [`sb-gray:fundamental-binary-stream`][e5a1]:
@@ -14339,6 +14606,29 @@ architectures.
 
     Return the main thread of the process.
 
+<a id="x-28SB-THREAD-3ATHREAD-EPHEMERAL-P-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-THREAD-3ATHREAD-29-29"></a>
+<a id="SB-THREAD:THREAD-EPHEMERAL-P%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-THREAD:THREAD%29"></a>
+
+- \[structure-accessor\] **sb-thread:thread-ephemeral-p** *thread*
+
+    Return `t` if `thread` is ephemeral, which indicates that this thread
+    is used by SBCL for internal purposes. Specifically, this means that
+    our runtime knows how to terminate this thread cleanly prior to core
+    file saving without signalling an error in that case.
+
+<a id="x-28SB-THREAD-3ATHREAD-OS-TID-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-THREAD-3ATHREAD-29-29"></a>
+<a id="SB-THREAD:THREAD-OS-TID%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-THREAD:THREAD%29"></a>
+
+- \[structure-accessor\] **sb-thread:thread-os-tid** *thread*
+
+    Return the ID of the OS thread that `thread` maps or mapped onto.
+    For example, the OS thread ID is `gettid(2)` on Linux and
+    `GetCurrentThreadId` on Windows.
+
+    Note that this function is racy on two fronts: first, the return value
+    may be 0 if `thread` has not completed its initialization; second, the
+    OS thread with the returned ID may have already exited.
+
 <a id="x-28SB-MANUAL-3A-40RUNNING-THREADS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@RUNNING-THREADS%20MGL-PAX:SECTION"></a>
 
@@ -14403,7 +14693,7 @@ architectures.
 
     If `thread` does not exit within `timeout` seconds and `default` is
     supplied, return two values: 1) `default` 2) `:timeout`. If `default` is not
-    supplied, signal a [`join-thread-error`][b715] with `join-thread-problem` equal
+    supplied, signal a [`join-thread-error`][b715] with [`join-thread-problem`][823a] equal
     to `:timeout`.
 
     If `thread` does not exit normally (i.e. aborted) and `default` is
@@ -14445,13 +14735,14 @@ architectures.
 
     Interrupt `thread` and make it run `function`.
 
-    The interrupt is asynchronous, and can occur anywhere with the exception of
-    sections protected using [`sb-sys:without-interrupts`][fb8d].
+    The interrupt is asynchronous and can occur anywhere with the
+    exception of sections protected using [`sb-sys:without-interrupts`][fb8d].
 
-    `function` is called with interrupts disabled, under
-    `sb-sys:allow-with-interrupts`. Since functions such as [`grab-mutex`][ae28] may try to
-    enable interrupts internally, in most cases `function` should either enter
-    [`sb-sys:with-interrupts`][767b] to allow nested interrupts, or
+    When `thread` executes `function`, it is [`funcall`][03c7]ed (subject to
+    [`*interrupt-handler*`][4362]) with no arguments with interrupts disabled, under
+    `sb-sys:allow-with-interrupts`. Since functions such as [`grab-mutex`][ae28] may
+    try to enable interrupts internally, in most cases `function` should
+    either enter [`sb-sys:with-interrupts`][767b] to allow nested interrupts, or
     `sb-sys:without-interrupts` to prevent them completely.
 
     When a thread receives multiple interrupts, they are executed in the order
@@ -14542,8 +14833,17 @@ architectures.
     Since most libraries using `unwind-protect` do not do this, you should never
     assume that unknown code can safely be terminated using `terminate-thread`.
 
-<a id="x-28SB-MANUAL-3A-40MISCELLANEOUS-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@MISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-THREAD-3A-2AINTERRUPT-HANDLER-2A-20VARIABLE-29"></a>
+<a id="SB-THREAD:*INTERRUPT-HANDLER*%20VARIABLE"></a>
+
+- \[variable\] **sb-thread:\*interrupt-handler\*** *nil*
+
+    A function which is called with the function argument to [`sb-thread:interrupt-thread`][9867]
+    when the interrupt is ready to run.
+    The default behavior is to use [`funcall`][03c7].
+
+<a id="x-28SB-MANUAL-3A-40THREADING-2FMISCELLANEOUS-OPERATIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@THREADING%2FMISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION"></a>
 
 #### 13.1.4 Miscellaneous Operations
 
@@ -14565,10 +14865,10 @@ architectures.
     `symbol-value-in-thread` is primarily intended as a debugging tool, and not as a
     mechanism for inter-thread communication.
 
-<a id="x-28SB-MANUAL-3A-40ERROR-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@ERROR-CONDITIONS%20MGL-PAX:SECTION"></a>
+<a id="x-28SB-MANUAL-3A-40THREADING-2FERROR-CONDITIONS-20MGL-PAX-3ASECTION-29"></a>
+<a id="SB-MANUAL:@THREADING%2FERROR-CONDITIONS%20MGL-PAX:SECTION"></a>
 
-#### 13.1.5 Error Conditions
+#### 13.1.5 Threading Error Conditions
 
 <a id="x-28SB-THREAD-3ATHREAD-ERROR-20CONDITION-29"></a>
 <a id="SB-THREAD:THREAD-ERROR%20CONDITION"></a>
@@ -14583,6 +14883,8 @@ architectures.
 <a id="SB-THREAD:THREAD-ERROR-THREAD%20FUNCTION"></a>
 
 - \[function\] **sb-thread:thread-error-thread** *condition*
+
+    Return the offending thread that the [`thread-error`][1286] pertains to.
 
 <a id="x-28SB-THREAD-3ASYMBOL-VALUE-IN-THREAD-ERROR-20CONDITION-29"></a>
 <a id="SB-THREAD:SYMBOL-VALUE-IN-THREAD-ERROR%20CONDITION"></a>
@@ -14610,6 +14912,14 @@ architectures.
     Signalled when joining a thread fails due to abnormal exit of the thread
     to be joined. The offending thread can be accessed using
     [`thread-error-thread`][693b].
+
+<a id="x-28SB-THREAD-3AJOIN-THREAD-PROBLEM-20FUNCTION-29"></a>
+<a id="SB-THREAD:JOIN-THREAD-PROBLEM%20FUNCTION"></a>
+
+- \[function\] **sb-thread:join-thread-problem** *condition*
+
+    Return the reason that a [`join-thread-error`][b715] was signaled.
+    Possible values are `:timeout`, `:abort`, `:foreign`, and `:self-join`.
 
 <a id="x-28SB-MANUAL-3A-40SPECIAL-VARIABLES-IN-THREADS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SPECIAL-VARIABLES-IN-THREADS%20MGL-PAX:SECTION"></a>
@@ -14972,7 +15282,7 @@ that they go to sleep.
     this is racy by design (another thread may acquire the mutex after
     this function returns), it is intended for informative purposes. For
     testing whether the current thread is holding a mutex see
-    `holding-mutex-p`.
+    [`holding-mutex-p`][831e].
 
 <a id="x-28SB-THREAD-3AMUTEX-VALUE-20FUNCTION-29"></a>
 <a id="SB-THREAD:MUTEX-VALUE%20FUNCTION"></a>
@@ -14981,6 +15291,13 @@ that they go to sleep.
 
     Current owner of `mutex`, `nil` if the mutex is free. May return a
     stale value, use [`mutex-owner`][e297] instead.
+
+<a id="x-28SB-THREAD-3AHOLDING-MUTEX-P-20FUNCTION-29"></a>
+<a id="SB-THREAD:HOLDING-MUTEX-P%20FUNCTION"></a>
+
+- \[function\] **sb-thread:holding-mutex-p** *mutex*
+
+    Test whether the current thread is holding `mutex`.
 
 <a id="x-28SB-THREAD-3AGRAB-MUTEX-20FUNCTION-29"></a>
 <a id="SB-THREAD:GRAB-MUTEX%20FUNCTION"></a>
@@ -15034,6 +15351,25 @@ that they go to sleep.
     The `if-not-owner` keyword dictates behavior when the current thread does not own the
     mutex. Do nothing and silently return if `:punt`, signal a [`warning`][bcb6] or [`error`][669b] if `:warn`
     or `:error` respectively, or release the mutex anyway if `:force`.
+
+<a id="x-28SB-THREAD-3ATHREAD-DEADLOCK-20CONDITION-29"></a>
+<a id="SB-THREAD:THREAD-DEADLOCK%20CONDITION"></a>
+
+- \[condition\] **sb-thread:thread-deadlock** *[sb-thread:thread-error][1286]*
+
+    When [`grab-mutex`][ae28] finds that the mutex is owned by
+    another thread, it performs heuristic deadlock detection and may
+    signal this condition. The detection is conservative: the deadlocks it
+    detects are real deadlocks, but not all deadlocks are detected. In
+    particular, non-mutex sources of blocking are not considered.
+
+<a id="x-28SB-THREAD-3ATHREAD-DEADLOCK-CYCLE-20FUNCTION-29"></a>
+<a id="SB-THREAD:THREAD-DEADLOCK-CYCLE%20FUNCTION"></a>
+
+- \[function\] **sb-thread:thread-deadlock-cycle** *condition*
+
+    Return the deadlocking cycle detected as a list of [`thread`][5ef5], [`mutex`][e2a7]
+    conses.
 
 <a id="x-28SB-MANUAL-3A-40SEMAPHORES-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@SEMAPHORES%20MGL-PAX:SECTION"></a>
@@ -15171,7 +15507,7 @@ There are three components:
 Important stuff to be aware of:
 
 - when calling condition-wait, you must hold the mutex.
-  condition-wait will drop the mutex while it waits, and obtain it
+  condition-wait will drop the mutex while it waits and obtain it
   again before returning for whatever reason;
 
 - likewise, you must be holding the mutex around calls to
@@ -15426,6 +15762,14 @@ The resignalling trick cannot work for synchronously triggered signals
 (`SIGSEGV` and co), take care not to trigger any. Resignalling
 for synchronously triggered signals in foreign threads is subject to
 `--lose-on-corruption`, see [Runtime Options][3e4d].
+
+<a id="x-28SB-THREAD-3AFOREIGN-THREAD-20STRUCTURE-29"></a>
+<a id="SB-THREAD:FOREIGN-THREAD%20STRUCTURE"></a>
+
+- \[structure\] **sb-thread:foreign-thread** *[sb-thread:thread][5ef5]*
+
+    Type of native threads which are attached to the runtime as Lisp threads
+    temporarily.
 
 <a id="x-28SB-MANUAL-3A-40IMPLEMENTATION-ON-LINUX-X86OIDS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@IMPLEMENTATION-ON-LINUX-X86OIDS%20MGL-PAX:SECTION"></a>
@@ -19601,6 +19945,8 @@ learn about Common Lisp, some books stand out:
 
 [0901]: http://www.lispworks.com/documentation/HyperSpec/Body/d_dynami.htm "DYNAMIC-EXTENT (MGL-PAX:CLHS DECLARATION)"
 
+[090f]: #SB-MANUAL:@THREADING%2FERROR-CONDITIONS%20MGL-PAX:SECTION "Threading Error Conditions"
+
 [091c]: http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm "FLET (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [0961]: http://www.lispworks.com/documentation/HyperSpec/Body/v_cmp_pr.htm "*COMPILE-VERBOSE* (MGL-PAX:CLHS VARIABLE)"
@@ -19623,6 +19969,8 @@ learn about Common Lisp, some books stand out:
 
 [0bd4]: http://www.lispworks.com/documentation/HyperSpec/Body/d_specia.htm "SPECIAL (MGL-PAX:CLHS DECLARATION)"
 
+[0c4f]: http://www.lispworks.com/documentation/HyperSpec/Body/f_export.htm "EXPORT (MGL-PAX:CLHS FUNCTION)"
+
 [0c83]: http://www.lispworks.com/documentation/HyperSpec/Body/a_pl.htm "+ (MGL-PAX:CLHS NIL)"
 
 [0cc3]: http://www.lispworks.com/documentation/HyperSpec/Body/s_progn.htm "PROGN (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -19641,6 +19989,8 @@ learn about Common Lisp, some books stand out:
 
 [0de5]: #SB-MANUAL:@VOLUNTEER-SUPPORT%20MGL-PAX:SECTION "Volunteer Support"
 
+[0df2]: #SB-EXT:PROCESS-PTY%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29 "SB-EXT:PROCESS-PTY (MGL-PAX:STRUCTURE-ACCESSOR PROCESS)"
+
 [0e19]: #SB-EXT:COMPILER-NOTE%20CONDITION "SB-EXT:COMPILER-NOTE CONDITION"
 
 [0e78]: #SB-CONCURRENCY:ENQUEUE%20FUNCTION "SB-CONCURRENCY:ENQUEUE FUNCTION"
@@ -19655,7 +20005,7 @@ learn about Common Lisp, some books stand out:
 
 [0f4f]: #SB-POSIX:DO-PASSWDS%20MGL-PAX:MACRO "SB-POSIX:DO-PASSWDS MGL-PAX:MACRO"
 
-[0f57]: #SB-MANUAL:@CHARACTER-INPUT-STREAM-METHODS%20MGL-PAX:SECTION "Character input stream methods"
+[0f57]: #SB-MANUAL:@CHARACTER-INPUT-STREAM-METHODS%20MGL-PAX:SECTION "Character Input Stream Methods"
 
 [0fc0]: #SB-SEQUENCE:MAP%20GENERIC-FUNCTION "SB-SEQUENCE:MAP GENERIC-FUNCTION"
 
@@ -19803,6 +20153,8 @@ learn about Common Lisp, some books stand out:
 
 [2243]: http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm "*TRACE-OUTPUT* (MGL-PAX:CLHS VARIABLE)"
 
+[2264]: http://www.lispworks.com/documentation/HyperSpec/Body/f_use_pk.htm "USE-PACKAGE (MGL-PAX:CLHS FUNCTION)"
+
 [229c]: http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm "CONS (MGL-PAX:CLHS NIL)"
 
 [22a1]: #SB-MANUAL:@DEBUGGING-TAIL-CALLS%20MGL-PAX:SECTION "Debugging Tail Calls"
@@ -19842,6 +20194,8 @@ learn about Common Lisp, some books stand out:
 [293c]: #SB-MANUAL:@OBTAINING-SBCL%20MGL-PAX:SECTION "Obtaining SBCL"
 
 [29fd]: #SB-MANUAL:@EFFICIENCY%20MGL-PAX:SECTION "Efficiency"
+
+[2a04]: #SB-EXT:QUIT%20FUNCTION "SB-EXT:QUIT FUNCTION"
 
 [2a47]: #SB-POSIX:STAT%20CLASS "SB-POSIX:STAT CLASS"
 
@@ -19885,8 +20239,6 @@ learn about Common Lisp, some books stand out:
 
 [309c]: #SB-MANUAL:@HASH-TABLE-EXTENSIONS%20MGL-PAX:SECTION "Hash Table Extensions"
 
-[30e2]: #SB-EXT:PROCESS-OUTPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29 "SB-EXT:PROCESS-OUTPUT (MGL-PAX:STRUCTURE-ACCESSOR SB-IMPL::PROCESS)"
-
 [30f8]: #SB-MANUAL:@PACKAGE-VARIANCE%20MGL-PAX:SECTION "Package Variance"
 
 [311a]: http://www.lispworks.com/documentation/HyperSpec/Body/s_the.htm "THE (MGL-PAX:CLHS MGL-PAX:MACRO)"
@@ -19908,6 +20260,8 @@ learn about Common Lisp, some books stand out:
 [327a]: http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm "PROGV (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [3289]: #SB-GRAY:STREAM-FRESH-LINE%20GENERIC-FUNCTION "SB-GRAY:STREAM-FRESH-LINE GENERIC-FUNCTION"
+
+[329a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_del_pk.htm "DELETE-PACKAGE (MGL-PAX:CLHS FUNCTION)"
 
 [32e3]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ch.htm "CHARACTER (MGL-PAX:CLHS CLASS)"
 
@@ -19971,7 +20325,7 @@ learn about Common Lisp, some books stand out:
 
 [3ae4]: #SB-ALIEN:WITH-ALIEN%20MGL-PAX:MACRO "SB-ALIEN:WITH-ALIEN MGL-PAX:MACRO"
 
-[3af9]: #SB-MANUAL:@OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Output stream methods"
+[3af9]: #SB-MANUAL:@OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Output Stream Methods"
 
 [3b87]: #SB-SYS:INT-SAP%20FUNCTION "SB-SYS:INT-SAP FUNCTION"
 
@@ -20037,11 +20391,15 @@ learn about Common Lisp, some books stand out:
 
 [4272]: #SB-MANUAL:@STYLE-WARNINGS%20MGL-PAX:SECTION "Style Warnings"
 
+[42e9]: #SB-EXT:NAME-CONFLICT-SYMBOLS%20FUNCTION "SB-EXT:NAME-CONFLICT-SYMBOLS FUNCTION"
+
 [4321]: #SB-MANUAL:@SB-MD5%20MGL-PAX:SECTION "sb-md5"
 
 [432c]: pax-manual.md#MGL-PAX:DOCUMENT%20FUNCTION "MGL-PAX:DOCUMENT FUNCTION"
 
 [4336]: http://www.lispworks.com/documentation/HyperSpec/Body/03_da.htm "\"3.4.1\" (MGL-PAX:CLHS MGL-PAX:SECTION)"
+
+[4362]: #SB-THREAD:*INTERRUPT-HANDLER*%20VARIABLE "SB-THREAD:*INTERRUPT-HANDLER* VARIABLE"
 
 [4482]: http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_seq.htm "READ-SEQUENCE (MGL-PAX:CLHS FUNCTION)"
 
@@ -20132,8 +20490,6 @@ learn about Common Lisp, some books stand out:
 [4dff]: #SB-MANUAL:@WEAK-POINTERS%20MGL-PAX:SECTION "Weak Pointers"
 
 [4e46]: http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm "FIND (MGL-PAX:CLHS FUNCTION)"
-
-[4e63]: #SB-MANUAL:@MISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION "Miscellaneous Operations"
 
 [4e78]: #SB-MANUAL:@DETERMINISTIC-PROFILER%20MGL-PAX:SECTION "Deterministic Profiler"
 
@@ -20257,7 +20613,13 @@ learn about Common Lisp, some books stand out:
 
 [5da8]: #SB-MANUAL:@SB-INTROSPECT-ALLOCATION%20MGL-PAX:SECTION "Allocation"
 
+[5dd7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_er.htm "PACKAGE-ERROR-PACKAGE (MGL-PAX:CLHS FUNCTION)"
+
 [5df9]: http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm "DEBUG (MGL-PAX:CLHS DECLARATION)"
+
+[5e0f]: #SB-EXT:DEFCONSTANT-UNEQL%20CONDITION "SB-EXT:DEFCONSTANT-UNEQL CONDITION"
+
+[5e65]: #SB-MANUAL:@FILENAMES%20MGL-PAX:SECTION "Filenames"
 
 [5eb2]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tpcase.htm "ETYPECASE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
@@ -20312,6 +20674,8 @@ learn about Common Lisp, some books stand out:
 [63b7]: http://www.lispworks.com/documentation/HyperSpec/Body/f_upper_.htm "BOTH-CASE-P (MGL-PAX:CLHS FUNCTION)"
 
 [63f3]: #SB-MANUAL:@TIMEOUT-PARAMETERS%20MGL-PAX:SECTION "Timeout Parameters"
+
+[643b]: #SB-EXT:NAME-CONFLICT-DATUM%20FUNCTION "SB-EXT:NAME-CONFLICT-DATUM FUNCTION"
 
 [6468]: #SB-SPROF:RESET%20FUNCTION "SB-SPROF:RESET FUNCTION"
 
@@ -20435,6 +20799,8 @@ learn about Common Lisp, some books stand out:
 
 [752f]: http://www.lispworks.com/documentation/HyperSpec/Body/v_defaul.htm "*DEFAULT-PATHNAME-DEFAULTS* (MGL-PAX:CLHS VARIABLE)"
 
+[758d]: #SB-EXT:PROCESS%20STRUCTURE "SB-EXT:PROCESS STRUCTURE"
+
 [7598]: http://www.lispworks.com/documentation/HyperSpec/Body/f_break.htm "BREAK (MGL-PAX:CLHS FUNCTION)"
 
 [75d3]: #SB-MANUAL:@SEMAPHORES%20MGL-PAX:SECTION "Semaphores"
@@ -20446,6 +20812,8 @@ learn about Common Lisp, some books stand out:
 [76ca]: #SB-MANUAL:@DECIMAL-SYNTAX-FOR-RATIONALS%20MGL-PAX:SECTION "Decimal Syntax for Rationals"
 
 [76d3]: #SB-THREAD:SYMBOL-VALUE-IN-THREAD-ERROR%20CONDITION "SB-THREAD:SYMBOL-VALUE-IN-THREAD-ERROR CONDITION"
+
+[76ea]: #SB-EXT:PROCESS-INPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29 "SB-EXT:PROCESS-INPUT (MGL-PAX:STRUCTURE-ACCESSOR PROCESS)"
 
 [7742]: http://www.lispworks.com/documentation/HyperSpec/Body/t_hash_t.htm "HASH-TABLE (MGL-PAX:CLHS CLASS)"
 
@@ -20468,6 +20836,8 @@ learn about Common Lisp, some books stand out:
 [7a5c]: #SB-GRAY:STREAM-START-LINE-P%20GENERIC-FUNCTION "SB-GRAY:STREAM-START-LINE-P GENERIC-FUNCTION"
 
 [7ab4]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm "LOGAND (MGL-PAX:CLHS FUNCTION)"
+
+[7ae0]: #SB-EXT:NAME-CONFLICT%20CONDITION "SB-EXT:NAME-CONFLICT CONDITION"
 
 [7af6]: http://www.lispworks.com/documentation/HyperSpec/Body/f_chg_cl.htm "CHANGE-CLASS (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
@@ -20509,6 +20879,8 @@ learn about Common Lisp, some books stand out:
 
 [820d]: #SB-MANUAL:@NON-DESCRIPTOR%20MGL-PAX:SECTION "Non-descriptor"
 
+[823a]: #SB-THREAD:JOIN-THREAD-PROBLEM%20FUNCTION "SB-THREAD:JOIN-THREAD-PROBLEM FUNCTION"
+
 [825d]: #SB-MANUAL:@DEBUGGER%20MGL-PAX:SECTION "Debugger"
 
 [8294]: #SB-MANUAL:@BLOCK-COMPILATION-SEMANTICS%20MGL-PAX:SECTION "Block Compilation Semantics"
@@ -20516,6 +20888,8 @@ learn about Common Lisp, some books stand out:
 [82ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_mem_m.htm "MEMBER (MGL-PAX:CLHS FUNCTION)"
 
 [82b0]: #SB-EXT:*SYSINIT-PATHNAME-FUNCTION*%20VARIABLE "SB-EXT:*SYSINIT-PATHNAME-FUNCTION* VARIABLE"
+
+[831e]: #SB-THREAD:HOLDING-MUTEX-P%20FUNCTION "SB-THREAD:HOLDING-MUTEX-P FUNCTION"
 
 [83e1]: http://www.lispworks.com/documentation/HyperSpec/Body/e_cnd.htm "CONDITION (MGL-PAX:CLHS CONDITION)"
 
@@ -20569,6 +20943,8 @@ learn about Common Lisp, some books stand out:
 
 [8a67]: http://www.lispworks.com/documentation/HyperSpec/Body/f_logica.htm "LOGICAL-PATHNAME-TRANSLATIONS (MGL-PAX:CLHS FUNCTION)"
 
+[8aa7]: #SB-EXT:PROCESS-OUTPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20PROCESS%29 "SB-EXT:PROCESS-OUTPUT (MGL-PAX:STRUCTURE-ACCESSOR PROCESS)"
+
 [8ac8]: http://www.lispworks.com/documentation/HyperSpec/Body/f_sl.htm "/ (MGL-PAX:CLHS FUNCTION)"
 
 [8ae0]: http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm "IDENTITY (MGL-PAX:CLHS FUNCTION)"
@@ -20588,6 +20964,8 @@ learn about Common Lisp, some books stand out:
 [8e5b]: #SB-EXT:ADD-IMPLEMENTATION-PACKAGE%20FUNCTION "SB-EXT:ADD-IMPLEMENTATION-PACKAGE FUNCTION"
 
 [8f19]: dref-manual.md#DREF:LOCATE%20FUNCTION "DREF:LOCATE FUNCTION"
+
+[8f46]: http://www.lispworks.com/documentation/HyperSpec/Body/f_import.htm "IMPORT (MGL-PAX:CLHS FUNCTION)"
 
 [8f49]: http://www.lispworks.com/documentation/HyperSpec/Body/f_signal.htm "SIGNAL (MGL-PAX:CLHS FUNCTION)"
 
@@ -20623,13 +21001,15 @@ learn about Common Lisp, some books stand out:
 
 [92f9]: http://www.lispworks.com/documentation/HyperSpec/Body/t_base_c.htm "BASE-CHAR (MGL-PAX:CLHS TYPE)"
 
+[9306]: #SB-EXT:FLOAT-DENORMALIZED-P%20FUNCTION "SB-EXT:FLOAT-DENORMALIZED-P FUNCTION"
+
 [93a1]: #SB-COVER:MERGE-COVERAGE%20FUNCTION "SB-COVER:MERGE-COVERAGE FUNCTION"
 
 [93a7]: http://www.lispworks.com/documentation/HyperSpec/Body/v_ld_prs.htm "*LOAD-VERBOSE* (MGL-PAX:CLHS VARIABLE)"
 
 [93bb]: #SB-EXT:CODE-DELETION-NOTE%20CONDITION "SB-EXT:CODE-DELETION-NOTE CONDITION"
 
-[93d2]: #SB-MANUAL:@INPUT-STREAM-METHODS%20MGL-PAX:SECTION "Input stream methods"
+[93d2]: #SB-MANUAL:@INPUT-STREAM-METHODS%20MGL-PAX:SECTION "Input Stream Methods"
 
 [93f4]: #SB-GRAY:FUNDAMENTAL-STREAM%20CLASS "SB-GRAY:FUNDAMENTAL-STREAM CLASS"
 
@@ -20737,9 +21117,7 @@ learn about Common Lisp, some books stand out:
 
 [a370]: http://www.lispworks.com/documentation/HyperSpec/Body/m_tracec.htm "UNTRACE (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
-[a378]: #SB-MANUAL:@ERROR-CONDITIONS%20MGL-PAX:SECTION "Error Conditions"
-
-[a3b7]: #SB-MANUAL:@CHARACTER-OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Character output stream methods"
+[a3b7]: #SB-MANUAL:@CHARACTER-OUTPUT-STREAM-METHODS%20MGL-PAX:SECTION "Character Output Stream Methods"
 
 [a3be]: #SB-CONCURRENCY:CLOSE-GATE%20FUNCTION "SB-CONCURRENCY:CLOSE-GATE FUNCTION"
 
@@ -20749,7 +21127,9 @@ learn about Common Lisp, some books stand out:
 
 [a51f]: http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm "FUNCTION (MGL-PAX:CLHS NIL)"
 
-[a530]: #SB-MANUAL:@BINARY-STREAM-METHODS%20MGL-PAX:SECTION "Binary stream methods"
+[a530]: #SB-MANUAL:@BINARY-STREAM-METHODS%20MGL-PAX:SECTION "Binary Stream Methods"
+
+[a535]: #SB-EXT:PROCESS-STATUS%20FUNCTION "SB-EXT:PROCESS-STATUS FUNCTION"
 
 [a595]: pax-manual.md#MGL-PAX:@BROWSING-LIVE-DOCUMENTATION%20MGL-PAX:SECTION "Browsing Live Documentation"
 
@@ -20997,7 +21377,7 @@ learn about Common Lisp, some books stand out:
 
 [c5ae]: http://www.lispworks.com/documentation/HyperSpec/Body/f_docume.htm "DOCUMENTATION (MGL-PAX:CLHS GENERIC-FUNCTION)"
 
-[c60f]: #SB-MANUAL:@METHODS-COMMON-TO-ALL-STREAMS%20MGL-PAX:SECTION "Methods common to all streams"
+[c60f]: #SB-MANUAL:@METHODS-COMMON-TO-ALL-STREAMS%20MGL-PAX:SECTION "Methods Common to All Streams"
 
 [c665]: #SB-MANUAL:@SOCKETS-OVERVIEW%20MGL-PAX:SECTION "Sockets Overview"
 
@@ -21034,8 +21414,6 @@ learn about Common Lisp, some books stand out:
 [cb60]: #SB-CONCURRENCY:QUEUE%20STRUCTURE "SB-CONCURRENCY:QUEUE STRUCTURE"
 
 [cb94]: mat-manual.md#ARRAY%20MGL-CUBE:FACET-NAME "ARRAY MGL-CUBE:FACET-NAME"
-
-[cc69]: #SB-MANUAL:@PATHNAMES%20MGL-PAX:SECTION "Pathnames"
 
 [ccb5]: #SB-MANUAL:@INFORMATION-COMMANDS%20MGL-PAX:SECTION "Information Commands"
 
@@ -21241,6 +21619,8 @@ learn about Common Lisp, some books stand out:
 
 [e7ee]: http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm "*STANDARD-OUTPUT* (MGL-PAX:CLHS VARIABLE)"
 
+[e7f0]: #SB-MANUAL:@THREADING%2FMISCELLANEOUS-OPERATIONS%20MGL-PAX:SECTION "Miscellaneous Operations"
+
 [e826]: #MAKE-HASH-TABLE%20FUNCTION "MAKE-HASH-TABLE FUNCTION"
 
 [e89e]: #SB-MANUAL:@SB-SIMD%20MGL-PAX:SECTION "sb-simd"
@@ -21321,8 +21701,6 @@ learn about Common Lisp, some books stand out:
 
 [f432]: #SB-MANUAL:@COERCING-FOREIGN-VALUES%20MGL-PAX:SECTION "Coercing Foreign Values"
 
-[f442]: #SB-EXT:PROCESS-INPUT%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-IMPL::PROCESS%29 "SB-EXT:PROCESS-INPUT (MGL-PAX:STRUCTURE-ACCESSOR SB-IMPL::PROCESS)"
-
 [f472]: http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm "DEFUN (MGL-PAX:CLHS MGL-PAX:MACRO)"
 
 [f474]: #SB-MANUAL:@DEFAULT-TOPLEVEL%20MGL-PAX:SECTION "Default Toplevel"
@@ -21350,6 +21728,8 @@ learn about Common Lisp, some books stand out:
 [f6bc]: #SB-MANUAL:@SB-SIMD-INSTRUCTION-SET-DISPATCH%20MGL-PAX:SECTION "Instruction Set Dispatch"
 
 [f709]: #SB-MANUAL:@GENERAL-SOCKETS%20MGL-PAX:SECTION "General Sockets"
+
+[f7d2]: #SB-MANUAL:@FILES-DICTIONARY%20MGL-PAX:SECTION "Files Dictionary"
 
 [f942]: #SB-MANUAL:@SB-INTROSPECT%20MGL-PAX:SECTION "sb-introspect"
 
