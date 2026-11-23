@@ -351,8 +351,6 @@
 
         - [7.11.2 Signal Handling][3e3c]
 
-        - [7.11.3 File Descriptor Streams][bf69]
-
     - [7.12 Unicode Support][cecd]
 
         - [7.12.1 Unicode property access][bff9]
@@ -695,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.334-ab08801`, generated *2026-11-22 22:13:51*. See
+The output is for SBCL version `2.6.10.342-9fb1378`, generated *2026-11-23 03:14:16*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -10215,10 +10213,13 @@ processes:
 - \[function\] **sb-sys:enable-interrupt** *signum handler*
 
     Set the Unix signal `handler` for `signum`. This applies to all threads in
-    the SBCL process.
+    the SBCL process. (This interface is experimental, and subject to
+    change or removal.)
 
     - `signum` is a signal number. Use the constants `sb-posix:sigint`,
-      `sb-posix:sighup` and others.
+      `sb-posix:sighup` and others. At present, users may install signal
+      handlers for certain asynchronous signals, such as @code{sighup},
+      @code{sigint}, @code{sigquit}, @code{sigterm}.
 
     - `handler` is a function, `:default` or `:ignore`.
 
@@ -10227,34 +10228,40 @@ processes:
         `sigaction(2)`).
 
                   (sb-sys:enable-interrupt
-                    :sighup (lambda (signal siginfo-sap context-sap)
-                              (declare (ignore signal siginfo-sap context-sap))
-                              (setq *sighup-received* t)))
+                    sb-posix:sighup (lambda (signal siginfo-sap context-sap)
+                                      (declare (ignore signal siginfo-sap context-sap))
+                                      (setq *sighup-received* t)))
 
         - To reset the handler of `sighup`:
 
-                  (sb-sys:enable-interrupt :sighup :default)
+                  (sb-sys:enable-interrupt sb-posix:sighup :default)
 
         - To ignore `sigint`:
 
-                  (sb-sys:enable-interrupt :sigint :ignore)
+                  (sb-sys:enable-interrupt sb-posix:sigint :ignore)
 
     > *Warning*: See `signal-safety(7)` for restrictions on what signal
     > handlers are allowed to do, which is not a whole lot in practice.
     > A simple and safe way is to set a flag, as in the above example,
     > and check periodically in some application loop.
 
+    > Signal handler functions to be used in \`\`production''
+    > should never perform any non-local transfer of control (e.g.,
+    > [`throw`][e760] or [`invoke-restart`][32eb], but should only ever return
+    > normally or terminate the process.
+
 <a id="x-28SB-MANUAL-3A-40DEFAULT-SIGNAL-HANDLERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEFAULT-SIGNAL-HANDLERS%20MGL-PAX:SECTION"></a>
 
 ##### Default Signal Handlers
 
+(These details are subject to change.)
 SBCL establishes the following signal handlers:
 
 - `SIGINT`: [`signal`][8f49]s an [`sb-sys:interactive-interrupt`][b914] (in
-  `sb-thread::foreground-thread` with [Threading][6ec7]). If that condition
-  is not handled, it enters the [Debugger][825d] respecting
-  [`*debugger-hook*`][1cdc].
+  `sb-thread::foreground-thread` with [Threading][6ec7]). Ordinarily,
+  this will invoke a [Debugger][825d], respecting
+  *INVOKE-DEBUGGER-HOOK* and [`*debugger-hook*`][1cdc].
 
 - `SIGPIPE`: Ignored.
 
@@ -10280,83 +10287,14 @@ SBCL establishes the following signal handlers:
 
 - `SIGSEGV`, `SIGILL`, `SIGEMT`, `SIGBUS`,
   `SIGTRAP`, `SIGSYS`: Some of these synchronous interrupts
-  are used by the runtime. Else, they may be subject to
+  are used by the runtime. When one is not, it may be subject to
   `--lose-on-corruption` (see [Runtime Options][3e4d]). If neither, then
   they signal a [`simple-error`][cac1].
-
-    It is still safe to use [`sb-sys:enable-interrupt`][260a], as that only
-    affects the signals that are handled in Lisp.
 
 <a id="x-28SB-SYS-3AINTERACTIVE-INTERRUPT-20CONDITION-29"></a>
 <a id="SB-SYS:INTERACTIVE-INTERRUPT%20CONDITION"></a>
 
 - \[condition\] **sb-sys:interactive-interrupt** *sb-sys:system-condition [serious-condition][af00]*
-
-<a id="x-28SB-MANUAL-3A-40FD-STREAMS-20MGL-PAX-3ASECTION-29"></a>
-<a id="SB-MANUAL:@FD-STREAMS%20MGL-PAX:SECTION"></a>
-
-#### 7.11.3 File Descriptor Streams
-
-Many of the UNIX system calls return file descriptors. Instead of
-using other UNIX system calls to perform I/O on them, you can create
-a [`sb-sys:fd-stream`][b91d] around them. For example,
-[`sb-bsd-sockets:socket-make-stream`][d54e] and [`sb-simple-streams:open`][6547] are
-built using fd streams.
-
-<a id="x-28SB-SYS-3AFD-STREAM-20STRUCTURE-29"></a>
-<a id="SB-SYS:FD-STREAM%20STRUCTURE"></a>
-
-- \[structure\] **sb-sys:fd-stream** *[file-stream][c241] sb-kernel:ansi-stream*
-
-<a id="x-28SB-SYS-3AFD-STREAM-P-20FUNCTION-29"></a>
-<a id="SB-SYS:FD-STREAM-P%20FUNCTION"></a>
-
-- \[function\] **sb-sys:fd-stream-p** *object*
-
-<a id="x-28SB-SYS-3AMAKE-FD-STREAM-20FUNCTION-29"></a>
-<a id="SB-SYS:MAKE-FD-STREAM%20FUNCTION"></a>
-
-- \[function\] **sb-sys:make-fd-stream** *fd \&key (class 'fd-stream) input output (element-type 'base-char) (buffering :full) (external-format :default) serve-events timeout file original delete-original pathname input-buffer-p dual-channel-p (name (if file
-    (format nil "file ~A" file)
-    (format nil "descriptor ~W" fd))) auto-close*
-
-    Create an [`fd-stream`][b91d] for the given Unix file descriptor `fd`.
-
-    - If `input` is non-`nil`, allow input operations. If `output` is non-nil,
-      allow output operations. If neither `input` nor `output` is specified,
-      default to allowing input.
-
-    - `element-type` indicates the element type to use (as for [`open`][6547]).
-
-    - `buffering` indicates the kind of buffering to use. Acceptable
-      values for `buffering` are `:full`, `:line` and `:none`, default is `:full`,
-      i.e. output is buffered till it is explicitly flushed using [`close`][848f]
-      or [`finish-output`][3498]. ([`force-output`][5842] forces some output to be flushed:
-      to ensure all buffered output is flushed use `finish-output`.)
-
-    - `timeout` (if non-`nil`) is the number of seconds to wait for input.
-      If `nil` (the default), then wait forever. When we time out, we
-      signal [`io-timeout`][27bc].
-
-    - `file` is the name of the file (will be returned by `pathname` on the
-      returned `fd-stream`).
-
-    - `name` is used to identify the stream when printed.
-
-    - If `serve-events` is true, `serve-event` machinery is used to handle
-      blocking IO on the stream.
-
-    - If `auto-close` is true, the underlying OS socket is automatically
-      closed after the stream and the socket have been garbage
-      collected. Default is `nil`.
-
-<a id="x-28SB-SYS-3AFD-STREAM-FD-20-28MGL-PAX-3ASTRUCTURE-ACCESSOR-20SB-SYS-3AFD-STREAM-29-29"></a>
-<a id="SB-SYS:FD-STREAM-FD%20%28MGL-PAX:STRUCTURE-ACCESSOR%20SB-SYS:FD-STREAM%29"></a>
-
-- \[structure-accessor\] **sb-sys:fd-stream-fd** *fd-stream*
-
-    Return the Unix file descriptor associated with `fd-stream`.
-    See the `fd` argument of [`make-fd-stream`][a960].
 
 <a id="x-28SB-MANUAL-3A-40UNICODE-SUPPORT-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@UNICODE-SUPPORT%20MGL-PAX:SECTION"></a>
@@ -16122,10 +16060,10 @@ more useful features of Common Lisp -- briefly:
 
     If `auto-close` is true, the underlying OS socket is automatically
     closed after the stream and the socket have been garbage collected.
-    Default is `nil`.
+    Default is false.
 
     If `serve-events` is true, blocking IO on the socket will dispatch to
-    the recursive event loop. Default is `nil`.
+    the recursive event loop. Default is false.
 
     The stream for `socket` will be cached, and a second invocation of this
     method will return the same stream. This may lead to oddities if this
@@ -18398,7 +18336,7 @@ both pathnames and strings as its arguments.
 
     A [`fixnum`][3cde] designating a native file descriptor.
 
-    [`sb-sys:make-fd-stream`][a960] can be used to construct a [`file-stream`][c241] associated with a
+    `sb-sys:make-fd-stream` can be used to construct a [`file-stream`][c241] associated with a
     native file descriptor.
 
     Note that mixing I/O operations on a `file-stream` with operations directly on its
@@ -20173,8 +20111,6 @@ learn about Common Lisp, some books stand out:
 
 [24fb]: #SB-MANUAL:@PACKAGE-LOCAL-NICKNAMES%20MGL-PAX:SECTION "Package-local Nicknames"
 
-[260a]: #SB-SYS:ENABLE-INTERRUPT%20FUNCTION "SB-SYS:ENABLE-INTERRUPT FUNCTION"
-
 [2703]: #SB-MANUAL:@HISTORY-AND-IMPLEMENTATION-OF-SBCL%20MGL-PAX:SECTION "History and Implementation of SBCL"
 
 [2771]: #SB-MANUAL:@SB-CONCURRENCY-QUEUE%20MGL-PAX:SECTION "Queue"
@@ -20182,8 +20118,6 @@ learn about Common Lisp, some books stand out:
 [2776]: #SB-MANUAL:@NATIVE-FILENAMES%20MGL-PAX:SECTION "Native Filenames"
 
 [2789]: #SB-MANUAL:@USING-PAX%20MGL-PAX:SECTION "Using PAX"
-
-[27bc]: #SB-SYS:IO-TIMEOUT%20CONDITION "SB-SYS:IO-TIMEOUT CONDITION"
 
 [286e]: #SB-MANUAL:@BLOCK-COMPILATION-DIFFICULTIES%20MGL-PAX:SECTION "Block Compilation Difficulties"
 
@@ -20264,6 +20198,8 @@ learn about Common Lisp, some books stand out:
 [329a]: http://www.lispworks.com/documentation/HyperSpec/Body/f_del_pk.htm "DELETE-PACKAGE (MGL-PAX:CLHS FUNCTION)"
 
 [32e3]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ch.htm "CHARACTER (MGL-PAX:CLHS CLASS)"
+
+[32eb]: http://www.lispworks.com/documentation/HyperSpec/Body/f_invo_1.htm "INVOKE-RESTART (MGL-PAX:CLHS FUNCTION)"
 
 [32f2]: #SB-SYS:DEFER-DEADLINE%20FUNCTION "SB-SYS:DEFER-DEADLINE FUNCTION"
 
@@ -21163,8 +21099,6 @@ learn about Common Lisp, some books stand out:
 
 [a917]: http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_ele.htm "ARRAY-ELEMENT-TYPE (MGL-PAX:CLHS FUNCTION)"
 
-[a960]: #SB-SYS:MAKE-FD-STREAM%20FUNCTION "SB-SYS:MAKE-FD-STREAM FUNCTION"
-
 [a9a5]: #SB-MANUAL:@STOPPING-SBCL%20MGL-PAX:SECTION "Stopping SBCL"
 
 [a9ee]: #SB-MANUAL:@NETWORKING%20MGL-PAX:SECTION "Networking"
@@ -21269,8 +21203,6 @@ learn about Common Lisp, some books stand out:
 
 [b914]: #SB-SYS:INTERACTIVE-INTERRUPT%20CONDITION "SB-SYS:INTERACTIVE-INTERRUPT CONDITION"
 
-[b91d]: #SB-SYS:FD-STREAM%20STRUCTURE "SB-SYS:FD-STREAM STRUCTURE"
-
 [b934]: #SB-MANUAL:@BUILD-PREREQUISITES%20MGL-PAX:SECTION "Build Prerequisites"
 
 [b93c]: http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm "STRING (MGL-PAX:CLHS CLASS)"
@@ -21310,8 +21242,6 @@ learn about Common Lisp, some books stand out:
 [bd70]: #SB-THREAD:CONDITION-BROADCAST%20FUNCTION "SB-THREAD:CONDITION-BROADCAST FUNCTION"
 
 [be8f]: #SB-MANUAL:@HIGHLIGHTS%20MGL-PAX:SECTION "Highlights"
-
-[bf69]: #SB-MANUAL:@FD-STREAMS%20MGL-PAX:SECTION "File Descriptor Streams"
 
 [bfc5]: http://www.lispworks.com/documentation/HyperSpec/Body/t_ban.htm "BOOLEAN (MGL-PAX:CLHS TYPE)"
 
