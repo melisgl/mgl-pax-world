@@ -693,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.342-9fb1378`, generated *2026-11-23 15:39:05*. See
+The output is for SBCL version `2.6.10.346-ee7e083`, generated *2026-11-24 03:08:28*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -1912,7 +1912,7 @@ Neither initialization file is required.
 
     - If a function, it is called by the default toplevel to obtain a
       pathname designator for the default userinit file or `nil`. If the
-      function returns `nil`, no sysinit file is used unless one has been
+      function returns `nil`, no userinit file is used unless one has been
       specified on the command line.
 
 <a id="x-28SB-MANUAL-3A-40INITIALIZATION-AND-EXIT-HOOKS-20MGL-PAX-3ASECTION-29"></a>
