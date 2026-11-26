@@ -693,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.353-523c5de`, generated *2026-11-26 14:34:37*. See
+The output is for SBCL version `2.6.10.354-0953a56`, generated *2026-11-26 23:25:38*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
@@ -10160,7 +10160,7 @@ processes:
     Execute `body` with all deferrable interrupts disabled. Deferrable
     interrupts arriving during execution of the `body` take effect after
     `body` has been executed. Deferrable interrupts include most blockable
-    POSIX signals, and [`sb-thread:interrupt-thread`][9867].
+    POSIX signals and [`sb-thread:interrupt-thread`][9867].
 
     This macro does not interfere with garbage collection, and unlike in
     many traditional Lisps using userspace threads, in SBCL
@@ -10213,13 +10213,15 @@ processes:
 - \[function\] **sb-sys:enable-interrupt** *signum handler*
 
     Set the Unix signal `handler` for `signum`. This applies to all threads in
-    the SBCL process. (This interface is experimental, and subject to
-    change or removal.)
+    the SBCL process.
+
+    > **Warning**: This interface is experimental and subject to change
+    > or removal.
 
     - `signum` is a signal number. Use the constants `sb-posix:sigint`,
       `sb-posix:sighup` and others. At present, users may install signal
-      handlers for certain asynchronous signals, such as @code{sighup},
-      @code{sigint}, @code{sigquit}, @code{sigterm}.
+      handlers for certain asynchronous signals, such as `SIGHUP`,
+      `SIGINT`, `SIGQUIT`, `SIGTERM`.
 
     - `handler` is a function, `:default` or `:ignore`.
 
@@ -10245,23 +10247,24 @@ processes:
     > A simple and safe way is to set a flag, as in the above example,
     > and check periodically in some application loop.
 
-    > Signal handler functions to be used in \`\`production''
-    > should never perform any non-local transfer of control (e.g.,
-    > [`throw`][e760] or [`invoke-restart`][32eb], but should only ever return
-    > normally or terminate the process.
+    > Signal handler functions to be used in "production" should never
+    > perform any non-local transfer of control (e.g. [`throw`][e760] or
+    > [`invoke-restart`][32eb]) but should only ever return normally or terminate
+    > the process.
 
 <a id="x-28SB-MANUAL-3A-40DEFAULT-SIGNAL-HANDLERS-20MGL-PAX-3ASECTION-29"></a>
 <a id="SB-MANUAL:@DEFAULT-SIGNAL-HANDLERS%20MGL-PAX:SECTION"></a>
 
 ##### Default Signal Handlers
 
-(These details are subject to change.)
-SBCL establishes the following signal handlers:
+SBCL establishes the following signal handlers.
+
+> **Warning**: These details are subject to change.
 
 - `SIGINT`: [`signal`][8f49]s an [`sb-sys:interactive-interrupt`][b914] (in
-  `sb-thread::foreground-thread` with [Threading][6ec7]). Ordinarily,
-  this will invoke a [Debugger][825d], respecting
-  *INVOKE-DEBUGGER-HOOK* and [`*debugger-hook*`][1cdc].
+  `sb-thread::foreground-thread` with [Threading][6ec7]). Ordinarily, this
+  will invoke the [Debugger][825d], respecting
+  [`sb-ext:*invoke-debugger-hook*`][4d8c] and [`*debugger-hook*`][1cdc].
 
 - `SIGPIPE`: Ignored.
 
