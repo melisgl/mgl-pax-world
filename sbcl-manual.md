@@ -693,7 +693,7 @@ official version at <https://www.sbcl.org/> but with heavy linking
 internally, to the HyperSpec, and to the source code on
 [GitHub](https://github.com/sbcl/sbcl).
 
-The output is for SBCL version `2.6.10.355-6674184`, generated *2026-11-27 09:12:22*. See
+The output is for SBCL version `2.6.10.360-4bf77da`, generated *2026-11-27 19:44:48*. See
 <https://fixnum.com> for this document in other formats.
 
 This manual is part of the SBCL software system. See the
